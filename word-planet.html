@@ -2,6 +2,9 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>🌟 单词星球 - 趣味学习小程序</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9,7 +12,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root {
   --pink: #FF6B9D;
@@ -885,11 +887,11 @@ body {
   <!-- ===== 上传页 ===== -->
   <div class="page" id="pageUpload">
     <div class="card">
-      <div class="card-title">🎵 上传音频</div>
+      <div class="card-title">🎵 本地音频</div>
       <div class="upload-zone" id="audioUploadZone">
         <div class="upload-icon">🎶</div>
         <div class="upload-text">点击或拖拽上传音频文件</div>
-        <div class="upload-hint">支持 MP3、WAV、M4A 格式，可多选</div>
+        <div class="upload-hint">音频会保存在当前浏览器中</div>
         <input type="file" id="audioFileInput" accept="audio/*" multiple>
       </div>
       <div id="audioPreview"></div>
@@ -982,14 +984,13 @@ body {
 <audio id="audioPlayer" preload="auto"></audio>
 
 <script>
-// Supabase 配置
-const SB_URL = 'https://hllfcxpefnrmtxcaylxa.supabase.co';
-const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsbGZjeHBlZm5ybXR4Y2F5bHhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxNDg4MTUsImV4cCI6MjA5MTcyNDgxNX0.hr-iwRrqPQ4rIegpLu9wcmu92_UZ1eOYPpvd8IqY_rE';
-const supabaseClient = supabase.createClient(SB_URL, SB_KEY);
-const DATA_KEY = 'primary_state';
-const AUDIO_BUCKET = 'english-planet-audios';
-let cloudSaveTimer = null;
-let isCloudSaving = false;
+// 本地存储配置
+const LOCAL_BACKUP_KEY = 'wordPlanet:backup';
+const LOCAL_STORAGE_MODE = true;
+const AUDIO_DB_NAME = 'wordPlanetAudioDB';
+const AUDIO_DB_VERSION = 1;
+const AUDIO_STORE_NAME = 'audioFiles';
+let audioObjectUrls = [];
 
 // ===== 全局状态 =====
 const APP_KEY = 'wordPlanet';
@@ -1024,101 +1025,189 @@ const pronunciationState = {
 };
 
 // ===== 初始化 =====
+// 版本号 - 每次修改后递增，用于检测缓存
+const APP_VERSION = '20260419-v8-local-audio';
+console.log('[单词星球] 版本:', APP_VERSION);
+
 async function init() {
+  console.log('[单词星球] 初始化开始, 版本:', APP_VERSION);
   updateSubtitle();
   setupPronunciationEngine();
   createStars();
-  await loadStateCloud(); 
+  loadStateLocal(); 
+  await hydrateAudioUrls();
   renderHome();
   setupUploadHandlers();
+  console.log('[单词星球] 初始化完成');
 }
 
-async function loadStateCloud() {
-  updateSyncStatus('syncing', '正在从云端拉取...');
+function openAudioDB() {
+  return new Promise((resolve, reject) => {
+    if (!('indexedDB' in window)) {
+      reject(new Error('当前浏览器不支持音频本地存储'));
+      return;
+    }
+
+    const request = indexedDB.open(AUDIO_DB_NAME, AUDIO_DB_VERSION);
+    request.onupgradeneeded = () => {
+      const db = request.result;
+      if (!db.objectStoreNames.contains(AUDIO_STORE_NAME)) {
+        db.createObjectStore(AUDIO_STORE_NAME, { keyPath: 'id' });
+      }
+    };
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error || new Error('打开音频本地存储失败'));
+  });
+}
+
+async function saveAudioFileToLocal(id, file) {
+  const db = await openAudioDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(AUDIO_STORE_NAME, 'readwrite');
+    tx.objectStore(AUDIO_STORE_NAME).put({
+      id,
+      blob: file,
+      name: file.name,
+      size: file.size,
+      type: file.type || 'audio/mpeg',
+      savedAt: new Date().toISOString()
+    });
+    tx.oncomplete = () => {
+      db.close();
+      resolve();
+    };
+    tx.onerror = () => {
+      db.close();
+      reject(tx.error || new Error('保存音频到浏览器失败'));
+    };
+  });
+}
+
+async function getAudioFileFromLocal(id) {
+  const db = await openAudioDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(AUDIO_STORE_NAME, 'readonly');
+    const request = tx.objectStore(AUDIO_STORE_NAME).get(id);
+    request.onsuccess = () => {
+      db.close();
+      resolve(request.result || null);
+    };
+    request.onerror = () => {
+      db.close();
+      reject(request.error || new Error('读取音频失败'));
+    };
+  });
+}
+
+async function deleteAudioFileFromLocal(id) {
+  try {
+    const db = await openAudioDB();
+    await new Promise((resolve, reject) => {
+      const tx = db.transaction(AUDIO_STORE_NAME, 'readwrite');
+      tx.objectStore(AUDIO_STORE_NAME).delete(id);
+      tx.oncomplete = () => {
+        db.close();
+        resolve();
+      };
+      tx.onerror = () => {
+        db.close();
+        reject(tx.error || new Error('删除音频失败'));
+      };
+    });
+  } catch (e) {
+    console.warn('删除本地音频失败:', e);
+  }
+}
+
+function revokeHydratedAudioUrls() {
+  audioObjectUrls.forEach(url => URL.revokeObjectURL(url));
+  audioObjectUrls = [];
+}
+
+async function hydrateAudioUrls() {
+  revokeHydratedAudioUrls();
+  for (const week of state.weeks || []) {
+    for (const audio of week.audios || []) {
+      if (!audio.localId) continue;
+      try {
+        const stored = await getAudioFileFromLocal(audio.localId);
+        if (stored?.blob) {
+          const url = URL.createObjectURL(stored.blob);
+          audio.url = url;
+          audioObjectUrls.push(url);
+        }
+      } catch (e) {
+        console.warn('恢复本地音频失败:', audio.name, e);
+      }
+    }
+  }
+}
+
+async function ensureAudioUrl(audio) {
+  if (!audio) return '';
+  if (audio.url || audio.data) return audio.url || audio.data;
+  if (!audio.localId) return '';
+
+  const stored = await getAudioFileFromLocal(audio.localId);
+  if (!stored?.blob) return '';
+
+  const url = URL.createObjectURL(stored.blob);
+  audio.url = url;
+  audioObjectUrls.push(url);
+  return url;
+}
+
+function loadStateLocal() {
   try {
     const saved = localStorage.getItem(APP_KEY);
     const localState = saved ? JSON.parse(saved) : null;
-    if (localState) state = { ...state, ...localState };
-
-    const { data, error } = await supabaseClient
-      .from('english_planet_data')
-      .select('data')
-      .eq('key', DATA_KEY)
-      .single();
-
-    if (data) {
-      const cloudState = data.data || {};
-      const cloudHasData = (cloudState.weeks && cloudState.weeks.length > 0)
-        || (cloudState.progress && Object.keys(cloudState.progress).length > 0);
-      const localHasData = localState && (
-        (localState.weeks && localState.weeks.length > 0)
-        || (localState.progress && Object.keys(localState.progress).length > 0)
-      );
-
-      if (cloudHasData || !localHasData) {
-        state = { ...state, ...cloudState };
-        saveStateLocal();
-        updateSyncStatus('success', '云端同步完成');
-      } else {
-        await saveStateCloud();
-        updateSyncStatus('success', '已用本地数据初始化云端');
-      }
-    } else if (error && error.code === 'PGRST116') {
-      if (state.weeks.length === 0) {
-        state.weeks = [getMockWeek()];
-        await saveStateCloud();
-      }
-      updateSyncStatus('success', '初始环境就绪');
+    if (localState) {
+      state = { ...state, ...localState };
+    } else {
+      state.weeks = [getMockWeek()];
+      saveStateLocal();
     }
+    updateSyncStatus('success', '本地模式');
   } catch(e) { 
-    console.error('云端加载失败:', e);
-    updateSyncStatus('error', '云连接异常，使用本地模式');
+    console.error('本地加载失败:', e);
+    state.weeks = [getMockWeek()];
+    updateSyncStatus('error', '本地读取失败');
   }
 }
 
-async function saveStateCloud() {
-  updateSyncStatus('syncing', '正在保存到云端...');
-
-  // 清理 legacy base64 数据以缩小负载大小，防止因负载过大导致挂起
-  if (state.weeks) {
-    state.weeks.forEach(w => {
-      if (w.audioData) delete w.audioData; // 移除旧版 Base64
-    });
-  }
-
-  saveStateLocal(); 
-  isCloudSaving = true;
-
-  try {
-    // 增加超时控制：6秒内如果没响应则认为失败，防止前端永久挂起
-    const savePromise = supabaseClient
-      .from('english_planet_data')
-      .upsert({ key: DATA_KEY, data: state, updated_at: new Date() });
-
-    const timeoutPromise = new Promise((_, reject) =>
-      setTimeout(() => reject(new Error('云端响应超时，请检查网络')), 6000)
-    );
-
-    const { error } = await Promise.race([savePromise, timeoutPromise]);
-
-    if (error) throw error;
-    updateSyncStatus('success', '已安全同步至云端');
-    return true;
-  } catch(e) {
-    console.error('云端保存失败:', e);
-    updateSyncStatus('error', '云同步失败 (本地已存)');
-    // 如果是网络挂起导致的超时，给与提示
-    if (e.message.includes('超时')) throw e;
-    return false;
-  } finally {
-    isCloudSaving = false;
-  }
+async function saveStateLocalAsync() {
+  const ok = saveStateLocal();
+  updateSyncStatus(ok ? 'success' : 'error', ok ? '已保存到本地' : '本地保存失败');
+  return ok;
 }
 
 function saveStateLocal() {
   try {
-    localStorage.setItem(APP_KEY, JSON.stringify(state));
-  } catch(e) { console.error('本地保存失败:', e); }
+    const persistedState = getPersistableState();
+    localStorage.setItem(APP_KEY, JSON.stringify(persistedState));
+    localStorage.setItem(LOCAL_BACKUP_KEY, JSON.stringify({
+      savedAt: new Date().toISOString(),
+      state: persistedState
+    }));
+    console.log('[本地保存] 成功:', {
+      weeks: state.weeks?.length || 0,
+      words: (state.weeks || []).reduce((sum, w) => sum + (w.words?.length || 0), 0)
+    });
+    return true;
+  } catch(e) {
+    console.error('本地保存失败:', e);
+    return false;
+  }
+}
+
+function getPersistableState() {
+  return {
+    ...state,
+    weeks: (state.weeks || []).map(week => ({
+      ...week,
+      audios: (week.audios || []).map(({ url, data, ...audio }) => audio)
+    }))
+  };
 }
 
 function updateSyncStatus(type, text) {
@@ -1160,14 +1249,10 @@ function getMockWeek() {
 
 function saveState() {
   saveStateLocal();
-  queueCloudSave();
 }
 
-function queueCloudSave() {
-  clearTimeout(cloudSaveTimer);
-  cloudSaveTimer = setTimeout(() => {
-    if (!isCloudSaving) saveStateCloud();
-  }, 700);
+function queueLocalSave() {
+  saveStateLocal();
 }
 
 function updateSubtitle() {
@@ -1350,13 +1435,16 @@ function renderHomeWeekList() {
   }).join('') + '</div>';
 }
 
-function confirmDeleteWeek(id) {
+async function confirmDeleteWeek(id) {
   const week = state.weeks.find(w => w.id === id);
   if (!week || !window.confirm(`确定要彻底删除“${week.name}”计划吗？`)) return;
+  for (const audio of week.audios || []) {
+    if (audio.localId) await deleteAudioFileFromLocal(audio.localId);
+  }
   state.weeks = state.weeks.filter(w => w.id !== id);
-  saveStateCloud();
+  await saveStateLocalAsync();
   renderHome();
-  showToast('已从云端移除', 'success');
+  showToast('已从本地移除', 'success');
 }
 
 function editWeek(id) {
@@ -1392,7 +1480,7 @@ function editWeek(id) {
     }
   }
   
-  document.getElementById('saveWeekBtn').innerHTML = '💾 更新云端计划';
+  document.getElementById('saveWeekBtn').innerHTML = '💾 更新本地计划';
 }
 
 // ===== 上传处理 =====
@@ -1492,6 +1580,9 @@ async function handleWordFile(file) {
     }
 
     const words = parseWordsFromText(text);
+    if (words.length === 0) {
+      throw new Error('未识别到单词，请确认文本每行包含“英文 + 释义”');
+    }
     uploadData.words = words;
 
     document.getElementById('wordPreview').innerHTML = `
@@ -1506,12 +1597,12 @@ async function handleWordFile(file) {
     `;
 
     document.getElementById('parsedWordsCard').style.display = 'block';
-    document.getElementById('wordEditText').value = words.map(w => `${w.word}\t${w.meaning}`).join('\n');
+    document.getElementById('wordEditText').value = words.map(w => `${w.word}\t${w.pos ? w.pos + ' ' : ''}${w.meaning}`).join('\n');
     renderParsedWords(words);
     showToast(`成功识别 ${words.length} 个单词！`, 'success');
   } catch(e) {
     console.error(e);
-    showToast('文件解析失败，请检查文件格式', 'error');
+    showToast(e.message || '文件解析失败，请检查文件格式', 'error');
   }
 }
 
@@ -1562,11 +1653,17 @@ async function parseExcel(file) {
 }
 
 function fileToText(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = reject;
-    reader.readAsText(file);
+  return file.arrayBuffer().then(buffer => {
+    const bytes = new Uint8Array(buffer);
+    let text = new TextDecoder('utf-8').decode(bytes);
+    if (text.includes('\uFFFD')) {
+      try {
+        text = new TextDecoder('gb18030').decode(bytes);
+      } catch (e) {
+        console.warn('GB18030 解码不可用，继续使用 UTF-8 文本');
+      }
+    }
+    return text.replace(/^\uFEFF/, '');
   });
 }
 
@@ -1688,6 +1785,7 @@ async function saveWeek() {
     const isEdit = !!state.editingWeekId;
     const nameInput = document.getElementById('weekNameInput').value.trim();
     const name = nameInput || (isEdit ? '' : `第${state.weeks.length + 1}周`);
+    const weekId = isEdit ? state.editingWeekId : 'week_' + Date.now();
 
     const existingWeek = isEdit ? state.weeks.find(w => w.id === state.editingWeekId) : null;
     const finalAudios = isEdit && existingWeek?.audios ? [...existingWeek.audios] : [];
@@ -1695,18 +1793,23 @@ async function saveWeek() {
     if (uploadData.audioFiles.length > 0) {
       for (let i = 0; i < uploadData.audioFiles.length; i++) {
         const a = uploadData.audioFiles[i];
-        saveBtn.innerHTML = `⏳ 上传音频 (${i + 1}/${uploadData.audioFiles.length})...`;
-        try {
-          finalAudios.push(await uploadAudioFileToCloud(a.file));
-        } catch(e) {
-          console.error('音频云端上传失败:', e);
-          showToast(`"${a.name}" 上传失败`, 'error');
-        }
+        const localId = `${weekId}_${Date.now()}_${i}_${Math.random().toString(36).slice(2)}`;
+        saveBtn.innerHTML = `💾 保存音频 (${i + 1}/${uploadData.audioFiles.length})...`;
+        await saveAudioFileToLocal(localId, a.file);
+        const playbackUrl = URL.createObjectURL(a.file);
+        audioObjectUrls.push(playbackUrl);
+        finalAudios.push({
+          localId,
+          name: a.name,
+          size: a.size,
+          type: a.file.type || 'audio/mpeg',
+          url: playbackUrl
+        });
       }
     }
 
     const newWeek = {
-      id: isEdit ? state.editingWeekId : 'week_' + Date.now(),
+      id: weekId,
       name: name || (isEdit ? (existingWeek?.name || '已编辑') : '未命名'),
       words: uploadData.words,
       audios: finalAudios,
@@ -1721,15 +1824,31 @@ async function saveWeek() {
       state.weeks.push(newWeek);
     }
 
-    saveBtn.innerHTML = '☁️ 正在同步到云端数据库...';
-    await saveStateCloud();
+    console.log('[saveWeek] 准备保存学习任务:', {
+      id: newWeek.id,
+      name: newWeek.name,
+      words: newWeek.words.length,
+      audios: newWeek.audios.length,
+      totalWeeks: state.weeks.length
+    });
 
-    saveBtn.innerHTML = '✅ 完成！正在重置页面...';
-    setTimeout(() => {
-      resetUploadPage();
-      switchPage('Home');
-      showToast(isEdit ? '已同步更新至云端' : '已成功保存至云端', 'success');
-    }, 400);
+    if (!saveStateLocal()) {
+      throw new Error('浏览器本地存储失败，请清理浏览器缓存空间后重试');
+    }
+
+    saveBtn.innerHTML = '💾 正在保存到本地...';
+    const syncSuccess = await saveStateLocalAsync();
+    
+    if (syncSuccess) {
+      saveBtn.innerHTML = '✅ 完成！正在重置页面...';
+      setTimeout(() => {
+        resetUploadPage();
+        switchPage('Home');
+        showToast(isEdit ? '已更新到本地' : '已保存到本地', 'success');
+      }, 400);
+    } else {
+      throw new Error('本地保存失败，请检查浏览器存储空间');
+    }
 
   } catch (err) {
     console.error('保存过程发生致命错误:', err);
@@ -1740,33 +1859,11 @@ async function saveWeek() {
   }
 }
 
-async function uploadAudioFileToCloud(file) {
-  if (!file) throw new Error('缺少音频文件');
-
-  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
-  const path = `${DATA_KEY}/${Date.now()}_${Math.random().toString(36).slice(2)}_${safeName}`;
-  const { error } = await supabaseClient.storage
-    .from(AUDIO_BUCKET)
-    .upload(path, file, {
-      cacheControl: '31536000',
-      contentType: file.type || 'audio/mpeg',
-      upsert: false
-    });
-
-  if (error) throw error;
-
-  const { data } = supabaseClient.storage.from(AUDIO_BUCKET).getPublicUrl(path);
-  return {
-    name: file.name,
-    url: data.publicUrl,
-    path,
-    size: file.size,
-    type: file.type || 'audio/mpeg'
-  };
-}
-
 function resetUploadPage() {
   state.editingWeekId = null;
+  uploadData.audioFiles.forEach(a => {
+    if (a.url) URL.revokeObjectURL(a.url);
+  });
   uploadData = { audioFiles: [], words: [], wordFileName: '', grammar: '' };
   document.getElementById('weekNameInput').value = '';
   document.getElementById('wordPreview').innerHTML = '';
@@ -1864,7 +1961,7 @@ function renderListenMode(week) {
   const audios = (week.audios && week.audios.length > 0) ? week.audios : 
                  (week.audioData || week.audioName) ? [{ name: week.audioName || '音频', data: week.audioData || null }] : [];
   
-  const hasAudio = audios.length > 0 && audios.some(a => a.url || a.data);
+  const hasAudio = audios.length > 0 && audios.some(a => a.url || a.data || a.localId);
   const currentAudio = audios[listenState.currentAudioIndex] || audios[0];
   const words = week.words || [];
 
@@ -1936,9 +2033,10 @@ function renderListenMode(week) {
   container.innerHTML = html;
 
   // 初始化音频设置
-  if (hasAudio && currentAudio && (currentAudio.url || currentAudio.data)) {
+  if (hasAudio && currentAudio) {
     const player = document.getElementById('audioPlayer');
-    player.src = currentAudio.url || currentAudio.data;
+    player.pause();
+    player.removeEventListener('timeupdate', updateAudioProgress);
     player.addEventListener('timeupdate', updateAudioProgress);
     player.onloadedmetadata = () => {
       document.getElementById('audioDuration').textContent = formatTime(player.duration);
@@ -1946,6 +2044,21 @@ function renderListenMode(week) {
     player.onended = () => {
       document.getElementById('audioPlayBtn').textContent = '▶';
     };
+    player.onerror = () => {
+      document.getElementById('audioPlayBtn').textContent = '▶';
+      showToast('音频加载失败，请重新上传该音频', 'error');
+    };
+    ensureAudioUrl(currentAudio).then(url => {
+      if (!url) {
+        showToast('未找到本地音频文件，请重新上传', 'error');
+        return;
+      }
+      player.src = url;
+      player.load();
+    }).catch(error => {
+      console.error('加载本地音频失败:', error);
+      showToast('音频读取失败，请重新上传', 'error');
+    });
   }
 }
 
@@ -2007,9 +2120,20 @@ function switchListenAudio(index) {
 function toggleAudioPlay() {
   const player = document.getElementById('audioPlayer');
   const btn = document.getElementById('audioPlayBtn');
+  if (!player.src) {
+    showToast('音频还在加载，请稍后再试', 'info');
+    return;
+  }
   if (player.paused) {
-    player.play();
-    btn.textContent = '⏸';
+    player.play()
+      .then(() => {
+        btn.textContent = '⏸';
+      })
+      .catch(error => {
+        console.error('音频播放失败:', error);
+        btn.textContent = '▶';
+        showToast('音频播放失败，请重新上传该音频', 'error');
+      });
   } else {
     player.pause();
     btn.textContent = '▶';
