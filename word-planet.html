@@ -1074,7 +1074,7 @@ function renderHomeStats() {
   document.getElementById('homeStats').innerHTML = `
     <div class="stat-card">
       <div class="stat-icon">📝</div>
-      <div class="stat-value">${todayProgress.wordsLearned}</div>
+      <div class="stat-value">${todayProgress.wordsLearned || 0}</div>
       <div class="stat-label">今日已学</div>
     </div>
     <div class="stat-card">
@@ -1148,15 +1148,27 @@ function renderHomeWeekList() {
     'linear-gradient(135deg, #A78BFA, #F472B6)',
   ];
 
+  if (state.weeks.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state" style="padding:40px 0">
+        <div class="empty-icon">📂</div>
+        <div class="empty-title">暂无学习周</div>
+        <div class="empty-desc">点击下方“上传”按钮开始添加单词吧</div>
+      </div>
+    `;
+    return;
+  }
+
   container.innerHTML = '<div class="week-list">' + state.weeks.map((w, i) => {
     const prog = getWeekProgress(w.id);
-    const pct = w.words.length > 0 ? Math.round(prog.learned / w.words.length * 100) : 0;
+    const wordCount = w.words ? w.words.length : 0;
+    const pct = wordCount > 0 ? Math.round(prog.learned / wordCount * 100) : 0;
     return `
       <div class="week-item" onclick="openWeekStudy('${w.id}')">
         <div class="week-badge" style="background:${colors[i % colors.length]}">${i + 1}</div>
         <div class="week-info">
-          <div class="week-name">${w.name}</div>
-          <div class="week-meta">${w.words.length} 个单词 · ${(w.audios && w.audios.length > 0) ? w.audios.length + ' 个音频' : (w.audioName ? '1 个音频' : '无音频')}</div>
+          <div class="week-name">${w.name || '未命名周'}</div>
+          <div class="week-meta">${wordCount} 个单词 · ${(w.audios && w.audios.length > 0) ? w.audios.length + ' 个音频' : (w.audioName ? '1 个音频' : '无音频')}</div>
           <div class="week-progress-bar">
             <div class="week-progress-fill" style="width:${pct}%"></div>
           </div>
@@ -1536,22 +1548,16 @@ let listenState = { currentAudioIndex: 0 };
 
 function renderListenMode(week) {
   const container = document.getElementById('studyModeContent');
-
-  // 兼容旧数据（单个audioData/audioName）和新数据（audios数组）
-  let audios = [];
-  if (week.audios && week.audios.length > 0) {
-    audios = week.audios;
-  } else if (week.audioData || week.audioName) {
-    audios = [{ name: week.audioName || '音频', data: week.audioData || null }];
-  }
-
+  const audios = (week.audios && week.audios.length > 0) ? week.audios : 
+                 (week.audioData || week.audioName) ? [{ name: week.audioName || '音频', data: week.audioData || null }] : [];
+  
   const hasAudio = audios.length > 0 && (audios[0].data || audios.some(a => a.data));
   const currentAudio = audios[listenState.currentAudioIndex] || audios[0];
+  const words = week.words || [];
 
   let html = '';
 
-  if (hasAudio && audios.length > 0) {
-    // 音频选择标签（多个音频时显示）
+  if (hasAudio) {
     if (audios.length > 1) {
       html += `<div class="mode-tabs" style="margin-bottom:12px">
         ${audios.map((a, i) => `
@@ -1585,47 +1591,92 @@ function renderListenMode(week) {
       </div>
     `;
   } else {
-    html += `
-      <div class="card" style="text-align:center;color:var(--text-light)">
-        <div style="font-size:32px;margin-bottom:8px">🔇</div>
-        <div>本周未上传音频</div>
-        <div style="font-size:12px;margin-top:4px">可以点击单词旁的喇叭按钮听发音</div>
-      </div>
-    `;
+    html += `<div class="card" style="text-align:center;color:var(--text-light)">
+      <div style="font-size:32px;margin-bottom:8px">🔇</div>
+      <div>本周未上传音频</div>
+    </div>`;
   }
 
-  html += `<div style="margin-top:16px"><div class="card-title">📋 单词列表</div>
-    <div class="word-list">
-      ${week.words.map((w, i) => `
-        <div class="word-item" id="wordItem${i}" onclick="highlightWord(${i})">
-          <div class="word-num">${i + 1}</div>
-          <div class="word-text">
-            <div class="word-en">${w.word}</div>
-            <div class="word-cn">
-              ${w.pos ? `<span class="word-pos">${w.pos}</span>` : ''}
-              ${w.meaning || ''}
-            </div>
-          </div>
-          <button class="word-speak-btn" onclick="event.stopPropagation();speakWord('${w.word}')">🔊</button>
-        </div>
-      `).join('')}
+  // 搜索和过滤
+  html += `
+    <div class="search-bar" style="margin-top:20px;display:flex;gap:10px;align-items:center;background:white;padding:12px;border-radius:16px;box-shadow:var(--shadow)">
+      <div style="flex:1;position:relative">
+        <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:0.5">🔍</span>
+        <input type="text" id="wordSearchInput" placeholder="搜索单词或含义..." 
+               style="width:100%;padding:10px 10px 10px 36px;border:none;background:var(--bg-card);border-radius:10px;font-size:14px"
+               oninput="filterWords()">
+      </div>
+      <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;user-select:none;color:var(--text-light)">
+        <input type="checkbox" id="hideMasteredCheckbox" onchange="filterWords()" style="accent-color:var(--pink)"> 仅未掌握
+      </label>
     </div>
+  `;
+
+  html += `<div style="margin-top:16px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div class="card-title" style="margin-bottom:0">📋 单词列表</div>
+      <div id="wordCountBadge" style="font-size:12px;color:white;background:var(--pink);padding:2px 8px;border-radius:10px">${words.length}</div>
+    </div>
+    <div class="word-list" id="listenWordList">${renderWordItems(words)}</div>
   </div>`;
 
   container.innerHTML = html;
 
-  // Setup audio if available
+  // 初始化音频设置
   if (hasAudio && currentAudio && currentAudio.data) {
     const player = document.getElementById('audioPlayer');
     player.src = currentAudio.data;
     player.addEventListener('timeupdate', updateAudioProgress);
-    player.addEventListener('loadedmetadata', () => {
+    player.onloadedmetadata = () => {
       document.getElementById('audioDuration').textContent = formatTime(player.duration);
-    });
-    player.addEventListener('ended', () => {
+    };
+    player.onended = () => {
       document.getElementById('audioPlayBtn').textContent = '▶';
-    });
+    };
   }
+}
+
+function renderWordItems(words) {
+  if (words.length === 0) {
+    return `<div style="text-align:center;padding:40px;color:var(--text-light)">
+      <div style="font-size:32px;margin-bottom:8px">🔍</div>
+      <div>未找到结果</div>
+    </div>`;
+  }
+  return words.map((w, i) => `
+    <div class="word-item" id="wordItem${i}" onclick="highlightWord(${i})">
+      <div class="word-num">${i + 1}</div>
+      <div class="word-text">
+        <div class="word-en">${w.word}</div>
+        <div class="word-cn">
+          ${w.pos ? `<span class="word-pos">${w.pos}</span>` : ''}
+          ${w.meaning || ''}
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        ${w.mastered ? '<span style="font-size:12px;color:var(--green)">✅</span>' : ''}
+        <button class="word-speak-btn" onclick="event.stopPropagation();speakWord('${w.word}')">🔊</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterWords() {
+  const query = (document.getElementById('wordSearchInput')?.value || '').toLowerCase().trim();
+  const hideMastered = document.getElementById('hideMasteredCheckbox')?.checked || false;
+  const week = state.weeks.find(w => w.id === state.currentWeekId);
+  if (!week) return;
+
+  const filtered = (week.words || []).filter(w => {
+    const matchesSearch = !query || w.word.toLowerCase().includes(query) || (w.meaning && w.meaning.toLowerCase().includes(query));
+    const passesMasteredFilter = !hideMastered || !w.mastered;
+    return matchesSearch && passesMasteredFilter;
+  });
+
+  const listContainer = document.getElementById('listenWordList');
+  if (listContainer) listContainer.innerHTML = renderWordItems(filtered);
+  const badge = document.getElementById('wordCountBadge');
+  if (badge) badge.textContent = filtered.length;
 }
 
 function switchListenAudio(index) {
@@ -2193,8 +2244,8 @@ function renderStats() {
 }
 
 function renderStatsOverview() {
-  const totalWords = state.weeks.reduce((sum, w) => sum + w.words.length, 0);
-  const masteredWords = state.weeks.reduce((sum, w) => sum + w.words.filter(w => w.mastered).length, 0);
+  const totalWords = state.weeks.reduce((sum, w) => sum + (w.words ? w.words.length : 0), 0);
+  const masteredWords = state.weeks.reduce((sum, w) => sum + (w.words ? w.words.filter(w => w.mastered).length : 0), 0);
   const streak = calculateStreak();
   const totalQuizzes = Object.values(state.progress).reduce((sum, p) => sum + (p.quizzesTaken || 0), 0);
   const totalCorrect = Object.values(state.progress).reduce((sum, p) => sum + (p.correctCount || 0), 0);
@@ -2384,8 +2435,8 @@ function renderAllBadges() {
 
 // ===== 成就系统 =====
 function getBadges() {
-  const totalWords = state.weeks.reduce((sum, w) => sum + w.words.length, 0);
-  const mastered = state.weeks.reduce((sum, w) => sum + w.words.filter(w => w.mastered).length, 0);
+  const totalWords = state.weeks.reduce((sum, w) => sum + (w.words ? w.words.length : 0), 0);
+  const mastered = state.weeks.reduce((sum, w) => sum + (w.words ? w.words.filter(w => w.mastered).length : 0), 0);
   const streak = calculateStreak();
   const totalQuizzes = Object.values(state.progress).reduce((sum, p) => sum + (p.quizzesTaken || 0), 0);
 
@@ -2435,7 +2486,7 @@ function calculateStreak() {
 
 function getWeekProgress(weekId) {
   const week = state.weeks.find(w => w.id === weekId);
-  if (!week) return { learned: 0, total: 0 };
+  if (!week || !week.words) return { learned: 0, total: 0 };
   return {
     learned: week.words.filter(w => w.mastered).length,
     total: week.words.length
