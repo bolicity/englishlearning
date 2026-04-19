@@ -754,49 +754,35 @@ body {
 
 /* ===== 响应式适配优化 ===== */
 
-/* 小手机适配 */
+/* 统一移动优先布局（手机/Pad/PC 均保持精致窄屏感） */
+.app-container { 
+  max-width: 480px; 
+  margin: 0 auto;
+  padding-bottom: 20px; 
+  min-height: 100vh;
+  position: relative;
+  background: var(--bg);
+}
+
+.bottom-nav {
+  position: fixed; bottom: 0;
+  max-width: 480px; left: 50%; transform: translateX(-50%);
+  width: 100%;
+}
+
+/* 小手机微调 */
 @media (max-width: 380px) {
   .app-header { padding: 15px 15px 5px; }
   .app-title { font-size: 22px; }
   .flashcard-container { height: 380px; }
   .flashcard-front .card-word { font-size: 28px; }
-  .stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .page { padding: 8px 15px 15px; }
 }
 
-/* 平板 (Pad) / 桌面宽屏适配 */
+/* PC 端背景美化（保持应用在中间） */
 @media (min-width: 481px) {
-  .app-container { 
-    max-width: 720px; 
-    padding-bottom: 20px; 
-    /* 在宽屏上增加一些圆角阴影，使其看起来像精美的应用 */
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(5px);
-    margin: 20px auto;
-    border-radius: 30px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-    min-height: calc(100vh - 40px);
+  body {
+    background: #fdf3f8; /* 稍深的背景色，凸显中间的白色应用 */
   }
-  
-  .bottom-nav {
-    position: sticky; bottom: 0;
-    max-width: 720px; margin: 0 auto;
-    border-radius: 0 0 30px 30px;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .flashcard-container {
-    max-width: 400px;
-    height: 480px;
-  }
-}
-
-/* 窄平板横屏 */
-@media (min-height: 600px) and (min-width: 1024px) {
-  body { display: flex; align-items: center; justify-content: center; background: #fdf3f8; }
 }
 
 /* ===== 减少动画偏好 ===== */
@@ -1360,6 +1346,7 @@ function editWeek(id) {
   
   document.getElementById('weekNameInput').value = week.name || '';
   if (week.words) {
+    // 同步到旧的表格（兼容性保留）
     document.getElementById('wordTableBody').innerHTML = week.words.map(w => `
       <tr>
         <td><input type="text" class="word-table-input" value="${w.word}"></td>
@@ -1367,6 +1354,12 @@ function editWeek(id) {
         <td><input type="text" class="word-table-input" value="${w.meaning}"></td>
       </tr>
     `).join('');
+    
+    // 同步到新的文本编辑框（核心逻辑）
+    document.getElementById('parsedWordsCard').style.display = 'block';
+    document.getElementById('wordEditText').value = week.words.map(w => `${w.word}\t${w.pos ? w.pos + ' ' : ''}${w.meaning}`).join('\n');
+    renderParsedWords(week.words);
+    uploadData.words = [...week.words]; // 初始化上传缓存
   }
   
   if (week.grammar) {
@@ -1644,9 +1637,16 @@ function renderParsedWords(words) {
 
 // ===== 保存周数据 =====
 async function saveWeek() {
+  const saveBtn = document.getElementById('saveWeekBtn');
+  const originalBtnText = saveBtn.innerHTML;
+  
   try {
-    const editText = document.getElementById('wordEditText').value.trim();
+    saveBtn.disabled = true;
+    saveBtn.innerHTML = '⏳ 正在处理数据...';
+
+    const editText = document.getElementById('wordEditText')?.value.trim();
     if (editText) {
+      // 只有在编辑框有内容时才覆盖 uploadData.words
       const lines = editText.split('\n').filter(l => l.trim());
       uploadData.words = lines.map(line => {
         const parts = line.split(/[\t|]/).map(p => p.trim());
@@ -1660,6 +1660,8 @@ async function saveWeek() {
     }
 
     if (!uploadData.words || uploadData.words.length === 0) {
+      saveBtn.disabled = false;
+      saveBtn.innerHTML = originalBtnText;
       return showToast('请先上传或输入单词', 'error');
     }
 
@@ -1704,7 +1706,10 @@ async function saveWeek() {
     showToast(isEdit ? '已同步更新至云端' : '已成功保存至云端', 'success');
   } catch (err) {
     console.error('保存失败:', err);
-    alert('保存失败: ' + err.message);
+    alert('保存过程发生异常: ' + (err.message || '未知错误'));
+  } finally {
+    saveBtn.disabled = false;
+    saveBtn.innerHTML = originalBtnText;
   }
 }
 
