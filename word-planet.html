@@ -258,17 +258,6 @@ body {
   transition: width 0.5s ease;
 }
 .week-arrow { font-size: 18px; color: var(--text-light); }
-.week-actions { display: flex; gap: 8px; align-items: center; }
-.action-btn { 
-  width: 32px; height: 32px; border-radius: 8px; 
-  display: flex; align-items: center; justify-content: center; 
-  border: none; cursor: pointer; transition: all 0.2s; 
-  font-size: 14px; background: white;
-}
-.action-btn.edit { color: var(--purple); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-.action-btn.edit:hover { background: var(--purple); color: white; }
-.action-btn.delete { color: var(--pink); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-.action-btn.delete:hover { background: var(--pink); color: white; }
 
 /* ===== 空状态 ===== */
 .empty-state {
@@ -458,41 +447,7 @@ body {
   font-size: 20px; font-weight: 800;
   text-align: center; margin-bottom: 20px;
 }
-/* ===== 单词网格展示 ===== */
-.word-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px;
-  padding: 4px 0;
-}
-.word-card {
-  background: white; border-radius: 12px; padding: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-  border: 1px solid rgba(0,0,0,0.02); transition: all 0.2s;
-  cursor: pointer; position: relative;
-}
-.word-card:active { transform: scale(0.96); }
-.word-card.mastered { background: rgba(74,222,128,0.05); border-color: rgba(74,222,128,0.2); }
-.word-card .word-en { font-size: 16px; font-weight: 800; color: var(--purple); margin-bottom: 4px; word-break: break-all; }
-.word-card .word-pos { font-size: 11px; color: var(--text-light); }
-.word-card .word-cn { font-size: 13px; color: var(--text); margin-top: 4px; }
-.word-card .mastery-badge { 
-  position: absolute; top: 6px; right: 6px; font-size: 12px; color: var(--green); 
-}
-
-/* ===== 语法板块样式 ===== */
-.grammar-container { 
-  background: white; padding: 20px; border-radius: var(--radius); 
-  box-shadow: var(--shadow); line-height: 1.6; color: var(--text);
-  overflow-x: auto;
-}
-.grammar-container table { width: 100%; border-collapse: collapse; margin: 16px 0; border: 1px solid #eee; }
-.grammar-container th, .grammar-container td { padding: 10px; border: 1px solid #eee; font-size: 14px; text-align: left; }
-.grammar-container th { background: var(--bg-body); font-weight: 700; color: var(--purple); }
-.grammar-container h2, .grammar-container h3 { color: var(--pink); margin-top: 20px; margin-bottom: 10px; }
-.grammar-container p { margin-bottom: 12px; }
-.grammar-container strong { color: var(--purple); }
+.quiz-options { display: flex; flex-direction: column; gap: 10px; }
 .quiz-option {
   padding: 16px 20px;
   border-radius: var(--radius-sm);
@@ -892,23 +847,6 @@ body {
       <div class="card-title">📚 学习周列表</div>
       <div id="homeWeekList"></div>
     </div>
-
-    <div class="card" style="margin-top:20px; border:1px dashed var(--pink-light); background:rgba(255,255,255,0.5)">
-      <div class="card-title">💾 数据与同步管理</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px">
-        <button class="action-btn" onclick="exportData()" style="width:100%; height:auto; padding:10px; font-size:13px; background:var(--bg-body)">📤 导出备份 (JSON)</button>
-        <div style="position:relative">
-          <button class="action-btn" style="width:100%; height:auto; padding:10px; font-size:13px; background:var(--bg-body)">📥 导入备份</button>
-          <input type="file" accept=".json" onchange="importData(event)" style="position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; cursor:pointer">
-        </div>
-      </div>
-      <div style="margin-top:10px">
-        <button class="action-btn" onclick="clearAllData()" style="width:100%; height:auto; padding:8px; font-size:12px; color:var(--text-light); text-decoration:underline; background:none; box-shadow:none">清空本地所有数据</button>
-      </div>
-      <div style="font-size:11px; color:var(--text-light); margin-top:8px; text-align:center">
-        💡 本地上传保存后，联系助手推送 GitHub 即可实现全端同步。
-      </div>
-    </div>
   </div>
 
   <!-- ===== 上传页 ===== -->
@@ -941,15 +879,6 @@ body {
       <div style="margin-top:12px">
         <div style="font-size:13px;font-weight:700;margin-bottom:8px;color:var(--text-light)">💡 格式说明：每行一个单词，用空格/Tab/|分隔单词和释义</div>
         <textarea class="word-table-input" id="wordEditText" rows="6" placeholder="可在此手动编辑单词表...&#10;例如：&#10;apple 苹果&#10;banana 香蕉"></textarea>
-      </div>
-    </div>
-
-    <div class="card" id="grammarCard" style="display:none">
-      <div class="card-title">📖 识别到的语法/备注</div>
-      <div id="grammarPreview" style="background:var(--bg-card);padding:15px;border-radius:10px;font-size:13px;max-height:200px;overflow-y:auto;border:1px solid var(--pink-light);margin-bottom:12px"></div>
-      <div>
-        <div style="font-size:13px;font-weight:700;margin-bottom:8px;color:var(--text-light)">💡 手动编辑语法 HTML (支持表格)</div>
-        <textarea class="word-table-input" id="grammarEditText" rows="5" placeholder="可在此手动编辑语法内容..."></textarea>
       </div>
     </div>
 
@@ -1025,7 +954,6 @@ const APP_KEY = 'wordPlanet';
 let state = {
   weeks: [],
   currentWeekId: null,
-  editingWeekId: null,
   progress: {},
   settings: { dailyGoal: 20 }
 };
@@ -1034,7 +962,6 @@ let state = {
 let uploadData = {
   audioFiles: [],  // { file, url, name, size }
   words: [],
-  grammar: '',
   wordFileName: ''
 };
 
@@ -1068,8 +995,10 @@ function loadState() {
     if (saved) {
       const parsed = JSON.parse(saved);
       state = { ...state, ...parsed };
-    } else {
-      // 仅在首次访问（localStorage 为空）时初始化演示数据
+    }
+    
+    // 如果没有任何学习周（包括旧用户空库），强制加载模拟数据以供测试
+    if (!state.weeks || state.weeks.length === 0) {
       state.weeks = [getMockWeek()];
       saveState();
     }
@@ -1144,25 +1073,10 @@ function showToast(message, type = 'info') {
 
 // ===== 页面切换 =====
 function switchPage(name) {
-  state.currentMode = name;
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page' + name).classList.add('active');
-  
-  // 更新导航激活状态
-  document.querySelectorAll('.nav-item').forEach((n, idx) => {
-    n.classList.remove('active');
-    const navText = n.querySelector('.nav-label')?.textContent || '';
-    if ((name === 'Home' && idx === 0) || 
-        (name === 'Stats' && idx === 1) || 
-        (name === 'Upload' && idx === 2) || 
-        (name === 'Study' && idx === 3)) {
-      n.classList.add('active');
-    }
-  });
-
-  if (name !== 'Upload') {
-    resetUploadPage();
-  }
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  event.currentTarget.classList.add('active');
 
   if (name === 'Home') renderHome();
   if (name === 'Stats') renderStats();
@@ -1274,10 +1188,7 @@ function renderHomeWeekList() {
             <div class="week-progress-fill" style="width:${pct}%"></div>
           </div>
         </div>
-        <div class="week-actions">
-           <button class="action-btn edit" onclick="event.stopPropagation();editWeek('${w.id}')" title="编辑">✏️</button>
-           <button class="action-btn delete" onclick="event.stopPropagation();confirmDeleteWeek('${w.id}')" title="删除">🗑️</button>
-        </div>
+        <div class="week-arrow">›</div>
       </div>
     `;
   }).join('') + '</div>';
@@ -1381,21 +1292,6 @@ async function handleWordFile(file) {
 
     const words = parseWordsFromText(text);
     uploadData.words = words;
-    
-    // 如果是 docx，提取 Grammar 部分
-    if (ext === 'docx' || ext === 'doc') {
-      try {
-        const html = await parseDocxHtml(file);
-        // 匹配 Grammar 之后的所有内容
-        const grammarMatch = html.match(/Grammar([\s\S]*)/i) || html.match(/语法([\s\S]*)/i);
-        if (grammarMatch) {
-          uploadData.grammar = grammarMatch[0];
-          document.getElementById('grammarCard').style.display = 'block';
-          document.getElementById('grammarPreview').innerHTML = uploadData.grammar;
-          document.getElementById('grammarEditText').value = uploadData.grammar;
-        }
-      } catch (e) { console.warn('Grammar 提取失败', e); }
-    }
 
     document.getElementById('wordPreview').innerHTML = `
       <div class="file-preview">
@@ -1445,12 +1341,6 @@ async function parseDocx(file) {
   return result.value;
 }
 
-async function parseDocxHtml(file) {
-  const arrayBuffer = await file.arrayBuffer();
-  const result = await mammoth.convertToHtml({ arrayBuffer });
-  return result.value;
-}
-
 async function parseExcel(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -1460,50 +1350,14 @@ async function parseExcel(file) {
         const workbook = XLSX.read(data, { type: 'array' });
         const firstSheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[firstSheetName];
+        // Convert to CSV as it preserves line-by-line structure
         const csv = XLSX.utils.sheet_to_csv(worksheet);
-        resolve(csv.replace(/,/g, '\t')); 
+        resolve(csv.replace(/,/g, '\t')); // Replace comma with tab for our parser
       } catch (err) { reject(err); }
     };
     reader.onerror = reject;
     reader.readAsArrayBuffer(file);
   });
-}
-
-// ===== 数据管理逻辑 =====
-function exportData() {
-  const dataStr = JSON.stringify(state);
-  const blob = new Blob([dataStr], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `WordPlanet_Backup_${new Date().toISOString().split('T')[0]}.json`;
-  a.click();
-  showToast('导出成功', 'success');
-}
-
-function importData(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    try {
-      const imported = JSON.parse(e.target.result);
-      if (imported.weeks) {
-        state = { ...state, ...imported };
-        saveState();
-        renderHome();
-        showToast('完成数据恢复', 'success');
-      }
-    } catch (err) { showToast('导入文件格式有误', 'error'); }
-  };
-  reader.readAsText(file);
-}
-
-function clearAllData() {
-  if (confirm('确定要清空所有数据吗？此操作不可撤销。')) {
-    localStorage.removeItem(APP_KEY);
-    location.reload();
-  }
 }
 
 function fileToText(file) {
@@ -1603,8 +1457,6 @@ function renderParsedWords(words) {
 
 // ===== 保存周数据 =====
 async function saveWeek() {
-  const isEditing = state.editingWeekId !== null;
-  const originalWeek = isEditing ? state.weeks.find(w => w.id === state.editingWeekId) : null;
   // Get edited words from textarea
   const editText = document.getElementById('wordEditText').value.trim();
   if (editText) {
@@ -1635,57 +1487,31 @@ async function saveWeek() {
     return;
   }
 
-  const weekName = document.getElementById('weekNameInput').value.trim() || (isEditing ? originalWeek.name : `第${state.weeks.length + 1}周`);
-  const weekId = isEditing ? state.editingWeekId : 'week_' + Date.now();
-
-  // Get grammar from textarea if edited
-  const editGrammar = document.getElementById('grammarEditText').value.trim();
-  if (editGrammar) {
-    uploadData.grammar = editGrammar;
-  }
+  const weekName = document.getElementById('weekNameInput').value.trim() || `第${state.weeks.length + 1}周`;
+  const weekId = 'week_' + Date.now();
 
   const week = {
     id: weekId,
     name: weekName,
     words: uploadData.words,
-    audios: [], 
-    grammar: uploadData.grammar, // 保存语法
-    createdAt: isEditing ? originalWeek.createdAt : new Date().toISOString()
+    audios: [],  // { name, data(base64 or null) }
+    createdAt: new Date().toISOString()
   };
 
-  if (isEditing && uploadData.audioFiles.length === 0 && originalWeek.audios) {
-    week.audios = originalWeek.audios;
-  } else {
-    for (const a of uploadData.audioFiles) {
-      let data = null;
-      if (a.data) data = a.data;
-      else if (a.file && a.file.size < 10 * 1024 * 1024) {
-        try { data = await fileToBase64(a.file); } catch(e) { console.warn('音频失败:', e); }
-      }
-      week.audios.push({ name: a.name, data });
+  // Store audios (base64 if small enough)
+  for (const a of uploadData.audioFiles) {
+    let data = null;
+    if (a.file.size < 5 * 1024 * 1024) {
+      try { data = await fileToBase64(a.file); } catch(e) { console.warn('音频转base64失败:', e); }
     }
+    week.audios.push({ name: a.name, data });
   }
 
-  if (isEditing) {
-    const idx = state.weeks.findIndex(w => w.id === weekId);
-    state.weeks[idx] = week;
-    showToast(`"${weekName}" 已更新`, 'success');
-  } else {
-    state.weeks.push(week);
-    recordProgress('wordsLearned', week.words.length);
-    showToast(`"${weekName}" 保存成功`, 'success');
-  }
-
+  state.weeks.push(week);
   saveState();
-  setTimeout(() => {
-    resetUploadPage();
-    switchPage('Home');
-  }, 500);
-}
 
-function resetUploadPage() {
-  state.editingWeekId = null;
-  uploadData.audioFiles.forEach(a => { if (a.url && a.url.startsWith('blob:')) URL.revokeObjectURL(a.url); });
+  // Reset upload form
+  uploadData.audioFiles.forEach(a => URL.revokeObjectURL(a.url));
   uploadData = { audioFiles: [], words: [], wordFileName: '' };
   document.getElementById('audioPreview').innerHTML = '';
   document.getElementById('wordPreview').innerHTML = '';
@@ -1693,47 +1519,20 @@ function resetUploadPage() {
   document.getElementById('weekNameInput').value = '';
   document.getElementById('audioFileInput').value = '';
   document.getElementById('wordFileInput').value = '';
-  document.getElementById('wordEditText').value = '';
-  document.getElementById('grammarEditText').value = '';
-  document.getElementById('grammarCard').style.display = 'none';
-  document.getElementById('grammarPreview').innerHTML = '';
-  document.getElementById('saveWeekBtn').innerHTML = '💾 保存本周学习内容';
-}
 
-function confirmDeleteWeek(id) {
-  const week = state.weeks.find(w => w.id === id);
-  if (!week || !window.confirm(`确定要删除“${week.name}”吗？`)) return;
-  state.weeks = state.weeks.filter(w => w.id !== id);
-  saveState();
-  renderHome();
-  showToast('已删除', 'success');
-}
+  showToast(`"${weekName}" 保存成功！共 ${week.words.length} 个单词`, 'success');
 
-function editWeek(id) {
-  const week = state.weeks.find(w => w.id === id);
-  if (!week) return;
-  state.editingWeekId = id;
-  switchPage('Upload');
-  document.getElementById('weekNameInput').value = week.name || '';
-  document.getElementById('saveWeekBtn').innerHTML = '💾 更新本周学习内容';
-  uploadData.words = [...(week.words || [])];
-  document.getElementById('wordEditText').value = uploadData.words.map(w => `${w.word}\t${w.pos ? w.pos + ' ' : ''}${w.meaning}`).join('\n');
-  document.getElementById('parsedWordsCard').style.display = 'block';
-  renderParsedWords(uploadData.words);
+  // Record progress
+  recordProgress('wordsLearned', week.words.length);
 
-  // 回填语法
-  uploadData.grammar = week.grammar || '';
-  if (uploadData.grammar) {
-    document.getElementById('grammarCard').style.display = 'block';
-    document.getElementById('grammarPreview').innerHTML = uploadData.grammar;
-    document.getElementById('grammarEditText').value = uploadData.grammar;
-  } else {
-    document.getElementById('grammarCard').style.display = 'none';
-  }
-
-  uploadData.audioFiles = (week.audios || []).map(a => ({ name: a.name, size: 0, data: a.data, url: a.data }));
-  renderAudioPreview();
-}
+  // Switch to home
+  setTimeout(() => {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('pageHome').classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.nav-item')[0].classList.add('active');
+    renderHome();
+  }, 500);
 }
 
 function fileToBase64(file) {
@@ -1776,7 +1575,6 @@ function renderStudy() {
     { id: 'listen', label: '🎧 听力', color: '#667eea' },
     { id: 'flashcard', label: '🃏 闪卡', color: 'var(--pink)' },
     { id: 'quiz', label: '✅ 测验', color: 'var(--green)' },
-    { id: 'grammar', label: '📖 语法', color: 'var(--blue)' },
     { id: 'spelling', label: '⌨️ 拼写', color: 'var(--orange)' },
     { id: 'reading', label: '🗣️ 跟读', color: 'var(--purple)' },
   ];
@@ -1800,25 +1598,9 @@ function renderStudy() {
     case 'listen': renderListenMode(week); break;
     case 'flashcard': renderFlashcardMode(week); break;
     case 'quiz': renderQuizMode(week); break;
-    case 'grammar': renderGrammarMode(week); break;
     case 'spelling': renderSpellingMode(week); break;
     case 'reading': renderReadingMode(week); break;
   }
-}
-
-function renderGrammarMode(week) {
-  const container = document.getElementById('studyModeContent');
-  if (!week.grammar) {
-    container.innerHTML = `
-      <div class="card" style="text-align:center;padding:40px;color:var(--text-light)">
-        <div style="font-size:32px;margin-bottom:8px">📭</div>
-        <div>本周暂无语法板块内容</div>
-      </div>
-    `;
-    return;
-  }
-  container.innerHTML = `<div class="grammar-container">${week.grammar}</div>`;
-}
 }
 
 function switchStudyMode(mode) {
@@ -1844,23 +1626,15 @@ let listenState = { currentAudioIndex: 0 };
 
 function renderListenMode(week) {
   const container = document.getElementById('studyModeContent');
-  const audios = (week.audios && week.audios.length > 0) ? week.audios : [];
-  const hasAudio = audios.length > 0 && audios.some(a => a.data);
-  const currentAudio = audios[listenState.currentAudioIndex] || audios[0];
+  const audios = (week.audios && week.audios.length > 0) ? week.audios : 
+                 (week.audioData || week.audioName) ? [{ name: week.audioName || '音频', data: week.audioData || null }] : [];
   
-  // 获取搜索和过滤状态
-  const query = (document.getElementById('wordSearch')?.value || '').toLowerCase();
-  const showUnmastered = document.getElementById('filterUnmastered')?.checked || false;
-
-  const filteredWords = week.words.filter(w => {
-    const matchesSearch = w.word.toLowerCase().includes(query) || (w.meaning || '').toLowerCase().includes(query);
-    const matchesFilter = showUnmastered ? !w.mastered : true;
-    return matchesSearch && matchesFilter;
-  });
+  const hasAudio = audios.length > 0 && (audios[0].data || audios.some(a => a.data));
+  const currentAudio = audios[listenState.currentAudioIndex] || audios[0];
+  const words = week.words || [];
 
   let html = '';
 
-  // 1. 音频播放器
   if (hasAudio) {
     if (audios.length > 1) {
       html += `<div class="mode-tabs" style="margin-bottom:12px">
@@ -1874,7 +1648,7 @@ function renderListenMode(week) {
     }
 
     html += `
-      <div class="audio-player" style="margin-bottom:20px">
+      <div class="audio-player">
         <div class="audio-controls">
           <div style="font-size:14px;opacity:0.8;margin-bottom:8px">${currentAudio.name || '音频'}</div>
           <button class="audio-play-btn" id="audioPlayBtn" onclick="toggleAudioPlay()">▶</button>
@@ -1895,66 +1669,48 @@ function renderListenMode(week) {
       </div>
     `;
   } else {
-    html += `<div class="card" style="text-align:center;color:var(--text-light);margin-bottom:20px">
+    html += `<div class="card" style="text-align:center;color:var(--text-light)">
       <div style="font-size:32px;margin-bottom:8px">🔇</div>
-      <div>本周暂无自定义音频（单词点击发音可用）</div>
+      <div>本周未上传音频</div>
     </div>`;
   }
 
-  // 2. 搜索栏
+  // 搜索和过滤
   html += `
-    <div class="card" style="margin-bottom:16px; padding:12px; display:flex; gap:10px; align-items:center">
-      <div style="flex:1; position:relative">
-        <input type="text" id="wordSearch" placeholder="搜索单词或释义..." class="word-table-input" 
-               style="width:100%; margin:0; padding-left:12px" oninput="renderListenMode(state.weeks.find(w=>w.id==='${week.id}'))" value="${query}">
+    <div class="search-bar" style="margin-top:20px;display:flex;gap:10px;align-items:center;background:white;padding:12px;border-radius:16px;box-shadow:var(--shadow)">
+      <div style="flex:1;position:relative">
+        <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:0.5">🔍</span>
+        <input type="text" id="wordSearchInput" placeholder="搜索单词或含义..." 
+               style="width:100%;padding:10px 10px 10px 36px;border:none;background:var(--bg-card);border-radius:10px;font-size:14px"
+               oninput="filterWords()">
       </div>
-      <label style="font-size:13px; color:var(--text-light); display:flex; align-items:center; gap:4px; white-space:nowrap; cursor:pointer">
-        <input type="checkbox" id="filterUnmastered" ${showUnmastered ? 'checked' : ''} 
-               onchange="renderListenMode(state.weeks.find(w=>w.id==='${week.id}'))"> 仅未掌握
+      <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;user-select:none;color:var(--text-light)">
+        <input type="checkbox" id="hideMasteredCheckbox" onchange="filterWords()" style="accent-color:var(--pink)"> 仅未掌握
       </label>
     </div>
   `;
 
-  // 3. 单词网格
-  html += `
-    <div class="word-grid">
-      ${filteredWords.map((w, i) => `
-        <div class="word-card ${w.mastered ? 'mastered' : ''}" onclick="speak('${w.word}')">
-          ${w.mastered ? '<div class="mastery-badge">✔</div>' : ''}
-          <div class="word-en">${w.word}</div>
-          ${w.pos ? `<div class="word-pos">${w.pos}</div>` : ''}
-          <div class="word-cn">${w.meaning || ''}</div>
-        </div>
-      `).join('')}
+  html += `<div style="margin-top:16px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div class="card-title" style="margin-bottom:0">📋 单词列表</div>
+      <div id="wordCountBadge" style="font-size:12px;color:white;background:var(--pink);padding:2px 8px;border-radius:10px">${words.length}</div>
     </div>
-    ${filteredWords.length === 0 ? '<div style="text-align:center;padding:40px;color:var(--text-light)">未找到相关单词</div>' : ''}
-  `;
+    <div class="word-list" id="listenWordList">${renderWordItems(words)}</div>
+  </div>`;
 
   container.innerHTML = html;
 
   // 初始化音频设置
   if (hasAudio && currentAudio && currentAudio.data) {
-    const player = pronunciationState.player;
-    // 只有当 src 不同时才重新加载，防止切词时音频重启
-    if (player.src !== currentAudio.data) {
-      player.src = currentAudio.data;
-      player.load();
-    }
-    
-    // 绑定/更新事件
-    player.ontimeupdate = updateAudioProgress;
+    const player = document.getElementById('audioPlayer');
+    player.src = currentAudio.data;
+    player.addEventListener('timeupdate', updateAudioProgress);
     player.onloadedmetadata = () => {
-      const durationDom = document.getElementById('audioDuration');
-      if (durationDom) durationDom.textContent = formatTime(player.duration);
+      document.getElementById('audioDuration').textContent = formatTime(player.duration);
     };
     player.onended = () => {
-      const btn = document.getElementById('audioPlayBtn');
-      if (btn) btn.textContent = '▶';
+      document.getElementById('audioPlayBtn').textContent = '▶';
     };
-    
-    // 同步当前播放状态到按钮
-    const btn = document.getElementById('audioPlayBtn');
-    if (btn) btn.innerHTML = player.paused ? '▶' : '⏸';
   }
 }
 
