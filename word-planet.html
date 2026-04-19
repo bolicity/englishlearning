@@ -994,8 +994,31 @@ function loadState() {
     if (saved) {
       const parsed = JSON.parse(saved);
       state = { ...state, ...parsed };
+    } else {
+      // 没有任何数据时，加载模拟数据
+      state.weeks = [getMockWeek()];
+      saveState();
     }
   } catch(e) { console.error('加载状态失败:', e); }
+}
+
+function getMockWeek() {
+  return {
+    id: 'week_mock_demo',
+    name: '演示数据 - 常用词汇',
+    createdAt: new Date().toISOString(),
+    words: [
+      { word: 'Pressure', pos: 'un.', meaning: '压力；压迫', mastered: false },
+      { word: 'Achievement', pos: 'n.', meaning: '成就；完成', mastered: false },
+      { word: 'Remarkable', pos: 'adj.', meaning: '显著的；卓越的', mastered: false },
+      { word: 'Outstanding', pos: 'adj.', meaning: '杰出的；显著的', mastered: false },
+      { word: 'Brilliant', pos: 'adj.', meaning: '辉煌的；才华横溢的', mastered: false },
+      { word: 'Innovation', pos: 'n.', meaning: '创新；变革', mastered: true },
+      { word: 'Efficient', pos: 'adj.', meaning: '效率高的；有能力的', mastered: false },
+      { word: 'sustainable', pos: 'adj.', meaning: '可持续的；养得起的', mastered: false }
+    ],
+    audios: [] // 真人发音将回退到 TTS
+  };
 }
 
 function saveState() {
