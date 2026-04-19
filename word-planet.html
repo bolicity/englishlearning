@@ -1325,6 +1325,7 @@ function parseWordsFromText(text) {
       }
     }
 
+    if (parts && parts.length >= 2) {
       // Separate word and meaning
       let word = parts[0].replace(/^\d+[\.\)、]\s*/, ''); // Remove numbering
       let fullMeaning = parts.slice(1).join(' ').trim();
