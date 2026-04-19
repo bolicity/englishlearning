@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
 :root {
   --pink: #FF6B9D;
@@ -866,8 +867,8 @@ body {
       <div class="upload-zone" id="wordUploadZone">
         <div class="upload-icon">📄</div>
         <div class="upload-text">点击或拖拽上传单词表</div>
-        <div class="upload-hint">支持 PDF、Word (.docx) 格式</div>
-        <input type="file" id="wordFileInput" accept=".pdf,.docx,.doc">
+        <div class="upload-hint">支持 PDF、Word、Excel、TXT、Markdown</div>
+        <input type="file" id="wordFileInput" accept=".pdf,.docx,.doc,.xlsx,.xls,.txt,.md">
       </div>
       <div id="wordPreview"></div>
     </div>
@@ -1280,6 +1281,10 @@ async function handleWordFile(file) {
       text = await parsePDF(file);
     } else if (ext === 'docx' || ext === 'doc') {
       text = await parseDocx(file);
+    } else if (ext === 'xlsx' || ext === 'xls') {
+      text = await parseExcel(file);
+    } else if (ext === 'txt' || ext === 'md') {
+      text = await fileToText(file);
     } else {
       showToast('不支持的文件格式', 'error');
       return;
@@ -1334,6 +1339,34 @@ async function parseDocx(file) {
   const arrayBuffer = await file.arrayBuffer();
   const result = await mammoth.extractRawText({ arrayBuffer });
   return result.value;
+}
+
+async function parseExcel(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+        // Convert to CSV as it preserves line-by-line structure
+        const csv = XLSX.utils.sheet_to_csv(worksheet);
+        resolve(csv.replace(/,/g, '\t')); // Replace comma with tab for our parser
+      } catch (err) { reject(err); }
+    };
+    reader.onerror = reject;
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+function fileToText(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsText(file);
+  });
 }
 
 function parseWordsFromText(text) {
