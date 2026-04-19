@@ -1,0 +1,2315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>🌟 单词星球 - 趣味学习小程序</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<style>
+:root {
+  --pink: #FF6B9D;
+  --pink-light: #FFB3D0;
+  --pink-dark: #E84580;
+  --purple: #C084FC;
+  --purple-light: #E9D5FF;
+  --blue: #60A5FA;
+  --blue-light: #BFDBFE;
+  --green: #4ADE80;
+  --green-light: #BBF7D0;
+  --yellow: #FBBF24;
+  --yellow-light: #FDE68A;
+  --orange: #FB923C;
+  --orange-light: #FED7AA;
+  --bg: #FFF5F9;
+  --bg-card: #FFFFFF;
+  --text: #2D1B4E;
+  --text-light: #7C6B99;
+  --shadow: 0 8px 32px rgba(255, 107, 157, 0.15);
+  --shadow-lg: 0 16px 48px rgba(255, 107, 157, 0.2);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ===== 背景装饰 ===== */
+.bg-decoration {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+.bg-blob {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); opacity: 0.3;
+  animation: blobFloat 20s ease-in-out infinite;
+}
+.bg-blob:nth-child(1) { width: 300px; height: 300px; background: var(--pink-light); top: -100px; right: -50px; }
+.bg-blob:nth-child(2) { width: 250px; height: 250px; background: var(--purple-light); bottom: 100px; left: -80px; animation-delay: -7s; }
+.bg-blob:nth-child(3) { width: 200px; height: 200px; background: var(--blue-light); top: 40%; right: -60px; animation-delay: -14s; }
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+/* ===== 星星粒子 ===== */
+.stars-container { position: fixed; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 0; }
+.star {
+  position: absolute; font-size: 14px; opacity: 0;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* ===== 应用容器 ===== */
+.app-container {
+  position: relative; z-index: 1;
+  max-width: 480px; margin: 0 auto;
+  min-height: 100vh; padding-bottom: 100px;
+}
+
+/* ===== 顶部导航 ===== */
+.app-header {
+  padding: 20px 20px 10px;
+  text-align: center;
+  position: relative;
+}
+.app-title {
+  font-family: 'ZCOOL KuaiLe', cursive;
+  font-size: 28px;
+  background: linear-gradient(135deg, var(--pink), var(--purple), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  animation: titleBounce 2s ease-in-out infinite;
+}
+@keyframes titleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.header-subtitle {
+  font-size: 13px; color: var(--text-light);
+  margin-top: 2px;
+}
+
+/* ===== 页面区域 ===== */
+.page { display: none; padding: 10px 20px 20px; animation: pageIn 0.4s ease-out; }
+.page.active { display: block; }
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 底部导航 ===== */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255,107,157,0.1);
+  display: flex; align-items: center;
+  padding: 5px 0 8px;
+  z-index: 100;
+  box-shadow: 0 -4px 20px rgba(255,107,157,0.08);
+}
+.nav-item {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 1px; cursor: pointer; padding: 5px 0;
+  border-radius: 12px; transition: all 0.3s;
+  -webkit-user-select: none; user-select: none;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+.nav-item .nav-icon { font-size: 20px; transition: transform 0.3s; }
+.nav-item .nav-label { font-size: 9px; font-weight: 700; color: var(--text-light); transition: color 0.3s; white-space: nowrap; }
+.nav-item.active .nav-icon { transform: scale(1.2) translateY(-2px); }
+.nav-item.active .nav-label { color: var(--pink); }
+.nav-item:active { transform: scale(0.9); }
+
+/* ===== 通用卡片 ===== */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+.card:hover { border-color: var(--pink-light); }
+.card-title {
+  font-size: 18px; font-weight: 800;
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ===== 按钮 ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 24px; border: none; border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px; font-weight: 700;
+  cursor: pointer; transition: all 0.3s;
+  -webkit-user-select: none; user-select: none;
+}
+.btn:active { transform: scale(0.95); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: white;
+  box-shadow: 0 4px 15px rgba(255,107,157,0.4);
+}
+.btn-primary:hover { box-shadow: 0 6px 20px rgba(255,107,157,0.5); transform: translateY(-1px); }
+.btn-secondary {
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  color: white;
+  box-shadow: 0 4px 15px rgba(96,165,250,0.3);
+}
+.btn-success {
+  background: linear-gradient(135deg, var(--green), #34D399);
+  color: white;
+  box-shadow: 0 4px 15px rgba(74,222,128,0.3);
+}
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--pink-light);
+  color: var(--pink);
+}
+.btn-outline:hover { background: var(--pink-light); color: white; }
+.btn-sm { padding: 8px 16px; font-size: 13px; }
+.btn-block { width: 100%; }
+.btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ===== 上传区域 ===== */
+.upload-zone {
+  border: 3px dashed var(--pink-light);
+  border-radius: var(--radius);
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: rgba(255,179,208,0.05);
+  position: relative;
+  overflow: hidden;
+}
+.upload-zone:hover, .upload-zone.dragover {
+  border-color: var(--pink);
+  background: rgba(255,179,208,0.15);
+  transform: scale(1.01);
+}
+.upload-zone .upload-icon {
+  font-size: 48px; margin-bottom: 10px;
+  animation: uploadBounce 2s ease-in-out infinite;
+}
+@keyframes uploadBounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(-5deg); }
+  75% { transform: translateY(-5px) rotate(5deg); }
+}
+.upload-zone .upload-text { font-size: 15px; font-weight: 700; color: var(--text); }
+.upload-zone .upload-hint { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+.upload-zone input[type="file"] {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  opacity: 0; cursor: pointer;
+}
+
+/* ===== 周列表 ===== */
+.week-list { display: flex; flex-direction: column; gap: 12px; }
+.week-item {
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 4px 12px rgba(255,107,157,0.08);
+  cursor: pointer; transition: all 0.3s;
+  border: 2px solid transparent;
+}
+.week-item:hover { border-color: var(--pink-light); transform: translateX(4px); }
+.week-item:active { transform: scale(0.98); }
+.week-badge {
+  width: 50px; height: 50px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 900;
+  color: white; flex-shrink: 0;
+}
+.week-info { flex: 1; }
+.week-name { font-size: 15px; font-weight: 800; }
+.week-meta { font-size: 12px; color: var(--text-light); margin-top: 2px; }
+.week-progress-bar {
+  width: 100%; height: 6px;
+  background: rgba(255,107,157,0.1);
+  border-radius: 3px; margin-top: 6px; overflow: hidden;
+}
+.week-progress-fill {
+  height: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, var(--pink), var(--purple));
+  transition: width 0.5s ease;
+}
+.week-arrow { font-size: 18px; color: var(--text-light); }
+
+/* ===== 空状态 ===== */
+.empty-state {
+  text-align: center; padding: 40px 20px;
+}
+.empty-state .empty-icon { font-size: 64px; margin-bottom: 16px; }
+.empty-state .empty-title { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+.empty-state .empty-desc { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+
+/* ===== 听力练习 ===== */
+.audio-player {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: var(--radius);
+  padding: 24px;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.audio-player::before {
+  content: '';
+  position: absolute; top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+  animation: audioGlow 4s ease-in-out infinite;
+}
+@keyframes audioGlow {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+.audio-controls { position: relative; z-index: 1; }
+.audio-play-btn {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  border: 3px solid rgba(255,255,255,0.5);
+  color: white; font-size: 28px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.3s;
+  margin: 12px 0;
+}
+.audio-play-btn:hover { background: rgba(255,255,255,0.35); transform: scale(1.1); }
+.audio-play-btn:active { transform: scale(0.95); }
+.audio-progress {
+  width: 100%; height: 6px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 3px; margin: 12px 0;
+  cursor: pointer; position: relative;
+}
+.audio-progress-fill {
+  height: 100%; border-radius: 3px;
+  background: white;
+  transition: width 0.1s linear;
+  position: relative;
+}
+.audio-progress-fill::after {
+  content: '';
+  position: absolute; right: -6px; top: -3px;
+  width: 12px; height: 12px;
+  background: white; border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.audio-time { font-size: 12px; opacity: 0.8; display: flex; justify-content: space-between; }
+.audio-speed {
+  display: inline-flex; gap: 6px; margin-top: 8px;
+}
+.speed-btn {
+  padding: 4px 12px; border-radius: 20px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white; font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: all 0.3s;
+}
+.speed-btn.active { background: rgba(255,255,255,0.35); border-color: white; }
+
+/* ===== 单词列表（听力模式） ===== */
+.word-list { display: flex; flex-direction: column; gap: 8px; }
+.word-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 8px rgba(255,107,157,0.06);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.word-item:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(255,107,157,0.12); }
+.word-item.playing { border-left: 4px solid var(--pink); background: rgba(255,107,157,0.05); }
+.word-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink-light), var(--purple-light));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800; color: white; flex-shrink: 0;
+}
+.word-text { flex: 1; }
+.word-en { font-size: 15px; font-weight: 700; }
+.word-cn { font-size: 12px; color: var(--text-light); }
+.word-speak-btn {
+  width: 32px; height: 32px;
+  border-radius: 50%; border: none;
+  background: var(--pink-light);
+  color: white; font-size: 14px;
+  cursor: pointer; transition: all 0.3s;
+  display: flex; align-items: center; justify-content: center;
+}
+.word-speak-btn:hover { background: var(--pink); transform: scale(1.1); }
+
+/* ===== 闪卡模式 ===== */
+.flashcard-container {
+  perspective: 1000px;
+  width: 100%; max-width: 340px;
+  height: 420px; margin: 0 auto;
+}
+.flashcard {
+  width: 100%; height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.flashcard.flipped { transform: rotateY(180deg); }
+.flashcard-face {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--radius);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 30px;
+  box-shadow: var(--shadow-lg);
+}
+.flashcard-front {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: white;
+}
+.flashcard-front .card-word {
+  font-size: 36px; font-weight: 900;
+  font-family: 'ZCOOL KuaiLe', cursive;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+.flashcard-front .card-hint {
+  font-size: 14px; opacity: 0.8; margin-top: 16px;
+}
+.flashcard-front .card-phonetic {
+  font-size: 18px; opacity: 0.9; margin-top: 8px;
+}
+.flashcard-back {
+  background: white;
+  transform: rotateY(180deg);
+  border: 3px solid var(--pink-light);
+}
+.flashcard-back .card-meaning {
+  font-size: 28px; font-weight: 800;
+  color: var(--text);
+  text-align: center;
+}
+.flashcard-back .card-example {
+  font-size: 14px; color: var(--text-light);
+  margin-top: 16px; text-align: center;
+  line-height: 1.6;
+  font-style: italic;
+}
+.flashcard-nav {
+  display: flex; justify-content: center; gap: 16px;
+  margin-top: 20px;
+}
+.flashcard-counter {
+  text-align: center; margin-top: 12px;
+  font-size: 14px; color: var(--text-light); font-weight: 700;
+}
+
+/* ===== 测验模式 ===== */
+.quiz-question {
+  font-size: 20px; font-weight: 800;
+  text-align: center; margin-bottom: 20px;
+}
+.quiz-options { display: flex; flex-direction: column; gap: 10px; }
+.quiz-option {
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--pink-light);
+  background: white;
+  font-size: 15px; font-weight: 700;
+  cursor: pointer; transition: all 0.3s;
+  text-align: left;
+}
+.quiz-option:hover { border-color: var(--pink); background: rgba(255,107,157,0.05); }
+.quiz-option:active { transform: scale(0.98); }
+.quiz-option.correct {
+  border-color: var(--green); background: var(--green-light);
+  animation: correctPulse 0.5s ease;
+}
+.quiz-option.wrong {
+  border-color: #EF4444; background: #FEE2E2;
+  animation: shake 0.5s ease;
+}
+@keyframes correctPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+.quiz-progress {
+  display: flex; gap: 4px; margin-bottom: 16px;
+}
+.quiz-dot {
+  width: 100%; height: 6px;
+  border-radius: 3px;
+  background: rgba(255,107,157,0.15);
+  transition: all 0.3s;
+}
+.quiz-dot.correct { background: var(--green); }
+.quiz-dot.wrong { background: #EF4444; }
+.quiz-dot.current { background: var(--pink); }
+
+/* ===== 拼写模式 ===== */
+.spelling-word {
+  font-size: 14px; color: var(--text-light);
+  text-align: center; margin-bottom: 8px;
+}
+.spelling-input {
+  width: 100%; max-width: 300px;
+  padding: 16px 20px;
+  border: 3px solid var(--pink-light);
+  border-radius: var(--radius-sm);
+  font-size: 24px; font-weight: 800;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.3s;
+  font-family: 'Nunito', sans-serif;
+  margin: 0 auto; display: block;
+}
+.spelling-input:focus { border-color: var(--pink); }
+.spelling-input.correct { border-color: var(--green); background: var(--green-light); }
+.spelling-input.wrong { border-color: #EF4444; background: #FEE2E2; }
+.spelling-hint {
+  text-align: center; margin-top: 12px;
+  font-size: 13px; color: var(--text-light);
+}
+.spelling-hint button {
+  background: none; border: none;
+  color: var(--pink); font-weight: 700;
+  cursor: pointer; font-size: 13px;
+  font-family: 'Nunito', sans-serif;
+  text-decoration: underline;
+}
+
+/* ===== 跟读练习 ===== */
+.reading-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: var(--radius);
+  padding: 30px; color: white;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.reading-word {
+  font-size: 32px; font-weight: 900;
+  font-family: 'ZCOOL KuaiLe', cursive;
+  margin-bottom: 8px;
+}
+.reading-phonetic { font-size: 16px; opacity: 0.8; margin-bottom: 16px; }
+.reading-meaning { font-size: 18px; opacity: 0.9; }
+.record-btn {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: 3px solid rgba(255,255,255,0.5);
+  color: white; font-size: 32px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.3s;
+  margin-top: 20px;
+}
+.record-btn:hover { background: rgba(255,255,255,0.3); }
+.record-btn.recording {
+  background: rgba(239,68,68,0.5);
+  border-color: #EF4444;
+  animation: recordPulse 1s ease-in-out infinite;
+}
+@keyframes recordPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239,68,68,0.4); }
+  50% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(239,68,68,0); }
+}
+.reading-result {
+  margin-top: 16px; padding: 12px;
+  background: rgba(255,255,255,0.15);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+}
+.reading-score {
+  font-size: 48px; font-weight: 900;
+  margin: 8px 0;
+}
+
+/* ===== 进度统计 ===== */
+.stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin-bottom: 16px;
+}
+.stat-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  padding: 16px; text-align: center;
+  box-shadow: 0 4px 12px rgba(255,107,157,0.08);
+}
+.stat-icon { font-size: 28px; margin-bottom: 6px; }
+.stat-value {
+  font-size: 28px; font-weight: 900;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat-label { font-size: 12px; color: var(--text-light); font-weight: 600; margin-top: 2px; }
+
+/* ===== 连续学习日历 ===== */
+.streak-calendar {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  gap: 4px; margin-top: 12px;
+}
+.streak-day {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+  background: rgba(255,107,157,0.08);
+  color: var(--text-light);
+  transition: all 0.3s;
+}
+.streak-day.active {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: white;
+}
+.streak-day.today {
+  border: 2px solid var(--pink);
+}
+
+/* ===== 成就徽章 ===== */
+.badge-row {
+  display: flex; gap: 12px; overflow-x: auto;
+  padding: 4px 0 12px;
+  -webkit-overflow-scrolling: touch;
+}
+.badge-row::-webkit-scrollbar { display: none; }
+.badge-item {
+  flex-shrink: 0;
+  width: 72px; text-align: center;
+}
+.badge-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+.badge-item:hover .badge-icon { transform: scale(1.1) rotate(5deg); }
+.badge-name { font-size: 11px; font-weight: 700; color: var(--text-light); }
+.badge-item.locked .badge-icon { filter: grayscale(1); opacity: 0.4; }
+
+/* ===== 模式切换标签 ===== */
+.mode-tabs {
+  display: flex; gap: 8px; margin-bottom: 16px;
+  overflow-x: auto; padding-bottom: 4px;
+}
+.mode-tabs::-webkit-scrollbar { display: none; }
+.mode-tab {
+  flex-shrink: 0;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 13px; font-weight: 700;
+  cursor: pointer; transition: all 0.3s;
+  background: white;
+  color: var(--text-light);
+  border: 2px solid transparent;
+  white-space: nowrap;
+}
+.mode-tab.active {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: white;
+  box-shadow: 0 4px 12px rgba(255,107,157,0.3);
+}
+
+/* ===== Toast 通知 ===== */
+.toast-container {
+  position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+  z-index: 1000; display: flex; flex-direction: column; gap: 8px;
+  max-width: 400px; width: calc(100% - 40px);
+}
+.toast {
+  padding: 14px 20px;
+  border-radius: var(--radius-sm);
+  background: white;
+  box-shadow: var(--shadow-lg);
+  font-size: 14px; font-weight: 700;
+  display: flex; align-items: center; gap: 10px;
+  animation: toastIn 0.4s ease-out;
+  border-left: 4px solid var(--pink);
+}
+.toast.success { border-left-color: var(--green); }
+.toast.error { border-left-color: #EF4444; }
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 模态框 ===== */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(45,27,78,0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+.modal {
+  background: white;
+  border-radius: var(--radius);
+  padding: 28px;
+  max-width: 400px; width: 100%;
+  box-shadow: var(--shadow-lg);
+  animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.8) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.modal-title {
+  font-size: 20px; font-weight: 800;
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 32px; height: 32px;
+  border-radius: 50%; border: none;
+  background: rgba(255,107,157,0.1);
+  color: var(--pink); font-size: 18px;
+  cursor: pointer; transition: all 0.3s;
+}
+.modal-close:hover { background: rgba(255,107,157,0.2); }
+
+/* ===== 文件预览 ===== */
+.file-preview {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255,107,157,0.05);
+  border-radius: var(--radius-sm);
+  margin-top: 12px;
+}
+.file-preview-icon { font-size: 28px; }
+.file-preview-info { flex: 1; }
+.file-preview-name { font-size: 13px; font-weight: 700; word-break: break-all; }
+.file-preview-size { font-size: 11px; color: var(--text-light); }
+.file-preview-remove {
+  width: 28px; height: 28px;
+  border-radius: 50%; border: none;
+  background: rgba(239,68,68,0.1);
+  color: #EF4444; font-size: 16px;
+  cursor: pointer;
+}
+
+/* ===== 加载动画 ===== */
+.loading-spinner {
+  width: 40px; height: 40px;
+  border: 4px solid var(--pink-light);
+  border-top-color: var(--pink);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 20px auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ===== 响应式 ===== */
+@media (max-width: 380px) {
+  .app-title { font-size: 24px; }
+  .flashcard-container { height: 360px; }
+  .flashcard-front .card-word { font-size: 28px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+}
+@media (min-width: 481px) {
+  .app-container { padding-bottom: 20px; }
+  .bottom-nav {
+    position: sticky; bottom: 0;
+    max-width: 480px; margin: 0 auto;
+  }
+}
+
+/* ===== 减少动画偏好 ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== 滚动条美化 ===== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--pink-light); border-radius: 2px; }
+
+/* ===== 返回按钮 ===== */
+.back-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border: none;
+  background: rgba(255,107,157,0.1);
+  border-radius: 50px;
+  color: var(--pink); font-size: 14px; font-weight: 700;
+  cursor: pointer; transition: all 0.3s;
+  font-family: 'Nunito', sans-serif;
+  margin-bottom: 16px;
+}
+.back-btn:hover { background: rgba(255,107,157,0.2); }
+
+/* ===== 单词表编辑 ===== */
+.word-table-input {
+  width: 100%; padding: 10px 14px;
+  border: 2px solid var(--pink-light);
+  border-radius: var(--radius-xs);
+  font-size: 14px; font-family: 'Nunito', sans-serif;
+  outline: none; transition: border-color 0.3s;
+}
+.word-table-input:focus { border-color: var(--pink); }
+.parsed-words-preview {
+  max-height: 200px; overflow-y: auto;
+  margin-top: 12px;
+}
+</style>
+</head>
+<body>
+
+<!-- 背景装饰 -->
+<div class="bg-decoration">
+  <div class="bg-blob"></div>
+  <div class="bg-blob"></div>
+  <div class="bg-blob"></div>
+</div>
+<div class="stars-container" id="starsContainer"></div>
+
+<!-- Toast容器 -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- 应用容器 -->
+<div class="app-container">
+
+  <!-- 顶部标题 -->
+  <header class="app-header">
+    <div class="app-title">🌟 单词星球</div>
+    <div class="header-subtitle" id="headerSubtitle">每天进步一点点 ✨</div>
+  </header>
+
+  <!-- ===== 首页 ===== -->
+  <div class="page active" id="pageHome">
+    <div class="stats-grid" id="homeStats"></div>
+
+    <div class="card">
+      <div class="card-title">🏆 成就徽章</div>
+      <div class="badge-row" id="homeBadges"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📅 本周学习日历</div>
+      <div class="streak-calendar" id="homeCalendar"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📚 学习周列表</div>
+      <div id="homeWeekList"></div>
+    </div>
+  </div>
+
+  <!-- ===== 上传页 ===== -->
+  <div class="page" id="pageUpload">
+    <div class="card">
+      <div class="card-title">🎵 上传音频</div>
+      <div class="upload-zone" id="audioUploadZone">
+        <div class="upload-icon">🎶</div>
+        <div class="upload-text">点击或拖拽上传音频文件</div>
+        <div class="upload-hint">支持 MP3、WAV、M4A 格式，可多选</div>
+        <input type="file" id="audioFileInput" accept="audio/*" multiple>
+      </div>
+      <div id="audioPreview"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📝 上传单词表</div>
+      <div class="upload-zone" id="wordUploadZone">
+        <div class="upload-icon">📄</div>
+        <div class="upload-text">点击或拖拽上传单词表</div>
+        <div class="upload-hint">支持 PDF、Word (.docx) 格式</div>
+        <input type="file" id="wordFileInput" accept=".pdf,.docx,.doc">
+      </div>
+      <div id="wordPreview"></div>
+    </div>
+
+    <div class="card" id="parsedWordsCard" style="display:none">
+      <div class="card-title">✅ 识别到的单词</div>
+      <div class="parsed-words-preview" id="parsedWordsList"></div>
+      <div style="margin-top:12px">
+        <div style="font-size:13px;font-weight:700;margin-bottom:8px;color:var(--text-light)">💡 格式说明：每行一个单词，用空格/Tab/|分隔单词和释义</div>
+        <textarea class="word-table-input" id="wordEditText" rows="6" placeholder="可在此手动编辑单词表...&#10;例如：&#10;apple 苹果&#10;banana 香蕉"></textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🏷️ 周名称</div>
+      <input type="text" class="word-table-input" id="weekNameInput" placeholder="例如：第1周 - 动物">
+    </div>
+
+    <button class="btn btn-primary btn-block" id="saveWeekBtn" onclick="saveWeek()">
+      💾 保存本周学习内容
+    </button>
+  </div>
+
+  <!-- ===== 学习页 ===== -->
+  <div class="page" id="pageStudy">
+    <div id="studyContent">
+      <div class="empty-state">
+        <div class="empty-icon">📖</div>
+        <div class="empty-title">选择一个学习周开始学习</div>
+        <div class="empty-desc">在首页选择一个学习周，或上传新的学习内容</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 统计页 ===== -->
+  <div class="page" id="pageStats">
+    <div class="stats-grid" id="statsOverview"></div>
+
+    <div class="card">
+      <div class="card-title">📈 学习趋势（近7天）</div>
+      <canvas id="trendChart" width="400" height="200" style="width:100%;height:auto;"></canvas>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🎯 单词掌握情况</div>
+      <div id="masteryStats"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">⭐ 成就列表</div>
+      <div id="allBadges"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 底部导航 -->
+<nav class="bottom-nav">
+  <div class="nav-item active" onclick="switchPage('Home')">
+    <span class="nav-icon">🏠</span>
+    <span class="nav-label">首页</span>
+  </div>
+  <div class="nav-item" onclick="switchPage('Upload')">
+    <span class="nav-icon">📤</span>
+    <span class="nav-label">上传</span>
+  </div>
+  <div class="nav-item" onclick="switchPage('Study')">
+    <span class="nav-icon">📖</span>
+    <span class="nav-label">学习</span>
+  </div>
+  <div class="nav-item" onclick="switchPage('Stats')">
+    <span class="nav-icon">📊</span>
+    <span class="nav-label">统计</span>
+  </div>
+</nav>
+
+<!-- 隐藏音频元素 -->
+<audio id="audioPlayer" preload="auto"></audio>
+
+<script>
+// ===== 全局状态 =====
+const APP_KEY = 'wordPlanet';
+let state = {
+  weeks: [],
+  currentWeekId: null,
+  progress: {},
+  settings: { dailyGoal: 20 }
+};
+
+// 上传临时数据
+let uploadData = {
+  audioFiles: [],  // { file, url, name, size }
+  words: [],
+  wordFileName: ''
+};
+
+// 学习状态
+let studyState = {
+  mode: 'listen', // listen, flashcard, quiz, spelling, reading
+  currentIndex: 0,
+  quizAnswers: [],
+  score: 0
+};
+
+// ===== 初始化 =====
+function init() {
+  loadState();
+  createStars();
+  renderHome();
+  setupUploadHandlers();
+  updateSubtitle();
+}
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem(APP_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      state = { ...state, ...parsed };
+    }
+  } catch(e) { console.error('加载状态失败:', e); }
+}
+
+function saveState() {
+  try {
+    localStorage.setItem(APP_KEY, JSON.stringify(state));
+  } catch(e) { console.error('保存状态失败:', e); }
+}
+
+function updateSubtitle() {
+  const hour = new Date().getHours();
+  let greeting = '🌙 夜深了，早点休息';
+  if (hour >= 6 && hour < 12) greeting = '🌅 早上好，新的一天开始了';
+  else if (hour >= 12 && hour < 14) greeting = '☀️ 中午好，休息一下吧';
+  else if (hour >= 14 && hour < 18) greeting = '🌤️ 下午好，继续加油';
+  else if (hour >= 18 && hour < 22) greeting = '🌆 晚上好，今天辛苦了';
+  document.getElementById('headerSubtitle').textContent = greeting + ' ✨';
+}
+
+// ===== 星星背景 =====
+function createStars() {
+  const container = document.getElementById('starsContainer');
+  const emojis = ['⭐', '✨', '💫', '🌟'];
+  for (let i = 0; i < 15; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 5 + 's';
+    star.style.animationDuration = (3 + Math.random() * 4) + 's';
+    container.appendChild(star);
+  }
+}
+
+// ===== Toast 通知 =====
+function showToast(message, type = 'info') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = 'toast ' + type;
+  const icons = { info: '💡', success: '✅', error: '❌' };
+  toast.innerHTML = `<span>${icons[type] || '💡'}</span><span>${message}</span>`;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(-20px)';
+    setTimeout(() => toast.remove(), 300);
+  }, 2500);
+}
+
+// ===== 页面切换 =====
+function switchPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page' + name).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+
+  if (name === 'Home') renderHome();
+  if (name === 'Stats') renderStats();
+  if (name === 'Study') renderStudy();
+}
+
+// ===== 首页渲染 =====
+function renderHome() {
+  renderHomeStats();
+  renderHomeBadges();
+  renderHomeCalendar();
+  renderHomeWeekList();
+}
+
+function renderHomeStats() {
+  const today = getTodayKey();
+  const todayProgress = state.progress[today] || { wordsLearned: 0, quizzesTaken: 0, correctCount: 0 };
+  const totalWords = state.weeks.reduce((sum, w) => sum + (w.words ? w.words.length : 0), 0);
+  const streak = calculateStreak();
+
+  document.getElementById('homeStats').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-icon">📝</div>
+      <div class="stat-value">${todayProgress.wordsLearned}</div>
+      <div class="stat-label">今日已学</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🔥</div>
+      <div class="stat-value">${streak}</div>
+      <div class="stat-label">连续天数</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">📚</div>
+      <div class="stat-value">${totalWords}</div>
+      <div class="stat-label">总单词数</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🎯</div>
+      <div class="stat-value">${Math.round(todayProgress.quizzesTaken > 0 ? (todayProgress.correctCount / todayProgress.quizzesTaken * 100) : 0)}%</div>
+      <div class="stat-label">今日正确率</div>
+    </div>
+  `;
+}
+
+function renderHomeBadges() {
+  const badges = getBadges();
+  const container = document.getElementById('homeBadges');
+  container.innerHTML = badges.map(b => `
+    <div class="badge-item ${b.unlocked ? '' : 'locked'}">
+      <div class="badge-icon" style="background:${b.bg}">${b.icon}</div>
+      <div class="badge-name">${b.name}</div>
+    </div>
+  `).join('');
+}
+
+function renderHomeCalendar() {
+  const container = document.getElementById('homeCalendar');
+  const days = ['一', '二', '三', '四', '五', '六', '日'];
+  const today = new Date();
+  const todayDay = (today.getDay() + 6) % 7; // Monday=0
+
+  let html = days.map(d => `<div class="streak-day" style="font-size:10px;opacity:0.5">${d}</div>`).join('');
+
+  // Show last 7 days
+  for (let i = 6; i >= 0; i--) {
+    const date = new Date(today);
+    date.setDate(date.getDate() - i);
+    const key = formatDateKey(date);
+    const isActive = state.progress[key] && state.progress[key].wordsLearned > 0;
+    const isToday = i === 0;
+    html += `<div class="streak-day ${isActive ? 'active' : ''} ${isToday ? 'today' : ''}">${date.getDate()}</div>`;
+  }
+  container.innerHTML = html;
+}
+
+function renderHomeWeekList() {
+  const container = document.getElementById('homeWeekList');
+  if (state.weeks.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state" style="padding:20px">
+        <div class="empty-icon" style="font-size:48px">📭</div>
+        <div class="empty-title">还没有学习内容</div>
+        <div class="empty-desc">点击底部"上传"按钮添加本周的音频和单词表</div>
+      </div>
+    `;
+    return;
+  }
+
+  const colors = [
+    'linear-gradient(135deg, #FF6B9D, #C084FC)',
+    'linear-gradient(135deg, #60A5FA, #C084FC)',
+    'linear-gradient(135deg, #4ADE80, #60A5FA)',
+    'linear-gradient(135deg, #FBBF24, #FB923C)',
+    'linear-gradient(135deg, #F472B6, #60A5FA)',
+    'linear-gradient(135deg, #A78BFA, #F472B6)',
+  ];
+
+  container.innerHTML = '<div class="week-list">' + state.weeks.map((w, i) => {
+    const prog = getWeekProgress(w.id);
+    const pct = w.words.length > 0 ? Math.round(prog.learned / w.words.length * 100) : 0;
+    return `
+      <div class="week-item" onclick="openWeekStudy('${w.id}')">
+        <div class="week-badge" style="background:${colors[i % colors.length]}">${i + 1}</div>
+        <div class="week-info">
+          <div class="week-name">${w.name}</div>
+          <div class="week-meta">${w.words.length} 个单词 · ${(w.audios && w.audios.length > 0) ? w.audios.length + ' 个音频' : (w.audioName ? '1 个音频' : '无音频')}</div>
+          <div class="week-progress-bar">
+            <div class="week-progress-fill" style="width:${pct}%"></div>
+          </div>
+        </div>
+        <div class="week-arrow">›</div>
+      </div>
+    `;
+  }).join('') + '</div>';
+}
+
+// ===== 上传处理 =====
+function setupUploadHandlers() {
+  // 音频上传
+  const audioInput = document.getElementById('audioFileInput');
+  const audioZone = document.getElementById('audioUploadZone');
+
+  audioInput.addEventListener('change', (e) => {
+    const files = Array.from(e.target.files);
+    files.forEach(f => addAudioFile(f));
+  });
+  audioZone.addEventListener('dragover', (e) => { e.preventDefault(); audioZone.classList.add('dragover'); });
+  audioZone.addEventListener('dragleave', () => audioZone.classList.remove('dragover'));
+  audioZone.addEventListener('drop', (e) => {
+    e.preventDefault(); audioZone.classList.remove('dragover');
+    const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('audio/'));
+    files.forEach(f => addAudioFile(f));
+  });
+
+  // 单词表上传
+  const wordInput = document.getElementById('wordFileInput');
+  const wordZone = document.getElementById('wordUploadZone');
+
+  wordInput.addEventListener('change', (e) => handleWordFile(e.target.files[0]));
+  wordZone.addEventListener('dragover', (e) => { e.preventDefault(); wordZone.classList.add('dragover'); });
+  wordZone.addEventListener('dragleave', () => wordZone.classList.remove('dragover'));
+  wordZone.addEventListener('drop', (e) => {
+    e.preventDefault(); wordZone.classList.remove('dragover');
+    if (e.dataTransfer.files[0]) handleWordFile(e.dataTransfer.files[0]);
+  });
+}
+
+function addAudioFile(file) {
+  if (!file || !file.type.startsWith('audio/')) {
+    showToast('请上传音频文件', 'error');
+    return;
+  }
+  if (uploadData.audioFiles.some(a => a.name === file.name && a.size === file.size)) {
+    showToast(`"${file.name}" 已添加`, 'info');
+    return;
+  }
+  const url = URL.createObjectURL(file);
+  uploadData.audioFiles.push({ file, url, name: file.name, size: file.size });
+  renderAudioPreview();
+  showToast(`已添加 "${file.name}"`, 'success');
+}
+
+function renderAudioPreview() {
+  const container = document.getElementById('audioPreview');
+  if (uploadData.audioFiles.length === 0) {
+    container.innerHTML = '';
+    return;
+  }
+  container.innerHTML = `
+    <div style="margin-top:12px;font-size:13px;font-weight:700;color:var(--text-light)">
+      已添加 ${uploadData.audioFiles.length} 个音频
+    </div>
+    ${uploadData.audioFiles.map((a, i) => `
+      <div class="file-preview" style="margin-top:8px">
+        <div class="file-preview-icon">${i + 1}</div>
+        <div class="file-preview-info">
+          <div class="file-preview-name">${a.name}</div>
+          <div class="file-preview-size">${formatFileSize(a.size)}</div>
+        </div>
+        <button class="file-preview-remove" onclick="removeAudio(${i})">✕</button>
+      </div>
+    `).join('')}
+  `;
+}
+
+function removeAudio(index) {
+  const removed = uploadData.audioFiles.splice(index, 1)[0];
+  if (removed) URL.revokeObjectURL(removed.url);
+  renderAudioPreview();
+  document.getElementById('audioFileInput').value = '';
+}
+
+async function handleWordFile(file) {
+  if (!file) return;
+  const ext = file.name.split('.').pop().toLowerCase();
+  uploadData.wordFileName = file.name;
+
+  try {
+    let text = '';
+    if (ext === 'pdf') {
+      text = await parsePDF(file);
+    } else if (ext === 'docx' || ext === 'doc') {
+      text = await parseDocx(file);
+    } else {
+      showToast('不支持的文件格式', 'error');
+      return;
+    }
+
+    const words = parseWordsFromText(text);
+    uploadData.words = words;
+
+    document.getElementById('wordPreview').innerHTML = `
+      <div class="file-preview">
+        <div class="file-preview-icon">📄</div>
+        <div class="file-preview-info">
+          <div class="file-preview-name">${file.name}</div>
+          <div class="file-preview-size">${formatFileSize(file.size)} · 识别到 ${words.length} 个单词</div>
+        </div>
+        <button class="file-preview-remove" onclick="removeWords()">✕</button>
+      </div>
+    `;
+
+    document.getElementById('parsedWordsCard').style.display = 'block';
+    document.getElementById('wordEditText').value = words.map(w => `${w.word}\t${w.meaning}`).join('\n');
+    renderParsedWords(words);
+    showToast(`成功识别 ${words.length} 个单词！`, 'success');
+  } catch(e) {
+    console.error(e);
+    showToast('文件解析失败，请检查文件格式', 'error');
+  }
+}
+
+function removeWords() {
+  uploadData.words = [];
+  uploadData.wordFileName = '';
+  document.getElementById('wordPreview').innerHTML = '';
+  document.getElementById('parsedWordsCard').style.display = 'none';
+  document.getElementById('wordFileInput').value = '';
+}
+
+async function parsePDF(file) {
+  const arrayBuffer = await file.arrayBuffer();
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+  let text = '';
+  for (let i = 1; i <= pdf.numPages; i++) {
+    const page = await pdf.getPage(i);
+    const content = await page.getTextContent();
+    text += content.items.map(item => item.str).join(' ') + '\n';
+  }
+  return text;
+}
+
+async function parseDocx(file) {
+  const arrayBuffer = await file.arrayBuffer();
+  const result = await mammoth.extractRawText({ arrayBuffer });
+  return result.value;
+}
+
+function parseWordsFromText(text) {
+  const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+  const words = [];
+
+  for (const line of lines) {
+    // Try different separators: tab, |, -, multiple spaces
+    let parts = null;
+    const separators = ['\t', '|', ' - ', '  '];
+    for (const sep of separators) {
+      if (line.includes(sep)) {
+        parts = line.split(sep).map(p => p.trim()).filter(p => p);
+        break;
+      }
+    }
+
+    if (parts && parts.length >= 2) {
+      // First part is the word, rest is meaning
+      const word = parts[0].replace(/^\d+[\.\)、]\s*/, ''); // Remove numbering
+      const meaning = parts.slice(1).join(' ');
+      if (word.length > 0 && word.length < 50) {
+        words.push({ word, meaning, mastered: false });
+      }
+    } else if (/^[a-zA-Z]/.test(line) && line.length < 50) {
+      // Single word without meaning
+      words.push({ word: line.replace(/^\d+[\.\)、]\s*/, ''), meaning: '', mastered: false });
+    }
+  }
+  return words;
+}
+
+function renderParsedWords(words) {
+  const container = document.getElementById('parsedWordsList');
+  container.innerHTML = '<div class="word-list">' + words.slice(0, 50).map((w, i) => `
+    <div class="word-item">
+      <div class="word-num">${i + 1}</div>
+      <div class="word-text">
+        <div class="word-en">${w.word}</div>
+        <div class="word-cn">${w.meaning || '暂无释义'}</div>
+      </div>
+    </div>
+  `).join('') + (words.length > 50 ? `<div style="text-align:center;padding:8px;color:var(--text-light);font-size:13px">...还有 ${words.length - 50} 个单词</div>` : '') + '</div>';
+}
+
+// ===== 保存周数据 =====
+async function saveWeek() {
+  // Get edited words from textarea
+  const editText = document.getElementById('wordEditText').value.trim();
+  if (editText) {
+    const lines = editText.split('\n').filter(l => l.trim());
+    uploadData.words = lines.map(line => {
+      const parts = line.split(/[\t|]/).map(p => p.trim());
+      return {
+        word: parts[0] || '',
+        meaning: parts.slice(1).join(' ') || '',
+        mastered: false
+      };
+    }).filter(w => w.word);
+  }
+
+  if (uploadData.words.length === 0) {
+    showToast('请先上传单词表或手动输入单词', 'error');
+    return;
+  }
+
+  const weekName = document.getElementById('weekNameInput').value.trim() || `第${state.weeks.length + 1}周`;
+  const weekId = 'week_' + Date.now();
+
+  const week = {
+    id: weekId,
+    name: weekName,
+    words: uploadData.words,
+    audios: [],  // { name, data(base64 or null) }
+    createdAt: new Date().toISOString()
+  };
+
+  // Store audios (base64 if small enough)
+  for (const a of uploadData.audioFiles) {
+    let data = null;
+    if (a.file.size < 5 * 1024 * 1024) {
+      try { data = await fileToBase64(a.file); } catch(e) { console.warn('音频转base64失败:', e); }
+    }
+    week.audios.push({ name: a.name, data });
+  }
+
+  state.weeks.push(week);
+  saveState();
+
+  // Reset upload form
+  uploadData.audioFiles.forEach(a => URL.revokeObjectURL(a.url));
+  uploadData = { audioFiles: [], words: [], wordFileName: '' };
+  document.getElementById('audioPreview').innerHTML = '';
+  document.getElementById('wordPreview').innerHTML = '';
+  document.getElementById('parsedWordsCard').style.display = 'none';
+  document.getElementById('weekNameInput').value = '';
+  document.getElementById('audioFileInput').value = '';
+  document.getElementById('wordFileInput').value = '';
+
+  showToast(`"${weekName}" 保存成功！共 ${week.words.length} 个单词`, 'success');
+
+  // Record progress
+  recordProgress('wordsLearned', week.words.length);
+
+  // Switch to home
+  setTimeout(() => {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('pageHome').classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.nav-item')[0].classList.add('active');
+    renderHome();
+  }, 500);
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+// ===== 学习页面 =====
+function openWeekStudy(weekId) {
+  state.currentWeekId = weekId;
+  studyState = { mode: 'listen', currentIndex: 0, quizAnswers: [], score: 0 };
+
+  // Switch to study page
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('pageStudy').classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.nav-item')[2].classList.add('active');
+
+  renderStudy();
+}
+
+function renderStudy() {
+  const week = state.weeks.find(w => w.id === state.currentWeekId);
+  if (!week) {
+    document.getElementById('studyContent').innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">📖</div>
+        <div class="empty-title">请选择一个学习周</div>
+        <div class="empty-desc">返回首页选择学习内容</div>
+      </div>
+    `;
+    return;
+  }
+
+  const modes = [
+    { id: 'listen', label: '🎧 听力', color: '#667eea' },
+    { id: 'flashcard', label: '🃏 闪卡', color: 'var(--pink)' },
+    { id: 'quiz', label: '✅ 测验', color: 'var(--green)' },
+    { id: 'spelling', label: '⌨️ 拼写', color: 'var(--orange)' },
+    { id: 'reading', label: '🗣️ 跟读', color: 'var(--purple)' },
+  ];
+
+  let html = `
+    <button class="back-btn" onclick="backToHomeFromStudy()">← 返回</button>
+    <div style="font-size:20px;font-weight:900;margin-bottom:4px">${week.name}</div>
+    <div style="font-size:13px;color:var(--text-light);margin-bottom:16px">${week.words.length} 个单词</div>
+    <div class="mode-tabs">
+      ${modes.map(m => `
+        <div class="mode-tab ${studyState.mode === m.id ? 'active' : ''}"
+             onclick="switchStudyMode('${m.id}')">${m.label}</div>
+      `).join('')}
+    </div>
+    <div id="studyModeContent"></div>
+  `;
+
+  document.getElementById('studyContent').innerHTML = html;
+
+  switch(studyState.mode) {
+    case 'listen': renderListenMode(week); break;
+    case 'flashcard': renderFlashcardMode(week); break;
+    case 'quiz': renderQuizMode(week); break;
+    case 'spelling': renderSpellingMode(week); break;
+    case 'reading': renderReadingMode(week); break;
+  }
+}
+
+function switchStudyMode(mode) {
+  studyState.mode = mode;
+  studyState.currentIndex = 0;
+  studyState.quizAnswers = [];
+  studyState.score = 0;
+  listenState.currentAudioIndex = 0;
+  renderStudy();
+}
+
+function backToHomeFromStudy() {
+  state.currentWeekId = null;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('pageHome').classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.nav-item')[0].classList.add('active');
+  renderHome();
+}
+
+// ===== 听力模式 =====
+let listenState = { currentAudioIndex: 0 };
+
+function renderListenMode(week) {
+  const container = document.getElementById('studyModeContent');
+
+  // 兼容旧数据（单个audioData/audioName）和新数据（audios数组）
+  let audios = [];
+  if (week.audios && week.audios.length > 0) {
+    audios = week.audios;
+  } else if (week.audioData || week.audioName) {
+    audios = [{ name: week.audioName || '音频', data: week.audioData || null }];
+  }
+
+  const hasAudio = audios.length > 0 && (audios[0].data || audios.some(a => a.data));
+  const currentAudio = audios[listenState.currentAudioIndex] || audios[0];
+
+  let html = '';
+
+  if (hasAudio && audios.length > 0) {
+    // 音频选择标签（多个音频时显示）
+    if (audios.length > 1) {
+      html += `<div class="mode-tabs" style="margin-bottom:12px">
+        ${audios.map((a, i) => `
+          <div class="mode-tab ${i === listenState.currentAudioIndex ? 'active' : ''}"
+               onclick="switchListenAudio(${i})" style="font-size:12px;padding:6px 14px">
+            🎵 ${a.name.length > 12 ? a.name.substring(0, 12) + '…' : a.name}
+          </div>
+        `).join('')}
+      </div>`;
+    }
+
+    html += `
+      <div class="audio-player">
+        <div class="audio-controls">
+          <div style="font-size:14px;opacity:0.8;margin-bottom:8px">${currentAudio.name || '音频'}</div>
+          <button class="audio-play-btn" id="audioPlayBtn" onclick="toggleAudioPlay()">▶</button>
+          <div class="audio-progress" id="audioProgressBar" onclick="seekAudio(event)">
+            <div class="audio-progress-fill" id="audioProgressFill" style="width:0%"></div>
+          </div>
+          <div class="audio-time">
+            <span id="audioCurrentTime">0:00</span>
+            <span id="audioDuration">0:00</span>
+          </div>
+          <div class="audio-speed">
+            <button class="speed-btn" onclick="setAudioSpeed(0.75)">0.75x</button>
+            <button class="speed-btn active" onclick="setAudioSpeed(1)">1x</button>
+            <button class="speed-btn" onclick="setAudioSpeed(1.25)">1.25x</button>
+            <button class="speed-btn" onclick="setAudioSpeed(1.5)">1.5x</button>
+          </div>
+        </div>
+      </div>
+    `;
+  } else {
+    html += `
+      <div class="card" style="text-align:center;color:var(--text-light)">
+        <div style="font-size:32px;margin-bottom:8px">🔇</div>
+        <div>本周未上传音频</div>
+        <div style="font-size:12px;margin-top:4px">可以点击单词旁的喇叭按钮听发音</div>
+      </div>
+    `;
+  }
+
+  html += `<div style="margin-top:16px"><div class="card-title">📋 单词列表</div>
+    <div class="word-list">
+      ${week.words.map((w, i) => `
+        <div class="word-item" id="wordItem${i}" onclick="highlightWord(${i})">
+          <div class="word-num">${i + 1}</div>
+          <div class="word-text">
+            <div class="word-en">${w.word}</div>
+            <div class="word-cn">${w.meaning || ''}</div>
+          </div>
+          <button class="word-speak-btn" onclick="event.stopPropagation();speakWord('${w.word}')">🔊</button>
+        </div>
+      `).join('')}
+    </div>
+  </div>`;
+
+  container.innerHTML = html;
+
+  // Setup audio if available
+  if (hasAudio && currentAudio && currentAudio.data) {
+    const player = document.getElementById('audioPlayer');
+    player.src = currentAudio.data;
+    player.addEventListener('timeupdate', updateAudioProgress);
+    player.addEventListener('loadedmetadata', () => {
+      document.getElementById('audioDuration').textContent = formatTime(player.duration);
+    });
+    player.addEventListener('ended', () => {
+      document.getElementById('audioPlayBtn').textContent = '▶';
+    });
+  }
+}
+
+function switchListenAudio(index) {
+  listenState.currentAudioIndex = index;
+  const player = document.getElementById('audioPlayer');
+  player.pause();
+  player.currentTime = 0;
+  const week = state.weeks.find(w => w.id === state.currentWeekId);
+  if (week) renderListenMode(week);
+}
+
+function toggleAudioPlay() {
+  const player = document.getElementById('audioPlayer');
+  const btn = document.getElementById('audioPlayBtn');
+  if (player.paused) {
+    player.play();
+    btn.textContent = '⏸';
+  } else {
+    player.pause();
+    btn.textContent = '▶';
+  }
+}
+
+function updateAudioProgress() {
+  const player = document.getElementById('audioPlayer');
+  if (player.duration) {
+    const pct = (player.currentTime / player.duration) * 100;
+    document.getElementById('audioProgressFill').style.width = pct + '%';
+    document.getElementById('audioCurrentTime').textContent = formatTime(player.currentTime);
+  }
+}
+
+function seekAudio(e) {
+  const player = document.getElementById('audioPlayer');
+  const bar = document.getElementById('audioProgressBar');
+  const rect = bar.getBoundingClientRect();
+  const pct = (e.clientX - rect.left) / rect.width;
+  player.currentTime = pct * player.duration;
+}
+
+function setAudioSpeed(speed) {
+  const player = document.getElementById('audioPlayer');
+  player.playbackRate = speed;
+  document.querySelectorAll('.speed-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent === speed + 'x');
+  });
+}
+
+function highlightWord(index) {
+  document.querySelectorAll('.word-item').forEach(el => el.classList.remove('playing'));
+  document.getElementById('wordItem' + index).classList.add('playing');
+  const week = state.weeks.find(w => w.id === state.currentWeekId);
+  if (week) speakWord(week.words[index].word);
+}
+
+function speakWord(word) {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.8;
+    window.speechSynthesis.speak(utterance);
+  }
+}
+
+// ===== 闪卡模式 =====
+function renderFlashcardMode(week) {
+  const container = document.getElementById('studyModeContent');
+  const idx = studyState.currentIndex;
+  const word = week.words[idx];
+
+  if (!word) {
+    container.innerHTML = `
+      <div class="card" style="text-align:center">
+        <div style="font-size:64px;margin-bottom:16px">🎉</div>
+        <div style="font-size:20px;font-weight:800;margin-bottom:8px">全部学完了！</div>
+        <div style="color:var(--text-light);margin-bottom:20px">太棒了，你已经看完所有闪卡</div>
+        <button class="btn btn-primary" onclick="studyState.currentIndex=0;renderStudy()">🔄 再看一遍</button>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="flashcard-container">
+      <div class="flashcard" id="flashcard" onclick="flipCard()">
+        <div class="flashcard-face flashcard-front">
+          <div class="card-word">${word.word}</div>
+          <button class="btn btn-sm" style="background:rgba(255,255,255,0.2);color:white;border:none;margin-top:12px"
+                  onclick="event.stopPropagation();speakWord('${word.word}')">🔊 听发音</button>
+          <div class="card-hint">👆 点击翻转查看释义</div>
+        </div>
+        <div class="flashcard-face flashcard-back">
+          <div class="card-meaning">${word.meaning || '暂无释义'}</div>
+          ${word.meaning ? `<div class="card-example">"${word.word}"</div>` : ''}
+        </div>
+      </div>
+    </div>
+    <div class="flashcard-counter">${idx + 1} / ${week.words.length}</div>
+    <div class="flashcard-nav">
+      <button class="btn btn-outline btn-sm" onclick="prevFlashcard()">👈 上一个</button>
+      <button class="btn btn-success btn-sm" onclick="markMastered('${word.word}')">✅ 记住了</button>
+      <button class="btn btn-primary btn-sm" onclick="nextFlashcard()">下一个 👉</button>
+    </div>
+  `;
+
+  recordProgress('wordsLearned', 1);
+}
+
+function flipCard() {
+  document.getElementById('flashcard').classList.toggle('flipped');
+}
+
+function nextFlashcard() {
+  const week = state.weeks.find(w => w.id === state.currentWeekId);
+  if (studyState.currentIndex < week.words.length - 1) {
+    studyState.currentIndex++;
+    renderStudy();
+  }
+}
+
+function prevFlashcard() {
+  if (studyState.currentIndex > 0) {
+    studyState.currentIndex--;
+    renderStudy();
+  }
+}
+
+function markMastered(word) {
+  const week = state.weeks.find(w => w.id === state.currentWeekId);
+  const w = week.words.find(w => w.word === word);
+  if (w) w.mastered = true;
+  saveState();
+  showToast(`"${word}" 已标记为掌握 ✅`, 'success');
+  nextFlashcard();
+}
+
+// ===== 测验模式 =====
+function renderQuizMode(week) {
+  const container = document.getElementById('studyModeContent');
+  const totalQuestions = Math.min(10, week.words.length);
+
+  if (studyState.quizAnswers.length >= totalQuestions) {
+    renderQuizResult(week, container);
+    return;
+  }
+
+  const qIdx = studyState.quizAnswers.length;
+  const correctWord = week.words[qIdx];
+
+  // Generate options
+  const options = generateQuizOptions(week.words, qIdx, 4);
+
+  container.innerHTML = `
+    <div class="quiz-progress">
+      ${Array.from({length: totalQuestions}, (_, i) => {
+        let cls = '';
+        if (i < studyState.quizAnswers.length) cls = studyState.quizAnswers[i] ? 'correct' : 'wrong';
+        else if (i === qIdx) cls = 'current';
+        return `<div class="quiz-dot ${cls}"></div>`;
+      }).join('')}
+    </div>
+    <div class="card">
+      <div class="quiz-question">"${correctWord.word}" 的意思是？</div>
+      <button class="btn btn-sm" style="background:var(--pink-light);color:white;border:none;margin-bottom:16px"
+              onclick="speakWord('${correctWord.word}')">🔊 听发音</button>
+      <div class="quiz-options">
+        ${options.map((opt, i) => `
+          <div class="quiz-option" id="quizOpt${i}" onclick="checkQuizAnswer(this, '${opt.meaning.replace(/'/g, "\\'")}', '${correctWord.meaning.replace(/'/g, "\\'")}')">
+            <span style="font-weight:800;color:var(--pink);margin-right:8px">${String.fromCharCode(65 + i)}</span>
+            ${opt.meaning || '(无释义)'}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function generateQuizOptions(words, correctIdx, count) {
+  const correct = words[correctIdx];
+  const others = words.filter((_, i) => i !== correctIdx && _.meaning);
+  const shuffled = others.sort(() => Math.random() - 0.5).slice(0, count - 1);
+  const options = [correct, ...shuffled].sort(() => Math.random() - 0.5);
+
+  // Pad if not enough options
+  while (options.length < count) {
+    options.push({ word: '...', meaning: '（未知）' });
+  }
+
+  return options.slice(0, count);
+}
+
+function checkQuizAnswer(element, selected, correct) {
+  const isCorrect = selected === correct;
+  studyState.quizAnswers.push(isCorrect);
+  if (isCorrect) studyState.score++;
+
+  // Visual feedback
+  document.querySelectorAll('.quiz-option').forEach(opt => {
+    opt.style.pointerEvents = 'none';
+    if (opt.textContent.includes(correct)) opt.classList.add('correct');
+  });
+
+  if (!isCorrect) {
+    element.classList.add('wrong');
+  }
+
+  recordProgress('quizzesTaken', 1);
+  if (isCorrect) recordProgress('correctCount', 1);
+
+  setTimeout(() => renderStudy(), 1000);
+}
+
+function renderQuizResult(week, container) {
+  const total = studyState.quizAnswers.length;
+  const correct = studyState.score;
+  const pct = Math.round(correct / total * 100);
+  let emoji = '🎉';
+  let msg = '太棒了！';
+  if (pct < 60) { emoji = '💪'; msg = '继续加油！'; }
+  else if (pct < 80) { emoji = '👍'; msg = '不错哦！'; }
+
+  container.innerHTML = `
+    <div class="card" style="text-align:center">
+      <div style="font-size:64px;margin-bottom:12px">${emoji}</div>
+      <div style="font-size:24px;font-weight:900;margin-bottom:4px">${msg}</div>
+      <div style="font-size:48px;font-weight:900;color:var(--pink);margin:12px 0">${pct}%</div>
+      <div style="color:var(--text-light);margin-bottom:20px">
+        答对 ${correct} / ${total} 题
+      </div>
+      <div class="btn-group" style="justify-content:center">
+        <button class="btn btn-outline" onclick="backToHomeFromStudy()">🏠 返回首页</button>
+        <button class="btn btn-primary" onclick="studyState.quizAnswers=[];studyState.score=0;renderStudy()">🔄 再测一次</button>
+      </div>
+    </div>
+  `;
+}
+
+// ===== 拼写模式 =====
+function renderSpellingMode(week) {
+  const container = document.getElementById('studyModeContent');
+  const idx = studyState.currentIndex;
+  const word = week.words[idx];
+
+  if (!word) {
+    container.innerHTML = `
+      <div class="card" style="text-align:center">
+        <div style="font-size:64px;margin-bottom:16px">🏆</div>
+        <div style="font-size:20px;font-weight:800;margin-bottom:8px">拼写练习完成！</div>
+        <button class="btn btn-primary" onclick="studyState.currentIndex=0;renderStudy()">🔄 再练一次</button>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="card" style="text-align:center">
+      <div class="spelling-word">${word.meaning || '请拼写这个单词'}</div>
+      <button class="btn btn-sm" style="background:var(--pink-light);color:white;border:none;margin-bottom:16px"
+              onclick="speakWord('${word.word}')">🔊 听发音</button>
+      <input type="text" class="spelling-input" id="spellingInput" placeholder="输入单词..."
+             autocomplete="off" autocapitalize="off" onkeydown="if(event.key==='Enter')checkSpelling('${word.word}')">
+      <div class="spelling-hint">
+        <button onclick="showSpellingHint('${word.word}', this)">💡 提示首字母</button>
+      </div>
+      <div style="margin-top:16px">
+        <button class="btn btn-primary" onclick="checkSpelling('${word.word}')">确认 ✓</button>
+      </div>
+      <div class="flashcard-counter" style="margin-top:12px">${idx + 1} / ${week.words.length}</div>
+    </div>
+  `;
+
+  setTimeout(() => document.getElementById('spellingInput')?.focus(), 100);
+  recordProgress('wordsLearned', 1);
+}
+
+function checkSpelling(correctWord) {
+  const input = document.getElementById('spellingInput');
+  const answer = input.value.trim().toLowerCase();
+  const correct = correctWord.toLowerCase();
+
+  if (answer === correct) {
+    input.classList.add('correct');
+    showToast('✅ 正确！', 'success');
+    recordProgress('correctCount', 1);
+    recordProgress('quizzesTaken', 1);
+    setTimeout(() => {
+      studyState.currentIndex++;
+      renderStudy();
+    }, 800);
+  } else {
+    input.classList.add('wrong');
+    showToast(`❌ 正确答案是: ${correctWord}`, 'error');
+    recordProgress('quizzesTaken', 1);
+    setTimeout(() => {
+      input.classList.remove('wrong');
+      input.value = '';
+      input.focus();
+    }, 1500);
+  }
+}
+
+function showSpellingHint(word, btn) {
+  btn.textContent = `💡 ${word[0]}${'_'.repeat(word.length - 1)}`;
+  btn.style.pointerEvents = 'none';
+}
+
+// ===== 跟读模式 =====
+function renderReadingMode(week) {
+  const container = document.getElementById('studyModeContent');
+  const idx = studyState.currentIndex;
+  const word = week.words[idx];
+
+  if (!word) {
+    container.innerHTML = `
+      <div class="card" style="text-align:center">
+        <div style="font-size:64px;margin-bottom:16px">🎤</div>
+        <div style="font-size:20px;font-weight:800;margin-bottom:8px">跟读练习完成！</div>
+        <button class="btn btn-primary" onclick="studyState.currentIndex=0;renderStudy()">🔄 再练一次</button>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="reading-card">
+      <div class="reading-word">${word.word}</div>
+      <div class="reading-phonetic">${word.meaning || ''}</div>
+      <button class="btn btn-sm" style="background:rgba(255,255,255,0.2);color:white;border:none;margin:12px 0"
+              onclick="speakWord('${word.word}')">🔊 听标准发音</button>
+      <div class="record-btn" id="recordBtn" onclick="toggleRecording('${word.word}')">🎙️</div>
+      <div style="font-size:12px;opacity:0.7;margin-top:8px">点击麦克风开始跟读</div>
+      <div class="reading-result" id="readingResult" style="display:none">
+        <div style="font-size:13px;opacity:0.8">你的发音</div>
+        <div id="readingTranscript" style="font-size:18px;font-weight:700;margin-top:4px"></div>
+        <div class="reading-score" id="readingScore"></div>
+      </div>
+    </div>
+    <div class="flashcard-counter" style="margin-top:12px;text-align:center">${idx + 1} / ${week.words.length}</div>
+    <div style="text-align:center;margin-top:12px">
+      <button class="btn btn-outline btn-sm" onclick="prevReading()">👈 上一个</button>
+      <button class="btn btn-primary btn-sm" onclick="nextReading()" style="margin-left:10px">下一个 👉</button>
+    </div>
+  `;
+
+  recordProgress('wordsLearned', 1);
+}
+
+let isRecording = false;
+let recognition = null;
+
+function toggleRecording(word) {
+  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+    showToast('您的浏览器不支持语音识别', 'error');
+    return;
+  }
+
+  const btn = document.getElementById('recordBtn');
+
+  if (isRecording) {
+    isRecording = false;
+    btn.classList.remove('recording');
+    btn.textContent = '🎙️';
+    if (recognition) recognition.stop();
+    return;
+  }
+
+  isRecording = true;
+  btn.classList.add('recording');
+  btn.textContent = '⏹️';
+
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SpeechRecognition();
+  recognition.lang = 'en-US';
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 3;
+
+  recognition.onresult = (event) => {
+    const results = event.results[0];
+    const transcript = results[0].transcript.toLowerCase().trim();
+    const correct = word.toLowerCase();
+
+    // Simple similarity score
+    const similarity = calculateSimilarity(transcript, correct);
+    const score = Math.round(similarity * 100);
+
+    document.getElementById('readingResult').style.display = 'block';
+    document.getElementById('readingTranscript').textContent = `"${transcript}"`;
+
+    const scoreEl = document.getElementById('readingScore');
+    scoreEl.textContent = score + '分';
+    scoreEl.style.color = score >= 80 ? 'var(--green)' : score >= 50 ? 'var(--yellow)' : '#EF4444';
+
+    if (score >= 80) showToast('发音很棒！🌟', 'success');
+    else if (score >= 50) showToast('还不错，继续练习！💪', 'info');
+    else showToast('再试一次吧！😊', 'info');
+
+    recordProgress('quizzesTaken', 1);
+    if (score >= 60) recordProgress('correctCount', 1);
+  };
+
+  recognition.onerror = (event) => {
+    isRecording = false;
+    btn.classList.remove('recording');
+    btn.textContent = '🎙️';
+    if (event.error === 'not-allowed') {
+      showToast('请允许麦克风权限', 'error');
+    }
+  };
+
+  recognition.onend = () => {
+    isRecording = false;
+    btn.classList.remove('recording');
+    btn.textContent = '🎙️';
+  };
+
+  recognition.start();
+}
+
+function calculateSimilarity(s1, s2) {
+  if (s1 === s2) return 1;
+  const len = Math.max(s1.length, s2.length);
+  if (len === 0) return 1;
+  const distance = levenshteinDistance(s1, s2);
+  return 1 - distance / len;
+}
+
+function levenshteinDistance(s1, s2) {
+  const matrix = [];
+  for (let i = 0; i <= s2.length; i++) matrix[i] = [i];
+  for (let j = 0; j <= s1.length; j++) matrix[0][j] = j;
+  for (let i = 1; i <= s2.length; i++) {
+    for (let j = 1; j <= s1.length; j++) {
+      if (s2[i-1] === s1[j-1]) matrix[i][j] = matrix[i-1][j-1];
+      else matrix[i][j] = Math.min(matrix[i-1][j-1]+1, matrix[i][j-1]+1, matrix[i-1][j]+1);
+    }
+  }
+  return matrix[s2.length][s1.length];
+}
+
+function nextReading() {
+  const week = state.weeks.find(w => w.id === state.currentWeekId);
+  if (studyState.currentIndex < week.words.length - 1) {
+    studyState.currentIndex++;
+    renderStudy();
+  }
+}
+
+function prevReading() {
+  if (studyState.currentIndex > 0) {
+    studyState.currentIndex--;
+    renderStudy();
+  }
+}
+
+// ===== 统计页面 =====
+function renderStats() {
+  renderStatsOverview();
+  renderTrendChart();
+  renderMasteryStats();
+  renderAllBadges();
+}
+
+function renderStatsOverview() {
+  const totalWords = state.weeks.reduce((sum, w) => sum + w.words.length, 0);
+  const masteredWords = state.weeks.reduce((sum, w) => sum + w.words.filter(w => w.mastered).length, 0);
+  const streak = calculateStreak();
+  const totalQuizzes = Object.values(state.progress).reduce((sum, p) => sum + (p.quizzesTaken || 0), 0);
+  const totalCorrect = Object.values(state.progress).reduce((sum, p) => sum + (p.correctCount || 0), 0);
+
+  document.getElementById('statsOverview').innerHTML = `
+    <div class="stat-card">
+      <div class="stat-icon">📚</div>
+      <div class="stat-value">${totalWords}</div>
+      <div class="stat-label">总单词数</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">✅</div>
+      <div class="stat-value">${masteredWords}</div>
+      <div class="stat-label">已掌握</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🔥</div>
+      <div class="stat-value">${streak}</div>
+      <div class="stat-label">连续天数</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🎯</div>
+      <div class="stat-value">${totalQuizzes > 0 ? Math.round(totalCorrect / totalQuizzes * 100) : 0}%</div>
+      <div class="stat-label">总正确率</div>
+    </div>
+  `;
+}
+
+function renderTrendChart() {
+  const canvas = document.getElementById('trendChart');
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+
+  canvas.width = canvas.offsetWidth * dpr;
+  canvas.height = 200 * dpr;
+  ctx.scale(dpr, dpr);
+
+  const w = canvas.offsetWidth;
+  const h = 200;
+  const padding = { top: 20, right: 20, bottom: 30, left: 40 };
+
+  // Get last 7 days data
+  const days = [];
+  for (let i = 6; i >= 0; i--) {
+    const date = new Date();
+    date.setDate(date.getDate() - i);
+    const key = formatDateKey(date);
+    const prog = state.progress[key] || {};
+    days.push({
+      label: `${date.getMonth()+1}/${date.getDate()}`,
+      words: prog.wordsLearned || 0,
+      quizzes: prog.quizzesTaken || 0
+    });
+  }
+
+  const maxVal = Math.max(10, ...days.map(d => Math.max(d.words, d.quizzes)));
+  const chartW = w - padding.left - padding.right;
+  const chartH = h - padding.top - padding.bottom;
+
+  // Clear
+  ctx.clearRect(0, 0, w, h);
+
+  // Grid lines
+  ctx.strokeStyle = 'rgba(255,107,157,0.1)';
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const y = padding.top + (chartH / 4) * i;
+    ctx.beginPath();
+    ctx.moveTo(padding.left, y);
+    ctx.lineTo(w - padding.right, y);
+    ctx.stroke();
+  }
+
+  // Y axis labels
+  ctx.fillStyle = '#7C6B99';
+  ctx.font = '11px Nunito';
+  ctx.textAlign = 'right';
+  for (let i = 0; i <= 4; i++) {
+    const y = padding.top + (chartH / 4) * i;
+    const val = Math.round(maxVal * (1 - i / 4));
+    ctx.fillText(val, padding.left - 8, y + 4);
+  }
+
+  // X axis labels
+  ctx.textAlign = 'center';
+  days.forEach((d, i) => {
+    const x = padding.left + (chartW / (days.length - 1)) * i;
+    ctx.fillText(d.label, x, h - 8);
+  });
+
+  // Draw line - words learned
+  const drawLine = (data, color, fillColor) => {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 3;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+
+    data.forEach((val, i) => {
+      const x = padding.left + (chartW / (data.length - 1)) * i;
+      const y = padding.top + chartH - (val / maxVal) * chartH;
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+
+    // Fill area
+    const lastX = padding.left + chartW;
+    const firstX = padding.left;
+    ctx.lineTo(lastX, padding.top + chartH);
+    ctx.lineTo(firstX, padding.top + chartH);
+    ctx.closePath();
+    ctx.fillStyle = fillColor;
+    ctx.fill();
+
+    // Dots
+    data.forEach((val, i) => {
+      const x = padding.left + (chartW / (data.length - 1)) * i;
+      const y = padding.top + chartH - (val / maxVal) * chartH;
+      ctx.beginPath();
+      ctx.arc(x, y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.strokeStyle = 'white';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    });
+  };
+
+  drawLine(days.map(d => d.words), '#FF6B9D', 'rgba(255,107,157,0.1)');
+
+  // Legend
+  ctx.fillStyle = '#FF6B9D';
+  ctx.fillRect(w - 120, 4, 12, 12);
+  ctx.fillStyle = '#7C6B99';
+  ctx.font = '11px Nunito';
+  ctx.textAlign = 'left';
+  ctx.fillText('学习单词数', w - 104, 14);
+}
+
+function renderMasteryStats() {
+  const container = document.getElementById('masteryStats');
+  const allWords = state.weeks.flatMap(w => w.words);
+  const mastered = allWords.filter(w => w.mastered).length;
+  const total = allWords.length;
+  const pct = total > 0 ? Math.round(mastered / total * 100) : 0;
+
+  if (total === 0) {
+    container.innerHTML = '<div style="text-align:center;color:var(--text-light);padding:20px">暂无数据</div>';
+    return;
+  }
+
+  container.innerHTML = `
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px">
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+          <span style="font-size:13px;font-weight:700">掌握进度</span>
+          <span style="font-size:13px;font-weight:800;color:var(--pink)">${pct}%</span>
+        </div>
+        <div style="width:100%;height:12px;background:rgba(255,107,157,0.1);border-radius:6px;overflow:hidden">
+          <div style="width:${pct}%;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--pink),var(--purple));transition:width 0.5s"></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:16px;font-size:13px;color:var(--text-light)">
+      <span>✅ 已掌握: <strong style="color:var(--green)">${mastered}</strong></span>
+      <span>📖 未掌握: <strong style="color:var(--orange)">${total - mastered}</strong></span>
+      <span>📚 总计: <strong>${total}</strong></span>
+    </div>
+  `;
+}
+
+function renderAllBadges() {
+  const badges = getBadges();
+  const container = document.getElementById('allBadges');
+  container.innerHTML = badges.map(b => `
+    <div style="display:flex;align-items:center;gap:12px;padding:12px;background:${b.unlocked ? 'rgba(255,107,157,0.05)' : 'rgba(128,128,128,0.05)'};border-radius:12px;margin-bottom:8px;opacity:${b.unlocked ? 1 : 0.5}">
+      <div style="width:44px;height:44px;border-radius:50%;background:${b.bg};display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">${b.icon}</div>
+      <div>
+        <div style="font-size:14px;font-weight:800">${b.name}</div>
+        <div style="font-size:12px;color:var(--text-light)">${b.desc}</div>
+      </div>
+      ${b.unlocked ? '<div style="margin-left:auto;font-size:18px">✅</div>' : '<div style="margin-left:auto;font-size:18px">🔒</div>'}
+    </div>
+  `).join('');
+}
+
+// ===== 成就系统 =====
+function getBadges() {
+  const totalWords = state.weeks.reduce((sum, w) => sum + w.words.length, 0);
+  const mastered = state.weeks.reduce((sum, w) => sum + w.words.filter(w => w.mastered).length, 0);
+  const streak = calculateStreak();
+  const totalQuizzes = Object.values(state.progress).reduce((sum, p) => sum + (p.quizzesTaken || 0), 0);
+
+  return [
+    { icon: '🌱', name: '初出茅庐', desc: '上传第一个学习周', bg: 'linear-gradient(135deg, #BBF7D0, #4ADE80)', unlocked: state.weeks.length >= 1 },
+    { icon: '📚', name: '勤奋学习', desc: '累计学习50个单词', bg: 'linear-gradient(135deg, #BFDBFE, #60A5FA)', unlocked: totalWords >= 50 },
+    { icon: '🔥', name: '连续三天', desc: '连续学习3天', bg: 'linear-gradient(135deg, #FED7AA, #FB923C)', unlocked: streak >= 3 },
+    { icon: '🧠', name: '单词达人', desc: '掌握30个单词', bg: 'linear-gradient(135deg, #E9D5FF, #C084FC)', unlocked: mastered >= 30 },
+    { icon: '🎯', name: '百发百中', desc: '完成20次测验', bg: 'linear-gradient(135deg, #FDE68A, #FBBF24)', unlocked: totalQuizzes >= 20 },
+    { icon: '🌟', name: '学习之星', desc: '连续学习7天', bg: 'linear-gradient(135deg, #FFB3D0, #FF6B9D)', unlocked: streak >= 7 },
+    { icon: '👑', name: '词汇王者', desc: '累计学习200个单词', bg: 'linear-gradient(135deg, #FCA5A5, #EF4444)', unlocked: totalWords >= 200 },
+    { icon: '🏆', name: '全能学霸', desc: '掌握100个单词', bg: 'linear-gradient(135deg, #FDE68A, #F59E0B)', unlocked: mastered >= 100 },
+  ];
+}
+
+// ===== 进度记录 =====
+function getTodayKey() { return formatDateKey(new Date()); }
+
+function formatDateKey(date) {
+  return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+}
+
+function recordProgress(field, count) {
+  const key = getTodayKey();
+  if (!state.progress[key]) {
+    state.progress[key] = { wordsLearned: 0, quizzesTaken: 0, correctCount: 0 };
+  }
+  state.progress[key][field] = (state.progress[key][field] || 0) + count;
+  saveState();
+}
+
+function calculateStreak() {
+  let streak = 0;
+  const today = new Date();
+  for (let i = 0; i < 365; i++) {
+    const date = new Date(today);
+    date.setDate(date.getDate() - i);
+    const key = formatDateKey(date);
+    if (state.progress[key] && state.progress[key].wordsLearned > 0) {
+      streak++;
+    } else if (i > 0) {
+      break;
+    }
+  }
+  return streak;
+}
+
+function getWeekProgress(weekId) {
+  const week = state.weeks.find(w => w.id === weekId);
+  if (!week) return { learned: 0, total: 0 };
+  return {
+    learned: week.words.filter(w => w.mastered).length,
+    total: week.words.length
+  };
+}
+
+// ===== 工具函数 =====
+function formatTime(seconds) {
+  if (!seconds || isNaN(seconds)) return '0:00';
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
+
+function formatFileSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+// ===== 启动 =====
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
