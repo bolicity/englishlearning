@@ -964,9 +964,12 @@ body {
 <script>
 // Supabase 配置
 const SB_URL = 'https://hllfcxpefnrmtxcaylxa.supabase.co';
-const SB_KEY = 'sb_publishable_7P5Mo0MENDlyzVaxaxv97w_PwA_CSyI';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhsbGZjeHBlZm5ybXR4Y2F5bHhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxNDg4MTUsImV4cCI6MjA5MTcyNDgxNX0.hr-iwRrqPQ4rIegpLu9wcmu92_UZ1eOYPpvd8IqY_rE';
 const supabaseClient = supabase.createClient(SB_URL, SB_KEY);
 const DATA_KEY = 'primary_state';
+const AUDIO_BUCKET = 'english-planet-audios';
+let cloudSaveTimer = null;
+let isCloudSaving = false;
 
 // ===== 全局状态 =====
 const APP_KEY = 'wordPlanet';
@@ -1014,7 +1017,8 @@ async function loadStateCloud() {
   updateSyncStatus('syncing', '正在从云端拉取...');
   try {
     const saved = localStorage.getItem(APP_KEY);
-    if (saved) state = { ...state, ...JSON.parse(saved) };
+    const localState = saved ? JSON.parse(saved) : null;
+    if (localState) state = { ...state, ...localState };
 
     const { data, error } = await supabaseClient
       .from('english_planet_data')
@@ -1023,9 +1027,22 @@ async function loadStateCloud() {
       .single();
 
     if (data) {
-      state = { ...state, ...data.data };
-      saveStateLocal();
-      updateSyncStatus('success', '云端同步完成');
+      const cloudState = data.data || {};
+      const cloudHasData = (cloudState.weeks && cloudState.weeks.length > 0)
+        || (cloudState.progress && Object.keys(cloudState.progress).length > 0);
+      const localHasData = localState && (
+        (localState.weeks && localState.weeks.length > 0)
+        || (localState.progress && Object.keys(localState.progress).length > 0)
+      );
+
+      if (cloudHasData || !localHasData) {
+        state = { ...state, ...cloudState };
+        saveStateLocal();
+        updateSyncStatus('success', '云端同步完成');
+      } else {
+        await saveStateCloud();
+        updateSyncStatus('success', '已用本地数据初始化云端');
+      }
     } else if (error && error.code === 'PGRST116') {
       if (state.weeks.length === 0) {
         state.weeks = [getMockWeek()];
@@ -1042,6 +1059,7 @@ async function loadStateCloud() {
 async function saveStateCloud() {
   updateSyncStatus('syncing', '正在保存到云端...');
   saveStateLocal(); 
+  isCloudSaving = true;
   
   try {
     const { error } = await supabaseClient
@@ -1053,6 +1071,8 @@ async function saveStateCloud() {
   } catch(e) {
     console.error('云端保存失败:', e);
     updateSyncStatus('error', '云同步失败 (本地已存)');
+  } finally {
+    isCloudSaving = false;
   }
 }
 
@@ -1100,9 +1120,15 @@ function getMockWeek() {
 }
 
 function saveState() {
-  try {
-    localStorage.setItem(APP_KEY, JSON.stringify(state));
-  } catch(e) { console.error('保存状态失败:', e); }
+  saveStateLocal();
+  queueCloudSave();
+}
+
+function queueCloudSave() {
+  clearTimeout(cloudSaveTimer);
+  cloudSaveTimer = setTimeout(() => {
+    if (!isCloudSaving) saveStateCloud();
+  }, 700);
 }
 
 function updateSubtitle() {
@@ -1258,7 +1284,7 @@ function renderHomeWeekList() {
         <div class="week-badge" style="background:${colors[i % colors.length]}">${i + 1}</div>
         <div class="week-info">
           <div class="week-name">${w.name || '未命名周'}</div>
-          <div class="week-meta">${wordCount} 个单词 · ${(uploadData.audioFiles && uploadData.audioFiles.length > 0) ? uploadData.audioFiles.length + ' 个音频' : '默认发音'}</div>
+          <div class="week-meta">${wordCount} 个单词 · ${(w.audios && w.audios.length > 0) ? w.audios.length + ' 个音频' : '默认发音'}</div>
           <div class="week-progress-bar">
             <div class="week-progress-fill" style="width:${pct}%"></div>
           </div>
@@ -1592,10 +1618,15 @@ async function saveWeek() {
   const isEdit = !!state.editingWeekId;
   const name = document.getElementById('weekNameInput').value.trim() || (isEdit ? '' : `第${state.weeks.length + 1}周`);
 
-  const finalAudios = [];
+  const existingWeek = isEdit ? state.weeks.find(w => w.id === state.editingWeekId) : null;
+  const finalAudios = isEdit && existingWeek?.audios ? [...existingWeek.audios] : [];
   for (const a of uploadData.audioFiles) {
-    if (a.data) { finalAudios.push({ name: a.name, data: a.data }); } 
-    else { try { const base64 = await fileToBase64(a.file); finalAudios.push({ name: a.name, data: base64 }); } catch(e) {} }
+    try {
+      finalAudios.push(await uploadAudioFileToCloud(a.file));
+    } catch(e) {
+      console.error('音频云端上传失败:', e);
+      showToast(`"${a.name}" 上传失败`, 'error');
+    }
   }
 
   const newWeek = {
@@ -1618,6 +1649,31 @@ async function saveWeek() {
   resetUploadPage();
   switchPage('Home');
   showToast(isEdit ? '已同步更新至云端' : '已成功保存至云端', 'success');
+}
+
+async function uploadAudioFileToCloud(file) {
+  if (!file) throw new Error('缺少音频文件');
+
+  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+  const path = `${DATA_KEY}/${Date.now()}_${Math.random().toString(36).slice(2)}_${safeName}`;
+  const { error } = await supabaseClient.storage
+    .from(AUDIO_BUCKET)
+    .upload(path, file, {
+      cacheControl: '31536000',
+      contentType: file.type || 'audio/mpeg',
+      upsert: false
+    });
+
+  if (error) throw error;
+
+  const { data } = supabaseClient.storage.from(AUDIO_BUCKET).getPublicUrl(path);
+  return {
+    name: file.name,
+    url: data.publicUrl,
+    path,
+    size: file.size,
+    type: file.type || 'audio/mpeg'
+  };
 }
 
 function resetUploadPage() {
@@ -1735,7 +1791,7 @@ function renderListenMode(week) {
   const audios = (week.audios && week.audios.length > 0) ? week.audios : 
                  (week.audioData || week.audioName) ? [{ name: week.audioName || '音频', data: week.audioData || null }] : [];
   
-  const hasAudio = audios.length > 0 && (audios[0].data || audios.some(a => a.data));
+  const hasAudio = audios.length > 0 && audios.some(a => a.url || a.data);
   const currentAudio = audios[listenState.currentAudioIndex] || audios[0];
   const words = week.words || [];
 
@@ -1807,9 +1863,9 @@ function renderListenMode(week) {
   container.innerHTML = html;
 
   // 初始化音频设置
-  if (hasAudio && currentAudio && currentAudio.data) {
+  if (hasAudio && currentAudio && (currentAudio.url || currentAudio.data)) {
     const player = document.getElementById('audioPlayer');
-    player.src = currentAudio.data;
+    player.src = currentAudio.url || currentAudio.data;
     player.addEventListener('timeupdate', updateAudioProgress);
     player.onloadedmetadata = () => {
       document.getElementById('audioDuration').textContent = formatTime(player.duration);
