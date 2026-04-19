@@ -9,6 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root {
   --pink: #FF6B9D;
@@ -805,6 +806,13 @@ body {
   max-height: 200px; overflow-y: auto;
   margin-top: 12px;
 }
+.rotating {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 </style>
 </head>
 <body>
@@ -825,7 +833,12 @@ body {
 
   <!-- 顶部标题 -->
   <header class="app-header">
-    <div class="app-title">🌟 单词星球</div>
+    <div style="display:flex; justify-content:space-between; align-items:center; width:100%">
+      <div class="app-title">🌟 单词星球</div>
+      <div id="syncStatus" style="font-size:12px; color:var(--text-light); opacity:0.6; display:flex; align-items:center; gap:4px">
+        <span id="syncIcon">☁️</span> <span id="syncText">本地模式</span>
+      </div>
+    </div>
     <div class="header-subtitle" id="headerSubtitle">每天进步一点点 ✨</div>
   </header>
 
@@ -949,20 +962,28 @@ body {
 <audio id="audioPlayer" preload="auto"></audio>
 
 <script>
+// Supabase 配置
+const SB_URL = 'https://hllfcxpefnrmtxcaylxa.supabase.co';
+const SB_KEY = 'sb_publishable_7P5Mo0MENDlyzVaxaxv97w_PwA_CSyI';
+const supabaseClient = supabase.createClient(SB_URL, SB_KEY);
+const DATA_KEY = 'primary_state';
+
 // ===== 全局状态 =====
 const APP_KEY = 'wordPlanet';
 let state = {
   weeks: [],
   currentWeekId: null,
   progress: {},
-  settings: { dailyGoal: 20 }
+  settings: { dailyGoal: 20 },
+  editingWeekId: null
 };
 
 // 上传临时数据
 let uploadData = {
   audioFiles: [],  // { file, url, name, size }
   words: [],
-  wordFileName: ''
+  wordFileName: '',
+  grammar: ''
 };
 
 // 学习状态
@@ -980,29 +1001,83 @@ const pronunciationState = {
 };
 
 // ===== 初始化 =====
-function init() {
-  loadState();
+async function init() {
+  updateSubtitle();
   setupPronunciationEngine();
   createStars();
+  await loadStateCloud(); 
   renderHome();
   setupUploadHandlers();
-  updateSubtitle();
 }
 
-function loadState() {
+async function loadStateCloud() {
+  updateSyncStatus('syncing', '正在从云端拉取...');
   try {
     const saved = localStorage.getItem(APP_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      state = { ...state, ...parsed };
+    if (saved) state = { ...state, ...JSON.parse(saved) };
+
+    const { data, error } = await supabaseClient
+      .from('english_planet_data')
+      .select('data')
+      .eq('key', DATA_KEY)
+      .single();
+
+    if (data) {
+      state = { ...state, ...data.data };
+      saveStateLocal();
+      updateSyncStatus('success', '云端同步完成');
+    } else if (error && error.code === 'PGRST116') {
+      if (state.weeks.length === 0) {
+        state.weeks = [getMockWeek()];
+        await saveStateCloud();
+      }
+      updateSyncStatus('success', '初始环境就绪');
     }
-    
-    // 如果没有任何学习周（包括旧用户空库），强制加载模拟数据以供测试
-    if (!state.weeks || state.weeks.length === 0) {
-      state.weeks = [getMockWeek()];
-      saveState();
-    }
-  } catch(e) { console.error('加载状态失败:', e); }
+  } catch(e) { 
+    console.error('云端加载失败:', e);
+    updateSyncStatus('error', '云连接异常，使用本地模式');
+  }
+}
+
+async function saveStateCloud() {
+  updateSyncStatus('syncing', '正在保存到云端...');
+  saveStateLocal(); 
+  
+  try {
+    const { error } = await supabaseClient
+      .from('english_planet_data')
+      .upsert({ key: DATA_KEY, data: state, updated_at: new Date() });
+
+    if (error) throw error;
+    updateSyncStatus('success', '已安全同步至云端');
+  } catch(e) {
+    console.error('云端保存失败:', e);
+    updateSyncStatus('error', '云同步失败 (本地已存)');
+  }
+}
+
+function saveStateLocal() {
+  try {
+    localStorage.setItem(APP_KEY, JSON.stringify(state));
+  } catch(e) { console.error('本地保存失败:', e); }
+}
+
+function updateSyncStatus(type, text) {
+  const icon = document.getElementById('syncIcon');
+  const label = document.getElementById('syncText');
+  if (!icon || !label) return;
+
+  label.innerText = text;
+  if (type === 'syncing') {
+    icon.innerText = '⏳';
+    icon.classList.add('rotating');
+  } else if (type === 'success') {
+    icon.innerText = '✅';
+    icon.classList.remove('rotating');
+  } else {
+    icon.innerText = '❌';
+    icon.classList.remove('rotating');
+  }
 }
 
 function getMockWeek() {
@@ -1183,15 +1258,56 @@ function renderHomeWeekList() {
         <div class="week-badge" style="background:${colors[i % colors.length]}">${i + 1}</div>
         <div class="week-info">
           <div class="week-name">${w.name || '未命名周'}</div>
-          <div class="week-meta">${wordCount} 个单词 · ${(w.audios && w.audios.length > 0) ? w.audios.length + ' 个音频' : (w.audioName ? '1 个音频' : '无音频')}</div>
+          <div class="week-meta">${wordCount} 个单词 · ${(uploadData.audioFiles && uploadData.audioFiles.length > 0) ? uploadData.audioFiles.length + ' 个音频' : '默认发音'}</div>
           <div class="week-progress-bar">
             <div class="week-progress-fill" style="width:${pct}%"></div>
           </div>
         </div>
-        <div class="week-arrow">›</div>
+        <div class="week-actions">
+           <button class="action-btn edit" onclick="event.stopPropagation();editWeek('${w.id}')" title="编辑">✏️</button>
+           <button class="action-btn delete" onclick="event.stopPropagation();confirmDeleteWeek('${w.id}')" title="删除">🗑️</button>
+        </div>
       </div>
     `;
   }).join('') + '</div>';
+}
+
+function confirmDeleteWeek(id) {
+  const week = state.weeks.find(w => w.id === id);
+  if (!week || !window.confirm(`确定要彻底删除“${week.name}”计划吗？`)) return;
+  state.weeks = state.weeks.filter(w => w.id !== id);
+  saveStateCloud();
+  renderHome();
+  showToast('已从云端移除', 'success');
+}
+
+function editWeek(id) {
+  const week = state.weeks.find(w => w.id === id);
+  if (!week) return;
+  state.editingWeekId = id;
+  switchPage('Upload');
+  
+  document.getElementById('weekNameInput').value = week.name || '';
+  if (week.words) {
+    document.getElementById('wordTableBody').innerHTML = week.words.map(w => `
+      <tr>
+        <td><input type="text" class="word-table-input" value="${w.word}"></td>
+        <td><input type="text" class="word-table-input" value="${w.pos || ''}"></td>
+        <td><input type="text" class="word-table-input" value="${w.meaning}"></td>
+      </tr>
+    `).join('');
+  }
+  
+  if (week.grammar) {
+    const gc = document.getElementById('grammarCard');
+    if (gc) {
+      gc.style.display = 'block';
+      document.getElementById('grammarPreview').innerHTML = week.grammar;
+      document.getElementById('grammarEditText').value = week.grammar;
+    }
+  }
+  
+  document.getElementById('saveWeekBtn').innerHTML = '💾 更新云端计划';
 }
 
 // ===== 上传处理 =====
@@ -1457,7 +1573,6 @@ function renderParsedWords(words) {
 
 // ===== 保存周数据 =====
 async function saveWeek() {
-  // Get edited words from textarea
   const editText = document.getElementById('wordEditText').value.trim();
   if (editText) {
     const lines = editText.split('\n').filter(l => l.trim());
@@ -1466,81 +1581,72 @@ async function saveWeek() {
       let word = parts[0] || '';
       let meaning = parts.slice(1).join(' ') || '';
       let pos = '';
-      
       const posMatch = meaning.match(/^([a-z]{1,4}\.)\s*(.*)/i);
-      if (posMatch) {
-        pos = posMatch[1].toLowerCase();
-        meaning = posMatch[2];
-      }
-      
-      return {
-        word,
-        pos,
-        meaning,
-        mastered: false
-      };
+      if (posMatch) { pos = posMatch[1].toLowerCase(); meaning = posMatch[2]; }
+      return { word, pos, meaning, mastered: false };
     }).filter(w => w.word);
   }
 
-  if (uploadData.words.length === 0) {
-    showToast('请先上传单词表或手动输入单词', 'error');
-    return;
+  if (uploadData.words.length === 0) return showToast('请先上传或输入单词', 'error');
+
+  const isEdit = !!state.editingWeekId;
+  const name = document.getElementById('weekNameInput').value.trim() || (isEdit ? '' : `第${state.weeks.length + 1}周`);
+
+  const finalAudios = [];
+  for (const a of uploadData.audioFiles) {
+    if (a.data) { finalAudios.push({ name: a.name, data: a.data }); } 
+    else { try { const base64 = await fileToBase64(a.file); finalAudios.push({ name: a.name, data: base64 }); } catch(e) {} }
   }
 
-  const weekName = document.getElementById('weekNameInput').value.trim() || `第${state.weeks.length + 1}周`;
-  const weekId = 'week_' + Date.now();
-
-  const week = {
-    id: weekId,
-    name: weekName,
+  const newWeek = {
+    id: isEdit ? state.editingWeekId : 'week_' + Date.now(),
+    name: name || (isEdit ? (state.weeks.find(w=>w.id===state.editingWeekId)?.name) : '未命名'),
     words: uploadData.words,
-    audios: [],  // { name, data(base64 or null) }
-    createdAt: new Date().toISOString()
+    audios: finalAudios,
+    grammar: uploadData.grammar,
+    createdAt: isEdit ? (state.weeks.find(w=>w.id===state.editingWeekId)?.createdAt) : new Date().toISOString()
   };
 
-  // Store audios (base64 if small enough)
-  for (const a of uploadData.audioFiles) {
-    let data = null;
-    if (a.file.size < 5 * 1024 * 1024) {
-      try { data = await fileToBase64(a.file); } catch(e) { console.warn('音频转base64失败:', e); }
-    }
-    week.audios.push({ name: a.name, data });
+  if (isEdit) {
+    const idx = state.weeks.findIndex(w => w.id === state.editingWeekId);
+    if (idx !== -1) state.weeks[idx] = newWeek;
+  } else {
+    state.weeks.push(newWeek);
   }
 
-  state.weeks.push(week);
-  saveState();
+  await saveStateCloud();
+  resetUploadPage();
+  switchPage('Home');
+  showToast(isEdit ? '已同步更新至云端' : '已成功保存至云端', 'success');
+}
 
-  // Reset upload form
-  uploadData.audioFiles.forEach(a => URL.revokeObjectURL(a.url));
-  uploadData = { audioFiles: [], words: [], wordFileName: '' };
-  document.getElementById('audioPreview').innerHTML = '';
-  document.getElementById('wordPreview').innerHTML = '';
-  document.getElementById('parsedWordsCard').style.display = 'none';
+function resetUploadPage() {
+  state.editingWeekId = null;
+  uploadData = { audioFiles: [], words: [], wordFileName: '', grammar: '' };
   document.getElementById('weekNameInput').value = '';
-  document.getElementById('audioFileInput').value = '';
-  document.getElementById('wordFileInput').value = '';
-
-  showToast(`"${weekName}" 保存成功！共 ${week.words.length} 个单词`, 'success');
-
-  // Record progress
-  recordProgress('wordsLearned', week.words.length);
-
-  // Switch to home
-  setTimeout(() => {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('pageHome').classList.add('active');
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.querySelectorAll('.nav-item')[0].classList.add('active');
-    renderHome();
-  }, 500);
+  document.getElementById('wordPreview').innerHTML = '';
+  document.getElementById('audioPreview').innerHTML = '';
+  document.getElementById('wordEditText').value = '';
+  document.getElementById('parsedWordsCard').style.display = 'none';
+  const gc = document.getElementById('grammarCard');
+  if (gc) { gc.style.display = 'none'; document.getElementById('grammarPreview').innerHTML = ''; }
+  document.getElementById('saveWeekBtn').innerHTML = '💾 保存本周学习内容';
 }
 
 function fileToBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = reject;
     reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+}
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
   });
 }
 
