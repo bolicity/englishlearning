@@ -758,16 +758,18 @@ body {
 .app-container { 
   max-width: 480px; 
   margin: 0 auto;
-  padding-bottom: 20px; 
+  padding-bottom: 100px; /* 增加底部间距，防止遮挡按钮 */
   min-height: 100vh;
   position: relative;
   background: var(--bg);
+  z-index: 1;
 }
 
 .bottom-nav {
   position: fixed; bottom: 0;
   max-width: 480px; left: 50%; transform: translateX(-50%);
   width: 100%;
+  z-index: 1000; /* 确保在最顶层 */
 }
 
 /* 小手机微调 */
@@ -1076,19 +1078,38 @@ async function loadStateCloud() {
 
 async function saveStateCloud() {
   updateSyncStatus('syncing', '正在保存到云端...');
+
+  // 清理 legacy base64 数据以缩小负载大小，防止因负载过大导致挂起
+  if (state.weeks) {
+    state.weeks.forEach(w => {
+      if (w.audioData) delete w.audioData; // 移除旧版 Base64
+    });
+  }
+
   saveStateLocal(); 
   isCloudSaving = true;
-  
+
   try {
-    const { error } = await supabaseClient
+    // 增加超时控制：6秒内如果没响应则认为失败，防止前端永久挂起
+    const savePromise = supabaseClient
       .from('english_planet_data')
       .upsert({ key: DATA_KEY, data: state, updated_at: new Date() });
 
+    const timeoutPromise = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('云端响应超时，请检查网络')), 6000)
+    );
+
+    const { error } = await Promise.race([savePromise, timeoutPromise]);
+
     if (error) throw error;
     updateSyncStatus('success', '已安全同步至云端');
+    return true;
   } catch(e) {
     console.error('云端保存失败:', e);
     updateSyncStatus('error', '云同步失败 (本地已存)');
+    // 如果是网络挂起导致的超时，给与提示
+    if (e.message.includes('超时')) throw e;
+    return false;
   } finally {
     isCloudSaving = false;
   }
@@ -1642,11 +1663,10 @@ async function saveWeek() {
   
   try {
     saveBtn.disabled = true;
-    saveBtn.innerHTML = '⏳ 正在处理数据...';
+    saveBtn.innerHTML = '⏳ 正在解析本地数据...';
 
     const editText = document.getElementById('wordEditText')?.value.trim();
     if (editText) {
-      // 只有在编辑框有内容时才覆盖 uploadData.words
       const lines = editText.split('\n').filter(l => l.trim());
       uploadData.words = lines.map(line => {
         const parts = line.split(/[\t|]/).map(p => p.trim());
@@ -1673,8 +1693,9 @@ async function saveWeek() {
     const finalAudios = isEdit && existingWeek?.audios ? [...existingWeek.audios] : [];
     
     if (uploadData.audioFiles.length > 0) {
-      showToast('正在同步音频资源...', 'info');
-      for (const a of uploadData.audioFiles) {
+      for (let i = 0; i < uploadData.audioFiles.length; i++) {
+        const a = uploadData.audioFiles[i];
+        saveBtn.innerHTML = `⏳ 上传音频 (${i + 1}/${uploadData.audioFiles.length})...`;
         try {
           finalAudios.push(await uploadAudioFileToCloud(a.file));
         } catch(e) {
@@ -1700,13 +1721,19 @@ async function saveWeek() {
       state.weeks.push(newWeek);
     }
 
+    saveBtn.innerHTML = '☁️ 正在同步到云端数据库...';
     await saveStateCloud();
-    resetUploadPage();
-    switchPage('Home');
-    showToast(isEdit ? '已同步更新至云端' : '已成功保存至云端', 'success');
+
+    saveBtn.innerHTML = '✅ 完成！正在重置页面...';
+    setTimeout(() => {
+      resetUploadPage();
+      switchPage('Home');
+      showToast(isEdit ? '已同步更新至云端' : '已成功保存至云端', 'success');
+    }, 400);
+
   } catch (err) {
-    console.error('保存失败:', err);
-    alert('保存过程发生异常: ' + (err.message || '未知错误'));
+    console.error('保存过程发生致命错误:', err);
+    alert('⚠️ 保存过程异常:\n' + (err.message || '未知错误') + '\n\n提示: 如果网络连接超时，请检查网络设置。');
   } finally {
     saveBtn.disabled = false;
     saveBtn.innerHTML = originalBtnText;
@@ -1751,22 +1778,6 @@ function resetUploadPage() {
   document.getElementById('saveWeekBtn').innerHTML = '💾 保存本周学习内容';
 }
 
-function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-  });
-}
-function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-  });
-}
 
 // ===== 学习页面 =====
 function openWeekStudy(weekId) {
