@@ -1175,9 +1175,22 @@ function showToast(message, type = 'info') {
 // ===== 页面切换 =====
 function switchPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page' + name).classList.add('active');
+  const targetPage = document.getElementById('page' + name);
+  if (targetPage) targetPage.classList.add('active');
+  
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  event.currentTarget.classList.add('active');
+  
+  // 如果是通过点击触发，高亮对应的 nav-item
+  if (typeof event !== 'undefined' && event && event.currentTarget) {
+    event.currentTarget.classList.add('active');
+  } else {
+    // 否则根据名称尝试匹配
+    const navs = document.querySelectorAll('.nav-item');
+    if (name === 'Home') navs[0].classList.add('active');
+    else if (name === 'Upload') navs[1].classList.add('active');
+    else if (name === 'Study') navs[2].classList.add('active');
+    else if (name === 'Stats') navs[3].classList.add('active');
+  }
 
   if (name === 'Home') renderHome();
   if (name === 'Stats') renderStats();
@@ -1599,56 +1612,68 @@ function renderParsedWords(words) {
 
 // ===== 保存周数据 =====
 async function saveWeek() {
-  const editText = document.getElementById('wordEditText').value.trim();
-  if (editText) {
-    const lines = editText.split('\n').filter(l => l.trim());
-    uploadData.words = lines.map(line => {
-      const parts = line.split(/[\t|]/).map(p => p.trim());
-      let word = parts[0] || '';
-      let meaning = parts.slice(1).join(' ') || '';
-      let pos = '';
-      const posMatch = meaning.match(/^([a-z]{1,4}\.)\s*(.*)/i);
-      if (posMatch) { pos = posMatch[1].toLowerCase(); meaning = posMatch[2]; }
-      return { word, pos, meaning, mastered: false };
-    }).filter(w => w.word);
-  }
-
-  if (uploadData.words.length === 0) return showToast('请先上传或输入单词', 'error');
-
-  const isEdit = !!state.editingWeekId;
-  const name = document.getElementById('weekNameInput').value.trim() || (isEdit ? '' : `第${state.weeks.length + 1}周`);
-
-  const existingWeek = isEdit ? state.weeks.find(w => w.id === state.editingWeekId) : null;
-  const finalAudios = isEdit && existingWeek?.audios ? [...existingWeek.audios] : [];
-  for (const a of uploadData.audioFiles) {
-    try {
-      finalAudios.push(await uploadAudioFileToCloud(a.file));
-    } catch(e) {
-      console.error('音频云端上传失败:', e);
-      showToast(`"${a.name}" 上传失败`, 'error');
+  try {
+    const editText = document.getElementById('wordEditText').value.trim();
+    if (editText) {
+      const lines = editText.split('\n').filter(l => l.trim());
+      uploadData.words = lines.map(line => {
+        const parts = line.split(/[\t|]/).map(p => p.trim());
+        let word = parts[0] || '';
+        let meaning = parts.slice(1).join(' ') || '';
+        let pos = '';
+        const posMatch = meaning.match(/^([a-z]{1,4}\.)\s*(.*)/i);
+        if (posMatch) { pos = posMatch[1].toLowerCase(); meaning = posMatch[2]; }
+        return { word, pos, meaning, mastered: false };
+      }).filter(w => w.word);
     }
+
+    if (!uploadData.words || uploadData.words.length === 0) {
+      return showToast('请先上传或输入单词', 'error');
+    }
+
+    const isEdit = !!state.editingWeekId;
+    const nameInput = document.getElementById('weekNameInput').value.trim();
+    const name = nameInput || (isEdit ? '' : `第${state.weeks.length + 1}周`);
+
+    const existingWeek = isEdit ? state.weeks.find(w => w.id === state.editingWeekId) : null;
+    const finalAudios = isEdit && existingWeek?.audios ? [...existingWeek.audios] : [];
+    
+    if (uploadData.audioFiles.length > 0) {
+      showToast('正在同步音频资源...', 'info');
+      for (const a of uploadData.audioFiles) {
+        try {
+          finalAudios.push(await uploadAudioFileToCloud(a.file));
+        } catch(e) {
+          console.error('音频云端上传失败:', e);
+          showToast(`"${a.name}" 上传失败`, 'error');
+        }
+      }
+    }
+
+    const newWeek = {
+      id: isEdit ? state.editingWeekId : 'week_' + Date.now(),
+      name: name || (isEdit ? (existingWeek?.name || '已编辑') : '未命名'),
+      words: uploadData.words,
+      audios: finalAudios,
+      grammar: uploadData.grammar,
+      createdAt: isEdit ? (existingWeek?.createdAt || new Date().toISOString()) : new Date().toISOString()
+    };
+
+    if (isEdit) {
+      const idx = state.weeks.findIndex(w => w.id === state.editingWeekId);
+      if (idx !== -1) state.weeks[idx] = newWeek;
+    } else {
+      state.weeks.push(newWeek);
+    }
+
+    await saveStateCloud();
+    resetUploadPage();
+    switchPage('Home');
+    showToast(isEdit ? '已同步更新至云端' : '已成功保存至云端', 'success');
+  } catch (err) {
+    console.error('保存失败:', err);
+    alert('保存失败: ' + err.message);
   }
-
-  const newWeek = {
-    id: isEdit ? state.editingWeekId : 'week_' + Date.now(),
-    name: name || (isEdit ? (state.weeks.find(w=>w.id===state.editingWeekId)?.name) : '未命名'),
-    words: uploadData.words,
-    audios: finalAudios,
-    grammar: uploadData.grammar,
-    createdAt: isEdit ? (state.weeks.find(w=>w.id===state.editingWeekId)?.createdAt) : new Date().toISOString()
-  };
-
-  if (isEdit) {
-    const idx = state.weeks.findIndex(w => w.id === state.editingWeekId);
-    if (idx !== -1) state.weeks[idx] = newWeek;
-  } else {
-    state.weeks.push(newWeek);
-  }
-
-  await saveStateCloud();
-  resetUploadPage();
-  switchPage('Home');
-  showToast(isEdit ? '已同步更新至云端' : '已成功保存至云端', 'success');
 }
 
 async function uploadAudioFileToCloud(file) {
@@ -1984,10 +2009,17 @@ function setupPronunciationEngine() {
 }
 
 function normalizePronunciationWord(word) {
-  // If it contains a slash or multiple words, take the most likely core word
-  let core = String(word || '').split(/[\s\/]/).filter(s => s.length > 2).pop() || word;
+  if (!word) return '';
+  // 如果是词组（包含空格），保留空格但不进行 pop 截断
+  const hasSpace = /\s/.test(word);
+  if (hasSpace) {
+    return word.trim().toLowerCase().replace(/[^a-z\s-]/g, '');
+  }
   
-  return String(core || '')
+  // 对于单单词，或者带斜杠的，尝试提取核心词
+  let core = String(word).split(/[\/]/).filter(s => s.length > 1)[0] || word;
+  
+  return String(core)
     .trim()
     .toLowerCase()
     .replace(/^[^a-z]+|[^a-z-]+$/g, '')
@@ -1995,25 +2027,32 @@ function normalizePronunciationWord(word) {
 }
 
 async function speakWord(word) {
+  if (!word) return;
+  const isPhrase = /\s/.test(word.trim());
   const cleanWord = normalizePronunciationWord(word);
+  
   if (!cleanWord) return;
 
   window.speechSynthesis?.cancel();
   pronunciationState.player.pause();
   pronunciationState.player.currentTime = 0;
 
-  const audioUrl = await getDictionaryAudioUrl(cleanWord);
-  if (audioUrl) {
-    pronunciationState.player.src = audioUrl;
-    try {
-      await pronunciationState.player.play();
-      return;
-    } catch (error) {
-      console.warn('真人发音播放失败，切换到系统发音:', error);
+  // 词组不尝试字典 API（因为多词查询通常返回 404），直接用系统 TTS
+  if (!isPhrase) {
+    const audioUrl = await getDictionaryAudioUrl(cleanWord);
+    if (audioUrl) {
+      pronunciationState.player.src = audioUrl;
+      try {
+        await pronunciationState.player.play();
+        return;
+      } catch (error) {
+        console.warn('真人发音播放失败，切换到系统发音:', error);
+      }
     }
   }
 
-  speakWithBestSystemVoice(cleanWord);
+  // 朗读原始词组/单词，不使用可能被截断的 cleanWord
+  speakWithBestSystemVoice(word.trim());
 }
 
 async function getDictionaryAudioUrl(word) {
