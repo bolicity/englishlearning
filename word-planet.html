@@ -365,6 +365,18 @@ body {
 }
 .word-speak-btn:hover { background: var(--pink); transform: scale(1.1); }
 
+.word-pos {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--pink);
+  background: rgba(255, 107, 157, 0.1);
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-right: 6px;
+  text-transform: lowercase;
+}
+
 /* ===== 闪卡模式 ===== */
 .flashcard-container {
   perspective: 1000px;
@@ -1313,16 +1325,24 @@ function parseWordsFromText(text) {
       }
     }
 
-    if (parts && parts.length >= 2) {
-      // First part is the word, rest is meaning
-      const word = parts[0].replace(/^\d+[\.\)、]\s*/, ''); // Remove numbering
-      const meaning = parts.slice(1).join(' ');
+      // Separate word and meaning
+      let word = parts[0].replace(/^\d+[\.\)、]\s*/, ''); // Remove numbering
+      let fullMeaning = parts.slice(1).join(' ').trim();
+      
+      // Extract POS (e.g., n. v. adj. un. etc.)
+      let pos = '';
+      const posMatch = fullMeaning.match(/^([a-z]{1,4}\.)\s*(.*)/i);
+      if (posMatch) {
+        pos = posMatch[1].toLowerCase();
+        fullMeaning = posMatch[2];
+      }
+      
       if (word.length > 0 && word.length < 50) {
-        words.push({ word, meaning, mastered: false });
+        words.push({ word, pos, meaning: fullMeaning, mastered: false });
       }
     } else if (/^[a-zA-Z]/.test(line) && line.length < 50) {
       // Single word without meaning
-      words.push({ word: line.replace(/^\d+[\.\)、]\s*/, ''), meaning: '', mastered: false });
+      words.push({ word: line.replace(/^\d+[\.\)、]\s*/, ''), pos: '', meaning: '', mastered: false });
     }
   }
   return words;
@@ -1335,7 +1355,10 @@ function renderParsedWords(words) {
       <div class="word-num">${i + 1}</div>
       <div class="word-text">
         <div class="word-en">${w.word}</div>
-        <div class="word-cn">${w.meaning || '暂无释义'}</div>
+        <div class="word-cn">
+          ${w.pos ? `<span class="word-pos">${w.pos}</span>` : ''}
+          ${w.meaning || '暂无释义'}
+        </div>
       </div>
     </div>
   `).join('') + (words.length > 50 ? `<div style="text-align:center;padding:8px;color:var(--text-light);font-size:13px">...还有 ${words.length - 50} 个单词</div>` : '') + '</div>';
@@ -1349,9 +1372,20 @@ async function saveWeek() {
     const lines = editText.split('\n').filter(l => l.trim());
     uploadData.words = lines.map(line => {
       const parts = line.split(/[\t|]/).map(p => p.trim());
+      let word = parts[0] || '';
+      let meaning = parts.slice(1).join(' ') || '';
+      let pos = '';
+      
+      const posMatch = meaning.match(/^([a-z]{1,4}\.)\s*(.*)/i);
+      if (posMatch) {
+        pos = posMatch[1].toLowerCase();
+        meaning = posMatch[2];
+      }
+      
       return {
-        word: parts[0] || '',
-        meaning: parts.slice(1).join(' ') || '',
+        word,
+        pos,
+        meaning,
         mastered: false
       };
     }).filter(w => w.word);
@@ -1566,7 +1600,10 @@ function renderListenMode(week) {
           <div class="word-num">${i + 1}</div>
           <div class="word-text">
             <div class="word-en">${w.word}</div>
-            <div class="word-cn">${w.meaning || ''}</div>
+            <div class="word-cn">
+              ${w.pos ? `<span class="word-pos">${w.pos}</span>` : ''}
+              ${w.meaning || ''}
+            </div>
           </div>
           <button class="word-speak-btn" onclick="event.stopPropagation();speakWord('${w.word}')">🔊</button>
         </div>
@@ -1655,7 +1692,10 @@ function setupPronunciationEngine() {
 }
 
 function normalizePronunciationWord(word) {
-  return String(word || '')
+  // If it contains a slash or multiple words, take the most likely core word
+  let core = String(word || '').split(/[\s\/]/).filter(s => s.length > 2).pop() || word;
+  
+  return String(core || '')
     .trim()
     .toLowerCase()
     .replace(/^[^a-z]+|[^a-z-]+$/g, '')
@@ -1774,7 +1814,10 @@ function renderFlashcardMode(week) {
           <div class="card-hint">👆 点击翻转查看释义</div>
         </div>
         <div class="flashcard-face flashcard-back">
-          <div class="card-meaning">${word.meaning || '暂无释义'}</div>
+          <div class="card-meaning">
+            ${word.pos ? `<span class="word-pos" style="font-size:16px;margin-bottom:8px;margin-right:0;display:block;width:fit-content;margin-left:auto;margin-right:auto">${word.pos}</span>` : ''}
+            ${word.meaning || '暂无释义'}
+          </div>
           ${word.meaning ? `<div class="card-example">"${word.word}"</div>` : ''}
         </div>
       </div>
@@ -1851,6 +1894,7 @@ function renderQuizMode(week) {
         ${options.map((opt, i) => `
           <div class="quiz-option" id="quizOpt${i}" onclick="checkQuizAnswer(this, '${opt.meaning.replace(/'/g, "\\'")}', '${correctWord.meaning.replace(/'/g, "\\'")}')">
             <span style="font-weight:800;color:var(--pink);margin-right:8px">${String.fromCharCode(65 + i)}</span>
+            ${opt.pos ? `<span class="word-pos">${opt.pos}</span>` : ''}
             ${opt.meaning || '(无释义)'}
           </div>
         `).join('')}
@@ -2008,7 +2052,10 @@ function renderReadingMode(week) {
   container.innerHTML = `
     <div class="reading-card">
       <div class="reading-word">${word.word}</div>
-      <div class="reading-phonetic">${word.meaning || ''}</div>
+      <div class="reading-phonetic">
+        ${word.pos ? `<span class="word-pos" style="border:1px solid white;background:transparent;color:white;margin-bottom:4px">${word.pos}</span><br>` : ''}
+        ${word.meaning || ''}
+      </div>
       <button class="btn btn-sm" style="background:rgba(255,255,255,0.2);color:white;border:none;margin:12px 0"
               onclick="speakWord('${word.word}')">🔊 听标准发音</button>
       <div class="record-btn" id="recordBtn" onclick="toggleRecording('${word.word}')">🎙️</div>
