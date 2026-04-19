@@ -752,19 +752,51 @@ body {
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ===== 响应式 ===== */
+/* ===== 响应式适配优化 ===== */
+
+/* 小手机适配 */
 @media (max-width: 380px) {
-  .app-title { font-size: 24px; }
-  .flashcard-container { height: 360px; }
+  .app-header { padding: 15px 15px 5px; }
+  .app-title { font-size: 22px; }
+  .flashcard-container { height: 380px; }
   .flashcard-front .card-word { font-size: 28px; }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .page { padding: 8px 15px 15px; }
 }
+
+/* 平板 (Pad) / 桌面宽屏适配 */
 @media (min-width: 481px) {
-  .app-container { padding-bottom: 20px; }
+  .app-container { 
+    max-width: 720px; 
+    padding-bottom: 20px; 
+    /* 在宽屏上增加一些圆角阴影，使其看起来像精美的应用 */
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+    margin: 20px auto;
+    border-radius: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    min-height: calc(100vh - 40px);
+  }
+  
   .bottom-nav {
     position: sticky; bottom: 0;
-    max-width: 480px; margin: 0 auto;
+    max-width: 720px; margin: 0 auto;
+    border-radius: 0 0 30px 30px;
   }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .flashcard-container {
+    max-width: 400px;
+    height: 480px;
+  }
+}
+
+/* 窄平板横屏 */
+@media (min-height: 600px) and (min-width: 1024px) {
+  body { display: flex; align-items: center; justify-content: center; background: #fdf3f8; }
 }
 
 /* ===== 减少动画偏好 ===== */
