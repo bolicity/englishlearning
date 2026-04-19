@@ -1341,10 +1341,10 @@ function parseWordsFromText(text) {
   const words = [];
 
   for (const line of lines) {
-    // Try different separators: tab, |, -, multiple spaces
+    // 方案 1: 尝试强分隔符 (Tab, |, --)
     let parts = null;
-    const separators = ['\t', '|', ' - ', '  '];
-    for (const sep of separators) {
+    const strongSeps = ['\t', '|', ' -- '];
+    for (const sep of strongSeps) {
       if (line.includes(sep)) {
         parts = line.split(sep).map(p => p.trim()).filter(p => p);
         break;
@@ -1352,27 +1352,58 @@ function parseWordsFromText(text) {
     }
 
     if (parts && parts.length >= 2) {
-      // Separate word and meaning
-      let word = parts[0].replace(/^\d+[\.\)、]\s*/, ''); // Remove numbering
+      let word = parts[0].replace(/^\d+[\.\)、]\s*/, '');
       let fullMeaning = parts.slice(1).join(' ').trim();
+      let { pos, meaning } = extractPos(fullMeaning);
+      words.push({ word, pos, meaning, mastered: false });
+      continue;
+    }
+
+    // 方案 2: 使用智能正则解析 (English + [POS] + Chinese)
+    // 匹配: 英文部分 + [可选词性] + 中文含义
+    const smartRegex = /^(\d+[\.\)、]\s*)?([a-zA-Z\s'-\/]+)\s+([a-z]{1,4}\.)?\s*([\u4e00-\u9fa5].*)$/i;
+    const match = line.match(smartRegex);
+    if (match) {
+      const word = match[2].trim();
+      const pos = match[3] ? match[3].toLowerCase().trim() : '';
+      const meaning = match[4].trim();
+      words.push({ word, pos, meaning, mastered: false });
+      continue;
+    }
+
+    // 方案 3: 兜底处理 (尝试通过第一个中文字符切分)
+    const chineseStart = line.search(/[\u4e00-\u9fa5]/);
+    if (chineseStart > 0) {
+      let wordPart = line.substring(0, chineseStart).trim().replace(/^\d+[\.\)、]\s*/, '');
+      let chinesePart = line.substring(chineseStart).trim();
       
-      // Extract POS (e.g., n. v. adj. un. etc.)
-      let pos = '';
-      const posMatch = fullMeaning.match(/^([a-z]{1,4}\.)\s*(.*)/i);
-      if (posMatch) {
-        pos = posMatch[1].toLowerCase();
-        fullMeaning = posMatch[2];
-      }
-      
-      if (word.length > 0 && word.length < 50) {
-        words.push({ word, pos, meaning: fullMeaning, mastered: false });
-      }
-    } else if (/^[a-zA-Z]/.test(line) && line.length < 50) {
-      // Single word without meaning
+      // 检查 wordPart 结尾是否包含词性
+      let { pos, meaning: newWord } = extractPosSuffix(wordPart);
+      words.push({ word: newWord, pos, meaning: chinesePart, mastered: false });
+    } else {
+      // 纯英文
       words.push({ word: line.replace(/^\d+[\.\)、]\s*/, ''), pos: '', meaning: '', mastered: false });
     }
   }
   return words;
+}
+
+// 辅助函数：从开头提取词性
+function extractPos(text) {
+  const posMatch = text.match(/^([a-z]{1,4}\.)\s*(.*)/i);
+  if (posMatch) {
+    return { pos: posMatch[1].toLowerCase(), meaning: posMatch[2] };
+  }
+  return { pos: '', meaning: text };
+}
+
+// 辅助函数：从结尾提取词性 (例如 "beauty n.")
+function extractPosSuffix(text) {
+  const posMatch = text.match(/(.*)\s+([a-z]{1,4}\.)$/i);
+  if (posMatch) {
+    return { pos: posMatch[2].toLowerCase(), meaning: posMatch[1].trim() };
+  }
+  return { pos: '', meaning: text };
 }
 
 function renderParsedWords(words) {
