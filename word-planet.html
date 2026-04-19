@@ -1919,7 +1919,10 @@ function renderWordItems(words) {
         </div>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
-        ${w.mastered ? '<span style="font-size:12px;color:var(--green)">✅</span>' : ''}
+        <button class="word-speak-btn ${w.mastered ? 'mastered' : ''}" 
+                style="background:transparent;border:none;font-size:16px;cursor:pointer;opacity:${w.mastered ? 1 : 0.2}"
+                onclick="event.stopPropagation();toggleMastered('${w.word}', true)" 
+                title="${w.mastered ? '标记为未掌握' : '标记为已掌握'}">✅</button>
         <button class="word-speak-btn" onclick="event.stopPropagation();speakWord('${w.word}')">🔊</button>
       </div>
     </div>
@@ -2156,7 +2159,10 @@ function renderFlashcardMode(week) {
     <div class="flashcard-counter">${idx + 1} / ${week.words.length}</div>
     <div class="flashcard-nav">
       <button class="btn btn-outline btn-sm" onclick="prevFlashcard()">👈 上一个</button>
-      <button class="btn btn-success btn-sm" onclick="markMastered('${word.word}')">✅ 记住了</button>
+      <button class="btn ${word.mastered ? 'btn-success' : 'btn-outline'} btn-sm" 
+              onclick="toggleMastered('${word.word}')">
+        ${word.mastered ? '✅ 已记住' : '記住了'}
+      </button>
       <button class="btn btn-primary btn-sm" onclick="nextFlashcard()">下一个 👉</button>
     </div>
   `;
@@ -2183,13 +2189,28 @@ function prevFlashcard() {
   }
 }
 
-function markMastered(word) {
+function toggleMastered(word, silent = false) {
   const week = state.weeks.find(w => w.id === state.currentWeekId);
   const w = week.words.find(w => w.word === word);
-  if (w) w.mastered = true;
+  if (!w) return;
+
+  const newState = !w.mastered;
+  w.mastered = newState;
   saveState();
-  showToast(`"${word}" 已标记为掌握 ✅`, 'success');
-  nextFlashcard();
+  
+  if (silent) {
+    // 列表模式静默刷新
+    const query = document.getElementById('wordSearchInput')?.value || '';
+    const hideMastered = document.getElementById('hideMasteredCheckbox')?.checked || false;
+    filterWords(); 
+  } else {
+    // 闪卡模式
+    showToast(`"${word}" ${newState ? '已标记为掌握 ✅' : '已取消掌握标记 🔄'}`, 'success');
+    renderStudy(); // 刷新当前卡片
+    if (newState) {
+      setTimeout(() => nextFlashcard(), 600);
+    }
+  }
 }
 
 // ===== 测验模式 =====
