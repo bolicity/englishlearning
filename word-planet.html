@@ -994,8 +994,10 @@ function loadState() {
     if (saved) {
       const parsed = JSON.parse(saved);
       state = { ...state, ...parsed };
-    } else {
-      // 没有任何数据时，加载模拟数据
+    }
+    
+    // 如果没有任何学习周（包括旧用户空库），强制加载模拟数据以供测试
+    if (!state.weeks || state.weeks.length === 0) {
       state.weeks = [getMockWeek()];
       saveState();
     }
@@ -1151,12 +1153,12 @@ function renderHomeCalendar() {
 
 function renderHomeWeekList() {
   const container = document.getElementById('homeWeekList');
-  if (state.weeks.length === 0) {
+  if (!state.weeks || state.weeks.length === 0) {
     container.innerHTML = `
-      <div class="empty-state" style="padding:20px">
-        <div class="empty-icon" style="font-size:48px">📭</div>
-        <div class="empty-title">还没有学习内容</div>
-        <div class="empty-desc">点击底部"上传"按钮添加本周的音频和单词表</div>
+      <div class="empty-state" style="padding:40px 0">
+        <div class="empty-icon">📂</div>
+        <div class="empty-title">暂无学习周数据</div>
+        <div class="empty-desc">点击下方“上传”按钮或刷新页面加载演示数据</div>
       </div>
     `;
     return;
@@ -1170,17 +1172,6 @@ function renderHomeWeekList() {
     'linear-gradient(135deg, #F472B6, #60A5FA)',
     'linear-gradient(135deg, #A78BFA, #F472B6)',
   ];
-
-  if (state.weeks.length === 0) {
-    container.innerHTML = `
-      <div class="empty-state" style="padding:40px 0">
-        <div class="empty-icon">📂</div>
-        <div class="empty-title">暂无学习周</div>
-        <div class="empty-desc">点击下方“上传”按钮开始添加单词吧</div>
-      </div>
-    `;
-    return;
-  }
 
   container.innerHTML = '<div class="week-list">' + state.weeks.map((w, i) => {
     const prog = getWeekProgress(w.id);
