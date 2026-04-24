@@ -5,123 +5,139 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>沉浸式阅读器 | Owen Learning Viewer</title>
   <link rel="stylesheet" href="index.css">
+  <!-- 重新引入 PDF.js 脚本：这是唯一能让手机不下载直接看的方法 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
   <style>
-    /* 极简沉浸式布局 */
-    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #f4f4f9; font-family: sans-serif; }
-    .viewer-container { display: flex; flex-direction: column; height: 100vh; width: 100vw; }
-    
+    body { background: #f4f4f9; display: flex; flex-direction: column; min-height: 100vh; margin: 0; }
     .viewer-nav {
-      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
       background: white;
+      padding: 12px 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 0 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      z-index: 100;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
     }
-    
-    .back-btn { color: var(--pink); text-decoration: none; font-weight: bold; font-size: 0.9rem; }
-    .file-name { font-weight: bold; color: #333; font-size: 0.85rem; max-width: 50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .action-btn { background: var(--pink); color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.8rem; font-weight: bold; }
+    .back-link { color: var(--pink); text-decoration: none; font-weight: 800; }
+    .file-info { font-weight: 700; color: #333; font-size: 0.85rem; max-width: 60%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-    .viewer-main { flex: 1; position: relative; background: #525659; }
+    .viewer-content { flex-grow: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 10px; box-sizing: border-box; }
     
-    /* 核心逻辑：如果是 PC 就显示预览，如果是手机就显示引导 */
-    #pdf-iframe { width: 100%; height: 100%; border: none; display: none; }
+    /* 每一页的容器 */
+    .pdf-page-wrapper {
+      margin-bottom: 12px;
+      background: white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    canvas { width: 100% !important; height: auto !important; display: block; }
 
-    /* 手机端专用面板 */
-    .mobile-panel {
-      display: none;
+    /* 加载中动画 */
+    .loading-overlay {
+      position: fixed;
+      top: 56px; left: 0; right: 0; bottom: 0;
+      background: #f4f4f9;
+      display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100%;
-      background: white;
-      padding: 30px;
-      text-align: center;
-    }
-    .mobile-icon { font-size: 4rem; margin-bottom: 20px; }
-    .mobile-title { font-weight: 900; font-size: 1.2rem; color: #333; margin-bottom: 10px; }
-    .mobile-desc { color: #666; font-size: 0.9rem; line-height: 1.6; margin-bottom: 30px; }
-
-    .loader {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 50;
+      z-index: 100;
     }
     .spinner {
-      width: 32px; height: 32px;
-      border: 3px solid #f3f3f3;
-      border-top: 3px solid var(--pink);
+      width: 40px; height: 40px;
+      border: 4px solid var(--pink-light);
+      border-top: 4px solid var(--pink);
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* 给手机端留个后路按钮 */
+    .mobile-fallback {
+      display: none;
+      padding: 15px;
+      text-align: center;
+      background: #fff;
+      border: 1px solid #eee;
+      margin: 10px;
+      border-radius: 10px;
+    }
+    .btn-small { background: var(--pink); color: white; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: bold; }
   </style>
 </head>
 <body>
+  <nav class="viewer-nav">
+    <a href="javascript:history.back()" class="back-link">← 返回</a>
+    <div class="file-info" id="display-filename">正在加载...</div>
+    <a href="#" id="raw-link" class="btn-small" target="_blank">原件</a>
+  </nav>
 
-  <div class="viewer-container">
-    <nav class="viewer-nav">
-      <a href="javascript:history.back()" class="back-link">← 返回</a>
-      <div class="file-name" id="display-name">文档调取中...</div>
-      <a href="#" id="direct-btn" class="action-btn">全屏浏览</a>
-    </nav>
-
-    <main class="viewer-main">
-      <div id="loader" class="loader"><div class="spinner"></div></div>
-      
-      <!-- PC 端预览框 -->
-      <iframe id="pdf-iframe" src=""></iframe>
-
-      <!-- 手机端引导面板 -->
-      <div id="mobile-panel" class="mobile-panel">
-        <div class="mobile-icon">📑</div>
-        <div class="mobile-title">由于手机浏览器限制</div>
-        <div class="mobile-desc">
-          为了提供最佳的阅读体验，<br>
-          请点击下方按钮，使用系统自带的高清阅读器。
-        </div>
-        <a href="#" id="mobile-action-btn" class="action-btn" style="padding: 15px 40px; font-size: 1rem;">立即开启高清预览</a>
-      </div>
-    </main>
+  <div class="loading-overlay" id="loader">
+    <div class="spinner"></div>
+    <p style="margin-top:15px; font-weight:700; color:#888;">高清预览生成中...</p>
+    <p id="error-msg" style="color:red; display:none; margin-top:10px;">加载失败，请尝试刷新</p>
   </div>
+
+  <main class="viewer-content" id="render-area"></main>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const file = urlParams.get('file');
-    const iframe = document.getElementById('pdf-iframe');
-    const mobilePanel = document.getElementById('mobile-panel');
+    const filePath = urlParams.get('file');
     const loader = document.getElementById('loader');
-    const displayName = document.getElementById('display-name');
-    const directBtn = document.getElementById('direct-btn');
-    const mobileActionBtn = document.getElementById('mobile-action-btn');
+    const renderArea = document.getElementById('render-area');
+    const displayFilename = document.getElementById('display-filename');
+    const rawLink = document.getElementById('raw-link');
 
-    // 检测是否为移动设备
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (filePath) {
+      const decodedPath = decodeURIComponent(filePath);
+      displayFilename.innerText = decodedPath.split('/').pop();
+      rawLink.href = decodedPath;
 
-    if (file) {
-      const decodedFile = decodeURIComponent(file);
-      displayName.innerText = decodedFile.split('/').pop();
-      directBtn.href = decodedFile;
-      mobileActionBtn.href = decodedFile;
+      // 启动 Canvas 渲染逻辑
+      renderPDF(decodedPath);
+    }
 
-      if (isMobile) {
-        // 手机端：直接显示引导面板，不再强行使用 iframe (避免白屏和下载提示)
+    async function renderPDF(url) {
+      const pdfjsLib = window['pdfjs-dist/build/pdf'];
+      // 使用稳定版 Worker
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+
+      try {
+        // 设置超时处理
+        const loadingTask = pdfjsLib.getDocument(url);
+        const pdf = await loadingTask.promise;
+        
         loader.style.display = 'none';
-        mobilePanel.style.display = 'flex';
-      } else {
-        // PC 端：使用强大的内置 iframe 预览
-        iframe.src = decodedFile;
-        iframe.style.display = 'block';
-        iframe.onload = () => { loader.style.display = 'none'; };
-        // 兜底
-        setTimeout(() => { loader.style.display = 'none'; }, 2000);
+        
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const viewport = page.getViewport({ scale: 2.0 }); // 2.0 倍高清
+
+          const wrapper = document.createElement('div');
+          wrapper.className = 'pdf-page-wrapper';
+          
+          const canvas = document.createElement('canvas');
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          
+          wrapper.appendChild(canvas);
+          renderArea.appendChild(wrapper);
+          
+          await page.render({
+            canvasContext: canvas.getContext('2d'),
+            viewport: viewport
+          }).promise;
+        }
+      } catch (e) {
+        console.error('渲染错误:', e);
+        loader.style.display = 'none';
+        // 如果 Canvas 渲染失败，最后再尝试用 iframe，哪怕可能会下载也总比白屏强
+        renderArea.innerHTML = `<iframe src="${url}" style="width:100%; height:85vh; border:none; background:white;"></iframe>`;
       }
     }
   </script>
