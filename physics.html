@@ -120,7 +120,10 @@
     .file-cell { color: #7c3aed; font-weight: 800; font-size: 0.75rem; }
     .checkbox-done { cursor: pointer; width: 18px; height: 18px; accent-color: #0ea5e9; }
 
-    .vid-id { color: #64748b; font-weight: 700; margin-right: 4px; font-family: monospace; }
+    /* 复刻原表样式的公式表格 */
+    .formula-table { min-width: 100% !important; border: 2px solid #333 !important; }
+    .formula-table th { background: #1a4a75 !important; border: 1px solid #333 !important; text-align: center !important; }
+    .formula-table td { border: 1px solid #333 !important; text-align: center !important; font-weight: 700; }
 
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     
@@ -137,127 +140,135 @@
 
     <div class="plan-card">
       <div class="plan-header">
-        <h1>八下物理习题专项复习计划</h1>
-        <p style="color: #64748b; font-weight: 700;">2026年 5月 — 6月 · 仅看习题视频 · 每天≤40分钟</p>
+        <h1>八年级下册物理习题专项复习计划</h1>
+        <p style="color: #64748b; font-weight: 700;">仅看习题视频 · 每天≤40分钟 · 含习题文件列表</p>
       </div>
 
       <div class="summary-grid">
         <div class="summary-item"><span class="val">86 节</span><span class="lab">习题视频总数</span></div>
-        <div class="summary-item"><span class="val">28时58分</span><span class="lab">视频总时长</span></div>
+        <div class="summary-item"><span class="val">28小时58分</span><span class="lab">习题视频总时长</span></div>
         <div class="summary-item"><span class="val">43 天</span><span class="lab">可用工作日</span></div>
-        <div class="summary-item"><span class="val">40 分钟</span><span class="lab">每日限时</span></div>
+        <div class="summary-item"><span class="val">40 分钟</span><span class="lab">每天时间限制</span></div>
       </div>
 
       <h2>一、各章节习题概览</h2>
       <div class="table-container">
         <table>
           <thead>
-            <tr><th>章节名称</th><th>视频数量</th><th>时长</th><th>天数</th><th>复习顺序</th></tr>
+            <tr><th>章节</th><th>习题数</th><th>时长</th><th>天数</th><th>复习顺序</th></tr>
           </thead>
           <tbody>
-            <tr><td><span class="chapter-tag tag-blue">第九章 压强</span></td><td>20 节</td><td>8小时49分</td><td>14 天</td><td>① 第一批 (5月)</td></tr>
-            <tr><td><span class="chapter-tag tag-purple">第十章 浮力</span></td><td>21 节</td><td>8小时1分</td><td>13 天</td><td>② 第二批 (5月)</td></tr>
-            <tr><td><span class="chapter-tag tag-orange">第十二章 简单机械</span></td><td>23 节</td><td>7小时24分</td><td>12 天</td><td>③ 第三批 (6月)</td></tr>
-            <tr><td><span class="chapter-tag tag-gray">第八章 运动和力</span></td><td>9 节</td><td>2小时34分</td><td>4 天</td><td>④ 第四批 (6月)</td></tr>
-            <tr><td><span class="chapter-tag tag-green">第十一章 功和机械能</span></td><td>13 节</td><td>2小时8分</td><td>4 天</td><td>⑤ 第五批 (6月)</td></tr>
+            <tr><td>第八章 运动和力</td><td>9节</td><td>2小时34分</td><td>4天</td><td>④ 第四批（6月）</td></tr>
+            <tr><td>第九章 压强</td><td>20节</td><td>8小时49分</td><td>14天</td><td>① 第一批（5月）</td></tr>
+            <tr><td>第十章 浮力</td><td>21节</td><td>8小时1分</td><td>13天</td><td>② 第二批（5月）</td></tr>
+            <tr><td>第十一章 功和机械能</td><td>13节</td><td>2小时8分</td><td>4天</td><td>⑤ 第五批（6月）</td></tr>
+            <tr><td>第十二章 简单机械</td><td>23节</td><td>7小时24分</td><td>12天</td><td>③ 第三批（6月）</td></tr>
           </tbody>
         </table>
       </div>
 
-      <h2>二、学习日程打卡表</h2>
-      <div class="calendar-selector">
-        <button class="month-btn active" onclick="showMonth('may', this)">5月：压强 & 浮力</button>
-        <button class="month-btn" onclick="showMonth('june', this)">6月：机械、力 & 功</button>
-      </div>
-
-      <!-- 5月计划 -->
+      <h2>二、5月学习日程表</h2>
+      <p style="font-size: 0.9rem; font-weight: 700; color: #64748b; margin-bottom: 15px;">复习内容：压强习题 + 浮力习题（全部完成）</p>
       <div id="may-plan" class="schedule-section active">
         <div class="table-container">
           <table>
             <thead>
-              <tr><th>完</th><th>日期</th><th>视频内容</th><th>对应习题文件 (PDF)</th><th>时长</th></tr>
+              <tr><th>序号</th><th>日期</th><th>章节</th><th>视频内容</th><th>对应习题文件</th><th>时长</th></tr>
             </thead>
             <tbody>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/1</td><td><span class="vid-id">065.</span>液体的重力和对容器底的压力_习题</td><td class="file-cell">9压强-2液体的压强-习题</td><td>42分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/4</td><td><span class="vid-id">054.</span>压强计算_切割</td><td class="file-cell">9压强-1压强-习题</td><td>42分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/5</td><td><span class="vid-id">074.</span>流体压强与流速的关系</td><td class="file-cell">9压强-4流体压强-习题</td><td>41分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/6</td><td><span class="vid-id">052.</span>压强计算_拆解分析</td><td class="file-cell">9压强-1压强-习题</td><td>38分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/7</td><td><span class="vid-id">050.</span>压强计算_新的公式</td><td class="file-cell">9压强-1压强-习题</td><td>32分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/8</td><td><span class="vid-id">063.</span>四种问法</td><td class="file-cell">9压强-2液体的压强-习题</td><td>31分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/11</td><td><span class="vid-id">071.</span>大气压的测量_习题</td><td class="file-cell">9压强-3大气压强-习题</td><td>30分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/12</td><td><span class="vid-id">060.</span>液体压强的大小_习题</td><td class="file-cell">9压强-2液体的压强-习题</td><td>29分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/13</td><td><span class="vid-id">047.</span>压强_习题</td><td class="file-cell">9压强-1压强-习题</td><td>29分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/14</td><td><span class="vid-id">049.</span>压强计算_受力面积</td><td class="file-cell">9压强-1压强-习题</td><td>27分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/15</td><td><span class="vid-id">048.</span>怎样减小或增大压强</td><td class="file-cell">9压强-1压强-习题</td><td>26分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/18</td><td><span class="vid-id">066.</span>等高点压强</td><td class="file-cell">9压强-2液体的压强-习题</td><td>22分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/19</td><td><span class="vid-id">051.055.</span>压强变化砖题 + 叠放</td><td class="file-cell">9压强-1压强-习题</td><td>38分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/20</td><td><span class="vid-id">061.053.</span>液体的压力 + 比例问题</td><td class="file-cell">9-1/2混编习题</td><td>35分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/21</td><td><span class="vid-id">058.045.</span>液体压强特点 + 压力</td><td class="file-cell">9-1/2混编习题</td><td>33分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/22</td><td><span class="vid-id">075.062.</span>飞机的升力 + 公式选择</td><td class="file-cell">9-2/4混编习题</td><td>25分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/25</td><td><span class="vid-id">088.</span>浮力题_密度问题</td><td class="file-cell">10浮力-2阿基米德-习题</td><td>46分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/26</td><td><span class="vid-id">097.</span>浮力题_浮沉与密度</td><td class="file-cell">10浮力-3物体的浮沉-习题</td><td>43分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/27</td><td><span class="vid-id">106.</span>密度计_习题</td><td class="file-cell">10浮力-4制作密度计-习题</td><td>43分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/28</td><td><span class="vid-id">081.</span>浮力产生的原因</td><td class="file-cell">10浮力-1浮力-习题</td><td>33分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/29</td><td><span class="vid-id">085.</span>浮力题_基础计算</td><td class="file-cell">10浮力-2阿基米德-习题</td><td>27分</td></tr>
+              <tr><td>1</td><td>5/1</td><td>九压强</td><td>065.液体的重力和对容器底的压力_习题 (42分46秒)</td><td class="file-cell">9压强-2液体的压强-习题</td><td>42分46秒</td></tr>
+              <tr><td>2</td><td>5/4</td><td>九压强</td><td>054.压强计算_切割 (42分33秒)</td><td class="file-cell">9压强-1压强-习题</td><td>42分33秒</td></tr>
+              <tr><td>3</td><td>5/5</td><td>九压强</td><td>074.流体压强与流速的关系 (41分55秒)</td><td class="file-cell">9压强-4流体压强与流速的关系-习题</td><td>41分55秒</td></tr>
+              <tr><td>4</td><td>5/6</td><td>九压强</td><td>052.压强计算_拆解分析 (38分1秒)</td><td class="file-cell">9压强-1压强-习题</td><td>38分1秒</td></tr>
+              <tr><td>5</td><td>5/7</td><td>九压强</td><td>050.压强计算_新的公式 (32分33秒)</td><td class="file-cell">9压强-1压强-习题</td><td>32分33秒</td></tr>
+              <tr><td>6</td><td>5/8</td><td>九压强</td><td>063.四种问法 (31分59秒)</td><td class="file-cell">9压强-2液体的压强-习题</td><td>31分59秒</td></tr>
+              <tr><td>7</td><td>5/11</td><td>九压强</td><td>071.大气压的测量_习题 (30分18秒)</td><td class="file-cell">9压强-3大气压强-习题</td><td>30分18秒</td></tr>
+              <tr><td>8</td><td>5/12</td><td>九压强</td><td>060.液体压强的大小_习题 (29分33秒)</td><td class="file-cell">9压强-2液体的压强-习题</td><td>29分33秒</td></tr>
+              <tr><td>9</td><td>5/13</td><td>九压强</td><td>047.压强_习题 (29分24秒)</td><td class="file-cell">9压强-1压强-习题</td><td>29分24秒</td></tr>
+              <tr><td>10</td><td>5/14</td><td>九压强</td><td>049.压强计算_受力面积 (27分55秒)</td><td class="file-cell">9压强-1压强-习题</td><td>27分55秒</td></tr>
+              <tr><td>11</td><td>5/15</td><td>九压强</td><td>048.怎样减小或增大压强 (26分44秒)</td><td class="file-cell">9压强-1压强-习题</td><td>26分44秒</td></tr>
+              <tr><td>12</td><td>5/18</td><td>九压强</td><td>066.等高点压强 (22分31秒)</td><td class="file-cell">9压强-2液体的压强-习题</td><td>22分31秒</td></tr>
+              <tr><td>13</td><td>5/19</td><td>九压强</td><td>051.压强计算_压强变化和砖题 (19分49秒)<br>055.压强计算_叠放 (18分18秒)</td><td class="file-cell">9压强-1压强-习题</td><td>38分8秒</td></tr>
+              <tr><td>14</td><td>5/20</td><td>九压强</td><td>061.一定面积上液体的压力 (18分11秒)<br>053.压强计算_比例问题 (17分34秒)</td><td class="file-cell">9压强-2液体的压强-习题<br>9压强-1压强-习题</td><td>35分45秒</td></tr>
+              <tr><td>15</td><td>5/21</td><td>九压强</td><td>058.液体压强的特点_习题 (17分12秒)<br>045.压力 (16分40秒)</td><td class="file-cell">9压强-2液体的压强-习题<br>9压强-1压强-习题</td><td>33分52秒</td></tr>
+              <tr><td>16</td><td>5/22</td><td>九压强</td><td>075.飞机的升力 (14分6秒)<br>062.液体压强公式的灵活选择 (11分14秒)</td><td class="file-cell">9压强-4流体压强与流速的关系-习题<br>9压强-2液体的压强-习题</td><td>25分21秒</td></tr>
+              <tr><td>17</td><td>5/25</td><td>十浮力</td><td>088.浮力题_密度问题 (46分5秒)</td><td class="file-cell">10浮力-2阿基米德原理-习题</td><td>46分5秒</td></tr>
+              <tr><td>18</td><td>5/26</td><td>十浮力</td><td>097.浮力题_浮沉与密度 (43分58秒)</td><td class="file-cell">10浮力-3物体的浮沉条件及应用-习题</td><td>43分58秒</td></tr>
+              <tr><td>19</td><td>5/27</td><td>十浮力</td><td>106.密度计_习题 (43分37秒)</td><td class="file-cell">10浮力-4跨学科实践：制作微型密度计-习题</td><td>43分37秒</td></tr>
+              <tr><td>20</td><td>5/28</td><td>十浮力</td><td>081.浮力产生的原因 (33分38秒)</td><td class="file-cell">10浮力-1浮力-习题</td><td>33分38秒</td></tr>
+              <tr><td>21</td><td>5/29</td><td>十浮力</td><td>085.浮力题_基础计算 (27分34秒)</td><td class="file-cell">10浮力-2阿基米德原理-习题</td><td>27分34秒</td></tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <!-- 6月计划 -->
-      <div id="june-plan" class="schedule-section">
+      <h2>三、6月学习日程表</h2>
+      <p style="font-size: 0.9rem; font-weight: 700; color: #64748b; margin-bottom: 15px;">复习内容：简单机械 + 运动和力 + 功和机械能 习题</p>
+      <div id="june-plan" class="schedule-section active">
         <div class="table-container">
           <table>
             <thead>
-              <tr><th>完</th><th>日期</th><th>视频内容</th><th>对应习题文件 (PDF)</th><th>时长</th></tr>
+              <tr><th>序号</th><th>日期</th><th>章节</th><th>视频内容</th><th>对应习题文件</th><th>时长</th></tr>
             </thead>
             <tbody>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/1</td><td><span class="vid-id">080.</span>决定浮力大小因素</td><td class="file-cell">10浮力-1浮力-习题</td><td>25分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/2</td><td><span class="vid-id">086.</span>浮力定性比较</td><td class="file-cell">10浮力-2阿基米德-习题</td><td>24分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/3</td><td><span class="vid-id">098.</span>漂浮与密度</td><td class="file-cell">10浮力-3物体的浮沉-习题</td><td>23分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/4</td><td><span class="vid-id">095.</span>浮沉状态计算</td><td class="file-cell">10浮力-3物体的浮沉-习题</td><td>22分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/5</td><td><span class="vid-id">091.</span>阿基米德原理实验</td><td class="file-cell">10浮力-2阿基米德-习题</td><td>22分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/8</td><td><span class="vid-id">087.</span>浮力图像问题</td><td class="file-cell">10浮力-2阿基米德-习题</td><td>20分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/9</td><td><span class="vid-id">078.101.</span>浮力基础 + 船系列</td><td class="file-cell">10-1/3混编习题</td><td>36分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/10</td><td><span class="vid-id">107.103.</span>制作密度计 + 其他船</td><td class="file-cell">10-3/4混编习题</td><td>33分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/11</td><td><span class="vid-id">094.099.</span>浮沉状态判断 + 漂浮计算</td><td class="file-cell">10浮力-3物体的浮沉-习题</td><td>30分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/12</td><td><span class="vid-id">102.089.096.</span>潜水艇 + 图像密度 + 比较2</td><td class="file-cell">10-2/3混编习题</td><td>36分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/15</td><td><span class="vid-id">090.</span>浮力比例问题</td><td class="file-cell">10浮力-2阿基米德-习题</td><td>9分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/16</td><td><span class="vid-id">170.</span>滑轮组机械效率计算 1</td><td class="file-cell">12简单机械-4机械效率-习题</td><td>35分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/17</td><td><span class="vid-id">168.</span>机械效率_习题 2</td><td class="file-cell">12简单机械-4机械效率-习题</td><td>31分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/18</td><td><span class="vid-id">160.</span>滑轮组受力分析</td><td class="file-cell">12简单机械-3滑轮-习题</td><td>28分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/19</td><td><span class="vid-id">143.</span>杠杆题_基础计算</td><td class="file-cell">12简单机械-1杠杆-习题</td><td>25分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/22</td><td><span class="vid-id">167.</span>机械效率_习题 1</td><td class="file-cell">12简单机械-4机械效率-习题</td><td>22分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/23</td><td><span class="vid-id">142.</span>杠杆平衡条件</td><td class="file-cell">12简单机械-1杠杆-习题</td><td>22分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/24</td><td><span class="vid-id">145.</span>杠杆题_杠杆再平衡</td><td class="file-cell">12简单机械-1杠杆-习题</td><td>22分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/25</td><td><span class="vid-id">172.</span>滑轮组机械效率计算 3</td><td class="file-cell">12简单机械-4机械效率-习题</td><td>22分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/26</td><td><span class="vid-id">141.</span>生活中的杠杆</td><td class="file-cell">12简单机械-1杠杆-习题</td><td>21分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/29</td><td><span class="vid-id">156.</span>滑轮受力分析</td><td class="file-cell">12简单机械-3滑轮-习题</td><td>20分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/30</td><td><span class="vid-id">173.146.</span>滑轮组效率 4 + 最小力问题</td><td class="file-cell">12-1/4混编习题</td><td>39分</td></tr>
+              <tr><td>1</td><td>6/1</td><td>十浮力</td><td>080.决定福利大小的因素-习题 (25分58秒)</td><td class="file-cell">10浮力-1浮力-习题</td><td>25分58秒</td></tr>
+              <tr><td>2</td><td>6/2</td><td>十浮力</td><td>086.浮力题_浮力定性比较 (24分20秒)</td><td class="file-cell">10浮力-2阿基米德原理-习题</td><td>24分20秒</td></tr>
+              <tr><td>3</td><td>6/3</td><td>十浮力</td><td>098.浮力题_漂浮与密度 (23分35秒)</td><td class="file-cell">10浮力-3物体的浮沉条件及应用-习题</td><td>23分35秒</td></tr>
+              <tr><td>4</td><td>6/4</td><td>十浮力</td><td>095.浮力题_浮沉状态计算 (22分50秒)</td><td class="file-cell">10浮力-3物体的浮沉条件及应用-习题</td><td>22分50秒</td></tr>
+              <tr><td>5</td><td>6/5</td><td>十浮力</td><td>091.浮力题_阿基米德原理实验 (22分23秒)</td><td class="file-cell">10浮力-2阿基米德原理-习题</td><td>22分23秒</td></tr>
+              <tr><td>6</td><td>6/8</td><td>十浮力</td><td>087.浮力题_图像问题 (20分19秒)</td><td class="file-cell">10浮力-2阿基米德原理-习题</td><td>20分19秒</td></tr>
+              <tr><td>7</td><td>6/9</td><td>十浮力</td><td>078.浮力 (19分40秒)<br>101.浮力题_船 (17分18秒)</td><td class="file-cell">10浮力-1浮力-习题<br>10浮力-3物体的浮沉条件及应用-习题</td><td>36分59秒</td></tr>
+              <tr><td>8</td><td>6/10</td><td>十浮力</td><td>107.制作微型密度计 (17分2秒)<br>103.浮力题_其他船 (16分30秒)</td><td class="file-cell">10浮力-4跨学科实践：制作微型密度计-习题<br>10浮力-3物体的浮沉条件及应用-习题</td><td>33分32秒</td></tr>
+              <tr><td>9</td><td>6/11</td><td>十浮力</td><td>094.浮力题_浮沉状态判断 (15分15秒)<br>099.浮力题_漂浮与阿基米德原理 (14分54秒)</td><td class="file-cell">10浮力-3物体的浮沉条件及应用-习题</td><td>30分10秒</td></tr>
+              <tr><td>10</td><td>6/12</td><td>十浮力</td><td>102.浮力题_潜水艇 (13分10秒)<br>089.浮力题_图像密度结合 (11分47秒)<br>096.浮力题_浮力定性比较2 (11分43秒)</td><td class="file-cell">10浮力-3物体的浮沉条件及应用-习题<br>10浮力-2阿基米德原理-习题</td><td>36分41秒</td></tr>
+              <tr><td>11</td><td>6/15</td><td>十浮力</td><td>090.浮力题_比例问题 (9分27秒)</td><td class="file-cell">10浮力-2阿基米德原理-习题</td><td>9分27秒</td></tr>
+              <tr><td>12</td><td>6/16</td><td>十二机械</td><td>170.滑轮组机械效率计算_题1 (35分53秒)</td><td class="file-cell">12简单机械-4机械效率-习题</td><td>35分53秒</td></tr>
+              <tr><td>13</td><td>6/17</td><td>十二机械</td><td>168.机械效率_习题2 (31分46秒)</td><td class="file-cell">12简单机械-4机械效率-习题</td><td>31分46秒</td></tr>
+              <tr><td>14</td><td>6/18</td><td>十二机械</td><td>160.滑轮组题_滑轮组受力分析 (28分46秒)</td><td class="file-cell">12简单机械-3滑轮-习题</td><td>28分46秒</td></tr>
+              <tr><td>15</td><td>6/19</td><td>十二机械</td><td>143.杠杆题_基础计算 (25分33秒)</td><td class="file-cell">12简单机械-1杠杆-习题</td><td>25分33秒</td></tr>
+              <tr><td>16</td><td>6/22</td><td>十二机械</td><td>167.机械效率_习题1 (22分30秒)</td><td class="file-cell">12简单机械-4机械效率-习题</td><td>22分30秒</td></tr>
+              <tr><td>17</td><td>6/23</td><td>十二机械</td><td>142.杠杆的平衡条件 (22分21秒)</td><td>-</td><td>22分21秒</td></tr>
+              <tr><td>18</td><td>6/24</td><td>十二机械</td><td>145.杠杆题_杠杆再平衡 (22分17秒)</td><td class="file-cell">12简单机械-1杠杆-习题</td><td>22分17秒</td></tr>
+              <tr><td>19</td><td>6/25</td><td>十二机械</td><td>172.滑轮组机械效率计算_题3 (22分1秒)</td><td class="file-cell">12简单机械-4机械效率-习题</td><td>22分1秒</td></tr>
+              <tr><td>20</td><td>6/26</td><td>十二机械</td><td>141.生活中的杠杆_习题 (21分11秒)</td><td class="file-cell">12简单机械-1杠杆-习题</td><td>21分11秒</td></tr>
+              <tr><td>21</td><td>6/29</td><td>十二机械</td><td>156.滑轮题_滑轮受力分析 (20分28秒)</td><td class="file-cell">12简单机械-3滑轮-习题</td><td>20分28秒</td></tr>
+              <tr><td>22</td><td>6/30</td><td>十二机械</td><td>173.滑轮组机械效率计算_题4 (20分12秒)<br>146.杠杆题_最小力 (19分1秒)</td><td class="file-cell">12简单机械-4机械效率-习题<br>12简单机械-1杠杆-习题</td><td>39分13秒</td></tr>
             </tbody>
           </table>
         </div>
+      </div>
+
+      <h2>四、全册核心公式速查表</h2>
+      <div class="table-container">
+        <table class="formula-table">
+          <thead>
+            <tr><th>章节</th><th>公式</th><th>说明</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>运动和力</td><td>F1=F2</td><td>二力平衡条件</td></tr>
+            <tr><td>运动和力</td><td>f=μN</td><td>滑动摩擦力</td></tr>
+            <tr><td>压强</td><td>p=F/S</td><td>固体压强</td></tr>
+            <tr><td>压强</td><td>p=ρgh</td><td>液体压强</td></tr>
+            <tr><td>浮力</td><td>F浮=ρ液gV排</td><td>阿基米德原理</td></tr>
+            <tr><td>浮力</td><td>ρ物→ρ液</td><td>漂浮/悬浮/沉底</td></tr>
+            <tr><td>功和机械能</td><td>W=Fs</td><td>功的计算</td></tr>
+            <tr><td>功和机械能</td><td>P=W/t</td><td>功率</td></tr>
+            <tr><td>简单机械</td><td>F1L1=F2L2</td><td>杠杆平衡</td></tr>
+            <tr><td>简单机械</td><td>η=W有/W总</td><td>机械效率</td></tr>
+          </tbody>
+        </table>
       </div>
 
       <div style="margin-top: 50px; text-align: center; background: #f1f5f9; padding: 30px; border-radius: 24px;">
         <h3 style="margin-bottom: 10px;">💡 学习建议</h3>
-        <p style="font-size: 0.95rem; color: #475569; line-height: 1.6;">
-          先自己做题，再看视频对照解法 —— 效果最好！<br>
-          错题必须标记错误原因，每周末回顾一遍。<br>
-          习题文件位于「无答案版」文件夹，先做题后对答案。<br>
-          <strong>加油！坚持每天40分钟，期末考试一定取得好成绩！</strong>
+        <p style="font-size: 0.95rem; color: #475569; line-height: 1.6; text-align: left;">
+          1. 先自己做题，再看视频对照解法 —— 效果最好！<br>
+          2. 错题必须标记错误原因，每周末回顾一遍。<br>
+          3. 习题文件位于「【习题】八下新版物理系统课 - 无答案版」文件夹。<br>
+          4. <strong>加油！坚持每天40分钟，期末考试一定取得好成绩！</strong>
         </p>
       </div>
     </div>
   </div>
-
-  <script>
-    function showMonth(month, btn) {
-      document.querySelectorAll('.schedule-section').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById(month + '-plan').classList.add('active');
-      btn.classList.add('active');
-    }
-  </script>
 </body>
 </html>
