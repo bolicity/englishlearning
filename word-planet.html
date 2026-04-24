@@ -12,6 +12,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./supabase-config.js"></script>
 <style>
 :root {
   --pink: #FF6B9D;
@@ -858,7 +860,7 @@ body {
     <div style="display:flex; justify-content:space-between; align-items:center; width:100%">
       <div class="app-title">🌟 单词星球</div>
       <div id="syncStatus" style="font-size:12px; color:var(--text-light); opacity:0.6; display:flex; align-items:center; gap:4px">
-        <span id="syncIcon">☁️</span> <span id="syncText">本地模式</span>
+        <span id="syncIcon">☁️</span> <span id="syncText">正在检查存储</span>
       </div>
     </div>
     <div class="header-subtitle" id="headerSubtitle">每天进步一点点 ✨</div>
@@ -887,11 +889,11 @@ body {
   <!-- ===== 上传页 ===== -->
   <div class="page" id="pageUpload">
     <div class="card">
-      <div class="card-title">🎵 本地音频</div>
+      <div class="card-title">🎵 录音上传（可选）</div>
       <div class="upload-zone" id="audioUploadZone">
         <div class="upload-icon">🎶</div>
-        <div class="upload-text">点击或拖拽上传音频文件</div>
-        <div class="upload-hint">音频会保存在当前浏览器中</div>
+        <div class="upload-text">点击或拖拽上传音频文件（可选）</div>
+        <div class="upload-hint">不上传也可以学习；配置 Supabase 后会永久保存</div>
         <input type="file" id="audioFileInput" accept="audio/*" multiple>
       </div>
       <div id="audioPreview"></div>
@@ -986,11 +988,16 @@ body {
 <script>
 // 本地存储配置
 const LOCAL_BACKUP_KEY = 'wordPlanet:backup';
-const LOCAL_STORAGE_MODE = true;
 const AUDIO_DB_NAME = 'wordPlanetAudioDB';
 const AUDIO_DB_VERSION = 1;
 const AUDIO_STORE_NAME = 'audioFiles';
+const STORAGE_MODE_LOCAL = 'local';
+const STORAGE_MODE_SUPABASE = 'supabase';
+const DEFAULT_SUPABASE_BUCKET = 'word-planet-audio';
+const DEFAULT_SUPABASE_RECORD_ID = 'default';
 let audioObjectUrls = [];
+let storageMode = STORAGE_MODE_LOCAL;
+let supabaseClient = null;
 
 const DEFAULT_WEEK_WORDS_TEXT = `pressure	n. 压力，紧张；气压 / v. 强迫
 pressured	adj. （感到有）压力的
@@ -1069,9 +1076,11 @@ const pronunciationState = {
   voices: []
 };
 
+const supabaseConfig = window.WORD_PLANET_SUPABASE_CONFIG || {};
+
 // ===== 初始化 =====
 // 版本号 - 每次修改后递增，用于检测缓存
-const APP_VERSION = '20260419-v8-local-audio';
+const APP_VERSION = '20260424-v9-supabase';
 console.log('[单词星球] 版本:', APP_VERSION);
 
 async function init() {
@@ -1079,7 +1088,7 @@ async function init() {
   updateSubtitle();
   setupPronunciationEngine();
   createStars();
-  loadStateLocal(); 
+  await loadState();
   await hydrateAudioUrls();
   renderHome();
   setupUploadHandlers();
@@ -1191,6 +1200,11 @@ async function hydrateAudioUrls() {
 async function ensureAudioUrl(audio) {
   if (!audio) return '';
   if (audio.url || audio.data) return audio.url || audio.data;
+  if (audio.storagePath) {
+    const url = getSupabasePublicUrl(audio.storagePath);
+    audio.url = url;
+    return url;
+  }
   if (!audio.localId) return '';
 
   const stored = await getAudioFileFromLocal(audio.localId);
@@ -1200,6 +1214,93 @@ async function ensureAudioUrl(audio) {
   audio.url = url;
   audioObjectUrls.push(url);
   return url;
+}
+
+function hasSupabaseConfig() {
+  return Boolean(
+    supabaseConfig.url &&
+    supabaseConfig.anonKey &&
+    window.supabase &&
+    typeof window.supabase.createClient === 'function'
+  );
+}
+
+function getSupabaseClient() {
+  if (!hasSupabaseConfig()) return null;
+  if (!supabaseClient) {
+    supabaseClient = window.supabase.createClient(supabaseConfig.url, supabaseConfig.anonKey, {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+        detectSessionInUrl: false
+      }
+    });
+  }
+  return supabaseClient;
+}
+
+function getSupabaseBucket() {
+  return supabaseConfig.bucket || DEFAULT_SUPABASE_BUCKET;
+}
+
+function getSupabaseRecordId() {
+  return supabaseConfig.recordId || DEFAULT_SUPABASE_RECORD_ID;
+}
+
+function getSupabasePublicUrl(path) {
+  const client = getSupabaseClient();
+  if (!client || !path) return '';
+  const { data } = client.storage.from(getSupabaseBucket()).getPublicUrl(path);
+  return data?.publicUrl || '';
+}
+
+function writeLocalBackup(persistedState) {
+  localStorage.setItem(APP_KEY, JSON.stringify(persistedState));
+  localStorage.setItem(LOCAL_BACKUP_KEY, JSON.stringify({
+    savedAt: new Date().toISOString(),
+    state: persistedState
+  }));
+}
+
+async function loadState() {
+  const remoteLoaded = await loadStateRemote();
+  if (!remoteLoaded) loadStateLocal();
+}
+
+async function loadStateRemote() {
+  const client = getSupabaseClient();
+  if (!client) {
+    updateSyncStatus('success', '本地模式');
+    return false;
+  }
+
+  try {
+    updateSyncStatus('syncing', '连接 Supabase...');
+    const { data, error, status } = await client
+      .from('word_planet_app_state')
+      .select('state_json')
+      .eq('id', getSupabaseRecordId())
+      .maybeSingle();
+
+    if (error && status !== 406) throw error;
+
+    const remoteState = data?.state_json || null;
+    if (remoteState && !shouldUseDefaultWeeks(remoteState)) {
+      state = { ...state, ...remoteState };
+    } else {
+      state.weeks = getDefaultWeeks();
+      state.progress = {};
+      await persistState({ silentStatus: true, forceRemote: true });
+    }
+
+    storageMode = STORAGE_MODE_SUPABASE;
+    updateSyncStatus('success', 'Supabase 已连接');
+    return true;
+  } catch (e) {
+    console.error('Supabase 加载失败:', e);
+    updateSyncStatus('error', 'Supabase 不可用，改用本地');
+    return false;
+  }
 }
 
 function loadStateLocal() {
@@ -1227,20 +1328,14 @@ function shouldUseDefaultWeeks(localState) {
   return weeks.every(week => week?.id === 'week_mock_demo');
 }
 
-async function saveStateLocalAsync() {
-  const ok = saveStateLocal();
-  updateSyncStatus(ok ? 'success' : 'error', ok ? '已保存到本地' : '本地保存失败');
-  return ok;
+async function saveStateAsync(options = {}) {
+  return persistState(options);
 }
 
 function saveStateLocal() {
   try {
     const persistedState = getPersistableState();
-    localStorage.setItem(APP_KEY, JSON.stringify(persistedState));
-    localStorage.setItem(LOCAL_BACKUP_KEY, JSON.stringify({
-      savedAt: new Date().toISOString(),
-      state: persistedState
-    }));
+    writeLocalBackup(persistedState);
     console.log('[本地保存] 成功:', {
       weeks: state.weeks?.length || 0,
       words: (state.weeks || []).reduce((sum, w) => sum + (w.words?.length || 0), 0)
@@ -1250,6 +1345,96 @@ function saveStateLocal() {
     console.error('本地保存失败:', e);
     return false;
   }
+}
+
+async function saveStateRemote(options = {}) {
+  const client = getSupabaseClient();
+  if (!client) return false;
+
+  try {
+    const persistedState = getPersistableState();
+    try {
+      writeLocalBackup(persistedState);
+    } catch (backupError) {
+      console.warn('本地备份失败，但会继续同步到 Supabase:', backupError);
+    }
+    if (!options.silentStatus) updateSyncStatus('syncing', '正在同步到 Supabase...');
+
+    const { error } = await client
+      .from('word_planet_app_state')
+      .upsert({
+        id: getSupabaseRecordId(),
+        state_json: persistedState,
+        updated_at: new Date().toISOString()
+      }, { onConflict: 'id' });
+
+    if (error) throw error;
+
+    storageMode = STORAGE_MODE_SUPABASE;
+    if (!options.silentStatus) updateSyncStatus('success', '已同步到 Supabase');
+    return true;
+  } catch (e) {
+    console.error('Supabase 保存失败:', e);
+    if (!options.silentStatus) updateSyncStatus('error', 'Supabase 保存失败');
+    return false;
+  }
+}
+
+async function persistState(options = {}) {
+  if (options.forceRemote || hasSupabaseConfig()) {
+    const remoteOk = await saveStateRemote(options);
+    if (remoteOk) return true;
+  }
+
+  const localOk = saveStateLocal();
+  if (!options.silentStatus) {
+    updateSyncStatus(localOk ? 'success' : 'error', localOk ? '已保存到本地' : '本地保存失败');
+  }
+  return localOk;
+}
+
+function sanitizeFileName(name) {
+  return String(name || 'audio')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-zA-Z0-9._-]/g, '')
+    .replace(/^-+/, '') || 'audio';
+}
+
+async function uploadAudioFileToSupabase(weekId, file, index) {
+  const client = getSupabaseClient();
+  if (!client) return null;
+
+  const ext = file.name.includes('.') ? '.' + file.name.split('.').pop() : '';
+  const baseName = ext ? file.name.slice(0, -ext.length) : file.name;
+  const path = `weeks/${weekId}/${Date.now()}-${index}-${sanitizeFileName(baseName)}${ext}`;
+  const { error } = await client.storage
+    .from(getSupabaseBucket())
+    .upload(path, file, {
+      contentType: file.type || 'audio/mpeg',
+      upsert: false
+    });
+
+  if (error) throw error;
+
+  return {
+    storagePath: path,
+    name: file.name,
+    size: file.size,
+    type: file.type || 'audio/mpeg',
+    url: getSupabasePublicUrl(path)
+  };
+}
+
+async function deleteAudioFileRemote(audio) {
+  const client = getSupabaseClient();
+  if (!client || !audio?.storagePath) return;
+
+  const { error } = await client.storage
+    .from(getSupabaseBucket())
+    .remove([audio.storagePath]);
+
+  if (error) console.warn('删除 Supabase 音频失败:', error);
 }
 
 function getPersistableState() {
@@ -1334,11 +1519,11 @@ function getMockWeek() {
 }
 
 function saveState() {
-  saveStateLocal();
+  void persistState();
 }
 
 function queueLocalSave() {
-  saveStateLocal();
+  void persistState({ silentStatus: true });
 }
 
 function updateSubtitle() {
@@ -1525,12 +1710,13 @@ async function confirmDeleteWeek(id) {
   const week = state.weeks.find(w => w.id === id);
   if (!week || !window.confirm(`确定要彻底删除“${week.name}”计划吗？`)) return;
   for (const audio of week.audios || []) {
+    if (audio.storagePath) await deleteAudioFileRemote(audio);
     if (audio.localId) await deleteAudioFileFromLocal(audio.localId);
   }
   state.weeks = state.weeks.filter(w => w.id !== id);
-  await saveStateLocalAsync();
+  await saveStateAsync();
   renderHome();
-  showToast('已从本地移除', 'success');
+  showToast(storageMode === STORAGE_MODE_SUPABASE ? '已删除并同步到 Supabase' : '已从本地移除', 'success');
 }
 
 function editWeek(id) {
@@ -1566,7 +1752,7 @@ function editWeek(id) {
     }
   }
   
-  document.getElementById('saveWeekBtn').innerHTML = '💾 更新本地计划';
+  document.getElementById('saveWeekBtn').innerHTML = '💾 更新学习计划';
 }
 
 // ===== 上传处理 =====
@@ -1879,18 +2065,23 @@ async function saveWeek() {
     if (uploadData.audioFiles.length > 0) {
       for (let i = 0; i < uploadData.audioFiles.length; i++) {
         const a = uploadData.audioFiles[i];
-        const localId = `${weekId}_${Date.now()}_${i}_${Math.random().toString(36).slice(2)}`;
-        saveBtn.innerHTML = `💾 保存音频 (${i + 1}/${uploadData.audioFiles.length})...`;
-        await saveAudioFileToLocal(localId, a.file);
-        const playbackUrl = URL.createObjectURL(a.file);
-        audioObjectUrls.push(playbackUrl);
-        finalAudios.push({
-          localId,
-          name: a.name,
-          size: a.size,
-          type: a.file.type || 'audio/mpeg',
-          url: playbackUrl
-        });
+        saveBtn.innerHTML = `💾 保存录音 (${i + 1}/${uploadData.audioFiles.length})...`;
+        if (hasSupabaseConfig()) {
+          const uploadedAudio = await uploadAudioFileToSupabase(weekId, a.file, i);
+          finalAudios.push(uploadedAudio);
+        } else {
+          const localId = `${weekId}_${Date.now()}_${i}_${Math.random().toString(36).slice(2)}`;
+          await saveAudioFileToLocal(localId, a.file);
+          const playbackUrl = URL.createObjectURL(a.file);
+          audioObjectUrls.push(playbackUrl);
+          finalAudios.push({
+            localId,
+            name: a.name,
+            size: a.size,
+            type: a.file.type || 'audio/mpeg',
+            url: playbackUrl
+          });
+        }
       }
     }
 
@@ -1918,22 +2109,27 @@ async function saveWeek() {
       totalWeeks: state.weeks.length
     });
 
-    if (!saveStateLocal()) {
-      throw new Error('浏览器本地存储失败，请清理浏览器缓存空间后重试');
+    if (!hasSupabaseConfig() && !saveStateLocal()) {
+      throw new Error('本地备份失败，请清理浏览器缓存空间后重试');
     }
 
-    saveBtn.innerHTML = '💾 正在保存到本地...';
-    const syncSuccess = await saveStateLocalAsync();
+    saveBtn.innerHTML = hasSupabaseConfig() ? '☁️ 正在同步到 Supabase...' : '💾 正在保存到本地...';
+    const syncSuccess = await saveStateAsync();
     
     if (syncSuccess) {
       saveBtn.innerHTML = '✅ 完成！正在重置页面...';
       setTimeout(() => {
         resetUploadPage();
         switchPage('Home');
-        showToast(isEdit ? '已更新到本地' : '已保存到本地', 'success');
+        showToast(
+          hasSupabaseConfig()
+            ? (isEdit ? '已更新并同步到 Supabase' : '已保存并同步到 Supabase')
+            : (isEdit ? '已更新到本地' : '已保存到本地'),
+          'success'
+        );
       }, 400);
     } else {
-      throw new Error('本地保存失败，请检查浏览器存储空间');
+      throw new Error(hasSupabaseConfig() ? '同步到 Supabase 失败，请检查配置或网络' : '本地保存失败，请检查浏览器存储空间');
     }
 
   } catch (err) {
@@ -2089,7 +2285,7 @@ function renderListenMode(week) {
   } else {
     html += `<div class="card" style="text-align:center;color:var(--text-light)">
       <div style="font-size:32px;margin-bottom:8px">🔇</div>
-      <div>本周未上传音频</div>
+      <div>本周未上传录音，系统会回退到单词发音</div>
     </div>`;
   }
 
@@ -2136,13 +2332,13 @@ function renderListenMode(week) {
     };
     ensureAudioUrl(currentAudio).then(url => {
       if (!url) {
-        showToast('未找到本地音频文件，请重新上传', 'error');
+        showToast('未找到录音文件，请重新上传', 'error');
         return;
       }
       player.src = url;
       player.load();
     }).catch(error => {
-      console.error('加载本地音频失败:', error);
+      console.error('加载录音失败:', error);
       showToast('音频读取失败，请重新上传', 'error');
     });
   }
