@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>化学核心知识清单 | Chemistry Knowledge Base</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <style>
+    body { background: var(--bg); display: block; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
+    
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--pink);
+      text-decoration: none;
+      font-weight: 700;
+      margin-bottom: 20px;
+      transition: var(--transition);
+    }
+    .back-btn:hover { transform: translateX(-5px); }
+
+    .knowledge-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .knowledge-header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+    .knowledge-header p { color: var(--text-light); font-weight: 700; }
+
+    .nav-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 40px;
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      background: rgba(255, 245, 249, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 10px;
+      border-radius: 50px;
+    }
+    .nav-tab {
+      padding: 8px 20px;
+      background: white;
+      border: 2px solid var(--pink-light);
+      border-radius: 50px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+    .nav-tab:hover, .nav-tab.active {
+      background: var(--pink);
+      color: white;
+      border-color: var(--pink);
+    }
+
+    .section-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+      border: 1px solid var(--pink-light);
+      scroll-margin-top: 100px;
+    }
+
+    h2 {
+      color: var(--pink);
+      margin-bottom: 25px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 2px solid var(--pink-light);
+      padding-bottom: 10px;
+    }
+    h3 {
+      color: var(--purple);
+      margin: 30px 0 15px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    h3::before { content: '◈'; font-size: 0.8em; }
+
+    .point-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .point-item {
+      background: var(--bg);
+      padding: 20px;
+      border-radius: 20px;
+      border-left: 5px solid var(--pink);
+    }
+    .point-title { font-weight: 800; margin-bottom: 8px; color: var(--text); }
+    .point-content { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 15px 0;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      min-width: 500px;
+    }
+    th, td { padding: 12px 15px; border: 1px solid #f0f0f0; text-align: left; }
+    th { background: var(--pink); color: white; font-weight: 800; }
+    tr:nth-child(even) { background: #fffafd; }
+
+    .formula-box {
+      background: #2D1B4E;
+      color: #E9D5FF;
+      padding: 15px 20px;
+      border-radius: 12px;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 10px 0;
+      display: inline-block;
+      min-width: 200px;
+    }
+    .highlight { color: var(--pink); font-weight: 700; }
+
+    @media (max-width: 768px) {
+      .container { padding: 20px 15px; }
+      .section-card { padding: 25px; }
+      .knowledge-header h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.4rem; }
+      h3 { font-size: 1.1rem; }
+      .point-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-decoration">
+    <div class="bg-blob"></div>
+    <div class="bg-blob"></div>
+  </div>
+
+  <div class="container">
+    <a href="chemistry.html" class="back-btn">← 返回复习页</a>
+
+    <div class="knowledge-header">
+      <h1 class="app-title">化学核心知识清单</h1>
+      <p>2025-2026 学年八年级化学（沪科版五四学制）全一册</p>
+    </div>
+
+    <div class="nav-tabs">
+      <a href="#theme1" class="nav-tab">变化与实验</a>
+      <a href="#theme2" class="nav-tab">空气与氧气</a>
+      <a href="#theme3" class="nav-tab">微观粒子</a>
+      <a href="#theme4" class="nav-tab">元素与化合价</a>
+      <a href="#theme5" class="nav-tab">碳与方程</a>
+    </div>
+
+    <!-- 主题 1 -->
+    <section id="theme1" class="section-card">
+      <h2>一、变化与性质 & 实验基础</h2>
+      
+      <h3>1. 物理变化与化学变化</h3>
+      <div class="table-container">
+        <table>
+          <tr><th>类型</th><th>定义</th><th>特征</th><th>实例</th></tr>
+          <tr><td>物理变化</td><td>没有生成其他物质的变化</td><td>状态、形状改变</td><td>水结冰、灯泡发光</td></tr>
+          <tr><td>化学变化</td><td>生成其他物质的变化</td><td>伴随颜色、气味、热量改变</td><td>燃烧、铁生锈、食物腐烂</td></tr>
+        </table>
+      </div>
+      <p class="point-content"><span class="highlight">本质区别：</span>是否有新物质生成。</p>
+
+      <h3>2. 实验室基本操作</h3>
+      <div class="point-grid">
+        <div class="point-item">
+          <div class="point-title">药品存放</div>
+          <div class="point-content">固体放广口瓶，液体放细口瓶。白磷保存在水中，硝酸银避光存棕色瓶。</div>
+        </div>
+        <div class="point-item">
+          <div class="point-title">取用规则</div>
+          <div class="point-content">固体“一横二放三慢竖”；液体滴加或倾倒，量筒读数要平视。</div>
+        </div>
+        <div class="point-item">
+          <div class="point-title">酒精灯使用</div>
+          <div class="point-content">外焰温度最高，用外焰加热。熄灭用灯帽盖灭（盖两次）。</div>
+        </div>
+        <div class="point-item">
+          <div class="point-title">洗涤标准</div>
+          <div class="point-content">仪器洗净的标准：内壁附着的水既不聚成水滴，也不成股流下。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 主题 2 -->
+    <section id="theme2" class="section-card">
+      <h2>二、空气、氧气、二氧化碳</h2>
+      
+      <h3>1. 空气组成</h3>
+      <div class="table-container">
+        <table>
+          <tr><th>成分</th><th>氮气 (N₂)</th><th>氧气 (O₂)</th><th>稀有气体</th><th>二氧化碳</th><th>其他</th></tr>
+          <tr><th>体积分数</th><td>78%</td><td>21%</td><td>0.94%</td><td>0.03%</td><td>0.03%</td></tr>
+        </table>
+      </div>
+
+      <h3>2. 氧气的性质与制取</h3>
+      <div class="point-item" style="margin-bottom: 15px;">
+        <div class="point-title">制取原理 (实验室)</div>
+        <div class="formula-box">2H₂O₂ —(MnO₂)—→ 2H₂O + O₂↑</div>
+        <div class="formula-box">2KClO₃ —(MnO₂, Δ)—→ 2KCl + 3O₂↑</div>
+      </div>
+      <div class="point-grid">
+        <div class="point-item">
+          <div class="point-title">物理性质</div>
+          <div class="point-content">无色无味，不易溶于水，密度比空气略大。</div>
+        </div>
+        <div class="point-item">
+          <div class="point-title">检验与验满</div>
+          <div class="point-content">用带火星的木条，复燃则为氧气。在瓶口复燃则满。</div>
+        </div>
+      </div>
+
+      <h3>3. 二氧化碳</h3>
+      <div class="point-item">
+        <div class="point-title">制取与性质</div>
+        <div class="point-content">大理石与稀盐酸反应：<span class="highlight">CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂↑</span></div>
+        <div class="point-content">性质：密度比空气大，能溶于水，不能燃烧也不支持燃烧。通入澄清石灰水变浑浊。</div>
+      </div>
+    </section>
+
+    <!-- 主题 3 -->
+    <section id="theme3" class="section-card">
+      <h2>三、物质构成的奥秘</h2>
+      
+      <h3>1. 微观粒子：分子、原子、离子</h3>
+      <div class="point-grid">
+        <div class="point-item">
+          <div class="point-title">原子结构</div>
+          <div class="point-content">原子由原子核（质子、中子）和核外电子构成。<br><span class="highlight">核电荷数 = 质子数 = 核外电子数</span></div>
+        </div>
+        <div class="point-item">
+          <div class="point-title">离子形成</div>
+          <div class="point-content">原子失去或得到电子形成离子。带正电为阳离子，带负电为阴离子。</div>
+        </div>
+      </div>
+
+      <h3>2. 相对原子质量</h3>
+      <div class="point-item">
+        <div class="point-title">定义</div>
+        <div class="point-content">以碳-12原子质量的 1/12 为标准，其他原子质量与之相比的比值。单位为 1（通常省略）。</div>
+      </div>
+    </section>
+
+    <!-- 主题 4 -->
+    <section id="theme4" class="section-card">
+      <h2>四、元素、化合价与化学式</h2>
+      
+      <h3>1. 元素与符号</h3>
+      <p class="point-content">地壳中含量前三：氧(O) > 硅(Si) > 铝(Al)。<br>元素符号意义：表示一种元素；表示这种元素的一个原子。</p>
+
+      <h3>2. 化合价口诀</h3>
+      <div class="point-item">
+        <div class="point-content" style="font-style: italic; color: var(--pink);">
+          钾钠银氢铵正一，钙镁钡锌铜汞二；<br>
+          氟氯负一氧负二，三铝四硅五价磷；<br>
+          二三铁、二四碳，单质零价要记清。
+        </div>
+      </div>
+
+      <h3>3. 化学式计算</h3>
+      <div class="point-grid">
+        <div class="point-item">
+          <div class="point-title">相对分子质量</div>
+          <div class="point-content">化学式中各原子相对原子质量的总和。</div>
+        </div>
+        <div class="point-item">
+          <div class="point-title">元素质量比</div>
+          <div class="point-content">各元素的相对原子质量 × 原子个数 之比。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 主题 5 -->
+    <section id="theme5" class="section-card">
+      <h2>五、碳单质与化学方程式</h2>
+      
+      <h3>1. 碳的单质</h3>
+      <div class="table-container">
+        <table>
+          <tr><th>单质</th><th>结构</th><th>物理性质</th><th>用途</th></tr>
+          <tr><td>金刚石</td><td>正八面体</td><td>最硬、透明</td><td>钻头、首饰</td></tr>
+          <tr><td>石墨</td><td>层状结构</td><td>软、导电、滑腻</td><td>电极、铅笔芯</td></tr>
+          <tr><td>C₆₀</td><td>足球状</td><td>/</td><td>超导材料</td></tr>
+        </table>
+      </div>
+
+      <h3>2. 质量守恒定律</h3>
+      <p class="point-content">参加化学反应的各物质<span class="highlight">质量总和</span>等于反应后生成的各物质<span class="highlight">质量总和</span>。</p>
+      <div class="point-item" style="margin-top: 10px;">
+        <div class="point-title">六不变：</div>
+        <div class="point-content">宏观：物质总质量、元素种类、元素质量不变。<br>微观：原子种类、原子数目、原子质量不变。</div>
+      </div>
+
+      <h3>3. 化学方程式书写</h3>
+      <p class="point-content">原则：以客观事实为依据；遵守质量守恒定律（配平）。</p>
+      <div class="point-item">
+        <div class="point-title">常用符号</div>
+        <div class="point-content">“Δ”加热；“↑”气体生成（反应物无气体）；“↓”沉淀生成（溶液反应）。</div>
+      </div>
+    </section>
+
+    <div style="text-align: center; margin-top: 20px;">
+      <p style="color: var(--text-light); font-size: 0.8rem;">© 2026 Owen Learning Center | 化学知识清单同步计划</p>
+    </div>
+  </div>
+
+  <script>
+    // 简单的导航高亮逻辑
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const sections = document.querySelectorAll('section');
+      const navTabs = document.querySelectorAll('.nav-tab');
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 150) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navTabs.forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.getAttribute('href') === `#${current}`) {
+          tab.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

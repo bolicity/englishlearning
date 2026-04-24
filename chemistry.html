@@ -113,6 +113,67 @@
       font-weight: 800;
       margin-right: 5px;
     }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-item {
+      background: var(--bg);
+      padding: 20px;
+      border-radius: 20px;
+      text-align: center;
+      border: 2px solid var(--pink-light);
+    }
+    .summary-item .val { font-size: 1.8rem; font-weight: 900; color: var(--pink); display: block; }
+    .summary-item .lab { font-size: 0.85rem; color: var(--text-light); font-weight: 700; }
+    
+    .calendar-selector {
+      margin: 30px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .month-btn {
+      padding: 10px 25px;
+      border-radius: 50px;
+      border: 2px solid var(--pink-light);
+      background: white;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .month-btn.active { background: var(--pink); color: white; border-color: var(--pink); }
+
+    .schedule-section { display: none; }
+    .schedule-section.active { display: block; animation: fadeIn 0.5s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .checkbox-done {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--pink);
+    }
+    .file-cell { color: var(--purple); font-weight: 700; font-size: 0.85rem; }
+    
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 800;
+      box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+      transition: all 0.3s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4); }
     @media (max-width: 768px) {
       .container { padding: 20px 15px; }
       .report-card { padding: 20px; }
@@ -137,6 +198,10 @@
     <a href="index.html" class="back-btn">← 返回首页</a>
     
     <div class="report-card">
+      <div style="text-align: right; margin-bottom: 20px;">
+        <a href="chemistry-knowledge.html" class="btn-primary">📖 查看全册知识清单</a>
+      </div>
+
       <h1 class="app-title">化学考点全景分析</h1>
       <p style="text-align: center; color: var(--text-light); margin-bottom: 20px;">上海市普陀区 2025-2026 学年下学期八年级单元练习</p>
 
@@ -251,13 +316,75 @@ CO₂性质与检验       ██████████████ 8次
       <p><span class="badge">实验</span> <strong>第2章 气体与水</strong>：制取CO₂药品/装置、电解水“正氧负氢”、过滤蒸馏操作。</p>
       <p><span class="badge">重点</span> <strong>第5章 CO₂</strong>：物理化学性质、检验(石灰水)、灭火原理。</p>
 
-      <h2>七、试卷特点分析</h2>
-      <p style="line-height: 1.6; font-size: 0.95rem; color: var(--text-light);">
-        1. <strong>情境化</strong>：融入机器人、空间站、海水淡化等前沿话题。<br>
-        2. <strong>跨章节</strong>：每道大题均融合2-3个章节知识点。<br>
-        3. <strong>探究性</strong>：包含完整的实验探究题（第16题）。
-      </p>
+      <h2>八、5月-6月 冲刺复习计划</h2>
+      
+      <div class="summary-grid">
+        <div class="summary-item"><span class="val">5 大</span><span class="lab">核心专题</span></div>
+        <div class="summary-item"><span class="val">24 个</span><span class="lab">重点考点</span></div>
+        <div class="summary-item"><span class="val">8 周</span><span class="lab">深度复习时间</span></div>
+        <div class="summary-item"><span class="val">100+</span><span class="lab">精选题库</span></div>
+      </div>
+
+      <div class="calendar-selector">
+        <button class="month-btn active" onclick="showMonth('may', this)">5月：基础与结构</button>
+        <button class="month-btn" onclick="showMonth('june', this)">6月：元素与计算</button>
+      </div>
+
+      <!-- 5月计划 -->
+      <div id="may-plan" class="schedule-section active">
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr><th>完成</th><th>周期</th><th>复习主题</th><th>核心考点</th><th>重要程度</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W1</td><td>变化与实验基础</td><td>物理/化学变化判断、实验器材、基本操作</td><td>★★★</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W2</td><td>空气与氧气</td><td>空气成分、氧气性质、实验室制取原理</td><td>★★★★★</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W3</td><td>水资源与构成</td><td>水的净化、水的组成实验、蒸馏/过滤</td><td>★★★★</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W4</td><td>微观世界探秘</td><td>分子/原子/离子特征、原子结构示意图</td><td>★★★★★</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 6月计划 -->
+      <div id="june-plan" class="schedule-section">
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr><th>完成</th><th>周期</th><th>复习主题</th><th>核心考点</th><th>重要程度</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W1</td><td>元素与化合价</td><td>元素周期表、化合价口诀、化学符号意义</td><td>★★★★★</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W2</td><td>化学式计算</td><td>相对分子质量、元素质量比/质量分数计算</td><td>★★★★</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W3</td><td>碳及其氧化物</td><td>金刚石/石墨/C60、CO2性质与实验室制法</td><td>★★★★★</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W4</td><td>反应与方程式</td><td>质量守恒定律、化学方程式配平与书写</td><td>★★★★★</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W5</td><td>模拟考试</td><td>全真卷演练、错题整理、考前心态调整</td><td>核心</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div style="margin-top: 30px; text-align: center; background: var(--bg); padding: 30px; border-radius: 24px; border: 2px dashed var(--pink-light);">
+        <h3 style="justify-content: center;">💡 复习贴士</h3>
+        <p style="font-size: 0.95rem; color: var(--text-light); line-height: 1.6;">
+          <strong>重视基础：</strong> 化学方程式和化合价是根基，必须默写过关。<br>
+          <strong>回归课本：</strong> 知识清单中的每个考点都能在课本找到原型，多看细节。<br>
+          <strong>实验细节：</strong> 关注实验操作的“先后顺序”和“现象描述”，这是高频失分点。
+        </p>
+      </div>
+
     </div>
   </div>
+
+  <script>
+    function showMonth(month, btn) {
+      document.querySelectorAll('.schedule-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
+      
+      document.getElementById(month + '-plan').classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
 </body>
 </html>
