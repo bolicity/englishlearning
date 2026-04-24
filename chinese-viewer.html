@@ -5,69 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>沉浸式阅读器 | Owen Learning Viewer</title>
   <link rel="stylesheet" href="index.css">
+  <!-- 引入 PDF.js 库，这是实现“不下载直接预览”的核心 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
   <style>
-    body { background: #f4f4f9; display: flex; flex-direction: column; min-height: 100vh; margin: 0; }
+    body { background: #f4f4f9; display: flex; flex-direction: column; min-height: 100vh; margin: 0; overflow-x: hidden; }
     .viewer-nav {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.98);
+      padding: 12px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
-    .back-link { color: var(--pink); text-decoration: none; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-    .file-info { font-weight: 700; color: var(--text); font-size: 0.9rem; }
+    .back-link { color: var(--pink); text-decoration: none; font-weight: 800; font-size: 0.9rem; }
+    .file-info { font-weight: 700; color: var(--text); font-size: 0.85rem; max-width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     
-    .viewer-content { flex-grow: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 20px 15px; }
-
+    /* 预览主区域 */
+    .viewer-content { flex-grow: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 10px; box-sizing: border-box; }
+    
+    /* 每一页的容器 */
     .pdf-page-wrapper {
       margin-bottom: 15px;
       background: white;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       display: flex;
       justify-content: center;
+      border-radius: 4px;
+      overflow: hidden;
     }
-    canvas { max-width: 100%; height: auto !important; }
+    canvas { width: 100% !important; height: auto !important; display: block; }
 
-    .native-viewer {
-      width: 100%;
-      height: calc(100vh - 100px);
-      border: none;
-      border-radius: 12px;
-      background: white;
-    }
-
-    .fallback-panel {
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      margin: 40px auto;
-      max-width: 560px;
-      padding: 24px;
-      text-align: center;
-    }
-    .fallback-title {
-      color: var(--text);
-      font-size: 1.1rem;
-      font-weight: 900;
-      margin-bottom: 10px;
-    }
-    .fallback-text {
-      color: var(--text-light);
-      font-size: 0.9rem;
-      line-height: 1.6;
-      margin-bottom: 18px;
-    }
-
+    /* 加载中动画 */
     .loading-overlay {
       position: fixed;
-      top: 60px; left: 0; right: 0; bottom: 0;
+      top: 56px; left: 0; right: 0; bottom: 0;
       background: #f4f4f9;
       display: flex;
       flex-direction: column;
@@ -84,71 +59,89 @@
     }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    .controls { display: flex; gap: 10px; }
-    .btn-action {
-      padding: 6px 12px;
-      border-radius: 6px;
+    /* 针对手机端的直接打开按钮 */
+    .direct-link {
+      background: var(--pink);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
       text-decoration: none;
+      font-weight: bold;
       font-size: 0.8rem;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
     }
-    .btn-pink { background: var(--pink); color: white; }
-    .btn-gray { background: #e5e7eb; color: #374151; }
   </style>
 </head>
 <body>
   <nav class="viewer-nav">
-    <a href="javascript:history.back()" class="back-link">← 返回列表</a>
-    <div class="file-info" id="display-filename">加载中...</div>
-    <div class="controls">
-      <button onclick="useNativeViewer()" class="btn-action btn-gray">兼容模式</button>
-      <a href="#" id="download-btn" class="btn-action btn-pink" download>下载原档</a>
-    </div>
+    <a href="javascript:history.back()" class="back-link">← 返回</a>
+    <div class="file-info" id="display-filename">正在加载...</div>
+    <a href="#" id="direct-open" class="direct-link" target="_blank">全屏预览</a>
   </nav>
 
   <div class="loading-overlay" id="loader">
     <div class="spinner"></div>
-    <div id="loader-text" style="margin-top:15px; font-weight:700; color:var(--text-light);">准备加载高清原文...</div>
+    <p style="margin-top:15px; font-weight:700; color:#888;">高清预览生成中...</p>
   </div>
 
-  <main class="viewer-content" id="render-area">
-    <iframe id="pdf-frame" class="native-viewer" src=""></iframe>
-  </main>
+  <main class="viewer-content" id="render-area"></main>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const filePath = urlParams.get('file');
-    const displayFilename = document.getElementById('display-filename');
-    const downloadBtn = document.getElementById('download-btn');
-    const pdfFrame = document.getElementById('pdf-frame');
     const loader = document.getElementById('loader');
+    const renderArea = document.getElementById('render-area');
+    const displayFilename = document.getElementById('display-filename');
+    const directOpen = document.getElementById('direct-open');
 
     if (filePath) {
-      const fileName = decodeURIComponent(filePath.split('/').pop());
+      const decodedPath = decodeURIComponent(filePath);
+      const fileName = decodedPath.split('/').pop();
       displayFilename.innerText = fileName;
-      downloadBtn.href = filePath;
-      
-      // 直接设置 iframe 源
-      pdfFrame.src = filePath;
-      
-      // 监听加载完成以隐藏加载动画
-      pdfFrame.onload = () => {
-        loader.style.display = 'none';
-      };
+      directOpen.href = decodedPath;
 
-      // 针对本地 file:// 协议的容错处理
-      setTimeout(() => {
-        loader.style.display = 'none';
-      }, 2000);
-    } else {
-      document.getElementById('loader-text').innerText = '错误：未找到文件路径';
+      // 调用核心渲染函数
+      startRendering(decodedPath);
     }
 
-    function useNativeViewer() {
-      // 已经在原生模式了
-      window.open(filePath, '_blank');
+    async function startRendering(url) {
+      const pdfjsLib = window['pdfjs-dist/build/pdf'];
+      // 设置 worker，这是后台解析 PDF 的核心
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+
+      try {
+        const pdf = await pdfjsLib.getDocument(url).promise;
+        loader.style.display = 'none'; // 加载成功，隐藏动画
+        
+        // 循环渲染每一页
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          
+          // 这里的 scale 决定了清晰度，手机端 1.5 - 2.0 比较平衡
+          const viewport = page.getViewport({ scale: 2.0 });
+          
+          const wrapper = document.createElement('div');
+          wrapper.className = 'pdf-page-wrapper';
+          
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          
+          wrapper.appendChild(canvas);
+          renderArea.appendChild(wrapper);
+          
+          // 渲染页面内容到 canvas
+          await page.render({
+            canvasContext: context,
+            viewport: viewport
+          }).promise;
+        }
+      } catch (e) {
+        console.error('PDF预览失败:', e);
+        // 兜底方案：如果 canvas 渲染失败（通常是跨域问题），回退到 iframe
+        loader.style.display = 'none';
+        renderArea.innerHTML = `<iframe src="${url}" style="width:100%; height:85vh; border:none; border-radius:8px; background:white;"></iframe>`;
+      }
     }
   </script>
 </body>
