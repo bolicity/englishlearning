@@ -6,32 +6,45 @@
   <title>沉浸式阅读器 | Owen Learning Viewer</title>
   <link rel="stylesheet" href="index.css">
   <style>
-    /* 极致简约的沉浸式布局 */
-    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #525659; font-family: sans-serif; }
-    
+    /* 极简沉浸式布局 */
+    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #f4f4f9; font-family: sans-serif; }
     .viewer-container { display: flex; flex-direction: column; height: 100vh; width: 100vw; }
     
-    /* 顶部导航 */
     .viewer-nav {
-      height: 50px;
+      height: 56px;
       background: white;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 16px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       z-index: 100;
     }
     
     .back-btn { color: var(--pink); text-decoration: none; font-weight: bold; font-size: 0.9rem; }
-    .file-name { font-weight: bold; color: #333; font-size: 0.85rem; max-width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .direct-btn { background: var(--pink); color: white; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-size: 0.75rem; font-weight: bold; }
-    
-    /* iframe 核心预览区 */
-    .viewer-main { flex: 1; position: relative; }
-    #pdf-iframe { width: 100%; height: 100%; border: none; background: #525659; }
+    .file-name { font-weight: bold; color: #333; font-size: 0.85rem; max-width: 50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .action-btn { background: var(--pink); color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.8rem; font-weight: bold; }
 
-    /* 加载提示 */
+    .viewer-main { flex: 1; position: relative; background: #525659; }
+    
+    /* 核心逻辑：如果是 PC 就显示预览，如果是手机就显示引导 */
+    #pdf-iframe { width: 100%; height: 100%; border: none; display: none; }
+
+    /* 手机端专用面板 */
+    .mobile-panel {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      background: white;
+      padding: 30px;
+      text-align: center;
+    }
+    .mobile-icon { font-size: 4rem; margin-bottom: 20px; }
+    .mobile-title { font-weight: 900; font-size: 1.2rem; color: #333; margin-bottom: 10px; }
+    .mobile-desc { color: #666; font-size: 0.9rem; line-height: 1.6; margin-bottom: 30px; }
+
     .loader {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -42,11 +55,11 @@
       z-index: 50;
     }
     .spinner {
-      width: 28px; height: 28px;
+      width: 32px; height: 32px;
       border: 3px solid #f3f3f3;
       border-top: 3px solid var(--pink);
       border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+      animation: spin 1s linear infinite;
     }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   </style>
@@ -55,17 +68,27 @@
 
   <div class="viewer-container">
     <nav class="viewer-nav">
-      <a href="javascript:history.back()" class="back-btn">← 返回</a>
-      <div class="file-name" id="display-name">正在调取文档...</div>
-      <a href="#" id="full-screen-btn" class="direct-btn">新窗口打开</a>
+      <a href="javascript:history.back()" class="back-link">← 返回</a>
+      <div class="file-name" id="display-name">文档调取中...</div>
+      <a href="#" id="direct-btn" class="action-btn">全屏浏览</a>
     </nav>
 
     <main class="viewer-main">
-      <div id="loader" class="loader">
-        <div class="spinner"></div>
-      </div>
-      <!-- 核心：既然新窗口能打开，说明文件没坏，直接用 iframe 引用该地址是最稳的 -->
+      <div id="loader" class="loader"><div class="spinner"></div></div>
+      
+      <!-- PC 端预览框 -->
       <iframe id="pdf-iframe" src=""></iframe>
+
+      <!-- 手机端引导面板 -->
+      <div id="mobile-panel" class="mobile-panel">
+        <div class="mobile-icon">📑</div>
+        <div class="mobile-title">由于手机浏览器限制</div>
+        <div class="mobile-desc">
+          为了提供最佳的阅读体验，<br>
+          请点击下方按钮，使用系统自带的高清阅读器。
+        </div>
+        <a href="#" id="mobile-action-btn" class="action-btn" style="padding: 15px 40px; font-size: 1rem;">立即开启高清预览</a>
+      </div>
     </main>
   </div>
 
@@ -73,27 +96,33 @@
     const urlParams = new URLSearchParams(window.location.search);
     const file = urlParams.get('file');
     const iframe = document.getElementById('pdf-iframe');
+    const mobilePanel = document.getElementById('mobile-panel');
     const loader = document.getElementById('loader');
     const displayName = document.getElementById('display-name');
-    const fullScreenBtn = document.getElementById('full-screen-btn');
+    const directBtn = document.getElementById('direct-btn');
+    const mobileActionBtn = document.getElementById('mobile-action-btn');
+
+    // 检测是否为移动设备
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (file) {
       const decodedFile = decodeURIComponent(file);
       displayName.innerText = decodedFile.split('/').pop();
-      fullScreenBtn.href = decodedFile;
+      directBtn.href = decodedFile;
+      mobileActionBtn.href = decodedFile;
 
-      // 关键修复：直接赋值 src，利用浏览器内置引擎
-      // 这种方式兼容性最强，不会因为预览脚本出错而白屏
-      iframe.src = decodedFile;
-
-      iframe.onload = () => {
+      if (isMobile) {
+        // 手机端：直接显示引导面板，不再强行使用 iframe (避免白屏和下载提示)
         loader.style.display = 'none';
-      };
-
-      // 兜底：2秒后强制隐藏加载动画，防止加载监听失效
-      setTimeout(() => {
-        loader.style.display = 'none';
-      }, 2000);
+        mobilePanel.style.display = 'flex';
+      } else {
+        // PC 端：使用强大的内置 iframe 预览
+        iframe.src = decodedFile;
+        iframe.style.display = 'block';
+        iframe.onload = () => { loader.style.display = 'none'; };
+        // 兜底
+        setTimeout(() => { loader.style.display = 'none'; }, 2000);
+      }
     }
   </script>
 </body>
