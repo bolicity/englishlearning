@@ -7,297 +7,171 @@
   <link rel="stylesheet" href="index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --chinese-primary: #ff6b9d;
-      --chinese-secondary: #ff85a2;
-      --chinese-accent: #ff477e;
-      --chinese-bg: #fff5f8;
-    }
-
-    body { 
-      background: var(--chinese-bg); 
-      display: block; 
-      font-family: 'Nunito', 'Microsoft YaHei', sans-serif;
-    }
-
-    .container { 
-      max-width: 900px; 
-      margin: 0 auto; 
-      padding: 40px 20px; 
-    }
+    body { background: var(--bg); display: block; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
     
     .back-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--chinese-primary);
+      color: var(--pink);
       text-decoration: none;
       font-weight: 700;
-      margin-bottom: 25px;
-      transition: transform 0.2s;
-    }
-    .back-btn:hover {
-      transform: translateX(-5px);
+      margin-bottom: 20px;
     }
 
     .chinese-header {
       text-align: center;
-      margin-bottom: 45px;
-      padding: 40px;
+      margin-bottom: 40px;
+      padding: 30px;
       background: white;
-      border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(255, 107, 157, 0.1);
-      border: 2px solid rgba(255, 107, 157, 0.1);
-      position: relative;
-      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 2px solid var(--pink-light);
     }
-    
-    .chinese-header::before {
-      content: '语文';
-      position: absolute;
-      top: -20px;
-      right: -10px;
-      font-size: 8rem;
-      font-family: 'Ma Shan Zheng';
-      opacity: 0.03;
-      color: var(--chinese-primary);
-      transform: rotate(15deg);
-    }
-
     .chinese-header h1 { 
       font-family: 'Ma Shan Zheng', cursive; 
-      font-size: 3.5rem; 
-      color: var(--chinese-primary);
-      margin-bottom: 10px;
-      position: relative;
-    }
-
-    .header-sub {
-      font-weight: 700;
-      color: #888;
-      font-size: 1.1rem;
+      font-size: 3rem; 
+      color: var(--pink);
+      margin-bottom: 5px;
     }
 
     .category-section {
       margin-bottom: 40px;
       background: white;
-      border-radius: 24px;
-      padding: 30px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-      border: 1px solid #fcf2f5;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     }
-
     .category-title {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 900;
       color: var(--purple);
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       padding-bottom: 15px;
-      border-bottom: 2px solid #fff5f8;
+      border-bottom: 1px dashed #eee;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .resource-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 15px;
+    .resource-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     .resource-item {
       display: flex;
       align-items: center;
-      gap: 18px;
-      padding: 16px 20px;
-      background: #fff;
+      gap: 15px;
+      padding: 12px 15px;
+      background: #fdfdfd;
       border: 1px solid #f0f0f0;
-      border-radius: 18px;
+      border-radius: 12px;
       text-decoration: none;
       color: var(--text);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
+      transition: all 0.2s;
     }
-
     .resource-item:hover {
-      border-color: var(--chinese-primary);
-      box-shadow: 0 8px 24px rgba(255, 107, 157, 0.12);
-      transform: translateY(-2px) scale(1.01);
-      background: #fffafa;
-    }
-
-    .file-icon {
-      font-size: 1.8rem;
-      width: 45px;
-      height: 45px;
-      background: var(--chinese-bg);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .file-info {
-      flex-grow: 1;
-    }
-
-    .file-name {
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: #333;
-      margin-bottom: 4px;
-    }
-
-    .file-meta {
-      font-size: 0.85rem;
-      color: #999;
-    }
-
-    .badge-group {
-      display: flex;
-      gap: 8px;
-    }
-
-    .badge {
-      padding: 4px 10px;
-      border-radius: 8px;
-      font-size: 0.7rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .badge-pdf { background: #ffebee; color: #f44336; }
-    .badge-ans { background: #e8f5e9; color: #2e7d32; }
-    .badge-hot { background: #fffde7; color: #f9a825; }
-
-    .action-arrow {
-      color: var(--chinese-primary);
-      font-weight: 900;
-      transition: transform 0.2s;
-    }
-    .resource-item:hover .action-arrow {
+      background: #fff;
+      border-color: var(--pink);
+      box-shadow: 0 4px 12px rgba(255, 107, 157, 0.1);
       transform: translateX(5px);
     }
 
-    .resource-item.is-ans {
-      border-left: 5px solid var(--chinese-primary);
-      background: #fffafa;
-    }
-    .resource-item.is-ans .file-icon {
-      background: #ffebee;
-    }
+    .file-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .file-info { flex-grow: 1; display: flex; flex-direction: column; }
+    .file-name { font-weight: 700; font-size: 1rem; }
+    .file-meta { font-size: 0.75rem; color: var(--text-light); margin-top: 2px; }
+
+    .badge-row { display: flex; gap: 6px; flex-shrink: 0; }
+    .badge { padding: 3px 8px; border-radius: 5px; font-size: 0.65rem; font-weight: 800; }
+    .badge-pdf { background: #fee2e2; color: #ef4444; }
+    .badge-ans { background: #f0fdf4; color: #22c55e; }
+
+    .action-arrow { color: var(--pink-light); font-weight: 900; transition: color 0.2s; }
+    .resource-item:hover .action-arrow { color: var(--pink); }
 
     @media (max-width: 640px) {
-      .resource-item { flex-wrap: nowrap; }
-      .badge-group { display: none; }
+      .resource-item { flex-wrap: wrap; }
+      .badge-row { order: 3; width: 100%; margin-top: 5px; }
+      .action-arrow { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="bg-blob blob-1"></div>
-  <div class="bg-blob blob-2"></div>
+  <div class="bg-decoration">
+    <div class="bg-blob"></div>
+    <div class="bg-blob"></div>
+  </div>
 
   <div class="container">
-    <a href="index.html" class="back-btn">← 返回星球首页</a>
+    <a href="index.html" class="back-btn">← 返回首页</a>
 
-    <header class="chinese-header">
+    <div class="chinese-header">
       <h1 class="app-title">语文复习清单</h1>
-      <p class="header-sub">中考同步资料 · 沉浸式阅读 · 高清PDF</p>
-    </header>
+      <p style="font-weight: 700; color: var(--text-light);">中考同步资料 · 免下载极速预览</p>
+    </div>
 
     <!-- 专题一：知识梳理 -->
     <section class="category-section">
-      <div class="category-title">📖 名著知识梳理</div>
-      <div class="resource-grid">
-        <a href="chinese_docs/midterm/jdct_summary.pdf" class="resource-item" target="_blank">
-          <div class="file-icon">📙</div>
+      <div class="category-title">📚 核心知识梳理</div>
+      <div class="resource-list">
+        <a href="chinese-viewer.html?file=zh_docs/jdct_summary.pdf" class="resource-item">
+          <div class="file-icon">📖</div>
           <div class="file-info">
-            <div class="file-name">《经典常谈》核心考点手册</div>
-            <div class="file-meta">含导读、考点、常考题解析</div>
+            <div class="file-name">《经典常谈》核心知识点</div>
+            <div class="file-meta">中考必考点深度梳理</div>
           </div>
-          <div class="badge-group">
-            <span class="badge badge-pdf">PDF</span>
-            <span class="badge badge-hot">必看</span>
-          </div>
+          <div class="badge-row"><span class="badge badge-pdf">PDF</span></div>
           <div class="action-arrow">→</div>
         </a>
       </div>
     </section>
 
-    <!-- 专题二：期中练习 -->
+    <!-- 专题二：练习卷 -->
     <section class="category-section">
-      <div class="category-title">📝 期中全真练习卷</div>
-      <div class="resource-grid">
-        <a href="chinese_docs/midterm/papers/paper1.pdf" class="resource-item" target="_blank">
+      <div class="category-title">📝 期中复习练习卷</div>
+      <div class="resource-list">
+        <a href="chinese-viewer.html?file=zh_docs/paper1.pdf" class="resource-item">
           <div class="file-icon">📄</div>
-          <div class="file-info">
-            <div class="file-name">八语期中复习练习卷（一）</div>
-            <div class="file-meta">全真模拟题库</div>
-          </div>
-          <div class="badge-group">
-            <span class="badge badge-pdf">PDF</span>
-          </div>
+          <div class="file-info"><div class="file-name">期中复习练习卷（一）</div></div>
+          <div class="badge-row"><span class="badge badge-pdf">PDF</span></div>
           <div class="action-arrow">→</div>
         </a>
-        <a href="chinese_docs/midterm/papers/paper1_ans.pdf" class="resource-item is-ans" target="_blank">
-          <div class="file-icon">✅</div>
-          <div class="file-info">
-            <div class="file-name">练习卷（一）参考答案</div>
-            <div class="file-meta">官方解析</div>
-          </div>
-          <div class="badge-group">
-            <span class="badge badge-ans">ANS</span>
-          </div>
+        <a href="chinese-viewer.html?file=zh_docs/paper1_ans.pdf" class="resource-item">
+          <div class="file-icon">💡</div>
+          <div class="file-info"><div class="file-name">练习卷（一）参考答案</div></div>
+          <div class="badge-row"><span class="badge badge-ans">参考答案</span></div>
           <div class="action-arrow">→</div>
         </a>
         
-        <a href="chinese_docs/midterm/papers/paper2.pdf" class="resource-item" target="_blank">
+        <a href="chinese-viewer.html?file=zh_docs/paper2.pdf" class="resource-item">
           <div class="file-icon">📄</div>
-          <div class="file-info">
-            <div class="file-name">八语期中复习练习卷（二）</div>
-            <div class="file-meta">强化训练系列</div>
-          </div>
-          <div class="badge-group">
-            <span class="badge badge-pdf">PDF</span>
-          </div>
+          <div class="file-info"><div class="file-name">期中复习练习卷（二）</div></div>
+          <div class="badge-row"><span class="badge badge-pdf">PDF</span></div>
           <div class="action-arrow">→</div>
         </a>
-        <a href="chinese_docs/midterm/papers/paper2_ans.pdf" class="resource-item is-ans" target="_blank">
-          <div class="file-icon">✅</div>
-          <div class="file-info">
-            <div class="file-name">练习卷（二）参考答案</div>
-            <div class="file-meta">官方解析</div>
-          </div>
-          <div class="badge-group">
-            <span class="badge badge-ans">ANS</span>
-          </div>
+        <a href="chinese-viewer.html?file=zh_docs/paper2_ans.pdf" class="resource-item">
+          <div class="file-icon">💡</div>
+          <div class="file-info"><div class="file-name">练习卷（二）参考答案</div></div>
+          <div class="badge-row"><span class="badge badge-ans">参考答案</span></div>
           <div class="action-arrow">→</div>
         </a>
 
-        <a href="chinese_docs/midterm/papers/paper3.pdf" class="resource-item" target="_blank">
+        <a href="chinese-viewer.html?file=zh_docs/paper3.pdf" class="resource-item">
           <div class="file-icon">📄</div>
-          <div class="file-info">
-            <div class="file-name">八语期中复习练习卷（三）</div>
-            <div class="file-meta">冲刺必备</div>
-          </div>
-          <div class="badge-group">
-            <span class="badge badge-pdf">PDF</span>
-          </div>
+          <div class="file-info"><div class="file-name">期中复习练习卷（三）</div></div>
+          <div class="badge-row"><span class="badge badge-pdf">PDF</span></div>
           <div class="action-arrow">→</div>
         </a>
-        <a href="chinese_docs/midterm/papers/paper3_ans.pdf" class="resource-item is-ans" target="_blank">
-          <div class="file-icon">✅</div>
-          <div class="file-info">
-            <div class="file-name">练习卷（三）参考答案</div>
-            <div class="file-meta">官方解析</div>
-          </div>
-          <div class="badge-group">
-            <span class="badge badge-ans">ANS</span>
-          </div>
+        <a href="chinese-viewer.html?file=zh_docs/paper3_ans.pdf" class="resource-item">
+          <div class="file-icon">💡</div>
+          <div class="file-info"><div class="file-name">练习卷（三）参考答案</div></div>
+          <div class="badge-row"><span class="badge badge-ans">参考答案</span></div>
           <div class="action-arrow">→</div>
         </a>
       </div>
@@ -306,79 +180,51 @@
     <!-- 专题三：默写 -->
     <section class="category-section">
       <div class="category-title">🏮 古诗文专项练习</div>
-      <div class="resource-grid">
-        <a href="chinese_docs/midterm/dictation/tyyj_dict.pdf" class="resource-item" target="_blank">
+      <div class="resource-list">
+        <a href="chinese-viewer.html?file=zh_docs/tyyj_dict.pdf" class="resource-item">
           <div class="file-icon">📜</div>
-          <div class="file-info">
-            <div class="file-name">第9课《桃花源记》默写卷</div>
-            <div class="file-meta">课内背诵通关</div>
-          </div>
-          <div class="badge-group">
-            <span class="badge badge-pdf">PDF</span>
-          </div>
+          <div class="file-info"><div class="file-name">《桃花源记》默写卷</div></div>
+          <div class="badge-row"><span class="badge badge-pdf">PDF</span></div>
           <div class="action-arrow">→</div>
         </a>
-        <a href="chinese_docs/midterm/dictation/tyyj_ans.pdf" class="resource-item is-ans" target="_blank">
-          <div class="file-icon">✅</div>
-          <div class="file-info">
-            <div class="file-name">《桃花源记》默写答案</div>
-          </div>
-          <div class="badge-group">
-            <span class="badge badge-ans">ANS</span>
-          </div>
+        <a href="chinese-viewer.html?file=zh_docs/tyyj_ans.pdf" class="resource-item">
+          <div class="file-icon">💡</div>
+          <div class="file-info"><div class="file-name">《桃花源记》默写答案</div></div>
+          <div class="badge-row"><span class="badge badge-ans">参考答案</span></div>
           <div class="action-arrow">→</div>
         </a>
 
-        <a href="chinese_docs/midterm/dictation/xstj_dict.pdf" class="resource-item" target="_blank">
+        <a href="chinese-viewer.html?file=zh_docs/xstj_dict.pdf" class="resource-item">
           <div class="file-icon">📜</div>
-          <div class="file-info">
-            <div class="file-name">第10课《小石潭记》默写卷</div>
-            <div class="file-meta">重点字词过关</div>
-          </div>
-          <div class="badge-group">
-            <span class="badge badge-pdf">PDF</span>
-          </div>
+          <div class="file-info"><div class="file-name">《小石潭记》默写卷</div></div>
+          <div class="badge-row"><span class="badge badge-pdf">PDF</span></div>
           <div class="action-arrow">→</div>
         </a>
-        <a href="chinese_docs/midterm/dictation/xstj_ans.pdf" class="resource-item is-ans" target="_blank">
-          <div class="file-icon">✅</div>
-          <div class="file-info">
-            <div class="file-name">《小石潭记》默写答案</div>
-          </div>
-          <div class="badge-group">
-            <span class="badge badge-ans">ANS</span>
-          </div>
+        <a href="chinese-viewer.html?file=zh_docs/xstj_ans.pdf" class="resource-item">
+          <div class="file-icon">💡</div>
+          <div class="file-info"><div class="file-name">《小石潭记》默写答案</div></div>
+          <div class="badge-row"><span class="badge badge-ans">参考答案</span></div>
           <div class="action-arrow">→</div>
         </a>
 
-        <a href="chinese_docs/midterm/dictation/hzj_text.pdf" class="resource-item" target="_blank">
+        <a href="chinese-viewer.html?file=zh_docs/hzj_text.pdf" class="resource-item">
           <div class="file-icon">📜</div>
-          <div class="file-info">
-            <div class="file-name">第11课《核舟记》原文阅读</div>
-            <div class="file-meta">精读手册</div>
-          </div>
-          <div class="badge-group">
-            <span class="badge badge-pdf">PDF</span>
-          </div>
+          <div class="file-info"><div class="file-name">《核舟记》原文阅读</div></div>
+          <div class="badge-row"><span class="badge badge-pdf">PDF</span></div>
           <div class="action-arrow">→</div>
         </a>
-        <a href="chinese_docs/midterm/dictation/hzj_ans.pdf" class="resource-item is-ans" target="_blank">
-          <div class="file-icon">✅</div>
-          <div class="file-info">
-            <div class="file-name">《核舟记》课后习题答案</div>
-          </div>
-          <div class="badge-group">
-            <span class="badge badge-ans">ANS</span>
-          </div>
+        <a href="chinese-viewer.html?file=zh_docs/hzj_ans.pdf" class="resource-item">
+          <div class="file-icon">💡</div>
+          <div class="file-info"><div class="file-name">《核舟记》课后习题答案</div></div>
+          <div class="badge-row"><span class="badge badge-ans">参考答案</span></div>
           <div class="action-arrow">→</div>
         </a>
       </div>
     </section>
 
-    <footer style="text-align: center; padding: 40px 0; color: #bbb; font-size: 0.9rem;">
+    <div style="text-align: center; padding: 40px 0; color: #ccc; font-size: 0.8rem;">
       <p>© 2026 Owen Learning Center</p>
-      <p style="margin-top: 5px;">让学习变得像探索星球一样有趣</p>
-    </footer>
+    </div>
   </div>
 </body>
 </html>
