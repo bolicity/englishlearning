@@ -36,8 +36,7 @@
       border-bottom: 3px solid var(--pink-light);
       padding-bottom: 30px;
     }
-
-    .plan-header h1 { font-size: 2.5rem; margin-bottom: 15px; }
+    .plan-header h1 { font-family: 'ZCOOL KuaiLe', cursive; font-size: 2.8rem; color: #0284c7; margin-bottom: 15px; }
 
     .summary-grid {
       display: grid;
@@ -53,11 +52,11 @@
       text-align: center;
       border: 2px solid var(--pink-light);
     }
-    .summary-item .val { font-size: 1.8rem; font-weight: 900; color: var(--pink); display: block; }
+    .summary-item .val { font-size: 1.8rem; font-weight: 900; color: #0284c7; display: block; }
     .summary-item .lab { font-size: 0.85rem; color: var(--text-light); font-weight: 700; }
 
     h2 {
-      color: var(--pink);
+      color: #0369a1;
       margin: 40px 0 20px;
       font-weight: 900;
       display: flex;
@@ -77,59 +76,25 @@
       width: 100%;
       border-collapse: collapse;
       background: white;
-      min-width: 600px;
+      min-width: 800px;
     }
-    th, td { padding: 15px; border: 1px solid #f0f0f0; text-align: left; }
-    th { background: var(--pink); color: white; font-weight: 800; font-size: 0.9rem; }
-    tr:nth-child(even) { background: #fffafd; }
+    th, td { padding: 12px 15px; border: 1px solid #f0f0f0; text-align: left; font-size: 0.9rem; }
+    th { background: #0ea5e9; color: white; font-weight: 800; }
+    tr:nth-child(even) { background: #f8fafc; }
     
-    @media (max-width: 1024px) {
-      .plan-card { padding: 30px; }
-      .plan-header h1 { font-size: 2.2rem; }
-    }
-
-    @media (max-width: 768px) {
-      .container { padding: 20px 15px; }
-      .plan-card { padding: 20px; }
-      .plan-header h1 { font-size: 1.8rem; }
-      .summary-grid { grid-template-columns: 1fr 1fr; }
-      .summary-item { padding: 15px; }
-      .summary-item .val { font-size: 1.4rem; }
-      .month-btn { padding: 8px 15px; font-size: 0.9rem; }
-      th, td { padding: 10px; font-size: 0.85rem; }
-    }
-
-    @media (max-width: 480px) {
-      .plan-header h1 { font-size: 1.5rem; }
-      .summary-grid { grid-template-columns: 1fr; }
-      .month-btn { width: 100%; }
-      .formula-item code { font-size: 1rem; }
-    }
-
     .chapter-tag {
       padding: 4px 10px;
       border-radius: 8px;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 800;
       color: white;
+      white-space: nowrap;
     }
-    .tag-blue { background: var(--blue); }
-    .tag-purple { background: var(--purple); }
-    .tag-orange { background: var(--orange); }
-
-    .formula-card {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-    }
-    .formula-item {
-      background: white;
-      padding: 15px;
-      border-radius: 16px;
-      border-left: 5px solid var(--purple);
-      box-shadow: var(--shadow);
-    }
-    .formula-item code { font-size: 1.2rem; font-weight: 900; color: var(--pink); }
+    .tag-blue { background: #3b82f6; }
+    .tag-purple { background: #8b5cf6; }
+    .tag-orange { background: #f59e0b; }
+    .tag-gray { background: #64748b; }
+    .tag-green { background: #10b981; }
 
     .calendar-selector {
       margin: 30px 0;
@@ -141,66 +106,77 @@
     .month-btn {
       padding: 10px 25px;
       border-radius: 50px;
-      border: 2px solid var(--pink-light);
+      border: 2px solid #e2e8f0;
       background: white;
       font-weight: 800;
       cursor: pointer;
       transition: all 0.3s;
     }
-    .month-btn.active { background: var(--pink); color: white; border-color: var(--pink); }
+    .month-btn.active { background: #0ea5e9; color: white; border-color: #0ea5e9; }
 
     .schedule-section { display: none; }
     .schedule-section.active { display: block; animation: fadeIn 0.5s ease; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-    .file-cell { color: var(--purple); font-weight: 700; font-size: 0.85rem; }
-    .checkbox-done {
-      cursor: pointer;
-      width: 20px;
-      height: 20px;
-      accent-color: var(--pink);
+    .file-cell { color: #7c3aed; font-weight: 800; font-size: 0.8rem; }
+    .checkbox-done { cursor: pointer; width: 18px; height: 18px; accent-color: #0ea5e9; }
+
+    .formula-card {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 15px;
+    }
+    .formula-item {
+      background: white;
+      padding: 15px;
+      border-radius: 16px;
+      border-left: 5px solid #0ea5e9;
+      box-shadow: var(--shadow);
+    }
+    .formula-item code { font-size: 1.1rem; font-weight: 900; color: #ef4444; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    
+    @media (max-width: 768px) {
+      .plan-header h1 { font-size: 1.8rem; }
+      .summary-grid { grid-template-columns: 1fr 1fr; }
+      th, td { padding: 8px; font-size: 0.8rem; }
     }
   </style>
 </head>
 <body>
-  <div class="bg-decoration">
-    <div class="bg-blob"></div>
-    <div class="bg-blob"></div>
-  </div>
-
   <div class="container">
-    <a href="index.html" class="back-btn">← 返回首页</a>
+    <a href="physics-hub.html" class="back-btn">← 返回物理中心</a>
 
     <div class="plan-card">
       <div class="plan-header">
-        <h1 class="app-title">物理八下习题专项复习计划</h1>
-        <p style="color: var(--text-light); font-weight: 700;">2026年 5月 — 6月 · 每天 ≤40分钟 · 提分利器</p>
+        <h1>八下物理习题专项复习计划</h1>
+        <p style="color: #64748b; font-weight: 700;">2026年 5月 — 6月 · 仅看习题视频 · 每天≤40分钟</p>
       </div>
 
       <div class="summary-grid">
         <div class="summary-item"><span class="val">86 节</span><span class="lab">习题视频总数</span></div>
-        <div class="summary-item"><span class="val">29 小时</span><span class="lab">视频总时长</span></div>
+        <div class="summary-item"><span class="val">28时58分</span><span class="lab">视频总时长</span></div>
         <div class="summary-item"><span class="val">43 天</span><span class="lab">可用工作日</span></div>
-        <div class="summary-item"><span class="val">40 分钟</span><span class="lab">每日建议用时</span></div>
+        <div class="summary-item"><span class="val">40 分钟</span><span class="lab">每日限时</span></div>
       </div>
 
-      <h2>一、章节习题概览</h2>
+      <h2>一、各章节习题概览</h2>
       <div class="table-container">
         <table>
           <thead>
-            <tr><th>章节名称</th><th>视频数量</th><th>总时长</th><th>预计天数</th><th>复习顺序</th></tr>
+            <tr><th>章节名称</th><th>视频数量</th><th>时长</th><th>天数</th><th>复习顺序</th></tr>
           </thead>
           <tbody>
-            <tr><td><span class="chapter-tag tag-blue">第九章 压强</span></td><td>20 节</td><td>8时49分</td><td>14 天</td><td>① 第一批 (5月)</td></tr>
-            <tr><td><span class="chapter-tag tag-purple">第十章 浮力</span></td><td>21 节</td><td>8时1分</td><td>13 天</td><td>② 第二批 (5月)</td></tr>
-            <tr><td><span class="chapter-tag tag-orange">第十二章 简单机械</span></td><td>23 节</td><td>7时24分</td><td>12 天</td><td>③ 第三批 (6月)</td></tr>
-            <tr><td>第八章 运动和力</td><td>9 节</td><td>2时34分</td><td>4 天</td><td>④ 第四批 (6月)</td></tr>
-            <tr><td>第十一章 功和能</td><td>13 节</td><td>2时8分</td><td>4 天</td><td>⑤ 第五批 (6月)</td></tr>
+            <tr><td><span class="chapter-tag tag-blue">第九章 压强</span></td><td>20 节</td><td>8小时49分</td><td>14 天</td><td>① 第一批 (5月)</td></tr>
+            <tr><td><span class="chapter-tag tag-purple">第十章 浮力</span></td><td>21 节</td><td>8小时1分</td><td>13 天</td><td>② 第二批 (5月)</td></tr>
+            <tr><td><span class="chapter-tag tag-orange">第十二章 简单机械</span></td><td>23 节</td><td>7小时24分</td><td>12 天</td><td>③ 第三批 (6月)</td></tr>
+            <tr><td><span class="chapter-tag tag-gray">第八章 运动和力</span></td><td>9 节</td><td>2小时34分</td><td>4 天</td><td>④ 第四批 (6月)</td></tr>
+            <tr><td><span class="chapter-tag tag-green">第十一章 功和机械能</span></td><td>13 节</td><td>2小时8分</td><td>4 天</td><td>⑤ 第五批 (6月)</td></tr>
           </tbody>
         </table>
       </div>
 
-      <h2>二、详细学习日程表</h2>
+      <h2>二、学习日程打卡表</h2>
       <div class="calendar-selector">
         <button class="month-btn active" onclick="showMonth('may', this)">5月：压强 & 浮力</button>
         <button class="month-btn" onclick="showMonth('june', this)">6月：机械、力 & 功</button>
@@ -211,23 +187,33 @@
         <div class="table-container">
           <table>
             <thead>
-              <tr><th>完成</th><th>日期</th><th>视频内容</th><th>对应习题文件 (PDF)</th><th>时长</th></tr>
+              <tr><th>完</th><th>日期</th><th>视频内容</th><th>对应习题文件 (PDF)</th><th>时长</th></tr>
             </thead>
             <tbody>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/1</td><td>液体的重力与压力习题</td><td class="file-cell">9压强-2液体的压强-习题</td><td>42分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/4</td><td>压强计算 (切割专项)</td><td class="file-cell">9压强-1压强-习题</td><td>42分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/5</td><td>流体压强与流速</td><td class="file-cell">9压强-4流体压强-习题</td><td>41分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/6</td><td>压强计算 (拆解分析)</td><td class="file-cell">9压强-1压强-习题</td><td>38分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/7</td><td>压强计算 (新公式)</td><td class="file-cell">9压强-1压强-习题</td><td>32分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/11</td><td>大气压的测量</td><td class="file-cell">9压强-3大气压强-习题</td><td>30分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/15</td><td>增大/减小压强方法</td><td class="file-cell">9压强-1压强-习题</td><td>26分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/25</td><td>浮力题 (密度问题)</td><td class="file-cell">10浮力-2阿基米德-习题</td><td>46分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/26</td><td>浮力题 (浮沉与密度)</td><td class="file-cell">10浮力-3物体的浮沉-习题</td><td>43分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/27</td><td>密度计习题专项</td><td class="file-cell">10浮力-4制作密度计-习题</td><td>43分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/1</td><td>液体的重力和对容器底的压力_习题</td><td class="file-cell">9压强-2液体的压强-习题</td><td>42分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/4</td><td>压强计算_切割</td><td class="file-cell">9压强-1压强-习题</td><td>42分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/5</td><td>流体压强与流速的关系</td><td class="file-cell">9压强-4流体压强-习题</td><td>41分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/6</td><td>压强计算_拆解分析</td><td class="file-cell">9压强-1压强-习题</td><td>38分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/7</td><td>压强计算_新的公式</td><td class="file-cell">9压强-1压强-习题</td><td>32分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/8</td><td>四种问法</td><td class="file-cell">9压强-2液体的压强-习题</td><td>31分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/11</td><td>大气压的测量_习题</td><td class="file-cell">9压强-3大气压强-习题</td><td>30分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/12</td><td>液体压强的大小_习题</td><td class="file-cell">9压强-2液体的压强-习题</td><td>29分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/13</td><td>压强_习题</td><td class="file-cell">9压强-1压强-习题</td><td>29分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/14</td><td>压强计算_受力面积</td><td class="file-cell">9压强-1压强-习题</td><td>27分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/15</td><td>怎样减小或增大压强</td><td class="file-cell">9压强-1压强-习题</td><td>26分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/18</td><td>等高点压强</td><td class="file-cell">9压强-2液体的压强-习题</td><td>22分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/19</td><td>压强变化砖题 + 叠放</td><td class="file-cell">9压强-1压强-习题</td><td>38分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/20</td><td>液体的压力 + 比例问题</td><td class="file-cell">9/1混编-习题</td><td>35分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/21</td><td>液体压强特点 + 压力</td><td class="file-cell">9/1混编-习题</td><td>33分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/22</td><td>飞机的升力 + 公式选择</td><td class="file-cell">9/2混编-习题</td><td>25分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/25</td><td>浮力题_密度问题</td><td class="file-cell">10浮力-2阿基米德-习题</td><td>46分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/26</td><td>浮力题_浮沉与密度</td><td class="file-cell">10浮力-3物体的浮沉-习题</td><td>43分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/27</td><td>密度计_习题</td><td class="file-cell">10浮力-4制作密度计-习题</td><td>43分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/28</td><td>浮力产生的原因</td><td class="file-cell">10浮力-1浮力-习题</td><td>33分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>5/29</td><td>浮力题_基础计算</td><td class="file-cell">10浮力-2阿基米德-习题</td><td>27分</td></tr>
             </tbody>
           </table>
         </div>
-        <p style="text-align: center; color: var(--text-light); font-size: 0.8rem;">* 仅显示部分核心内容，完整版请参照原 DOCX 文件</p>
       </div>
 
       <!-- 6月计划 -->
@@ -235,14 +221,20 @@
         <div class="table-container">
           <table>
             <thead>
-              <tr><th>完成</th><th>日期</th><th>视频内容</th><th>对应习题文件 (PDF)</th><th>时长</th></tr>
+              <tr><th>完</th><th>日期</th><th>视频内容</th><th>对应习题文件 (PDF)</th><th>时长</th></tr>
             </thead>
             <tbody>
               <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/1</td><td>决定浮力大小因素</td><td class="file-cell">10浮力-1浮力-习题</td><td>25分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/16</td><td>滑轮组机械效率计算 (1)</td><td class="file-cell">12简单机械-4机械效率-习题</td><td>35分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/19</td><td>杠杆题 (基础计算)</td><td class="file-cell">12简单机械-1杠杆-习题</td><td>25分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/24</td><td>杠杆题 (杠杆再平衡)</td><td class="file-cell">12简单机械-1杠杆-习题</td><td>22分</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/30</td><td>杠杆题 (最小力问题)</td><td class="file-cell">12简单机械-1杠杆-习题</td><td>19分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/2</td><td>浮力定性比较</td><td class="file-cell">10浮力-2阿基米德-习题</td><td>24分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/3</td><td>漂浮与密度</td><td class="file-cell">10浮力-3物体的浮沉-习题</td><td>23分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/4</td><td>浮沉状态计算</td><td class="file-cell">10浮力-3物体的浮沉-习题</td><td>22分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/5</td><td>阿基米德原理实验</td><td class="file-cell">10浮力-2阿基米德-习题</td><td>22分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/16</td><td>滑轮组机械效率计算 1</td><td class="file-cell">12简单机械-4机械效率-习题</td><td>35分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/17</td><td>机械效率_习题 2</td><td class="file-cell">12简单机械-4机械效率-习题</td><td>31分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/18</td><td>滑轮组受力分析</td><td class="file-cell">12简单机械-3滑轮-习题</td><td>28分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/19</td><td>杠杆题_基础计算</td><td class="file-cell">12简单机械-1杠杆-习题</td><td>25分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/24</td><td>杠杆题_杠杆再平衡</td><td class="file-cell">12简单机械-1杠杆-习题</td><td>22分</td></tr>
+              <tr><td><input type="checkbox" class="checkbox-done"></td><td>6/30</td><td>最小力问题 + 滑轮效率 4</td><td class="file-cell">12混编-习题</td><td>39分</td></tr>
             </tbody>
           </table>
         </div>
@@ -250,22 +242,24 @@
 
       <h2>三、全册核心公式速查</h2>
       <div class="formula-card">
-        <div class="formula-item"><strong>二力平衡：</strong> <code>F1 = F2</code><div class="lab">条件：同体、等大、反向、共线</div></div>
-        <div class="formula-item"><strong>固体压强：</strong> <code>p = F / S</code><div class="lab">注意单位换算 (1cm² = 10⁻⁴m²)</div></div>
-        <div class="formula-item"><strong>液体压强：</strong> <code>p = ρgh</code><div class="lab">深度 h 指液面以下垂直距离</div></div>
-        <div class="formula-item"><strong>阿基米德：</strong> <code>F浮 = ρ液gV排</code><div class="lab">浮力核心公式</div></div>
-        <div class="formula-item"><strong>杠杆平衡：</strong> <code>F1L1 = F2L2</code><div class="lab">动力×动力臂 = 阻力×阻力臂</div></div>
-        <div class="formula-item"><strong>机械效率：</strong> <code>η = W有 / W总</code><div class="lab">有用功与总功的比值</div></div>
+        <div class="formula-item"><strong>二力平衡：</strong> <code>F1 = F2</code></div>
+        <div class="formula-item"><strong>滑动摩擦力：</strong> <code>f = μN</code></div>
+        <div class="formula-item"><strong>固体压强：</strong> <code>p = F/S</code></div>
+        <div class="formula-item"><strong>液体压强：</strong> <code>p = ρgh</code></div>
+        <div class="formula-item"><strong>阿基米德：</strong> <code>F浮 = ρ液gV排</code></div>
+        <div class="formula-item"><strong>杠杆平衡：</strong> <code>F1L1 = F2L2</code></div>
+        <div class="formula-item"><strong>机械效率：</strong> <code>η = W有/W总</code></div>
+        <div class="formula-item"><strong>功率：</strong> <code>P = W/t</code></div>
       </div>
 
-      <div style="margin-top: 50px; text-align: center; background: var(--bg); padding: 30px; border-radius: 24px; border: 2px dashed var(--pink-light);">
+      <div style="margin-top: 50px; text-align: center; background: #f1f5f9; padding: 30px; border-radius: 24px;">
         <h3 style="margin-bottom: 10px;">💡 学习建议</h3>
-        <p style="font-size: 0.95rem; color: var(--text-light); line-height: 1.6;">
+        <p style="font-size: 0.95rem; color: #475569; line-height: 1.6;">
           先自己做题，再看视频对照解法 —— 效果最好！<br>
           错题必须标记错误原因，每周末回顾一遍。<br>
+          习题文件位于「无答案版」文件夹，先做题后对答案。<br>
           <strong>加油！坚持每天40分钟，期末考试一定取得好成绩！</strong>
         </p>
-        <a href="物理/八下物理习题专项复习计划.docx" class="btn-primary btn" style="margin-top: 20px; text-decoration: none;">下载完整 DOCX 计划表</a>
       </div>
     </div>
   </div>
@@ -274,7 +268,6 @@
     function showMonth(month, btn) {
       document.querySelectorAll('.schedule-section').forEach(s => s.classList.remove('active'));
       document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
-      
       document.getElementById(month + '-plan').classList.add('active');
       btn.classList.add('active');
     }
