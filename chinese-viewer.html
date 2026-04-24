@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>沉浸式阅读器 | Owen Learning Viewer</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.5.1/mammoth.browser.min.js"></script>
+  <style>
+    body { background: #f4f4f9; display: block; }
+    .viewer-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .back-link {
+      color: var(--pink);
+      text-decoration: none;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .file-info { font-weight: 700; color: var(--text); font-size: 0.95rem; }
+    
+    .viewer-container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+
+    /* Word 样式 */
+    #word-render-area {
+      background: white;
+      padding: 60px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      line-height: 1.8;
+      color: #333;
+      font-size: 1.1rem;
+    }
+    #word-render-area h1, #word-render-area h2 { color: var(--pink); margin-top: 1.5em; }
+    #word-render-area p { margin-bottom: 1em; }
+    #word-render-area table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    #word-render-area td, #word-render-area th { border: 1px solid #ddd; padding: 10px; }
+
+    /* PDF 样式 */
+    .pdf-page-wrapper {
+      margin-bottom: 20px;
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+    }
+    canvas { max-width: 100%; height: auto !important; }
+
+    .status-msg {
+      text-align: center;
+      padding: 100px 20px;
+      color: var(--text-light);
+      font-weight: 700;
+    }
+    .btn-download {
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--pink);
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      #word-render-area { padding: 30px 20px; font-size: 1rem; }
+      .viewer-nav { padding: 10px; }
+      .file-info { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="viewer-nav">
+    <a href="chinese.html" class="back-link">← 返回列表</a>
+    <div class="file-info" id="display-filename">正在加载文件...</div>
+    <a href="#" id="download-fallback" class="btn-download" download>下载原档</a>
+  </nav>
+
+  <div class="viewer-container">
+    <div id="render-area">
+      <div class="status-msg" id="loading-text">正在为您准备原文引用阅读，请稍候...</div>
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const filePath = urlParams.get('file');
+    const displayFilename = document.getElementById('display-filename');
+    const renderArea = document.getElementById('render-area');
+    const downloadBtn = document.getElementById('download-fallback');
+
+    if (!filePath) {
+      renderArea.innerHTML = '<div class="status-msg">未找到指定文件。</div>';
+    } else {
+      const fileName = filePath.split('/').pop();
+      displayFilename.innerText = fileName;
+      downloadBtn.href = filePath;
+      
+      const extension = fileName.split('.').pop().toLowerCase();
+      
+      if (extension === 'pdf') {
+        renderPDF(filePath);
+      } else if (extension === 'docx') {
+        renderWord(filePath);
+      } else {
+        renderArea.innerHTML = `<div class="status-msg">暂不支持直接在线预览该类型文件。<br><br><a href="${filePath}" class="btn-primary">点击直接下载</a></div>`;
+      }
+    }
+
+    // PDF 渲染 (pdf.js)
+    async function renderPDF(url) {
+      const pdfjsLib = window['pdfjs-dist/build/pdf'];
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+
+      try {
+        const pdf = await pdfjsLib.getDocument(url).promise;
+        renderArea.innerHTML = ''; // 清空加载提示
+
+        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+          const page = await pdf.getPage(pageNum);
+          const viewport = page.getViewport({ scale: 1.5 });
+          
+          const wrapper = document.createElement('div');
+          wrapper.className = 'pdf-page-wrapper';
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+
+          wrapper.appendChild(canvas);
+          renderArea.appendChild(wrapper);
+
+          await page.render({ canvasContext: context, viewport: viewport }).promise;
+        }
+      } catch (e) {
+        console.error(e);
+        showError('PDF 加载失败，可能受限于浏览器安全设置。', url);
+      }
+    }
+
+    // Word 渲染 (mammoth.js)
+    async function renderWord(url) {
+      try {
+        const response = await fetch(url);
+        const arrayBuffer = await response.arrayBuffer();
+        
+        const result = await mammoth.convertToHtml({ arrayBuffer: arrayBuffer });
+        renderArea.innerHTML = `<div id="word-render-area">${result.value}</div>`;
+        
+        if (result.messages.length > 0) {
+          console.warn('Word 转换提示:', result.messages);
+        }
+      } catch (e) {
+        console.error(e);
+        showError('Word 文档解析失败。', url);
+      }
+    }
+
+    function showError(msg, url) {
+      renderArea.innerHTML = `
+        <div class="status-msg" style="color: #e53e3e;">
+          <h3>⚠️ 无法直接呈现原文</h3>
+          <p>${msg}</p>
+          <p>建议使用 Live Server 打开或直接下载查看。</p>
+          <br>
+          <a href="${url}" target="_blank" class="btn-primary">直接打开/下载原文件</a>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
