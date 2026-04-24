@@ -42,6 +42,29 @@
       background: white;
     }
 
+    .fallback-panel {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      margin: 40px auto;
+      max-width: 560px;
+      padding: 24px;
+      text-align: center;
+    }
+    .fallback-title {
+      color: var(--text);
+      font-size: 1.1rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+    .fallback-text {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
     .loading-overlay {
       position: fixed;
       top: 60px; left: 0; right: 0; bottom: 0;
@@ -90,69 +113,42 @@
     <div id="loader-text" style="margin-top:15px; font-weight:700; color:var(--text-light);">准备加载高清原文...</div>
   </div>
 
-  <main class="viewer-content" id="render-area"></main>
+  <main class="viewer-content" id="render-area">
+    <iframe id="pdf-frame" class="native-viewer" src=""></iframe>
+  </main>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    // 重要：urlParams.get 已经自动解码了，不需要再次 decodeURIComponent
     const filePath = urlParams.get('file');
-    
-    const renderArea = document.getElementById('render-area');
-    const loader = document.getElementById('loader');
     const displayFilename = document.getElementById('display-filename');
     const downloadBtn = document.getElementById('download-btn');
+    const pdfFrame = document.getElementById('pdf-frame');
+    const loader = document.getElementById('loader');
 
-    if (!filePath) {
-      document.getElementById('loader-text').innerText = '错误：未找到文件路径';
-    } else {
-      const fileName = filePath.split('/').pop();
+    if (filePath) {
+      const fileName = decodeURIComponent(filePath.split('/').pop());
       displayFilename.innerText = fileName;
       downloadBtn.href = filePath;
       
-      // 启动加载
-      initViewer(filePath);
-    }
-
-    async function initViewer(url) {
-      const ext = url.split('.').pop().toLowerCase();
+      // 直接设置 iframe 源
+      pdfFrame.src = filePath;
       
-      if (ext === 'pdf') {
-        try {
-          await renderPDF(url);
-        } catch (e) {
-          console.error('PDF.js failed:', e);
-          useNativeViewer();
-        }
-      } else {
-        useNativeViewer();
-      }
-    }
+      // 监听加载完成以隐藏加载动画
+      pdfFrame.onload = () => {
+        loader.style.display = 'none';
+      };
 
-    async function renderPDF(url) {
-      const pdfjsLib = window['pdfjs-dist/build/pdf'];
-      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
-
-      const pdf = await pdfjsLib.getDocument(url).promise;
-      loader.style.display = 'none';
-      
-      for (let i = 1; i <= pdf.numPages; i++) {
-        const page = await pdf.getPage(i);
-        const viewport = page.getViewport({ scale: 1.8 });
-        const wrapper = document.createElement('div');
-        wrapper.className = 'pdf-page-wrapper';
-        const canvas = document.createElement('canvas');
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-        wrapper.appendChild(canvas);
-        renderArea.appendChild(wrapper);
-        await page.render({ canvasContext: canvas.getContext('2d'), viewport: viewport }).promise;
-      }
+      // 针对本地 file:// 协议的容错处理
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 2000);
+    } else {
+      document.getElementById('loader-text').innerText = '错误：未找到文件路径';
     }
 
     function useNativeViewer() {
-      if (!filePath) return;
-      loader.style.display = 'none';
-      renderArea.innerHTML = `<embed src="${filePath}" type="application/pdf" class="native-viewer">`;
+      // 已经在原生模式了
+      window.open(filePath, '_blank');
     }
   </script>
 </body>
