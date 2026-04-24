@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>化学全册知识清单 | Chemistry Complete Knowledge Base</title>
+  <title>化学复习中心 | Chemistry Review Hub</title>
   <link rel="stylesheet" href="index.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
   <style>
     body { background: var(--bg); display: block; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
     
     .back-btn {
       display: inline-flex;
@@ -21,206 +20,208 @@
       text-decoration: none;
       font-weight: 700;
       margin-bottom: 20px;
-      transition: var(--transition);
     }
-    .back-btn:hover { transform: translateX(-5px); }
 
-    .header-card {
+    .chem-header {
       text-align: center;
-      padding: 40px;
+      margin-bottom: 40px;
+      padding: 30px;
       background: white;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      margin-bottom: 30px;
-      border: 2px solid var(--pink-light);
+      border: 2px solid #93c5fd; /* 蓝色调 */
     }
-    .header-card h1 { font-size: 2.5rem; color: var(--pink); margin-bottom: 10px; }
+    .chem-header h1 { 
+      font-family: 'ZCOOL KuaiLe', cursive; 
+      font-size: 3rem; 
+      color: #2563eb;
+      margin-bottom: 5px;
+    }
 
-    /* 渲染区域样式 */
-    .pdf-viewer-container {
+    .category-section {
+      margin-bottom: 40px;
       background: white;
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--pink-light);
-      margin-top: 30px;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     }
-    .pdf-page-wrapper {
-      margin-bottom: 30px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      overflow: hidden;
-      background: #fdfdfd;
+    .category-title {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #1e40af;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed #eee;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .resource-list {
       display: flex;
       flex-direction: column;
+      gap: 12px;
+    }
+
+    .resource-item {
+      display: flex;
       align-items: center;
+      gap: 15px;
+      padding: 12px 15px;
+      background: #fdfdfd;
+      border: 1px solid #f0f0f0;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
     }
-    canvas {
-      max-width: 100%;
-      height: auto !important;
-    }
-    .loading-status {
-      text-align: center;
-      padding: 50px;
-      font-weight: 700;
-      color: var(--pink);
-    }
-
-    /* 复习计划样式 */
-    .plan-section {
+    .resource-item:hover {
       background: #fff;
-      border-radius: var(--radius);
-      padding: 30px;
-      border: 3px solid var(--pink-light);
-      margin-bottom: 30px;
+      border-color: #3b82f6;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+      transform: translateX(5px);
     }
-    .month-selector { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; }
-    .month-btn { padding: 10px 25px; border-radius: 50px; border: 2px solid var(--pink-light); background: white; font-weight: 800; cursor: pointer; }
-    .month-btn.active { background: var(--pink); color: white; border-color: var(--pink); }
-    .schedule-content { display: none; }
-    .schedule-content.active { display: block; animation: fadeIn 0.4s; }
 
-    .table-container { width: 100%; overflow-x: auto; margin: 15px 0; }
-    table { width: 100%; border-collapse: collapse; min-width: 600px; }
-    th, td { padding: 12px; border: 1px solid #eee; text-align: left; }
-    th { background: #fff5f8; color: var(--pink); font-weight: 800; }
+    .file-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .file-info {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .file-name {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .file-meta {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
 
-    @media (max-width: 768px) {
-      .container { padding: 15px; }
-      .header-card { padding: 25px; }
-      h1 { font-size: 1.8rem; }
+    .badge-row {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .badge {
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 0.65rem;
+      font-weight: 800;
+    }
+    .badge-pdf { background: #dbeafe; color: #2563eb; }
+    .badge-ans { background: #f0fdf4; color: #22c55e; }
+    .badge-special { background: #fef3c7; color: #d97706; }
+
+    .action-arrow {
+      color: #bfdbfe;
+      font-weight: 900;
+      transition: color 0.2s;
+    }
+    .resource-item:hover .action-arrow {
+      color: #3b82f6;
+    }
+
+    @media (max-width: 640px) {
+      .resource-item { flex-wrap: wrap; }
+      .badge-row { order: 3; width: 100%; margin-top: 5px; }
+      .action-arrow { display: none; }
     }
   </style>
 </head>
 <body>
   <div class="bg-decoration">
-    <div class="bg-blob"></div>
-    <div class="bg-blob"></div>
+    <div class="bg-blob" style="background: #dbeafe;"></div>
+    <div class="bg-blob" style="background: #eff6ff;"></div>
   </div>
 
   <div class="container">
     <a href="index.html" class="back-btn">← 返回首页</a>
 
-    <div class="header-card">
-      <h1 class="app-title">化学全册知识清单</h1>
-      <p style="font-weight: 700; color: var(--text-light);">2025-2026 学年 · 沪科版五四学制 · 100% 原样保留</p>
+    <div class="chem-header">
+      <h1 class="app-title">化学复习清单</h1>
+      <p style="font-weight: 700; color: var(--text-light);">微观世界 · 宏观解析 · 极简清单模式</p>
     </div>
 
-    <!-- 复习计划 -->
-    <section class="plan-section">
-      <h2 style="text-align: center; color: var(--pink); margin-bottom: 20px;">📅 5月-6月 冲刺复习计划</h2>
-      <div class="month-selector">
-        <button class="month-btn active" onclick="showMonth('may', this)">5月：基础与结构</button>
-        <button class="month-btn" onclick="showMonth('june', this)">6月：计算与综合</button>
-      </div>
-
-      <div id="may-plan" class="schedule-content active">
-        <div class="table-container">
-          <table>
-            <thead><tr><th>周次</th><th>复习重点</th><th>每日任务</th></tr></thead>
-            <tbody>
-              <tr><td>W1</td><td>变化与实验基础</td><td>熟背物理/化学变化特征，练习实验室基本操作规范。</td></tr>
-              <tr><td>W2</td><td>空气与氧气</td><td>记背空气体积分数，掌握O2制取原理与检验细节。</td></tr>
-              <tr><td>W3</td><td>水资源与构成</td><td>理解水的净化（过滤/蒸馏）及电解水实验结论。</td></tr>
-              <tr><td>W4</td><td>微观粒子探秘</td><td>画出1-20号原子结构图，区分分子、原子与离子。</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div id="june-plan" class="schedule-content">
-        <div class="table-container">
-          <table>
-            <thead><tr><th>周次</th><th>复习重点</th><th>每日任务</th></tr></thead>
-            <tbody>
-              <tr><td>W1</td><td>元素与化合价</td><td>默写常见元素化合价口诀，熟练书写化学式。</td></tr>
-              <tr><td>W2</td><td>化学计算专项</td><td>攻克相对分子质量、质量比、质量分数等计算题。</td></tr>
-              <tr><td>W3</td><td>碳及其氧化物</td><td>对比金刚石/石墨性质，记背CO2性质与实验室制取。</td></tr>
-              <tr><td>W4</td><td>反应与守恒</td><td>练习化学方程式配平，理解质量守恒定律微观本质。</td></tr>
-              <tr><td>W5</td><td>最后冲刺</td><td>做普陀区单元练习卷，回顾错题，查漏补缺。</td></tr>
-            </tbody>
-          </table>
-        </div>
+    <!-- 专题一：考点分析 -->
+    <section class="category-section">
+      <div class="category-title">📊 核心考点梳理</div>
+      <div class="resource-list">
+        <a href="chinese-viewer.html?file=化学/考点分析报告_上海化学课本对应.md" class="resource-item">
+          <div class="file-icon">📋</div>
+          <div class="file-info">
+            <div class="file-name">上海化学课本对应考点分析</div>
+            <div class="file-meta">基于上海教材的深度考向分析</div>
+          </div>
+          <div class="badge-row">
+            <span class="badge" style="background: #f1f5f9; color: #475569;">Markdown</span>
+          </div>
+          <div class="action-arrow">→</div>
+        </a>
+        <a href="chinese-viewer.html?file=化学/知识清单--2025--2026学年八年级化学沪科版（五四学制）全一册(2).pdf" class="resource-item">
+          <div class="file-icon">🧪</div>
+          <div class="file-info">
+            <div class="file-name">八年级化学沪科版全一册知识清单</div>
+            <div class="file-meta">2025-2026学年同步精品资料</div>
+          </div>
+          <div class="badge-row">
+            <span class="badge badge-pdf">PDF</span>
+            <span class="badge badge-special">全册精华</span>
+          </div>
+          <div class="action-arrow">→</div>
+        </a>
       </div>
     </section>
 
-    <!-- PDF 原文呈现区 -->
-    <div class="pdf-viewer-container">
-      <h2 style="color: var(--purple); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-        <span>📄</span> 原始知识清单全文 (包含所有图片与表格)
-      </h2>
-      <div id="pdf-render-area">
-        <div class="loading-status" id="loading-text">正在加载原始高清文档图片，请稍候...</div>
+    <!-- 专题二：全真卷练习 -->
+    <section class="category-section">
+      <div class="category-title">📝 全真卷练习</div>
+      <div class="resource-list">
+        <a href="chinese-viewer.html?file=化学/精品解析：上海市普陀区2025-2026学年下学期八年级单元综合练习化学部分（解析版）_扫描版.pdf" class="resource-item">
+          <div class="file-icon">📄</div>
+          <div class="file-info">
+            <div class="file-name">普陀区单元综合练习（解析版）</div>
+            <div class="file-meta">2025-2026学年下学期实战演练</div>
+          </div>
+          <div class="badge-row">
+            <span class="badge badge-pdf">PDF</span>
+            <span class="badge badge-ans">带解析</span>
+          </div>
+          <div class="action-arrow">→</div>
+        </a>
+        <a href="chinese-viewer.html?file=化学/上海市松江区2025-2026学年八年级下学期物理试卷答案解析_扫描版.pdf" class="resource-item">
+          <div class="file-icon">⚖️</div>
+          <div class="file-info">
+            <div class="file-name">松江区八年级下学期物理试卷答案解析</div>
+            <div class="file-meta">物理考点专项（暂存化学区）</div>
+          </div>
+          <div class="badge-row">
+            <span class="badge badge-pdf">PDF</span>
+            <span class="badge badge-ans">参考答案</span>
+          </div>
+          <div class="action-arrow">→</div>
+        </a>
       </div>
+    </section>
+
+    <div style="text-align: center; padding: 40px 0; color: var(--text-light); font-size: 0.8rem; border-top: 1px dashed #bfdbfe;">
+      <p>© 2026 Owen Learning Center | 化学沉浸式学习计划</p>
     </div>
   </div>
 
   <script>
-    // 渲染计划表切换
-    function showMonth(month, btn) {
-      document.querySelectorAll('.schedule-content').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById(month + '-plan').classList.add('active');
-      btn.classList.add('active');
-    }
-
-    // PDF 渲染逻辑 (pdf.js)
-    const pdfUrl = '化学/知识清单--2025--2026学年八年级化学沪科版（五四学制）全一册(2).pdf';
-    const pdfjsLib = window['pdfjs-dist/build/pdf'];
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
-
-    async function renderPDF() {
-      const renderArea = document.getElementById('pdf-render-area');
-      const loadingText = document.getElementById('loading-text');
-      
-      // 使用 encodeURIComponent 对路径进行编码，解决中文路径在某些浏览器下的读取问题
-      const encodedUrl = '化学/' + encodeURIComponent('知识清单--2025--2026学年八年级化学沪科版（五四学制）全一册(2).pdf');
-
-      try {
-        const pdf = await pdfjsLib.getDocument(encodedUrl).promise;
-        loadingText.style.display = 'none';
-
-        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-          const page = await pdf.getPage(pageNum);
-          const viewport = page.getViewport({ scale: 1.5 }); // 降低一点缩放率以提高初次加载速度，适配更多设备
-
-          const wrapper = document.createElement('div');
-          wrapper.className = 'pdf-page-wrapper';
-          
-          const canvas = document.createElement('canvas');
-          const context = canvas.getContext('2d');
-          canvas.height = viewport.height;
-          canvas.width = viewport.width;
-
-          const renderContext = {
-            canvasContext: context,
-            viewport: viewport
-          };
-
-          wrapper.appendChild(canvas);
-          renderArea.appendChild(wrapper);
-
-          await page.render(renderContext).promise;
-        }
-      } catch (error) {
-        console.error('PDF加载详细错误:', error);
-        loadingText.innerHTML = `
-          <div style="color: #e53e3e; padding: 20px; border: 2px dashed #feb2b2; border-radius: 12px; background: #fff5f5;">
-            <h3>⚠️ 文档图片加载失败</h3>
-            <p>原因可能是：浏览器禁用了本地文件的跨域访问。</p>
-            <p><strong>解决方法：</strong></p>
-            <ul style="text-align: left; display: inline-block; margin-top: 10px;">
-              <li>请确保您是通过本地服务器（如 Live Server）打开此页面，而不是直接双击 HTML 文件。</li>
-              <li>或者点击下方按钮直接在浏览器中打开原始文件：</li>
-            </ul>
-            <br><br>
-            <a href="${encodedUrl}" target="_blank" class="btn-primary" style="background: var(--purple);">直接打开原始 PDF 文档</a>
-          </div>
-        `;
+    // 自动为所有资源列表项的 href 进行 URL 编码
+    document.querySelectorAll('.resource-item').forEach(item => {
+      const originalHref = item.getAttribute('href');
+      if (originalHref.includes('file=')) {
+        const parts = originalHref.split('file=');
+        const encodedFile = encodeURI(parts[1]);
+        item.setAttribute('href', parts[0] + 'file=' + encodedFile);
       }
-    }
-
-    renderPDF();
+    });
   </script>
 </body>
 </html>

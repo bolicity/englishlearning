@@ -314,11 +314,12 @@
   </div>
 
   <script>
-    // 自动为所有资源列表项的 href 进行 URL 编码
+    // 自动为所有资源列表项的 href 进行 URL 编码，解决路径中的中文乱码问题
     document.querySelectorAll('.resource-item').forEach(item => {
       const originalHref = item.getAttribute('href');
       if (originalHref.includes('file=')) {
         const parts = originalHref.split('file=');
+        // 使用 encodeURI 编码，因为它会保留 / 等字符但编码中文
         const encodedFile = encodeURI(parts[1]);
         item.setAttribute('href', parts[0] + 'file=' + encodedFile);
       }
