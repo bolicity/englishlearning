@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
   <style>
     body { background: var(--bg); display: block; }
-    .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
     
     .back-btn {
       display: inline-flex;
@@ -24,8 +24,8 @@
 
     .chinese-header {
       text-align: center;
-      margin-bottom: 50px;
-      padding: 40px;
+      margin-bottom: 40px;
+      padding: 30px;
       background: white;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -33,104 +33,102 @@
     }
     .chinese-header h1 { 
       font-family: 'Ma Shan Zheng', cursive; 
-      font-size: 3.5rem; 
+      font-size: 3rem; 
       color: var(--pink);
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
 
     .category-section {
-      margin-bottom: 50px;
+      margin-bottom: 40px;
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     }
     .category-title {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: 900;
       color: var(--purple);
       margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed #eee;
       display: flex;
       align-items: center;
-      gap: 12px;
-    }
-    .category-title::before {
-      content: '';
-      width: 8px;
-      height: 24px;
-      background: var(--pink);
-      border-radius: 4px;
+      gap: 10px;
     }
 
-    .resource-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .resource-card {
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      border: 1px solid var(--pink-light);
-      text-decoration: none;
-      color: var(--text);
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    .resource-list {
       display: flex;
       flex-direction: column;
-      position: relative;
-      overflow: hidden;
-    }
-    .resource-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 30px rgba(255, 107, 157, 0.15);
-      border-color: var(--pink);
-    }
-    .resource-card::after {
-      content: '阅读全文 →';
-      position: absolute;
-      bottom: -30px;
-      right: 20px;
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: var(--pink);
-      transition: all 0.3s;
-      opacity: 0;
-    }
-    .resource-card:hover::after {
-      bottom: 15px;
-      opacity: 1;
+      gap: 12px;
     }
 
-    .file-type-icon {
-      font-size: 2rem;
-      margin-bottom: 15px;
+    .resource-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 12px 15px;
+      background: #fdfdfd;
+      border: 1px solid #f0f0f0;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+    .resource-item:hover {
+      background: #fff;
+      border-color: var(--pink);
+      box-shadow: 0 4px 12px rgba(255, 107, 157, 0.1);
+      transform: translateX(5px);
+    }
+
+    .file-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .file-info {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
     .file-name {
-      font-weight: 800;
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-      line-height: 1.4;
+      font-weight: 700;
+      font-size: 1rem;
     }
-    .file-desc {
-      font-size: 0.85rem;
+    .file-meta {
+      font-size: 0.75rem;
       color: var(--text-light);
-      margin-bottom: 15px;
+      margin-top: 2px;
     }
+
     .badge-row {
       display: flex;
-      gap: 8px;
-      margin-top: auto;
+      gap: 6px;
+      flex-shrink: 0;
     }
     .badge {
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 0.65rem;
       font-weight: 800;
     }
     .badge-pdf { background: #fee2e2; color: #ef4444; }
-    .badge-word { background: #e0f2fe; color: #0ea5e9; }
     .badge-ans { background: #f0fdf4; color: #22c55e; }
+    .badge-special { background: #fef3c7; color: #d97706; }
 
-    @media (max-width: 768px) {
-      .chinese-header h1 { font-size: 2.5rem; }
-      .resource-grid { grid-template-columns: 1fr; }
+    .action-arrow {
+      color: var(--pink-light);
+      font-weight: 900;
+      transition: color 0.2s;
+    }
+    .resource-item:hover .action-arrow {
+      color: var(--pink);
+    }
+
+    @media (max-width: 640px) {
+      .resource-item { flex-wrap: wrap; }
+      .badge-row { order: 3; width: 100%; margin-top: 5px; }
+      .action-arrow { display: none; }
     }
   </style>
 </head>
@@ -144,130 +142,168 @@
     <a href="index.html" class="back-btn">← 返回首页</a>
 
     <div class="chinese-header">
-      <h1 class="app-title">语文复习中心</h1>
-      <p style="font-weight: 700; color: var(--text-light);">中考同步资料 · 原文引用阅读 · 深度攻克文学</p>
+      <h1 class="app-title">语文复习清单</h1>
+      <p style="font-weight: 700; color: var(--text-light);">中考同步资料 · 原文引用阅读 · 极简清单模式</p>
     </div>
 
     <!-- 专题一：知识梳理 -->
     <section class="category-section">
-      <div class="category-title">知识精华梳理</div>
-      <div class="resource-grid">
-        <a href="chinese-viewer.html?file=语文/语文期中复习/《经典常谈》知识梳理.docx" class="resource-card">
-          <div class="file-type-icon">📚</div>
-          <div class="file-name">《经典常谈》核心知识点梳理</div>
-          <div class="file-desc">涵盖名著导读、核心考点及常考题目解析。</div>
-          <div class="badge-row">
-            <span class="badge badge-word">Word</span>
-            <span class="badge" style="background: #fef3c7; color: #d97706;">名著专题</span>
+      <div class="category-title">📚 知识精华梳理</div>
+      <div class="resource-list">
+        <a href="chinese-viewer.html?file=语文/语文期中复习/《经典常谈》知识梳理.pdf" class="resource-item">
+          <div class="file-icon">📖</div>
+          <div class="file-info">
+            <div class="file-name">《经典常谈》核心知识点梳理</div>
+            <div class="file-meta">涵盖名著导读、核心考点及常考题目解析</div>
           </div>
+          <div class="badge-row">
+            <span class="badge badge-pdf">PDF</span>
+            <span class="badge badge-special">名著专题</span>
+          </div>
+          <div class="action-arrow">→</div>
         </a>
       </div>
     </section>
 
     <!-- 专题二：复习全真卷 -->
     <section class="category-section">
-      <div class="category-title">期中复习全真练习卷</div>
-      <div class="resource-grid">
-        <a href="chinese-viewer.html?file=语文/语文期中复习/复习卷/八语期中复习卷（一）2024.pdf" class="resource-card">
-          <div class="file-type-icon">📝</div>
-          <div class="file-name">八语期中复习卷（一）</div>
-          <div class="file-desc">2024年实战演练，覆盖全册重难点。</div>
+      <div class="category-title">📝 期中复习全真练习卷</div>
+      <div class="resource-list">
+        <a href="chinese-viewer.html?file=语文/语文期中复习/复习卷/八语期中复习练习卷（一）2024.pdf" class="resource-item">
+          <div class="file-icon">📄</div>
+          <div class="file-info">
+            <div class="file-name">八语期中复习练习卷（一）</div>
+            <div class="file-meta">2024年实战演练，覆盖全册重难点</div>
+          </div>
           <div class="badge-row">
             <span class="badge badge-pdf">PDF</span>
-            <span class="badge" style="background: #f3e8ff; color: #9333ea;">全真卷</span>
           </div>
+          <div class="action-arrow">→</div>
         </a>
-        <a href="chinese-viewer.html?file=语文/语文期中复习/复习卷/八语期中复习卷（一）2024 参考答案.pdf" class="resource-card">
-          <div class="file-type-icon">💡</div>
-          <div class="file-name">复习卷（一）参考答案</div>
-          <div class="file-desc">详尽解析，对照查漏补缺。</div>
+        <a href="chinese-viewer.html?file=语文/语文期中复习/复习卷/八语期中复习练习卷（一）2024 参考答案.pdf" class="resource-item">
+          <div class="file-icon">💡</div>
+          <div class="file-info">
+            <div class="file-name">练习卷（一）参考答案</div>
+            <div class="file-meta">详尽解析，对照查漏补缺</div>
+          </div>
           <div class="badge-row">
             <span class="badge badge-pdf">PDF</span>
             <span class="badge badge-ans">参考答案</span>
           </div>
+          <div class="action-arrow">→</div>
         </a>
-        <a href="chinese-viewer.html?file=语文/语文期中复习/复习卷/八语期中复习卷（二） .pdf" class="resource-card">
-          <div class="file-type-icon">📝</div>
-          <div class="file-name">八语期中复习卷（二）</div>
-          <div class="file-desc">强化巩固，提升阅读与作文能力。</div>
+        <a href="chinese-viewer.html?file=语文/语文期中复习/复习卷/八语期中复习练习卷（二） .pdf" class="resource-item">
+          <div class="file-icon">📄</div>
+          <div class="file-info">
+            <div class="file-name">八语期中复习练习卷（二）</div>
+            <div class="file-meta">强化巩固，提升阅读与作文能力</div>
+          </div>
           <div class="badge-row">
             <span class="badge badge-pdf">PDF</span>
           </div>
+          <div class="action-arrow">→</div>
         </a>
-        <a href="chinese-viewer.html?file=语文/语文期中复习/复习卷/八语期中复习卷（二）参考答案.docx" class="resource-card">
-          <div class="file-type-icon">💡</div>
-          <div class="file-name">复习卷（二）参考答案</div>
+        <a href="chinese-viewer.html?file=语文/语文期中复习/复习卷/八语期中复习练习卷（二）参考答案.pdf" class="resource-item">
+          <div class="file-icon">💡</div>
+          <div class="file-info">
+            <div class="file-name">练习卷（二）参考答案</div>
+          </div>
           <div class="badge-row">
-            <span class="badge badge-word">Word</span>
+            <span class="badge badge-pdf">PDF</span>
             <span class="badge badge-ans">参考答案</span>
           </div>
+          <div class="action-arrow">→</div>
         </a>
-        <a href="chinese-viewer.html?file=语文/语文期中复习/复习卷/八语期中复习卷（三）.pdf" class="resource-card">
-          <div class="file-type-icon">📝</div>
-          <div class="file-name">八语期中复习卷（三）</div>
+        <a href="chinese-viewer.html?file=语文/语文期中复习/复习卷/八语期中复习卷（三）.pdf" class="resource-item">
+          <div class="file-icon">📄</div>
+          <div class="file-info">
+            <div class="file-name">八语期中复习卷（三）</div>
+          </div>
           <div class="badge-row">
             <span class="badge badge-pdf">PDF</span>
           </div>
+          <div class="action-arrow">→</div>
         </a>
-        <a href="chinese-viewer.html?file=语文/语文期中复习/复习卷/八语期中复习卷（三）参考答案.docx" class="resource-card">
-          <div class="file-type-icon">💡</div>
-          <div class="file-name">复习卷（三）参考答案</div>
+        <a href="chinese-viewer.html?file=语文/语文期中复习/复习卷/八语期中复习卷（三）参考答案.pdf" class="resource-item">
+          <div class="file-icon">💡</div>
+          <div class="file-info">
+            <div class="file-name">复习卷（三）参考答案</div>
+          </div>
           <div class="badge-row">
-            <span class="badge badge-word">Word</span>
+            <span class="badge badge-pdf">PDF</span>
             <span class="badge badge-ans">参考答案</span>
           </div>
+          <div class="action-arrow">→</div>
         </a>
       </div>
     </section>
 
     <!-- 专题三：文言文默写 -->
     <section class="category-section">
-      <div class="category-title">古诗文默写与专项</div>
-      <div class="resource-grid">
-        <a href="chinese-viewer.html?file=语文/语文期中复习/默写卷/第9课《桃花源记》默写卷.docx" class="resource-card">
-          <div class="file-type-icon">🏮</div>
-          <div class="file-name">第9课《桃花源记》默写卷</div>
-          <div class="badge-row">
-            <span class="badge badge-word">Word</span>
+      <div class="category-title">🏮 古诗文默写与专项</div>
+      <div class="resource-list">
+        <a href="chinese-viewer.html?file=语文/语文期中复习/默写卷/第9课《桃花源记》默写卷.pdf" class="resource-item">
+          <div class="file-icon">📜</div>
+          <div class="file-info">
+            <div class="file-name">第9课《桃花源记》默写卷</div>
           </div>
-        </a>
-        <a href="chinese-viewer.html?file=语文/语文期中复习/默写卷/第9课《桃花源记》默写卷（答案）.docx" class="resource-card">
-          <div class="file-type-icon">💡</div>
-          <div class="file-name">《桃花源记》答案</div>
-          <div class="badge-row">
-            <span class="badge badge-word">Word</span>
-            <span class="badge badge-ans">参考答案</span>
-          </div>
-        </a>
-        <a href="chinese-viewer.html?file=语文/语文期中复习/默写卷/第10课《小石潭记》默写卷.docx" class="resource-card">
-          <div class="file-type-icon">🌊</div>
-          <div class="file-name">第10课《小石潭记》默写卷</div>
-          <div class="badge-row">
-            <span class="badge badge-word">Word</span>
-          </div>
-        </a>
-        <a href="chinese-viewer.html?file=语文/语文期中复习/默写卷/第10课《小石潭记》默写卷（答案）.docx" class="resource-card">
-          <div class="file-type-icon">💡</div>
-          <div class="file-name">《小石潭记》答案</div>
-          <div class="badge-row">
-            <span class="badge badge-word">Word</span>
-            <span class="badge badge-ans">参考答案</span>
-          </div>
-        </a>
-        <a href="chinese-viewer.html?file=语文/语文期中复习/默写卷/第11课《核舟记》.pdf" class="resource-card">
-          <div class="file-type-icon">🛶</div>
-          <div class="file-name">第11课《核舟记》原文阅读</div>
           <div class="badge-row">
             <span class="badge badge-pdf">PDF</span>
           </div>
+          <div class="action-arrow">→</div>
         </a>
-        <a href="chinese-viewer.html?file=语文/语文期中复习/默写卷/第11课《核舟记》（答案）.pdf" class="resource-card">
-          <div class="file-type-icon">💡</div>
-          <div class="file-name">《核舟记》答案解析</div>
+        <a href="chinese-viewer.html?file=语文/语文期中复习/默写卷/第9课《桃花源记》默写卷（答案）.pdf" class="resource-item">
+          <div class="file-icon">💡</div>
+          <div class="file-info">
+            <div class="file-name">《桃花源记》答案</div>
+          </div>
           <div class="badge-row">
             <span class="badge badge-pdf">PDF</span>
             <span class="badge badge-ans">参考答案</span>
           </div>
+          <div class="action-arrow">→</div>
+        </a>
+        <a href="chinese-viewer.html?file=语文/语文期中复习/默写卷/第10课《小石潭记》默写卷.pdf" class="resource-item">
+          <div class="file-icon">📜</div>
+          <div class="file-info">
+            <div class="file-name">第10课《小石潭记》默写卷</div>
+          </div>
+          <div class="badge-row">
+            <span class="badge badge-pdf">PDF</span>
+          </div>
+          <div class="action-arrow">→</div>
+        </a>
+        <a href="chinese-viewer.html?file=语文/语文期中复习/默写卷/第10课《小石潭记》默写卷（答案）.pdf" class="resource-item">
+          <div class="file-icon">💡</div>
+          <div class="file-info">
+            <div class="file-name">《小石潭记》答案</div>
+          </div>
+          <div class="badge-row">
+            <span class="badge badge-pdf">PDF</span>
+            <span class="badge badge-ans">参考答案</span>
+          </div>
+          <div class="action-arrow">→</div>
+        </a>
+        <a href="chinese-viewer.html?file=语文/语文期中复习/默写卷/第11课《核舟记》.pdf" class="resource-item">
+          <div class="file-icon">📜</div>
+          <div class="file-info">
+            <div class="file-name">第11课《核舟记》原文阅读</div>
+          </div>
+          <div class="badge-row">
+            <span class="badge badge-pdf">PDF</span>
+          </div>
+          <div class="action-arrow">→</div>
+        </a>
+        <a href="chinese-viewer.html?file=语文/语文期中复习/默写卷/第11课《核舟记》（答案）.pdf" class="resource-item">
+          <div class="file-icon">💡</div>
+          <div class="file-info">
+            <div class="file-name">《核舟记》答案解析</div>
+          </div>
+          <div class="badge-row">
+            <span class="badge badge-pdf">PDF</span>
+            <span class="badge badge-ans">参考答案</span>
+          </div>
+          <div class="action-arrow">→</div>
         </a>
       </div>
     </section>
@@ -276,5 +312,17 @@
       <p>© 2026 Owen Learning Center | 语文沉浸式学习计划</p>
     </div>
   </div>
+
+  <script>
+    // 自动为所有资源列表项的 href 进行 URL 编码
+    document.querySelectorAll('.resource-item').forEach(item => {
+      const originalHref = item.getAttribute('href');
+      if (originalHref.includes('file=')) {
+        const parts = originalHref.split('file=');
+        const encodedFile = encodeURI(parts[1]);
+        item.setAttribute('href', parts[0] + 'file=' + encodedFile);
+      }
+    });
+  </script>
 </body>
 </html>
