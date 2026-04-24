@@ -3,21 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>化学考点分析报告 | Chemistry Analysis Report</title>
+  <title>化学全册知识清单 | Chemistry Complete Knowledge Base</title>
   <link rel="stylesheet" href="index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=ZCOOL+KuaiLe&family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { background: var(--bg); display: block; }
-    .report-card {
-      background: var(--bg-card);
-      border-radius: var(--radius);
-      padding: 30px;
-      box-shadow: var(--shadow);
-      margin-top: 20px;
-      border: 1px solid var(--pink-light);
+    :root {
+      --primary-gradient: linear-gradient(135deg, #FF6B9D, #C084FC);
+      --section-bg: #fff;
     }
+    body { background: var(--bg); display: block; font-family: 'Inter', 'Nunito', sans-serif; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
+    
     .back-btn {
       display: inline-flex;
       align-items: center;
@@ -25,166 +23,145 @@
       color: var(--pink);
       text-decoration: none;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+      transition: var(--transition);
     }
-    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
-    h1 { text-align: center; margin-bottom: 20px; }
-    h2 { 
-      color: var(--pink); 
-      margin: 40px 0 20px; 
+    .back-btn:hover { transform: translateX(-5px); }
+
+    .header-card {
+      text-align: center;
+      padding: 40px;
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      border: 2px solid var(--pink-light);
+    }
+    .header-card h1 { font-size: 2.8rem; margin-bottom: 10px; color: var(--pink); }
+    .header-card p { color: var(--text-light); font-weight: 700; }
+
+    /* 目录导引 */
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 40px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+    }
+    .toc-item {
+      padding: 10px 15px;
+      background: white;
+      border: 1px solid var(--pink-light);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: all 0.3s;
+      text-align: center;
+    }
+    .toc-item:hover { background: var(--pink); color: white; transform: translateY(-2px); }
+
+    /* 章节样式 */
+    .knowledge-section {
+      background: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--pink-light);
+      scroll-margin-top: 20px;
+    }
+    .theme-title {
+      font-family: 'ZCOOL KuaiLe', cursive;
+      color: white;
+      background: var(--primary-gradient);
+      display: inline-block;
+      padding: 10px 30px;
+      border-radius: 50px 50px 50px 0;
+      margin-bottom: 30px;
+      font-size: 1.5rem;
+    }
+    .topic-box { margin-bottom: 40px; }
+    .topic-title {
+      color: var(--purple);
+      font-size: 1.3rem;
       font-weight: 900;
-      border-bottom: 2px solid var(--pink-light);
-      padding-bottom: 8px;
+      border-left: 6px solid var(--pink);
+      padding-left: 15px;
+      margin: 25px 0;
       display: flex;
       align-items: center;
       gap: 10px;
     }
-    h3 {
-      color: var(--purple);
-      margin: 25px 0 15px;
-      font-weight: 800;
-      background: rgba(192, 132, 252, 0.1);
-      padding: 10px 15px;
-      border-radius: 12px;
-    }
+
+    /* 表格适配 */
     .table-container {
       width: 100%;
       overflow-x: auto;
-      margin: 15px 0 25px;
+      margin: 20px 0;
+      border-radius: 16px;
+      border: 1px solid #eee;
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 600px; }
+    th, td { padding: 15px; border: 1px solid #f5f5f5; text-align: left; vertical-align: top; }
+    th { background: #fff5f8; color: var(--pink); font-weight: 800; }
+    tr:nth-child(even) { background: #fffcfd; }
+
+    /* 内容点样式 */
+    .point-list { list-style: none; padding: 0; }
+    .point-item { margin-bottom: 15px; line-height: 1.7; position: relative; padding-left: 25px; }
+    .point-item::before { content: '✦'; position: absolute; left: 0; color: var(--pink); font-weight: bold; }
+    .highlight-red { color: #e53e3e; font-weight: 800; border-bottom: 2px dashed #feb2b2; }
+    .highlight-blue { color: #3182ce; font-weight: 700; }
+    
+    .example-box {
+      background: #f8fafc;
+      padding: 15px 20px;
       border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-left: 4px solid #cbd5e0;
+      margin: 10px 0;
+      font-size: 0.95rem;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      min-width: 500px;
-    }
-    th, td {
-      padding: 12px 10px;
-      border: 1px solid #f0f0f0;
-      font-size: 0.9rem;
-      text-align: left;
-    }
-    th { background: var(--bg); color: var(--pink); font-weight: 800; }
-    tr:nth-child(even) { background: #fffafd; }
-    pre {
-      background: #2d1b4e;
-      color: #fff;
-      padding: 25px;
-      border-radius: 16px;
-      overflow-x: auto;
-      font-family: 'Courier New', Courier, monospace;
-      line-height: 1.4;
-      font-size: 0.9rem;
-    }
-    .check-icon { color: var(--green); margin-right: 5px; font-weight: bold; }
-    .exam-links {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-bottom: 30px;
-    }
-    .exam-btn {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px;
-      background: #fff;
-      border: 2px solid var(--pink-light);
-      border-radius: 16px;
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 700;
-      transition: all 0.3s;
-    }
-    .exam-btn:hover {
-      background: var(--bg);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-    }
-    .badge {
+
+    .formula-tag {
       display: inline-block;
-      padding: 2px 8px;
-      background: var(--pink);
-      color: white;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      font-weight: 800;
-      margin-right: 5px;
+      padding: 4px 12px;
+      background: #2d1b4e;
+      color: #E9D5FF;
+      border-radius: 8px;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: 700;
+      margin: 5px 0;
     }
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin: 30px 0;
-    }
-    .summary-item {
-      background: var(--bg);
+
+    .tips-card {
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
       padding: 20px;
-      border-radius: 20px;
-      text-align: center;
-      border: 2px solid var(--pink-light);
+      border-radius: 16px;
+      margin-top: 20px;
     }
-    .summary-item .val { font-size: 1.8rem; font-weight: 900; color: var(--pink); display: block; }
-    .summary-item .lab { font-size: 0.85rem; color: var(--text-light); font-weight: 700; }
-    
-    .calendar-selector {
-      margin: 30px 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-    .month-btn {
-      padding: 10px 25px;
-      border-radius: 50px;
-      border: 2px solid var(--pink-light);
-      background: white;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
+    .tips-card h4 { color: #c53030; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+
+    /* 响应式计划表样式 */
+    .plan-section { background: var(--bg-card); padding: 30px; border-radius: 24px; border: 3px solid var(--pink-light); }
+    .month-selector { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; }
+    .month-btn { padding: 10px 25px; border-radius: 50px; border: 2px solid var(--pink-light); background: white; font-weight: 800; cursor: pointer; }
     .month-btn.active { background: var(--pink); color: white; border-color: var(--pink); }
+    .schedule-content { display: none; }
+    .schedule-content.active { display: block; animation: fadeIn 0.4s; }
 
-    .schedule-section { display: none; }
-    .schedule-section.active { display: block; animation: fadeIn 0.5s ease; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    .checkbox-done {
-      cursor: pointer;
-      width: 18px;
-      height: 18px;
-      accent-color: var(--pink);
-    }
-    .file-cell { color: var(--purple); font-weight: 700; font-size: 0.85rem; }
-    
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 28px;
-      background: linear-gradient(135deg, var(--pink), var(--purple));
-      color: white;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 800;
-      box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
-      transition: all 0.3s;
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4); }
     @media (max-width: 768px) {
-      .container { padding: 20px 15px; }
-      .report-card { padding: 20px; }
-      h1 { font-size: 1.8rem; }
-      h2 { font-size: 1.4rem; margin: 30px 0 15px; }
-      h3 { font-size: 1.1rem; }
-      th, td { padding: 10px 8px; font-size: 0.85rem; }
-    }
-    @media (max-width: 600px) {
-      .exam-links { grid-template-columns: 1fr; }
-      .exam-btn { padding: 12px; }
+      .container { padding: 15px; }
+      .header-card { padding: 25px; }
+      .header-card h1 { font-size: 1.8rem; }
+      .knowledge-section { padding: 20px; }
+      .theme-title { font-size: 1.2rem; padding: 8px 20px; }
+      .topic-title { font-size: 1.1rem; }
     }
   </style>
 </head>
@@ -196,192 +173,229 @@
 
   <div class="container">
     <a href="index.html" class="back-btn">← 返回首页</a>
-    
-    <div class="report-card">
-      <div style="text-align: right; margin-bottom: 20px;">
-        <a href="chemistry-knowledge.html" class="btn-primary">📖 查看全册知识清单</a>
-      </div>
 
-      <h1 class="app-title">化学考点全景分析</h1>
-      <p style="text-align: center; color: var(--text-light); margin-bottom: 20px;">上海市普陀区 2025-2026 学年下学期八年级单元练习</p>
+    <div class="header-card">
+      <h1 class="app-title">化学核心知识清单</h1>
+      <p>2025-2026 学年八年级化学（沪科版五四学制）全一册</p>
+      <p style="font-size: 0.85rem; margin-top: 10px; opacity: 0.8;">同步课本 · 全量保留 · 考点速记</p>
+    </div>
 
-      <div class="exam-links">
-        <a href="化学/精品解析：上海市普陀区2025-2026学年下学期八年级单元综合练习 化学部分（原卷版）_扫描版.pdf" class="exam-btn">
-          <span>📄</span>
-          <div>
-            <div>单元练习 (原卷版)</div>
-            <div style="font-size: 0.7rem; color: var(--text-light);">PDF 完整扫描件</div>
-          </div>
-        </a>
-        <a href="化学/精品解析：上海市普陀区2025-2026学年下学期八年级单元综合练习 化学部分（解析版）_扫描版.pdf" class="exam-btn">
-          <span>💡</span>
-          <div>
-            <div>精品解析 (解析版)</div>
-            <div style="font-size: 0.7rem; color: var(--text-light);">含详细步骤与考点分析</div>
-          </div>
-        </a>
-      </div>
+    <!-- 快捷导航 -->
+    <div class="toc">
+      <a href="#theme1" class="toc-item">专题1 化学魅力</a>
+      <a href="#theme2" class="toc-item">专题2 实验探究</a>
+      <a href="#theme3" class="toc-item">专题3 空气氧气</a>
+      <a href="#theme4" class="toc-item">专题4 水的循环</a>
+      <a href="#theme5" class="toc-item">专题5 微观粒子</a>
+      <a href="#theme6" class="toc-item">专题6 元素组成</a>
+      <a href="#theme7" class="toc-item">专题7 碳的单质</a>
+      <a href="#theme8" class="toc-item">专题8 反应守恒</a>
+      <a href="#plan" class="toc-item" style="border-color: var(--purple); color: var(--purple);">📅 5-6月复习计划</a>
+    </div>
 
-      <h2>一、试卷概况</h2>
-      <div class="table-container">
-        <table>
-          <tr><th>项目</th><th>内容</th></tr>
-          <tr><td><strong>试卷名称</strong></td><td>八年级单元综合练习·化学部分</td></tr>
-          <tr><td><strong>满分/时间</strong></td><td>100分 / 40分钟</td></tr>
-          <tr><td><strong>大题数</strong></td><td>4道大题（含16道小题）</td></tr>
-          <tr><td><strong>考查范围</strong></td><td>沪教版九年级化学上册 第1~5章</td></tr>
-        </table>
-      </div>
-
-      <h2>二、试卷结构与考点总览</h2>
-      <div class="table-container">
-        <table>
-          <tr><th>大题</th><th>主题</th><th>对应课本章节</th></tr>
-          <tr><td>一</td><td>机器人材料探秘</td><td>第3章 物质构成的奥秘</td></tr>
-          <tr><td>二</td><td>空间站物质循环</td><td>第3章 + 第2章 + 第5章</td></tr>
-          <tr><td>三</td><td>海水淡化</td><td>第2章 空气与水资源</td></tr>
-          <tr><td>四</td><td>常见物质性质</td><td>第2章 + 第5章 + 第4章</td></tr>
-        </table>
-      </div>
-
-      <h2>三、逐题考点与课本详解</h2>
+    <!-- 专题 1 -->
+    <section id="theme1" class="knowledge-section">
+      <div class="theme-title">专题1 化学使生活更美好</div>
       
-      <h3>大题一：机器人材料探秘 (20分)</h3>
-      <p style="font-size: 0.9rem; margin-bottom: 10px;"><strong>覆盖：第3章 全章</strong></p>
-      <div class="table-container">
-        <table>
-          <tr><th>题号</th><th>考点内容</th><th>具体节次</th></tr>
-          <tr><td>1(1)</td><td>元素符号书写 (Li)</td><td>组成物质的化学元素</td></tr>
-          <tr><td>1(2)</td><td>相对原子质量/原子序数</td><td>组成物质的化学元素</td></tr>
-          <tr><td>1(4)</td><td>原子结构/离子形成</td><td>构成物质的微观粒子</td></tr>
-          <tr><td>1(5)</td><td>原子与离子比较</td><td>构成物质的微观粒子</td></tr>
-        </table>
+      <div class="topic-box">
+        <div class="topic-title">课题 1 开启化学之门</div>
+        
+        <h3>1. 物理变化和化学变化</h3>
+        <div class="table-container">
+          <table>
+            <tr><th>定义</th><th>没有生成其他物质的变化叫物理变化</th><th>生成其他物质的变化叫化学变化</th></tr>
+            <tr><td>常见现象</td><td>物质的状态、形状发生变化</td><td>颜色改变、放出气体、生成沉淀等，并吸热、放热、发光等（一定伴随能量改变）</td></tr>
+            <tr><td>实例</td><td>性状改变：破碎、弯曲、拉成丝、压成片等；状态改变：熔化、凝固、汽化、液化等</td><td>燃烧变化：物质燃烧、爆炸等；变质变化：发酵、酿酒、发霉、腐烂等；锈蚀变化：金属生锈</td></tr>
+            <tr><td>本质区别</td><td colspan="2" style="text-align: center;"><span class="highlight-red">是否有新物质生成</span></td></tr>
+            <tr><td>联系</td><td colspan="2">发生化学变化时一定同时发生物理变化，而发生物理变化时不一定同时发生化学变化。</td></tr>
+          </table>
+        </div>
+
+        <h3>2. 物理性质和化学性质</h3>
+        <div class="table-container">
+          <table>
+            <tr><th>性质</th><th>定义</th><th>实例</th></tr>
+            <tr><td>物理性质</td><td>物质不需要发生化学变化就可以表现出来的性质</td><td>颜色、状态、气味；硬度、密度、燃点、沸点、熔点；溶解性、挥发性、导电性、导热性等</td></tr>
+            <tr><td>化学性质</td><td>物质在化学变化中表现出来的性质</td><td>可燃性、助燃性；氧化性、还原性；稳定性、活泼性；酸性、碱性、毒性等</td></tr>
+          </table>
+        </div>
       </div>
 
-      <h3>大题二：空间站物质循环 (34分)</h3>
-      <div class="table-container">
-        <table>
-          <tr><th>题号</th><th>考点内容</th><th>具体节次</th></tr>
-          <tr><td>2(1)</td><td>化学反应微观本质</td><td>构成物质的微观粒子</td></tr>
-          <tr><td>2(5)</td><td>式量/元素质量分数计算</td><td>物质组成的表示分析</td></tr>
-          <tr><td>3(1)</td><td>实验室制取CO₂药品</td><td>二氧化碳实验室制法</td></tr>
-          <tr><td>3(2)</td><td>电解水表达式与收集</td><td>水的组成和净化</td></tr>
-        </table>
+      <div class="topic-box">
+        <div class="topic-title">课题 2 通用的化学语言</div>
+        <ul class="point-list">
+          <li class="point-item">物质由<span class="highlight-blue">元素</span>组成：世间万物由 100 多种元素组成。</li>
+          <li class="point-item">元素符号：第一个字母大写，第二个字母小写。如 Cu(铜)、O(氧)、Ca(钙)。</li>
+          <li class="point-item">化学式：表示物质的符号，由元素符号和数字组成。如 C₆H₈O₇(柠檬酸)、NaHCO₃(碳酸氢钠)。</li>
+        </ul>
       </div>
+    </section>
 
-      <h3>大题三：海水淡化 (24分)</h3>
-      <div class="table-container">
-        <table>
-          <tr><th>题号</th><th>考点内容</th><th>具体节次</th></tr>
-          <tr><td>4-5</td><td>物理/化学变化区分 & 元素概念</td><td>第1/3章基础</td></tr>
-          <tr><td>7-10</td><td>蒸馏/过滤原理/硬软水/反渗透</td><td>水的组成和净化</td></tr>
-        </table>
-      </div>
-
-      <h3>大题四：性质与用途 (22分)</h3>
-      <div class="table-container">
-        <table>
-          <tr><th>题号</th><th>考点内容</th><th>具体节次</th></tr>
-          <tr><td>13-14</td><td>O₂/He/CO₂性质与用途</td><td>第2/5章性质篇</td></tr>
-          <tr><td>15</td><td>化学用语规范/化合价计算</td><td>物质组成的表示分析</td></tr>
-          <tr><td>16</td><td>CO₂检验/生石灰反应/燃烧条件</td><td>第4/5章综合</td></tr>
-        </table>
-      </div>
-
-      <h2>四、课本章节覆盖度统计</h2>
-      <div class="table-container">
-        <table>
-          <tr><th>章节</th><th>覆盖情况</th><th>考查频次</th><th>重要程度</th></tr>
-          <tr><td><strong>第1章 开启化学门</strong></td><td>⭐⭐ 部分覆盖</td><td>3次</td><td>★★★</td></tr>
-          <tr><td><strong>第2章 空气与水资源</strong></td><td>⭐⭐⭐⭐⭐ 全面</td><td>12次</td><td><strong>核心</strong></td></tr>
-          <tr><td><strong>第3章 物质构成奥秘</strong></td><td>⭐⭐⭐⭐⭐ 全面</td><td>14次</td><td><strong>核心</strong></td></tr>
-          <tr><td><strong>第4章 认识化学反应</strong></td><td>⭐⭐⭐ 部分</td><td>3次</td><td>★★★★</td></tr>
-          <tr><td><strong>第5章 奇妙的CO₂</strong></td><td>⭐⭐⭐⭐ 重点</td><td>7次</td><td><strong>核心</strong></td></tr>
-        </table>
-      </div>
-
-      <h2>五、核心考点分布图</h2>
-      <pre>
-考点频次排名（按出现次数）：
-
-微观粒子（原子/离子） ████████████████████ 14次
-化学式与综合计算     ████████████████████ 14次
-气体制备与收集       ████████████████ 10次
-CO₂性质与检验       ██████████████ 8次
-水的组成与净化       ██████████████ 8次
-      </pre>
-
-      <h2>六、备考建议</h2>
-      <p><span class="badge">必考</span> <strong>第3章 物质构成</strong>：原子结构图、化学式书写、质量分数计算、化合价。</p>
-      <p><span class="badge">实验</span> <strong>第2章 气体与水</strong>：制取CO₂药品/装置、电解水“正氧负氢”、过滤蒸馏操作。</p>
-      <p><span class="badge">重点</span> <strong>第5章 CO₂</strong>：物理化学性质、检验(石灰水)、灭火原理。</p>
-
-      <h2>八、5月-6月 冲刺复习计划</h2>
+    <!-- 专题 2 -->
+    <section id="theme2" class="knowledge-section">
+      <div class="theme-title">专题2 体验化学实验探究</div>
+      <div class="topic-title">课题 1 走进化学实验室</div>
       
-      <div class="summary-grid">
-        <div class="summary-item"><span class="val">5 大</span><span class="lab">核心专题</span></div>
-        <div class="summary-item"><span class="val">24 个</span><span class="lab">重点考点</span></div>
-        <div class="summary-item"><span class="val">8 周</span><span class="lab">深度复习时间</span></div>
-        <div class="summary-item"><span class="val">100+</span><span class="lab">精选题库</span></div>
+      <div class="point-item"><strong>药品存放：</strong> 固体存放于广口瓶，液体存放于细口瓶。白磷保存在水中。硝酸银保存在棕色试剂瓶中。</div>
+      
+      <div class="table-container">
+        <table>
+          <tr><th>操作项</th><th>细节规则</th></tr>
+          <tr><td>固体取用</td><td>块状药品使用镊子，“一横二放三慢竖”。粉末使用药匙，“一斜二送三直立”。</td></tr>
+          <tr><td>液体取用</td><td>少量用滴加法；较多量用倾倒法（标签向手心）。</td></tr>
+          <tr><td>物质称量</td><td>电子天平（最小分度 0.1g）。放称量纸或烧杯称量，不可直接放盘。</td></tr>
+          <tr><td>酒精灯</td><td>用火柴点燃；熄灭用灯帽（盖两次）。外焰加热温度最高。</td></tr>
+          <tr><td>液体加热</td><td>试管内容积不超过 1/3；试管夹从底部套上；管口不准对着人。</td></tr>
+        </table>
       </div>
 
-      <div class="calendar-selector">
+      <div class="tips-card">
+        <h4>💡 易错点辨析</h4>
+        <ul style="font-size: 0.9rem; line-height: 1.6;">
+          <li>量筒读数：视线与凹液面最低处相平。仰视读数偏小，实际体积偏大。</li>
+          <li>CO₂不是污染物：它是温室气体，但目前不列入空气质量监测的“污染物”项。</li>
+          <li>爆炸：轮胎爆胎是物理变化；火药爆炸是化学变化。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 专题 3 -->
+    <section id="theme3" class="knowledge-section">
+      <div class="theme-title">专题3 空气、氧气、二氧化碳</div>
+      
+      <h3>1. 空气成分（体积分数）</h3>
+      <div class="table-container">
+        <table>
+          <tr><th>氮气(N₂)</th><th>氧气(O₂)</th><th>稀有气体</th><th>二氧化碳</th><th>其他</th></tr>
+          <tr><td>78%</td><td>21%</td><td>0.94%</td><td>0.03%</td><td>0.03%</td></tr>
+        </table>
+      </div>
+
+      <h3>2. 氧气的制取（实验室）</h3>
+      <div class="point-item">过氧化氢制取：<span class="formula-tag">2H₂O₂ —(MnO₂)—→ 2H₂O + O₂↑</span></div>
+      <div class="point-item">氯酸钾制取：<span class="formula-tag">2KClO₃ —(MnO₂, Δ)—→ 2KCl + 3O₂↑</span></div>
+      <div class="point-item"><strong>检验：</strong> 将带火星的木条伸入集气瓶内，若复燃则为氧气。</div>
+
+      <h3>3. 二氧化碳的性质</h3>
+      <ul class="point-list">
+        <li class="point-item">物理性质：无色无味，密度比空气大，能溶于水，干冰易升华吸热。</li>
+        <li class="point-item">化学性质：不燃烧不支持燃烧；与水反应 <span class="formula-tag">CO₂ + H₂O → H₂CO₃</span></li>
+        <li class="point-item"><strong>检验：</strong> 通入澄清石灰水，变浑浊 <span class="formula-tag">CO₂ + Ca(OH)₂ → CaCO₃↓ + H₂O</span></li>
+      </ul>
+    </section>
+
+    <!-- 专题 5/6 -->
+    <section id="theme5" class="knowledge-section">
+      <div class="theme-title">专题 5 & 6 物质构成的奥秘</div>
+      
+      <div class="topic-box">
+        <div class="topic-title">构成物质的微观粒子</div>
+        <ul class="point-list">
+          <li class="point-item">分子：保持物质化学性质的一种微粒。</li>
+          <li class="point-item">原子：化学变化中的最小微粒。由原子核（质子、中子）和电子构成。</li>
+          <li class="point-item"><strong>等量关系：</strong> 核电荷数 = 质子数 = 核外电子数 = 原子序数。</li>
+          <li class="point-item">离子：带电的原子。阳离子（质子数 > 电子数）；阴离子（质子数 < 电子数）。</li>
+        </ul>
+      </div>
+
+      <div class="topic-box">
+        <div class="topic-title">化合价与化学式计算</div>
+        <div class="example-box">
+          <strong>化合价原则：</strong> 化合物中，正、负化合价的代数和为 0；单质中元素化合价为 0。<br>
+          <strong>常见价态：</strong> K/Na/Ag/H (+1), Ca/Mg/Ba/Zn (+2), Al (+3), O (-2), Cl (-1)。
+        </div>
+        <p><strong>计算公式：</strong></p>
+        <ul class="point-list">
+          <li class="point-item">相对分子质量 = Σ(相对原子质量 × 原子个数)</li>
+          <li class="point-item">元素的质量比 = (原子个数 × 相对原子质量) 之比</li>
+          <li class="point-item">某元素的质量分数 = (该原子总质量 / 相对分子质量) × 100%</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 专题 7/8 -->
+    <section id="theme7" class="knowledge-section">
+      <div class="theme-title">专题 7 & 8 碳单质与化学反应</div>
+      
+      <div class="topic-box">
+        <div class="topic-title">碳的单质</div>
+        <div class="table-container">
+          <table>
+            <tr><th>名称</th><th>结构</th><th>物理性质</th><th>主要用途</th></tr>
+            <tr><td>金刚石</td><td>正八面体网状</td><td>天然存在最硬</td><td>切割、钻头、首饰</td></tr>
+            <tr><td>石墨</td><td>层状结构</td><td>软、导电、滑腻</td><td>电极、铅笔芯、润滑</td></tr>
+            <tr><td>C₆₀</td><td>足球状</td><td>/</td><td>超导、制备新材料</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="topic-box">
+        <div class="topic-title">质量守恒定律</div>
+        <p class="point-item"><strong>内容：</strong> 参加化学反应的各物质质量总和 = 生成的各物质质量总和。</p>
+        <p class="point-item"><strong>微观本质：</strong> 化学反应前后，原子的<span class="highlight-red">种类、数目、质量</span>都没有改变。</p>
+      </div>
+
+      <div class="topic-box">
+        <div class="topic-title">化学反应基本类型</div>
+        <ul class="point-list">
+          <li class="point-item">化合反应：多变一 (A + B → C)</li>
+          <li class="point-item">分解反应：一变多 (A → B + C)</li>
+          <li class="point-item">置换反应：单换单 (A + BC → AC + B)</li>
+          <li class="point-item">复分解反应：两两交换 (AB + CD → AD + CB)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 复习计划 -->
+    <section id="plan" class="knowledge-section plan-section">
+      <div class="theme-title">📅 5月-6月 每日复习计划表</div>
+      <p style="text-align: center; font-weight: 700; margin-bottom: 20px;">参考物理板块 · 坚持每日 40 分钟</p>
+
+      <div class="month-selector">
         <button class="month-btn active" onclick="showMonth('may', this)">5月：基础与结构</button>
-        <button class="month-btn" onclick="showMonth('june', this)">6月：元素与计算</button>
+        <button class="month-btn" onclick="showMonth('june', this)">6月：计算与综合</button>
       </div>
 
-      <!-- 5月计划 -->
-      <div id="may-plan" class="schedule-section active">
+      <div id="may-plan" class="schedule-content active">
         <div class="table-container">
           <table>
-            <thead>
-              <tr><th>完成</th><th>周期</th><th>复习主题</th><th>核心考点</th><th>重要程度</th></tr>
-            </thead>
+            <thead><tr><th>周次</th><th>复习重点</th><th>对应专题</th><th>每日任务</th></tr></thead>
             <tbody>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W1</td><td>变化与实验基础</td><td>物理/化学变化判断、实验器材、基本操作</td><td>★★★</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W2</td><td>空气与氧气</td><td>空气成分、氧气性质、实验室制取原理</td><td>★★★★★</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W3</td><td>水资源与构成</td><td>水的净化、水的组成实验、蒸馏/过滤</td><td>★★★★</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W4</td><td>微观世界探秘</td><td>分子/原子/离子特征、原子结构示意图</td><td>★★★★★</td></tr>
+              <tr><td>W1</td><td>变化与实验基础</td><td>专题1-2</td><td>默写实验室仪器名称，练习物理/化学变化判断。</td></tr>
+              <tr><td>W2</td><td>空气与氧气</td><td>专题3</td><td>记背空气百分比，默写O2制取方程式及检验方法。</td></tr>
+              <tr><td>W3</td><td>水资源与净化</td><td>专题4</td><td>掌握过滤操作细节，理解电解水实验现象及结论。</td></tr>
+              <tr><td>W4</td><td>微观粒子探秘</td><td>专题5</td><td>熟练画出1-20号元素原子结构图，区分离子与原子。</td></tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <!-- 6月计划 -->
-      <div id="june-plan" class="schedule-section">
+      <div id="june-plan" class="schedule-content">
         <div class="table-container">
           <table>
-            <thead>
-              <tr><th>完成</th><th>周期</th><th>复习主题</th><th>核心考点</th><th>重要程度</th></tr>
-            </thead>
+            <thead><tr><th>周次</th><th>复习重点</th><th>对应专题</th><th>每日任务</th></tr></thead>
             <tbody>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W1</td><td>元素与化合价</td><td>元素周期表、化合价口诀、化学符号意义</td><td>★★★★★</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W2</td><td>化学式计算</td><td>相对分子质量、元素质量比/质量分数计算</td><td>★★★★</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W3</td><td>碳及其氧化物</td><td>金刚石/石墨/C60、CO2性质与实验室制法</td><td>★★★★★</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W4</td><td>反应与方程式</td><td>质量守恒定律、化学方程式配平与书写</td><td>★★★★★</td></tr>
-              <tr><td><input type="checkbox" class="checkbox-done"></td><td>W5</td><td>模拟考试</td><td>全真卷演练、错题整理、考前心态调整</td><td>核心</td></tr>
+              <tr><td>W1</td><td>元素与化合价</td><td>专题6</td><td>每天默写化合价口诀，练习书写化学式。</td></tr>
+              <tr><td>W2</td><td>化学计算专项</td><td>专题6</td><td>主攻质量分数与质量比计算题，确保计算准确性。</td></tr>
+              <tr><td>W3</td><td>碳及其氧化物</td><td>专题7</td><td>对比金刚石与石墨性质，记背CO2与澄清石灰水反应。</td></tr>
+              <tr><td>W4</td><td>反应与守恒</td><td>专题8</td><td>练习配平化学方程式，理解质量守恒定律填空题。</td></tr>
+              <tr><td>W5</td><td>考前冲刺</td><td>全册</td><td>做一套普陀区模拟卷，回顾错题集，查漏补缺。</td></tr>
             </tbody>
           </table>
         </div>
       </div>
+    </section>
 
-      <div style="margin-top: 30px; text-align: center; background: var(--bg); padding: 30px; border-radius: 24px; border: 2px dashed var(--pink-light);">
-        <h3 style="justify-content: center;">💡 复习贴士</h3>
-        <p style="font-size: 0.95rem; color: var(--text-light); line-height: 1.6;">
-          <strong>重视基础：</strong> 化学方程式和化合价是根基，必须默写过关。<br>
-          <strong>回归课本：</strong> 知识清单中的每个考点都能在课本找到原型，多看细节。<br>
-          <strong>实验细节：</strong> 关注实验操作的“先后顺序”和“现象描述”，这是高频失分点。
-        </p>
-      </div>
-
+    <div style="text-align: center; padding: 40px 0; color: var(--text-light); font-size: 0.8rem; border-top: 1px dashed var(--pink-light);">
+      <p>© 2026 Owen Learning Center | 化学知识同步计划</p>
+      <p style="margin-top: 10px;">资料来源：八年级化学沪科版知识清单</p>
     </div>
   </div>
 
   <script>
     function showMonth(month, btn) {
-      document.querySelectorAll('.schedule-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.schedule-content').forEach(s => s.classList.remove('active'));
       document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
-      
       document.getElementById(month + '-plan').classList.add('active');
       btn.classList.add('active');
     }
