@@ -1287,6 +1287,17 @@ async function loadStateRemote() {
     const remoteState = data?.state_json || null;
     if (remoteState && !shouldUseDefaultWeeks(remoteState)) {
       state = { ...state, ...remoteState };
+      
+      // 修复：加载后恢复 Supabase 音频 URL
+      for (const week of state.weeks) {
+        if (week.audios) {
+          for (const audio of week.audios) {
+            if (audio.storagePath) {
+              audio.url = getSupabasePublicUrl(audio.storagePath);
+            }
+          }
+        }
+      }
     } else {
       state.weeks = getDefaultWeeks();
       state.progress = {};
