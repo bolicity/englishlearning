@@ -6,7 +6,6 @@
   <title>沉浸式阅读器 | Owen Learning Viewer</title>
   <link rel="stylesheet" href="index.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.5.1/mammoth.browser.min.js"></script>
   <style>
     body { background: #f4f4f9; display: flex; flex-direction: column; min-height: 100vh; margin: 0; }
     .viewer-nav {
@@ -20,37 +19,12 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #ddd;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
-    .back-link {
-      color: var(--pink);
-      text-decoration: none;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .file-info { font-weight: 700; color: var(--text); font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 50%; }
+    .back-link { color: var(--pink); text-decoration: none; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+    .file-info { font-weight: 700; color: var(--text); font-size: 0.9rem; }
     
-    .viewer-content {
-      flex-grow: 1;
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px 15px;
-      box-sizing: border-box;
-    }
+    .viewer-content { flex-grow: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 20px 15px; }
 
-    /* Word 渲染区域 */
-    #word-render-area {
-      background: white;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      line-height: 1.8;
-    }
-
-    /* PDF 渲染区域 */
     .pdf-page-wrapper {
       margin-bottom: 15px;
       background: white;
@@ -60,13 +34,12 @@
     }
     canvas { max-width: 100%; height: auto !important; }
 
-    /* 原生嵌入 fallback */
     .native-viewer {
       width: 100%;
       height: calc(100vh - 100px);
       border: none;
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      background: white;
     }
 
     .loading-overlay {
@@ -80,51 +53,49 @@
       z-index: 100;
     }
     .spinner {
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       border: 4px solid var(--pink-light);
       border-top: 4px solid var(--pink);
       border-radius: 50%;
       animation: spin 1s linear infinite;
-      margin-bottom: 15px;
     }
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    .btn-download {
-      display: inline-block;
+    .controls { display: flex; gap: 10px; }
+    .btn-action {
       padding: 6px 12px;
-      background: var(--pink);
-      color: white;
       border-radius: 6px;
       text-decoration: none;
       font-size: 0.8rem;
       font-weight: 700;
+      border: none;
+      cursor: pointer;
     }
-
-    @media (max-width: 768px) {
-      .file-info { display: none; }
-      #word-render-area { padding: 20px; }
-    }
+    .btn-pink { background: var(--pink); color: white; }
+    .btn-gray { background: #e5e7eb; color: #374151; }
   </style>
 </head>
 <body>
   <nav class="viewer-nav">
-    <a href="chinese.html" class="back-link">← 返回列表</a>
-    <div class="file-info" id="display-filename">正在加载...</div>
-    <a href="#" id="download-btn" class="btn-download" download>下载原档</a>
+    <a href="javascript:history.back()" class="back-link">← 返回列表</a>
+    <div class="file-info" id="display-filename">加载中...</div>
+    <div class="controls">
+      <button onclick="useNativeViewer()" class="btn-action btn-gray">兼容模式</button>
+      <a href="#" id="download-btn" class="btn-action btn-pink" download>下载原档</a>
+    </div>
   </nav>
 
   <div class="loading-overlay" id="loader">
     <div class="spinner"></div>
-    <div style="font-weight: 700; color: var(--text-light);">正在为您加载高保真原文...</div>
+    <div id="loader-text" style="margin-top:15px; font-weight:700; color:var(--text-light);">准备加载高清原文...</div>
   </div>
 
   <main class="viewer-content" id="render-area"></main>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const rawFile = urlParams.get('file');
-    const filePath = rawFile ? decodeURIComponent(rawFile) : null;
+    // 重要：urlParams.get 已经自动解码了，不需要再次 decodeURIComponent
+    const filePath = urlParams.get('file');
     
     const renderArea = document.getElementById('render-area');
     const loader = document.getElementById('loader');
@@ -132,77 +103,56 @@
     const downloadBtn = document.getElementById('download-btn');
 
     if (!filePath) {
-      loader.innerHTML = '<div style="color: #ef4444; font-weight: 800;">未找到指定文件。</div>';
+      document.getElementById('loader-text').innerText = '错误：未找到文件路径';
     } else {
       const fileName = filePath.split('/').pop();
       displayFilename.innerText = fileName;
       downloadBtn.href = filePath;
       
-      const ext = fileName.split('.').pop().toLowerCase();
+      // 启动加载
+      initViewer(filePath);
+    }
+
+    async function initViewer(url) {
+      const ext = url.split('.').pop().toLowerCase();
       
       if (ext === 'pdf') {
-        initPDFViewer(filePath);
-      } else if (ext === 'docx') {
-        initWordViewer(filePath);
+        try {
+          await renderPDF(url);
+        } catch (e) {
+          console.error('PDF.js failed:', e);
+          useNativeViewer();
+        }
       } else {
-        useNativeViewer(filePath);
+        useNativeViewer();
       }
     }
 
-    // 尝试使用 PDF.js 渲染 (效果最好，但受跨域限制)
-    async function initPDFViewer(url) {
+    async function renderPDF(url) {
       const pdfjsLib = window['pdfjs-dist/build/pdf'];
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
-      try {
-        const pdf = await pdfjsLib.getDocument(url).promise;
-        loader.style.display = 'none';
-        
-        for (let i = 1; i <= pdf.numPages; i++) {
-          const page = await pdf.getPage(i);
-          const viewport = page.getViewport({ scale: 1.8 });
-          const wrapper = document.createElement('div');
-          wrapper.className = 'pdf-page-wrapper';
-          const canvas = document.createElement('canvas');
-          canvas.height = viewport.height;
-          canvas.width = viewport.width;
-          wrapper.appendChild(canvas);
-          renderArea.appendChild(wrapper);
-          await page.render({ canvasContext: canvas.getContext('2d'), viewport: viewport }).promise;
-        }
-      } catch (e) {
-        console.warn('PDF.js blocked or failed, falling back to native browser viewer:', e);
-        useNativeViewer(url);
-      }
-    }
-
-    // 尝试渲染 Word
-    async function initWordViewer(url) {
-      try {
-        const res = await fetch(url);
-        if (!res.ok) throw new Error();
-        const buf = await res.arrayBuffer();
-        const out = await mammoth.convertToHtml({ arrayBuffer: buf });
-        loader.style.display = 'none';
-        renderArea.innerHTML = `<div id="word-render-area">${out.value}</div>`;
-      } catch (e) {
-        console.warn('Word fetch failed, falling back to native link:', e);
-        loader.innerHTML = `
-          <div style="text-align: center; padding: 40px;">
-            <p style="color: #ef4444; font-weight: 800; margin-bottom: 20px;">由于浏览器安全限制，无法在线直接预览 Word 文件。</p>
-            <a href="${url}" class="btn-primary" style="background: var(--pink);">点击此处直接下载查看</a>
-          </div>
-        `;
-      }
-    }
-
-    // 彻底解决：使用浏览器原生 PDF 插件嵌入 (支持 file:// 协议)
-    function useNativeViewer(url) {
+      const pdf = await pdfjsLib.getDocument(url).promise;
       loader.style.display = 'none';
-      renderArea.innerHTML = `
-        <embed src="${url}" type="application/pdf" class="native-viewer">
-      `;
-      // 如果 embed 也失败了（极少见），至少用户可以下载
+      
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const viewport = page.getViewport({ scale: 1.8 });
+        const wrapper = document.createElement('div');
+        wrapper.className = 'pdf-page-wrapper';
+        const canvas = document.createElement('canvas');
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+        wrapper.appendChild(canvas);
+        renderArea.appendChild(wrapper);
+        await page.render({ canvasContext: canvas.getContext('2d'), viewport: viewport }).promise;
+      }
+    }
+
+    function useNativeViewer() {
+      if (!filePath) return;
+      loader.style.display = 'none';
+      renderArea.innerHTML = `<embed src="${filePath}" type="application/pdf" class="native-viewer">`;
     }
   </script>
 </body>
