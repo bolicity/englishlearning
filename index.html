@@ -3,13 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=./word-planet.html">
-  <title>单词星球</title>
+  <title>初中全学科学习中心 | Junior High Hub</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="description" content="个人初中全学科学习中心，同步各科目核心知识点，助力中考冲刺。">
 </head>
 <body>
-  <script>
-    window.location.replace('./word-planet.html');
-  </script>
-  <a href="./word-planet.html">打开单词星球</a>
+  <div class="blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>初中学习中心</h1>
+      <p class="subtitle">同步核心教材，高效攻克中考，开启深度学习之旅</p>
+    </header>
+
+    <div class="grid">
+      <!-- 物理 -->
+      <a href="physics.html" class="card" id="subject-physics">
+        <div class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/><path d="M12 2a14.5 14.5 0 0 1 0 20 14.5 14.5 0 0 1 0-20"/></svg>
+        </div>
+        <div class="card-tag">专项打卡</div>
+        <h2>初中物理</h2>
+        <p>力、热、光、电、声，专项复习打卡计划已上线。同步八年级下册核心习题，攻克物理难关。</p>
+        <div class="card-footer">
+          进入复习 <span>→</span>
+        </div>
+      </a>
+
+      <!-- 化学 -->
+      <a href="chemistry.html" class="card" id="subject-chemistry">
+        <div class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v8L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45L14 10V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/></svg>
+        </div>
+        <div class="card-tag">资料已更新</div>
+        <h2>初中化学</h2>
+        <p>元素周期律、化学方程式配平、常见酸碱盐反应模拟。普陀区单元综合练习精品解析已同步。</p>
+        <div class="card-footer">
+          查看资源 <span>→</span>
+        </div>
+      </a>
+
+      <!-- 英语 -->
+      <a href="word-planet.html" class="card" id="subject-english">
+        <div class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+        </div>
+        <div class="card-tag">核心科目</div>
+        <h2>初中英语</h2>
+        <p>进入“单词星球”，掌握中考核心1600词及高频词组，提升英语听说读写综合实力。</p>
+        <div class="card-footer">
+          立即进入 <span>→</span>
+        </div>
+      </a>
+
+      <!-- 语文 -->
+      <a href="#" class="card" id="subject-chinese">
+        <div class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M8 7h6"/><path d="M8 11h8"/><path d="M8 15h6"/></svg>
+        </div>
+        <div class="card-tag">人教版同步</div>
+        <h2>初中语文</h2>
+        <p>文言文精读、古诗词背诵与现代文深度解析，夯实文学素养，提升中考作文表达能力。</p>
+        <div class="card-footer">
+          资源准备中 <span>...</span>
+        </div>
+      </a>
+
+      <!-- 数学 -->
+      <a href="#" class="card" id="subject-math">
+        <div class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M3 12h18"/><path d="m21 3-9 9 9 9"/><path d="m3 3 9 9-9 9"/></svg>
+        </div>
+        <div class="card-tag">逻辑训练</div>
+        <h2>初中数学</h2>
+        <p>几何定理推导、函数图像动态演示。通过解题模型建立逻辑思维，攻克中考压轴题。</p>
+        <div class="card-footer">
+          资源准备中 <span>...</span>
+        </div>
+      </a>
+
+      <!-- 生物 -->
+      <a href="#" class="card" id="subject-biology">
+        <div class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22c1.25-1.5 2.5-3 5-4.5S11 16 12 16s2.5.5 4.5 1.5 3.75 3 5 4.5"/><path d="M7 17.5c-2.5-2-4.5-5.5-4.5-9s2-6.5 4.5-6.5c2 0 3.5 1.5 5 5"/><path d="M17 17.5c2.5-2 4.5-5.5 4.5-9s-2-6.5-4.5-6.5c-2 0-3.5 1.5-5 5"/></svg>
+        </div>
+        <div class="card-tag">生命之美</div>
+        <h2>初中生物</h2>
+        <p>细胞工厂、遗传规律、生态平衡。同步初一初二课程，直观理解人体与自然生理。</p>
+        <div class="card-footer">
+          资源准备中 <span>...</span>
+        </div>
+      </a>
+
+      <!-- 历史 -->
+      <a href="#" class="card" id="subject-history">
+        <div class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="card-tag">时空隧道</div>
+        <h2>初中历史</h2>
+        <p>中国史与世界史交汇点分析。通过时间轴串联重大历史转折，深度理解历史必然性。</p>
+        <div class="card-footer">
+          资源准备中 <span>...</span>
+        </div>
+      </a>
+
+      <!-- 跨学科 -->
+      <a href="#" class="card" id="subject-interdisciplinary">
+        <div class="card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        </div>
+        <div class="card-tag">项目制学习</div>
+        <h2>跨学科研究</h2>
+        <p>打破学科孤岛，运用数学模型解决物理问题，或从历史视角探讨科学发现，激发创新力。</p>
+        <div class="card-footer">
+          正在策划 <span>...</span>
+        </div>
+      </a>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>化学考点分析报告 | Chemistry Analysis Report</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <style>
+    body { background: var(--bg); display: block; }
+    .report-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      margin-top: 20px;
+      border: 1px solid var(--pink-light);
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--pink);
+      text-decoration: none;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
+    h1 { text-align: center; margin-bottom: 20px; }
+    h2 { 
+      color: var(--pink); 
+      margin: 40px 0 20px; 
+      font-weight: 900;
+      border-bottom: 2px solid var(--pink-light);
+      padding-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h3 {
+      color: var(--purple);
+      margin: 25px 0 15px;
+      font-weight: 800;
+      background: rgba(192, 132, 252, 0.1);
+      padding: 10px 15px;
+      border-radius: 12px;
+    }
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 15px 0 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      min-width: 500px;
+    }
+    th, td {
+      padding: 12px 10px;
+      border: 1px solid #f0f0f0;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+    th { background: var(--bg); color: var(--pink); font-weight: 800; }
+    tr:nth-child(even) { background: #fffafd; }
+    pre {
+      background: #2d1b4e;
+      color: #fff;
+      padding: 25px;
+      border-radius: 16px;
+      overflow-x: auto;
+      font-family: 'Courier New', Courier, monospace;
+      line-height: 1.4;
+      font-size: 0.9rem;
+    }
+    .check-icon { color: var(--green); margin-right: 5px; font-weight: bold; }
+    .exam-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .exam-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px;
+      background: #fff;
+      border: 2px solid var(--pink-light);
+      border-radius: 16px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      transition: all 0.3s;
+    }
+    .exam-btn:hover {
+      background: var(--bg);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      background: var(--pink);
+      color: white;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      margin-right: 5px;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 20px 15px; }
+      .report-card { padding: 20px; }
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.4rem; margin: 30px 0 15px; }
+      h3 { font-size: 1.1rem; }
+      th, td { padding: 10px 8px; font-size: 0.85rem; }
+    }
+    @media (max-width: 600px) {
+      .exam-links { grid-template-columns: 1fr; }
+      .exam-btn { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-decoration">
+    <div class="bg-blob"></div>
+    <div class="bg-blob"></div>
+  </div>
+
+  <div class="container">
+    <a href="index.html" class="back-btn">← 返回首页</a>
+    
+    <div class="report-card">
+      <h1 class="app-title">化学考点全景分析</h1>
+      <p style="text-align: center; color: var(--text-light); margin-bottom: 20px;">上海市普陀区 2025-2026 学年下学期八年级单元练习</p>
+
+      <div class="exam-links">
+        <a href="化学/精品解析：上海市普陀区2025-2026学年下学期八年级单元综合练习 化学部分（原卷版）_扫描版.pdf" class="exam-btn">
+          <span>📄</span>
+          <div>
+            <div>单元练习 (原卷版)</div>
+            <div style="font-size: 0.7rem; color: var(--text-light);">PDF 完整扫描件</div>
+          </div>
+        </a>
+        <a href="化学/精品解析：上海市普陀区2025-2026学年下学期八年级单元综合练习 化学部分（解析版）_扫描版.pdf" class="exam-btn">
+          <span>💡</span>
+          <div>
+            <div>精品解析 (解析版)</div>
+            <div style="font-size: 0.7rem; color: var(--text-light);">含详细步骤与考点分析</div>
+          </div>
+        </a>
+      </div>
+
+      <h2>一、试卷概况</h2>
+      <div class="table-container">
+        <table>
+          <tr><th>项目</th><th>内容</th></tr>
+          <tr><td><strong>试卷名称</strong></td><td>八年级单元综合练习·化学部分</td></tr>
+          <tr><td><strong>满分/时间</strong></td><td>100分 / 40分钟</td></tr>
+          <tr><td><strong>大题数</strong></td><td>4道大题（含16道小题）</td></tr>
+          <tr><td><strong>考查范围</strong></td><td>沪教版九年级化学上册 第1~5章</td></tr>
+        </table>
+      </div>
+
+      <h2>二、试卷结构与考点总览</h2>
+      <div class="table-container">
+        <table>
+          <tr><th>大题</th><th>主题</th><th>对应课本章节</th></tr>
+          <tr><td>一</td><td>机器人材料探秘</td><td>第3章 物质构成的奥秘</td></tr>
+          <tr><td>二</td><td>空间站物质循环</td><td>第3章 + 第2章 + 第5章</td></tr>
+          <tr><td>三</td><td>海水淡化</td><td>第2章 空气与水资源</td></tr>
+          <tr><td>四</td><td>常见物质性质</td><td>第2章 + 第5章 + 第4章</td></tr>
+        </table>
+      </div>
+
+      <h2>三、逐题考点与课本详解</h2>
+      
+      <h3>大题一：机器人材料探秘 (20分)</h3>
+      <p style="font-size: 0.9rem; margin-bottom: 10px;"><strong>覆盖：第3章 全章</strong></p>
+      <div class="table-container">
+        <table>
+          <tr><th>题号</th><th>考点内容</th><th>具体节次</th></tr>
+          <tr><td>1(1)</td><td>元素符号书写 (Li)</td><td>组成物质的化学元素</td></tr>
+          <tr><td>1(2)</td><td>相对原子质量/原子序数</td><td>组成物质的化学元素</td></tr>
+          <tr><td>1(4)</td><td>原子结构/离子形成</td><td>构成物质的微观粒子</td></tr>
+          <tr><td>1(5)</td><td>原子与离子比较</td><td>构成物质的微观粒子</td></tr>
+        </table>
+      </div>
+
+      <h3>大题二：空间站物质循环 (34分)</h3>
+      <div class="table-container">
+        <table>
+          <tr><th>题号</th><th>考点内容</th><th>具体节次</th></tr>
+          <tr><td>2(1)</td><td>化学反应微观本质</td><td>构成物质的微观粒子</td></tr>
+          <tr><td>2(5)</td><td>式量/元素质量分数计算</td><td>物质组成的表示分析</td></tr>
+          <tr><td>3(1)</td><td>实验室制取CO₂药品</td><td>二氧化碳实验室制法</td></tr>
+          <tr><td>3(2)</td><td>电解水表达式与收集</td><td>水的组成和净化</td></tr>
+        </table>
+      </div>
+
+      <h3>大题三：海水淡化 (24分)</h3>
+      <div class="table-container">
+        <table>
+          <tr><th>题号</th><th>考点内容</th><th>具体节次</th></tr>
+          <tr><td>4-5</td><td>物理/化学变化区分 & 元素概念</td><td>第1/3章基础</td></tr>
+          <tr><td>7-10</td><td>蒸馏/过滤原理/硬软水/反渗透</td><td>水的组成和净化</td></tr>
+        </table>
+      </div>
+
+      <h3>大题四：性质与用途 (22分)</h3>
+      <div class="table-container">
+        <table>
+          <tr><th>题号</th><th>考点内容</th><th>具体节次</th></tr>
+          <tr><td>13-14</td><td>O₂/He/CO₂性质与用途</td><td>第2/5章性质篇</td></tr>
+          <tr><td>15</td><td>化学用语规范/化合价计算</td><td>物质组成的表示分析</td></tr>
+          <tr><td>16</td><td>CO₂检验/生石灰反应/燃烧条件</td><td>第4/5章综合</td></tr>
+        </table>
+      </div>
+
+      <h2>四、课本章节覆盖度统计</h2>
+      <div class="table-container">
+        <table>
+          <tr><th>章节</th><th>覆盖情况</th><th>考查频次</th><th>重要程度</th></tr>
+          <tr><td><strong>第1章 开启化学门</strong></td><td>⭐⭐ 部分覆盖</td><td>3次</td><td>★★★</td></tr>
+          <tr><td><strong>第2章 空气与水资源</strong></td><td>⭐⭐⭐⭐⭐ 全面</td><td>12次</td><td><strong>核心</strong></td></tr>
+          <tr><td><strong>第3章 物质构成奥秘</strong></td><td>⭐⭐⭐⭐⭐ 全面</td><td>14次</td><td><strong>核心</strong></td></tr>
+          <tr><td><strong>第4章 认识化学反应</strong></td><td>⭐⭐⭐ 部分</td><td>3次</td><td>★★★★</td></tr>
+          <tr><td><strong>第5章 奇妙的CO₂</strong></td><td>⭐⭐⭐⭐ 重点</td><td>7次</td><td><strong>核心</strong></td></tr>
+        </table>
+      </div>
+
+      <h2>五、核心考点分布图</h2>
+      <pre>
+考点频次排名（按出现次数）：
+
+微观粒子（原子/离子） ████████████████████ 14次
+化学式与综合计算     ████████████████████ 14次
+气体制备与收集       ████████████████ 10次
+CO₂性质与检验       ██████████████ 8次
+水的组成与净化       ██████████████ 8次
+      </pre>
+
+      <h2>六、备考建议</h2>
+      <p><span class="badge">必考</span> <strong>第3章 物质构成</strong>：原子结构图、化学式书写、质量分数计算、化合价。</p>
+      <p><span class="badge">实验</span> <strong>第2章 气体与水</strong>：制取CO₂药品/装置、电解水“正氧负氢”、过滤蒸馏操作。</p>
+      <p><span class="badge">重点</span> <strong>第5章 CO₂</strong>：物理化学性质、检验(石灰水)、灭火原理。</p>
+
+      <h2>七、试卷特点分析</h2>
+      <p style="line-height: 1.6; font-size: 0.95rem; color: var(--text-light);">
+        1. <strong>情境化</strong>：融入机器人、空间站、海水淡化等前沿话题。<br>
+        2. <strong>跨章节</strong>：每道大题均融合2-3个章节知识点。<br>
+        3. <strong>探究性</strong>：包含完整的实验探究题（第16题）。
+      </p>
+    </div>
+  </div>
+</body>
+</html>
