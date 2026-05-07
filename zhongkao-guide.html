@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>中考指南 | Owen Learning Center</title>
+  <title>2026 上海中考指南 | Owen Learning Center</title>
   <link rel="stylesheet" href="index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
   <style>
     body { background: var(--bg); display: block; }
-    .container { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 40px 20px; }
 
     .back-btn {
       display: inline-flex;
@@ -18,92 +18,226 @@
       gap: 8px;
       color: var(--pink);
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 24px;
     }
 
-    .guide-header {
-      text-align: center;
-      margin-bottom: 30px;
-      padding: 32px 24px;
+    .hero {
       background: white;
+      border: 2px solid var(--pink-light);
       border-radius: 24px;
       box-shadow: var(--shadow);
-      border: 2px solid var(--pink-light);
+      padding: 34px;
+      margin-bottom: 24px;
     }
 
-    .guide-header h1 {
-      font-family: 'ZCOOL KuaiLe', cursive;
-      font-size: 3.1rem;
-      margin-bottom: 10px;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #fdf2f8;
       color: var(--pink);
+      font-size: 0.78rem;
+      font-weight: 900;
+      margin-bottom: 14px;
     }
 
-    .guide-header p {
+    .hero h1 {
+      font-family: 'ZCOOL KuaiLe', cursive;
+      color: var(--pink);
+      font-size: 3rem;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
       color: var(--text-light);
       font-weight: 700;
-      line-height: 1.7;
+      line-height: 1.75;
+      max-width: 840px;
     }
 
-    .guide-grid {
+    .notice {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      color: #475569;
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .quick-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      margin-bottom: 28px;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 14px;
+      margin-bottom: 26px;
     }
 
-    .guide-panel {
+    .quick-card {
       background: white;
-      border-radius: 20px;
-      padding: 22px;
+      border-radius: 18px;
+      padding: 18px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-      border: 1px solid #f3f4f6;
+      border: 1px solid #f1f5f9;
     }
 
-    .guide-panel h2 {
-      font-size: 1.25rem;
-      margin-bottom: 14px;
-      color: var(--purple);
+    .quick-card .label {
+      color: #64748b;
+      font-size: 0.78rem;
       font-weight: 900;
+      margin-bottom: 6px;
     }
 
-    .guide-panel ul {
-      list-style: none;
+    .quick-card .value {
+      color: #0f172a;
+      font-size: 1.05rem;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    .section {
+      background: white;
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      border: 1px solid #f1f5f9;
+      margin-bottom: 22px;
+    }
+
+    .section h2 {
+      color: #0369a1;
+      font-size: 1.45rem;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .section h3 {
+      color: var(--purple);
+      font-size: 1.08rem;
+      font-weight: 900;
+      margin: 18px 0 10px;
+    }
+
+    .section p, .section li {
+      color: var(--text-light);
+      line-height: 1.75;
+      font-weight: 700;
+    }
+
+    .section ul, .section ol {
+      padding-left: 20px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
-    .guide-panel li {
-      color: var(--text-light);
-      line-height: 1.6;
-      padding-left: 18px;
-      position: relative;
+    .timeline {
+      display: grid;
+      gap: 12px;
     }
 
-    .guide-panel li::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      background: var(--pink);
-      border-radius: 50%;
-      position: absolute;
-      left: 0;
-      top: 10px;
+    .time-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 16px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
     }
 
-    .resource-section {
-      background: white;
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    }
-
-    .resource-section h2 {
-      font-size: 1.35rem;
+    .time-item strong {
       color: var(--pink);
-      margin-bottom: 16px;
       font-weight: 900;
+    }
+
+    .time-item span {
+      color: #475569;
+      font-weight: 800;
+      line-height: 1.6;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .info-box {
+      border-radius: 18px;
+      padding: 18px;
+      background: #fdfdfd;
+      border: 1px solid #f1f5f9;
+    }
+
+    .info-box h3 { margin-top: 0; }
+
+    .score-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+    }
+
+    .score-table th, .score-table td {
+      border: 1px solid #e2e8f0;
+      padding: 12px 14px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .score-table th {
+      background: #0ea5e9;
+      color: white;
+      font-weight: 900;
+    }
+
+    .score-table td {
+      color: #475569;
+      font-weight: 700;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 12px;
+    }
+
+    .check-item {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: #f8fafc;
+      color: #475569;
+      font-weight: 800;
+      line-height: 1.6;
+      border: 1px solid #e2e8f0;
+    }
+
+    .faq details {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 14px 0;
+    }
+
+    .faq details:last-child { border-bottom: none; }
+
+    .faq summary {
+      cursor: pointer;
+      color: #0f172a;
+      font-weight: 900;
+      line-height: 1.5;
+    }
+
+    .faq p {
+      margin-top: 10px;
     }
 
     .resource-links {
@@ -123,7 +257,7 @@
       border: 1px solid #f3f4f6;
       color: var(--text);
       text-decoration: none;
-      font-weight: 800;
+      font-weight: 900;
       transition: var(--transition);
     }
 
@@ -133,21 +267,21 @@
       transform: translateY(-2px);
     }
 
-    .resource-link span {
-      color: var(--pink);
-    }
+    .resource-link span { color: var(--pink); }
 
     footer {
       text-align: center;
-      padding: 36px 0 10px;
-      color: #d1d5db;
+      padding: 26px 0 6px;
+      color: #94a3b8;
       font-size: 0.85rem;
+      font-weight: 700;
     }
 
     @media (max-width: 640px) {
       .container { padding: 28px 14px; }
-      .guide-header h1 { font-size: 2.35rem; }
-      .guide-panel, .resource-section { padding: 18px; }
+      .hero, .section { padding: 20px; }
+      .hero h1 { font-size: 2.25rem; }
+      .time-item { grid-template-columns: 1fr; gap: 4px; }
     }
   </style>
 </head>
@@ -155,41 +289,184 @@
   <div class="container">
     <a href="index.html" class="back-btn">← 返回首页</a>
 
-    <header class="guide-header">
-      <h1>中考备考指南</h1>
-      <p>把复习拆成可执行的阶段任务：先稳基础，再做专题突破，最后用真题和错题完成冲刺。</p>
+    <header class="hero">
+      <div class="eyebrow">2026 上海中考 · 家长与学生流程指南</div>
+      <h1>上海中考全流程指南</h1>
+      <p>围绕报名、资格审核、考试、体育、加分、志愿填报、录取和入学报到，把关键时间和高风险环节整理成可执行清单。</p>
+      <div class="notice">信息更新时间：2026年5月。页面内容依据提供的深度研究报告整理，具体安排仍以上海市教委、上海市教育考试院“上海招考热线”和各区招考机构最新公告为准。</div>
     </header>
 
-    <div class="guide-grid">
-      <section class="guide-panel">
-        <h2>第一阶段：基础盘点</h2>
-        <ul>
-          <li>按课本目录梳理高频考点，标记不会、易错、需要背诵的内容。</li>
-          <li>语文、英语优先完成积累类任务，理科同步整理公式和典型模型。</li>
-          <li>每天保留固定错题复盘时间，避免只刷题不修正。</li>
-        </ul>
-      </section>
-
-      <section class="guide-panel">
-        <h2>第二阶段：专题突破</h2>
-        <ul>
-          <li>物理按力学、电学、实验探究分块训练，重点追踪解题步骤。</li>
-          <li>化学优先突破方程式、酸碱盐、实验现象和推断题。</li>
-          <li>数学用函数、几何、压轴模型建立题型库。</li>
-        </ul>
-      </section>
-
-      <section class="guide-panel">
-        <h2>第三阶段：模拟冲刺</h2>
-        <ul>
-          <li>每周至少完成一次限时套卷，记录时间分配和丢分原因。</li>
-          <li>考前复习以错题、公式、古诗文、英语高频词为主。</li>
-          <li>最后一轮不追新题，优先保证稳定得分点。</li>
-        </ul>
-      </section>
+    <div class="quick-grid">
+      <div class="quick-card"><div class="label">学科笔试</div><div class="value">6月20日-21日</div></div>
+      <div class="quick-card"><div class="label">外语听说 / 理化实验</div><div class="value">5月16日-17日</div></div>
+      <div class="quick-card"><div class="label">志愿填报</div><div class="value">6月23日10:00-26日17:00</div></div>
+      <div class="quick-card"><div class="label">成绩公布</div><div class="value">7月14日14:00</div></div>
+      <div class="quick-card"><div class="label">总分结构</div><div class="value">750分</div></div>
     </div>
 
-    <section class="resource-section">
+    <section class="section">
+      <h2>一、关键时间线</h2>
+      <div class="timeline">
+        <div class="time-item"><strong>1月19日-30日</strong><span>本市应届初三学生在“上海招考热线”完成网上报名。</span></div>
+        <div class="time-item"><strong>2月25日-27日</strong><span>往届生、返沪生网上报名；3月1日-2日到区招考机构现场确认。</span></div>
+        <div class="time-item"><strong>4月-5月</strong><span>体育与健身统一考试完成，项目选定后原则上不得更改。</span></div>
+        <div class="time-item"><strong>5月6日-7日</strong><span>特殊情况补报名窗口，材料不齐风险较高，不建议依赖补救。</span></div>
+        <div class="time-item"><strong>5月16日-17日</strong><span>外语听说测试、物理化学实验操作考试。</span></div>
+        <div class="time-item"><strong>6月20日-21日</strong><span>语文、数学、外语、道法、历史、综合测试等学业笔试。</span></div>
+        <div class="time-item"><strong>6月23日-26日</strong><span>网上填报各批次志愿；6月27日-28日学生与监护人签字确认。</span></div>
+        <div class="time-item"><strong>7月14日</strong><span>中考成绩公布；7月15日-16日可申请成绩复核。</span></div>
+        <div class="time-item"><strong>7月中下旬</strong><span>自主招生、名额分配、统一招生、征求志愿及录取结果陆续公布。</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>二、考试科目与分值</h2>
+      <div class="table-wrap">
+        <table class="score-table">
+          <thead>
+            <tr><th>项目</th><th>分值</th><th>说明</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>语文</td><td>150分</td><td>学业笔试科目。</td></tr>
+            <tr><td>数学</td><td>150分</td><td>学业笔试科目。</td></tr>
+            <tr><td>外语</td><td>150分</td><td>含外语听说测试。</td></tr>
+            <tr><td>道德与法治</td><td>60分</td><td>学业水平考试科目。</td></tr>
+            <tr><td>历史</td><td>60分</td><td>学业水平考试科目。</td></tr>
+            <tr><td>综合测试</td><td>150分</td><td>含物理、化学、跨学科案例分析、理化实验。</td></tr>
+            <tr><td>体育与健身</td><td>30分</td><td>统一考试15分，日常考核15分。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>三、报名与材料准备</h2>
+      <div class="two-col">
+        <div class="info-box">
+          <h3>报名对象与方式</h3>
+          <p>应届初三学生由学校组织在“上海招考热线”完成报名；往届生和返沪生需按区招考机构要求进行网上报名和现场信息确认。</p>
+        </div>
+        <div class="info-box">
+          <h3>材料清单</h3>
+          <p>常见材料包括身份证、户口簿或居住证、学籍证明、出生证明、照片，以及返沪或往届相关证明。具体以所在区官方通知为准。</p>
+        </div>
+      </div>
+      <h3>风险提醒</h3>
+      <ul>
+        <li>报名信息提交后，报名区和基本信息通常不能自行修改，填报前必须反复核对。</li>
+        <li>资格审核材料不全会影响考试资格，返沪生和往届生尤其要提前准备原件和复印件。</li>
+        <li>补报名窗口较晚，且需要区招考机构审核，不应作为常规方案。</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>四、体育考试怎么准备</h2>
+      <p>体育与健身总分30分，其中统一考试15分、日常考核15分。统一考试分四类项目，考生从每一类中选择一项参加，选定后不得随意更改。</p>
+      <div class="two-col">
+        <div class="info-box">
+          <h3>第一类：耐力类</h3>
+          <p>男生1000米、200米游泳、4分钟跳绳三选一；女生800米、200米游泳、4分钟跳绳三选一。</p>
+        </div>
+        <div class="info-box">
+          <h3>第二类：爆发力类</h3>
+          <p>可选50米跑、立定跳远、实心球、引体向上或仰卧起坐、25米游泳等项目。</p>
+        </div>
+        <div class="info-box">
+          <h3>第三类：技巧类</h3>
+          <p>乒乓球、羽毛球、网球、武术、体操等。体操类应在专业指导下训练。</p>
+        </div>
+        <div class="info-box">
+          <h3>第四类：球类</h3>
+          <p>足球、篮球、排球三选一。建议尽早按考试规则做专项训练。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>五、加分政策要点</h2>
+      <ul>
+        <li>政策性照顾加分通常为5-20分，符合多项条件时多数情况下不累加，只取最高项。</li>
+        <li>常见项目包括烈士子女、高风险岗位现役军人子女、功勋军人子女、公安消防英模或因公牺牲伤残人员子女、归侨侨眷和华侨子女、台湾省学生等。</li>
+        <li>2026年政策较往年有收紧变化：取消留学回国人员随迁子女加分项目；少数民族学生加分条件调整为初中阶段从边疆或少数民族聚居地区转学至上海的学生。</li>
+        <li>加分材料需由相应主管部门出具证明，并通过学校、区、市审核和公示，建议5月底前完成准备。</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>六、志愿填报与录取规则</h2>
+      <div class="two-col">
+        <div class="info-box">
+          <h3>志愿填报</h3>
+          <p>6月23日10:00至6月26日17:00在网上填报。6月27日-28日学生和法定监护人签字确认，签字后志愿不得更改。</p>
+        </div>
+        <div class="info-box">
+          <h3>志愿类型</h3>
+          <p>包括自主招生、国际课程班或中外合作办学、中职自主招生、名额分配到区和到校、统一招生15个平行志愿及补充志愿。</p>
+        </div>
+        <div class="info-box">
+          <h3>录取批次</h3>
+          <p>依次为自主招生录取、名额分配综合评价录取、统一招生录取。前一批次未录取，才进入后续批次。</p>
+        </div>
+        <div class="info-box">
+          <h3>平行志愿</h3>
+          <p>统一招生阶段按分数优先投档。同分时会参考同分优待、综合素质评价、语数外总分等规则，各区细则可能有差异。</p>
+        </div>
+      </div>
+      <h3>填报前必须核对</h3>
+      <ul>
+        <li>学校名称、招生代码、校区、公办或民办属性、住宿与收费情况。</li>
+        <li>自主招生签约或录取后的后续影响。</li>
+        <li>家庭可接受的通勤距离、学费、课程方向和升学路径。</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>七、成绩查询、复核与入学</h2>
+      <ul>
+        <li>7月14日14:00起可在“上海招考热线”查询中考成绩。</li>
+        <li>7月15日-16日可申请成绩复核，复核只核对是否漏评、登分或合分错误，不重新评分。</li>
+        <li>7月中下旬各批次录取结果和最低投档线陆续公布，7月23日前后可重点关注统一招生录取结果。</li>
+        <li>收到录取通知书后，按学校要求携带身份证、户口簿、学籍材料、体检材料等完成报到。</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>八、家长实用清单</h2>
+      <div class="checklist">
+        <div class="check-item">报名材料：身份证、户口簿、居住证或积分材料、学籍证明、出生证明。</div>
+        <div class="check-item">缴费凭证：网上缴费成功后截图保存，便于后续核验。</div>
+        <div class="check-item">准考证与身份证：考试、体育测试、面试和报到都要提前准备。</div>
+        <div class="check-item">体育装备：运动鞋、运动服、泳具或专项器材，按所选项目准备。</div>
+        <div class="check-item">志愿资料：学校招生简章、代码、地址、收费、住宿、特色课程。</div>
+        <div class="check-item">录取报到：保留录取通知书，预留7月下旬和8月下旬报到时间。</div>
+      </div>
+    </section>
+
+    <section class="section faq">
+      <h2>九、常见问题</h2>
+      <details>
+        <summary>错过报名时间怎么办？</summary>
+        <p>一般报名机会只有一次。特殊情况下可关注5月6日-7日补报名窗口，但需要正当理由和齐全材料，并由区招考机构审核决定。</p>
+      </details>
+      <details>
+        <summary>体育考试项目选择后能改吗？</summary>
+        <p>项目选定后原则上不得更改。建议根据长期训练基础选择，不要临考前临时换项目。</p>
+      </details>
+      <details>
+        <summary>志愿签字确认后还能修改吗？</summary>
+        <p>签字确认后志愿不得更改或撤回。填报前必须多次核对学校代码、顺序和校区信息。</p>
+      </details>
+      <details>
+        <summary>成绩复核会重新批卷吗？</summary>
+        <p>不会。复核主要核对是否漏评、登分或合分错误，不重新判断答案对错。</p>
+      </details>
+      <details>
+        <summary>平行志愿没录取怎么办？</summary>
+        <p>如果统一招生15个平行志愿均未录取，可关注征求志愿阶段剩余计划，但可选学校会更有限。</p>
+      </details>
+    </section>
+
+    <section class="section">
       <h2>快速进入复习资源</h2>
       <div class="resource-links">
         <a href="physics-hub.html" class="resource-link">物理复习清单 <span>→</span></a>
@@ -200,7 +477,7 @@
     </section>
 
     <footer>
-      <p>© 2026 Owen Learning Center</p>
+      <p>© 2026 Owen Learning Center · 内容以官方最新公告为准</p>
     </footer>
   </div>
 </body>
