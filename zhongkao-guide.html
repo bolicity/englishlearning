@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中考指南 | Owen Learning Center</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <style>
+    body { background: var(--bg); display: block; }
+    .container { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--pink);
+      text-decoration: none;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .guide-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 32px 24px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      border: 2px solid var(--pink-light);
+    }
+
+    .guide-header h1 {
+      font-family: 'ZCOOL KuaiLe', cursive;
+      font-size: 3.1rem;
+      margin-bottom: 10px;
+      color: var(--pink);
+    }
+
+    .guide-header p {
+      color: var(--text-light);
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .guide-panel {
+      background: white;
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      border: 1px solid #f3f4f6;
+    }
+
+    .guide-panel h2 {
+      font-size: 1.25rem;
+      margin-bottom: 14px;
+      color: var(--purple);
+      font-weight: 900;
+    }
+
+    .guide-panel ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .guide-panel li {
+      color: var(--text-light);
+      line-height: 1.6;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .guide-panel li::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: var(--pink);
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+
+    .resource-section {
+      background: white;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .resource-section h2 {
+      font-size: 1.35rem;
+      color: var(--pink);
+      margin-bottom: 16px;
+      font-weight: 900;
+    }
+
+    .resource-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .resource-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #fdfdfd;
+      border: 1px solid #f3f4f6;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      transition: var(--transition);
+    }
+
+    .resource-link:hover {
+      border-color: var(--pink);
+      box-shadow: 0 10px 25px rgba(255, 107, 157, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .resource-link span {
+      color: var(--pink);
+    }
+
+    footer {
+      text-align: center;
+      padding: 36px 0 10px;
+      color: #d1d5db;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 28px 14px; }
+      .guide-header h1 { font-size: 2.35rem; }
+      .guide-panel, .resource-section { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-btn">← 返回首页</a>
+
+    <header class="guide-header">
+      <h1>中考备考指南</h1>
+      <p>把复习拆成可执行的阶段任务：先稳基础，再做专题突破，最后用真题和错题完成冲刺。</p>
+    </header>
+
+    <div class="guide-grid">
+      <section class="guide-panel">
+        <h2>第一阶段：基础盘点</h2>
+        <ul>
+          <li>按课本目录梳理高频考点，标记不会、易错、需要背诵的内容。</li>
+          <li>语文、英语优先完成积累类任务，理科同步整理公式和典型模型。</li>
+          <li>每天保留固定错题复盘时间，避免只刷题不修正。</li>
+        </ul>
+      </section>
+
+      <section class="guide-panel">
+        <h2>第二阶段：专题突破</h2>
+        <ul>
+          <li>物理按力学、电学、实验探究分块训练，重点追踪解题步骤。</li>
+          <li>化学优先突破方程式、酸碱盐、实验现象和推断题。</li>
+          <li>数学用函数、几何、压轴模型建立题型库。</li>
+        </ul>
+      </section>
+
+      <section class="guide-panel">
+        <h2>第三阶段：模拟冲刺</h2>
+        <ul>
+          <li>每周至少完成一次限时套卷，记录时间分配和丢分原因。</li>
+          <li>考前复习以错题、公式、古诗文、英语高频词为主。</li>
+          <li>最后一轮不追新题，优先保证稳定得分点。</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="resource-section">
+      <h2>快速进入复习资源</h2>
+      <div class="resource-links">
+        <a href="physics-hub.html" class="resource-link">物理复习清单 <span>→</span></a>
+        <a href="chemistry.html" class="resource-link">化学资料中心 <span>→</span></a>
+        <a href="chinese.html" class="resource-link">语文复习清单 <span>→</span></a>
+        <a href="word-planet.html" class="resource-link">英语单词星球 <span>→</span></a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Owen Learning Center</p>
+    </footer>
+  </div>
+</body>
+</html>
