@@ -99,6 +99,45 @@
       line-height: 1.45;
     }
 
+    .official-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .official-link {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 16px;
+      border-radius: 16px;
+      background: white;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .official-link:hover {
+      border-color: var(--pink);
+      box-shadow: 0 10px 25px rgba(255, 107, 157, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .official-link strong {
+      color: #0f172a;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    .official-link span {
+      color: #64748b;
+      font-size: 0.86rem;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
     .section {
       background: white;
       border-radius: 22px;
@@ -303,6 +342,33 @@
       <div class="quick-card"><div class="label">成绩公布</div><div class="value">7月14日14:00</div></div>
       <div class="quick-card"><div class="label">总分结构</div><div class="value">750分</div></div>
     </div>
+
+    <section class="section">
+      <h2>官方发布机构与查询入口</h2>
+      <p style="margin-bottom: 16px;">中考政策、报名、志愿填报、成绩查询和录取安排请以以下官方网站为准。</p>
+      <div class="official-links">
+        <a href="https://edu.sh.gov.cn/" target="_blank" rel="noopener noreferrer" class="official-link">
+          <strong>上海市教育委员会</strong>
+          <span>市级教育政策、招生工作文件和通知发布入口</span>
+        </a>
+        <a href="https://www.shmeea.edu.cn/" target="_blank" rel="noopener noreferrer" class="official-link">
+          <strong>上海市教育考试院 · 上海招考热线</strong>
+          <span>报名、考试、志愿填报、成绩和录取查询主入口</span>
+        </a>
+        <a href="https://www.shmeea.edu.cn/page/03000/" target="_blank" rel="noopener noreferrer" class="official-link">
+          <strong>上海招考热线 · 中招中考栏目</strong>
+          <span>中招政策、报名须知、志愿填报、考试规定、招生录取</span>
+        </a>
+        <a href="https://www.shmeea.edu.cn/page/03300/" target="_blank" rel="noopener noreferrer" class="official-link">
+          <strong>上海招考热线 · 报名须知</strong>
+          <span>中考中招报名、信息确认和相关提醒</span>
+        </a>
+        <a href="https://www.shanghai.gov.cn/" target="_blank" rel="noopener noreferrer" class="official-link">
+          <strong>上海市人民政府门户网站</strong>
+          <span>市级政务信息和重要教育招生资讯转载发布入口</span>
+        </a>
+      </div>
+    </section>
 
     <section class="section">
       <h2>一、关键时间线</h2>
