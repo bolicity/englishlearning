@@ -239,8 +239,6 @@
         if (savedDate) {
           check.checked = true;
           if (dateInput) dateInput.value = savedDate;
-        } else if (dateInput) {
-          dateInput.value = todayInShanghai();
         }
         const save = () => {
           if (check.checked) {
@@ -315,8 +313,6 @@
               check.checked = true;
               dateInput.value = savedDate;
               item.classList.add('is-complete');
-            } else {
-              dateInput.value = todayInShanghai();
             }
             check.addEventListener('change', () => {
               if (check.checked) {
@@ -325,7 +321,7 @@
                 localStorage.setItem(key, value);
                 item.classList.add('is-complete');
               } else {
-                dateInput.value = todayInShanghai();
+                dateInput.value = '';
                 localStorage.removeItem(key);
                 item.classList.remove('is-complete');
               }
