@@ -45,15 +45,24 @@
     .nav-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-top: 18px; }
     .nav-link { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border-radius: 14px; background: white; border: 1px solid #e2e8f0; text-decoration: none; color: var(--text); font-weight: 900; }
     .nav-link span { color: var(--pink); }
+    .completion-date-input, .video-date-input { min-width: 132px; border: 1px solid #bbf7d0; border-radius: 8px; padding: 6px 8px; color: #166534; font-weight: 800; background: #fff; }
+    .video-task-list { display: flex; flex-direction: column; gap: 8px; }
+    .video-task { display: grid; grid-template-columns: 22px minmax(220px, 1fr) 136px; align-items: start; gap: 8px; padding: 7px 8px; border: 1px solid #e2e8f0; border-radius: 10px; background: #ffffff; }
+    .video-task:nth-child(even) { background: #f8fafc; }
+    .video-task input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; accent-color: #16a34a; cursor: pointer; }
+    .video-task.is-complete .video-title { color: #15803d; font-weight: 900; }
+    .video-title { line-height: 1.55; }
+    @media (max-width: 768px) { .video-task { grid-template-columns: 22px minmax(180px, 1fr); } .video-date-input { grid-column: 2; } }
+
     @media (max-width: 768px) { .container { padding: 28px 12px; } .plan-card { padding: 24px 14px; } .plan-header h1 { font-size: 2rem; } .summary-grid { grid-template-columns: 1fr 1fr; } th, td { padding: 8px; font-size: 0.78rem; } }
   </style>
 </head>
-<body>
+<body data-tracking-prefix="grade9-summer">
   <div class="container"><a href="physics-hub.html" class="back-btn">← 返回物理中心</a><div class="plan-card">
     <div class="plan-header"><h1>九年级物理暑假知识点学习计划</h1><p>来源：物理 / 03 【系统课】九年级 / 01 系统课-九年级全一册<br>筛选规则：排除“习题 / 练习 / 练一练 / 番外 / 赠送”视频，保留核心知识点、原理、公式、实验和计算讲解。计划周期为 7月、8月。</p></div>
     <div class="summary-grid"><div class="summary-item"><span class="val">226 节</span><span class="lab">知识点视频总数</span></div><div class="summary-item"><span class="val">69小时19分28秒</span><span class="lab">知识点视频总时长</span></div><div class="summary-item"><span class="val">44 天</span><span class="lab">7-8月工作日计划</span></div><div class="summary-item"><span class="val">约1小时34分32秒</span><span class="lab">日均视频时长</span></div></div>
     <h2>一、章节知识点概览</h2><p class="hint">暑假先完整建立九年级知识框架：热学入门、电路基础、欧姆定律、电功率、生活用电、电与磁、信息与能源。秋季再进入习题专项复习。</p><div class="table-container"><table><thead><tr><th>章节</th><th>知识点视频数</th><th>总时长</th><th>视频编号范围</th></tr></thead><tbody><tr><td>13 内能</td><td>26节</td><td>6小时43分51秒</td><td>001-032</td></tr><tr><td>14 内能的利用</td><td>19节</td><td>4小时23分52秒</td><td>033-055</td></tr><tr><td>15 电流和电路</td><td>36节</td><td>8小时58分33秒</td><td>061-121</td></tr><tr><td>16 电压 电阻</td><td>21节</td><td>5小时52分12秒</td><td>122-158</td></tr><tr><td>17 欧姆定律</td><td>60节</td><td>20小时27分37秒</td><td>161-242</td></tr><tr><td>18 电功率</td><td>37节</td><td>13小时3分19秒</td><td>243-284</td></tr><tr><td>19 生活用电</td><td>5节</td><td>2小时21分27秒</td><td>285-292</td></tr><tr><td>20 电与磁</td><td>14节</td><td>4小时52分33秒</td><td>295-323</td></tr><tr><td>21 信息的传递</td><td>4节</td><td>1小时31分22秒</td><td>325-328</td></tr><tr><td>22 能源与可持续发展</td><td>4节</td><td>1小时4分42秒</td><td>329-332</td></tr></tbody></table></div>
-    <div class="progress-panel">7月和8月学习表都已增加“完成”勾选和“完成日期”记录。勾选后会自动记录当天日期，并保存在本机浏览器中。</div>
+    <div class="progress-panel">7月和8月学习表支持按天勾选，也支持在“视频内容”里逐个视频勾选；完成日期可以手动选择，并保存在本机浏览器中。</div>
     <h2>二、7月学习日程表 <span class="pill">热学 + 电路基础 + 电压电阻</span></h2><p class="hint">7月重点把热学和电路基础学完，进入电压、电阻和欧姆定律前置内容。每天看完视频后整理 3-5 条概念笔记。</p><div class="table-container"><table class="july-table tracking-table"><thead><tr><th>序号</th><th>完成</th><th>完成日期</th><th>日期</th><th>章节</th><th>知识点视频内容</th><th>时长</th></tr></thead><tbody><tr><td>1</td><td class="complete-cell"><input type="checkbox" class="completion-check" data-plan-id="grade9-summer-2026-07-01" aria-label="标记 7/1 周三 完成"></td><td class="done-date" data-date-for="grade9-summer-2026-07-01">-</td><td>7/1 周三</td><td>13 内能</td><td>001.13.1.1物质的构成 (19分2秒)<br>002.13.1.2分子热运动-1原理 (17分10秒)<br>004.13.1.3分子间的作用力-1原理 (13分33秒)<br>007.13.1.4综合一下 (12分27秒)<br>008.13.2.1内能定义 (13分59秒)<br>009.13.2.1内能影响因素 (18分56秒)</td><td>1小时35分7秒</td></tr>
 <tr><td>2</td><td class="complete-cell"><input type="checkbox" class="completion-check" data-plan-id="grade9-summer-2026-07-02" aria-label="标记 7/2 周四 完成"></td><td class="done-date" data-date-for="grade9-summer-2026-07-02">-</td><td>7/2 周四</td><td>13 内能</td><td>010.13.2.2物体内能的改变-1原理 (20分28秒)<br>013.13.2.3温度内能热量-1 (17分9秒)<br>014.13.2.3温度内能热量-2 (13分22秒)<br>015.13.3.1比较不同物质吸热的情况-1原理和基础题 (36分23秒)<br>016.13.3.1比较不同物质吸热的情况-2一颗巨型实验题 (15分46秒)<br>017.13.3.1比较不同物质吸热的情况-3再讲探究吸热实验 (12分23秒)</td><td>1小时55分31秒</td></tr>
 <tr><td>3</td><td class="complete-cell"><input type="checkbox" class="completion-check" data-plan-id="grade9-summer-2026-07-03" aria-label="标记 7/3 周五 完成"></td><td class="done-date" data-date-for="grade9-summer-2026-07-03">-</td><td>7/3 周五</td><td>13 内能</td><td>018.13.3.2比热容-1再认识公式 (11分20秒)<br>019.13.3.2比热容-2再认识比热容 (16分27秒)<br>021.13.3.3比热容计算1-1基础计算 (20分42秒)<br>022.13.3.3比热容计算1-2比例计算 (14分5秒)<br>023.13.3.3比热容计算1-3定性比较 (18分12秒)<br>024.13.3.3比热容计算1-4实验计算-1 (13分54秒)</td><td>1小时34分40秒</td></tr>
@@ -102,32 +111,145 @@
     <div class="study-note"><h3>学习建议</h3><p>1. 每天看视频前先浏览课本小节标题，知道今天要解决什么问题。<br>2. 每节知识点视频结束后，用一句话写出核心结论，再补一个公式或实验条件。<br>3. 遇到电路图、电表、滑动变阻器、动态电路时，必须动手画图。<br>4. 周末不安排新课，建议回看本周笔记并预习下周章节。</p></div>
   </div></div>
   <script>
+    const trackingPrefix = document.body.dataset.trackingPrefix || location.pathname;
     function todayInShanghai() {
-      const parts = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
-      const value = Object.fromEntries(parts.filter(part => part.type !== 'literal').map(part => [part.type, part.value]));
-      return `${value.year}-${value.month}-${value.day}`;
+      return new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'Asia/Shanghai',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).format(new Date());
     }
-    function renderCompletion(check) {
-      const key = `physicsGrade9Summer:${check.dataset.planId}`;
-      const dateCell = document.querySelector(`[data-date-for="${check.dataset.planId}"]`);
-      const savedDate = localStorage.getItem(key);
-      check.checked = Boolean(savedDate);
-      if (dateCell) dateCell.textContent = savedDate || '-';
-      const row = check.closest('tr');
-      if (row) row.classList.toggle('row-complete', Boolean(savedDate));
+    function storageKey(kind, id) {
+      return 'physicsTracking:' + trackingPrefix + ':' + kind + ':' + id;
     }
-    document.querySelectorAll('.completion-check').forEach(check => {
-      renderCompletion(check);
-      check.addEventListener('change', () => {
-        const key = `physicsGrade9Summer:${check.dataset.planId}`;
-        if (check.checked) {
-          localStorage.setItem(key, todayInShanghai());
-        } else {
-          localStorage.removeItem(key);
+    function setupDayTracking() {
+      document.querySelectorAll('.completion-check').forEach(check => {
+        const planId = check.dataset.planId;
+        const dateCell = document.querySelector('[data-date-for="' + planId + '"]');
+        const key = storageKey('day', planId);
+        let dateInput = dateCell ? dateCell.querySelector('.completion-date-input') : null;
+        if (dateCell && !dateInput) {
+          dateCell.textContent = '';
+          dateInput = document.createElement('input');
+          dateInput.type = 'date';
+          dateInput.className = 'completion-date-input';
+          dateInput.setAttribute('aria-label', '选择完成日期');
+          dateCell.appendChild(dateInput);
         }
-        renderCompletion(check);
+        const savedDate = localStorage.getItem(key);
+        if (savedDate) {
+          check.checked = true;
+          if (dateInput) dateInput.value = savedDate;
+        }
+        const save = () => {
+          if (check.checked) {
+            const value = dateInput && dateInput.value ? dateInput.value : todayInShanghai();
+            if (dateInput) dateInput.value = value;
+            localStorage.setItem(key, value);
+          } else {
+            localStorage.removeItem(key);
+            if (dateInput) dateInput.value = '';
+          }
+        };
+        check.addEventListener('change', save);
+        if (dateInput) {
+          dateInput.addEventListener('change', () => {
+            if (dateInput.value) {
+              check.checked = true;
+              localStorage.setItem(key, dateInput.value);
+            } else {
+              check.checked = false;
+              localStorage.removeItem(key);
+            }
+          });
+        }
       });
-    });
+    }
+    function splitVideoCell(cell) {
+      const parts = [];
+      let current = [];
+      cell.childNodes.forEach(node => {
+        if (node.nodeName === 'BR') {
+          const html = current.map(item => item.outerHTML || item.textContent).join('').trim();
+          if (html) parts.push(html);
+          current = [];
+        } else {
+          current.push(node.cloneNode(true));
+        }
+      });
+      const tail = current.map(item => item.outerHTML || item.textContent).join('').trim();
+      if (tail) parts.push(tail);
+      return parts.length ? parts : [cell.innerHTML.trim()].filter(Boolean);
+    }
+    function setupVideoTracking() {
+      document.querySelectorAll('.tracking-table').forEach(table => {
+        const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+        const videoIndex = headers.findIndex(text => text.includes('视频内容'));
+        if (videoIndex < 0) return;
+        table.querySelectorAll('tbody tr').forEach(row => {
+          const dayCheck = row.querySelector('.completion-check');
+          const cell = row.cells[videoIndex];
+          if (!dayCheck || !cell || cell.querySelector('.video-task-list')) return;
+          const parts = splitVideoCell(cell);
+          const list = document.createElement('div');
+          list.className = 'video-task-list';
+          parts.forEach((html, index) => {
+            const videoId = dayCheck.dataset.planId + '-video-' + String(index + 1).padStart(2, '0');
+            const key = storageKey('video', videoId);
+            const item = document.createElement('label');
+            item.className = 'video-task';
+            const check = document.createElement('input');
+            check.type = 'checkbox';
+            check.className = 'video-completion-check';
+            check.setAttribute('aria-label', '标记视频完成');
+            const title = document.createElement('span');
+            title.className = 'video-title';
+            title.innerHTML = html;
+            const dateInput = document.createElement('input');
+            dateInput.type = 'date';
+            dateInput.className = 'video-date-input';
+            dateInput.setAttribute('aria-label', '选择视频完成日期');
+            const savedDate = localStorage.getItem(key);
+            if (savedDate) {
+              check.checked = true;
+              dateInput.value = savedDate;
+              item.classList.add('is-complete');
+            }
+            check.addEventListener('change', () => {
+              if (check.checked) {
+                const value = dateInput.value || todayInShanghai();
+                dateInput.value = value;
+                localStorage.setItem(key, value);
+                item.classList.add('is-complete');
+              } else {
+                dateInput.value = '';
+                localStorage.removeItem(key);
+                item.classList.remove('is-complete');
+              }
+            });
+            dateInput.addEventListener('change', () => {
+              if (dateInput.value) {
+                check.checked = true;
+                localStorage.setItem(key, dateInput.value);
+                item.classList.add('is-complete');
+              } else {
+                check.checked = false;
+                localStorage.removeItem(key);
+                item.classList.remove('is-complete');
+              }
+            });
+            item.append(check, title, dateInput);
+            list.appendChild(item);
+          });
+          cell.textContent = '';
+          cell.appendChild(list);
+        });
+      });
+    }
+    setupDayTracking();
+    setupVideoTracking();
   </script>
+
 </body>
 </html>

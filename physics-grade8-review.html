@@ -131,7 +131,15 @@
     .formula-table td { border: 1px solid #333 !important; text-align: center !important; font-weight: 700; }
 
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    
+    .completion-date-input, .video-date-input { min-width: 132px; border: 1px solid #bbf7d0; border-radius: 8px; padding: 6px 8px; color: #166534; font-weight: 800; background: #fff; }
+    .video-task-list { display: flex; flex-direction: column; gap: 8px; }
+    .video-task { display: grid; grid-template-columns: 22px minmax(220px, 1fr) 136px; align-items: start; gap: 8px; padding: 7px 8px; border: 1px solid #e2e8f0; border-radius: 10px; background: #ffffff; }
+    .video-task:nth-child(even) { background: #f8fafc; }
+    .video-task input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; accent-color: #16a34a; cursor: pointer; }
+    .video-task.is-complete .video-title { color: #15803d; font-weight: 900; }
+    .video-title { line-height: 1.55; }
+    @media (max-width: 768px) { .video-task { grid-template-columns: 22px minmax(180px, 1fr); } .video-date-input { grid-column: 2; } }
+
     @media (max-width: 768px) {
       .plan-header h1 { font-size: 1.8rem; }
       .summary-grid { grid-template-columns: 1fr 1fr; }
@@ -156,7 +164,7 @@
         <div class="summary-item"><span class="val">约40分钟</span><span class="lab">每日建议时长</span></div>
       </div>
 
-      <div class="progress-panel">5月和6月专项复习表都支持勾选完成；勾选后会自动记录当天日期，并保存在本机浏览器中。</div>
+      <div class="progress-panel">5月和6月专项复习表支持按天勾选，也支持在“视频内容”里逐个视频勾选；完成日期可以手动选择，并保存在本机浏览器中。</div>
 
       <h2>一、各章节习题概览</h2>
       <div class="table-container">
@@ -280,34 +288,144 @@
   <script>
     const trackingPrefix = document.body.dataset.trackingPrefix || location.pathname;
     function todayInShanghai() {
-      return new Intl.DateTimeFormat('zh-CN', {
+      return new Intl.DateTimeFormat('en-CA', {
         timeZone: 'Asia/Shanghai',
         year: 'numeric',
         month: '2-digit',
         day: '2-digit'
-      }).format(new Date()).replaceAll('/', '-');
+      }).format(new Date());
     }
-    document.querySelectorAll('.completion-check').forEach(check => {
-      const planId = check.dataset.planId;
-      const dateCell = document.querySelector('[data-date-for="' + planId + '"]');
-      const storageKey = 'physicsTracking:' + trackingPrefix + ':' + planId;
-      const savedDate = localStorage.getItem(storageKey);
-      if (savedDate) {
-        check.checked = true;
-        if (dateCell) dateCell.textContent = savedDate;
-      }
-      check.addEventListener('change', () => {
-        if (check.checked) {
-          const doneDate = todayInShanghai();
-          localStorage.setItem(storageKey, doneDate);
-          if (dateCell) dateCell.textContent = doneDate;
-        } else {
-          localStorage.removeItem(storageKey);
-          if (dateCell) dateCell.textContent = '-';
+    function storageKey(kind, id) {
+      return 'physicsTracking:' + trackingPrefix + ':' + kind + ':' + id;
+    }
+    function setupDayTracking() {
+      document.querySelectorAll('.completion-check').forEach(check => {
+        const planId = check.dataset.planId;
+        const dateCell = document.querySelector('[data-date-for="' + planId + '"]');
+        const key = storageKey('day', planId);
+        let dateInput = dateCell ? dateCell.querySelector('.completion-date-input') : null;
+        if (dateCell && !dateInput) {
+          dateCell.textContent = '';
+          dateInput = document.createElement('input');
+          dateInput.type = 'date';
+          dateInput.className = 'completion-date-input';
+          dateInput.setAttribute('aria-label', '选择完成日期');
+          dateCell.appendChild(dateInput);
+        }
+        const savedDate = localStorage.getItem(key);
+        if (savedDate) {
+          check.checked = true;
+          if (dateInput) dateInput.value = savedDate;
+        }
+        const save = () => {
+          if (check.checked) {
+            const value = dateInput && dateInput.value ? dateInput.value : todayInShanghai();
+            if (dateInput) dateInput.value = value;
+            localStorage.setItem(key, value);
+          } else {
+            localStorage.removeItem(key);
+            if (dateInput) dateInput.value = '';
+          }
+        };
+        check.addEventListener('change', save);
+        if (dateInput) {
+          dateInput.addEventListener('change', () => {
+            if (dateInput.value) {
+              check.checked = true;
+              localStorage.setItem(key, dateInput.value);
+            } else {
+              check.checked = false;
+              localStorage.removeItem(key);
+            }
+          });
         }
       });
-    });
+    }
+    function splitVideoCell(cell) {
+      const parts = [];
+      let current = [];
+      cell.childNodes.forEach(node => {
+        if (node.nodeName === 'BR') {
+          const html = current.map(item => item.outerHTML || item.textContent).join('').trim();
+          if (html) parts.push(html);
+          current = [];
+        } else {
+          current.push(node.cloneNode(true));
+        }
+      });
+      const tail = current.map(item => item.outerHTML || item.textContent).join('').trim();
+      if (tail) parts.push(tail);
+      return parts.length ? parts : [cell.innerHTML.trim()].filter(Boolean);
+    }
+    function setupVideoTracking() {
+      document.querySelectorAll('.tracking-table').forEach(table => {
+        const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+        const videoIndex = headers.findIndex(text => text.includes('视频内容'));
+        if (videoIndex < 0) return;
+        table.querySelectorAll('tbody tr').forEach(row => {
+          const dayCheck = row.querySelector('.completion-check');
+          const cell = row.cells[videoIndex];
+          if (!dayCheck || !cell || cell.querySelector('.video-task-list')) return;
+          const parts = splitVideoCell(cell);
+          const list = document.createElement('div');
+          list.className = 'video-task-list';
+          parts.forEach((html, index) => {
+            const videoId = dayCheck.dataset.planId + '-video-' + String(index + 1).padStart(2, '0');
+            const key = storageKey('video', videoId);
+            const item = document.createElement('label');
+            item.className = 'video-task';
+            const check = document.createElement('input');
+            check.type = 'checkbox';
+            check.className = 'video-completion-check';
+            check.setAttribute('aria-label', '标记视频完成');
+            const title = document.createElement('span');
+            title.className = 'video-title';
+            title.innerHTML = html;
+            const dateInput = document.createElement('input');
+            dateInput.type = 'date';
+            dateInput.className = 'video-date-input';
+            dateInput.setAttribute('aria-label', '选择视频完成日期');
+            const savedDate = localStorage.getItem(key);
+            if (savedDate) {
+              check.checked = true;
+              dateInput.value = savedDate;
+              item.classList.add('is-complete');
+            }
+            check.addEventListener('change', () => {
+              if (check.checked) {
+                const value = dateInput.value || todayInShanghai();
+                dateInput.value = value;
+                localStorage.setItem(key, value);
+                item.classList.add('is-complete');
+              } else {
+                dateInput.value = '';
+                localStorage.removeItem(key);
+                item.classList.remove('is-complete');
+              }
+            });
+            dateInput.addEventListener('change', () => {
+              if (dateInput.value) {
+                check.checked = true;
+                localStorage.setItem(key, dateInput.value);
+                item.classList.add('is-complete');
+              } else {
+                check.checked = false;
+                localStorage.removeItem(key);
+                item.classList.remove('is-complete');
+              }
+            });
+            item.append(check, title, dateInput);
+            list.appendChild(item);
+          });
+          cell.textContent = '';
+          cell.appendChild(list);
+        });
+      });
+    }
+    setupDayTracking();
+    setupVideoTracking();
   </script>
+
 
 </body>
 </html>
