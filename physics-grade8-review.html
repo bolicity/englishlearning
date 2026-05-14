@@ -329,14 +329,26 @@
           const skipButton = document.createElement('button');
           skipButton.type = 'button';
           skipButton.className = 'skip-toggle';
-          skipButton.textContent = '跳过';
+          skipButton.textContent = '跳过😊';
           skipButton.setAttribute('aria-label', '标记为跳过');
           noteInput = document.createElement('input');
           noteInput.type = 'text';
           noteInput.className = 'task-note-input';
-          noteInput.placeholder = '备注 / 跳过😊';
+          noteInput.placeholder = '备注说明';
           noteInput.setAttribute('aria-label', '填写任务备注');
           noteWrap.append(skipButton, noteInput);
+          noteCell.appendChild(noteWrap);
+        }
+        if (noteCell && noteInput && !noteCell.querySelector('.skip-toggle')) {
+          const noteWrap = document.createElement('div');
+          noteWrap.className = 'note-wrap';
+          const skipButton = document.createElement('button');
+          skipButton.type = 'button';
+          skipButton.className = 'skip-toggle';
+          skipButton.textContent = '跳过😊';
+          skipButton.setAttribute('aria-label', '标记为跳过');
+          noteWrap.append(skipButton, noteInput);
+          noteCell.textContent = '';
           noteCell.appendChild(noteWrap);
         }
         const skipKey = storageKey('skip', planId);
@@ -449,12 +461,12 @@
             const skipButton = document.createElement('button');
             skipButton.type = 'button';
             skipButton.className = 'skip-toggle';
-            skipButton.textContent = '跳过';
+            skipButton.textContent = '跳过😊';
             skipButton.setAttribute('aria-label', '标记视频为跳过');
             const noteInput = document.createElement('input');
             noteInput.type = 'text';
             noteInput.className = 'video-note-input';
-            noteInput.placeholder = '备注 / 跳过😊';
+            noteInput.placeholder = '备注说明';
             noteInput.setAttribute('aria-label', '填写视频备注');
             const noteKey = storageKey('video-note', videoId);
             const skipKey = storageKey('video-skip', videoId);
