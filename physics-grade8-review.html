@@ -133,8 +133,14 @@
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     .completion-date-input, .video-date-input { min-width: 132px; border: 1px solid #bbf7d0; border-radius: 8px; padding: 6px 8px; color: #166534; font-weight: 800; background: #fff; }
     .task-note-input, .video-note-input { width: 100%; min-width: 150px; border: 1px solid #cbd5e1; border-radius: 8px; padding: 7px 9px; color: #334155; font-weight: 700; background: #fff; }
+    .note-wrap { display: flex; align-items: center; gap: 8px; min-width: 230px; }
+    .skip-toggle { border: 1px solid #facc15; background: #fefce8; color: #854d0e; border-radius: 999px; padding: 6px 10px; font-weight: 900; cursor: pointer; white-space: nowrap; }
+    .skip-toggle.is-skipped { background: #f59e0b; border-color: #f59e0b; color: #fff; }
+    tr.is-skipped-row { background: #fffbeb !important; }
+    .video-task.is-skipped { background: #fffbeb; border-color: #facc15; }
+    .video-task.is-skipped .video-title { color: #92400e; font-weight: 900; }
     .video-task-list { display: flex; flex-direction: column; gap: 8px; }
-    .video-task { display: grid; grid-template-columns: 22px minmax(220px, 1fr) 136px minmax(150px, 0.65fr); align-items: start; gap: 8px; padding: 7px 8px; border: 1px solid #e2e8f0; border-radius: 10px; background: #ffffff; }
+    .video-task { display: grid; grid-template-columns: 22px minmax(220px, 1fr) 136px minmax(230px, 0.75fr); align-items: start; gap: 8px; padding: 7px 8px; border: 1px solid #e2e8f0; border-radius: 10px; background: #ffffff; }
     .video-task:nth-child(even) { background: #f8fafc; }
     .video-task input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; accent-color: #16a34a; cursor: pointer; }
     .video-task.is-complete .video-title { color: #15803d; font-weight: 900; }
@@ -165,7 +171,7 @@
         <div class="summary-item"><span class="val">约40分钟</span><span class="lab">每日建议时长</span></div>
       </div>
 
-      <div class="progress-panel">5月和6月专项复习表支持按天勾选，也支持在“视频内容”里逐个视频勾选；完成日期可以手动选择，并保存在本机浏览器中。 跳过或暂缓的任务可以在“备注”里写原因，例如：跳过😊。</div>
+      <div class="progress-panel">5月和6月专项复习表支持按天勾选，也支持在“视频内容”里逐个视频勾选；完成日期可以手动选择，并保存在本机浏览器中。 跳过或暂缓的任务可以在“备注”里写原因，例如：跳过😊。 点击“跳过”标签可以快速标记暂缓任务。</div>
 
       <h2>一、各章节习题概览</h2>
       <div class="table-container">
@@ -318,12 +324,41 @@
         let noteInput = noteCell ? noteCell.querySelector('.task-note-input') : null;
         if (noteCell && !noteInput) {
           noteCell.textContent = '';
+          const noteWrap = document.createElement('div');
+          noteWrap.className = 'note-wrap';
+          const skipButton = document.createElement('button');
+          skipButton.type = 'button';
+          skipButton.className = 'skip-toggle';
+          skipButton.textContent = '跳过';
+          skipButton.setAttribute('aria-label', '标记为跳过');
           noteInput = document.createElement('input');
           noteInput.type = 'text';
           noteInput.className = 'task-note-input';
           noteInput.placeholder = '备注 / 跳过😊';
           noteInput.setAttribute('aria-label', '填写任务备注');
-          noteCell.appendChild(noteInput);
+          noteWrap.append(skipButton, noteInput);
+          noteCell.appendChild(noteWrap);
+        }
+        const skipKey = storageKey('skip', planId);
+        const savedSkip = localStorage.getItem(skipKey) === '1';
+        const skipButton = noteCell ? noteCell.querySelector('.skip-toggle') : null;
+        const setSkipped = (isSkipped) => {
+          if (skipButton) skipButton.classList.toggle('is-skipped', isSkipped);
+          const row = check.closest('tr');
+          if (row) row.classList.toggle('is-skipped-row', isSkipped);
+          if (isSkipped) localStorage.setItem(skipKey, '1');
+          else localStorage.removeItem(skipKey);
+        };
+        setSkipped(savedSkip);
+        if (skipButton) {
+          skipButton.addEventListener('click', () => {
+            const nextSkipped = !skipButton.classList.contains('is-skipped');
+            setSkipped(nextSkipped);
+            if (nextSkipped && noteInput && !noteInput.value.trim()) {
+              noteInput.value = '跳过';
+              localStorage.setItem(noteKey, noteInput.value);
+            }
+          });
         }
         const savedNote = localStorage.getItem(noteKey);
         if (savedNote && noteInput) noteInput.value = savedNote;
@@ -409,12 +444,36 @@
             dateInput.type = 'date';
             dateInput.className = 'video-date-input';
             dateInput.setAttribute('aria-label', '选择视频完成日期');
+            const noteWrap = document.createElement('div');
+            noteWrap.className = 'note-wrap';
+            const skipButton = document.createElement('button');
+            skipButton.type = 'button';
+            skipButton.className = 'skip-toggle';
+            skipButton.textContent = '跳过';
+            skipButton.setAttribute('aria-label', '标记视频为跳过');
             const noteInput = document.createElement('input');
             noteInput.type = 'text';
             noteInput.className = 'video-note-input';
             noteInput.placeholder = '备注 / 跳过😊';
             noteInput.setAttribute('aria-label', '填写视频备注');
             const noteKey = storageKey('video-note', videoId);
+            const skipKey = storageKey('video-skip', videoId);
+            const setSkipped = (isSkipped) => {
+              skipButton.classList.toggle('is-skipped', isSkipped);
+              item.classList.toggle('is-skipped', isSkipped);
+              if (isSkipped) localStorage.setItem(skipKey, '1');
+              else localStorage.removeItem(skipKey);
+            };
+            setSkipped(localStorage.getItem(skipKey) === '1');
+            skipButton.addEventListener('click', (event) => {
+              event.preventDefault();
+              const nextSkipped = !skipButton.classList.contains('is-skipped');
+              setSkipped(nextSkipped);
+              if (nextSkipped && !noteInput.value.trim()) {
+                noteInput.value = '跳过';
+                localStorage.setItem(noteKey, noteInput.value);
+              }
+            });
             const savedNote = localStorage.getItem(noteKey);
             if (savedNote) noteInput.value = savedNote;
             noteInput.addEventListener('input', () => {
@@ -453,7 +512,8 @@
                 item.classList.remove('is-complete');
               }
             });
-            item.append(check, title, dateInput, noteInput);
+            noteWrap.append(skipButton, noteInput);
+            item.append(check, title, dateInput, noteWrap);
             list.appendChild(item);
           });
           cell.textContent = '';

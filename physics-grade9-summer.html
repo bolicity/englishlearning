@@ -47,8 +47,14 @@
     .nav-link span { color: var(--pink); }
     .completion-date-input, .video-date-input { min-width: 132px; border: 1px solid #bbf7d0; border-radius: 8px; padding: 6px 8px; color: #166534; font-weight: 800; background: #fff; }
     .task-note-input, .video-note-input { width: 100%; min-width: 150px; border: 1px solid #cbd5e1; border-radius: 8px; padding: 7px 9px; color: #334155; font-weight: 700; background: #fff; }
+    .note-wrap { display: flex; align-items: center; gap: 8px; min-width: 230px; }
+    .skip-toggle { border: 1px solid #facc15; background: #fefce8; color: #854d0e; border-radius: 999px; padding: 6px 10px; font-weight: 900; cursor: pointer; white-space: nowrap; }
+    .skip-toggle.is-skipped { background: #f59e0b; border-color: #f59e0b; color: #fff; }
+    tr.is-skipped-row { background: #fffbeb !important; }
+    .video-task.is-skipped { background: #fffbeb; border-color: #facc15; }
+    .video-task.is-skipped .video-title { color: #92400e; font-weight: 900; }
     .video-task-list { display: flex; flex-direction: column; gap: 8px; }
-    .video-task { display: grid; grid-template-columns: 22px minmax(220px, 1fr) 136px minmax(150px, 0.65fr); align-items: start; gap: 8px; padding: 7px 8px; border: 1px solid #e2e8f0; border-radius: 10px; background: #ffffff; }
+    .video-task { display: grid; grid-template-columns: 22px minmax(220px, 1fr) 136px minmax(230px, 0.75fr); align-items: start; gap: 8px; padding: 7px 8px; border: 1px solid #e2e8f0; border-radius: 10px; background: #ffffff; }
     .video-task:nth-child(even) { background: #f8fafc; }
     .video-task input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; accent-color: #16a34a; cursor: pointer; }
     .video-task.is-complete .video-title { color: #15803d; font-weight: 900; }
@@ -63,7 +69,7 @@
     <div class="plan-header"><h1>九年级物理暑假知识点学习计划</h1><p>来源：物理 / 03 【系统课】九年级 / 01 系统课-九年级全一册<br>筛选规则：排除“习题 / 练习 / 练一练 / 番外 / 赠送”视频，保留核心知识点、原理、公式、实验和计算讲解。计划周期为 7月、8月。</p></div>
     <div class="summary-grid"><div class="summary-item"><span class="val">226 节</span><span class="lab">知识点视频总数</span></div><div class="summary-item"><span class="val">69小时19分28秒</span><span class="lab">知识点视频总时长</span></div><div class="summary-item"><span class="val">44 天</span><span class="lab">7-8月工作日计划</span></div><div class="summary-item"><span class="val">约1小时34分32秒</span><span class="lab">日均视频时长</span></div></div>
     <h2>一、章节知识点概览</h2><p class="hint">暑假先完整建立九年级知识框架：热学入门、电路基础、欧姆定律、电功率、生活用电、电与磁、信息与能源。秋季再进入习题专项复习。</p><div class="table-container"><table><thead><tr><th>章节</th><th>知识点视频数</th><th>总时长</th><th>视频编号范围</th></tr></thead><tbody><tr><td>13 内能</td><td>26节</td><td>6小时43分51秒</td><td>001-032</td></tr><tr><td>14 内能的利用</td><td>19节</td><td>4小时23分52秒</td><td>033-055</td></tr><tr><td>15 电流和电路</td><td>36节</td><td>8小时58分33秒</td><td>061-121</td></tr><tr><td>16 电压 电阻</td><td>21节</td><td>5小时52分12秒</td><td>122-158</td></tr><tr><td>17 欧姆定律</td><td>60节</td><td>20小时27分37秒</td><td>161-242</td></tr><tr><td>18 电功率</td><td>37节</td><td>13小时3分19秒</td><td>243-284</td></tr><tr><td>19 生活用电</td><td>5节</td><td>2小时21分27秒</td><td>285-292</td></tr><tr><td>20 电与磁</td><td>14节</td><td>4小时52分33秒</td><td>295-323</td></tr><tr><td>21 信息的传递</td><td>4节</td><td>1小时31分22秒</td><td>325-328</td></tr><tr><td>22 能源与可持续发展</td><td>4节</td><td>1小时4分42秒</td><td>329-332</td></tr></tbody></table></div>
-    <div class="progress-panel">7月和8月学习表支持按天勾选，也支持在“视频内容”里逐个视频勾选；完成日期可以手动选择，并保存在本机浏览器中。 跳过或暂缓的任务可以在“备注”里写原因，例如：跳过😊。</div>
+    <div class="progress-panel">7月和8月学习表支持按天勾选，也支持在“视频内容”里逐个视频勾选；完成日期可以手动选择，并保存在本机浏览器中。 跳过或暂缓的任务可以在“备注”里写原因，例如：跳过😊。 点击“跳过”标签可以快速标记暂缓任务。</div>
     <h2>二、7月学习日程表 <span class="pill">热学 + 电路基础 + 电压电阻</span></h2><p class="hint">7月重点把热学和电路基础学完，进入电压、电阻和欧姆定律前置内容。每天看完视频后整理 3-5 条概念笔记。</p><div class="table-container"><table class="july-table tracking-table"><thead><tr><th>序号</th><th>完成</th><th>完成日期</th><th>备注</th><th>日期</th><th>章节</th><th>知识点视频内容</th><th>时长</th></tr></thead><tbody><tr><td>1</td><td class="complete-cell"><input type="checkbox" class="completion-check" data-plan-id="grade9-summer-2026-07-01" aria-label="标记 7/1 周三 完成"></td><td class="done-date" data-date-for="grade9-summer-2026-07-01">-</td><td class="note-cell" data-note-for="grade9-summer-2026-07-01"></td><td>7/1 周三</td><td>13 内能</td><td>001.13.1.1物质的构成 (19分2秒)<br>002.13.1.2分子热运动-1原理 (17分10秒)<br>004.13.1.3分子间的作用力-1原理 (13分33秒)<br>007.13.1.4综合一下 (12分27秒)<br>008.13.2.1内能定义 (13分59秒)<br>009.13.2.1内能影响因素 (18分56秒)</td><td>1小时35分7秒</td></tr>
 <tr><td>2</td><td class="complete-cell"><input type="checkbox" class="completion-check" data-plan-id="grade9-summer-2026-07-02" aria-label="标记 7/2 周四 完成"></td><td class="done-date" data-date-for="grade9-summer-2026-07-02">-</td><td class="note-cell" data-note-for="grade9-summer-2026-07-02"></td><td>7/2 周四</td><td>13 内能</td><td>010.13.2.2物体内能的改变-1原理 (20分28秒)<br>013.13.2.3温度内能热量-1 (17分9秒)<br>014.13.2.3温度内能热量-2 (13分22秒)<br>015.13.3.1比较不同物质吸热的情况-1原理和基础题 (36分23秒)<br>016.13.3.1比较不同物质吸热的情况-2一颗巨型实验题 (15分46秒)<br>017.13.3.1比较不同物质吸热的情况-3再讲探究吸热实验 (12分23秒)</td><td>1小时55分31秒</td></tr>
 <tr><td>3</td><td class="complete-cell"><input type="checkbox" class="completion-check" data-plan-id="grade9-summer-2026-07-03" aria-label="标记 7/3 周五 完成"></td><td class="done-date" data-date-for="grade9-summer-2026-07-03">-</td><td class="note-cell" data-note-for="grade9-summer-2026-07-03"></td><td>7/3 周五</td><td>13 内能</td><td>018.13.3.2比热容-1再认识公式 (11分20秒)<br>019.13.3.2比热容-2再认识比热容 (16分27秒)<br>021.13.3.3比热容计算1-1基础计算 (20分42秒)<br>022.13.3.3比热容计算1-2比例计算 (14分5秒)<br>023.13.3.3比热容计算1-3定性比较 (18分12秒)<br>024.13.3.3比热容计算1-4实验计算-1 (13分54秒)</td><td>1小时34分40秒</td></tr>
@@ -143,12 +149,41 @@
         let noteInput = noteCell ? noteCell.querySelector('.task-note-input') : null;
         if (noteCell && !noteInput) {
           noteCell.textContent = '';
+          const noteWrap = document.createElement('div');
+          noteWrap.className = 'note-wrap';
+          const skipButton = document.createElement('button');
+          skipButton.type = 'button';
+          skipButton.className = 'skip-toggle';
+          skipButton.textContent = '跳过';
+          skipButton.setAttribute('aria-label', '标记为跳过');
           noteInput = document.createElement('input');
           noteInput.type = 'text';
           noteInput.className = 'task-note-input';
           noteInput.placeholder = '备注 / 跳过😊';
           noteInput.setAttribute('aria-label', '填写任务备注');
-          noteCell.appendChild(noteInput);
+          noteWrap.append(skipButton, noteInput);
+          noteCell.appendChild(noteWrap);
+        }
+        const skipKey = storageKey('skip', planId);
+        const savedSkip = localStorage.getItem(skipKey) === '1';
+        const skipButton = noteCell ? noteCell.querySelector('.skip-toggle') : null;
+        const setSkipped = (isSkipped) => {
+          if (skipButton) skipButton.classList.toggle('is-skipped', isSkipped);
+          const row = check.closest('tr');
+          if (row) row.classList.toggle('is-skipped-row', isSkipped);
+          if (isSkipped) localStorage.setItem(skipKey, '1');
+          else localStorage.removeItem(skipKey);
+        };
+        setSkipped(savedSkip);
+        if (skipButton) {
+          skipButton.addEventListener('click', () => {
+            const nextSkipped = !skipButton.classList.contains('is-skipped');
+            setSkipped(nextSkipped);
+            if (nextSkipped && noteInput && !noteInput.value.trim()) {
+              noteInput.value = '跳过';
+              localStorage.setItem(noteKey, noteInput.value);
+            }
+          });
         }
         const savedNote = localStorage.getItem(noteKey);
         if (savedNote && noteInput) noteInput.value = savedNote;
@@ -234,12 +269,36 @@
             dateInput.type = 'date';
             dateInput.className = 'video-date-input';
             dateInput.setAttribute('aria-label', '选择视频完成日期');
+            const noteWrap = document.createElement('div');
+            noteWrap.className = 'note-wrap';
+            const skipButton = document.createElement('button');
+            skipButton.type = 'button';
+            skipButton.className = 'skip-toggle';
+            skipButton.textContent = '跳过';
+            skipButton.setAttribute('aria-label', '标记视频为跳过');
             const noteInput = document.createElement('input');
             noteInput.type = 'text';
             noteInput.className = 'video-note-input';
             noteInput.placeholder = '备注 / 跳过😊';
             noteInput.setAttribute('aria-label', '填写视频备注');
             const noteKey = storageKey('video-note', videoId);
+            const skipKey = storageKey('video-skip', videoId);
+            const setSkipped = (isSkipped) => {
+              skipButton.classList.toggle('is-skipped', isSkipped);
+              item.classList.toggle('is-skipped', isSkipped);
+              if (isSkipped) localStorage.setItem(skipKey, '1');
+              else localStorage.removeItem(skipKey);
+            };
+            setSkipped(localStorage.getItem(skipKey) === '1');
+            skipButton.addEventListener('click', (event) => {
+              event.preventDefault();
+              const nextSkipped = !skipButton.classList.contains('is-skipped');
+              setSkipped(nextSkipped);
+              if (nextSkipped && !noteInput.value.trim()) {
+                noteInput.value = '跳过';
+                localStorage.setItem(noteKey, noteInput.value);
+              }
+            });
             const savedNote = localStorage.getItem(noteKey);
             if (savedNote) noteInput.value = savedNote;
             noteInput.addEventListener('input', () => {
@@ -278,7 +337,8 @@
                 item.classList.remove('is-complete');
               }
             });
-            item.append(check, title, dateInput, noteInput);
+            noteWrap.append(skipButton, noteInput);
+            item.append(check, title, dateInput, noteWrap);
             list.appendChild(item);
           });
           cell.textContent = '';
