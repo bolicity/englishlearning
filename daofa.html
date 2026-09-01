@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>2026 初中道德与法治 (道法) 知识梳理与中考复习中心 V1</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --brand-blue: #1E3A8A;
+      --brand-blue-light: #2563EB;
+      --brand-blue-bg: #EFF6FF;
+      
+      --accent-gold: #D97706;
+      --accent-gold-bg: #FEF3C7;
+      
+      --accent-green: #059669;
+      --accent-green-bg: #ECFDF5;
+
+      --accent-purple: #7C3AED;
+      --accent-purple-bg: #F3E8FF;
+
+      --accent-red: #DC2626;
+      --accent-red-bg: #FEF2F2;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header Sticky */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-light));
+      color: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--brand-blue);
+    }
+
+    .brand-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      min-height: 44px;
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    /* Layout Desktop vs Mobile */
+    .layout-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem 1.25rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    @media (min-width: 980px) {
+      .layout-container {
+        grid-template-columns: 270px 1fr;
+        gap: 2rem;
+        padding-top: 2rem;
+      }
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 4.2rem;
+      z-index: 40;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    @media (min-width: 980px) {
+      .sidebar {
+        top: 5rem;
+        padding: 1.25rem;
+        max-height: calc(100vh - 6rem);
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+    }
+
+    .sidebar-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--brand-blue);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 980px) {
+      .sidebar-menu {
+        flex-direction: column;
+        gap: 0.25rem;
+        white-space: normal;
+      }
+    }
+
+    .sidebar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 0.8rem;
+      min-height: 42px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    @media (min-width: 980px) {
+      .sidebar-link {
+        display: flex;
+        background: transparent;
+        border: none;
+        padding: 0.65rem 0.8rem;
+      }
+    }
+
+    .sidebar-link:hover, .sidebar-link:active {
+      background-color: var(--brand-blue-bg);
+      color: var(--brand-blue-light);
+      border-color: var(--brand-blue-light);
+    }
+
+    /* Main Content Area */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 100%);
+      border: 1px solid #DBEAFE;
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (min-width: 768px) {
+      .hero-card { padding: 2.25rem; }
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--brand-blue);
+      margin-bottom: 0.5rem;
+      line-height: 1.25;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title { font-size: 2.2rem; }
+    }
+
+    .content-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      scroll-margin-top: 5rem;
+    }
+
+    @media (min-width: 768px) {
+      .content-card { padding: 2rem; }
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    /* PDF 实时预览组件 */
+    .pdf-selector-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      background: var(--bg-subtle);
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 1.25rem;
+    }
+
+    @media (min-width: 640px) {
+      .pdf-selector-bar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .pdf-select-control {
+      padding: 0.65rem 0.85rem;
+      min-height: 44px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-card);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--brand-blue);
+      outline: none;
+      cursor: pointer;
+      flex: 1;
+      max-width: 480px;
+    }
+
+    .pdf-embed-wrapper {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #FAFAFA;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pdf-embed-header {
+      background: var(--bg-subtle);
+      padding: 0.75rem 1.25rem;
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--brand-blue);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pdf-frame {
+      width: 100%;
+      height: 520px;
+      border: none;
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      .pdf-frame { height: 720px; }
+    }
+
+    /* 知识点表格 */
+    .data-table-container {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-top: 1rem;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      min-width: 600px;
+    }
+
+    .data-table th {
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      font-weight: 700;
+      padding: 0.75rem 0.9rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .data-table td {
+      padding: 0.75rem 0.9rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .badge-tag {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .tag-blue { background: #EFF6FF; color: #1D4ED8; }
+    .tag-purple { background: #F3E8FF; color: #7C3AED; }
+    .tag-green { background: #ECFDF5; color: #047857; }
+    .tag-gold { background: #FEF3C7; color: #B45309; }
+    .tag-red { background: #FEE2E2; color: #991B1B; }
+
+    /* 下载专区卡片 */
+    .downloads-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 640px) {
+      .downloads-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .download-card {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .download-card:hover {
+      border-color: var(--brand-blue-light);
+      box-shadow: var(--shadow-sm);
+      background: var(--bg-card);
+    }
+
+    .file-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      background-color: #FEE2E2;
+      color: #991B1B;
+    }
+
+    .file-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+    }
+
+    .file-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">道法</div>
+        <div>
+          <div class="brand-title">道德与法治 (道法) 中考复习中心 V1</div>
+          <div class="brand-subtitle">全册 4 大 PDF 课本笔记、嵌入式预览与考点大盘点</div>
+        </div>
+      </a>
+      <a href="index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        返回学习中心
+      </a>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    <!-- 左侧 Sticky 侧边栏导航 -->
+    <aside class="sidebar">
+      <div class="sidebar-title">道法导航索引</div>
+      <ul class="sidebar-menu">
+        <li><a href="#sec-pdf-preview" class="sidebar-link" style="color: var(--brand-blue-light); font-weight: 700;">📖 1. PDF 课本笔记页面内预览</a></li>
+        <li><a href="#sec-topics" class="sidebar-link">📚 2. 道法全册 4 大考点板块</a></li>
+        <li><a href="#sec-constitution" class="sidebar-link">⚖️ 3. 宪法专区与依宪治国</a></li>
+        <li><a href="#sec-templates" class="sidebar-link">✍️ 4. 中考主观题通用答题模板</a></li>
+        <li><a href="#sec-downloads" class="sidebar-link" style="color: var(--accent-red); font-weight: 700;">📥 5. 4 大 PDF 官方资料下载</a></li>
+      </ul>
+    </aside>
+
+    <!-- 右侧主内容区 -->
+    <main class="main-content">
+      <!-- Hero -->
+      <section class="hero-card">
+        <span style="display: inline-block; padding: 0.2rem 0.6rem; background: #EFF6FF; color: #1D4ED8; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem;">浅色商务 · 初中道法总复习</span>
+        <h1 class="hero-title">初中道德与法治 (道法) 知识梳理与考点大盘点</h1>
+        <p style="font-size: 0.98rem; color: #475569;">完整整合六年级、七年级课本笔记、八上及八下宪法全册知识梳理与 PDF 预览。</p>
+      </section>
+
+      <!-- 1. PDF 课本笔记页面内实时直接预览 -->
+      <section class="content-card" id="sec-pdf-preview">
+        <h2 class="card-title">📖 1. 官方 PDF 课本笔记与知识梳理 - 页面内实时直接预览</h2>
+        
+        <div class="pdf-selector-bar">
+          <div style="font-weight: 700; color: var(--brand-blue); font-size: 0.92rem;">切换预览的 PDF 资料：</div>
+          <select id="pdfSelect" class="pdf-select-control" onchange="switchPdf(this.value)">
+            <option value="道法/2026.8道法七年级课本笔记.pdf">1. 《2026.8 道法七年级课本笔记.pdf》(12.4 MB)</option>
+            <option value="道法/2026.7   六年级道法知识梳理.pdf">2. 《2026.7 六年级道法知识梳理.pdf》(10.2 MB)</option>
+            <option value="道法/2026.7   八上道法知识梳理.pdf">3. 《2026.7 八上道法知识梳理.pdf》(8.4 MB)</option>
+            <option value="道法/2026.7    八下道法知识梳理.pdf" selected>4. 《2026.7 八下道法知识梳理.pdf》(104.2 MB)</option>
+          </select>
+        </div>
+
+        <div class="pdf-embed-wrapper">
+          <div class="pdf-embed-header">
+            <span id="currentPdfTitle">📖 当前预览：《2026.7 八下道法知识梳理.pdf》</span>
+            <a id="currentPdfOpenBtn" href="道法/2026.7    八下道法知识梳理.pdf" target="_blank" style="color: var(--brand-blue-light); font-size: 0.82rem; text-decoration: none; font-weight: 700;">全屏新窗口打开 ↗</a>
+          </div>
+          <iframe id="pdfFrame" src="道法/2026.7    八下道法知识梳理.pdf" class="pdf-frame"></iframe>
+        </div>
+      </section>
+
+      <!-- 2. 道法全册 4 大考点板块 -->
+      <section class="content-card" id="sec-topics">
+        <h2 class="card-title">📚 2. 初中道法中考 4 大核心知识板块大盘点</h2>
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>知识板块</th>
+                <th>涵盖年级与教材</th>
+                <th>核心考点与关键词</th>
+                <th>中考高频命题形式</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>板块一：个人与成长</strong></td>
+                <td><span class="badge-tag tag-blue">六年级 / 七年级</span></td>
+                <td>正确认识自我、情绪与情感管理、集体生活（集体的力量）、生命至上与生命安全。</td>
+                <td>选择题、结合校园/青春期生活案例分析题。</td>
+              </tr>
+              <tr>
+                <td><strong>板块二：社会与生活</strong></td>
+                <td><span class="badge-tag tag-purple">八年级上册</span></td>
+                <td>遵守社会规则（礼貌/诚信）、承担社会责任、维护国家安全与国家利益（总体国家安全观）。</td>
+                <td>情境分析题、行为辨析题。</td>
+              </tr>
+              <tr>
+                <td><strong>板块三：宪法与法律</strong></td>
+                <td><span class="badge-tag tag-red">八年级下册 (核心)</span></td>
+                <td>宪法是根本法、依宪治国、公民基本权利与义务、国家机构（人大/政府/法院/检察院/监委）。</td>
+                <td>中考大题必考点、宪法宣誓与法治建设题。</td>
+              </tr>
+              <tr>
+                <td><strong>板块四：国家与发展</strong></td>
+                <td><span class="badge-tag tag-green">九年级全一册</span></td>
+                <td>创新驱动发展、全过程人民民主、依法治国基本方略、中华文化与文化自信、人类命运共同体。</td>
+                <td>中考时政热点结合题、论述题。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 3. 宪法专区 -->
+      <section class="content-card" id="sec-constitution">
+        <h2 class="card-title" style="color: var(--accent-red);">⚖️ 3. 宪法专区与依宪治国 (八下核心)</h2>
+        <div style="background: #FEF2F2; border: 1px solid #FCA5A5; border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1rem;">
+          <h3 style="color: #991B1B; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem;">🔥 宪法的核心地位口诀</h3>
+          <p style="font-size: 0.9rem; color: #7F1D1D; line-height: 1.6;">
+            • <strong>根本法</strong>：宪法是国家的根本法，在国家法律体系中具有最高法律地位、最高法律权威和最高法律效力。<br>
+            • <strong>制定与修改</strong>：宪法的制定和修改程序比其他法律更为严格（须经全国人大常委会或五分之一以上全国人大代表提议，并由全国人大以全体代表的三分之二以上的多数通过）。<br>
+            • <strong>权力运行</strong>：规范国家权力运行以保障公民权利，是宪法的核心价值追求。
+          </p>
+        </div>
+      </section>
+
+      <!-- 4. 中考主观题通用答题模板 -->
+      <section class="content-card" id="sec-templates">
+        <h2 class="card-title">✍️ 4. 道法中考主观题 (材料大题) 万能答题模板</h2>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 1.25rem;">
+          <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+            <div style="font-weight: 700; color: var(--brand-blue); margin-bottom: 0.4rem;">📌 题型一：“为什么做 / 意义类”答题逻辑</div>
+            <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+              <strong>答题公式</strong>：必要性（理论依据） + 现实意义（对个人/社会/国家的积极作用）。<br>
+              • <strong>对个人</strong>：有利于提高素质、保障合法权益、树立正确价值观。<br>
+              • <strong>对社会</strong>：有利于促进社会公平正义、营造良好社会道德风尚、维护社会和谐稳定。<br>
+              • <strong>对国家</strong>：有利于推动法治建设/创新发展/实现中华民族伟大复兴。
+            </div>
+          </div>
+
+          <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+            <div style="font-weight: 700; color: var(--brand-blue); margin-bottom: 0.4rem;">📌 题型二：“怎么做 / 建议类”三维度切入法</div>
+            <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+              <strong>切入角度</strong>：<br>
+              • <strong>国家/政府</strong>：健全法律法规，加大执法与监管力度，弘扬主旋律。<br>
+              • <strong>社会/学校</strong>：加强宣传教育，营造良好的法治与道德氛围。<br>
+              • <strong>青少年/个人</strong>：增强法治意识/道德观念，落实具体行动（如依法维权、积极参与社会实践）。
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. 全册 4 大 PDF 官方资料下载专区 -->
+      <section class="content-card" id="sec-downloads">
+        <h2 class="card-title" style="color: var(--accent-red);">📥 5. 全册 4 大 PDF 官方课本笔记与知识梳理下载专区</h2>
+        <div class="downloads-grid">
+          <!-- 1. 七年级课本笔记 -->
+          <a href="道法/2026.8道法七年级课本笔记.pdf" class="download-card" download>
+            <div class="file-icon">PDF</div>
+            <div>
+              <div class="file-title">2026.8 道法七年级课本笔记.pdf</div>
+              <div class="file-desc">七年级全册课本精细笔记与划重点 (12.4 MB)</div>
+              <div style="font-size: 0.78rem; color: #2563EB; font-weight: 700; margin-top: 0.3rem;">📥 点击免费下载 →</div>
+            </div>
+          </a>
+
+          <!-- 2. 六年级道法知识梳理 -->
+          <a href="道法/2026.7   六年级道法知识梳理.pdf" class="download-card" download>
+            <div class="file-icon">PDF</div>
+            <div>
+              <div class="file-title">2026.7 六年级道法知识梳理.pdf</div>
+              <div class="file-desc">六年级道法基础知识要点提纲 (10.2 MB)</div>
+              <div style="font-size: 0.78rem; color: #2563EB; font-weight: 700; margin-top: 0.3rem;">📥 点击免费下载 →</div>
+            </div>
+          </a>
+
+          <!-- 3. 八上道法知识梳理 -->
+          <a href="道法/2026.7   八上道法知识梳理.pdf" class="download-card" download>
+            <div class="file-icon">PDF</div>
+            <div>
+              <div class="file-title">2026.7 八上道法知识梳理.pdf</div>
+              <div class="file-desc">八年级上册社会生活与规则复习 (8.4 MB)</div>
+              <div style="font-size: 0.78rem; color: #2563EB; font-weight: 700; margin-top: 0.3rem;">📥 点击免费下载 →</div>
+            </div>
+          </a>
+
+          <!-- 4. 八下道法知识梳理 -->
+          <a href="道法/2026.7    八下道法知识梳理.pdf" class="download-card" download>
+            <div class="file-icon">PDF</div>
+            <div>
+              <div class="file-title">2026.7 八下道法知识梳理.pdf</div>
+              <div class="file-desc">八年级下册宪法与依宪治国大专题 (104.2 MB)</div>
+              <div style="font-size: 0.78rem; color: #2563EB; font-weight: 700; margin-top: 0.3rem;">📥 点击免费下载 →</div>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>© 2026 Owen Learning Center · 初中道德与法治 (道法) 全册中考复习中心 V1</p>
+  </footer>
+
+  <script>
+    function switchPdf(pdfPath) {
+      const iframe = document.getElementById('pdfFrame');
+      const openBtn = document.getElementById('currentPdfOpenBtn');
+      const titleSpan = document.getElementById('currentPdfTitle');
+
+      iframe.src = pdfPath;
+      openBtn.href = pdfPath;
+      
+      const select = document.getElementById('pdfSelect');
+      const selectedText = select.options[select.selectedIndex].text;
+      titleSpan.innerText = '📖 当前预览：' + selectedText.split('(')[0];
+    }
+  </script>
+</body>
+</html>
