@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>身故演示与家庭资产传承中心 | Insurance & Death Scenario V3</title>
+  <!-- Google Fonts & Chart.js -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-hover: #CBD5E1;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --brand-blue: #1E3A8A;
+      --brand-blue-light: #2563EB;
+      --brand-blue-bg: #EFF6FF;
+      
+      --accent-gold: #D97706;
+      --accent-gold-bg: #FEF3C7;
+      
+      --accent-green: #059669;
+      --accent-green-bg: #ECFDF5;
+
+      --accent-red: #DC2626;
+      --accent-red-bg: #FEF2F2;
+      
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-light));
+      color: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--brand-blue);
+    }
+
+    .brand-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .back-btn:hover {
+      background-color: var(--brand-blue-bg);
+      color: var(--brand-blue-light);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem 1.5rem;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 100%);
+      border: 1px solid #DBEAFE;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background-color: var(--accent-gold-bg);
+      color: var(--accent-gold);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--brand-blue);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    /* 记忆口诀 Highlight Box */
+    .formula-banner {
+      background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+      color: white;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .formula-header {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #F59E0B;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .formula-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .formula-item {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .formula-item h4 {
+      font-size: 1.1rem;
+      color: #93C5FD;
+      margin-bottom: 0.4rem;
+    }
+
+    .formula-item p {
+      font-size: 0.9rem;
+      color: #E2E8F0;
+      line-height: 1.5;
+    }
+
+    /* 交互式身故情形判定器 (Scenario Simulator) */
+    .scenario-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .scenario-tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 0.75rem 1.25rem;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background-color: var(--brand-blue-light);
+      color: white;
+      border-color: var(--brand-blue-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .scenario-display {
+      background-color: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+    }
+
+    .flow-steps {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .flow-step {
+      background: white;
+      border: 1px solid var(--border-color);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      min-width: 140px;
+    }
+
+    .flow-step-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--brand-blue);
+      margin-bottom: 0.2rem;
+    }
+
+    .flow-step-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .flow-arrow {
+      font-size: 1.5rem;
+      color: var(--brand-blue-light);
+      font-weight: bold;
+    }
+
+    .notice-box {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .notice-warning { background-color: var(--accent-red-bg); color: var(--accent-red); border: 1px solid #FCA5A5; }
+    .notice-info { background-color: var(--brand-blue-bg); color: var(--brand-blue); border: 1px solid #93C5FD; }
+
+    /* 红线警示卡片 */
+    .redline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .redline-card {
+      background: var(--bg-card);
+      border: 1px solid #FCA5A5;
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .redline-card h3 {
+      font-size: 1.15rem;
+      color: var(--accent-red);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .redline-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* 一家三口家庭示例 */
+    .family-demo-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .family-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .family-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .role-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .bg-blue { background: #DBEAFE; color: #1E4ED8; }
+    .bg-green { background: #DCFCE7; color: #166534; }
+    .bg-gold { background: #FEF3C7; color: #B45309; }
+
+    .role-person {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+    }
+
+    .role-title {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* 图文引用的原图卡片 */
+    .original-images-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .img-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .img-card:hover {
+      border-color: var(--brand-blue-light);
+      box-shadow: var(--shadow-md);
+    }
+
+    .img-preview {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      margin-bottom: 0.75rem;
+    }
+
+    .img-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 0.2rem;
+    }
+
+    .img-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* 表格 */
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:nth-child(even) {
+      background-color: #F8FAFC;
+    }
+
+    .highlight-cell {
+      font-weight: 700;
+      color: var(--brand-blue-light);
+    }
+
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <div class="brand-logo">保</div>
+        <div>
+          <div class="brand-title">身故演示与家庭资产传承中心 V3</div>
+          <div class="brand-subtitle">可视化角色关系 · 决策流程图解 · 设置红线规避</div>
+        </div>
+      </a>
+      <a href="../index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        返回学习中心
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="badge">谁身故了，会发生什么？</span>
+        <h1 class="hero-title">可视化身故逻辑与保单承接全景图</h1>
+        <p class="hero-desc">厘清【持有人】、【受保人】与【受益人】的权能区别，掌握“管理权”与“保险金”两条线的划分，建立全家无缝继承财富机制。</p>
+      </div>
+    </section>
+
+    <!-- 核心记忆口诀 (Formula Banner) -->
+    <section class="formula-banner">
+      <div class="formula-header">
+        💡 核心法则：管理权和保险金，是两条不同的线！
+      </div>
+      <div class="formula-grid">
+        <div class="formula-item">
+          <h4>口诀一：持有人身故 ➔ 看第二持有人</h4>
+          <p>第二持有人接管保单，保单继续管理并保持滚存。<strong>注意：不等于保险金立即赔付！</strong></p>
+        </div>
+        <div class="formula-item">
+          <h4>口诀二：受保人身故 ➔ 看第二受保人与受益人</h4>
+          <p>第二受保人承接受保角色（承接受保角色 ≠ 接管保单）；若无第二受保人，则按合同约定触发受益人给付。</p>
+        </div>
+        <div class="formula-item">
+          <h4>口诀三：受益人仅领钱 ➔ 不取得管理权</h4>
+          <p>仅在【受保人】及【第二受保人】均身故时，受益人方可领取保险金，且受益人不拥有保单管理权。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 互动身故情形决策流 (Scenario Simulator) -->
+    <section class="scenario-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          情形演练：谁身故了，会发生什么？
+        </h2>
+        <p class="section-desc">点击下方不同身故情形，直观查看保单承接与赔付触发轨迹</p>
+      </div>
+
+      <div class="scenario-tabs">
+        <button class="tab-btn active" onclick="switchScenario(1)">情形一：持有人身故</button>
+        <button class="tab-btn" onclick="switchScenario(2)">情形二：受保人身故</button>
+        <button class="tab-btn" onclick="switchScenario(3)">情形三：第二受保人身故</button>
+      </div>
+
+      <div class="scenario-display" id="scenarioContent">
+        <!-- 默认展示情形一 -->
+      </div>
+    </section>
+
+    <!-- 设置红线 -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          投保设置红线（规则逻辑）
+        </h2>
+        <p class="section-desc">在填写保单角色时，必须严格遵守以下设置边界</p>
+      </div>
+
+      <div class="redline-grid">
+        <div class="redline-card">
+          <h3>🚫 红线一：受保人/第二受保人 ≠ 受益人</h3>
+          <p>【受保人】及【第二受保人】绝对不能跟【受益人】是同一个人！受保人身故是触发赔付的前提，故受保人自身无法作为领钱的受益人。</p>
+        </div>
+
+        <div class="redline-card">
+          <h3>🚫 红线二：持有人=受保人时的强制要求</h3>
+          <p>当【持有人与受保人为同一人】时，必须同时设置【第二持有人】和【第二受保人】，且第二持有人必须为<strong>成年人</strong>。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 一家三口家庭典型示例 -->
+    <section class="family-demo-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          家庭实战配置示例（持有人 ≠ 受保人）
+        </h2>
+        <p class="section-desc">一家三口经典角色搭配：爸爸为投保人兼受益人，小孩为受保人，妈妈接管后补角色</p>
+      </div>
+
+      <div class="family-cards">
+        <div class="family-card">
+          <span class="role-badge bg-blue">持有人 (投保人)</span>
+          <div class="role-person">👨 爸爸</div>
+          <div class="role-title">掌握保单管理权与提取权</div>
+        </div>
+
+        <div class="family-card">
+          <span class="role-badge bg-green">受保人 (被保险人)</span>
+          <div class="role-person">👶 小孩</div>
+          <div class="role-title">保险保障目标对象</div>
+        </div>
+
+        <div class="family-card">
+          <span class="role-badge bg-gold">第二持有人</span>
+          <div class="role-person">👩 妈妈</div>
+          <div class="role-title">持有人身故后接管管理权</div>
+        </div>
+
+        <div class="family-card">
+          <span class="role-badge bg-gold">第二受保人</span>
+          <div class="role-person">👩 妈妈</div>
+          <div class="role-title">受保人身故后承接受保角色</div>
+        </div>
+
+        <div class="family-card">
+          <span class="role-badge bg-blue">受益人</span>
+          <div class="role-person">👨 爸爸</div>
+          <div class="role-title">触发生效时领取保险金</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 原图引用的图解展板 -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          身故示意图解原图专区
+        </h2>
+        <p class="section-desc">点击可高清预览本地保存的 3 张身故架构指南原图</p>
+      </div>
+
+      <div class="original-images-grid">
+        <a href="docs/微信图片_20260831151442_1235_22.png" target="_blank" class="img-card">
+          <img src="docs/微信图片_20260831151442_1235_22.png" alt="图解1" class="img-preview">
+          <div class="img-title">图解 1：持有人/受保人/受益人设定建议</div>
+          <div class="img-desc">包含一家三口角色定位与投保注意事项文本</div>
+        </a>
+
+        <a href="docs/微信图片_20260901092507_1237_22.png" target="_blank" class="img-card">
+          <img src="docs/微信图片_20260901092507_1237_22.png" alt="图解2" class="img-preview">
+          <div class="img-title">图解 2：谁身故了，会发生什么？</div>
+          <div class="img-desc">三种不同身故情形的承接与保险金触发流程</div>
+        </a>
+
+        <a href="docs/微信图片_20260901092542_1238_22.png" target="_blank" class="img-card">
+          <img src="docs/微信图片_20260901092542_1238_22.png" alt="图解3" class="img-preview">
+          <div class="img-title">图解 3：盈活产品角色关系全景图</div>
+          <div class="img-desc">角色定义、身故承接、设置红线与家庭示例</div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2026 身故演示与家庭资产传承中心 · 保留所有权利</p>
+      <p style="margin-top: 0.5rem; color: #94A3B8;">注：本页面身故演练图解均基于友邦“盈活”系列产品的契约条款精心梳理，具体细则以保单合同为准。</p>
+    </div>
+  </footer>
+
+  <script>
+    // 3种情形的数据与结构
+    const scenarios = {
+      1: {
+        title: "情形一 | 持有人 (投保人) 身故",
+        steps: [
+          { title: "持有人身故", desc: "原投保人发生身故" },
+          { title: "第二持有人接管", desc: "第二持有人继承保单管理权" },
+          { title: "保单继续管理", desc: "资金在保单内继续复利滚存" }
+        ],
+        noticeClass: "notice-warning",
+        noticeText: "⚠️ 重点提示：持有人身故仅代表【管理权转让】，不等于保险金立即赔付！保单将由第二持有人接管并继续生效。"
+      },
+      2: {
+        title: "情形二 | 受保人 (被保险人) 身故",
+        steps: [
+          { title: "受保人身故", desc: "保障对象发生身故" },
+          { title: "分支一：第二受保人承接", desc: "第二受保人承接受保角色，保单延续" },
+          { title: "分支二：给付受益人", desc: "若无第二受保人，按合同给付受益人" }
+        ],
+        noticeClass: "notice-info",
+        noticeText: "ℹ️ 重点提示：承接受保角色 ≠ 接管保单！保单管理权仍归持有人所有。"
+      },
+      3: {
+        title: "情形三 | 第二受保人身故",
+        steps: [
+          { title: "第二受保人身故", desc: "后补受保人发生身故" },
+          { title: "触发受益人安排", desc: "合同保障期正式终止" },
+          { title: "受益人领取保险金", desc: "一次过或分期领取身故赔偿金" }
+        ],
+        noticeClass: "notice-warning",
+        noticeText: "⚠️ 重点提示：受益人仅享有【领取保险金】的权利，绝不取得保单的管理权与决策权！"
+      }
+    };
+
+    function switchScenario(num) {
+      const btns = document.querySelectorAll('.tab-btn');
+      btns.forEach((btn, idx) => {
+        if(idx + 1 === num) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+
+      const data = scenarios[num];
+      const container = document.getElementById('scenarioContent');
+
+      let stepsHtml = '';
+      data.steps.forEach((st, idx) => {
+        stepsHtml += `
+          <div class="flow-step">
+            <div class="flow-step-title">${st.title}</div>
+            <div class="flow-step-desc">${st.desc}</div>
+          </div>
+        `;
+        if(idx < data.steps.length - 1) {
+          stepsHtml += `<div class="flow-arrow">➔</div>`;
+        }
+      });
+
+      container.innerHTML = `
+        <h3 style="font-size: 1.15rem; color: var(--brand-blue); margin-bottom: 0.5rem;">${data.title}</h3>
+        <div class="flow-steps">
+          ${stepsHtml}
+        </div>
+        <div class="notice-box ${data.noticeClass}">
+          ${data.noticeText}
+        </div>
+      `;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      switchScenario(1);
+    });
+  </script>
+</body>
+</html>

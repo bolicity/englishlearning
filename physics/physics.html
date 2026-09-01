@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>物理学习计划总览 | Owen Learning Center</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <style>
+    body { background: var(--bg); display: block; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 40px 20px; }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--pink);
+      text-decoration: none;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+    .plan-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--pink-light);
+    }
+    .plan-header {
+      text-align: center;
+      margin-bottom: 36px;
+      border-bottom: 3px solid var(--pink-light);
+      padding-bottom: 28px;
+    }
+    .plan-header h1 {
+      font-family: 'ZCOOL KuaiLe', cursive;
+      font-size: 2.8rem;
+      color: #0284c7;
+      margin-bottom: 14px;
+    }
+    .plan-header p {
+      color: #64748b;
+      font-weight: 800;
+      line-height: 1.7;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 15px;
+      margin-bottom: 34px;
+    }
+    .summary-item {
+      background: var(--bg);
+      padding: 20px;
+      border-radius: 20px;
+      text-align: center;
+      border: 2px solid var(--pink-light);
+    }
+    .summary-item .val {
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: #0284c7;
+      display: block;
+    }
+    .summary-item .lab {
+      font-size: 0.84rem;
+      color: var(--text-light);
+      font-weight: 800;
+    }
+    h2 {
+      color: #0369a1;
+      margin: 36px 0 18px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    h2::before { content: '🚀'; }
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+    .study-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 22px;
+      text-decoration: none;
+      color: var(--text);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .study-card:hover {
+      border-color: #0ea5e9;
+      box-shadow: 0 12px 28px rgba(14, 165, 233, 0.14);
+      transform: translateY(-3px);
+    }
+    .study-card .tag {
+      align-self: flex-start;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-size: 0.74rem;
+      font-weight: 900;
+    }
+    .study-card h3 {
+      font-size: 1.2rem;
+      line-height: 1.35;
+      color: #0f172a;
+      font-weight: 900;
+    }
+    .study-card p {
+      color: #64748b;
+      font-weight: 700;
+      line-height: 1.65;
+      flex: 1;
+    }
+    .study-card .go {
+      color: var(--pink);
+      font-weight: 900;
+    }
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      margin-top: 16px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      min-width: 760px;
+    }
+    th, td {
+      padding: 13px 15px;
+      border: 1px solid #f0f0f0;
+      text-align: left;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      vertical-align: top;
+    }
+    th {
+      background: #0ea5e9;
+      color: white;
+      font-weight: 900;
+    }
+    tr:nth-child(even) { background: #f8fafc; }
+    .note {
+      margin-top: 34px;
+      background: #f1f5f9;
+      padding: 24px;
+      border-radius: 22px;
+      color: #475569;
+      font-weight: 700;
+      line-height: 1.75;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 28px 12px; }
+      .plan-card { padding: 24px 14px; }
+      .plan-header h1 { font-size: 2rem; }
+      .summary-grid { grid-template-columns: 1fr 1fr; }
+      th, td { padding: 9px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="physics-hub.html" class="back-btn">← 返回物理中心</a>
+
+    <div class="plan-card">
+      <div class="plan-header">
+        <h1>物理学习计划总览</h1>
+        <p>九年级暑假先学知识点，秋季再做习题专项；八下复习资料保留为阶段性回顾入口。</p>
+      </div>
+
+      <div class="summary-grid">
+        <div class="summary-item"><span class="val">5-6月</span><span class="lab">八下习题专项复习</span></div>
+        <div class="summary-item"><span class="val">7-8月</span><span class="lab">九年级知识点学习</span></div>
+        <div class="summary-item"><span class="val">9-11月</span><span class="lab">九年级习题复习</span></div>
+        <div class="summary-item"><span class="val">可打卡</span><span class="lab">8月支持完成日期记录</span></div>
+      </div>
+
+      <h2>一、当前学习入口</h2>
+      <div class="plan-grid">
+        <a href="physics-grade8-review.html" class="study-card">
+          <span class="tag">5月-6月 · 八下复习</span>
+          <h3>八下物理习题专项复习计划</h3>
+          <p>按编号顺序复习压强、浮力、简单机械等八下重点内容，保留原 5-6 月详细学习日程表。</p>
+          <div class="go">进入计划 →</div>
+        </a>
+        <a href="physics-grade9-summer.html" class="study-card">
+          <span class="tag">7月-8月 · 知识点</span>
+          <h3>九年级物理暑假知识点学习计划</h3>
+          <p>226 节知识点视频，按编号顺序学习九年级全册框架。8月表格支持勾选完成，并自动记录完成日期。</p>
+          <div class="go">进入计划 →</div>
+        </a>
+        <a href="physics-grade9.html" class="study-card">
+          <span class="tag">9月-11月 · 习题</span>
+          <h3>九年级物理秋季习题视频复习计划</h3>
+          <p>94 节习题视频，围绕欧姆定律、电功率、生活用电、电与磁进行专项训练。</p>
+          <div class="go">进入计划 →</div>
+        </a>
+        <a href="physics-hub.html" class="study-card">
+          <span class="tag">资料中心</span>
+          <h3>物理复习中心</h3>
+          <p>查看八下物理模拟卷、答案解析、阶段性复习资料，以及所有物理计划入口。</p>
+          <div class="go">返回物理中心 →</div>
+        </a>
+      </div>
+
+      <h2>二、时间安排</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr><th>时间</th><th>学习目标</th><th>页面</th><th>执行重点</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>5月-6月</td>
+              <td>八下压强、浮力、简单机械等专项复习</td>
+              <td><a href="physics-grade8-review.html">八下习题专项复习计划</a></td>
+              <td>按视频编号连续复习，补齐八下力学薄弱点。</td>
+            </tr>
+            <tr>
+              <td>7月</td>
+              <td>九年级热学、电路基础、电压电阻</td>
+              <td><a href="physics-grade9-summer.html">暑假知识点学习计划</a></td>
+              <td>先搭框架，每天整理概念、公式、实验条件。</td>
+            </tr>
+            <tr>
+              <td>8月</td>
+              <td>欧姆定律、电功率、电磁综合</td>
+              <td><a href="physics-grade9-summer.html">暑假知识点学习计划</a></td>
+              <td>使用完成勾选记录进度；每节课后画电路图。</td>
+            </tr>
+            <tr>
+              <td>9月-11月</td>
+              <td>九年级习题专项复习</td>
+              <td><a href="physics-grade9.html">秋季习题视频复习计划</a></td>
+              <td>先做题，再看视频订正，周末整理错题。</td>
+            </tr>
+            <tr>
+              <td>阶段回顾</td>
+              <td>八下力学、压强、浮力、机械</td>
+              <td><a href="physics-hub.html">物理复习中心</a></td>
+              <td>用模拟卷和答案解析补薄弱点。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        使用建议：`physics.html` 作为物理计划总入口；具体执行时进入对应月份页面。8月学习进度保存在当前浏览器本地，如果更换设备或清理浏览器数据，勾选记录不会自动同步。
+      </div>
+    </div>
+  </div>
+</body>
+</html>

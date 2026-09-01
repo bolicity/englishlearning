@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>家庭资产配置与保险方案中心 | Insurance & Wealth Hub V1</title>
+  <!-- Google Fonts & Chart.js -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-hover: #CBD5E1;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --brand-blue: #1E3A8A;
+      --brand-blue-light: #2563EB;
+      --brand-blue-bg: #EFF6FF;
+      
+      --accent-gold: #D97706;
+      --accent-gold-bg: #FEF3C7;
+      
+      --accent-green: #059669;
+      --accent-green-bg: #ECFDF5;
+      
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 顶栏 Header */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-light));
+      color: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--brand-blue);
+    }
+
+    .brand-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .back-btn:hover {
+      background-color: var(--brand-blue-bg);
+      color: var(--brand-blue-light);
+    }
+
+    /* 主内容区 */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem 1.5rem;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 100%);
+      border: 1px solid #DBEAFE;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .hero-content {
+      max-width: 680px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background-color: var(--accent-gold-bg);
+      color: var(--accent-gold);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--brand-blue);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--brand-blue-light);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* 模块标题 */
+    .section-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* 产品方案网格 */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand-blue-light);
+    }
+
+    .product-tag {
+      align-self: flex-start;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .tag-savings { background-color: #EFF6FF; color: #1D4ED8; }
+    .tag-critical { background-color: #FEF2F2; color: #DC2626; }
+
+    .product-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0.75rem 0 0.25rem 0;
+      color: var(--text-primary);
+    }
+
+    .product-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.6rem;
+    }
+
+    .feature-icon {
+      color: var(--accent-green);
+      font-weight: bold;
+    }
+
+    .product-footer {
+      border-top: 1px solid var(--border-color);
+      padding-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .price-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brand-blue);
+    }
+
+    /* 试算计算器 */
+    .calculator-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 3rem;
+    }
+
+    .calc-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+      background: var(--bg-subtle);
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .form-control {
+      padding: 0.6rem 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-card);
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--brand-blue-light);
+    }
+
+    .calc-display {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .calc-display {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .chart-container {
+      position: relative;
+      width: 100%;
+      height: 320px;
+    }
+
+    /* 表格设计 */
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:nth-child(even) {
+      background-color: #F8FAFC;
+    }
+
+    .highlight-cell {
+      font-weight: 700;
+      color: var(--brand-blue-light);
+    }
+
+    .multiplier-badge {
+      display: inline-block;
+      padding: 0.15rem 0.4rem;
+      background-color: var(--brand-blue-bg);
+      color: var(--brand-blue-light);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* 优惠折扣卡片 */
+    .discount-banner {
+      background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%);
+      border: 1px solid #FDE68A;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .discount-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-gold);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .discount-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #92400E;
+    }
+
+    .discount-text {
+      font-size: 0.9rem;
+      color: #B45309;
+    }
+
+    /* 下载专区 */
+    .downloads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .download-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .download-card:hover {
+      border-color: var(--brand-blue-light);
+      box-shadow: var(--shadow-md);
+    }
+
+    .file-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .file-excel { background-color: #DCFCE7; color: #166534; }
+    .file-pdf { background-color: #FEE2E2; color: #991B1B; }
+
+    .file-info {
+      flex: 1;
+    }
+
+    .file-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+
+    .file-size {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* 页脚 */
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 页头 -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">保</div>
+        <div>
+          <div class="brand-title">保险与财富规划中心</div>
+          <div class="brand-subtitle">家庭资产配置 · 储蓄险与重疾保障方案</div>
+        </div>
+      </a>
+      <a href="index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        返回学习中心
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Banner -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="badge">财富增值与风险屏障</span>
+        <h1 class="hero-title">建立稳健的家庭资产复利城堡</h1>
+        <p class="hero-desc">精选全球顶尖储蓄险与重疾保障方案，通过长期复利实现资产多倍跃升，配合高额健康保障，为家庭未来保驾护航。</p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num">87.4×</span>
+            <span class="stat-label">85岁最高回报倍数</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">50%</span>
+            <span class="stat-label">重疾前10年赠送保额</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">USD</span>
+            <span class="stat-label">美元计价对抗通胀</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 产品方案介绍 -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          核心保险计划对比
+        </h2>
+        <p class="section-desc">包含长期高回报储蓄险与全方位重疾保障计划</p>
+      </div>
+
+      <div class="products-grid">
+        <!-- 环宇盈活 -->
+        <div class="product-card">
+          <div>
+            <span class="product-tag tag-savings">储蓄复利</span>
+            <h3 class="product-name">环宇盈活储蓄计划</h3>
+            <p class="product-subtitle">长期复利滚动，适合跨世代财富传承与养老储备</p>
+            <ul class="feature-list">
+              <li class="feature-item"><span class="feature-icon">✓</span> 灵活缴费期：支持1年趸缴 / 5年期缴</li>
+              <li class="feature-item"><span class="feature-icon">✓</span> 65岁回报预估：约 21.97 倍总保费</li>
+              <li class="feature-item"><span class="feature-icon">✓</span> 85岁回报预估：高达 77.41 倍总保费</li>
+              <li class="feature-item"><span class="feature-icon">✓</span> 享保费优惠与现金券首年抵扣</li>
+            </ul>
+          </div>
+          <div class="product-footer">
+            <div>
+              <div class="price-label">起投门槛</div>
+              <div class="price-value">$20,000 美金/年</div>
+            </div>
+            <button class="back-btn" onclick="selectProduct('huanyu_5_20k')">查看算盘 →</button>
+          </div>
+        </div>
+
+        <!-- 财富盈活 -->
+        <div class="product-card">
+          <div>
+            <span class="product-tag tag-savings">中短期高增值</span>
+            <h3 class="product-name">财富盈活储蓄计划</h3>
+            <p class="product-subtitle">中短期现金价值增长更快，资金回本周期更优</p>
+            <ul class="feature-list">
+              <li class="feature-item"><span class="feature-icon">✓</span> 限时优惠：最低门槛调整至 $50,000 × 5年</li>
+              <li class="feature-item"><span class="feature-icon">✓</span> 34岁现金价值：预期 $69.35万 美金</li>
+              <li class="feature-item"><span class="feature-icon">✓</span> 65岁现金价值：预期 $549.27万 美金</li>
+              <li class="feature-item"><span class="feature-icon">✓</span> 资金提取灵活，适合教育金与中期投资</li>
+            </ul>
+          </div>
+          <div class="product-footer">
+            <div>
+              <div class="price-label">限时起投门槛</div>
+              <div class="price-value">$50,000 美金/年</div>
+            </div>
+            <button class="back-btn" onclick="selectProduct('caifu_5_50k')">查看算盘 →</button>
+          </div>
+        </div>
+
+        <!-- 爱伴航2 -->
+        <div class="product-card">
+          <div>
+            <span class="product-tag tag-critical">健康保障</span>
+            <h3 class="product-name">「爱伴航」保险计划 2</h3>
+            <p class="product-subtitle">终身重疾保障 + 首10年赠送保额 + 退保价值返还</p>
+            <ul class="feature-list">
+              <li class="feature-item"><span class="feature-icon">✓</span> 基础保额：$10万 / $20万美金</li>
+              <li class="feature-item"><span class="feature-icon">✓</span> 首十年加赠 50% 额外保额 ($5万/$10万)</li>
+              <li class="feature-item"><span class="feature-icon">✓</span> 缴费年限：10年 / 18年 / 25年可选</li>
+              <li class="feature-item"><span class="feature-icon">✓</span> 若未理赔退保可享受丰厚增值退保金</li>
+            </ul>
+          </div>
+          <div class="product-footer">
+            <div>
+              <div class="price-label">年缴保费参考</div>
+              <div class="price-value">$1,835 美金起</div>
+            </div>
+            <button class="back-btn" onclick="scrollToCalc()">查看保障 →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 试算与动态图表 -->
+    <section class="calculator-section" id="calc-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          收益试算与复利模拟器
+        </h2>
+        <p class="section-desc">基于真实验算数据（受保人：14岁男），实时模拟不同年龄节点的现金价值与投资倍数</p>
+      </div>
+
+      <div class="calc-controls">
+        <div class="form-group">
+          <label for="productSelect">选择产品方案</label>
+          <select id="productSelect" class="form-control" onchange="updateCalc()">
+            <option value="huanyu_5_20k">环宇盈活 (年缴$2万 / 5年期)</option>
+            <option value="huanyu_1_100k">环宇盈活 (趸缴$10万 / 1年期)</option>
+            <option value="huanyu_5_40k">环宇盈活 (年缴$4万 / 5年期)</option>
+            <option value="huanyu_1_200k">环宇盈活 (趸缴$20万 / 1年期)</option>
+            <option value="huanyu_5_60k">环宇盈活 (年缴$6万 / 5年期)</option>
+            <option value="caifu_5_50k" selected>财富盈活 (年缴$5万 / 5年期)</option>
+            <option value="caifu_1_500k">财富盈活 (趸缴$50万 / 1年期)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>总投入保费</label>
+          <input type="text" id="totalPremiumDisplay" class="form-control" readonly value="$250,000 美金">
+        </div>
+
+        <div class="form-group">
+          <label>65岁预期退保价值</label>
+          <input type="text" id="value65Display" class="form-control" readonly value="$5,492,782 美金" style="color: var(--brand-blue-light); font-weight: 700;">
+        </div>
+      </div>
+
+      <div class="calc-display">
+        <!-- 图表 -->
+        <div class="chart-container">
+          <canvas id="yieldChart"></canvas>
+        </div>
+
+        <!-- 明细表格 -->
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>年龄节点</th>
+                <th>退保总价值(美金)</th>
+                <th>回报倍数</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <!-- JS 填充 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 优惠折扣卡片 -->
+    <div class="discount-banner">
+      <div class="discount-icon">🎁</div>
+      <div>
+        <div class="discount-title">组合投保专属优惠：保费回赠额外 +3%</div>
+        <div class="discount-text">
+          投保储蓄险计划享首年现金券抵扣与次年保费回赠！若同时配合购买「爱伴航」重疾险，次年保费回赠可额外增加 <strong>3%</strong>。
+        </div>
+      </div>
+    </div>
+
+    <!-- 资料下载 -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          方案精算表与资料下载
+        </h2>
+        <p class="section-desc">包含完整的储蓄险及重疾险测算 Excel 与官方 PDF 产品说明书</p>
+      </div>
+
+      <div class="downloads-grid">
+        <a href="保险/储蓄方案.xlsx" class="download-card" download>
+          <div class="file-icon file-excel">XLS</div>
+          <div class="file-info">
+            <div class="file-title">储蓄与重疾综合精算表.xlsx</div>
+            <div class="file-size">包含环宇盈活/财富盈活/爱伴航2完整数据</div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+
+        <a href="保险/储蓄险（盈活&财富盈活）.pdf" class="download-card" target="_blank">
+          <div class="file-icon file-pdf">PDF</div>
+          <div class="file-info">
+            <div class="file-title">储蓄险官方产品手册.pdf</div>
+            <div class="file-size">盈活 & 财富盈活计划说明及红利机制</div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2026 个人与家庭资产配置中心 · 保留所有权利</p>
+      <p style="margin-top: 0.5rem; color: #94A3B8;">注：本页面所有算盘与测算数据来源于历史案例演示，实际收益受保单红利公布与市场波动影响。</p>
+    </div>
+  </footer>
+
+  <script>
+    // 数据源（基于储蓄方案.xlsx）
+    const planData = {
+      'huanyu_5_20k': {
+        name: '环宇盈活 (2万×5年)',
+        total: 100000,
+        ages: ['24岁', '34岁', '44岁', '65岁', '75岁', '85岁'],
+        values: [130744, 269059, 585477, 2197109, 4124275, 7741832],
+        multipliers: [1.31, 2.69, 5.85, 21.97, 41.24, 77.42]
+      },
+      'huanyu_1_100k': {
+        name: '环宇盈活 (10万×1年)',
+        total: 100000,
+        ages: ['24岁', '34岁', '44岁', '65岁', '75岁', '85岁'],
+        values: [163647, 323791, 661424, 2482165, 4659365, 8746126],
+        multipliers: [1.64, 3.24, 6.61, 24.82, 46.59, 87.46]
+      },
+      'huanyu_5_40k': {
+        name: '环宇盈活 (4万×5年)',
+        total: 200000,
+        ages: ['24岁', '34岁', '44岁', '65岁', '75岁', '85岁'],
+        values: [262289, 539767, 1170956, 4394227, 8248568, 15483696],
+        multipliers: [1.31, 2.70, 5.85, 21.97, 41.24, 77.42]
+      },
+      'huanyu_1_200k': {
+        name: '环宇盈活 (20万×1年)',
+        total: 200000,
+        ages: ['24岁', '34岁', '44岁', '65岁', '75岁', '85岁'],
+        values: [328294, 649560, 1322873, 4964322, 9318716, 17492511],
+        multipliers: [1.64, 3.25, 6.61, 24.82, 46.59, 87.46]
+      },
+      'huanyu_5_60k': {
+        name: '环宇盈活 (6万×5年)',
+        total: 300000,
+        ages: ['24岁', '34岁', '44岁', '65岁', '75岁', '85岁'],
+        values: [394643, 812139, 1756433, 6591337, 12372846, 23225533],
+        multipliers: [1.32, 2.71, 5.85, 21.97, 41.24, 77.42]
+      },
+      'caifu_5_50k': {
+        name: '财富盈活 (5万×5年)',
+        total: 250000,
+        ages: ['24岁', '34岁', '44岁', '65岁', '75岁', '85岁'],
+        values: [329831, 693549, 1463695, 5492782, 10310708, 19354617],
+        multipliers: [1.32, 2.77, 5.85, 21.97, 41.24, 77.42]
+      },
+      'caifu_1_500k': {
+        name: '财富盈活 (50万×1年)',
+        total: 500000,
+        ages: ['24岁', '34岁', '44岁', '65岁', '75岁', '85岁'],
+        values: [826398, 1634039, 3307189, 12410828, 23296831, 43731355],
+        multipliers: [1.65, 3.27, 6.61, 24.82, 46.59, 87.46]
+      }
+    };
+
+    let chartInstance = null;
+
+    function initChart() {
+      const ctx = document.getElementById('yieldChart').getContext('2d');
+      chartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [],
+          datasets: [{
+            label: '退保总价值 ($)',
+            data: [],
+            backgroundColor: 'rgba(37, 99, 235, 0.7)',
+            borderColor: '#1E3A8A',
+            borderWidth: 1,
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return '现金价值: $' + context.raw.toLocaleString() + ' 美金';
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function(value) {
+                  return '$' + (value / 10000) + '万';
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function updateCalc() {
+      const key = document.getElementById('productSelect').value;
+      const data = planData[key];
+      if(!data) return;
+
+      document.getElementById('totalPremiumDisplay').value = '$' + data.total.toLocaleString() + ' 美金';
+      document.getElementById('value65Display').value = '$' + data.values[3].toLocaleString() + ' 美金';
+
+      // 表格
+      const tbody = document.getElementById('tableBody');
+      tbody.innerHTML = '';
+      data.ages.forEach((age, idx) => {
+        const val = data.values[idx];
+        const mult = data.multipliers[idx];
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${age}</td>
+          <td class="highlight-cell">$${val.toLocaleString()}</td>
+          <td><span class="multiplier-badge">${mult} ×</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // 图表
+      if(chartInstance) {
+        chartInstance.data.labels = data.ages;
+        chartInstance.data.datasets[0].data = data.values;
+        chartInstance.update();
+      }
+    }
+
+    function selectProduct(key) {
+      document.getElementById('productSelect').value = key;
+      updateCalc();
+      scrollToCalc();
+    }
+
+    function scrollToCalc() {
+      document.getElementById('calc-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initChart();
+      updateCalc();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>沉浸式阅读器 | Owen Learning Viewer</title>
+  <link rel="stylesheet" href="index.css">
+  <!-- 重新引入 PDF.js 脚本：这是唯一能让手机不下载直接看的方法 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+  <style>
+    body { background: #f4f4f9; display: flex; flex-direction: column; min-height: 100vh; margin: 0; }
+    .viewer-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: white;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+    }
+    .back-link { color: var(--pink); text-decoration: none; font-weight: 800; }
+    .file-info { font-weight: 700; color: #333; font-size: 0.85rem; max-width: 60%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .viewer-content { flex-grow: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 10px; box-sizing: border-box; }
+    
+    /* 每一页的容器 */
+    .pdf-page-wrapper {
+      margin-bottom: 12px;
+      background: white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    canvas { width: 100% !important; height: auto !important; display: block; }
+
+    /* 加载中动画 */
+    .loading-overlay {
+      position: fixed;
+      top: 56px; left: 0; right: 0; bottom: 0;
+      background: #f4f4f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+    .spinner {
+      width: 40px; height: 40px;
+      border: 4px solid var(--pink-light);
+      border-top: 4px solid var(--pink);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* 给手机端留个后路按钮 */
+    .mobile-fallback {
+      display: none;
+      padding: 15px;
+      text-align: center;
+      background: #fff;
+      border: 1px solid #eee;
+      margin: 10px;
+      border-radius: 10px;
+    }
+    .btn-small { background: var(--pink); color: white; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <nav class="viewer-nav">
+    <a href="javascript:history.back()" class="back-link">← 返回</a>
+    <div class="file-info" id="display-filename">正在加载...</div>
+    <a href="#" id="raw-link" class="btn-small" target="_blank">原件</a>
+  </nav>
+
+  <div class="loading-overlay" id="loader">
+    <div class="spinner"></div>
+    <p style="margin-top:15px; font-weight:700; color:#888;">高清预览生成中...</p>
+    <p id="error-msg" style="color:red; display:none; margin-top:10px;">加载失败，请尝试刷新</p>
+  </div>
+
+  <main class="viewer-content" id="render-area"></main>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const filePath = urlParams.get('file');
+    const loader = document.getElementById('loader');
+    const renderArea = document.getElementById('render-area');
+    const displayFilename = document.getElementById('display-filename');
+    const rawLink = document.getElementById('raw-link');
+
+    if (filePath) {
+      const decodedPath = decodeURIComponent(filePath);
+      displayFilename.innerText = decodedPath.split('/').pop();
+      rawLink.href = decodedPath;
+
+      // 启动 Canvas 渲染逻辑
+      renderPDF(decodedPath);
+    }
+
+    async function renderPDF(url) {
+      const pdfjsLib = window['pdfjs-dist/build/pdf'];
+      // 使用稳定版 Worker
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+
+      try {
+        // 设置超时处理
+        const loadingTask = pdfjsLib.getDocument(url);
+        const pdf = await loadingTask.promise;
+        
+        loader.style.display = 'none';
+        
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const viewport = page.getViewport({ scale: 2.0 }); // 2.0 倍高清
+
+          const wrapper = document.createElement('div');
+          wrapper.className = 'pdf-page-wrapper';
+          
+          const canvas = document.createElement('canvas');
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          
+          wrapper.appendChild(canvas);
+          renderArea.appendChild(wrapper);
+          
+          await page.render({
+            canvasContext: canvas.getContext('2d'),
+            viewport: viewport
+          }).promise;
+        }
+      } catch (e) {
+        console.error('渲染错误:', e);
+        loader.style.display = 'none';
+        // 如果 Canvas 渲染失败，最后再尝试用 iframe，哪怕可能会下载也总比白屏强
+        renderArea.innerHTML = `<iframe src="${url}" style="width:100%; height:85vh; border:none; background:white;"></iframe>`;
+      }
+    }
+  </script>
+</body>
+</html>
