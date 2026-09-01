@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>2026 升学与国际教育指南 V8 | 中本贯通 · 国际高中 · 海外留学</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --brand-blue: #1E3A8A;
+      --brand-blue-light: #2563EB;
+      --brand-blue-bg: #EFF6FF;
+      
+      --accent-gold: #D97706;
+      --accent-gold-bg: #FEF3C7;
+      
+      --accent-green: #059669;
+      --accent-green-bg: #ECFDF5;
+
+      --accent-purple: #7C3AED;
+      --accent-purple-bg: #F3E8FF;
+
+      --accent-red: #DC2626;
+      --accent-red-bg: #FEF2F2;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header Sticky */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-light));
+      color: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--brand-blue);
+    }
+
+    .brand-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      min-height: 44px;
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    /* Layout Desktop vs Mobile */
+    .layout-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem 1.25rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    @media (min-width: 980px) {
+      .layout-container {
+        grid-template-columns: 290px 1fr;
+        gap: 2rem;
+        padding-top: 2rem;
+      }
+    }
+
+    /* Sidebar Navigation (3 Major Categories) */
+    .sidebar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 4.2rem;
+      z-index: 40;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    @media (min-width: 980px) {
+      .sidebar {
+        top: 5rem;
+        padding: 1.25rem;
+        max-height: calc(100vh - 6rem);
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+    }
+
+    .sidebar-category-header {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--brand-blue);
+      text-transform: uppercase;
+      margin: 0.75rem 0 0.4rem 0;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .sidebar-category-header:first-child {
+      margin-top: 0;
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 980px) {
+      .sidebar-menu {
+        flex-direction: column;
+        gap: 0.2rem;
+        white-space: normal;
+      }
+    }
+
+    .sidebar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 0.8rem;
+      min-height: 40px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    @media (min-width: 980px) {
+      .sidebar-link {
+        display: flex;
+        background: transparent;
+        border: none;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.86rem;
+      }
+    }
+
+    .sidebar-link:hover, .sidebar-link:active {
+      background-color: var(--brand-blue-bg);
+      color: var(--brand-blue-light);
+      border-color: var(--brand-blue-light);
+    }
+
+    /* Main Content */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 100%);
+      border: 1px solid #DBEAFE;
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (min-width: 768px) {
+      .hero-card { padding: 2rem; }
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--brand-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title { font-size: 2.2rem; }
+    }
+
+    .content-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      scroll-margin-top: 5rem;
+    }
+
+    @media (min-width: 768px) {
+      .content-card { padding: 2rem; }
+    }
+
+    .category-banner {
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .banner-purple { background: #F3E8FF; border: 1px solid #E9D5FF; color: #7C3AED; }
+    .banner-blue { background: #EFF6FF; border: 1px solid #DBEAFE; color: #1D4ED8; }
+    .banner-green { background: #ECFDF5; border: 1px solid #A7F3D0; color: #047857; }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    @media (min-width: 768px) {
+      .card-title { font-size: 1.4rem; }
+    }
+
+    .sub-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brand-blue);
+      margin: 1.25rem 0 0.6rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .volunteers-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .volunteers-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .volunteer-subcard {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+    }
+
+    /* 响应式表格 */
+    .data-table-container {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-top: 0.75rem;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      min-width: 580px;
+    }
+
+    .data-table th {
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      font-weight: 600;
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .data-table td {
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .badge-tag {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .tag-blue { background: #EFF6FF; color: #1D4ED8; }
+    .tag-purple { background: #F3E8FF; color: #7C3AED; }
+    .tag-green { background: #ECFDF5; color: #047857; }
+    .tag-gold { background: #FEF3C7; color: #B45309; }
+
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">指南</div>
+        <div>
+          <div class="brand-title">2026 升学与国际教育指南 V8</div>
+          <div class="brand-subtitle">中本贯通 · 上海 21 所国际高中 · 海外留学全景</div>
+        </div>
+      </a>
+      <a href="index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        返回学习中心
+      </a>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    <!-- 左侧侧边栏导航 (包含 3 大一级分类) -->
+    <aside class="sidebar">
+      <div class="sidebar-category-header">🎓 一级分类一：中本贯通</div>
+      <ul class="sidebar-menu">
+        <li><a href="#cat1-system" class="sidebar-link">• 核心制度与毕业证书</a></li>
+        <li><a href="#cat1-rules" class="sidebar-link">• 中考填报与分数线线</a></li>
+        <li><a href="#cat1-exam" class="sidebar-link">• 转段考试与通过率</a></li>
+        <li><a href="#cat1-matrix" class="sidebar-link">• 本科合作院校全矩阵</a></li>
+      </ul>
+
+      <div class="sidebar-category-header" style="color: #1D4ED8;">🌏 一级分类二：上海国际高中</div>
+      <ul class="sidebar-menu">
+        <li><a href="#cat2-list21" class="sidebar-link" style="color: #1D4ED8; font-weight: 700;">• 上海“21所”官方批复名单</a></li>
+        <li><a href="#cat2-courses" class="sidebar-link">• 三大课程体系 (IB/A-Level/AP)</a></li>
+        <li><a href="#cat2-exam" class="sidebar-link">• 入学考试与择校建议</a></li>
+      </ul>
+
+      <div class="sidebar-category-header" style="color: #047857;">✈️ 一级分类三：海外留学指南</div>
+      <ul class="sidebar-menu">
+        <li><a href="#cat3-country" class="sidebar-link" style="color: #047857; font-weight: 700;">• 美/英/加/澳/新/日全景对比</a></li>
+        <li><a href="#cat3-timeline" class="sidebar-link">• 留学申请关键时间轴</a></li>
+        <li><a href="#cat3-lang" class="sidebar-link">• 语言考试 (托福 vs 雅思)</a></li>
+        <li><a href="#cat3-budget" class="sidebar-link">• 学费预算与护航规划</a></li>
+      </ul>
+    </aside>
+
+    <!-- 右侧主内容区 -->
+    <main class="main-content">
+      <!-- Hero -->
+      <section class="hero-card">
+        <span style="display: inline-block; padding: 0.2rem 0.6rem; background: #EFF6FF; color: #1D4ED8; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem;">三大一级升学大类全覆盖</span>
+        <h1 class="hero-title">2026 全轨升学与国际教育指南</h1>
+        <p style="font-size: 0.95rem; color: #475569;">打通【中本贯通】、【上海21所国际高中】与【海外留学】三大核心赛道。</p>
+      </section>
+
+      <!-- 大类一：中本贯通 -->
+      <section class="content-card" id="cat1-system">
+        <div class="category-banner banner-purple">
+          <div style="font-size: 1.25rem;">🎓</div>
+          <div>
+            <strong style="font-size: 1.05rem;">一级分类一：上海中本贯通 (3年中职 + 4年本科) 全维度专区</strong>
+            <div style="font-size: 0.85rem; opacity: 0.9;">免高考直升全日制普通本科，学信网可查，毕业证与高考完全一致！</div>
+          </div>
+        </div>
+
+        <h3 class="sub-card-title" id="cat1-rules">📝 1. 中考填报与硬性控制线门槛</h3>
+        <p style="font-size: 0.9rem; color: #475569;">填报属于中等职业学校自主招生批次，设置 2 个平行志愿。考生中考总分必须达到公办普通高中控制线。</p>
+
+        <h3 class="sub-card-title" id="cat1-exam">✍️ 2. 转段考试 (文化课300分 + 高校技能测试)</h3>
+        <p style="font-size: 0.9rem; color: #475569;">初三中职下学期参加转段考，通过率通常高达 90%-95% 以上。</p>
+
+        <h3 class="sub-card-title" id="cat1-matrix">🏛️ 3. 本科合作院校全景矩阵</h3>
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>本科高校</th>
+                <th>贯通热门专业点</th>
+                <th>分数线参考</th>
+                <th>培养特点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>上海第二工业大学</strong></td>
+                <td>计算机科学与技术、智能制造工程</td>
+                <td><span class="badge-tag tag-purple">655 - 680分</span></td>
+                <td>热门工科，逼近重点高中线</td>
+              </tr>
+              <tr>
+                <td><strong>上海应用技术大学</strong></td>
+                <td>应用化学、机械设计制造及其自动化</td>
+                <td><span class="badge-tag tag-purple">650 - 675分</span></td>
+                <td>化工强校，转段合格率高</td>
+              </tr>
+              <tr>
+                <td><strong>上海工程技术大学</strong></td>
+                <td>飞行器制造工程、交通运输</td>
+                <td><span class="badge-tag tag-purple">645 - 670分</span></td>
+                <td>航空与轨交紧缺人才</td>
+              </tr>
+              <tr>
+                <td><strong>上海健康医学院</strong></td>
+                <td>护理学、医学检验技术</td>
+                <td><span class="badge-tag tag-purple">640 - 670分</span></td>
+                <td>三甲医院定向培养</td>
+              </tr>
+              <tr>
+                <td><strong>上海电机学院</strong></td>
+                <td>电气工程及其自动化</td>
+                <td><span class="badge-tag tag-purple">640 - 665分</span></td>
+                <td>临港高端装备产业优势</td>
+              </tr>
+              <tr>
+                <td><strong>上海海事大学 (2026新增)</strong></td>
+                <td>海事管理、航海技术专业点</td>
+                <td><span>2026新试点</span></td>
+                <td>2026年最新加入贯通试点校</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 大类二：上海国际高中全解析 (USER REQUESTED CATEGORY) -->
+      <section class="content-card" id="cat2-list21">
+        <div class="category-banner banner-blue">
+          <div style="font-size: 1.25rem;">🌏</div>
+          <div>
+            <strong style="font-size: 1.05rem;">一级分类二：上海 21 所官方批复国际高中与课程体系</strong>
+            <div style="font-size: 0.85rem; opacity: 0.9;">具备“双学籍”优势（国内学籍+国际学籍），既可申请海外名额也可参加高考！</div>
+          </div>
+        </div>
+
+        <h3 class="sub-card-title">🏛️ 1. 上海市教委批准的“21所”国际高中权威名单</h3>
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>办学性质</th>
+                <th>代表性国际高中学校清单</th>
+                <th>学籍与招生特点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge-tag tag-blue">公办国际部 (10所)</span></td>
+                <td><strong>复旦附中、交大附中、华二附中、格致高中、卢湾高级、大同中学、市西中学、建平中学、上外浦外、曹杨二中</strong></td>
+                <td>双学籍（高考+出国双轨），学费按公办高中收取，主要招收上海生源。</td>
+              </tr>
+              <tr>
+                <td><span class="badge-tag tag-gold">民办国际高中 (10所)</span></td>
+                <td><strong>世外中学、平和学校、星河湾双语、包玉刚实验、西南位育、协和双语、文来中学、上外西外、尚德实验、枫叶双语</strong></td>
+                <td>上海生源与外地生源兼收，师资与海外升学出口极强，学费15万-28万/年。</td>
+              </tr>
+              <tr>
+                <td><span class="badge-tag tag-purple">中外合作办学 (1所)</span></td>
+                <td><strong>上海七宝德怀特高级中学</strong></td>
+                <td>上海第一所独立设立的中外合作高中（中美合作），主攻 IB 课程。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="sub-card-title" id="cat2-courses">📚 2. 三大主流国际课程体系选择指南</h3>
+        <div class="volunteers-grid">
+          <div class="volunteer-subcard" style="border-color: #93C5FD;">
+            <span class="badge-tag tag-blue">IB 课程 (全人教育)</span>
+            <div style="font-weight: 700; color: #1E3A8A; margin: 0.3rem 0;">IB 国际文凭体系</div>
+            <div style="font-size: 0.85rem; color: #475569; line-height: 1.5;">
+              • <strong>特点</strong>：强调批判性思维与跨学科整合（含CAS/TOK/EE）。<br>
+              • <strong>适合人群</strong>：文理兼优、自主学习能力强的全能型学霸。<br>
+              • <strong>代表学校</strong>：世外中学、平和学校、包玉刚、七宝德怀特。
+            </div>
+          </div>
+
+          <div class="volunteer-subcard" style="border-color: #FCD34D;">
+            <span class="badge-tag tag-gold">A-Level 课程 (英国金牌)</span>
+            <div style="font-weight: 700; color: #B45309; margin: 0.3rem 0;">A-Level 英国高中体系</div>
+            <div style="font-size: 0.85rem; color: #475569; line-height: 1.5;">
+              • <strong>特点</strong>：选课灵活（选3-4门学科），深耕擅长科目，直通英联邦顶尖名校。<br>
+              • <strong>适合人群</strong>：学科优势明显、目标英国 G5（牛津/剑桥/帝国理工）的学生。<br>
+              • <strong>代表学校</strong>：领科教育、光华剑桥、圣比斯。
+            </div>
+          </div>
+
+          <div class="volunteer-subcard" style="border-color: #6EE7B7;">
+            <span class="badge-tag tag-green">AP 课程 (美国预修)</span>
+            <div style="font-weight: 700; color: #047857; margin: 0.3rem 0;">AP 美高大学预修体系</div>
+            <div style="font-size: 0.85rem; color: #475569; line-height: 1.5;">
+              • <strong>特点</strong>：美国大学预修课程，单科成绩可抵扣大学学分。<br>
+              • <strong>适合人群</strong>：目标申请美国 Top 30 顶尖大学的学生。<br>
+              • <strong>代表学校</strong>：星河湾双语、WLSA上海学校、交大附中。
+            </div>
+          </div>
+        </div>
+
+        <h3 class="sub-card-title" id="cat2-exam">🎯 3. 国际高中自招考试与择校建议</h3>
+        <p style="font-size: 0.9rem; color: #475569;">
+          每年 3月-5月 为国际高中自主招生峰期。考试包含<strong>英语笔试（含阅读与英文写作）、数学笔试（英文或中文卷）以及英文个人面试</strong>。21所公办国际部还要求中考成绩达到相应录取控制线。
+        </p>
+      </section>
+
+      <!-- 大类三：海外留学指南 (USER REQUESTED CATEGORY) -->
+      <section class="content-card" id="cat3-country">
+        <div class="category-banner banner-green">
+          <div style="font-size: 1.25rem;">✈️</div>
+          <div>
+            <strong style="font-size: 1.05rem;">一级分类三：初中 / 高中海外留学全景规划指南</strong>
+            <div style="font-size: 0.85rem; opacity: 0.9;">包含美、英、加、澳、新、日各大留学国家对比、时间轴、语言考点与费用预算！</div>
+          </div>
+        </div>
+
+        <h3 class="sub-card-title">🗺️ 1. 主流留学国家与地区多维对比</h3>
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>留学国家/地区</th>
+                <th>核心教育特色</th>
+                <th>语言要求</th>
+                <th>年度总预算 (学费+生活费)</th>
+                <th>适合学生类型</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>🇺🇸 美国</strong></td>
+                <td>名校集群最多，注重综合素质、社团活动与科研竞赛。</td>
+                <td>托福 (TOEFL) / 多邻国 + SAT/ACT</td>
+                <td>40万 - 65万 RMB / 年</td>
+                <td>性格开朗、综合素质全面、目标世界百强名校。</td>
+              </tr>
+              <tr>
+                <td><strong>🇬🇧 英国</strong></td>
+                <td>学制短（本科3年），学术专注度高，历史底蕴深厚。</td>
+                <td>雅思 (IELTS) / A-Level</td>
+                <td>35万 - 55万 RMB / 年</td>
+                <td>专业方向明确、学科突出、希望快速拿到学位。</td>
+              </tr>
+              <tr>
+                <td><strong>🇨🇦 加拿大</strong></td>
+                <td>公立教育质量均衡，签证与移民政策友好。</td>
+                <td>雅思 / 托福 + 平时成绩</td>
+                <td>25万 - 40万 RMB / 年</td>
+                <td>追求性价比、有毕业后留加工作或移民意向。</td>
+              </tr>
+              <tr>
+                <td><strong>🇦🇺 澳大利亚</strong></td>
+                <td>QS世界百强高校比例高，八大名校申请机制成熟。</td>
+                <td>雅思 (IELTS)</td>
+                <td>30万 - 45万 RMB / 年</td>
+                <td>希望冲刺世界名校、环境宜居。</td>
+              </tr>
+              <tr>
+                <td><strong>🇸🇬 新加坡 / 🇯🇵 日本</strong></td>
+                <td>亚洲顶尖学府（国大/南大/东大），治安极佳，距离近。</td>
+                <td>雅思 / 托福 / 日语 N1</td>
+                <td>20万 - 35万 RMB / 年</td>
+                <td>文化适应快、注重治安与近距离照顾。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="sub-card-title" id="cat3-timeline">🗓️ 2. 留学申请关键时间轴规划</h3>
+        <div class="volunteers-grid">
+          <div class="volunteer-subcard">
+            <div style="font-weight: 700; color: #047857;">九年级 / 高一（准备期）</div>
+            <div style="font-size: 0.85rem; color: #475569; margin-top: 0.3rem;">保持优秀 GPA 平时成绩，打牢英语基础，启动托福/雅思首考，参加课外活动。</div>
+          </div>
+          <div class="volunteer-subcard">
+            <div style="font-weight: 700; color: #047857;">高二 / 高三（冲刺与递交期）</div>
+            <div style="font-size: 0.85rem; color: #475569; margin-top: 0.3rem;">确定目标院校名单，完成语言出分，撰写个人陈述文书 (PS)，10-12月递交申请 (ED/EA/RD)。</div>
+          </div>
+        </div>
+
+        <h3 class="sub-card-title" id="cat3-lang">✍️ 3. 语言考试要点 (托福 vs 雅思)</h3>
+        <p style="font-size: 0.9rem; color: #475569;">
+          申请美系院校优先考 <strong>托福 (TOEFL iBT 目标 90-105+)</strong>；申请英联邦院校优先考 <strong>雅思 (IELTS 目标 6.5-7.5+)</strong>。建议学生尽早安排备考与出分。
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>© 2026 Owen Learning Center · 全轨升学指南 V8 (中本贯通 · 国际高中 · 海外留学)</p>
+  </footer>
+</body>
+</html>
