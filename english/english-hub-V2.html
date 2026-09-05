@@ -48,7 +48,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Sticky Navigation - Matching Unified Site Style */
+    /* Sticky Navigation */
     header {
       background: var(--bg-card);
       border-bottom: 1px solid var(--border-color);
@@ -94,14 +94,12 @@
       background-color: var(--brand-green-bg); color: var(--brand-green-light);
     }
 
-    /* Container Layout */
     .container {
       max-width: 1240px; margin: 0 auto;
       padding: 2rem 1.25rem 4rem 1.25rem;
       display: flex; flex-direction: column; gap: 2rem;
     }
 
-    /* Hero Banner */
     .hero-card {
       background: linear-gradient(135deg, #FFFFFF 0%, #F0FDF4 100%);
       border: 1px solid #BBF7D0; border-radius: var(--radius-lg);
@@ -134,7 +132,6 @@
       background: #15803D; transform: translateY(-2px);
     }
 
-    /* Floating Master Audio Player Bar */
     .sticky-player-bar {
       position: sticky; top: 72px; z-index: 40;
       background: #FFFFFF; border: 2px solid var(--brand-green-light);
@@ -159,7 +156,12 @@
       width: 100%; outline: none; border-radius: var(--radius-sm);
     }
 
-    /* Unit Accordion / Sections */
+    .toast-notice {
+      display: none; padding: 0.5rem 0.8rem; background: #FEF2F2;
+      border: 1px solid #FCA5A5; color: #991B1B; font-size: 0.82rem;
+      border-radius: var(--radius-sm); font-weight: 600;
+    }
+
     .unit-section {
       background: var(--bg-card); border: 1px solid var(--border-color);
       border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);
@@ -176,12 +178,11 @@
       width: 44px; height: 44px; border-radius: var(--radius-sm);
       background: var(--brand-green-bg); color: var(--brand-green);
       display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 1.1rem;
+      font-weight: 800; font-size: 1rem; text-align: center;
     }
 
     .unit-h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); }
 
-    /* Audio Item Table / List */
     .audio-list { display: flex; flex-direction: column; gap: 0.6rem; }
 
     .audio-row {
@@ -200,7 +201,7 @@
       box-shadow: 0 0 0 1.5px var(--brand-green-light);
     }
 
-    .audio-info { display: flex; align-items: center; gap: 0.8rem; }
+    .audio-info { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
 
     .audio-type-tag {
       font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;
@@ -210,6 +211,7 @@
     .tag-words { background: #FEF3C7; color: #B45309; }
     .tag-listening { background: #EFF6FF; color: #1D4ED8; }
     .tag-exam { background: #F3E8FF; color: #7C3AED; }
+    .tag-speaking { background: #FEE2E2; color: #B91C1C; }
 
     .audio-name { font-weight: 600; font-size: 0.95rem; color: var(--text-primary); }
 
@@ -217,7 +219,7 @@
       display: inline-flex; align-items: center; gap: 0.4rem;
       padding: 0.4rem 0.85rem; background: white; border: 1px solid var(--border-color);
       border-radius: var(--radius-sm); font-size: 0.82rem; font-weight: 700;
-      color: var(--brand-green-light); transition: all 0.2s ease;
+      color: var(--brand-green-light); transition: all 0.2s ease; flex-shrink: 0;
     }
 
     .audio-row:hover .play-action-btn {
@@ -232,14 +234,14 @@
 </head>
 <body>
 
-  <!-- Sticky Unified Navigation -->
+  <!-- Header -->
   <header>
     <div class="nav-container">
       <a href="../index.html" class="brand">
         <div class="brand-logo">ENG</div>
         <div>
           <div class="brand-title">初中英语九年级全套教材音频 & 听力中心 V2</div>
-          <div class="brand-subtitle">五·四学制上海课本原声 · 单元课文/生词朗读/练习册全真听力</div>
+          <div class="brand-subtitle">五·四学制上海课本原声 · 88首全量单曲 / 课文 / 词汇 / 听力</div>
         </div>
       </a>
       <a href="../index.html" class="back-btn">
@@ -253,10 +255,10 @@
     <!-- Hero Banner -->
     <section class="hero-card">
       <div>
-        <span class="hero-tag">🎧 九年级上册全套官方原声 79 首集结</span>
+        <span class="hero-tag">🎧 九年级全套官方原声 88 首完整收录</span>
         <h1 class="hero-title">初中英语教材音频 & 听力训练中心</h1>
         <p class="hero-desc">
-          收录上海《五·四学制义务教育教科书 英语 九年级上册》及配套《练习册》全套音频：包含单元课文朗读 (Reading)、听说 (Viewing & Listening)、生词全览 (Words and Expressions) 及期中期末全真听力。
+          收录上海《五·四学制义务教育教科书 英语 九年级上册》及配套《练习册》全套音频：包括 Unit 1~6 课文精读 (Reading)、生词朗读 (Words)、听说训练 (Listening & Speaking)、Culture Corner、Pronunciation 及期中期末全真听力。
         </p>
       </div>
       <div>
@@ -274,183 +276,860 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
           正在播放：<span class="playing-name" id="playerTitle">点击下方列表选择音频曲目...</span>
         </div>
-        <div style="font-size: 0.8rem; color: var(--text-muted);" id="playerTrackCount">共 79 首音源</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);" id="playerTrackCount">全量收录 88 首音源</div>
       </div>
+      <div id="toastNotice" class="toast-notice">⚠️ 提示：音频文件由于路径编码或浏览器限制未正常加载，已自动启动系统 Web Speech TTS 语音朗读保底。</div>
       <audio id="masterAudio" class="audio-control-bar" controls autoplay></audio>
     </section>
 
-    <!-- Unit 1 -->
+    <!-- Section: 其他 -->
     <section class="unit-section">
       <div class="unit-header">
         <div class="unit-title-group">
-          <div class="unit-badge">U1</div>
+          <div class="unit-badge">拓展</div>
           <div>
-            <h2 class="unit-h2">Unit 1 Ancient China (古代中国)</h2>
-            <p style="font-size: 0.82rem; color: var(--text-muted);">课本配套朗读 + 练习册听力测试</p>
+            <h2 class="unit-h2">其他</h2>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">本模块共收录 9 首音频</p>
           </div>
         </div>
       </div>
       <div class="audio-list">
-        <div class="audio-row" onclick="playAudio('Unit 1 Ancient China 课文朗读', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 1/01 Unit 1 Ancient China.mp3', this)">
+  
+        <div class="audio-row" onclick="playAudio('37 Culture corner：Exploring China', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/37 Culture corner：Exploring China.mp3', this)">
           <div class="audio-info">
             <span class="audio-type-tag tag-reading">课本朗读</span>
-            <span class="audio-name">01 Unit 1 Ancient China (单元课文)</span>
+            <span class="audio-name">37 Culture corner：Exploring China</span>
           </div>
           <button class="play-action-btn">▶ 播放音频</button>
         </div>
-        <div class="audio-row" onclick="playAudio('Unit 1 Reading 深度阅读', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 1/04 Unit 1 Reading.mp3', this)">
+    
+        <div class="audio-row" onclick="playAudio('38 Culture corner：Exploring the world', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/38 Culture corner：Exploring the world.mp3', this)">
           <div class="audio-info">
-            <span class="audio-type-tag tag-reading">Reading</span>
-            <span class="audio-name">04 Unit 1 Reading 课文精读朗读</span>
+            <span class="audio-type-tag tag-reading">课本朗读</span>
+            <span class="audio-name">38 Culture corner：Exploring the world</span>
           </div>
           <button class="play-action-btn">▶ 播放音频</button>
         </div>
-        <div class="audio-row" onclick="playAudio('Unit 1 Words and expressions 生词朗读', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 1/06 Unit 1 Words and expressions.mp3', this)">
+    
+        <div class="audio-row" onclick="playAudio('39 Literature corner：A chapter to start with', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/39 Literature corner：A chapter to start with.mp3', this)">
           <div class="audio-info">
-            <span class="audio-type-tag tag-words">生词表</span>
-            <span class="audio-name">06 Unit 1 Words and expressions 核心词汇朗读</span>
+            <span class="audio-type-tag tag-reading">课本朗读</span>
+            <span class="audio-name">39 Literature corner：A chapter to start with</span>
           </div>
           <button class="play-action-btn">▶ 播放音频</button>
         </div>
-        <div class="audio-row" onclick="playAudio('Unit 1 练习册听力 A1', '教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/01 Unit 1/01 Unit 1 A1.mp3', this)">
+    
+        <div class="audio-row" onclick="playAudio('40 Literature corner：A scene to act out', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/40 Literature corner：A scene to act out.mp3', this)">
           <div class="audio-info">
-            <span class="audio-type-tag tag-listening">练习册听力</span>
-            <span class="audio-name">01 Unit 1 练习册听力 A1 专项训练</span>
+            <span class="audio-type-tag tag-reading">课本朗读</span>
+            <span class="audio-name">40 Literature corner：A scene to act out</span>
           </div>
           <button class="play-action-btn">▶ 播放音频</button>
         </div>
+    
+        <div class="audio-row" onclick="playAudio('41 Literature corner：A poem to savour', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/41 Literature corner：A poem to savour.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">课本朗读</span>
+            <span class="audio-name">41 Literature corner：A poem to savour</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('42 Pronunciation file', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/42 Pronunciation file.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">课本朗读</span>
+            <span class="audio-name">42 Pronunciation file</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('43 Proper nouns and glossary', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/43 Proper nouns and glossary.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">课本朗读</span>
+            <span class="audio-name">43 Proper nouns and glossary</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('44 Numbers', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/44 Numbers.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">课本朗读</span>
+            <span class="audio-name">44 Numbers</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('45 Irregular verbs', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/45 Irregular verbs.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">课本朗读</span>
+            <span class="audio-name">45 Irregular verbs</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
       </div>
     </section>
-
-    <!-- Unit 2 -->
+  
+    <!-- Section: Unit 1 Ancient China -->
     <section class="unit-section">
       <div class="unit-header">
         <div class="unit-title-group">
           <div class="unit-badge">U2</div>
           <div>
-            <h2 class="unit-h2">Unit 2 People and their jobs (职业与人物)</h2>
-            <p style="font-size: 0.82rem; color: var(--text-muted);">课本配套朗读 + 练习册听力测试</p>
+            <h2 class="unit-h2">Unit 1 Ancient China</h2>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">本模块共收录 11 首音频</p>
           </div>
         </div>
       </div>
       <div class="audio-list">
-        <div class="audio-row" onclick="playAudio('Unit 2 People and their jobs 课文', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 2/07 Unit 2 People and their jobs.mp3', this)">
+  
+        <div class="audio-row" onclick="playAudio('01 Unit 1 Teenage life', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 1/01 Unit 1 Teenage life.mp3', this)">
           <div class="audio-info">
             <span class="audio-type-tag tag-reading">课本朗读</span>
-            <span class="audio-name">07 Unit 2 People and their jobs 单元主题</span>
+            <span class="audio-name">01 Unit 1 Teenage life</span>
           </div>
           <button class="play-action-btn">▶ 播放音频</button>
         </div>
-        <div class="audio-row" onclick="playAudio('Unit 2 Reading 课文精读', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 2/10 Unit 2 Reading.mp3', this)">
+    
+        <div class="audio-row" onclick="playAudio('02 Unit 1 Viewing and listening', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 1/02 Unit 1 Viewing and listening.mp3', this)">
           <div class="audio-info">
-            <span class="audio-type-tag tag-reading">Reading</span>
-            <span class="audio-name">10 Unit 2 Reading 课文精读朗读</span>
+            <span class="audio-type-tag tag-listening">Listening 听力</span>
+            <span class="audio-name">02 Unit 1 Viewing and listening</span>
           </div>
           <button class="play-action-btn">▶ 播放音频</button>
         </div>
-        <div class="audio-row" onclick="playAudio('Unit 2 Words and expressions 生词朗读', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 2/12 Unit 2 Words and expressions.mp3', this)">
+    
+        <div class="audio-row" onclick="playAudio('03 Unit 1 Speaking', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 1/03 Unit 1 Speaking.mp3', this)">
           <div class="audio-info">
-            <span class="audio-type-tag tag-words">生词表</span>
-            <span class="audio-name">12 Unit 2 Words and expressions 核心词汇朗读</span>
+            <span class="audio-type-tag tag-speaking">Speaking 口语</span>
+            <span class="audio-name">03 Unit 1 Speaking</span>
           </div>
           <button class="play-action-btn">▶ 播放音频</button>
         </div>
-        <div class="audio-row" onclick="playAudio('Unit 2 练习册听力 A1', '教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/02 Unit 2/06 Unit 2 A1.mp3', this)">
+    
+        <div class="audio-row" onclick="playAudio('04 Unit 1 Reading', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 1/04 Unit 1 Reading.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">Reading 精读</span>
+            <span class="audio-name">04 Unit 1 Reading</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('05 Unit 1 Discovery', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 1/05 Unit 1 Discovery.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">Discovery 拓展</span>
+            <span class="audio-name">05 Unit 1 Discovery</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('06 Unit 1 Words and expressions', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 1/06 Unit 1 Words and expressions.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-words">Words 词汇表</span>
+            <span class="audio-name">06 Unit 1 Words and expressions</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('01 Unit 1 A1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/01 Unit 1/01 Unit 1 A1.mp3', this)">
           <div class="audio-info">
             <span class="audio-type-tag tag-listening">练习册听力</span>
-            <span class="audio-name">06 Unit 2 练习册听力 A1 专项训练</span>
+            <span class="audio-name">01 Unit 1 A1</span>
           </div>
           <button class="play-action-btn">▶ 播放音频</button>
         </div>
+    
+        <div class="audio-row" onclick="playAudio('02 Unit 1 A3-1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/01 Unit 1/02 Unit 1 A3-1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">02 Unit 1 A3-1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('03 Unit 1 A3-2', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/01 Unit 1/03 Unit 1 A3-2.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">03 Unit 1 A3-2</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('04 Unit 1 A4', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/01 Unit 1/04 Unit 1 A4.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">04 Unit 1 A4</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('05 Unit 1 Update my to-do list', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/01 Unit 1/05 Unit 1 Update my to-do list.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">05 Unit 1 Update my to-do list</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
       </div>
     </section>
-
-    <!-- Unit 3 -->
+  
+    <!-- Section: Unit 2 People and their jobs -->
     <section class="unit-section">
       <div class="unit-header">
         <div class="unit-title-group">
           <div class="unit-badge">U3</div>
           <div>
-            <h2 class="unit-h2">Unit 3 Family life (家庭生活)</h2>
-            <p style="font-size: 0.82rem; color: var(--text-muted);">课本配套朗读 + 练习册听力测试</p>
+            <h2 class="unit-h2">Unit 2 People and their jobs</h2>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">本模块共收录 12 首音频</p>
           </div>
         </div>
       </div>
       <div class="audio-list">
-        <div class="audio-row" onclick="playAudio('Unit 3 Reading 课文精读', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 3/16 Unit 3 Reading.mp3', this)">
+  
+        <div class="audio-row" onclick="playAudio('07 Unit 2 People and their jobs', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 2/07 Unit 2 People and their jobs.mp3', this)">
           <div class="audio-info">
-            <span class="audio-type-tag tag-reading">Reading</span>
-            <span class="audio-name">16 Unit 3 Reading 课文精读朗读</span>
+            <span class="audio-type-tag tag-reading">课本朗读</span>
+            <span class="audio-name">07 Unit 2 People and their jobs</span>
           </div>
           <button class="play-action-btn">▶ 播放音频</button>
         </div>
-        <div class="audio-row" onclick="playAudio('Unit 3 Words and expressions 生词朗读', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 3/18 Unit 3 Words and expressions.mp3', this)">
+    
+        <div class="audio-row" onclick="playAudio('08 Unit 2 Viewing and listening', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 2/08 Unit 2 Viewing and listening.mp3', this)">
           <div class="audio-info">
-            <span class="audio-type-tag tag-words">生词表</span>
-            <span class="audio-name">18 Unit 3 Words and expressions 核心词汇朗读</span>
+            <span class="audio-type-tag tag-listening">Listening 听力</span>
+            <span class="audio-name">08 Unit 2 Viewing and listening</span>
           </div>
           <button class="play-action-btn">▶ 播放音频</button>
         </div>
+    
+        <div class="audio-row" onclick="playAudio('09 Unit 2 Speaking', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 2/09 Unit 2 Speaking.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-speaking">Speaking 口语</span>
+            <span class="audio-name">09 Unit 2 Speaking</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('10 Unit 2 Reading', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 2/10 Unit 2 Reading.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">Reading 精读</span>
+            <span class="audio-name">10 Unit 2 Reading</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('11 Unit 2 Discovery', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 2/11 Unit 2 Discovery.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">Discovery 拓展</span>
+            <span class="audio-name">11 Unit 2 Discovery</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('12 Unit 2 Words and expressions', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 2/12 Unit 2 Words and expressions.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-words">Words 词汇表</span>
+            <span class="audio-name">12 Unit 2 Words and expressions</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('06 Unit 2 A1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/02 Unit 2/06 Unit 2 A1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">06 Unit 2 A1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('07 Unit 2 A3-1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/02 Unit 2/07 Unit 2 A3-1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">07 Unit 2 A3-1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('08 Unit 2 A3-2', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/02 Unit 2/08 Unit 2 A3-2.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">08 Unit 2 A3-2</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('09 Unit 2 A4-1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/02 Unit 2/09 Unit 2 A4-1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">09 Unit 2 A4-1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('10 Unit 2 A4-2', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/02 Unit 2/10 Unit 2 A4-2.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">10 Unit 2 A4-2</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('11 Unit 2 Update my to-do list', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/02 Unit 2/11 Unit 2 Update my to-do list.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">11 Unit 2 Update my to-do list</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
       </div>
     </section>
-
-    <!-- 期中全真听力评价 -->
-    <section class="unit-section" style="border-color: #DDD6FE;">
+  
+    <!-- Section: Unit 3 Family life -->
+    <section class="unit-section">
       <div class="unit-header">
         <div class="unit-title-group">
-          <div class="unit-badge" style="background: #F3E8FF; color: #7C3AED;">期中</div>
+          <div class="unit-badge">U4</div>
           <div>
-            <h2 class="unit-h2" style="color: #7C3AED;">期中评价全真听力 (Part 1-1 ~ Part 1-6)</h2>
-            <p style="font-size: 0.82rem; color: var(--text-muted);">模拟考场全真听力测试原声</p>
+            <h2 class="unit-h2">Unit 3 Family life</h2>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">本模块共收录 11 首音频</p>
           </div>
         </div>
       </div>
       <div class="audio-list">
-        <div class="audio-row" onclick="playAudio('期中评价 听力 Part 1-1', '教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/04 期中评价/17 期中评价 Part 1-1.mp3', this)">
+  
+        <div class="audio-row" onclick="playAudio('13 Unit 3 Travellers\' tales', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 3/13 Unit 3 Travellers\' tales.mp3', this)">
           <div class="audio-info">
-            <span class="audio-type-tag tag-exam">期中考场听力</span>
-            <span class="audio-name">17 期中评价 Part 1-1 听力真题</span>
+            <span class="audio-type-tag tag-reading">课本朗读</span>
+            <span class="audio-name">13 Unit 3 Travellers' tales</span>
           </div>
           <button class="play-action-btn">▶ 播放音频</button>
         </div>
-        <div class="audio-row" onclick="playAudio('期中评价 听力 Part 1-3', '教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/04 期中评价/18 期中评价 Part 1-3.mp3', this)">
+    
+        <div class="audio-row" onclick="playAudio('14 Unit 3 Viewing and listening', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 3/14 Unit 3 Viewing and listening.mp3', this)">
           <div class="audio-info">
-            <span class="audio-type-tag tag-exam">期中考场听力</span>
-            <span class="audio-name">18 期中评价 Part 1-3 听力真题</span>
+            <span class="audio-type-tag tag-listening">Listening 听力</span>
+            <span class="audio-name">14 Unit 3 Viewing and listening</span>
           </div>
           <button class="play-action-btn">▶ 播放音频</button>
         </div>
+    
+        <div class="audio-row" onclick="playAudio('15 Unit 3 Speaking', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 3/15 Unit 3 Speaking.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-speaking">Speaking 口语</span>
+            <span class="audio-name">15 Unit 3 Speaking</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('16 Unit 3 Reading', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 3/16 Unit 3 Reading.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">Reading 精读</span>
+            <span class="audio-name">16 Unit 3 Reading</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('17 Unit 3 Discovery', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 3/17 Unit 3 Discovery.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">Discovery 拓展</span>
+            <span class="audio-name">17 Unit 3 Discovery</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('18 Unit 3 Words and expressions', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 3/18 Unit 3 Words and expressions.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-words">Words 词汇表</span>
+            <span class="audio-name">18 Unit 3 Words and expressions</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('12 Unit 3 A1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/03 Unit 3/12 Unit 3 A1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">12 Unit 3 A1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('13 Unit 3 A3-1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/03 Unit 3/13 Unit 3 A3-1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">13 Unit 3 A3-1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('14 Unit 3 A3-2', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/03 Unit 3/14 Unit 3 A3-2.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">14 Unit 3 A3-2</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('15 Unit 3 A4', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/03 Unit 3/15 Unit 3 A4.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">15 Unit 3 A4</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('16 Unit 3 Update my to-do list', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/03 Unit 3/16 Unit 3 Update my to-do list.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">16 Unit 3 Update my to-do list</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
       </div>
     </section>
-
-    <!-- 期末全真听力评价 -->
-    <section class="unit-section" style="border-color: #DDD6FE;">
+  
+    <!-- Section: Unit 4 Problems and advice -->
+    <section class="unit-section">
       <div class="unit-header">
         <div class="unit-title-group">
-          <div class="unit-badge" style="background: #F3E8FF; color: #7C3AED;">期末</div>
+          <div class="unit-badge">U5</div>
           <div>
-            <h2 class="unit-h2" style="color: #7C3AED;">期末评价全真听力 (Part 1-1 ~ Part 1-6)</h2>
-            <p style="font-size: 0.82rem; color: var(--text-muted);">期末综合冲刺全真听力测试原声</p>
+            <h2 class="unit-h2">Unit 4 Problems and advice</h2>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">本模块共收录 11 首音频</p>
           </div>
         </div>
       </div>
       <div class="audio-list">
-        <div class="audio-row" onclick="playAudio('期末评价 听力 Part 1-1', '教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/08 期末评价/39 期末评价 Part 1-1.mp3', this)">
+  
+        <div class="audio-row" onclick="playAudio('19 Unit 4 Folk customs', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 4/19 Unit 4 Folk customs.mp3', this)">
           <div class="audio-info">
-            <span class="audio-type-tag tag-exam">期末考场听力</span>
-            <span class="audio-name">39 期末评价 Part 1-1 听力真题</span>
+            <span class="audio-type-tag tag-reading">课本朗读</span>
+            <span class="audio-name">19 Unit 4 Folk customs</span>
           </div>
           <button class="play-action-btn">▶ 播放音频</button>
         </div>
-        <div class="audio-row" onclick="playAudio('期末评价 听力 Part 1-5', '教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/08 期末评价/42 期末评价 Part 1-5.mp3', this)">
+    
+        <div class="audio-row" onclick="playAudio('20 Unit 4 Viewing and listening', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 4/20 Unit 4 Viewing and listening.mp3', this)">
           <div class="audio-info">
-            <span class="audio-type-tag tag-exam">期末考场听力</span>
-            <span class="audio-name">42 期末评价 Part 1-5 听力真题</span>
+            <span class="audio-type-tag tag-listening">Listening 听力</span>
+            <span class="audio-name">20 Unit 4 Viewing and listening</span>
           </div>
           <button class="play-action-btn">▶ 播放音频</button>
         </div>
+    
+        <div class="audio-row" onclick="playAudio('21 Unit 4 Speaking', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 4/21 Unit 4 Speaking.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-speaking">Speaking 口语</span>
+            <span class="audio-name">21 Unit 4 Speaking</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('22 Unit 4 Reading', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 4/22 Unit 4 Reading.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">Reading 精读</span>
+            <span class="audio-name">22 Unit 4 Reading</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('23 Unit 4 Discovery', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 4/23 Unit 4 Discovery.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">Discovery 拓展</span>
+            <span class="audio-name">23 Unit 4 Discovery</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('24 Unit 4 Words and expressions', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 4/24 Unit 4 Words and expressions.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-words">Words 词汇表</span>
+            <span class="audio-name">24 Unit 4 Words and expressions</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('22 Unit 4 A1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/05 Unit 4/22 Unit 4 A1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">22 Unit 4 A1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('23 Unit 4 A3', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/05 Unit 4/23 Unit 4 A3.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">23 Unit 4 A3</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('24 Unit 4 A4-1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/05 Unit 4/24 Unit 4 A4-1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">24 Unit 4 A4-1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('25 Unit 4 A4-2', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/05 Unit 4/25 Unit 4 A4-2.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">25 Unit 4 A4-2</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('26 Unit 4 Update my to-do list', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/05 Unit 4/26 Unit 4 Update my to-do list.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">26 Unit 4 Update my to-do list</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
       </div>
     </section>
+  
+    <!-- Section: Unit 5 Buildings -->
+    <section class="unit-section">
+      <div class="unit-header">
+        <div class="unit-title-group">
+          <div class="unit-badge">U6</div>
+          <div>
+            <h2 class="unit-h2">Unit 5 Buildings</h2>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">本模块共收录 12 首音频</p>
+          </div>
+        </div>
+      </div>
+      <div class="audio-list">
+  
+        <div class="audio-row" onclick="playAudio('25 Unit 5 Buildings', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 5/25 Unit 5 Buildings.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">课本朗读</span>
+            <span class="audio-name">25 Unit 5 Buildings</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('26 Unit 5 Viewing and listening', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 5/26 Unit 5 Viewing and listening.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">Listening 听力</span>
+            <span class="audio-name">26 Unit 5 Viewing and listening</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('27 Unit 5 Speaking', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 5/27 Unit 5 Speaking.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-speaking">Speaking 口语</span>
+            <span class="audio-name">27 Unit 5 Speaking</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('28 Unit 5 Reading', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 5/28 Unit 5 Reading.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">Reading 精读</span>
+            <span class="audio-name">28 Unit 5 Reading</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('29 Unit 5 Discovery', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 5/29 Unit 5 Discovery.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">Discovery 拓展</span>
+            <span class="audio-name">29 Unit 5 Discovery</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('30 Unit 5 Words and expressions', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 5/30 Unit 5 Words and expressions.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-words">Words 词汇表</span>
+            <span class="audio-name">30 Unit 5 Words and expressions</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('27 Unit 5 A1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/06 Unit 5/27 Unit 5 A1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">27 Unit 5 A1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('28 Unit 5 A3-1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/06 Unit 5/28 Unit 5 A3-1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">28 Unit 5 A3-1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('29 Unit 5 A3-2', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/06 Unit 5/29 Unit 5 A3-2.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">29 Unit 5 A3-2</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('30 Unit 5 A4-1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/06 Unit 5/30 Unit 5 A4-1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">30 Unit 5 A4-1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('31 Unit 5 A4-2', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/06 Unit 5/31 Unit 5 A4-2.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">31 Unit 5 A4-2</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('32 Unit 5 Update my to-do list', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/06 Unit 5/32 Unit 5 Update my to-do list.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">32 Unit 5 Update my to-do list</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+      </div>
+    </section>
+  
+    <!-- Section: Unit 6 Pollution -->
+    <section class="unit-section">
+      <div class="unit-header">
+        <div class="unit-title-group">
+          <div class="unit-badge">U7</div>
+          <div>
+            <h2 class="unit-h2">Unit 6 Pollution</h2>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">本模块共收录 12 首音频</p>
+          </div>
+        </div>
+      </div>
+      <div class="audio-list">
+  
+        <div class="audio-row" onclick="playAudio('31 Unit 6 Pollution', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 6/31 Unit 6 Pollution.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">课本朗读</span>
+            <span class="audio-name">31 Unit 6 Pollution</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('32 Unit 6 Viewing and listening', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 6/32 Unit 6 Viewing and listening.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">Listening 听力</span>
+            <span class="audio-name">32 Unit 6 Viewing and listening</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('33 Unit 6 Speaking', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 6/33 Unit 6 Speaking.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-speaking">Speaking 口语</span>
+            <span class="audio-name">33 Unit 6 Speaking</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('34 Unit 6 Reading', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 6/34 Unit 6 Reading.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">Reading 精读</span>
+            <span class="audio-name">34 Unit 6 Reading</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('35 Unit 6 Discovery', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 6/35 Unit 6 Discovery.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">Discovery 拓展</span>
+            <span class="audio-name">35 Unit 6 Discovery</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('36 Unit 6 Words and expressions', './教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 6/36 Unit 6 Words and expressions.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-words">Words 词汇表</span>
+            <span class="audio-name">36 Unit 6 Words and expressions</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('33 Unit 6 A1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/07 Unit 6/33 Unit 6 A1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">33 Unit 6 A1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('34 Unit 6 A3-1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/07 Unit 6/34 Unit 6 A3-1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">34 Unit 6 A3-1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('35 Unit 6 A3-2', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/07 Unit 6/35 Unit 6 A3-2.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">35 Unit 6 A3-2</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('36 Unit 6 A4-1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/07 Unit 6/36 Unit 6 A4-1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">36 Unit 6 A4-1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('37 Unit 6 A4-2', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/07 Unit 6/37 Unit 6 A4-2.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">37 Unit 6 A4-2</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('38 Unit 6 Update my to-do list', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/07 Unit 6/38 Unit 6 Update my to-do list.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">38 Unit 6 Update my to-do list</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+      </div>
+    </section>
+  
+    <!-- Section: 期中评价 听力专项 -->
+    <section class="unit-section">
+      <div class="unit-header">
+        <div class="unit-title-group">
+          <div class="unit-badge">期中</div>
+          <div>
+            <h2 class="unit-h2">期中评价 听力专项</h2>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">本模块共收录 5 首音频</p>
+          </div>
+        </div>
+      </div>
+      <div class="audio-list">
+  
+        <div class="audio-row" onclick="playAudio('17 期中评价 Part 1-1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/04 期中评价/17 期中评价 Part 1-1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">17 期中评价 Part 1-1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('18 期中评价 Part 1-3', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/04 期中评价/18 期中评价 Part 1-3.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">18 期中评价 Part 1-3</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('19 期中评价 Part 1-4', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/04 期中评价/19 期中评价 Part 1-4.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">19 期中评价 Part 1-4</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('20 期中评价 Part 1-5', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/04 期中评价/20 期中评价 Part 1-5.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">20 期中评价 Part 1-5</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('21 期中评价 Part 1-6', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/04 期中评价/21 期中评价 Part 1-6.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">21 期中评价 Part 1-6</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+      </div>
+    </section>
+  
+    <!-- Section: 期末评价 听力专项 -->
+    <section class="unit-section">
+      <div class="unit-header">
+        <div class="unit-title-group">
+          <div class="unit-badge">期末</div>
+          <div>
+            <h2 class="unit-h2">期末评价 听力专项</h2>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">本模块共收录 5 首音频</p>
+          </div>
+        </div>
+      </div>
+      <div class="audio-list">
+  
+        <div class="audio-row" onclick="playAudio('39 期末评价 Part 1-1', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/08 期末评价/39 期末评价 Part 1-1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">39 期末评价 Part 1-1</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('40 期末评价 Part 1-3', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/08 期末评价/40 期末评价 Part 1-3.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">40 期末评价 Part 1-3</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('41 期末评价 Part 1-4', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/08 期末评价/41 期末评价 Part 1-4.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">41 期末评价 Part 1-4</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('42 期末评价 Part 1-5', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/08 期末评价/42 期末评价 Part 1-5.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">42 期末评价 Part 1-5</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+        <div class="audio-row" onclick="playAudio('43 期末评价 Part 1-6', './教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/08 期末评价/43 期末评价 Part 1-6.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">43 期末评价 Part 1-6</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+    
+      </div>
+    </section>
+  
   </div>
 
   <footer>
@@ -461,14 +1140,43 @@
     function playAudio(name, path, element) {
       const player = document.getElementById('masterAudio');
       const titleSpan = document.getElementById('playerTitle');
+      const toast = document.getElementById('toastNotice');
 
-      // 高亮当前选中的行
+      toast.style.display = 'none';
+
+      if (window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+
       document.querySelectorAll('.audio-row').forEach(row => row.classList.remove('active-playing'));
       if (element) element.classList.add('active-playing');
 
       titleSpan.innerText = name;
-      player.src = encodeURI(path);
-      player.play();
+      
+      const encodedPath = encodeURI(path);
+      player.src = encodedPath;
+
+      player.play().catch(err => {
+        console.warn('HTML5 Audio play failed:', err);
+        fallbackSpeech(name);
+      });
+
+      player.onerror = function() {
+        console.warn('HTML5 Audio onerror triggered.');
+        fallbackSpeech(name);
+      };
+    }
+
+    function fallbackSpeech(text) {
+      const toast = document.getElementById('toastNotice');
+      toast.style.display = 'block';
+
+      if ('speechSynthesis' in window) {
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = 'en-US';
+        u.rate = 0.9;
+        window.speechSynthesis.speak(u);
+      }
     }
   </script>
 </body>

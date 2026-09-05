@@ -3,190 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>物理复习中心 | Owen Learning Center</title>
-  <link rel="stylesheet" href="index.css">
+  <title>初中物理复习中心 V2 | Unified Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { background: var(--bg); display: block; }
-    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-    
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --brand-purple: #7C3AED;
+      --brand-purple-light: #8B5CF6;
+      --brand-purple-bg: #F5F3FF;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6;
+    }
+
+    header {
+      background: var(--bg-card); border-bottom: 1px solid var(--border-color);
+      position: sticky; top: 0; z-index: 50; box-shadow: var(--shadow-sm);
+    }
+    .nav-container {
+      max-width: 1240px; margin: 0 auto; padding: 0.85rem 1.25rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); }
+    .brand-logo {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--brand-purple), var(--brand-purple-light));
+      color: white; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1rem;
+    }
+    .brand-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--brand-purple); }
+    .brand-subtitle { font-size: 0.78rem; color: var(--text-muted); }
     .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--pink);
-      text-decoration: none;
-      font-weight: 700;
-      margin-bottom: 24px;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 1rem; min-height: 44px;
+      background-color: var(--bg-subtle); color: var(--text-secondary);
+      border-radius: var(--radius-sm); text-decoration: none;
+      font-weight: 600; font-size: 0.88rem; transition: all 0.2s ease;
+    }
+    .back-btn:hover { background-color: var(--brand-purple-bg); color: var(--brand-purple-light); }
+
+    .container {
+      max-width: 1240px; margin: 0 auto;
+      padding: 2rem 1.25rem 4rem 1.25rem;
+      display: flex; flex-direction: column; gap: 2rem;
+    }
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F5F3FF 100%);
+      border: 1px solid #DDD6FE; border-radius: var(--radius-lg);
+      padding: 2.2rem; box-shadow: var(--shadow-sm);
+    }
+    .hero-title { font-family: 'Outfit', sans-serif; font-size: 2.1rem; font-weight: 800; color: var(--brand-purple); margin-bottom: 0.5rem; }
+    .hero-desc { font-size: 1rem; color: var(--text-secondary); }
+
+    .content-card {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);
+      text-align: center; color: var(--text-muted); padding: 3rem 1.5rem;
     }
 
-    .physics-header {
-      text-align: center;
-      margin-bottom: 40px;
-      padding: 30px;
-      background: white;
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      border: 2px solid #e0f2fe; /* 浅蓝色边框 */
-    }
-    .physics-header h1 { 
-      font-family: 'ZCOOL KuaiLe', cursive; 
-      font-size: 3.2rem; 
-      color: #0284c7; /* 物理蓝色 */
-      margin-bottom: 8px;
-    }
-
-    .category-section {
-      margin-bottom: 30px;
-      background: white;
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-    }
-    .category-title {
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: #0369a1;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid #f0f9ff;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .resource-list { display: flex; flex-direction: column; gap: 12px; }
-
-    .resource-item {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 16px;
-      background: #fdfdfd;
-      border: 1px solid #f3f4f6;
-      border-radius: 16px;
-      text-decoration: none;
-      color: var(--text);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .resource-item:hover {
-      background: white;
-      border-color: #0284c7;
-      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.12);
-      transform: translateY(-2px);
-    }
-
-    .file-icon { font-size: 1.6rem; flex-shrink: 0; }
-    .file-info { flex-grow: 1; }
-    .file-name { font-weight: 800; font-size: 1.05rem; color: #1f2937; }
-    .file-meta { font-size: 0.8rem; color: #6b7280; margin-top: 4px; }
-
-    .badge {
-      padding: 4px 10px;
-      border-radius: 8px;
-      font-size: 0.7rem;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-    .badge-pdf { background: #e0f2fe; color: #0369a1; }
-    .badge-ans { background: #dcfce7; color: #16a34a; }
-
-    @media (max-width: 640px) {
-      .physics-header h1 { font-size: 2.5rem; }
-      .resource-item { padding: 14px; }
+    footer {
+      background-color: var(--bg-card); border-top: 1px solid var(--border-color);
+      padding: 2rem 1.25rem; text-align: center; color: var(--text-muted); font-size: 0.85rem;
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <div class="brand-logo">物</div>
+        <div>
+          <div class="brand-title">初中物理复习中心 V2</div>
+          <div class="brand-subtitle">力学·热学·光学·电学·声学 · 专项知识点打卡</div>
+        </div>
+      </a>
+      <a href="../index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        返回学习中心
+      </a>
+    </div>
+  </header>
+
   <div class="container">
-    <a href="../index.html" class="back-btn">← 返回首页</a>
-
-    <div class="physics-header">
-      <h1 class="app-title">物理复习清单</h1>
-      <p style="font-weight: 700; color: #9ca3af;">力学专项 · 区域全真模拟</p>
-      <div style="margin-top: 10px;">
-        <span style="font-size: 0.7rem; background: #f0f9ff; color: #0284c7; padding: 4px 10px; border-radius: 20px; font-weight: 800; border: 1px solid #bae6fd;">
-          Build: v1.1.0 (Stable)
-        </span>
-      </div>
-    </div>
-
-    <!-- 1. 区域期中全真模拟 -->
-    <section class="category-section">
-      <div class="category-title">🏆 区域期中全真模拟</div>
-      <div class="resource-list">
-        <a href="chinese-viewer.html?file=ph_docs/ja_phys.pdf" class="resource-item">
-          <div class="file-icon">⚡️</div>
-          <div class="file-info">
-            <div class="file-name">静安区 2025-2026 八物下期中模拟卷</div>
-            <div class="file-meta">全真模拟 · 扫描清晰版</div>
-          </div>
-          <span class="badge badge-pdf">PDF</span>
-        </a>
-        <a href="chinese-viewer.html?file=ph_docs/pd_phys.pdf" class="resource-item">
-          <div class="file-icon">⚡️</div>
-          <div class="file-info">
-            <div class="file-name">浦东新区 2025-2026 八物期中模拟卷</div>
-            <div class="file-meta">深度练习 · 扫描清晰版</div>
-          </div>
-          <span class="badge badge-pdf">PDF</span>
-        </a>
-        <a href="chinese-viewer.html?file=ph_docs/sj_phys_ans.pdf" class="resource-item">
-          <div class="file-icon">💡</div>
-          <div class="file-info">
-            <div class="file-name">松江区 2025-2026 八物下试卷答案解析</div>
-            <div class="file-meta">全真解析 · 精品扫描</div>
-          </div>
-          <span class="badge badge-ans">答案解析</span>
-        </a>
-      </div>
+    <section class="hero-card">
+      <h1 class="hero-title">初中物理核心复习模块</h1>
+      <p class="hero-desc">涵盖八九年级力、热、光、电、声五大基础板块物理实验与压轴模型突破。</p>
     </section>
 
-    <!-- 2. 复习计划 -->
-    <section class="category-section">
-      <div class="category-title">📅 学习计划与公式</div>
-      <div class="resource-list">
-        <a href="physics-grade9-summer.html" class="resource-item">
-          <div class="file-icon">🌱</div>
-          <div class="file-info">
-            <div class="file-name">九年级物理暑假知识点学习计划</div>
-            <div class="file-meta">7月-8月 · 226节知识点视频 · 建立九年级全册框架</div>
-          </div>
-          <span class="badge badge-pdf" style="background:#dcfce7; color:#16a34a;">NEW</span>
-        </a>
-        <a href="physics-grade8-review.html" class="resource-item">
-          <div class="file-icon">🧭</div>
-          <div class="file-info">
-            <div class="file-name">八下物理习题专项复习计划</div>
-            <div class="file-meta">5月-6月 · 压强、浮力、简单机械专项</div>
-          </div>
-          <span class="badge badge-pdf" style="background:#fef3c7; color:#d97706;">REVIEW</span>
-        </a>
-        <a href="physics.html" class="resource-item">
-          <div class="file-icon">🗓</div>
-          <div class="file-info">
-            <div class="file-name">物理学习计划总览</div>
-            <div class="file-meta">九年级暑假知识点 + 秋季习题复习入口</div>
-          </div>
-          <span class="badge badge-pdf" style="background:#f3e8ff; color:#9333ea;">PORTAL</span>
-        </a>
-        <a href="physics-grade9.html" class="resource-item">
-          <div class="file-icon">📘</div>
-          <div class="file-info">
-            <div class="file-name">九年级物理秋季习题视频复习计划</div>
-            <div class="file-meta">9月-11月 · 94节习题视频 · 按编号顺序推进</div>
-          </div>
-          <span class="badge badge-pdf" style="background:#e0f2fe; color:#0369a1;">NEW</span>
-        </a>
-      </div>
+    <section class="content-card">
+      <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚡</div>
+      <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">物理核心复习资料整理中</h2>
+      <p style="font-size: 0.9rem; max-width: 500px; margin: 0 auto;">八九年级物理电路图动态拆解与电路计算压轴题集即将更新上线。</p>
     </section>
-
-    <div style="text-align: center; padding: 40px 0; color: #d1d5db; font-size: 0.85rem;">
-      <p>© 2026 Owen Learning Center</p>
-      <p style="font-size: 0.65rem; margin-top: 5px;">Version: 20260424.1745 | Physics Hub v1.1.0</p>
-    </div>
   </div>
+
+  <footer>
+    <p>© 2026 初中物理复习中心 V2 · 保持全站统一架构风格</p>
+  </footer>
 </body>
 </html>

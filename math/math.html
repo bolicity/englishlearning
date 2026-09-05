@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>初中语文复习中心 V2 | Unified Hub</title>
+  <title>初中数学复习中心 V2 | Unified Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-main: #F8FAFC;
@@ -16,9 +16,9 @@
       --text-primary: #0F172A;
       --text-secondary: #475569;
       --text-muted: #64748B;
-      --brand-red: #DC2626;
-      --brand-red-light: #EF4444;
-      --brand-red-bg: #FEF2F2;
+      --brand-blue: #2563EB;
+      --brand-blue-light: #3B82F6;
+      --brand-blue-bg: #EFF6FF;
       --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
       --radius-sm: 8px;
       --radius-md: 12px;
@@ -42,12 +42,12 @@
     .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); }
     .brand-logo {
       width: 40px; height: 40px;
-      background: linear-gradient(135deg, var(--brand-red), var(--brand-red-light));
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-light));
       color: white; border-radius: var(--radius-sm);
       display: flex; align-items: center; justify-content: center;
       font-weight: 800; font-size: 1rem;
     }
-    .brand-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--brand-red); }
+    .brand-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--brand-blue); }
     .brand-subtitle { font-size: 0.78rem; color: var(--text-muted); }
     .back-btn {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -56,7 +56,7 @@
       border-radius: var(--radius-sm); text-decoration: none;
       font-weight: 600; font-size: 0.88rem; transition: all 0.2s ease;
     }
-    .back-btn:hover { background-color: var(--brand-red-bg); color: var(--brand-red-light); }
+    .back-btn:hover { background-color: var(--brand-blue-bg); color: var(--brand-blue-light); }
 
     .container {
       max-width: 1240px; margin: 0 auto;
@@ -64,11 +64,11 @@
       display: flex; flex-direction: column; gap: 2rem;
     }
     .hero-card {
-      background: linear-gradient(135deg, #FFFFFF 0%, #FEF2F2 100%);
-      border: 1px solid #FECDD3; border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 100%);
+      border: 1px solid #BFDBFE; border-radius: var(--radius-lg);
       padding: 2.2rem; box-shadow: var(--shadow-sm);
     }
-    .hero-title { font-family: 'Outfit', sans-serif; font-size: 2.1rem; font-weight: 800; color: var(--brand-red); margin-bottom: 0.5rem; }
+    .hero-title { font-family: 'Outfit', sans-serif; font-size: 2.1rem; font-weight: 800; color: var(--brand-blue); margin-bottom: 0.5rem; }
     .hero-desc { font-size: 1rem; color: var(--text-secondary); }
 
     .content-card {
@@ -87,10 +87,10 @@
   <header>
     <div class="nav-container">
       <a href="../index.html" class="brand">
-        <div class="brand-logo">语</div>
+        <div class="brand-logo">数</div>
         <div>
-          <div class="brand-title">初中语文复习中心 V2</div>
-          <div class="brand-subtitle">同步核心教材 · 知识点精讲与中考考纲冲刺</div>
+          <div class="brand-title">初中数学复习中心 V2</div>
+          <div class="brand-subtitle">几何证明·二次函数·中考压轴题训练</div>
         </div>
       </a>
       <a href="../index.html" class="back-btn">
@@ -102,19 +102,19 @@
 
   <div class="container">
     <section class="hero-card">
-      <h1 class="hero-title">初中语文核心复习模块</h1>
-      <p class="hero-desc">涵盖文言文实词虚词、古诗文默写、名著阅读导读与中考作文写作范式。</p>
+      <h1 class="hero-title">初中数学核心复习模块</h1>
+      <p class="hero-desc">涵盖初中几何辅助线推导、二次函数图像综合与中考压轴题解题模型。</p>
     </section>
 
     <section class="content-card">
-      <div style="font-size: 2.5rem; margin-bottom: 1rem;">📖</div>
-      <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">语文核心复习资料整理中</h2>
-      <p style="font-size: 0.9rem; max-width: 500px; margin: 0 auto;">最新一期中考语文标准化复习提纲与名著古诗词精讲即将上线更新。</p>
+      <div style="font-size: 2.5rem; margin-bottom: 1rem;">📐</div>
+      <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">数学核心复习资料整理中</h2>
+      <p style="font-size: 0.9rem; max-width: 500px; margin: 0 auto;">最新一期中考数学压轴模型与辅助线口诀精讲即将上线。</p>
     </section>
   </div>
 
   <footer>
-    <p>© 2026 初中语文复习中心 V2 · 保持全站统一架构风格</p>
+    <p>© 2026 初中数学复习中心 V2 · 保持全站统一架构风格</p>
   </footer>
 </body>
 </html>
