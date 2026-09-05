@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>初中英语九年级全套教材音频 & 听力中心 V2</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --brand-green: #15803D;
+      --brand-green-light: #16A34A;
+      --brand-green-bg: #F0FDF4;
+
+      --accent-blue: #2563EB;
+      --accent-blue-bg: #EFF6FF;
+
+      --accent-purple: #7C3AED;
+      --accent-purple-bg: #F3E8FF;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Sticky Navigation - Matching Unified Site Style */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky; top: 0; z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1240px; margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .brand {
+      display: flex; align-items: center; gap: 0.75rem;
+      text-decoration: none; color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--brand-green), var(--brand-green-light));
+      color: white; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1rem; flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif; font-weight: 700;
+      font-size: 1.2rem; color: var(--brand-green);
+    }
+
+    .brand-subtitle { font-size: 0.78rem; color: var(--text-muted); }
+
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 1rem; min-height: 44px;
+      background-color: var(--bg-subtle); color: var(--text-secondary);
+      border-radius: var(--radius-sm); text-decoration: none;
+      font-weight: 600; font-size: 0.88rem; transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background-color: var(--brand-green-bg); color: var(--brand-green-light);
+    }
+
+    /* Container Layout */
+    .container {
+      max-width: 1240px; margin: 0 auto;
+      padding: 2rem 1.25rem 4rem 1.25rem;
+      display: flex; flex-direction: column; gap: 2rem;
+    }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F0FDF4 100%);
+      border: 1px solid #BBF7D0; border-radius: var(--radius-lg);
+      padding: 2.2rem; box-shadow: var(--shadow-sm);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
+    }
+
+    .hero-tag {
+      display: inline-block; padding: 0.25rem 0.75rem;
+      background: var(--brand-green-light); color: white;
+      border-radius: 9999px; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif; font-size: 2.1rem;
+      font-weight: 800; color: var(--brand-green); margin-bottom: 0.75rem;
+    }
+
+    .hero-desc { font-size: 1rem; color: var(--text-secondary); max-width: 800px; }
+
+    .planet-link-btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.8rem 1.4rem; background: var(--brand-green);
+      color: white; border-radius: var(--radius-md);
+      text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      box-shadow: var(--shadow-md); transition: all 0.2s ease;
+    }
+
+    .planet-link-btn:hover {
+      background: #15803D; transform: translateY(-2px);
+    }
+
+    /* Floating Master Audio Player Bar */
+    .sticky-player-bar {
+      position: sticky; top: 72px; z-index: 40;
+      background: #FFFFFF; border: 2px solid var(--brand-green-light);
+      border-radius: var(--radius-md); padding: 1rem 1.5rem;
+      box-shadow: var(--shadow-lg); display: flex; flex-direction: column; gap: 0.6rem;
+    }
+
+    .player-title-row {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .playing-label {
+      font-size: 0.85rem; font-weight: 800; color: var(--brand-green);
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .playing-name {
+      font-size: 1.05rem; font-weight: 700; color: var(--text-primary);
+    }
+
+    .audio-control-bar {
+      width: 100%; outline: none; border-radius: var(--radius-sm);
+    }
+
+    /* Unit Accordion / Sections */
+    .unit-section {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);
+    }
+
+    .unit-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color);
+    }
+
+    .unit-title-group { display: flex; align-items: center; gap: 0.75rem; }
+
+    .unit-badge {
+      width: 44px; height: 44px; border-radius: var(--radius-sm);
+      background: var(--brand-green-bg); color: var(--brand-green);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.1rem;
+    }
+
+    .unit-h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); }
+
+    /* Audio Item Table / List */
+    .audio-list { display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .audio-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 1rem; background: var(--bg-subtle);
+      border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+      transition: all 0.2s ease; cursor: pointer;
+    }
+
+    .audio-row:hover {
+      background: var(--brand-green-bg); border-color: #A7F3D0;
+    }
+
+    .audio-row.active-playing {
+      background: var(--brand-green-bg); border-color: var(--brand-green-light);
+      box-shadow: 0 0 0 1.5px var(--brand-green-light);
+    }
+
+    .audio-info { display: flex; align-items: center; gap: 0.8rem; }
+
+    .audio-type-tag {
+      font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+    }
+
+    .tag-reading { background: #DCFCE7; color: #15803D; }
+    .tag-words { background: #FEF3C7; color: #B45309; }
+    .tag-listening { background: #EFF6FF; color: #1D4ED8; }
+    .tag-exam { background: #F3E8FF; color: #7C3AED; }
+
+    .audio-name { font-weight: 600; font-size: 0.95rem; color: var(--text-primary); }
+
+    .play-action-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.4rem 0.85rem; background: white; border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm); font-size: 0.82rem; font-weight: 700;
+      color: var(--brand-green-light); transition: all 0.2s ease;
+    }
+
+    .audio-row:hover .play-action-btn {
+      background: var(--brand-green-light); color: white; border-color: var(--brand-green-light);
+    }
+
+    footer {
+      background-color: var(--bg-card); border-top: 1px solid var(--border-color);
+      padding: 2rem 1.25rem; text-align: center; color: var(--text-muted); font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Unified Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <div class="brand-logo">ENG</div>
+        <div>
+          <div class="brand-title">初中英语九年级全套教材音频 & 听力中心 V2</div>
+          <div class="brand-subtitle">五·四学制上海课本原声 · 单元课文/生词朗读/练习册全真听力</div>
+        </div>
+      </a>
+      <a href="../index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        返回学习中心
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Hero Banner -->
+    <section class="hero-card">
+      <div>
+        <span class="hero-tag">🎧 九年级上册全套官方原声 79 首集结</span>
+        <h1 class="hero-title">初中英语教材音频 & 听力训练中心</h1>
+        <p class="hero-desc">
+          收录上海《五·四学制义务教育教科书 英语 九年级上册》及配套《练习册》全套音频：包含单元课文朗读 (Reading)、听说 (Viewing & Listening)、生词全览 (Words and Expressions) 及期中期末全真听力。
+        </p>
+      </div>
+      <div>
+        <a href="word-planet.html" class="planet-link-btn">
+          <span>🪐 进入单词星球</span>
+          <span>→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Master Floating Player -->
+    <section class="sticky-player-bar">
+      <div class="player-title-row">
+        <div class="playing-label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          正在播放：<span class="playing-name" id="playerTitle">点击下方列表选择音频曲目...</span>
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);" id="playerTrackCount">共 79 首音源</div>
+      </div>
+      <audio id="masterAudio" class="audio-control-bar" controls autoplay></audio>
+    </section>
+
+    <!-- Unit 1 -->
+    <section class="unit-section">
+      <div class="unit-header">
+        <div class="unit-title-group">
+          <div class="unit-badge">U1</div>
+          <div>
+            <h2 class="unit-h2">Unit 1 Ancient China (古代中国)</h2>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">课本配套朗读 + 练习册听力测试</p>
+          </div>
+        </div>
+      </div>
+      <div class="audio-list">
+        <div class="audio-row" onclick="playAudio('Unit 1 Ancient China 课文朗读', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 1/01 Unit 1 Ancient China.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">课本朗读</span>
+            <span class="audio-name">01 Unit 1 Ancient China (单元课文)</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+        <div class="audio-row" onclick="playAudio('Unit 1 Reading 深度阅读', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 1/04 Unit 1 Reading.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">Reading</span>
+            <span class="audio-name">04 Unit 1 Reading 课文精读朗读</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+        <div class="audio-row" onclick="playAudio('Unit 1 Words and expressions 生词朗读', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 1/06 Unit 1 Words and expressions.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-words">生词表</span>
+            <span class="audio-name">06 Unit 1 Words and expressions 核心词汇朗读</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+        <div class="audio-row" onclick="playAudio('Unit 1 练习册听力 A1', '教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/01 Unit 1/01 Unit 1 A1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">01 Unit 1 练习册听力 A1 专项训练</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Unit 2 -->
+    <section class="unit-section">
+      <div class="unit-header">
+        <div class="unit-title-group">
+          <div class="unit-badge">U2</div>
+          <div>
+            <h2 class="unit-h2">Unit 2 People and their jobs (职业与人物)</h2>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">课本配套朗读 + 练习册听力测试</p>
+          </div>
+        </div>
+      </div>
+      <div class="audio-list">
+        <div class="audio-row" onclick="playAudio('Unit 2 People and their jobs 课文', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 2/07 Unit 2 People and their jobs.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">课本朗读</span>
+            <span class="audio-name">07 Unit 2 People and their jobs 单元主题</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+        <div class="audio-row" onclick="playAudio('Unit 2 Reading 课文精读', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 2/10 Unit 2 Reading.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">Reading</span>
+            <span class="audio-name">10 Unit 2 Reading 课文精读朗读</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+        <div class="audio-row" onclick="playAudio('Unit 2 Words and expressions 生词朗读', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 2/12 Unit 2 Words and expressions.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-words">生词表</span>
+            <span class="audio-name">12 Unit 2 Words and expressions 核心词汇朗读</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+        <div class="audio-row" onclick="playAudio('Unit 2 练习册听力 A1', '教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/02 Unit 2/06 Unit 2 A1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-listening">练习册听力</span>
+            <span class="audio-name">06 Unit 2 练习册听力 A1 专项训练</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Unit 3 -->
+    <section class="unit-section">
+      <div class="unit-header">
+        <div class="unit-title-group">
+          <div class="unit-badge">U3</div>
+          <div>
+            <h2 class="unit-h2">Unit 3 Family life (家庭生活)</h2>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">课本配套朗读 + 练习册听力测试</p>
+          </div>
+        </div>
+      </div>
+      <div class="audio-list">
+        <div class="audio-row" onclick="playAudio('Unit 3 Reading 课文精读', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 3/16 Unit 3 Reading.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-reading">Reading</span>
+            <span class="audio-name">16 Unit 3 Reading 课文精读朗读</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+        <div class="audio-row" onclick="playAudio('Unit 3 Words and expressions 生词朗读', '教程音频/《义务教育教科书（五·四学制） 英语 九年级上册》配套音频/Unit 3/18 Unit 3 Words and expressions.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-words">生词表</span>
+            <span class="audio-name">18 Unit 3 Words and expressions 核心词汇朗读</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 期中全真听力评价 -->
+    <section class="unit-section" style="border-color: #DDD6FE;">
+      <div class="unit-header">
+        <div class="unit-title-group">
+          <div class="unit-badge" style="background: #F3E8FF; color: #7C3AED;">期中</div>
+          <div>
+            <h2 class="unit-h2" style="color: #7C3AED;">期中评价全真听力 (Part 1-1 ~ Part 1-6)</h2>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">模拟考场全真听力测试原声</p>
+          </div>
+        </div>
+      </div>
+      <div class="audio-list">
+        <div class="audio-row" onclick="playAudio('期中评价 听力 Part 1-1', '教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/04 期中评价/17 期中评价 Part 1-1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-exam">期中考场听力</span>
+            <span class="audio-name">17 期中评价 Part 1-1 听力真题</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+        <div class="audio-row" onclick="playAudio('期中评价 听力 Part 1-3', '教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/04 期中评价/18 期中评价 Part 1-3.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-exam">期中考场听力</span>
+            <span class="audio-name">18 期中评价 Part 1-3 听力真题</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 期末全真听力评价 -->
+    <section class="unit-section" style="border-color: #DDD6FE;">
+      <div class="unit-header">
+        <div class="unit-title-group">
+          <div class="unit-badge" style="background: #F3E8FF; color: #7C3AED;">期末</div>
+          <div>
+            <h2 class="unit-h2" style="color: #7C3AED;">期末评价全真听力 (Part 1-1 ~ Part 1-6)</h2>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">期末综合冲刺全真听力测试原声</p>
+          </div>
+        </div>
+      </div>
+      <div class="audio-list">
+        <div class="audio-row" onclick="playAudio('期末评价 听力 Part 1-1', '教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/08 期末评价/39 期末评价 Part 1-1.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-exam">期末考场听力</span>
+            <span class="audio-name">39 期末评价 Part 1-1 听力真题</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+        <div class="audio-row" onclick="playAudio('期末评价 听力 Part 1-5', '教程音频/《义务教育教科书（五·四学制） 英语练习部分 九年级上册》配套音频/08 期末评价/42 期末评价 Part 1-5.mp3', this)">
+          <div class="audio-info">
+            <span class="audio-type-tag tag-exam">期末考场听力</span>
+            <span class="audio-name">42 期末评价 Part 1-5 听力真题</span>
+          </div>
+          <button class="play-action-btn">▶ 播放音频</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 初中英语九年级全套教材音频 & 听力中心 V2 · 保持版本独立控制</p>
+  </footer>
+
+  <script>
+    function playAudio(name, path, element) {
+      const player = document.getElementById('masterAudio');
+      const titleSpan = document.getElementById('playerTitle');
+
+      // 高亮当前选中的行
+      document.querySelectorAll('.audio-row').forEach(row => row.classList.remove('active-playing'));
+      if (element) element.classList.add('active-playing');
+
+      titleSpan.innerText = name;
+      player.src = encodeURI(path);
+      player.play();
+    }
+  </script>
+</body>
+</html>
