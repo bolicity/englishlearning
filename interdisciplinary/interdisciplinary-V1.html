@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>初中跨学科案例研究 & 中考真题讲义 V1 | Interdisciplinary Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --purple-main: #7C3AED;
+      --purple-light: #F3E8FF;
+      --purple-dark: #6D28D9;
+      
+      --blue-main: #2563EB;
+      --blue-light: #EFF6FF;
+
+      --emerald-main: #059669;
+      --emerald-light: #ECFDF5;
+      
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky; top: 0; z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-container {
+      max-width: 1240px; margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); }
+    .brand-logo {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple-main));
+      color: white; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.1rem;
+    }
+    .brand-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--purple-main); }
+    .brand-subtitle { font-size: 0.78rem; color: var(--text-muted); }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 1rem; background-color: var(--bg-subtle);
+      color: var(--text-secondary); border-radius: var(--radius-sm);
+      text-decoration: none; font-weight: 600; font-size: 0.88rem; transition: all 0.2s ease;
+    }
+    .back-btn:hover { background-color: var(--purple-light); color: var(--purple-main); }
+
+    .container {
+      max-width: 1240px; margin: 0 auto;
+      padding: 2rem 1.25rem 4rem 1.25rem;
+      display: flex; flex-direction: column; gap: 2rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F3E8FF 100%);
+      border: 1px solid #E9D5FF;
+      border-radius: var(--radius-lg);
+      padding: 2.2rem; box-shadow: var(--shadow-sm);
+    }
+    .hero-tag {
+      display: inline-block; padding: 0.25rem 0.75rem;
+      background: var(--purple-main); color: white;
+      border-radius: 9999px; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .hero-title {
+      font-family: 'Outfit', sans-serif; font-size: 2.2rem;
+      font-weight: 800; color: var(--purple-dark); margin-bottom: 0.75rem;
+    }
+    .hero-desc { font-size: 1rem; color: var(--text-secondary); max-width: 950px; }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem; box-shadow: var(--shadow-sm);
+    }
+    .card-header {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1.25rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .card-icon {
+      width: 40px; height: 40px; border-radius: var(--radius-sm);
+      background: var(--purple-light); color: var(--purple-main);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; font-weight: 700;
+    }
+    .card-h2 { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); }
+
+    .grid-2 {
+      display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+    }
+    @media (min-width: 768px) { .grid-2 { grid-template-columns: repeat(2, 1fr); } }
+
+    .pdf-viewer-box {
+      width: 100%; height: 600px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden; background: #525659;
+      margin-top: 1rem;
+    }
+    .pdf-viewer-box iframe {
+      width: 100%; height: 100%; border: none;
+    }
+
+    .btn-preview {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 1.1rem; background-color: var(--purple-main);
+      color: white; border-radius: var(--radius-sm);
+      text-decoration: none; font-weight: 600; font-size: 0.88rem; cursor: pointer;
+    }
+    .btn-preview:hover { background-color: var(--purple-dark); }
+
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 1.25rem; text-align: center;
+      color: var(--text-muted); font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <div class="brand-logo">跨</div>
+        <div>
+          <div class="brand-title">初中跨学科研究与中考真题指南 V1</div>
+          <div class="brand-subtitle">项目化学习 · 生物/化学/地理综合 · 真实案例PDF在线预览</div>
+        </div>
+      </a>
+      <a href="../index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        返回学习中心
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Hero Banner -->
+    <section class="hero-card">
+      <span class="hero-tag">💡 2026 中考跨学科独立专页 V1</span>
+      <h1 class="hero-title">初中跨学科项目化学习 & 中考高分案例库</h1>
+      <p class="hero-desc">
+        上海中考跨学科考试占分 15 分，重点考察地理、生物、化学、物理四大自然科学知识在实际生活探究与社会工程中的综合运用。本专页集成了<strong>《中药黄芪成分萃取与药理》</strong>与<strong>《青浦薰衣草生态与精油蒸馏》</strong>两大中考真实高分讲义。
+      </p>
+    </section>
+
+    <!-- 案例一：22中考 黄芪项目化研究 -->
+    <section class="card" id="case-huangqi">
+      <div class="card-header">
+        <div class="card-icon">🌿</div>
+        <div>
+          <h2 class="card-h2">案例一：中药黄芪成分提取与药理探究 (中考真题解析)</h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">融合生物（植物根系与细胞活性）、化学（溶剂萃取与沉淀分析）</p>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1rem;">
+        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7;">
+          <strong>项目背景：</strong>黄芪作为我国传统名贵中药材，其有效成分“黄芪多糖”与“黄芪甲苷”具有极高的免疫调节价值。本案例探究了黄芪根部的药用结构、水煮浸提与乙醇沉淀工艺，并利用化学实验验证不同温度下的浸出效率。
+        </p>
+        <div style="margin-top: 0.75rem;">
+          <a href="#pdf-huangqi" class="btn-preview">📄 页面下方在线无缝直接预览 PDF 讲义 </a>
+          <a href="22中考 黄芪.pdf" target="_blank" class="back-btn" style="margin-left: 8px;">在新标签页打开高清 PDF ↗</a>
+        </div>
+      </div>
+
+      <div class="pdf-viewer-box" id="pdf-huangqi">
+        <iframe src="22中考 黄芪.pdf" title="22中考 黄芪 PDF"></iframe>
+      </div>
+    </section>
+
+    <!-- 案例二：青浦薰衣草生态探究 -->
+    <section class="card" id="case-lavender">
+      <div class="card-header">
+        <div class="card-icon">🪻</div>
+        <div>
+          <h2 class="card-h2">案例二：青浦薰衣草园生态环境与精油萃取探究</h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">融合地理（青浦水乡气候与土壤）、化学（水蒸气蒸馏法与油水分离）</p>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1rem;">
+        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7;">
+          <strong>项目背景：</strong>结合上海青浦区特色农业与美丽乡村建设，探究薰衣草在弱碱性沙质土壤中的生长条件，并通过化学实验课搭建水蒸气蒸馏装置，提取薰衣草纯露与精油。
+        </p>
+        <div style="margin-top: 0.75rem;">
+          <a href="#pdf-lavender" class="btn-preview">📄 页面下方在线无缝直接预览 PDF 讲义 </a>
+          <a href="青浦薰衣草.pdf" target="_blank" class="back-btn" style="margin-left: 8px;">在新标签页打开高清 PDF ↗</a>
+        </div>
+      </div>
+
+      <div class="pdf-viewer-box" id="pdf-lavender">
+        <iframe src="青浦薰衣草.pdf" title="青浦薰衣草 PDF"></iframe>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2026 初中跨学科研究与中考真题指南 V1 · 保持版本独立控制</p>
+  </footer>
+</body>
+</html>
