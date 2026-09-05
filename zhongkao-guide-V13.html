@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>2026 ��郎��� V13 | 銝剜𧋦韐舫�块瑟��兄WIS繚�賡�擃䀝葉�函輕摨西圾��</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --brand-blue: #1E3A8A;
+      --brand-blue-light: #2563EB;
+      --brand-blue-bg: #EFF6FF;
+      
+      --accent-gold: #D97706;
+      --accent-gold-bg: #FEF3C7;
+      
+      --accent-green: #059669;
+      --accent-green-bg: #ECFDF5;
+
+      --accent-purple: #7C3AED;
+      --accent-purple-bg: #F3E8FF;
+
+      --accent-red: #DC2626;
+      --accent-red-bg: #FEF2F2;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header Sticky */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-light));
+      color: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--brand-blue);
+    }
+
+    .brand-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      min-height: 44px;
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    .back-btn:hover {
+      background-color: var(--brand-blue-bg);
+      color: var(--brand-blue);
+    }
+
+    /* Layout Desktop vs Mobile */
+    .layout-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem 1.25rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    @media (min-width: 980px) {
+      .layout-container {
+        grid-template-columns: 290px 1fr;
+        gap: 2rem;
+        padding-top: 2rem;
+      }
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 4.2rem;
+      z-index: 40;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    @media (min-width: 980px) {
+      .sidebar {
+        top: 5rem;
+        padding: 1.25rem;
+        max-height: calc(100vh - 6rem);
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+    }
+
+    .sidebar-category-header {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--brand-blue);
+      text-transform: uppercase;
+      margin: 0.75rem 0 0.4rem 0;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .sidebar-category-header:first-child {
+      margin-top: 0;
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 980px) {
+      .sidebar-menu {
+        flex-direction: column;
+        gap: 0.2rem;
+        white-space: normal;
+      }
+    }
+
+    .sidebar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 0.8rem;
+      min-height: 40px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    @media (min-width: 980px) {
+      .sidebar-link {
+        display: flex;
+        background: transparent;
+        border: none;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.86rem;
+      }
+    }
+
+    .sidebar-link:hover, .sidebar-link:active {
+      background-color: var(--brand-blue-bg);
+      color: var(--brand-blue-light);
+      border-color: var(--brand-blue-light);
+    }
+
+    /* Main Content */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 100%);
+      border: 1px solid #DBEAFE;
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (min-width: 768px) {
+      .hero-card { padding: 2rem; }
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--brand-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title { font-size: 2.2rem; }
+    }
+
+    .content-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      scroll-margin-top: 5rem;
+    }
+
+    @media (min-width: 768px) {
+      .content-card { padding: 2rem; }
+    }
+
+    .category-banner {
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .banner-purple { background: #F3E8FF; border: 1px solid #E9D5FF; color: #7C3AED; }
+    .banner-blue { background: #EFF6FF; border: 1px solid #DBEAFE; color: #1D4ED8; }
+    .banner-gold { background: #FEF3C7; border: 1px solid #FDE68A; color: #B45309; }
+    .banner-green { background: #ECFDF5; border: 1px solid #A7F3D0; color: #047857; }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    @media (min-width: 768px) {
+      .card-title { font-size: 1.4rem; }
+    }
+
+    .sub-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brand-blue);
+      margin: 1.25rem 0 0.6rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* 銝剜𧋦韐舫�帋��箸甅撘� */
+    .zhongben-box {
+      background: linear-gradient(135deg, #F3E8FF 0%, #FFFFFF 100%);
+      border: 2px solid #7C3AED;
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-md);
+      scroll-margin-top: 6rem;
+    }
+
+    .zhongben-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      background-color: #7C3AED;
+      color: white;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .zhongben-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #5B21B6;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ��䔉銝剖郎�賡��其��箸甅撘� */
+    .wenlai-box {
+      background: linear-gradient(135deg, #FEF3C7 0%, #FFFFFF 100%);
+      border: 2px solid #D97706;
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-md);
+      scroll-margin-top: 6rem;
+    }
+
+    .wenlai-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      background-color: #D97706;
+      color: white;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .wenlai-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #92400E;
+      margin-bottom: 0.5rem;
+    }
+
+    .volunteers-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .volunteers-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .volunteer-subcard {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+    }
+
+    .data-table-container {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-top: 0.75rem;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      min-width: 680px;
+    }
+
+    .data-table th {
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      font-weight: 600;
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .data-table td {
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .badge-tag {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .tag-blue { background: #EFF6FF; color: #1D4ED8; }
+    .tag-purple { background: #F3E8FF; color: #7C3AED; }
+    .tag-green { background: #ECFDF5; color: #047857; }
+    .tag-gold { background: #FEF3C7; color: #B45309; }
+
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">���</div>
+        <div>
+          <div class="brand-title">2026 ��郎銝𤾸𤙴����脫��� V13</div>
+          <div class="brand-subtitle">�啣�銝剜𧋦韐舫�𡁏踎�� 繚 蝏枏���䔉SWIS銝𦒘�摰萘頂瘛勗漲閫��</div>
+        </div>
+      </a>
+      <a href="index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        餈𥪜�摮虫�銝剖�
+      </a>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    <!-- 撌虫儒靘扯器�誩紡�� -->
+    <aside class="sidebar">
+      <div class="sidebar-category-header" style="color: #7C3AED;">�� �賢���郎嚗帋葉�祈敞��</div>
+      <ul class="sidebar-menu">
+        <li><a href="#cat-zhongben" class="sidebar-link" style="color: #7C3AED; font-weight: 800;">�� 銝剜𧋦韐舫�𡁜�蝏游漲閫��</a></li>
+        <li><a href="#zb-pattern" class="sidebar-link">�� �㙈 3+4 �孵�璅∪�銝𤾸笆��𧋦蝘�</a></li>
+        <li><a href="#zb-score" class="sidebar-link">�� �㴓 敶訫��冽�銝舘蓮畾菟�朞���</a></li>
+        <li><a href="#zb-pros-cons" class="sidebar-link">�� �働 ���鈭箇黎銝𦒘�蝻箇�撖寞�</a></li>
+      </ul>
+
+      <div class="sidebar-category-header" style="color: #B45309;">潃� �滨��𠉛弦嚗𡁏��乩葉摮血𤙴���</div>
+      <ul class="sidebar-menu">
+        <li><a href="#cat2-wenlai" class="sidebar-link" style="color: #B45309; font-weight: 800;">潃� ��䔉SWIS 瘛勗漲�𠉛弦獢��</a></li>
+        <li><a href="#wenlai-courses" class="sidebar-link">�� �瑌�龖/�蘓�晠 �交𧋦擃䀝葉/蝢𡡞�/A-Level</a></li>
+        <li><a href="#wenlai-tuition" class="sidebar-link">�� �兛 12銝�/撟湧��找遠瘥𥪜郎韐�</a></li>
+        <li><a href="#wenlai-exam" class="sidebar-link">�� �㵪� �滨�霂閙辺隞嗡��亥��</a></li>
+      </ul>
+
+      <div class="sidebar-category-header" style="color: #1D4ED8;">�� �賡�擃䀝葉銝𦒘�摰萘頂</div>
+      <ul class="sidebar-menu">
+        <li><a href="#cat2-qibao-list" class="sidebar-link">�� 銝��蝟� 3 憭批𤙴���銝剖笆瘥�</a></li>
+        <li><a href="#cat2-tuition" class="sidebar-link">�� 21��摮行嵗摮西晶銝舘紋蝔讠���</a></li>
+      </ul>
+
+      <div class="sidebar-category-header" style="color: #047857;">��� 瘚瑕��坔郎���</div>
+      <ul class="sidebar-menu">
+        <li><a href="#cat3-singapore" class="sidebar-link" style="color: #047857; font-weight: 800;">�瑌�龖 �滨�嚗𡁏鰵�惩辺�坔郎�冽艶</a></li>
+      </ul>
+          <!-- 撘訫紡頝唾蓮嚗帋葉�祈敞�𡁶𡠺蝡𧢲��𦯀�憿� -->
+      <section class="content-card" id="cat-zhongben">
+        <div class="category-banner banner-purple">
+          <div style="font-size: 1.25rem;">��</div>
+          <div>
+            <strong style="font-size: 1.05rem;">�祉�銝㯄����嚗帋�瘚瑚葉�祈敞�� (3+4) �湧�𡁏𧋦蝘穃�閫��</strong>
+            <div style="font-size: 0.85rem; opacity: 0.9;">3撟港葉�� + 4撟游��墧𧋦蝘𡢅��踹�擃䁅����讠�鈭㚁�撌脩𡠺蝡见�霈曆�憿寞��烾△�Ｕ��</div>
+          </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #F3E8FF 0%, #FFFFFF 100%); border: 2px solid #7C3AED; border-radius: var(--radius-lg); padding: 1.5rem; text-align: center;">
+          <h2 style="font-size: 1.35rem; color: #5B21B6; margin-bottom: 0.5rem;">�� 銝𦠜絲銝剜𧋦韐舫�� (3+4) 瘛勗漲��� V1 銝㯄△撌脖�蝥�</h2>
+          <p style="font-size: 0.92rem; color: #475569; margin-bottom: 1.25rem;">��鉄�孵�璅∪���蓮畾菔����𠹺�瘚瑕��冽��臬之摮艾���瘚瑞㩞�箏郎�Ｙ��剝秄撖孵藁�祉��Ｘ嵗�条���</p>
+          <a href="zhongben-guide-V2.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background-color: #7C3AED; color: white; border-radius: var(--radius-md); text-decoration: none; font-weight: 700; font-size: 0.95rem; box-shadow: var(--shadow-md);">
+            �孵稬餈𥕦�嚗帋葉�祈敞�� (3+4) �祉���� <span>��</span>
+          </a>
+        </div>
+      </section>極銝擧惣�賢��惩撩憿對�撠曹���98%+��</td>
+              </tr>
+              <tr>
+                <td><strong>銝𦠜絲�菜㦤摮阡堺</strong></td>
+                <td>�砍��祉�</td>
+                <td><span class="badge-tag tag-purple">�菜�撌亦��𠰴��芸𢆡�� / �箄��園��</span></td>
+                <td>銝𦠜絲撣�㦤�萄極銝𡁜郎�� / 銝𦠜絲撣�之隡堒極銝𡁜郎��</td>
+                <td>銝湔葛�舐�銝舘�憭���𣳇��寥��∴�撖孵藁�賭�銝𡡞�蝡航�憭���牐�銝𠾼��</td>
+              </tr>
+              <tr>
+                <td><strong>銝𦠜絲蝚砌�撌乩�憭批郎</strong></td>
+                <td>�砍��祉�</td>
+                <td><span class="badge-tag tag-purple">�箄��園�惩極蝔� / �唳旿蝘穃郎銝𤾸之�唳旿</span></td>
+                <td>銝𦠜絲撣�極銝𡁏��臬郎�� / 銝𦠜絲撣�㩞摮𣂼極銝𡁜郎��</td>
+                <td>撌亦�摨閗㟲瘛勗�嚗𣬚㩞摮𣂷縑�臭�憭扳㺭�株�銝𡁜笆�亦揮撖���</td>
+              </tr>
+              <tr>
+                <td><strong>銝𦠜絲撌亦����臬之摮�</strong></td>
+                <td>�砍��祉�</td>
+                <td><span class="badge-tag tag-purple">頧券�鈭日�帋縑�瑚��批� / 瘙質膠�滚𦛚撌亦�</span></td>
+                <td>銝𦠜絲撣�之隡堒極銝𡁜郎�� / 銝𦠜絲撣���𡑒�銝𡁻�蝥找葉摮�</td>
+                <td>�喲�𡁜𧑐����⏛蝛箔�瘙質膠�園�惩笆��畺�鳴�撠曹�蝔喳��扳�擃塩��</td>
+              </tr>
+              <tr>
+                <td><strong>銝𦠜絲��郎��</strong></td>
+                <td>�砍��祉�</td>
+                <td><span class="badge-tag tag-blue">�萄���𦛚 / �鍦�蝞∠�嚗�葉憭硋�雿頣�</span></td>
+                <td>銝𦠜絲撣��銝𡁜郎�� / 銝𦠜絲撣��韐豢�皜詨郎��</td>
+                <td>���銝擧鰵�嗅睸��緵隞���∩��詨������</td>
+              </tr>
+              <tr>
+                <td><strong>銝𦠜絲�亙熒�餃郎��</strong></td>
+                <td>�砍��祉�</td>
+                <td><span class="badge-tag tag-green">�斤�摮� / �餃郎敶勗����� / �臬郎</span></td>
+                <td>銝𦠜絲撣�晓�𣂼郎�� / 銝𦠜絲撣�㪗�笔郎��</td>
+                <td>銝𦠜絲��之銝厩睻�駁堺�斤�銝𤾸龫��鈭箏��滩��孵��箏𧑐嚗屸�瘙����之��</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ���鈭箇黎�文� -->
+        <div style="margin-top: 1.25rem; padding: 1rem 1.25rem; background: #FAF5FF; border-left: 4px solid #7C3AED; border-radius: 4px;">
+          <strong style="color: #5B21B6; font-size: 0.95rem;">�㴓 �芯�摮衣�������㗇𥋘銝剜𧋦韐舫�𡄯�</strong>
+          <ul style="font-size: 0.88rem; color: #475569; margin-top: 0.5rem; padding-left: 1.2rem; line-height: 1.6;">
+            <li><strong>銝剛���隡啣��啣銁�桅�銝剜虜/銝渡�蝥選�550�� - 630���</strong>嚗帋��滨�擃䀝葉颲�贋�橘�銝𦠜芦�𡁻�銝剜𧊋�仿����鈭㗇�����㗇𥋘銝剜𧋦韐舫�朞�蝔喳戎��香�冽𠯫�嗆𧋦蝘㻫��</li>
+            <li><strong>�冽�摰噼殿�賢�撘箝���銝𡁜�曉��𡒊＆</strong>嚗𡁜笆撌亦���擪����恣蝞埈㦤��㩞���摨𠉛鍂�衤�銝𡁏��𡒊＆�渲閎��</li>
+            <li><strong>餈賣��找遠瘥𥪯�撠曹�蝔喳���</strong>嚗𡁜��𥕦�頧駁����摮衣��睲�摰嗅滬蝏𤩺�韐��嚗���墧𧋦蝘烐𤣰韐對���</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ��䔉銝剖郎�賡��� SWIS �滨�瘛勗漲�𠉛弦銝枏躹 -->
+      <section class="content-card" id="cat2-wenlai">
+        <div class="category-banner banner-gold">
+          <div style="font-size: 1.25rem;">�㙈</div>
+          <div>
+            <strong style="font-size: 1.05rem;">�滨��𠉛弦蝷箄�摮行嵗嚗帋�瘚瑟��乩葉摮血𤙴��� (ShangHai WenLai International School, SWIS)</strong>
+            <div style="font-size: 0.85rem; opacity: 0.9;">1994撟渡眏銝��銝剖郎�𥕦�嚗䔶�瘚瑕��坔�擐𡝗鸌�孵�����21���肽繮�孵�摮衣��賡�擃䀝葉嚗�</div>
+          </div>
+        </div>
+
+        <div class="wenlai-box">
+          <span class="wenlai-badge">潃� �𧼮郎�峕艶銝𤾸�摮衣�頨思遢</span>
+          <div class="wenlai-title">銝𦠜絲��䔉銝剖郎�賡��� (SWIS) �詨�璁��</div>
+          <p style="font-size: 0.92rem; color: #475569; line-height: 1.65;">
+            <strong>�𧼮郎皜𦠜�</strong>嚗𡁏��仿�銝剔眏銝𦠜絲撣��摰苷葉摮虫�1994撟游��痹��臭�摰苷葉摮行��脤��Ｙ�鈭脣�摮𣂷��詨�瘞穃�擃䀝葉��郎�∪�鈭思�摰苷葉摮阡��𡁏�摮西�皞僐��𤙴���嚗𠄎WIS嚗㗇糓銝𦠜絲撣���寡繮���撅閖�銝剖𤙴��紋蝔贝��寧���21���嘥郎�∩�銝�嚗�<strong>�交��賢�擃䀝葉摮衣�銝𤾸𤙴��郎蝐𨧀�𨅯�摮衣��苷���</strong>��
+          </p>
+
+          <!-- �𥕦之�詨�璅∪���� -->
+          <div class="volunteers-grid" style="margin-top: 1.25rem;" id="wenlai-courses">
+            <!-- 霂曄�雿梶頂 -->
+            <div class="volunteer-subcard" style="border-color: #FCD34D; background: white;">
+              <div style="font-weight: 700; color: #B45309; font-size: 0.98rem;">�� 銝匧之�賡�霂曄��𡁻�</div>
+              <div style="font-size: 0.85rem; color: #475569; margin-top: 0.4rem; line-height: 1.6;">
+                �� <strong>�蘓�晠 �交𧋦擃䀝葉霂曄� (瘝芯�蝚砌����)</strong>嚗𡁜�甇交𠯫�祇�銝剛紋蝔页��𣂷��亥祗 JLPT 撘箏�銝� EJU �躰���撖潘�霈曄�蝘穃�撉𣬚号��<br>
+                �� <strong>�枂�瑌 蝢𡡞� + AP 霂曄�</strong>嚗𡁶��賡�銝剛紋蝔𧢲��� + 10+ �� AP 霂曄�嚗諹���𤙴摰嗉祗��/��蟮/�踵祥��<br>
+                �� <strong>�龖�𣇪 A-Level 霂曄�</strong>嚗𡁻𢒰�𤏸㘚�� G5 �齿嵗嚗峕�靘� MAT/PAT 銝㯄★�娪���
+              </div>
+            </div>
+
+            <!-- 摮西晶隡睃飵 -->
+            <div class="volunteer-subcard" style="border-color: #FCD34D; background: white;" id="wenlai-tuition">
+              <div style="font-weight: 700; color: #B45309; font-size: 0.98rem;">�兛 2026 ���啣郎韐嫣�擃䀹�找遠瘥�</div>
+              <div style="font-size: 0.85rem; color: #475569; margin-top: 0.4rem; line-height: 1.6;">
+                �� <strong>摮西晶���</strong>嚗𡁶漲 <strong>12.0 銝��鈭箸�撣� / 摮血僑</strong><br>
+                �� <strong>雿誩挪韐�</strong>嚗𡁶漲 <strong>5,000 ��犖瘞穃� / 摮血僑</strong><br>
+                �� <em>撖寞����嚗朞�銝��敺瑟����(18銝�/撟�)銝𤾸��匧�(21銝�/撟�)嚗�郎韐嫣熔瘞𡢅��找遠瘥𥪯��踹楊憭改�</em>
+              </div>
+            </div>
+
+            <!-- �亥���蝚磰��∩辣 -->
+            <div class="volunteer-subcard" style="border-color: #FCD34D; background: white;" id="wenlai-exam">
+              <div style="font-weight: 700; color: #B45309; font-size: 0.98rem;">�㵪� �芯蜓�𤤿�銝𤾸�霂剛�蝚磰��∩辣</div>
+              <div style="font-size: 0.85rem; color: #475569; margin-top: 0.4rem; line-height: 1.6;">
+                �� <strong>�㗇�敶Ｗ�</strong>嚗𡁏㺭摮衣�霂� + �梯祗/�亥祗蝚磰� + 蝏澆�敺瑁��Ｚ���<br>
+                �� <strong>�𤣳 �滨�霂閧′���</strong>嚗𡁏�蝳誩��� �� 80 �� / ���嘥��� �� 6.0 �� / 憭𡁻��� �� 115 �� / �亥祗 JLPT 颲曉� N2 隞乩�嚗�虾�湔𦻖�唾窈�漤膄霂剛�蝚磰�嚗�<br>
+                �� <strong>銝𦠜絲���</strong>嚗𡁻�敶訫��𦒘葉���蝏抵噢�芯蜓�𤤿��批�蝥踹��硔��
+              </div>
+            </div>
+
+            <!-- ��郎�鞉� -->
+            <div class="volunteer-subcard" style="border-color: #FCD34D; background: white;">
+              <div style="font-weight: 700; color: #B45309; font-size: 0.98rem;">�� ��郎�箏藁嚗𡁶��亦����撘箸�</div>
+              <div style="font-size: 0.85rem; color: #475569; margin-top: 0.4rem; line-height: 1.6;">
+                �� <strong>�交𧋦�孵�</strong>嚗�70%+ �仿��冽�銝𡁶�����交𧋦 Top 30 憭批郎嚗��鈭砍之摮艾��漪�賢之摮艾��𡟺蝔餌眎憭批郎���摨𥪯�憛曉之摮佗���<br>
+                �� <strong>�梁��孵�</strong>嚗𡁜��硋��賜�撌� (IC)��憐�血之摮血郎�� (UCL)��瑤蝥血之摮艾���隡血�憭批郎��
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 銝��蝟� 3 憭批𤙴���銝剖笆瘥娍��� -->
+        <h3 class="sub-card-title" id="cat2-qibao-list">��儭� 銝��蝟� 3 憭批𤙴���銝剖翰�笔�雿滢�撖寞�</h3>
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>摮行嵗�滨妍</th>
+                <th>�𧼮郎�峕艶銝擧�扯捶</th>
+                <th>銝餅�霂曄�雿梶頂</th>
+                <th>摮西晶憸�� (撟�)</th>
+                <th>�詨�蝡硺��𥕦�雿�</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>銝��敺瑟���寥�蝥找葉摮�</strong></td>
+                <td>銝剖����擃䀝葉嚗��摰苷葉摮�+蝢𤾸𤙴敺瑟���對�</td>
+                <td><span class="badge-tag tag-blue">IBDP / A-Level</span></td>
+                <td><strong>18.0 銝��/撟�</strong></td>
+                <td>蝚砌�璇舫��齿嵗嚗䔶蜓�餌��� Top 30/G5 �齿嵗瘛瑞𤚗��</td>
+              </tr>
+              <tr>
+                <td><strong>銝𦠜絲��䔉銝剖郎�賡��� (SWIS)</strong></td>
+                <td>瘞穃�擃䀝葉�賡��剁�銝��銝剖郎�躰���𣪧�詨��∴�</td>
+                <td><span class="badge-tag tag-gold">�交𧋦擃䀝葉 / 蝢𡡞�AP / A-Level</span></td>
+                <td><strong>12.0 銝��/撟�</strong></td>
+                <td>瘝芯��蹱𠯫蝚砌����嚗�12銝���找遠瘥䈑���郎蝐齿擪�芥��</td>
+              </tr>
+              <tr>
+                <td><strong>敺瑁㘚銋𣂼郎�� (銝���∪躹)</strong></td>
+                <td>瘞穃��賡�擃䀝葉嚗��蝘穃噸�曹��躰���𣪧嚗�</td>
+                <td><span class="badge-tag tag-purple">A-Level / AP</span></td>
+                <td><strong>17.8 銝��/撟�</strong></td>
+                <td>銝�����嚗䔶蜓�餉㘚�� G5 銝𡒊�擃䁅紋蝔卝��</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 瘚瑕��坔郎 (�急鰵�惩辺) -->
+      <section class="content-card" id="cat3-singapore">
+        <div class="category-banner banner-green">
+          <div style="font-size: 1.25rem;">���</div>
+          <div>
+            <strong style="font-size: 1.05rem;">銝�蝥批�蝐颱�嚗𡁜�/擃䀝葉瘚瑕��坔郎��� (�急鰵�惩辺�坔郎�冽艶)</strong>
+            <div style="font-size: 0.85rem; opacity: 0.9;">�啣��∪𤙴蝡见之摮� (NUS, QS蝚�8)��臁霂餌倌霂���郎韐寞揖韐港�瘞訾�撅�� (PR) 暺���𡁻���</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>穢 2026 ��郎銝𤾸𤙴����脫��� V13 繚 �思葉�祈敞�𠾼���瘚瑟��乩葉摮血𤙴��� (SWIS) �𠰴𤙴���銝剖�蝏游漲���銝枏躹</p>
+  </footer>
+</body>
+</html>

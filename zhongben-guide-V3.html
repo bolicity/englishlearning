@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>2026 上海中本贯通 (3+4) 深度指南 V3 | 750分制下真实录取分数线校正版</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --brand-purple: #6D28D9;
+      --brand-purple-light: #7C3AED;
+      --brand-purple-bg: #F3E8FF;
+      
+      --brand-blue: #1E3A8A;
+      --brand-blue-light: #2563EB;
+      --brand-blue-bg: #EFF6FF;
+
+      --accent-green: #059669;
+      --accent-green-bg: #ECFDF5;
+
+      --accent-gold: #D97706;
+      --accent-gold-bg: #FEF3C7;
+
+      --accent-red: #DC2626;
+      --accent-red-bg: #FEF2F2;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header Sticky */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--brand-purple), var(--brand-purple-light));
+      color: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--brand-purple);
+    }
+
+    .brand-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      min-height: 44px;
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background-color: var(--brand-purple-bg);
+      color: var(--brand-purple);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Hero Card */
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F3E8FF 100%);
+      border: 1px solid #E9D5FF;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: #7C3AED;
+      color: white;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #5B21B6;
+      margin-bottom: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title { font-size: 2.3rem; }
+    }
+
+    .hero-desc {
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+      max-width: 950px;
+      line-height: 1.7;
+    }
+
+    /* Search & Filter Controls */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      background: var(--bg-subtle);
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    .search-input {
+      padding: 0.55rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      width: 100%;
+      max-width: 340px;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--brand-purple-light);
+    }
+
+    /* Grid layout */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* Section Card */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--brand-purple-bg);
+      color: var(--brand-purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .card-h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Subcard feature box */
+    .feature-box {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      color: var(--brand-purple);
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .feature-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Data Table */
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-top: 0.75rem;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      min-width: 820px;
+    }
+
+    .data-table th {
+      background: #F3E8FF;
+      color: #5B21B6;
+      font-weight: 700;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .data-table td {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .score-badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    .score-top { background: #FEF2F2; color: #DC2626; border: 1px solid #FCA5A5; }
+    .score-high { background: #F3E8FF; color: #7C3AED; border: 1px solid #DDD6FE; }
+    .score-mid { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+    .score-norm { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
+
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .badge-purple { background: #F3E8FF; color: #7C3AED; }
+    .badge-blue { background: #EFF6FF; color: #1D4ED8; }
+    .badge-green { background: #ECFDF5; color: #047857; }
+    .badge-gold { background: #FEF3C7; color: #B45309; }
+
+    /* Comparison Box */
+    .vs-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .vs-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .vs-box {
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      border: 1.5px solid;
+    }
+
+    .vs-zb {
+      background: #FAF5FF;
+      border-color: #C084FC;
+    }
+
+    .vs-gk {
+      background: #EFF6FF;
+      border-color: #93C5FD;
+    }
+
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Sticky Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">中本</div>
+        <div>
+          <div class="brand-title">2026 中本贯通指南 V3 (750分真题数据校正版)</div>
+          <div class="brand-subtitle">解析投档控制线 (520分+) 与真实录取线 (680分+) 的巨大差距</div>
+        </div>
+      </a>
+      <a href="index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        返回学习中心
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Hero Banner -->
+    <section class="hero-card">
+      <span class="hero-tag">⚠️ 真实录取分数线校正 · 上海新中考 750 分制</span>
+      <h1 class="hero-title">上海中本贯通真实录取分数线 (670-695分) 深度拆解</h1>
+      <p class="hero-desc">
+        上海新中考满分为 <strong>750 分</strong>。中本贯通近几年爆火，<strong>投档控制线（门槛约520~540分）≠ 实际录取分数线</strong>！热门专业（如计算机、信息安全、电气自动化）的真实录取线高达 <strong>675分 ~ 695分+</strong>，直接追平甚至超越市重点高中分数线！
+      </p>
+    </section>
+
+    <!-- 关键辨析卡片：控制线 vs 真实录取线 -->
+    <section class="card" style="background: linear-gradient(135deg, #FEF2F2 0%, #FFFFFF 100%); border-color: #FCA5A5;">
+      <h2 style="font-size: 1.25rem; color: #DC2626; margin-bottom: 0.75rem;">💡 极度重要辨析：为什么说“中本贯通分数线很高”？</h2>
+      <div class="grid-2">
+        <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;">
+          <strong style="color: #B91C1C;">1. 投档资格线 (资格门槛 520~540分)：</strong><br>
+          市教育考试院公布的“中本贯通最低投档控制线”通常为公办普通高中控制线。达线才具备填报志愿资格，但<strong>绝不等于能被录取</strong>。
+        </div>
+
+        <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;">
+          <strong style="color: #B91C1C;">2. 真实平行志愿录取线 (670~695分)：</strong><br>
+          由于采取“分数优先、遵循志愿”投档，高分考生纷纷避开普通高中高考压力、选择中本贯通直通本科，致使热门专业实际录取分数线一路上扬，直接碾压区重点、追平市重点！
+        </div>
+      </div>
+    </section>
+
+    <!-- 教育考试院 750分制下真实录取分数线汇总大表 -->
+    <section class="card" id="score-table-section">
+      <div class="card-header">
+        <div class="card-icon">📈</div>
+        <div>
+          <h2 class="card-h2">上海市中本贯通各热门专业真实录取分数线校正表 (750分制)</h2>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem;">基于最新投档录取数据整理（基准满分：上海中考 750 分）</p>
+        </div>
+      </div>
+
+      <!-- 搜索过滤框 -->
+      <div class="filter-bar">
+        <input type="text" id="scoreSearch" class="search-input" placeholder="🔍 搜索院校、中职学校或专业名称..." onkeyup="filterScores()">
+        <div style="font-size: 0.85rem; color: var(--text-secondary);">
+          满分基准：<strong>750 分</strong>（语数外各150、综合测试150、道法60、历史60、体育30）
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table" id="scoreTable">
+          <thead>
+            <tr>
+              <th>对口本科院校</th>
+              <th>合作中职学校</th>
+              <th>贯通培养专业</th>
+              <th>真实录取分数线 (750分制)</th>
+              <th>竞争梯度与高中对比参考</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>上海电力大学</strong></td>
+              <td>上海市商业会计学校</td>
+              <td><span class="badge badge-purple">信息安全 (网络安全方向)</span></td>
+              <td><span class="score-badge score-top">693.5 - 696.0 分</span></td>
+              <td>神级天花板专业，录取线超越多数顶级市重点高中！</td>
+            </tr>
+            <tr>
+              <td><strong>上海第二工业大学</strong></td>
+              <td>上海市信息技术学校</td>
+              <td><span class="badge badge-purple">计算机科学与技术</span></td>
+              <td><span class="score-badge score-top">687.0 - 691.5 分</span></td>
+              <td>IT顶流，高分段考生集中抢报，超市区重点线</td>
+            </tr>
+            <tr>
+              <td><strong>上海电机学院</strong></td>
+              <td>上海市机电工业学校</td>
+              <td><span class="badge badge-purple">电气工程及其自动化</span></td>
+              <td><span class="score-badge score-top">680.5 - 685.0 分</span></td>
+              <td>电机王牌，对接临港芯片与装备制造重企</td>
+            </tr>
+            <tr>
+              <td><strong>上海立信会计金融学院</strong></td>
+              <td>上海市中华职业学校</td>
+              <td><span class="badge badge-purple">金融科技</span></td>
+              <td><span class="score-badge score-high">678.0 - 682.5 分</span></td>
+              <td>金融与科技结合热门，直追区重点高中头部分</td>
+            </tr>
+            <tr>
+              <td><strong>上海工程技术大学</strong></td>
+              <td>上海市大众工业学校</td>
+              <td><span class="badge badge-purple">轨道交通信号与控制</span></td>
+              <td><span class="score-badge score-high">675.0 - 679.5 分</span></td>
+              <td>申通地铁定向培养，就业稳定性极强</td>
+            </tr>
+            <tr>
+              <td><strong>上海第二工业大学</strong></td>
+              <td>上海电子工业学校</td>
+              <td><span class="badge badge-purple">数据科学与大数据技术</span></td>
+              <td><span class="score-badge score-high">672.0 - 676.5 分</span></td>
+              <td>大数据工科热招专业</td>
+            </tr>
+            <tr>
+              <td><strong>上海工程技术大学</strong></td>
+              <td>上海市市北职业高级中学</td>
+              <td><span class="badge badge-purple">飞行器制造工程</span></td>
+              <td><span class="score-badge score-high">668.5 - 673.0 分</span></td>
+              <td>航空大飞机制造高端产业链</td>
+            </tr>
+            <tr>
+              <td><strong>上海健康医学院</strong></td>
+              <td>上海市卫生学校</td>
+              <td><span class="badge badge-mid">医学影像技术</span></td>
+              <td><span class="score-badge score-mid">662.0 - 667.0 分</span></td>
+              <td>三甲医院医技人员核心输送口</td>
+            </tr>
+            <tr>
+              <td><strong>上海电机学院</strong></td>
+              <td>上海市大众工业学校</td>
+              <td><span class="badge badge-mid">智能制造工程</span></td>
+              <td><span class="score-badge score-mid">658.0 - 663.5 分</span></td>
+              <td>工业4.0智能制造方向，稳超普通高中线</td>
+            </tr>
+            <tr>
+              <td><strong>上海应用技术大学</strong></td>
+              <td>上海市工业技术学校</td>
+              <td><span class="badge badge-mid">机械设计制造及其自动化</span></td>
+              <td><span class="score-badge score-mid">652.0 - 657.0 分</span></td>
+              <td>应用型公办本科主力专业</td>
+            </tr>
+            <tr>
+              <td><strong>上海健康医学院</strong></td>
+              <td>上海市药材学校</td>
+              <td><span class="badge badge-mid">药学</span></td>
+              <td><span class="score-badge score-mid">648.5 - 654.0 分</span></td>
+              <td>医药研发与药房管理</td>
+            </tr>
+            <tr>
+              <td><strong>上海应用技术大学</strong></td>
+              <td>上海市石化工业学校</td>
+              <td><span class="badge badge-mid">化学工程与工艺</span></td>
+              <td><span class="score-badge score-mid">645.0 - 650.0 分</span></td>
+              <td>国家级特色专业，上海化工强项</td>
+            </tr>
+            <tr>
+              <td><strong>上海健康医学院</strong></td>
+              <td>上海市卫生学校 / 南汇卫生学校</td>
+              <td><span class="badge badge-mid">护理学</span></td>
+              <td><span class="score-badge score-mid">638.0 - 644.0 分</span></td>
+              <td>各三甲及二甲医院护理骨干来源</td>
+            </tr>
+            <tr>
+              <td><strong>上海应用技术大学</strong></td>
+              <td>上海市材料工程学校</td>
+              <td><span class="badge badge-mid">香料香精技术与工程</span></td>
+              <td><span class="score-badge score-mid">635.0 - 640.0 分</span></td>
+              <td>全国独家特色专业，就业极强</td>
+            </tr>
+            <tr>
+              <td><strong>上海商学院</strong></td>
+              <td>上海市商业学校</td>
+              <td><span class="badge badge-norm">电子商务</span></td>
+              <td><span class="score-badge score-norm">625.0 - 632.0 分</span></td>
+              <td>商科与新零售方向</td>
+            </tr>
+            <tr>
+              <td><strong>上海工程技术大学</strong></td>
+              <td>上海市工艺美术学校</td>
+              <td><span class="badge badge-norm">产品设计</span></td>
+              <td><span class="score-badge score-norm">615.0 - 622.0 分</span></td>
+              <td>工业设计与创意设计</td>
+            </tr>
+            <tr>
+              <td><strong>上海商学院</strong></td>
+              <td>上海市商贸旅游学校</td>
+              <td><span class="badge badge-gold">酒店管理 (中外合作)</span></td>
+              <td><span class="score-badge score-norm">595.0 - 608.0 分</span></td>
+              <td>国际高端酒店联合培养</td>
+            </tr>
+            <tr>
+              <td><strong>上海建桥学院 / 杉达学院</strong></td>
+              <td>群益职校 / 逸夫职校 / 城市科技学校</td>
+              <td><span class="badge badge-norm">计算机 / 护理 / 建筑电气</span></td>
+              <td><span class="score-badge score-norm">550.0 - 585.0 分</span></td>
+              <td>民办本科贯通，在公办普高线附近</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 深度解读板块 -->
+    <div class="grid-2">
+      <!-- 学制与培养机制 -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-icon">🏫</div>
+          <h2 class="card-h2">学制构成与联合培养机制</h2>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+          <p>• <strong>3年中职基础段</strong>：在中职学校学习，由中职与合作本科大学联合制定教学大纲。除了专业技能课外，高度重视语文、数学、英语文化基础课。</p>
+          <p>• <strong>转段测试（第3年下学期）</strong>：由上海市统一命题或本科院校自主命题进行转段合格测试，考核合格后办理本科入学手续。</p>
+          <p>• <strong>4年本科提升段</strong>：进入对口公办本科大学校园，深入学习专业高级课程与实习，完成毕业设计与论文答辩。</p>
+        </div>
+      </section>
+
+      <!-- 录取门槛与分数线 -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-icon">🎯</div>
+          <h2 class="card-h2">报考条件与志愿填报策略</h2>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+          <p>• <strong>投档控制线</strong>：中本贯通在上海中考志愿中处于优先批次（提前统一录取），最低投档控制线为<strong>公办普通高中控制线（约520~540分）</strong>。</p>
+          <p>• <strong>实际录取情况</strong>：热门专业实际录取分数线普遍超普通高中线，热门神级专业（如电力大学信息安全、二工大计算机）逼近或达到<strong>市重点高中分数线（680~695分+）</strong>。</p>
+          <p>• <strong>志愿填报规则</strong>：中考志愿表中属于平行志愿录取，若未录取不影响后续普通高中与国际高中的录取。</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- 报考决策建议 -->
+    <section class="card" style="background: linear-gradient(135deg, #F3E8FF 0%, #FFFFFF 100%); border-color: #D8B4FE;">
+      <h2 style="font-size: 1.2rem; color: #5B21B6; margin-bottom: 0.75rem;">💡 决策建议：什么样的情况建议填报中本贯通？</h2>
+      <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; display: flex; flex-direction: column; gap: 0.5rem;">
+        <p>1. <strong>中考成绩预估在 630分 - 685分 之间</strong>：上顶尖市重点高中略显吃力，读普通高中未来高考竞争激烈，选择热门中本贯通能稳妥锁定全日制优质公办本科。</p>
+        <p>2. <strong>动手能力强、职业倾向明确</strong>：对计算机、电子信息、电气自动化、护理、轨道交通等应用技术型专业有明确偏好。</p>
+        <p>3. <strong>希望避开高考压力与经济负担</strong>：提前锁定本科资质，按公办大学标准缴纳学费。</p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 上海中本贯通 (3+4) 深度指南 V3 · 750分制下真实录取分数线校正版</p>
+  </footer>
+
+  <script>
+    function filterScores() {
+      var input = document.getElementById("scoreSearch");
+      var filter = input.value.toUpperCase();
+      var table = document.getElementById("scoreTable");
+      var tr = table.getElementsByTagName("tr");
+
+      for (var i = 1; i < tr.length; i++) {
+        var text = tr[i].textContent || tr[i].innerText;
+        if (text.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+</body>
+</html>

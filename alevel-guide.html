@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>2026 A-Level 教程辅导材料 & 全学科资源库 V2</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --brand-blue: #1E3A8A;
+      --brand-blue-light: #2563EB;
+      --brand-blue-bg: #EFF6FF;
+
+      --accent-green: #059669;
+      --accent-green-bg: #ECFDF5;
+
+      --accent-purple: #7C3AED;
+      --accent-purple-bg: #F3E8FF;
+
+      --accent-gold: #D97706;
+      --accent-gold-bg: #FEF3C7;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Sticky Header */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-light));
+      color: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--brand-blue);
+    }
+
+    .brand-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      min-height: 44px;
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background-color: var(--brand-blue-bg);
+      color: var(--brand-blue-light);
+    }
+
+    /* Container Layout */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 100%);
+      border: 1px solid #DBEAFE;
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: var(--brand-blue-light);
+      color: white;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--brand-blue);
+      margin-bottom: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 950px;
+      line-height: 1.7;
+    }
+
+    /* Search & Filter Controls */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      background: var(--bg-subtle);
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    .search-input {
+      padding: 0.55rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      width: 100%;
+      max-width: 340px;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--brand-blue-light);
+    }
+
+    /* Cards Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* Card Section */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--brand-blue-bg);
+      color: var(--brand-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .card-h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Subcard feature box */
+    .feature-box {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      color: var(--brand-blue);
+      font-size: 1.02rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .feature-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* Data Table */
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-top: 0.75rem;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      min-width: 820px;
+    }
+
+    .data-table th {
+      background: var(--brand-blue-bg);
+      color: var(--brand-blue);
+      font-weight: 700;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .data-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.18rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .badge-blue { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+    .badge-purple { background: #F3E8FF; color: #7C3AED; border: 1px solid #DDD6FE; }
+    .badge-green { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+    .badge-gold { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
+
+    .resource-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      background: var(--brand-blue-bg);
+      color: var(--brand-blue-light);
+      border: 1px solid #BFDBFE;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.82rem;
+      transition: all 0.2s ease;
+    }
+
+    .resource-link-btn:hover {
+      background: var(--brand-blue-light);
+      color: white;
+    }
+
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Sticky Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">A-L</div>
+        <div>
+          <div class="brand-title">A-Level 教程辅导材料与资源全集 V2</div>
+          <div class="brand-subtitle">官方教材 · 专项题库 · PMT & PapaCambridge 免费真题资源</div>
+        </div>
+      </a>
+      <a href="index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        返回学习中心
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Hero Banner -->
+    <section class="hero-card">
+      <span class="hero-tag">📚 2026 最新新增：A-Level 教程与备考教辅资源库 V2</span>
+      <h1 class="hero-title">A-Level 官方教程 · 辅导材料与神级刷题网站汇总</h1>
+      <p class="hero-desc">
+        决胜 A* 必备！整理爱德思 (Edexcel) 与剑桥 (CIE) 官方标准教材、CGP 权威总结版教辅、全球顶尖神级刷题平台 <strong>Physics & Maths Tutor (PMT)</strong>、<strong>PapaCambridge</strong> 历年真题库及在线视频教程，助你精准备考。
+      </p>
+    </section>
+
+    <!-- 一、四大全球神级免费备考资源平台 -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-icon">🌐</div>
+        <div>
+          <h2 class="card-h2">四大全球 A-Level 神级免费学习与真题平台</h2>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem;">全球留学生每天必用的真题、按章节分类习题与高分复习笔记网站</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <!-- 平台 1: PMT -->
+        <div class="feature-box" style="background: white; border-color: #BFDBFE;">
+          <div class="feature-title">
+            <span>🔥 Physics & Maths Tutor (PMT)</span>
+            <span class="badge badge-blue">全网第一推荐</span>
+          </div>
+          <div class="feature-desc">
+            • <strong>适用学科</strong>：物理、数学、进阶数学、化学、生物、经济、地理、计算机。<br>
+            • <strong>核心功能</strong>：按章节分类的真题 (Topic-wise Questions)、详细考纲复习笔记 (Notes)、闪卡 (Flashcards) 及解题步骤 (Mark Schemes)。<br>
+            • <strong>评价</strong>：备考 A* 必备神器，做完按章节分类的考题后知识点毫无死角！
+          </div>
+        </div>
+
+        <!-- 平台 2: PapaCambridge -->
+        <div class="feature-box" style="background: white; border-color: #DDD6FE;">
+          <div class="feature-title">
+            <span>📖 PapaCambridge</span>
+            <span class="badge badge-purple">历年真题最全库</span>
+          </div>
+          <div class="feature-desc">
+            • <strong>适用考试局</strong>：CIE 剑桥、Edexcel 爱德思、AQA、OCR。<br>
+            • <strong>核心功能</strong>：涵盖近 15 年全套历年真题 (Past Papers)、评分标准 (Mark Schemes)、考纲 (Syllabus) 与考官报告 (Examiner Reports)。<br>
+            • <strong>评价</strong>：全套模拟考试下载第一首选。
+          </div>
+        </div>
+
+        <!-- 平台 3: Save My Exams -->
+        <div class="feature-box" style="background: white; border-color: #A7F3D0;">
+          <div class="feature-title">
+            <span>💡 Save My Exams</span>
+            <span class="badge badge-green">结构化知识图谱</span>
+          </div>
+          <div class="feature-desc">
+            • <strong>适用学科</strong>：理科及商科全系。<br>
+            • <strong>核心功能</strong>：极致精炼的图文复习笔记、分难度 (Easy/Medium/Hard) 的练习题库。<br>
+            • <strong>评价</strong>：适合快速梳理考点与难点突破。
+          </div>
+        </div>
+
+        <!-- 平台 4: A-level Physics Online & ZNotes -->
+        <div class="feature-box" style="background: white; border-color: #FDE68A;">
+          <div class="feature-title">
+            <span>🎥 A-level Physics Online & ZNotes</span>
+            <span class="badge badge-gold">视频解题与学霸笔记</span>
+          </div>
+          <div class="feature-desc">
+            • <strong>核心功能</strong>：A-level Physics Online 提供高清物理实验与难题视频解析；ZNotes 提供全科学霸极简复习 PDF。<br>
+            • <strong>评价</strong>：考前冲刺快速查漏补缺。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 二、全学科官方教材与权威辅导书籍盘点 -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-icon">📘</div>
+        <div>
+          <h2 class="card-h2">A-Level 各核心学科官方教材与权威教辅书推荐清单</h2>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem;">支持按学科筛选查找官方 Pearson / Cambridge 教材与 CGP Revision Guide</p>
+        </div>
+      </div>
+
+      <!-- 搜索过滤 -->
+      <div class="filter-bar">
+        <input type="text" id="bookSearch" class="search-input" placeholder="🔍 搜索学科名称 (如 数学/物理/化学/CIE/Edexcel)..." onkeyup="filterBooks()">
+        <div style="font-size: 0.85rem; color: var(--text-secondary);">
+          推荐原则：<strong>官方教材奠基 + 权威教辅专项拔高</strong>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table" id="bookTable">
+          <thead>
+            <tr>
+              <th>学科领域</th>
+              <th>考试局</th>
+              <th>推荐官方教材与权威教辅名称</th>
+              <th>出版社 / 系列</th>
+              <th>教辅特点与使用建议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>基础数学 (Mathematics)</strong></td>
+              <td><span class="badge badge-blue">Edexcel 爱德思</span></td>
+              <td><strong>Edexcel AS and A Level Modular Mathematics (P1-P4, M1, S1)</strong></td>
+              <td>Pearson 培生官方</td>
+              <td>爱德思官方指定教材，公式推导严谨，课后习题与考试真题契合度 100%。</td>
+            </tr>
+            <tr>
+              <td><strong>基础数学 (Mathematics)</strong></td>
+              <td><span class="badge badge-purple">CIE 剑桥</span></td>
+              <td><strong>Cambridge International AS & A Level Mathematics Pure 1 & 2</strong></td>
+              <td>Cambridge 剑桥大学出版社</td>
+              <td>CIE 官方教材，学术性极强，例题由浅入深，自学首选。</td>
+            </tr>
+            <tr>
+              <td><strong>进阶数学 (Further Math)</strong></td>
+              <td><span class="badge badge-blue">Edexcel / CIE</span></td>
+              <td><strong>Edexcel Further Pure Mathematics (FP1 - FP3) / Cambridge Further Math</strong></td>
+              <td>Pearson / Cambridge</td>
+              <td>牛剑及 G5 计算机、理工必修！深度涵盖复数、矩阵、微分方程与极坐标。</td>
+            </tr>
+            <tr>
+              <td><strong>物理 (Physics)</strong></td>
+              <td><span class="badge badge-blue">Edexcel 爱德思</span></td>
+              <td><strong>Edexcel A Level Physics Student Book 1 & 2</strong></td>
+              <td>Pearson 培生官方</td>
+              <td>实验原理图示清晰，注重考察概念理解与公式应用。</td>
+            </tr>
+            <tr>
+              <td><strong>物理 (Physics)</strong></td>
+              <td>全考试局通用</td>
+              <td><strong>CGP A-Level Physics Complete Revision & Practice</strong></td>
+              <td>CGP Books (英国老牌教辅)</td>
+              <td>英国本土最受欢迎的考前复习宝典！语言幽默、总结表格极其精干。</td>
+            </tr>
+            <tr>
+              <td><strong>化学 (Chemistry)</strong></td>
+              <td><span class="badge badge-purple">CIE 剑桥</span></td>
+              <td><strong>Cambridge International AS and A Level Chemistry Coursebook</strong></td>
+              <td>Cambridge 剑桥大学出版社</td>
+              <td>有机化学反应历程图解极其详尽，配套实验设计指导。</td>
+            </tr>
+            <tr>
+              <td><strong>化学 (Chemistry)</strong></td>
+              <td>全考试局通用</td>
+              <td><strong>CGP A-Level Chemistry Revision Guide</strong></td>
+              <td>CGP Books</td>
+              <td>将繁琐复杂的化学反应方程式与元素周期律总结为极佳的记忆图谱。</td>
+            </tr>
+            <tr>
+              <td><strong>经济学 (Economics)</strong></td>
+              <td><span class="badge badge-blue">Edexcel 爱德思</span></td>
+              <td><strong>Edexcel A Level Economics A Student Book (Micro & Macro)</strong></td>
+              <td>Pearson 培生官方</td>
+              <td>微观供需曲线与宏观经济政策解析全面，包含经典 Essay 写作范例。</td>
+            </tr>
+            <tr>
+              <td><strong>经济学 (Economics)</strong></td>
+              <td>全考试局通用</td>
+              <td><strong>My Revision Notes: AQA / Edexcel A-level Economics</strong></td>
+              <td>Hodder Education</td>
+              <td>教你如何在 Essay 写作中精准运用经济术语和评估 (Evaluation) 得分点。</td>
+            </tr>
+            <tr>
+              <td><strong>生物 (Biology)</strong></td>
+              <td><span class="badge badge-purple">CIE 剑桥</span></td>
+              <td><strong>Cambridge International AS and A Level Biology Coursebook</strong></td>
+              <td>Cambridge 剑桥大学出版社</td>
+              <td>细胞生物学、遗传学与生态学图解丰富，配有高频术语词汇表。</td>
+            </tr>
+            <tr>
+              <td><strong>计算机科学 (Computer Science)</strong></td>
+              <td><span class="badge badge-blue">Edexcel / CIE</span></td>
+              <td><strong>Cambridge International AS and A Level Computer Science</strong></td>
+              <td>Cambridge 剑桥大学出版社</td>
+              <td>覆盖算法、伪代码 (Pseudocode)、数据库 SQL 及网络体系结构。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 三、A-Level 高效刷题与复习路线图 -->
+    <section class="card" style="background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%); border-color: #BFDBFE;">
+      <h2 style="font-size: 1.25rem; color: #1E3A8A; margin-bottom: 1rem;">🎯 A-Level 教材与真题结合备考三步走策略</h2>
+
+      <div class="grid-3">
+        <div class="feature-box" style="background: white;">
+          <div class="feature-title">阶段一：系统吃透官方教材 (1-6月)</div>
+          <div class="feature-desc">逐章研读 Edexcel/CIE 官方教材，完成每章 Chapter Review 习题，打牢定义、推导与公式基础。</div>
+        </div>
+
+        <div class="feature-box" style="background: white;">
+          <div class="feature-title">阶段二：PMT 按章节专项突破 (7-10月)</div>
+          <div class="feature-desc">利用 PMT (Physics & Maths Tutor) 刷按 Topic 归类的专项题目，找出薄弱章节，精读 Mark Scheme。</div>
+        </div>
+
+        <div class="feature-box" style="background: white;">
+          <div class="feature-title">阶段三：全真模考与错题复盘 (11-次年5月)</div>
+          <div class="feature-desc">在 PapaCambridge 打印近 8 年 Past Papers 进行限时模考，整理错题本，熟记考官报告高频失分点。</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 A-Level 教程辅导材料 & 全学科资源库 V2 · 保持版本独立控制</p>
+  </footer>
+
+  <script>
+    function filterBooks() {
+      var input = document.getElementById("bookSearch");
+      var filter = input.value.toUpperCase();
+      var table = document.getElementById("bookTable");
+      var tr = table.getElementsByTagName("tr");
+
+      for (var i = 1; i < tr.length; i++) {
+        var text = tr[i].textContent || tr[i].innerText;
+        if (text.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+</body>
+</html>

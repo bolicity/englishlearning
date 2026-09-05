@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>2026 上海中考体育与健康全景指南 V2 | 西延安中学讲义集成 & 官方最新政策</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --brand-green: #059669;
+      --brand-green-light: #10B981;
+      --brand-green-bg: #ECFDF5;
+
+      --brand-blue: #1E3A8A;
+      --brand-blue-light: #2563EB;
+      --brand-blue-bg: #EFF6FF;
+
+      --accent-gold: #D97706;
+      --accent-gold-bg: #FEF3C7;
+
+      --accent-purple: #7C3AED;
+      --accent-purple-bg: #F3E8FF;
+
+      --accent-red: #DC2626;
+      --accent-red-bg: #FEF2F2;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Sticky Header */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--brand-green), var(--brand-green-light));
+      color: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--brand-green);
+    }
+
+    .brand-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      min-height: 44px;
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background-color: var(--brand-green-bg);
+      color: var(--brand-green);
+    }
+
+    /* Container Layout */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #ECFDF5 100%);
+      border: 1px solid #A7F3D0;
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: var(--brand-green);
+      color: white;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #047857;
+      margin-bottom: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 950px;
+      line-height: 1.7;
+    }
+
+    /* Grid Layout */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 980px) {
+      .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    /* Section Card */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--brand-green-bg);
+      color: var(--brand-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .card-h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Feature Box */
+    .feature-box {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      color: var(--brand-green);
+      font-size: 1.02rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .feature-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* Data Table */
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-top: 0.75rem;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      min-width: 820px;
+    }
+
+    .data-table th {
+      background: var(--brand-green-bg);
+      color: #047857;
+      font-weight: 700;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .data-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.18rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .badge-green { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+    .badge-blue { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+    .badge-purple { background: #F3E8FF; color: #7C3AED; border: 1px solid #DDD6FE; }
+    .badge-gold { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
+    .badge-red { background: #FEF2F2; color: #DC2626; border: 1px solid #FCA5A5; }
+
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">体育</div>
+        <div>
+          <div class="brand-title">2026 上海中考体育与健康指南 V2</div>
+          <div class="brand-subtitle">继承西延安中学讲义精髓 · 集成上海市教委最新评分与免考细则</div>
+        </div>
+      </a>
+      <a href="index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        返回学习中心
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Hero Banner -->
+    <section class="hero-card">
+      <span class="hero-tag">🏫 继承西延安中学教学讲义 & 上海市教委官方政策 · V2 升级版</span>
+      <h1 class="hero-title">上海中考体育 (30分) 权威全景解析与训练指南</h1>
+      <p class="hero-desc">
+        中考体育总分 <strong>30 分</strong>（过程性日常考核 15 分 + 统一现场考试 15 分）。本指南深度集成了上海市西延安中学体育组官方 PPT 讲义精髓，并补充了上海市教委发布的最新项目选考机制、长跑附加分奖赏政策及免考/缓考细则。
+      </p>
+    </section>
+
+    <!-- 30分总分拆解：日常考核 15分 + 统一考试 15分 -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-icon">⚖️</div>
+        <h2 class="card-h2">上海中考体育 30 分结构拆解 (日常考核 + 统一考试)</h2>
+      </div>
+
+      <div class="grid-2">
+        <!-- 统一考试 15分 -->
+        <div class="feature-box" style="background: white; border-color: #A7F3D0;">
+          <div class="feature-title">
+            <span>🏋️ 统一现场考试 (15分)</span>
+            <span class="badge badge-green">现场集中测试</span>
+          </div>
+          <div class="feature-desc">
+            • <strong>第一类项目 (6分)</strong>：耐力跑（男1000m/女800m）、200m 游泳、4分钟跳短绳（三选一）。<br>
+            • <strong>第二类项目 (3分)</strong>：50m跑、立定跳远、实心球、引体向上(男)/仰卧起坐(女)、25m游泳（五选一）。<br>
+            • <strong>第三类项目 (3分)</strong>：乒乓球、羽毛球、网球、武术、体操（五选一）。<br>
+            • <strong>第四类项目 (3分)</strong>：足球、篮球、排球（三选一）。
+          </div>
+        </div>
+
+        <!-- 日常过程性考核 15分 -->
+        <div class="feature-box" style="background: white; border-color: #BFDBFE;">
+          <div class="feature-title">
+            <span>📋 日常过程性考核 (15分)</span>
+            <span class="badge badge-blue">初一至初三日常积累</span>
+          </div>
+          <div class="feature-desc">
+            • <strong>《体育与健身》课程平时考试 (6分)</strong>：七、八、九年级各 2 分。<br>
+            • <strong>国家学生体质健康测试综合评定 (9分)</strong>：七、八、九年级各 3 分。<br>
+            • <em>日常勤加锻炼，体测与课堂出勤表现优异即可稳稳锁定这 15 分！</em>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 统一考试 4 大类选择与西延安讲义评分细则 -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-icon">📊</div>
+        <div>
+          <h2 class="card-h2">上海中考体育四大类选考项目评分标准与长跑附加分奖励</h2>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem;">根据西延安中学体育组讲义及市教委最新评分标准整理</p>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>考试分类</th>
+              <th>选考项目</th>
+              <th>男生满分标准 (6/3分)</th>
+              <th>女生满分标准 (6/3分)</th>
+              <th>🔥 附加分奖励与最新评分规则</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>第一类 (6分)</strong></td>
+              <td>1000米 (男) / 800米 (女)</td>
+              <td><span class="badge badge-green">3'55" 满分</span></td>
+              <td><span class="badge badge-green">3'40" 满分</span></td>
+              <td>
+                • <strong>附加分奖励</strong>：<br>
+                男 3'54"~3'41" 得 0.5 分，3'40"及以上得 <strong>1 分附加分</strong>！<br>
+                女 3'39"~3'26" 得 0.5 分，3'25"及以上得 <strong>1 分附加分</strong>！（统一考试总分15分封顶）
+              </td>
+            </tr>
+            <tr>
+              <td><strong>第一类 (6分)</strong></td>
+              <td>200米游泳 / 4分钟跳短绳</td>
+              <td>4'40" (游泳) / 满分标</td>
+              <td>5'00" (游泳) / 满分标</td>
+              <td>跳绳需使用中考指定计数绳，保持稳定频率。</td>
+            </tr>
+            <tr>
+              <td><strong>第二类 (3分)</strong></td>
+              <td>50米跑 / 立定跳远 / 实心球</td>
+              <td>7.3秒 / 2.47米 / 10.20米</td>
+              <td>7.9秒 / 2.02米 / 7.70米</td>
+              <td>立定跳远起跳45°角，实心球满弓蹬地甩臂。</td>
+            </tr>
+            <tr>
+              <td><strong>第二类 (3分)</strong></td>
+              <td>引体向上 (男) / 仰卧起坐 (女)</td>
+              <td><span class="badge badge-blue">11 个 / 分钟</span></td>
+              <td><span class="badge badge-blue">49 个 / 分钟</span></td>
+              <td>下巴过杠方可计数；仰卧起坐双肘触膝盖。</td>
+            </tr>
+            <tr>
+              <td><strong>第三类 (3分)</strong></td>
+              <td>乒乓球 / 羽毛球 / 武术 / 网球 / 体操</td>
+              <td>连续击球 / 武术套路</td>
+              <td>连续击球 / 武术套路</td>
+              <td><strong>羽毛球新规</strong>：连续击球20个，取得分最高的15个球计分。选小球/游泳需提交练习视频交U盘。</td>
+            </tr>
+            <tr>
+              <td><strong>第四类 (3分)</strong></td>
+              <td>足球 / 篮球 / 排球绕杆</td>
+              <td>7.5秒 (足) / 11.7秒 (篮)</td>
+              <td>8.1秒 (足) / 13.1秒 (篮)</td>
+              <td>贴杆变向，切忌漏杆或触球违规。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 西延安中学继承：暑期与日常每日训练计划 -->
+    <section class="card" style="background: linear-gradient(135deg, #ECFDF5 0%, #FFFFFF 100%); border-color: #A7F3D0;">
+      <div class="card-header">
+        <div class="card-icon">🏃</div>
+        <div>
+          <h2 class="card-h2" style="color: #047857;">继承西延安中学体育组：日常与暑期体育训练作业指南</h2>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem;">源自讲义《暑期练习要求》实操规范</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <!-- 训练前准备 -->
+        <div class="feature-box" style="background: white;">
+          <div class="feature-title">⚠️ 安全与热身拉伸规范</div>
+          <div class="feature-desc">
+            • <strong>动态热身 10 分钟</strong>：运动前充分活动膝关节、踝关节及腰部。<br>
+            • <strong>静态拉伸</strong>：运动后进行腿部与拉伸，防止抽筋与关节扭伤。<br>
+            • <strong>视频打卡准备</strong>：选乒乓球、羽毛球、网球、游泳的同学开学后须提交训练视频（以 U 盘形式交给体育老师）。
+          </div>
+        </div>
+
+        <!-- 每日必练 -->
+        <div class="feature-box" style="background: white;">
+          <div class="feature-title">📌 每日必练项目 (坚持打卡)</div>
+          <div class="feature-desc">
+            • <strong>1. 四分钟跳短绳</strong>：每日完成 1 组，保证练习时长与高质量节奏。<br>
+            • <strong>2. 武术 / 小球类练习</strong>：任选其一坚持练习，熟练掌握动作要领。
+          </div>
+        </div>
+
+        <!-- 每日选练 -->
+        <div class="feature-box" style="background: white;">
+          <div class="feature-title">💪 每日选练项目 (三选二)</div>
+          <div class="feature-desc">
+            从以下三项中自主选择两项开展练习：<br>
+            • <strong>俯撑开合</strong>：20 个 / 组，每日完成 2 组；<br>
+            • <strong>俯卧撑</strong>：15 个 / 组，每日完成 2 组；<br>
+            • <strong>仰卧起坐</strong>：55 个 / 组，每日完成 1 组。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 特殊免考、择考与缓考政策解析 -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-icon">🚑</div>
+        <h2 class="card-h2">上海中考体育免考、择考与缓考政策权威解读</h2>
+      </div>
+
+      <div class="grid-3">
+        <div class="feature-box" style="background: white; border-color: #FECDD3;">
+          <div class="feature-title">
+            <span style="color: #DC2626;">🏆 体育特长免考 (直取15分满分)</span>
+          </div>
+          <div class="feature-desc">
+            在经认定的市级及以上体育比赛中获得个人项目前六名或集体项目前三名的考生，可申请统一考试免考，通过审核后<strong>统一现场考试按 15 分满分计算</strong>。
+          </div>
+        </div>
+
+        <div class="feature-box" style="background: white; border-color: #FDE68A;">
+          <div class="feature-title">
+            <span style="color: #B45309;">♿ 伤残/疾病免考政策</span>
+          </div>
+          <div class="feature-desc">
+            • <strong>完全丧失运动能力残疾</strong>：中考体育按 <strong>30 分满分计入</strong>。<br>
+            • <strong>部分丧失运动能力</strong>：不能参加的单项统一考试按满分计。<br>
+            • 需出具区级以上指定医院医疗证明及残疾证，经学校与区教委审核。
+          </div>
+        </div>
+
+        <div class="feature-box" style="background: white; border-color: #BFDBFE;">
+          <div class="feature-title">
+            <span style="color: #1D4ED8;">🩺 临场伤病缓考政策</span>
+          </div>
+          <div class="feature-desc">
+            考前或现场突发伤病无法参加考试者，可申请缓考。补考一般在 15 天内集中组织完成（补考仅限一次），若补考仍无法参加，则按免考相关规定折算。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 关联本地 PPT 文件 -->
+    <section class="card" style="background: linear-gradient(135deg, #ECFDF5 0%, #FFFFFF 100%); border-color: #A7F3D0;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2 style="font-size: 1.25rem; color: #047857; margin-bottom: 0.4rem;">📁 本地中考体育西延安讲义 PPT</h2>
+          <p style="font-size: 0.9rem; color: var(--text-secondary);">项目目录下已内置西延安中学体育组原版完整 PPT 讲义资源：<code>体育/中考体育.pptx</code></p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 上海中考体育与健康指南 V2 · 继承西延安讲义精髓 & 官方最新政策</p>
+  </footer>
+</body>
+</html>

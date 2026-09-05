@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>初中中考体育与健康专项指南 V1 | 满分攻略与项目评分标准</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --brand-green: #059669;
+      --brand-green-light: #10B981;
+      --brand-green-bg: #ECFDF5;
+
+      --brand-blue: #1E3A8A;
+      --brand-blue-light: #2563EB;
+      --brand-blue-bg: #EFF6FF;
+
+      --accent-gold: #D97706;
+      --accent-gold-bg: #FEF3C7;
+
+      --accent-purple: #7C3AED;
+      --accent-purple-bg: #F3E8FF;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Sticky Header */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--brand-green), var(--brand-green-light));
+      color: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--brand-green);
+    }
+
+    .brand-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      min-height: 44px;
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background-color: var(--brand-green-bg);
+      color: var(--brand-green);
+    }
+
+    /* Container Layout */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #ECFDF5 100%);
+      border: 1px solid #A7F3D0;
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: var(--brand-green);
+      color: white;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #047857;
+      margin-bottom: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 950px;
+      line-height: 1.7;
+    }
+
+    /* Grid Layout */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 980px) {
+      .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    /* Section Card */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--brand-green-bg);
+      color: var(--brand-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .card-h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Feature Box */
+    .feature-box {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      color: var(--brand-green);
+      font-size: 1.02rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .feature-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* Data Table */
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-top: 0.75rem;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      min-width: 780px;
+    }
+
+    .data-table th {
+      background: var(--brand-green-bg);
+      color: #047857;
+      font-weight: 700;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .data-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.18rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .badge-green { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+    .badge-blue { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+    .badge-purple { background: #F3E8FF; color: #7C3AED; border: 1px solid #DDD6FE; }
+    .badge-gold { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
+
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">体育</div>
+        <div>
+          <div class="brand-title">初中中考体育与健康指南 V1</div>
+          <div class="brand-subtitle">中考 30 分满分攻坚 · 项目评分标准与体能训练计划</div>
+        </div>
+      </a>
+      <a href="index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        返回学习中心
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Hero Banner -->
+    <section class="hero-card">
+      <span class="hero-tag">🏃 中考必拿满分学科 · 30分全攻略</span>
+      <h1 class="hero-title">初中体育与健康 · 满分项目解析与科学训练规划</h1>
+      <p class="hero-desc">
+        中考体育总分 <strong>30 分</strong>（过程性考核 15 分 + 统一考试 15 分），是中考最容易拿全满分的科目！通过科学的耐力呼吸节奏调控、爆发力核心训练以及专项球类技巧，助你稳拿 30 分满分。
+      </p>
+    </section>
+
+    <!-- 考核结构四大类项目 -->
+    <div class="grid-4">
+      <div class="feature-box" style="background: white;">
+        <div class="feature-title">🏃 第一类：耐力项目 (6分)</div>
+        <div class="feature-desc">男生 1000 米 / 女生 800 米跑步，或 200 米游泳。核心在于心肺功能与“二吸二呼”呼吸节奏。</div>
+      </div>
+      <div class="feature-box" style="background: white;">
+        <div class="feature-title">💪 第二类：力量柔韧 (3分)</div>
+        <div class="feature-desc">引体向上（男）/ 仰卧起坐（女）、立定跳远、实心球掷远。注重下肢爆发力与核心发力。</div>
+      </div>
+      <div class="feature-box" style="background: white;">
+        <div class="feature-title">⚽ 第三类：球类专项 (3分)</div>
+        <div class="feature-desc">足球运球绕杆、篮球运球绕杆、排球垫球、乒乓球/羽毛球。重在熟练度与规避违规。</div>
+      </div>
+      <div class="feature-box" style="background: white;">
+        <div class="feature-title">🤸 第四类：体操技能 (3分)</div>
+        <div class="feature-desc">支撑跳跃（跳箱）、垫子组合动作等。考核身体协调性与动作规范度。</div>
+      </div>
+    </div>
+
+    <!-- 中考体育评分标准大表 -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-icon">📊</div>
+        <div>
+          <h2 class="card-h2">上海中考体育统一考试满分标准对照表 (部分代表性项目)</h2>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem;">根据上海市教委中考体育最新评分标准整理</p>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>考试项目分类</th>
+              <th>项目名称</th>
+              <th>男生满分标准 (满分)</th>
+              <th>女生满分标准 (满分)</th>
+              <th>满分突破关键技巧</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>第一类 (耐力项目)</strong></td>
+              <td>1000米 (男) / 800米 (女)</td>
+              <td><span class="badge badge-green">3 分 34 秒</span></td>
+              <td><span class="badge badge-green">3 分 19 秒</span></td>
+              <td>前400m保持匀速，700m起开始冲刺；保持“两吸两呼”步频节奏。</td>
+            </tr>
+            <tr>
+              <td><strong>第一类 (耐力项目)</strong></td>
+              <td>200米游泳</td>
+              <td><span class="badge badge-green">4 分 40 秒</span></td>
+              <td><span class="badge badge-green">5 分 00 秒</span></td>
+              <td>自由泳/蛙泳转姿规范，转身动作流畅不触底。</td>
+            </tr>
+            <tr>
+              <td><strong>第二类 (力量项目)</strong></td>
+              <td>引体向上 (男) / 仰卧起坐 (女)</td>
+              <td><span class="badge badge-blue">11 个 / 分钟</span></td>
+              <td><span class="badge badge-blue">49 个 / 分钟</span></td>
+              <td>男：背阔肌发力下巴过杠；女：双手抱头肘触膝，利用弹簧节奏。</td>
+            </tr>
+            <tr>
+              <td><strong>第二类 (力量柔韧)</strong></td>
+              <td>立定跳远</td>
+              <td><span class="badge badge-blue">2.47 米</span></td>
+              <td><span class="badge badge-blue">2.02 米</span></td>
+              <td>预摆起跳角度30°~45°，落地屈膝缓冲收腹收腿。</td>
+            </tr>
+            <tr>
+              <td><strong>第二类 (力量项目)</strong></td>
+              <td>掷实心球 (2kg)</td>
+              <td><span class="badge badge-purple">10.20 米</span></td>
+              <td><span class="badge badge-purple">7.70 米</span></td>
+              <td>蹬地、挺胸、甩臂满弓发力，出手角度保持42°左右。</td>
+            </tr>
+            <tr>
+              <td><strong>第三类 (球类项目)</strong></td>
+              <td>足球运球绕杆</td>
+              <td><span class="badge badge-gold">7.5 秒</span></td>
+              <td><span class="badge badge-gold">8.1 秒</span></td>
+              <td>左右脚交替推球，贴杆变向，切忌漏杆触手。</td>
+            </tr>
+            <tr>
+              <td><strong>第三类 (球类项目)</strong></td>
+              <td>篮球运球绕杆</td>
+              <td><span class="badge badge-gold">11.7 秒</span></td>
+              <td><span class="badge badge-gold">13.1 秒</span></td>
+              <td>低姿运球保护，转弯体前变向换手，终点加速冲刺。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 科学备考训练规划 -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-icon">🎯</div>
+        <h2 class="card-h2">中考体育科学备考周训练计划</h2>
+      </div>
+
+      <div class="grid-3">
+        <div class="feature-box" style="background: white; border-color: #A7F3D0;">
+          <div class="feature-title">🏃 周一 / 周三：心肺耐力提升</div>
+          <div class="feature-desc">
+            • 400m * 4 组变速跑（每组间歇 2 分钟）。<br>
+            • 20分钟慢跑训练，培养稳定呼吸节奏。<br>
+            • 跑后拉伸大腿前侧、小腿腓肠肌与膝关节。
+          </div>
+        </div>
+
+        <div class="feature-box" style="background: white; border-color: #BFDBFE;">
+          <div class="feature-title">💪 周二 / 周四：爆发力与核心锻炼</div>
+          <div class="feature-desc">
+            • 深蹲跳 15 次 * 3 组；蛙跳 20 米 * 3 组。<br>
+            • 平板支撑 1 分钟 * 3 组；仰卧起坐 1 分钟冲刺。<br>
+            • 悬垂举腿（引体向上辅助训练）。
+          </div>
+        </div>
+
+        <div class="feature-box" style="background: white; border-color: #FDE68A;">
+          <div class="feature-title">⚽ 周五 / 周六：球类专项细节微调</div>
+          <div class="feature-desc">
+            • 足球/篮球绕杆计时实测，纠正违规触杆习惯。<br>
+            • 排球连续垫球 100 次不落地练习。<br>
+            • 模拟真实考场发令节奏全真实测。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 关联本地演示文稿资源 -->
+    <section class="card" style="background: linear-gradient(135deg, #ECFDF5 0%, #FFFFFF 100%); border-color: #A7F3D0;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2 style="font-size: 1.25rem; color: #047857; margin-bottom: 0.4rem;">📁 本地中考体育专项演示课件</h2>
+          <p style="font-size: 0.9rem; color: var(--text-secondary);">项目目录下已内置配套中考体育完整 PPT 讲义资源：<code>体育/中考体育.pptx</code></p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 初中中考体育与健康指南 V1 · 助力中考体育拿满 30 分</p>
+  </footer>
+</body>
+</html>

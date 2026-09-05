@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>小红书热门留学生避坑指南 & 选课干货 V1</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --brand-red: #FE2C55;
+      --brand-red-light: #FF4D6D;
+      --brand-red-bg: #FFF1F2;
+
+      --brand-blue: #1E3A8A;
+      --brand-blue-light: #2563EB;
+      --brand-blue-bg: #EFF6FF;
+
+      --accent-purple: #7C3AED;
+      --accent-purple-bg: #F3E8FF;
+
+      --accent-gold: #D97706;
+      --accent-gold-bg: #FEF3C7;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header Sticky */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--brand-red), var(--brand-red-light));
+      color: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--brand-red);
+    }
+
+    .brand-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      min-height: 44px;
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background-color: var(--brand-red-bg);
+      color: var(--brand-red);
+    }
+
+    /* Container Layout */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFF1F2 100%);
+      border: 1px solid #FFE4E6;
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: var(--brand-red);
+      color: white;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #9F1239;
+      margin-bottom: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 950px;
+      line-height: 1.7;
+    }
+
+    /* Cards Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* Card Section */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--brand-red-bg);
+      color: var(--brand-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .card-h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Red Note Style Post Card */
+    .note-card {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .note-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: #FECDD3;
+    }
+
+    .note-tag {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .tag-red { background: #FFF1F2; color: #E11D48; }
+    .tag-blue { background: #EFF6FF; color: #2563EB; }
+    .tag-purple { background: #F3E8FF; color: #7C3AED; }
+    .tag-gold { background: #FEF3C7; color: #D97706; }
+    .tag-green { background: #ECFDF5; color: #059669; }
+
+    .note-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    .note-content {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .note-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      padding-top: 0.5rem;
+      border-top: 1px dashed var(--border-color);
+    }
+
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">小红书</div>
+        <div>
+          <div class="brand-title">小红书留学生真实干货 & 避坑指南 V1</div>
+          <div class="brand-subtitle">汇集小红书热门贴：英国 A-Level、新加坡、日本 EJU 留考全维度精选</div>
+        </div>
+      </a>
+      <a href="index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        返回学习中心
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Hero Banner -->
+    <section class="hero-card">
+      <span class="hero-tag">🔥 小红书留学生爆款干货拆解</span>
+      <h1 class="hero-title">真实学长学姐带你避雷：A-Level 选课 · 新加坡法规 · 日本 EJU 留考</h1>
+      <p class="hero-desc">
+        结合小红书上万条一线学长学姐的真实留学笔记与避坑经验，提炼最接地气、最权威的选课心法、签证法律红线与选校避雷技巧，拒绝中介忽悠！
+      </p>
+    </section>
+
+    <!-- 专区一：英国 A-Level 选课与 G5 冲刺爆款笔记 -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-icon">🇬🇧</div>
+        <div>
+          <h2 class="card-h2">英国留学 & A-Level 选课避坑（小红书干货合集）</h2>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem;">拒绝“软科目”坑盲目的专业不匹配，掌握 G5 选课的硬核心法</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <!-- 笔记 1 -->
+        <div class="note-card">
+          <div>
+            <span class="note-tag tag-red">🔥 选课误区大曝光</span>
+          </div>
+          <div class="note-title">千万别因为“好拿分”盲目选软科目！</div>
+          <div class="note-content">
+            <strong>小红书真实痛点</strong>：不少同学听信宣传选了媒体研究、艺术等所谓“容易拿高分”的科目，结果申请牛津/LSE商科时发现大学官方不认！<br>
+            <strong>避坑建议</strong>：优先选择罗素集团认可的硬核基础科目（数学、进阶数学、物理、化学、经济）。
+          </div>
+          <div class="note-footer">
+            <span>❤️ 1.2w 赞 · 小红书留英学姐</span>
+            <span>来源：真实选课复盘</span>
+          </div>
+        </div>
+
+        <!-- 笔记 2 -->
+        <div class="note-card">
+          <div>
+            <span class="note-tag tag-blue">📚 考试局刷分策略</span>
+          </div>
+          <div class="note-title">爱德思 (Edexcel) 与 CIE 的真实选择体验</div>
+          <div class="note-content">
+            <strong>理科考生心声</strong>：爱德思按单元考试，一年 3 次考试季，单单元失误可以专门补考该单元刷分！CIE 则是线性考核全卷一次定乾坤。<br>
+            <strong>建议</strong>：理科想冲 A* 且追求多次补考保障的，爱德思模块化更有安全感！
+          </div>
+          <div class="note-footer">
+            <span>❤️ 8,500+ 赞 · A-Level全A*学长</span>
+            <span>来源：考试局实测</span>
+          </div>
+        </div>
+
+        <!-- 笔记 3 -->
+        <div class="note-card">
+          <div>
+            <span class="note-tag tag-purple">🎓 G5 附加笔试备考</span>
+          </div>
+          <div class="note-title">牛剑 G5 面试与 MAT/PAT 笔试到底有多卷？</div>
+          <div class="note-content">
+            <strong>高分不等于录取</strong>：单靠 A-Level A* 已经无法在牛剑和帝国理工脱颖而出！MAT/PAT/STEP 等附加笔试才是淘汰 70% 申请者的分水岭，高二开学必须启动真题集训。
+          </div>
+          <div class="note-footer">
+            <span>❤️ 9,300+ 赞 · 剑桥计算机学长</span>
+            <span>来源：G5录取实录</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 专区二：新加坡留学环境与高频高压法规 -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-icon">🇸🇬</div>
+        <div>
+          <h2 class="card-h2">新加坡留学全流程避坑指南（签证·出勤率·法律红线）</h2>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem;">新加坡法律极严，出勤率低于 90% 将面临移民局 (ICA) 直接遣返！</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <!-- 笔记 1 -->
+        <div class="note-card">
+          <div>
+            <span class="note-tag tag-red">⚠️ 生命线警报</span>
+          </div>
+          <div class="note-title">出勤率低于 90% 直接取消学生签证！</div>
+          <div class="note-content">
+            <strong>高能避坑</strong>：新加坡移民厅 (ICA) 规定非常死板，生病请假必须提交新加坡本地注册诊所开具的合法 MC (Medical Certificate)，切勿逃课或旷课！出勤率不足无法续签。
+          </div>
+          <div class="note-footer">
+            <span>❤️ 2.4w 赞 · 新加坡国立大学长</span>
+            <span>来源：ICA法规提醒</span>
+          </div>
+        </div>
+
+        <!-- 笔记 2 -->
+        <div class="note-card">
+          <div>
+            <span class="note-tag tag-gold">🏫 机构与学校鉴别</span>
+          </div>
+          <div class="note-title">认准 EduTrust 认证与教育部白名单！</div>
+          <div class="note-content">
+            <strong>防野鸡大学陷阱</strong>：申请新加坡私立大学必须核查 EduTrust 4年期星级认证，且必须在中国教育部涉外监管网白名单内，才能确保回国后能做学历学位认证。
+          </div>
+          <div class="note-footer">
+            <span>❤️ 6,800+ 赞 · 新加坡求学日记</span>
+            <span>来源：学历认证避坑</span>
+          </div>
+        </div>
+
+        <!-- 笔记 3 -->
+        <div class="note-card">
+          <div>
+            <span class="note-tag tag-green">🚫 海关违禁物品</span>
+          </div>
+          <div class="note-title">电子烟、口香糖严禁入境！巨额罚款与刑罚</div>
+          <div class="note-content">
+            <strong>入境雷区</strong>：电子烟在新加坡严格违法，携带或使用均面临数千新币罚款甚至监禁；口香糖严禁带入。中草药入境亦有严格审核。
+          </div>
+          <div class="note-footer">
+            <span>❤️ 1.8w 赞 · 狮城生活通</span>
+            <span>来源：海关入境干货</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 专区三：日本 EJU 留考与校内考破局秘籍 -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-icon">🇯🇵</div>
+        <div>
+          <h2 class="card-h2">日本 EJU 留考与留日升学干货（小红书经验）</h2>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem;">日语听力速记法、校内考小论文及教授面试礼仪全拆解</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <!-- 笔记 1 -->
+        <div class="note-card">
+          <div>
+            <span class="note-tag tag-purple">✍️ EJU 日语听力技巧</span>
+          </div>
+          <div class="note-title">EJU 听力长文章“符号速记法”冲满分</div>
+          <div class="note-content">
+            <strong>听力干货</strong>：EJU 听力场景多为学术讲座与大学选修课，语速极快！小红书高分爆帖推荐用箭头 (↑ ↓)、首字母简写快速记录对比节点，切忌写完整汉字。
+          </div>
+          <div class="note-footer">
+            <span>❤️ 1.5w 赞 · 早稻田留日学姐</span>
+            <span>来源：EJU满分笔记</span>
+          </div>
+        </div>
+
+        <!-- 笔记 2 -->
+        <div class="note-card">
+          <div>
+            <span class="note-tag tag-red">⚠️ 校内考才是关键</span>
+          </div>
+          <div class="note-title">EJU 成绩只是敲门砖，校内考笔试+面试定生死！</div>
+          <div class="note-content">
+            <strong>避坑提醒</strong>：不要以为 EJU 考高分就万事大吉！东京大学、京都大学等名校极度看重“校内考小论文”与“教授现场面试”。面试前必须读透对口教授的近期研究论文！
+          </div>
+          <div class="note-footer">
+            <span>❤️ 1.1w 赞 · 东大理工硕士学长</span>
+            <span>来源：校内考实操</span>
+          </div>
+        </div>
+
+        <!-- 笔记 3 -->
+        <div class="note-card">
+          <div>
+            <span class="note-tag tag-gold">🏫 语言学校甄别</span>
+          </div>
+          <div class="note-title">选语言学校别只看环境，重点看升学指导率！</div>
+          <div class="note-content">
+            <strong>选校秘籍</strong>：警惕“承诺直接包就职”的无资质机构。优质语言学校应具备独立的 EJU 留考模拟考机制、小论文批改师资与稳定的大学院/学部升学率。
+          </div>
+          <div class="note-footer">
+            <span>❤️ 7,900+ 赞 · 日本留学避坑指南</span>
+            <span>来源：语言学校测评</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 小红书留学生通用避坑黄金法则 -->
+    <section class="card" style="background: linear-gradient(135deg, #FFF1F2 0%, #FFFFFF 100%); border-color: #FECDD3;">
+      <h2 style="font-size: 1.25rem; color: #9F1239; margin-bottom: 0.75rem;">💡 小红书留学生总结：通用避坑四大铁律</h2>
+      <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; display: flex; flex-direction: column; gap: 0.5rem;">
+        <p>1. <strong>大学官网 Entry Requirements 永远是唯一第一准则</strong>：不要全信中介口头承诺，必须亲自前往目标大学官网核对 A-Level/高考/EJU/GPA 及雅思托福的最新要求。</p>
+        <p>2. <strong>拒绝材料造假与“保录取”诱惑</strong>：任何声称可以保录、学术材料造假的中介一律拉黑！查出造假将面临永久拒签与学术记录取消。</p>
+        <p>3. <strong>早规划早出分</strong>：无论是 A-Level 单元刷分、托福雅思首考，还是 EJU 模拟考，高一/高二必须尽早出分，留出足够的申请窗口期。</p>
+        <p>4. <strong>注重生活与法律红线</strong>：尊重所在国法律（如新加坡出勤率与海关管制、英国租房合同细节），确保学术与生活的双重安全。</p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 小红书留学生真实干货 & 避坑指南 V1 · 汇聚真实留学生经验</p>
+  </footer>
+</body>
+</html>

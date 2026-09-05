@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>2026 A-Level 课程学习与英国 G5 备考指南 V1</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --brand-blue: #1E3A8A;
+      --brand-blue-light: #2563EB;
+      --brand-blue-bg: #EFF6FF;
+
+      --accent-red: #DC2626;
+      --accent-red-bg: #FEF2F2;
+
+      --accent-gold: #D97706;
+      --accent-gold-bg: #FEF3C7;
+
+      --accent-purple: #7C3AED;
+      --accent-purple-bg: #F3E8FF;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Sticky Header */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-light));
+      color: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--brand-blue);
+    }
+
+    .brand-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      min-height: 44px;
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background-color: var(--brand-blue-bg);
+      color: var(--brand-blue-light);
+    }
+
+    /* Container Layout */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 100%);
+      border: 1px solid #DBEAFE;
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: var(--brand-blue-light);
+      color: white;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--brand-blue);
+      margin-bottom: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 950px;
+      line-height: 1.7;
+    }
+
+    /* Cards Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* Card Section */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--brand-blue-bg);
+      color: var(--brand-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .card-h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Subcard feature box */
+    .feature-box {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      color: var(--brand-blue);
+      font-size: 1.02rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .feature-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* Data Table */
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-top: 1rem;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      min-width: 780px;
+    }
+
+    .data-table th {
+      background: var(--brand-blue-bg);
+      color: var(--brand-blue);
+      font-weight: 700;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .data-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.18rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .badge-blue { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+    .badge-purple { background: #F3E8FF; color: #7C3AED; border: 1px solid #DDD6FE; }
+    .badge-green { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+    .badge-gold { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
+    .badge-red { background: #FEF2F2; color: #DC2626; border: 1px solid #FCA5A5; }
+
+    /* Exam Boards Comparison */
+    .board-card {
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      border: 1.5px solid var(--border-color);
+      background: white;
+    }
+
+    .board-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brand-blue);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Sticky Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">A-L</div>
+        <div>
+          <div class="brand-title">A-Level 课程与备考全景指南 V1</div>
+          <div class="brand-subtitle">英国普通教育高级证书 · 通往英国 G5 与全球名校黄金通道</div>
+        </div>
+      </a>
+      <a href="index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        返回学习中心
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Hero Banner -->
+    <section class="hero-card">
+      <span class="hero-tag">🇬🇧 国际高中课程深度专栏</span>
+      <h1 class="hero-title">A-Level 课程体系 · 选课策略与英国 G5 冲刺全指南</h1>
+      <p class="hero-desc">
+        A-Level (General Certificate of Education Advanced Level) 是英国国民教育课程体系，也是全球认可度极高的大学入学许可资格。学习者可根据大学专业目标自主挑选 3~4 门学科精读，凭借 A*A*A ~ AAA 的学术成绩直通牛津、剑桥、帝国理工、UCL、LSE 等世界顶尖名校。
+      </p>
+    </section>
+
+    <!-- 核心架构 3 大支柱 -->
+    <div class="grid-3">
+      <div class="feature-box" style="background: white;">
+        <div class="feature-title">📚 学制架构 (AS + A2)</div>
+        <div class="feature-desc">第一年为 <strong>AS 阶段</strong>（学习 4 门科目），第二年为 <strong>A2 阶段</strong>（保留 3~4 门深造）。最终按 A*、A、B、C、D、E 划分等级。</div>
+      </div>
+      <div class="feature-box" style="background: white;">
+        <div class="feature-title">🎯 自由选课 + 专精化</div>
+        <div class="feature-desc">摒弃全科压迫，学生可结合优势从 70+ 门学科中挑选最擅长的 3-4 门（如数学+进阶数学+物理），打造最强申研学术背景。</div>
+      </div>
+      <div class="feature-box" style="background: white;">
+        <div class="feature-title">🌍 全球学术通用通行证</div>
+        <div class="feature-desc">受英国、美国、加拿大、澳大利亚、新加坡、中国香港等全球 160 多个国家与地区 11,000+ 所顶尖大学完全认可。</div>
+      </div>
+    </div>
+
+    <!-- 考试局深度对比：Edexcel vs CIE vs Oxford AQA -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-icon">🏛️</div>
+        <h2 class="card-h2">三大主流考试局对比：Edexcel (爱德思) vs. CIE (剑桥) vs. Oxford AQA</h2>
+      </div>
+
+      <div class="grid-3">
+        <!-- 爱德思 -->
+        <div class="board-card" style="border-color: #BFDBFE;">
+          <div class="board-title">
+            <span>Edexcel (爱德思)</span>
+            <span class="badge badge-blue">模块化多刷分</span>
+          </div>
+          <div style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.65;">
+            • <strong>考试机制</strong>：模块化拆分（单元考试），成绩按单元累加，支持单单元刷分。<br>
+            • <strong>考试季</strong>：每年 <strong>1月、5-6月、10-11月</strong> 3次考试安排，机会极多。<br>
+            • <strong>学科优势</strong>：理科计算题逻辑清晰，中国学生高分 (A*) 率极高。
+          </div>
+        </div>
+
+        <!-- 剑桥 CIE -->
+        <div class="board-card" style="border-color: #DDD6FE;">
+          <div class="board-title">
+            <span>CIE (剑桥考试局)</span>
+            <span class="badge badge-purple">学术严谨学术高</span>
+          </div>
+          <div style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.65;">
+            • <strong>考试机制</strong>：多为线性测试（通常需一次性考完所有单元），考题深度大。<br>
+            • <strong>考试季</strong>：每年 <strong>5-6月、10-11月</strong> 2次考试。<br>
+            • <strong>学科优势</strong>：题目极其规范，学术根基扎实，受海外顶尖名校推崇。
+          </div>
+        </div>
+
+        <!-- AQA -->
+        <div class="board-card" style="border-color: #A7F3D0;">
+          <div class="board-title">
+            <span>Oxford AQA (牛津AQA)</span>
+            <span class="badge badge-green">重视国际学生</span>
+          </div>
+          <div style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.65;">
+            • <strong>考试机制</strong>：针对非母语国际生优化语言表述，注重考察科学思维与学科理解。<br>
+            • <strong>考试季</strong>：每年 1月、5-6月。<br>
+            • <strong>学科优势</strong>：实验操作与论文表达评分标准明晰。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 热门专业与 A-Level 黄金选课组合 -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-icon">🧭</div>
+        <h2 class="card-h2">大学热门专业对口 A-Level 黄金选课组合盘点</h2>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>大学申请专业方向</th>
+              <th>必修 / 推荐 A-Level 科目</th>
+              <th>补充建议科目</th>
+              <th>选课策略解析</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>计算机科学 (CS) / 软件工程</strong></td>
+              <td><span class="badge badge-blue">数学 + 进阶数学 (Further Math)</span></td>
+              <td>物理 / 计算机科学 (Computer Science)</td>
+              <td>G5名校（牛剑/帝国理工）计算机极度看重数学与进阶数学推导逻辑。</td>
+            </tr>
+            <tr>
+              <td><strong>工程类 (机械/电子/土木/航空)</strong></td>
+              <td><span class="badge badge-blue">数学 + 物理</span></td>
+              <td>进阶数学 / 化学</td>
+              <td>物理与数学是工科核心基石，进阶数学能极大提升申请竞争力。</td>
+            </tr>
+            <tr>
+              <td><strong>经济学 (Economics) / 金融学</strong></td>
+              <td><span class="badge badge-purple">数学 + 经济学 (Economics)</span></td>
+              <td>进阶数学 / 历史 / 商务</td>
+              <td>LSE、牛津经济专业要求极高的数学基础，强烈建议选修进阶数学。</td>
+            </tr>
+            <tr>
+              <td><strong>生物医学 / 化学工程 / 药学</strong></td>
+              <td><span class="badge badge-red">化学 + 生物</span></td>
+              <td>数学 / 物理</td>
+              <td>化学是医学与生物工程的绝对门槛，生物提供基础知识框架。</td>
+            </tr>
+            <tr>
+              <td><strong>人文社科 / 法律 / 心理学</strong></td>
+              <td><span class="badge badge-gold">历史 / 英语文学 / 心理学</span></td>
+              <td>社会学 / 经济学 / 语言类</td>
+              <td>看重逻辑写作、长文本阅读与批判性思考能力。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 英国 G5 名校录取门槛与附加考试 -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-icon">🎓</div>
+        <h2 class="card-h2">英国 G5 超级精英大学 A-Level 门槛与附加笔试要求</h2>
+      </div>
+
+      <div class="grid-2">
+        <div class="feature-box" style="background: white; border-color: #BFDBFE;">
+          <div class="feature-title">🏛️ 牛津大学 (Oxford) & 剑桥大学 (Cambridge)</div>
+          <div class="feature-desc">
+            • <strong>成绩门槛</strong>：最低 <strong>A*AA ~ A*A*A</strong>（核心科目须达 A*）。<br>
+            • <strong>附加测试</strong>：数学/计算机需考 <strong>MAT / STEP</strong>，物理/工程需考 <strong>PAT / ENGAA</strong>，经济需考 <strong>TMUA / TSA</strong>。<br>
+            • <strong>面试</strong>：通过笔试后参加教授一对一学术面试。
+          </div>
+        </div>
+
+        <div class="feature-box" style="background: white; border-color: #BFDBFE;">
+          <div class="feature-title">🏛️ 帝国理工 (IC) & LSE & UCL</div>
+          <div class="feature-desc">
+            • <strong>帝国理工 (IC)</strong>：工科与计算机要求 <strong>A*A*A</strong>，数学/计算专业须考 MAT/STEP。<br>
+            • <strong>伦敦政经 (LSE)</strong>：经济、金融及社科名校，要求 <strong>A*AA ~ AAA</strong>，高度看重 GCSE 成绩与文书。<br>
+            • <strong>伦敦大学学院 (UCL)</strong>：综合性名校，要求 <strong>A*AA ~ ABB</strong>。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- A-Level 高效备考四大黄金法则 -->
+    <section class="card" style="background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%); border-color: #93C5FD;">
+      <h2 style="font-size: 1.25rem; color: #1E3A8A; margin-bottom: 1rem;">💡 A-Level 高分 (A*) 备考四大黄金法则</h2>
+
+      <div class="grid-2">
+        <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7;">
+          <strong style="color: #1D4ED8;">1. 历年真题 (Past Papers) 为王：</strong><br>
+          至少刷完近 10 年对应考试局真题！反复熟悉刷题节奏、出题套路与考纲必考知识点。
+        </div>
+
+        <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7;">
+          <strong style="color: #1D4ED8;">2. 精研 Scoring Scheme (Mark Scheme)：</strong><br>
+          官方评分标准包含关键采分点关键词 (Keywords)。理科步骤分、文科论述点必须踩准得分关键词。
+        </div>
+
+        <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7;">
+          <strong style="color: #1D4ED8;">3. 建立分类错题金库：</strong><br>
+          将计算失误、概念模糊、审题偏倚的错题进行分类归档，每周复盘，杜绝重复落坑。
+        </div>
+
+        <div style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7;">
+          <strong style="color: #1D4ED8;">4. 费曼学习法与知识输出：</strong><br>
+          尝试向同学推导数学定理或解释物理现象，检验自己是否真正掌握考纲本质。
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 A-Level 课程与备考全景指南 V1 · 助您决胜英国 G5 与全球顶尖名校</p>
+  </footer>
+</body>
+</html>

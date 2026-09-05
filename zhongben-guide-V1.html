@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>2026 上海中本贯通 (3+4) 深度指南 V1 | 3年中职+4年公办本科</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --brand-purple: #6D28D9;
+      --brand-purple-light: #7C3AED;
+      --brand-purple-bg: #F3E8FF;
+      
+      --brand-blue: #1E3A8A;
+      --brand-blue-light: #2563EB;
+      --brand-blue-bg: #EFF6FF;
+
+      --accent-green: #059669;
+      --accent-green-bg: #ECFDF5;
+
+      --accent-gold: #D97706;
+      --accent-gold-bg: #FEF3C7;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header Sticky */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--brand-purple), var(--brand-purple-light));
+      color: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--brand-purple);
+    }
+
+    .brand-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      min-height: 44px;
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background-color: var(--brand-purple-bg);
+      color: var(--brand-purple);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Hero Card */
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F3E8FF 100%);
+      border: 1px solid #E9D5FF;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: #7C3AED;
+      color: white;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #5B21B6;
+      margin-bottom: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title { font-size: 2.4rem; }
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 900px;
+      line-height: 1.7;
+    }
+
+    /* Grid layout */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* Section Card */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: var(--brand-purple-bg);
+      color: var(--brand-purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .card-h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Subcard feature box */
+    .feature-box {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      color: var(--brand-purple);
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .feature-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Data Table */
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-top: 1rem;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      min-width: 720px;
+    }
+
+    .data-table th {
+      background: #F3E8FF;
+      color: #5B21B6;
+      font-weight: 700;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .data-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .badge-purple { background: #F3E8FF; color: #7C3AED; }
+    .badge-blue { background: #EFF6FF; color: #1D4ED8; }
+    .badge-green { background: #ECFDF5; color: #047857; }
+    .badge-gold { background: #FEF3C7; color: #B45309; }
+
+    /* Comparison Box */
+    .vs-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .vs-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .vs-box {
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      border: 1.5px solid;
+    }
+
+    .vs-zb {
+      background: #FAF5FF;
+      border-color: #C084FC;
+    }
+
+    .vs-gk {
+      background: #EFF6FF;
+      border-color: #93C5FD;
+    }
+
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Sticky Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">中本</div>
+        <div>
+          <div class="brand-title">2026 中本贯通深度指南 V1</div>
+          <div class="brand-subtitle">3年中职 + 4年公办本科 · 避开高考竞争直接锁定全日制本科</div>
+        </div>
+      </a>
+      <a href="index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        返回学习中心
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Hero Banner -->
+    <section class="hero-card">
+      <span class="hero-tag">🎓 独家专题研究 · V1 独立指南版</span>
+      <h1 class="hero-title">上海中本贯通 (3+4) 升学模式全维度解析</h1>
+      <p class="hero-desc">
+        中本贯通（中等职业教育-应用型本科贯通培养）是中考后一条“直通本科”的黄金赛道。学生在中考志愿中一次性录取，完成前3年中职培养后通过转段测试，直接升入对口公办本科院校进行4年本科学习，毕业获得<strong>全日制普通高等学校本科学历证书与学士学位证书</strong>。
+      </p>
+    </section>
+
+    <!-- 核心四大亮点 -->
+    <div class="grid-3">
+      <div class="feature-box" style="background: white;">
+        <div class="feature-title">🎓 全日制公办本科</div>
+        <div class="feature-desc">毕业证书与高考录取的本科生完全一致（学信网标注全日制普通本科），拥有学士学位，享受同等考研、考公待遇。</div>
+      </div>
+      <div class="feature-box" style="background: white;">
+        <div class="feature-title">🛡️ 95%+ 高转段通过率</div>
+        <div class="feature-desc">第3年参加转段考试（文化课+专业技能考核），过线即可升本，免除高考统考的激烈残忍竞争。</div>
+      </div>
+      <div class="feature-box" style="background: white;">
+        <div class="feature-title">💰 公办学费高性价比</div>
+        <div class="feature-desc">前3年中职阶段享受免学费或国家助学补贴，后4年按公办本科标准收费（约5000元/年），经济负担极低。</div>
+      </div>
+    </div>
+
+    <!-- 深度解读板块 -->
+    <div class="grid-2">
+      <!-- 学制与培养机制 -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-icon">🏫</div>
+          <h2 class="card-h2">学制构成与联合培养机制</h2>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+          <p>• <strong>3年中职基础段</strong>：在中职学校学习，由中职与合作本科大学联合制定教学大纲。除了专业技能课外，高度重视语文、数学、英语文化基础课。</p>
+          <p>• <strong>转段测试（第3年下学期）</strong>：由上海市统一命题或本科院校自主命题进行转段合格测试，考核合格后办理本科入学手续。</p>
+          <p>• <strong>4年本科提升段</strong>：进入对口公办本科大学校园，深入学习专业高级课程与实习，完成毕业设计与论文答辩。</p>
+        </div>
+      </section>
+
+      <!-- 录取门槛与分数线 -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-icon">🎯</div>
+          <h2 class="card-h2">报考条件与中考录取分数线</h2>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+          <p>• <strong>投档控制线</strong>：中本贯通在上海中考志愿中处于优先批次（提前统一录取），最低投档控制线为<strong>公办普通高中控制线</strong>。</p>
+          <p>• <strong>热门专业实际分数线</strong>：热门工科（计算机、电子信息、机械）及医学护理专业，实际录取分数线普遍超普高线，部分逼近<strong>区重点高中分数线（580分 ~ 630分+）</strong>。</p>
+          <p>• <strong>志愿填报规则</strong>：中考志愿表中属于平行志愿录取，若未录取不影响后续普通高中与国际高中的录取。</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- 上海热门中本贯通院校与专业清单 -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-icon">📊</div>
+        <h2 class="card-h2">上海市热门中本贯通对口本科院校与专业全景盘点</h2>
+      </div>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">
+        以下为上海市最具知名度与就业保障的中本贯通招生院校组合：
+      </p>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>对口本科院校</th>
+              <th>办学性质</th>
+              <th>贯通专业方向</th>
+              <th>合作中职学校</th>
+              <th>专业特色与就业竞争优势</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>上海应用技术大学</strong></td>
+              <td>公办本科</td>
+              <td><span class="badge badge-purple">化学工程与工艺 / 机械设计制造</span></td>
+              <td>上海市工业技术学校 / 石化工业学校</td>
+              <td>上海重点应用型本科，国家级特色专业，就业率98%+。</td>
+            </tr>
+            <tr>
+              <td><strong>上海电机学院</strong></td>
+              <td>公办本科</td>
+              <td><span class="badge badge-purple">电气工程及其自动化 / 智能制造</span></td>
+              <td>上海市机电工业学校 / 大众工业学校</td>
+              <td>临港高端装备制造重点院校，深度对接大型国企与芯片产业。</td>
+            </tr>
+            <tr>
+              <td><strong>上海第二工业大学</strong></td>
+              <td>公办本科</td>
+              <td><span class="badge badge-purple">智能制造工程 / 数据科学与大数据</span></td>
+              <td>上海市工业技术学校 / 电子工业学校</td>
+              <td>工科实力雄厚，信息技术与智能装备应用领域口碑优异。</td>
+            </tr>
+            <tr>
+              <td><strong>上海工程技术大学</strong></td>
+              <td>公办本科</td>
+              <td><span class="badge badge-blue">轨道交通信号与控制 / 飞行器制造</span></td>
+              <td>上海市大众工业学校 / 市北职业高级中学</td>
+              <td>与申通地铁、航空航天企业联合定点培养，就业稳定性高。</td>
+            </tr>
+            <tr>
+              <td><strong>上海商学院</strong></td>
+              <td>公办本科</td>
+              <td><span class="badge badge-gold">电子商务 / 酒店管理（中外合作）</span></td>
+              <td>上海市商业学校 / 商贸旅游学校</td>
+              <td>商科、新零售与国际服务业高端管理人才基地。</td>
+            </tr>
+            <tr>
+              <td><strong>上海健康医学院</strong></td>
+              <td>公办本科</td>
+              <td><span class="badge badge-green">护理学 / 医学影像技术 / 药学</span></td>
+              <td>上海市药材学校 / 卫生学校</td>
+              <td>上海各大三甲医院护理与医疗技术骨干输送主渠道。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 中本贯通 VS 普通高考路径 对比 -->
+    <section class="card">
+      <div class="card-header">
+        <div class="card-icon">⚖️</div>
+        <h2 class="card-h2">中本贯通 vs 普通高中升学路径深度对比</h2>
+      </div>
+
+      <div class="vs-grid">
+        <!-- 中本贯通 -->
+        <div class="vs-box vs-zb">
+          <h3 style="color: #6D28D9; font-size: 1.1rem; margin-bottom: 0.75rem;">🎓 中本贯通 (3+4) 路径</h3>
+          <ul style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; padding-left: 1.2rem;">
+            <li><strong>升学确定性</strong>：中考一次录取即锁定对口本科，转段测试合格率 >95%。</li>
+            <li><strong>竞争压力</strong>：避开高三高考“独木桥”，学习节奏相对舒缓，注重动手实操。</li>
+            <li><strong>学历文凭</strong>：全日制普通本科学历 + 学士学位（学信网可查）。</li>
+            <li><strong>局限性</strong>：中考志愿填报即锁定专业，无法在本科阶段随意调剂专业，无法冲击985/211名校。</li>
+          </ul>
+        </div>
+
+        <!-- 普通高中 -->
+        <div class="vs-box vs-gk">
+          <h3 style="color: #1D4ED8; font-size: 1.1rem; margin-bottom: 0.75rem;">🏫 普通高中 (高考) 路径</h3>
+          <ul style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; padding-left: 1.2rem;">
+            <li><strong>升学上限高</strong>：可通过高考冲击双一流、985、211顶尖名校。</li>
+            <li><strong>专业选择广</strong>：高考填报志愿时拥有广泛院校和专业选择空间。</li>
+            <li><strong>竞争压力</strong>：高考竞争极其剧烈，若高考发挥失常可能滑落至专科。</li>
+            <li><strong>学习强度</strong>：高三阶段面临长达数月的高强度复习与考试压力。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 报考决策建议 -->
+    <section class="card" style="background: linear-gradient(135deg, #F3E8FF 0%, #FFFFFF 100%); border-color: #D8B4FE;">
+      <h2 style="font-size: 1.2rem; color: #5B21B6; margin-bottom: 0.75rem;">💡 决策建议：什么样的情况建议填报中本贯通？</h2>
+      <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; display: flex; flex-direction: column; gap: 0.5rem;">
+        <p>1. <strong>中考成绩位于普通高中线上下（预估550 ~ 620分）</strong>：上重点高中希望不大，若读普通高中未来高考升本概率存在不确定性，中本贯通是性价比极高的“本科安全网”。</p>
+        <p>2. <strong>动手能力强、对特定专业兴趣浓厚</strong>：对计算机、机械、护理、轨道交通等应用技术型专业有明确偏好。</p>
+        <p>3. <strong>希望减轻升学焦虑与家庭经济负担</strong>：希望提前锁定本科资质，按公办大学标准缴纳学费。</p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 上海中本贯通 (3+4) 深度指南 V1 · 保持版本独立控制</p>
+  </footer>
+</body>
+</html>
