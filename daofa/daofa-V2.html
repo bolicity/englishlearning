@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>2026 初中道德与法治 (道法) 中考复习中心 V2 | 无缝 PDF 直接预览</title>
+  <title>2026 初中道德与法治 (道法) 中考复习中心 V2 | 极速 PDF 预览与知识梳理</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,21 +37,15 @@
 
       --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
       --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+      
       --radius-sm: 8px;
       --radius-md: 12px;
       --radius-lg: 16px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg-main);
@@ -60,201 +54,122 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Header Sticky */
+    /* Sticky Navigation Header */
     header {
       background: var(--bg-card);
       border-bottom: 1px solid var(--border-color);
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      position: sticky; top: 0; z-index: 50;
       box-shadow: var(--shadow-sm);
     }
 
     .nav-container {
-      max-width: 1350px;
-      margin: 0 auto;
+      max-width: 1350px; margin: 0 auto;
       padding: 0.85rem 1.25rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
     }
 
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--text-primary);
+      display: flex; align-items: center; gap: 0.75rem;
+      text-decoration: none; color: var(--text-primary);
     }
 
     .brand-logo {
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-light));
-      color: white;
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 1.1rem;
-      flex-shrink: 0;
+      color: white; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.1rem; flex-shrink: 0;
     }
 
     .brand-title {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--brand-blue);
+      font-family: 'Outfit', sans-serif; font-weight: 700;
+      font-size: 1.25rem; color: var(--brand-blue);
     }
 
-    .brand-subtitle {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
+    .brand-subtitle { font-size: 0.78rem; color: var(--text-muted); }
 
     .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.6rem 1rem;
-      min-height: 44px;
-      background-color: var(--bg-subtle);
-      color: var(--text-secondary);
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.88rem;
-      transition: all 0.2s ease;
-      touch-action: manipulation;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 1rem; min-height: 44px;
+      background-color: var(--bg-subtle); color: var(--text-secondary);
+      border-radius: var(--radius-sm); text-decoration: none;
+      font-weight: 600; font-size: 0.88rem; transition: all 0.2s ease;
     }
 
-    /* Layout Desktop vs Mobile */
+    .back-btn:hover {
+      background-color: var(--brand-blue-bg); color: var(--brand-blue-light);
+    }
+
     .layout-container {
-      max-width: 1350px;
-      margin: 0 auto;
+      max-width: 1350px; margin: 0 auto;
       padding: 1.5rem 1.25rem 4rem 1.25rem;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      align-items: start;
+      display: grid; grid-template-columns: 1fr; gap: 1.5rem; align-items: start;
     }
 
     @media (min-width: 980px) {
       .layout-container {
-        grid-template-columns: 270px 1fr;
-        gap: 2rem;
-        padding-top: 2rem;
+        grid-template-columns: 270px 1fr; gap: 2rem; padding-top: 2rem;
       }
     }
 
     /* Sidebar Navigation */
     .sidebar {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 1rem;
-      box-shadow: var(--shadow-sm);
-      position: sticky;
-      top: 4.2rem;
-      z-index: 40;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 1rem;
+      box-shadow: var(--shadow-sm); position: sticky; top: 4.2rem; z-index: 40;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
     }
 
     @media (min-width: 980px) {
       .sidebar {
-        top: 5rem;
-        padding: 1.25rem;
-        max-height: calc(100vh - 6rem);
-        overflow-y: auto;
-        overflow-x: hidden;
+        top: 5rem; padding: 1.25rem;
+        max-height: calc(100vh - 6rem); overflow-y: auto; overflow-x: hidden;
       }
     }
 
     .sidebar-title {
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: var(--brand-blue);
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-      padding-bottom: 0.4rem;
+      font-size: 0.85rem; font-weight: 800; color: var(--brand-blue);
+      text-transform: uppercase; margin-bottom: 0.5rem; padding-bottom: 0.4rem;
       border-bottom: 1px solid var(--border-color);
     }
 
     .sidebar-menu {
-      list-style: none;
-      display: flex;
-      flex-direction: row;
-      gap: 0.5rem;
-      white-space: nowrap;
+      list-style: none; display: flex; flex-direction: row; gap: 0.5rem; white-space: nowrap;
     }
 
     @media (min-width: 980px) {
-      .sidebar-menu {
-        flex-direction: column;
-        gap: 0.25rem;
-        white-space: normal;
-      }
+      .sidebar-menu { flex-direction: column; gap: 0.25rem; white-space: normal; }
     }
 
     .sidebar-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.55rem 0.8rem;
-      min-height: 42px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 600;
-      background: var(--bg-main);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.55rem 0.8rem; min-height: 42px;
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 0.88rem; font-weight: 600; background: var(--bg-main);
+      border: 1px solid var(--border-color); border-radius: var(--radius-sm);
       transition: all 0.2s ease;
     }
 
     @media (min-width: 980px) {
-      .sidebar-link {
-        display: flex;
-        background: transparent;
-        border: none;
-        padding: 0.65rem 0.8rem;
-      }
+      .sidebar-link { display: flex; background: transparent; border: none; padding: 0.65rem 0.8rem; }
     }
 
-    .sidebar-link:hover, .sidebar-link:active {
-      background-color: var(--brand-blue-bg);
-      color: var(--brand-blue-light);
-      border-color: var(--brand-blue-light);
+    .sidebar-link:hover {
+      background-color: var(--brand-blue-bg); color: var(--brand-blue-light);
     }
 
-    /* Main Content Area */
-    .main-content {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
+    /* Main Area */
+    .main-content { display: flex; flex-direction: column; gap: 2rem; }
 
     .hero-card {
       background: linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 100%);
-      border: 1px solid #DBEAFE;
-      border-radius: var(--radius-lg);
-      padding: 1.75rem;
-      box-shadow: var(--shadow-sm);
-    }
-
-    @media (min-width: 768px) {
-      .hero-card { padding: 2.25rem; }
+      border: 1px solid #DBEAFE; border-radius: var(--radius-lg);
+      padding: 1.75rem; box-shadow: var(--shadow-sm);
     }
 
     .hero-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--brand-blue);
-      margin-bottom: 0.5rem;
-      line-height: 1.25;
+      font-family: 'Outfit', sans-serif; font-size: 1.8rem;
+      font-weight: 700; color: var(--brand-blue); margin-bottom: 0.5rem;
     }
 
     @media (min-width: 768px) {
@@ -262,101 +177,87 @@
     }
 
     .content-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      box-shadow: var(--shadow-sm);
-      scroll-margin-top: 5rem;
-    }
-
-    @media (min-width: 768px) {
-      .content-card { padding: 2rem; }
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 1.5rem;
+      box-shadow: var(--shadow-sm); scroll-margin-top: 5rem;
     }
 
     .card-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.75rem;
+      font-size: 1.3rem; font-weight: 700; color: var(--text-primary);
+      display: flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 1.25rem; padding-bottom: 0.75rem;
       border-bottom: 1px solid var(--border-color);
     }
 
-    /* PDF 实时预览组件 */
+    /* Smart PDF Viewer with Loader and Fallback Notice */
     .pdf-selector-bar {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      background: var(--bg-subtle);
-      padding: 1.25rem;
-      border-radius: var(--radius-md);
-      margin-bottom: 1.25rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+      background: var(--bg-subtle); padding: 1.25rem;
+      border-radius: var(--radius-md); margin-bottom: 1.25rem;
     }
 
     @media (min-width: 640px) {
       .pdf-selector-bar {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: row; align-items: center; justify-content: space-between;
       }
     }
 
     .pdf-select-control {
-      padding: 0.65rem 0.85rem;
-      min-height: 44px;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      background-color: var(--bg-card);
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--brand-blue);
-      outline: none;
-      cursor: pointer;
-      flex: 1;
-      max-width: 480px;
+      padding: 0.65rem 0.85rem; min-height: 44px;
+      border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+      background-color: var(--bg-card); font-size: 0.9rem; font-weight: 600;
+      color: var(--brand-blue); outline: none; cursor: pointer; flex: 1; max-width: 480px;
     }
 
-    .pdf-embed-wrapper {
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      background: #FAFAFA;
-      box-shadow: var(--shadow-sm);
-      scroll-margin-top: 6rem;
+    .pdf-embed-container {
+      position: relative; border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); overflow: hidden; background: #F1F5F9;
+      box-shadow: var(--shadow-sm); scroll-margin-top: 6rem;
     }
 
     .pdf-embed-header {
-      background: var(--bg-subtle);
-      padding: 0.75rem 1.25rem;
-      font-weight: 700;
-      font-size: 0.92rem;
-      color: var(--brand-blue);
+      background: var(--bg-card); padding: 0.75rem 1.25rem;
+      font-weight: 700; font-size: 0.92rem; color: var(--brand-blue);
       border-bottom: 1px solid var(--border-color);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+    }
+
+    .large-file-banner {
+      display: none; background: #FEF3C7; border-bottom: 1px solid #FDE68A;
+      padding: 0.6rem 1.25rem; font-size: 0.84rem; color: #92400E; font-weight: 600;
+      align-items: center; justify-content: space-between; gap: 0.5rem;
+    }
+
+    .pdf-loader-overlay {
+      position: absolute; top: 48px; left: 0; right: 0; bottom: 0;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 1rem; z-index: 10; padding: 2rem; text-align: center;
+      transition: opacity 0.3s ease;
+    }
+
+    .spinner {
+      width: 44px; height: 44px;
+      border: 4px solid var(--border-color); border-top-color: var(--brand-blue-light);
+      border-radius: 50%; animation: spin 1s infinite linear;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     .pdf-frame {
-      width: 100%;
-      height: 520px;
-      border: none;
-      display: block;
+      width: 100%; height: 550px; border: none; display: block; background: #FFFFFF;
     }
 
     @media (min-width: 768px) {
       .pdf-frame { height: 750px; }
     }
 
-    /* 资料卡片组 (USER DIRECT PREVIEW CARDS) */
+    /* Cards Grid */
     .downloads-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
+      display: grid; grid-template-columns: 1fr; gap: 1.25rem;
     }
 
     @media (min-width: 640px) {
@@ -364,114 +265,62 @@
     }
 
     .download-card {
-      background: var(--bg-main);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1rem;
-      transition: all 0.2s ease;
-      cursor: pointer;
+      background: var(--bg-main); border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); padding: 1.25rem;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 1rem;
+      transition: all 0.2s ease; cursor: pointer;
     }
 
     .download-card:hover {
-      border-color: var(--brand-blue-light);
-      box-shadow: var(--shadow-md);
-      background: var(--bg-card);
+      border-color: var(--brand-blue-light); box-shadow: var(--shadow-md); background: var(--bg-card);
     }
 
-    .card-top {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
+    .card-top { display: flex; align-items: center; gap: 1rem; }
 
     .file-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-      background-color: #FEE2E2;
-      color: #991B1B;
+      width: 48px; height: 48px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.85rem; flex-shrink: 0;
+      background-color: #FEE2E2; color: #991B1B;
     }
 
-    .file-title {
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--text-primary);
-      margin-bottom: 0.2rem;
-    }
-
-    .file-desc {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
+    .file-title { font-weight: 700; font-size: 0.95rem; color: var(--text-primary); margin-bottom: 0.2rem; }
+    .file-desc { font-size: 0.8rem; color: var(--text-muted); }
 
     .card-actions {
-      display: flex;
-      gap: 0.5rem;
-      border-top: 1px solid var(--border-color);
-      padding-top: 0.75rem;
+      display: flex; gap: 0.5rem; border-top: 1px solid var(--border-color); padding-top: 0.75rem;
     }
 
     .btn-action {
-      flex: 1;
-      padding: 0.5rem 0.75rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-decoration: none;
-      text-align: center;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.3rem;
-      cursor: pointer;
-      border: none;
+      flex: 1; padding: 0.5rem 0.75rem; border-radius: var(--radius-sm);
+      font-size: 0.82rem; font-weight: 700; text-decoration: none; text-align: center;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem;
+      cursor: pointer; border: none;
     }
 
     .btn-preview {
-      background-color: var(--brand-blue-bg);
-      color: var(--brand-blue-light);
-      border: 1px solid #DBEAFE;
+      background-color: var(--brand-blue-bg); color: var(--brand-blue-light); border: 1px solid #DBEAFE;
     }
 
     .btn-preview:hover {
-      background-color: var(--brand-blue-light);
-      color: white;
+      background-color: var(--brand-blue-light); color: white;
     }
 
     .btn-download {
-      background-color: var(--bg-subtle);
-      color: var(--text-secondary);
-      border: 1px solid var(--border-color);
+      background-color: var(--bg-subtle); color: var(--text-secondary); border: 1px solid var(--border-color);
     }
 
-    .btn-download:hover {
-      background-color: #E2E8F0;
-      color: var(--text-primary);
-    }
+    .btn-download:hover { background-color: #E2E8F0; color: var(--text-primary); }
 
     footer {
-      background-color: var(--bg-card);
-      border-top: 1px solid var(--border-color);
-      padding: 1.75rem 1.25rem;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.82rem;
+      background-color: var(--bg-card); border-top: 1px solid var(--border-color);
+      padding: 1.75rem 1.25rem; text-align: center; color: var(--text-muted); font-size: 0.82rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Header Sticky -->
   <header>
     <div class="nav-container">
       <a href="../index.html" class="brand">
@@ -494,7 +343,7 @@
       <div class="sidebar-title">道法导航索引</div>
       <ul class="sidebar-menu">
         <li><a href="#sec-pdf-preview" class="sidebar-link" style="color: var(--brand-blue-light); font-weight: 700;">👁️ 1. 页面内无缝直接预览框</a></li>
-        <li><a href="#sec-downloads" class="sidebar-link" style="color: var(--accent-red); font-weight: 700;">📥 2. 4 大 PDF 资料直接预览入口</a></li>
+        <li><a href="#sec-downloads" class="sidebar-link" style="color: var(--accent-red); font-weight: 700;">📥 2. 4 大 PDF 资料快捷预览入口</a></li>
         <li><a href="#sec-topics" class="sidebar-link">📚 3. 道法全册 4 大考点板块</a></li>
         <li><a href="#sec-constitution" class="sidebar-link">⚖️ 4. 宪法专区与依宪治国</a></li>
       </ul>
@@ -504,9 +353,9 @@
     <main class="main-content">
       <!-- Hero -->
       <section class="hero-card">
-        <span style="display: inline-block; padding: 0.2rem 0.6rem; background: #EFF6FF; color: #1D4ED8; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem;">点击资料卡片直接在线预览</span>
-        <h1 class="hero-title">道德与法治 (道法) 全册 PDF 页面内无缝直接预览</h1>
-        <p style="font-size: 0.98rem; color: #475569;">点击下方任意 PDF 卡片，即可直接在页面视口中滚屏翻阅全量笔记。</p>
+        <span style="display: inline-block; padding: 0.2rem 0.6rem; background: #EFF6FF; color: #1D4ED8; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem;">⚡ 大文件 PDF 极速渲染与无缝预览优化版</span>
+        <h1 class="hero-title">道德与法治 (道法) 全册 PDF 极速预览与知识梳理</h1>
+        <p style="font-size: 0.98rem; color: #475569;">已针对大文件（如 104MB 八下笔记）优化加载体验：提供实时 Loading 加载反馈、高清全屏新标签极速浏览以及本地快速下载。</p>
       </section>
 
       <!-- 1. PDF 课本笔记页面内实时直接预览 -->
@@ -516,58 +365,48 @@
         <div class="pdf-selector-bar">
           <div style="font-weight: 700; color: var(--brand-blue); font-size: 0.92rem;">选择或切换正在预览的 PDF：</div>
           <select id="pdfSelect" class="pdf-select-control" onchange="switchPdf(this.value)">
-            <option value="2026.8道法七年级课本笔记.pdf">1. 《2026.8 道法七年级课本笔记.pdf》(12.4 MB)</option>
-            <option value="2026.7   六年级道法知识梳理.pdf">2. 《2026.7 六年级道法知识梳理.pdf》(10.2 MB)</option>
-            <option value="2026.7   八上道法知识梳理.pdf">3. 《2026.7 八上道法知识梳理.pdf》(8.4 MB)</option>
-            <option value="2026.7    八下道法知识梳理.pdf" selected>4. 《2026.7 八下道法知识梳理.pdf》(104.2 MB)</option>
+            <!-- 默认首选 8.4MB / 10.2MB 轻量文件，避免初始加载 104MB 百兆文件导致的黑屏 -->
+            <option value="2026.7   八上道法知识梳理.pdf" selected>1. 《2026.7 八上道法知识梳理.pdf》 (8.4 MB - 推荐快速预览)</option>
+            <option value="2026.7   六年级道法知识梳理.pdf">2. 《2026.7 六年级道法知识梳理.pdf》 (10.2 MB)</option>
+            <option value="2026.8道法七年级课本笔记.pdf">3. 《2026.8 道法七年级课本笔记.pdf》 (12.4 MB)</option>
+            <option value="2026.7    八下道法知识梳理.pdf">4. 《2026.7 八下道法知识梳理.pdf》 (104.2 MB 需较长时间加载)</option>
           </select>
         </div>
 
-        <div class="pdf-embed-wrapper" id="pdfViewerAnchor">
-          <div class="pdf-embed-header">
-            <span id="currentPdfTitle">📖 当前预览：《2026.7 八下道法知识梳理.pdf》</span>
-            <a id="currentPdfOpenBtn" href="2026.7    八下道法知识梳理.pdf" target="_blank" style="color: var(--brand-blue-light); font-size: 0.82rem; text-decoration: none; font-weight: 700;">全屏新窗口打开 ↗</a>
+        <div class="pdf-embed-container" id="pdfViewerAnchor">
+          <!-- 大文件提示条 -->
+          <div id="largeFileBanner" class="large-file-banner">
+            <span>⚠️ 当前 PDF 文件较大 (104.2 MB)，如果页面框架内加载较慢或黑屏，建议点击右侧直接全屏阅读：</span>
+            <a id="bannerOpenBtn" href="2026.7    八下道法知识梳理.pdf" target="_blank" style="background: #D97706; color: white; padding: 4px 10px; border-radius: 4px; text-decoration: none; font-size: 0.8rem;">🚀 全屏极速打开 ↗</a>
           </div>
-          <iframe id="pdfFrame" src="2026.7    八下道法知识梳理.pdf" class="pdf-frame"></iframe>
+
+          <div class="pdf-embed-header">
+            <span id="currentPdfTitle">📖 当前预览：《2026.7 八上道法知识梳理.pdf》</span>
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
+              <a id="currentPdfOpenBtn" href="2026.7   八上道法知识梳理.pdf" target="_blank" style="color: var(--brand-blue-light); font-size: 0.85rem; text-decoration: none; font-weight: 700;">全屏新窗口打开 ↗</a>
+              <a id="currentPdfDownloadBtn" href="2026.7   八上道法知识梳理.pdf" download style="color: var(--text-secondary); font-size: 0.85rem; text-decoration: none; font-weight: 600;">下载 PDF</a>
+            </div>
+          </div>
+
+          <!-- 加载中遮罩层 (防止黑屏无反馈) -->
+          <div id="pdfLoaderOverlay" class="pdf-loader-overlay">
+            <div class="spinner"></div>
+            <div style="font-weight: 700; color: var(--brand-blue); font-size: 1.05rem;" id="loaderText">正在加载 PDF 文件...</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); max-width: 420px;">
+              大文件首次读取较慢。若超过 5 秒未渲染，请点击上方【全屏新窗口打开】使用系统高速 PDF 阅读器查看。
+            </div>
+          </div>
+
+          <iframe id="pdfFrame" src="2026.7   八上道法知识梳理.pdf" class="pdf-frame" onload="onPdfLoaded()"></iframe>
         </div>
       </section>
 
-      <!-- 2. 全册 4 大 PDF 官方资料卡片 (DIRECT PREVIEW INTERACTION) -->
+      <!-- 2. 全册 4 大 PDF 官方资料卡片 -->
       <section class="content-card" id="sec-downloads">
-        <h2 class="card-title" style="color: var(--accent-red);">📥 2. 全册 4 大 PDF 官方课本笔记与知识梳理 (点击无缝直接预览)</h2>
+        <h2 class="card-title" style="color: var(--accent-red);">📥 2. 全册 4 大 PDF 官方课本笔记与知识梳理 (点击极速预览)</h2>
         <div class="downloads-grid">
-          <!-- 1. 七年级课本笔记 -->
-          <div class="download-card" onclick="triggerPreview('2026.8道法七年级课本笔记.pdf', '2026.8 道法七年级课本笔记.pdf')">
-            <div class="card-top">
-              <div class="file-icon">PDF</div>
-              <div>
-                <div class="file-title">2026.8 道法七年级课本笔记.pdf</div>
-                <div class="file-desc">七年级全册课本精细笔记与划重点 (12.4 MB)</div>
-              </div>
-            </div>
-            <div class="card-actions">
-              <button class="btn-action btn-preview">👁️ 页面内直接预览</button>
-              <a href="2026.8道法七年级课本笔记.pdf" class="btn-action btn-download" download onclick="event.stopPropagation()">📥 下载本地</a>
-            </div>
-          </div>
-
-          <!-- 2. 六年级道法知识梳理 -->
-          <div class="download-card" onclick="triggerPreview('2026.7   六年级道法知识梳理.pdf', '2026.7 六年级道法知识梳理.pdf')">
-            <div class="card-top">
-              <div class="file-icon">PDF</div>
-              <div>
-                <div class="file-title">2026.7 六年级道法知识梳理.pdf</div>
-                <div class="file-desc">六年级道法基础知识要点提纲 (10.2 MB)</div>
-              </div>
-            </div>
-            <div class="card-actions">
-              <button class="btn-action btn-preview">👁️ 页面内直接预览</button>
-              <a href="2026.7   六年级道法知识梳理.pdf" class="btn-action btn-download" download onclick="event.stopPropagation()">📥 下载本地</a>
-            </div>
-          </div>
-
-          <!-- 3. 八上道法知识梳理 -->
-          <div class="download-card" onclick="triggerPreview('2026.7   八上道法知识梳理.pdf', '2026.7 八上道法知识梳理.pdf')">
+          <!-- 1. 八上道法知识梳理 (8.4MB) -->
+          <div class="download-card" onclick="triggerPreview('2026.7   八上道法知识梳理.pdf')">
             <div class="card-top">
               <div class="file-icon">PDF</div>
               <div>
@@ -581,18 +420,48 @@
             </div>
           </div>
 
-          <!-- 4. 八下道法知识梳理 -->
-          <div class="download-card" onclick="triggerPreview('2026.7    八下道法知识梳理.pdf', '2026.7 八下道法知识梳理.pdf')">
+          <!-- 2. 六年级道法知识梳理 (10.2MB) -->
+          <div class="download-card" onclick="triggerPreview('2026.7   六年级道法知识梳理.pdf')">
             <div class="card-top">
               <div class="file-icon">PDF</div>
               <div>
-                <div class="file-title">2026.7 八下道法知识梳理.pdf</div>
-                <div class="file-desc">八年级下册宪法与依宪治国大专题 (104.2 MB)</div>
+                <div class="file-title">2026.7 六年级道法知识梳理.pdf</div>
+                <div class="file-desc">六年级道法基础知识要点提纲 (10.2 MB)</div>
               </div>
             </div>
             <div class="card-actions">
               <button class="btn-action btn-preview">👁️ 页面内直接预览</button>
-              <a href="2026.7    八下道法知识梳理.pdf" class="btn-action btn-download" download onclick="event.stopPropagation()">📥 下载本地</a>
+              <a href="2026.7   六年级道法知识梳理.pdf" class="btn-action btn-download" download onclick="event.stopPropagation()">📥 下载本地</a>
+            </div>
+          </div>
+
+          <!-- 3. 七年级课本笔记 (12.4MB) -->
+          <div class="download-card" onclick="triggerPreview('2026.8道法七年级课本笔记.pdf')">
+            <div class="card-top">
+              <div class="file-icon">PDF</div>
+              <div>
+                <div class="file-title">2026.8 道法七年级课本笔记.pdf</div>
+                <div class="file-desc">七年级全册课本精细笔记与划重点 (12.4 MB)</div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="btn-action btn-preview">👁️ 页面内直接预览</button>
+              <a href="2026.8道法七年级课本笔记.pdf" class="btn-action btn-download" download onclick="event.stopPropagation()">📥 下载本地</a>
+            </div>
+          </div>
+
+          <!-- 4. 八下道法知识梳理 (104.2MB) -->
+          <div class="download-card" style="border-color: #FDE68A; background: #FFFBEB;" onclick="triggerPreview('2026.7    八下道法知识梳理.pdf')">
+            <div class="card-top">
+              <div class="file-icon" style="background: #FEF3C7; color: #B45309;">104M</div>
+              <div>
+                <div class="file-title" style="color: #92400E;">2026.7 八下道法知识梳理.pdf</div>
+                <div class="file-desc">八年级下册宪法与依宪治国大专题 <b style="color: #DC2626;">(104.2 MB 超大高清版)</b></div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="btn-action btn-preview" style="background: #FDE68A; color: #78350F;">👁️ 预览 / 极速加载</button>
+              <a href="2026.7    八下道法知识梳理.pdf" target="_blank" class="btn-action btn-download" style="background: #2563EB; color: white; border: none;" onclick="event.stopPropagation()">🚀 新窗口全屏打开</a>
             </div>
           </div>
         </div>
@@ -607,24 +476,59 @@
   </div>
 
   <footer>
-    <p>© 2026 Owen Learning Center · 初中道德与法治 (道法) 无缝 PDF 直接预览中心 V2</p>
+    <p>© 2026 Owen Learning Center · 初中道德与法治 (道法) 无缝 PDF 极速预览中心 V2</p>
   </footer>
 
   <script>
+    let loadTimer = null;
+
     function switchPdf(pdfPath) {
       const iframe = document.getElementById('pdfFrame');
       const openBtn = document.getElementById('currentPdfOpenBtn');
+      const downloadBtn = document.getElementById('currentPdfDownloadBtn');
+      const bannerOpenBtn = document.getElementById('bannerOpenBtn');
       const titleSpan = document.getElementById('currentPdfTitle');
+      const loader = document.getElementById('pdfLoaderOverlay');
+      const banner = document.getElementById('largeFileBanner');
 
-      iframe.src = pdfPath;
-      openBtn.href = pdfPath;
+      // 显示 Spinner 遮罩
+      loader.style.opacity = '1';
+      loader.style.display = 'flex';
+
+      const encodedPath = encodeURI(pdfPath);
+
+      // 判断是否是大文件
+      if (pdfPath.includes('104') || pdfPath.includes('八下')) {
+        banner.style.display = 'flex';
+      } else {
+        banner.style.display = 'none';
+      }
+
+      iframe.src = encodedPath;
+      openBtn.href = encodedPath;
+      downloadBtn.href = encodedPath;
+      if (bannerOpenBtn) bannerOpenBtn.href = encodedPath;
       
       const select = document.getElementById('pdfSelect');
       const selectedText = select.options[select.selectedIndex].text;
       titleSpan.innerText = '📖 当前预览：' + selectedText.split('(')[0];
+
+      // 5秒后自动隐去 loader 遮罩，防止卡在遮罩
+      if (loadTimer) clearTimeout(loadTimer);
+      loadTimer = setTimeout(() => {
+        onPdfLoaded();
+      }, 5000);
     }
 
-    function triggerPreview(pdfPath, titleName) {
+    function onPdfLoaded() {
+      const loader = document.getElementById('pdfLoaderOverlay');
+      if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => { loader.style.display = 'none'; }, 300);
+      }
+    }
+
+    function triggerPreview(pdfPath) {
       const select = document.getElementById('pdfSelect');
       for (let i = 0; i < select.options.length; i++) {
         if (select.options[i].value === pdfPath) {
