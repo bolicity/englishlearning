@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>九上古诗文图文并茂分镜背诵卡 V6 (秒开版)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -600,7 +600,7 @@
   <header>
     <div class="header-container">
       <div class="logo-area">
-        <h1>九上古诗文虚拟记忆宫殿背诵卡 <span class="logo-badge" style="background: linear-gradient(135deg, #2563EB, #7C3AED); color: #fff;">V7.1 权威教材译文版</span></h1>
+        <h1>九上古诗文虚拟记忆宫殿背诵卡 <span class="logo-badge" style="background: linear-gradient(135deg, #2563EB, #7C3AED); color: #fff;">V9.0 侧边栏默认收起/手风琴折叠版</span></h1>
         <div class="header-desc">空间场所锚点 + 具象联想卡 + 宫殿路径寻宝；专为青少年高效记忆打造的具象宫殿背诵系统</div>
       </div>
       <div style="display: flex; gap: 10px; align-items: center;">
@@ -618,10 +618,18 @@
     
     <!-- Sidebar -->
     <aside class="sidebar">
-      <div class="sidebar-title">背诵篇目 (12篇)</div>
+      <div class="sidebar-header">
+        <div class="sidebar-title">背诵篇目 (12篇)</div>
+        <button class="sidebar-toggle-btn" onclick="toggleSidebar()" title="隐藏侧边栏">
+          <span>◀ 折叠</span>
+        </button>
+      </div>
       
-      <div class="nav-group">
-        <div class="nav-group-label">📜 文言文名篇</div>
+      <div class="nav-group collapsed">
+        <div class="nav-group-header" onclick="toggleNavGroup(this)">
+          <span>📜 文言文名篇</span>
+          <span class="nav-group-arrow">▼</span>
+        </div>
         <ul class="article-list">
           <li class="article-item active" onclick="loadArticle(0)">
             <span>岳阳楼记</span>
@@ -642,8 +650,11 @@
         </ul>
       </div>
 
-      <div class="nav-group">
-        <div class="nav-group-label">承 古诗词名篇</div>
+      <div class="nav-group collapsed">
+        <div class="nav-group-header" onclick="toggleNavGroup(this)">
+          <span>承 古诗词名篇</span>
+          <span class="nav-group-arrow">▼</span>
+        </div>
         <ul class="article-list">
           <li class="article-item" onclick="loadArticle(4)"><span>行路难（其一）</span><span class="article-tag">李白</span></li>
           <li class="article-item" onclick="loadArticle(5)"><span>酬乐天扬州初逢席上见赠</span><span class="article-tag">刘禹锡</span></li>
@@ -661,6 +672,9 @@
     <main class="content-area">
 
       <div class="mode-bar">
+        <button class="topbar-sidebar-toggle" id="topbarSidebarToggle" onclick="toggleSidebar()">
+          📁 隐藏目录
+        </button>
         <div class="mode-tabs">
           <button class="mode-tab active" onclick="switchMode('visual')">🎬 1. 图文同框分镜</button>
           <button class="mode-tab" onclick="switchMode('palace')">🏰 2. 虚拟记忆宫殿</button>
@@ -1352,6 +1366,54 @@
       });
       alert(`测试完成！得分：${correct}/${total} (${Math.round((correct/total)*100)}%)`);
     }
+  
+    
+    // 分组手风琴折叠切换 V9.0
+    function toggleNavGroup(headerEl) {
+      const navGroup = headerEl.closest('.nav-group');
+      if (navGroup) {
+        navGroup.classList.toggle('collapsed');
+      }
+    }
+
+    function toggleSidebar() {
+      const layout = document.querySelector('.app-layout');
+      if (!layout) return;
+      const isCollapsed = layout.classList.toggle('sidebar-collapsed');
+      document.body.classList.toggle('sidebar-is-collapsed', isCollapsed);
+      
+      const toggleBtn = document.querySelector('.sidebar-toggle-btn');
+      if (toggleBtn) {
+        toggleBtn.innerHTML = isCollapsed ? '▶ 展开' : '◀ 折叠';
+      }
+      
+      const topbarToggle = document.getElementById('topbarSidebarToggle');
+      if (topbarToggle) {
+        topbarToggle.innerHTML = isCollapsed ? '📖 展开目录' : '📁 隐藏目录';
+      }
+      
+      localStorage.setItem('sidebar_collapsed', isCollapsed ? 'true' : 'false');
+    }
+
+    // 页面加载恢复侧边栏状态（手机端默认收起，PC端恢复偏好）
+    document.addEventListener('DOMContentLoaded', () => {
+      const isMobile = window.innerWidth <= 768;
+      const savedState = localStorage.getItem('sidebar_collapsed');
+      
+      // 手机端如果未手动设定，默认不占满屏幕；或者按 savedState
+      if (savedState === 'true' || (savedState === null && isMobile)) {
+        const layout = document.querySelector('.app-layout');
+        if (layout) {
+          layout.classList.add('sidebar-collapsed');
+          document.body.classList.add('sidebar-is-collapsed');
+          const toggleBtn = document.querySelector('.sidebar-toggle-btn');
+          if (toggleBtn) toggleBtn.innerHTML = '▶ 展开';
+          const topbarToggle = document.getElementById('topbarSidebarToggle');
+          if (topbarToggle) topbarToggle.innerHTML = '📖 展开目录';
+        }
+      }
+    });
+
   </script>
 
   <!-- Image Lightbox Modal -->
@@ -1435,6 +1497,60 @@
     }
 
     loadArticle(0);
+  
+    
+    // 分组手风琴折叠切换 V9.0
+    function toggleNavGroup(headerEl) {
+      const navGroup = headerEl.closest('.nav-group');
+      if (navGroup) {
+        navGroup.classList.toggle('collapsed');
+      }
+    }
+
+    function toggleSidebar() {
+      const layout = document.querySelector('.app-layout');
+      if (!layout) return;
+      const isCollapsed = layout.classList.toggle('sidebar-collapsed');
+      document.body.classList.toggle('sidebar-is-collapsed', isCollapsed);
+      
+      const toggleBtn = document.querySelector('.sidebar-toggle-btn');
+      if (toggleBtn) {
+        toggleBtn.innerHTML = isCollapsed ? '▶ 展开' : '◀ 折叠';
+      }
+      
+      const topbarToggle = document.getElementById('topbarSidebarToggle');
+      if (topbarToggle) {
+        topbarToggle.innerHTML = isCollapsed ? '📖 展开目录' : '📁 隐藏目录';
+      }
+      
+      localStorage.setItem('sidebar_collapsed', isCollapsed ? 'true' : 'false');
+    }
+
+    // 页面加载恢复侧边栏状态（手机端默认收起，PC端恢复偏好）
+    document.addEventListener('DOMContentLoaded', () => {
+      const isMobile = window.innerWidth <= 768;
+      const savedState = localStorage.getItem('sidebar_collapsed');
+      
+      // 手机端如果未手动设定，默认不占满屏幕；或者按 savedState
+      if (savedState === 'true' || (savedState === null && isMobile)) {
+        const layout = document.querySelector('.app-layout');
+        if (layout) {
+          layout.classList.add('sidebar-collapsed');
+          document.body.classList.add('sidebar-is-collapsed');
+          const toggleBtn = document.querySelector('.sidebar-toggle-btn');
+          if (toggleBtn) toggleBtn.innerHTML = '▶ 展开';
+          const topbarToggle = document.getElementById('topbarSidebarToggle');
+          if (topbarToggle) topbarToggle.innerHTML = '📖 展开目录';
+        }
+      }
+    });
+
   </script>
+
+  <!-- 浮动展开目录按钮（当侧边栏隐藏时显示） -->
+  <button class="show-sidebar-fab" id="showSidebarFab" onclick="toggleSidebar()">
+    <span>📖 展开篇目目录</span>
+  </button>
+
 </body>
 </html>

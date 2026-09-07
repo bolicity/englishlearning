@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>九上古诗文图文并茂分镜背诵卡 V6 (秒开版)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -517,6 +517,82 @@
       filter: contrast(110%) sepia(35%) hue-rotate(-10deg);
     }
 
+
+    /* 虚拟记忆宫殿 V7.0 专属样式 */
+    .palace-route-map {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+      padding: 10px 4px;
+    }
+    .palace-spot-chip {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .palace-spot-chip.active {
+      background: var(--primary-soft);
+      border-color: var(--primary);
+      color: var(--primary);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    }
+    .palace-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 20px;
+      animation: fadeIn 0.25s ease;
+    }
+    .palace-card-spot-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .palace-card-peg {
+      font-size: 14px;
+      font-weight: 600;
+      color: #D97706;
+      background: #FEF3C7;
+      padding: 6px 12px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .palace-card-story {
+      font-size: 15px;
+      color: #334155;
+      line-height: 1.7;
+      background: #F8FAFC;
+      border-left: 4px solid #F59E0B;
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+    .palace-card-text {
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 1.8;
+      color: var(--text-main);
+      background: var(--bg-card-subtle);
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--primary);
+    }
+
 </style>
 </head>
 <body>
@@ -524,8 +600,8 @@
   <header>
     <div class="header-container">
       <div class="logo-area">
-        <h1>九上古诗文图文同框分镜背诵卡 <span class="logo-badge">V6.4 31镜头全独占插图版</span></h1>
-        <div class="header-desc">图片在左、对应课文段落在右，图文紧贴并靠；采用 WebP 压缩实现秒开加载</div>
+        <h1>九上古诗文虚拟记忆宫殿背诵卡 <span class="logo-badge" style="background: linear-gradient(135deg, #2563EB, #7C3AED); color: #fff;">V9.0 侧边栏默认收起/手风琴折叠版</span></h1>
+        <div class="header-desc">空间场所锚点 + 具象联想卡 + 宫殿路径寻宝；专为青少年高效记忆打造的具象宫殿背诵系统</div>
       </div>
       <div style="display: flex; gap: 10px; align-items: center;">
         <a href="chinese.html" style="text-decoration: none;">
@@ -542,10 +618,18 @@
     
     <!-- Sidebar -->
     <aside class="sidebar">
-      <div class="sidebar-title">背诵篇目 (12篇)</div>
+      <div class="sidebar-header">
+        <div class="sidebar-title">背诵篇目 (12篇)</div>
+        <button class="sidebar-toggle-btn" onclick="toggleSidebar()" title="隐藏侧边栏">
+          <span>◀ 折叠</span>
+        </button>
+      </div>
       
-      <div class="nav-group">
-        <div class="nav-group-label">📜 文言文名篇</div>
+      <div class="nav-group collapsed">
+        <div class="nav-group-header" onclick="toggleNavGroup(this)">
+          <span>📜 文言文名篇</span>
+          <span class="nav-group-arrow">▼</span>
+        </div>
         <ul class="article-list">
           <li class="article-item active" onclick="loadArticle(0)">
             <span>岳阳楼记</span>
@@ -566,8 +650,11 @@
         </ul>
       </div>
 
-      <div class="nav-group">
-        <div class="nav-group-label">承 古诗词名篇</div>
+      <div class="nav-group collapsed">
+        <div class="nav-group-header" onclick="toggleNavGroup(this)">
+          <span>承 古诗词名篇</span>
+          <span class="nav-group-arrow">▼</span>
+        </div>
         <ul class="article-list">
           <li class="article-item" onclick="loadArticle(4)"><span>行路难（其一）</span><span class="article-tag">李白</span></li>
           <li class="article-item" onclick="loadArticle(5)"><span>酬乐天扬州初逢席上见赠</span><span class="article-tag">刘禹锡</span></li>
@@ -585,11 +672,15 @@
     <main class="content-area">
 
       <div class="mode-bar">
+        <button class="topbar-sidebar-toggle" id="topbarSidebarToggle" onclick="toggleSidebar()">
+          📁 隐藏目录
+        </button>
         <div class="mode-tabs">
           <button class="mode-tab active" onclick="switchMode('visual')">🎬 1. 图文同框分镜</button>
-          <button class="mode-tab" onclick="switchMode('firstchar')">🔤 2. 首字线索提示</button>
-          <button class="mode-tab" onclick="switchMode('cloze')">🙈 3. 默写填空测试</button>
-          <button class="mode-tab" onclick="switchMode('full')">📖 4. 完整对照</button>
+          <button class="mode-tab" onclick="switchMode('palace')">🏰 2. 虚拟记忆宫殿</button>
+          <button class="mode-tab" onclick="switchMode('firstchar')">🔤 3. 首字线索提示</button>
+          <button class="mode-tab" onclick="switchMode('cloze')">🙈 4. 默写填空测试</button>
+          <button class="mode-tab" onclick="switchMode('full')">📖 5. 完整对照</button>
         </div>
         <button class="tool-btn" onclick="toggleAllRevealed()">👁️ 显/隐答案</button>
       </div>
@@ -603,6 +694,17 @@
         </div>
 
         <!-- Storyboard Side-by-Side Area -->
+        
+        <!-- Memory Palace Area -->
+        <div id="palace-area" style="display: none; margin-top: 10px;">
+          <div class="storyboard-section-title" style="display: flex; justify-content: space-between; align-items: center;">
+            <span>🏰 虚拟记忆宫殿路线（点击空间锚点，在脑海中建立具象图像联想）</span>
+            <span style="font-size: 13px; color: var(--primary); font-weight: normal;">🧠 图像联想记忆法</span>
+          </div>
+          <div id="palace-route-map" class="palace-route-map"></div>
+          <div id="palace-cards-container" class="palace-cards-container"></div>
+        </div>
+
         <div id="storyboard-area">
           <div class="storyboard-section-title">🎬 图文并茂分镜卡（左图右文·一一对应）</div>
           <div class="storyboard-grid" id="storyboard-grid"></div>
@@ -1136,7 +1238,8 @@
         </div>`;
       }).join('');
 
-      renderTextContent();
+      currentPalaceSpotIndex = 0;
+      if (currentMode === "palace") renderPalaceMode(); else renderTextContent();
     }
 
     function switchMode(mode) {
@@ -1148,11 +1251,23 @@
       });
 
       const modeTip = document.getElementById('mode-tip');
+      const palaceArea = document.getElementById('palace-area');
       if (mode === 'visual') {
         storyboardArea.style.display = 'block';
+        palaceArea.style.display = 'none';
         textDisplayArea.style.display = 'none';
         modeTip.innerText = '💡 提示：左侧为场景画卷，右侧紧靠对应课文原句，结合记忆！';
+      } else if (mode === 'palace') {
+        storyboardArea.style.display = 'none';
+        palaceArea.style.display = 'block';
+        textDisplayArea.style.display = 'none';
+        modeTip.innerText = '💡 提示：沿着宫殿空间路线，在脑海中建立具象图像联想记忆！';
+        currentPalaceSpotIndex = 0;
+        renderPalaceMode();
       } else if (mode === 'firstchar') {
+        storyboardArea.style.display = 'none';
+        palaceArea.style.display = 'none';
+        textDisplayArea.style.display = 'block';
         storyboardArea.style.display = 'none';
         textDisplayArea.style.display = 'block';
         modeTip.innerText = '💡 提示：高亮每一句的首字/首词。';
@@ -1166,7 +1281,8 @@
         modeTip.innerText = '💡 提示：全文对照模式。';
       }
 
-      renderTextContent();
+      currentPalaceSpotIndex = 0;
+      if (currentMode === "palace") renderPalaceMode(); else renderTextContent();
     }
 
     function renderTextContent() {
@@ -1250,6 +1366,54 @@
       });
       alert(`测试完成！得分：${correct}/${total} (${Math.round((correct/total)*100)}%)`);
     }
+  
+    
+    // 分组手风琴折叠切换 V9.0
+    function toggleNavGroup(headerEl) {
+      const navGroup = headerEl.closest('.nav-group');
+      if (navGroup) {
+        navGroup.classList.toggle('collapsed');
+      }
+    }
+
+    function toggleSidebar() {
+      const layout = document.querySelector('.app-layout');
+      if (!layout) return;
+      const isCollapsed = layout.classList.toggle('sidebar-collapsed');
+      document.body.classList.toggle('sidebar-is-collapsed', isCollapsed);
+      
+      const toggleBtn = document.querySelector('.sidebar-toggle-btn');
+      if (toggleBtn) {
+        toggleBtn.innerHTML = isCollapsed ? '▶ 展开' : '◀ 折叠';
+      }
+      
+      const topbarToggle = document.getElementById('topbarSidebarToggle');
+      if (topbarToggle) {
+        topbarToggle.innerHTML = isCollapsed ? '📖 展开目录' : '📁 隐藏目录';
+      }
+      
+      localStorage.setItem('sidebar_collapsed', isCollapsed ? 'true' : 'false');
+    }
+
+    // 页面加载恢复侧边栏状态（手机端默认收起，PC端恢复偏好）
+    document.addEventListener('DOMContentLoaded', () => {
+      const isMobile = window.innerWidth <= 768;
+      const savedState = localStorage.getItem('sidebar_collapsed');
+      
+      // 手机端如果未手动设定，默认不占满屏幕；或者按 savedState
+      if (savedState === 'true' || (savedState === null && isMobile)) {
+        const layout = document.querySelector('.app-layout');
+        if (layout) {
+          layout.classList.add('sidebar-collapsed');
+          document.body.classList.add('sidebar-is-collapsed');
+          const toggleBtn = document.querySelector('.sidebar-toggle-btn');
+          if (toggleBtn) toggleBtn.innerHTML = '▶ 展开';
+          const topbarToggle = document.getElementById('topbarSidebarToggle');
+          if (topbarToggle) topbarToggle.innerHTML = '📖 展开目录';
+        }
+      }
+    });
+
   </script>
 
   <!-- Image Lightbox Modal -->
@@ -1288,7 +1452,105 @@
       }
     });
 
+    
+    const palaceData = {"0": [{"spot": "📍 宫殿位置 1：大门告示牌", "peg": "🗝️ 空间锚点：门前贴着的“庆历四年”官府重修告示", "story": "🧠 图像联想：想象你走到岳阳楼古殿大门前，看到贴着一张烫金告示写着“庆历四年”，滕子京官员正在挥毫开重修大会。", "text": "庆历四年春，滕子京谪守巴陵郡。越明年，政通人和，百废具兴，乃重修岳阳楼，增其旧制，刻唐贤今人诗赋于其上，属予作文以记之。"}, {"spot": "📍 宫殿位置 2：二层观景画廊", "peg": "🗝️ 空间锚点：墙上巨大的《巴陵巨浪吐长江》水墨长卷", "story": "🧠 图像联想：登上二楼画廊，正前方是一幅巨画，湖浪浩浩汤汤，像张开大嘴把远山和长江吞进肚子！", "text": "予观夫巴陵胜状，在洞庭一湖。衔远山，吞长江，浩浩汤汤，横无际涯，朝晖夕阴，气象万千，此则岳阳楼之大观也，前人之述备矣。然则北通巫峡，南极潇湘，迁客骚人，多会于此，览物之情，得无异乎？"}, {"spot": "📍 宫殿位置 3：西侧风雨露台", "peg": "🗝️ 空间锚点：露台角落倒塌的断桨与狂风黑云", "story": "🧠 图像联想：走到风雨露台，突然狂风暴雨，浊浪拍天，商船的桅杆倒塌，听见远处老虎和野猴子在漆黑的傍晚惨叫！", "text": "若夫淫雨霏霏，连月不开，阴风怒号，浊浪排空，日星隐曜，山岳潜形，商旅不行，樯倾楫摧，薄暮冥冥，虎啸猿啼。登斯楼也，则有去国怀乡，忧谗畏讥，满目萧然，感极而悲者矣。"}, {"spot": "📍 宫殿位置 4：东侧阳光温室庭院", "peg": "🗝️ 空间锚点：庭院里的金鱼池、郁郁香草与夜空明月", "story": "🧠 图像联想：转入阳光庭院，雨过天晴，沙鸥在花草上飞翔，池塘里金色大鱼欢快游动，夜空中有一轮闪耀的明月！", "text": "至若春和景明，波澜不惊，上下天光，一碧万顷，沙鸥翔集，锦鳞游泳，岸芷汀兰，郁郁青青。而或长烟一空，皓月千里，浮光跃金，静影沉璧，渔歌互答，此乐何极！登斯楼也，则有心旷神怡，宠辱偕忘，把酒临风，其喜洋洋者矣。"}, {"spot": "📍 宫殿位置 5：顶层名臣宝座厅", "peg": "🗝️ 空间锚点：大厅中央范仲淹的宝座与《先忧后乐》金印", "story": "🧠 图像联想：登上顶层宝座大厅，中央安放着名臣宝座，上面有一枚闪闪发光的印章，刻着“先天下之忧而忧，后天下之乐而乐”！", "text": "嗟夫！尝求古仁人之心，或异二者之为，何哉？不以物喜，不以己悲，居庙堂之高则忧其民，处江湖之远则忧其君。是进亦忧，退亦忧。然则何时而乐耶？其必曰“先天下之忧而忧，后天下之乐而乐”乎！噫！微斯人，吾谁与归？"}], "1": [{"spot": "📍 宫殿位置 1：山庄石牌坊", "peg": "🗝️ 空间锚点：牌坊前飞泻的清澈酿泉与翼然醉翁亭", "story": "🧠 图像联想：站在山庄石牌坊前，听到潺潺水声，看到酿泉上方有一座像大鸟展翅一样的醉翁亭，老太守正在喝美酒。", "text": "环滁皆山也。其西南诸峰，林壑尤美，望之蔚然而深秀者，琅琊也。山行六七里，渐闻水声潺潺而泻出于两峰之间者，酿泉也。峰回路转，有亭翼然临于泉上者，醉翁亭也。作亭者谁？山之僧智仙也。名之者谁？太守自谓也。太守与客来饮于此，饮少辄醉，而年又最高，故自号曰醉翁也。醉翁之意不在酒，在乎山水之间也。山水之乐，得之心而寓之酒也。"}, {"spot": "📍 宫殿位置 2：四季四季风光长廊", "peg": "🗝️ 空间锚点：长廊四扇窗户（春花/夏树/秋霜/冬石）", "story": "🧠 图像联想：走过四季长廊，四扇窗展示春天的野花、夏天的绿树、秋天的风霜和冬天的溪石。", "text": "若夫日出而林霏开，云归而岩穴暝，晦明变化者，山间之朝暮也。野芳发而幽香，佳木秀而繁阴，风霜高洁，水落石出者，山间之四时也。朝而往，暮而归，四时之景不同，而乐亦无穷也。"}, {"spot": "📍 宫殿位置 3：山林大宴会厅", "peg": "🗝️ 空间锚点：摆满野味美酒的大酒桌与欢聚人群", "story": "🧠 图像联想：走进宴会厅，大家背着竹篓唱歌，桌上摆着肥鱼与美酒，老太守白发苍苍醉倒在人群中。", "text": "至于负者歌于途，行者休于树，前者呼，后者应，伛偻提携，往来而不绝者，滁人游也。临溪而渔，溪深而鱼肥，酿泉为酒，泉香而酒洌，山肴野蔌，杂然而前陈者，太守宴也。宴酣之乐，非丝非竹，射者中，弈者胜，觥筹交错，起坐而喧哗者，众宾欢也。苍颜白发，颓然乎其间者，太守醉也。"}, {"spot": "📍 宫殿位置 4：夕阳归途小桥", "peg": "🗝️ 空间锚点：夕阳落山下的鸣叫飞鸟与太守手稿", "story": "🧠 图像联想：走出山庄走过小桥，夕阳西下，树林里的鸟儿欢快唱歌，欧阳修太守挥毫写下《醉翁亭记》。", "text": "已而夕阳在山，人影散乱，太守归而宾客从也。树林阴翳，鸣声上下，游人去而禽鸟乐也。然而禽鸟知山林之乐，而不知人之乐；人知从太守游而乐，而不知太守之乐其乐也。醉能同其乐，醒能述以文者，太守也。太守谓谁？庐陵欧阳修也。"}], "2": [{"spot": "📍 宫殿位置 1：西湖冰雪码头", "peg": "🗝️ 空间锚点：停泊的孤单小船与裘皮大衣火炉", "story": "🧠 图像联想：站在冰雪码头上，天地寂静无声，你穿着温暖毛皮大衣，划着小舟向湖心亭驶去。", "text": "崇祯五年十二月，余住西湖。大雪三日，湖中人鸟声俱绝。是日更定矣，余挐一小舟，拥毳衣炉火，独往湖心亭看雪。"}, {"spot": "📍 宫殿位置 2：水墨留白观景台", "peg": "🗝️ 空间锚点：白色留白画框中的长堤一痕与两三粒小人", "story": "🧠 图像联想：站在观景台往外看，天地间一片纯白，远处的长堤像一条墨线，湖心亭像一个小点。", "text": "雾凇沆砀，天与云与山与水，上下一白。湖上影子，惟长堤一痕、湖心亭一点、与余舟一芥、舟中人两三粒而已。"}, {"spot": "📍 宫殿位置 3：湖心亭温酒暖阁", "peg": "🗝️ 空间锚点：沸腾的酒炉与两位相视大笑的高士", "story": "🧠 图像联想：走进暖阁，酒炉咕噜噜开着，两位客居在此的名士大喜过望，拉你连喝三杯美酒！", "text": "到亭上，有两人铺毡对坐，一童子烧酒，炉正沸。见余大惊喜，曰：“湖中焉得更有此人！”拉余同饮。余强饮三大白而别。问其姓氏，是金陵人，客此。及下船，舟子喃喃曰：“莫说相公痴，更有痴似相公者！”"}], "3": [{"spot": "📍 宫殿位置 1：长城雪山烽火台", "peg": "🗝️ 空间锚点：烽火台上的红装素裹山河大图", "story": "🧠 图像联想：立于长城最高烽火台，眼前万里雪飘，群山像银蛇奔跑，太阳照耀下红白交映极其妖娆。", "text": "北国风光，千里冰封，万里雪飘。望长城内外，惟余莽莽；大河上下，顿失滔滔。山舞银蛇，原驰蜡象，欲与天公试比高。须晴日，看红装素裹，分外妖娆。"}, {"spot": "📍 宫殿位置 2：英雄雕塑长廊", "peg": "🗝️ 空间锚点：秦皇汉武与成吉思汗弯弓射雕像", "story": "🧠 图像联想：走过雕塑长廊，看到秦始皇、汉武帝、唐太宗和弯弓拉箭的成吉思汗石雕。", "text": "江山如此多娇，引无数英雄竞折腰。惜秦皇汉武，略输文采；唐宗宋祖，稍逊风骚。一代天骄，成吉思汗，只识弯弓射大雕。"}, {"spot": "📍 宫殿位置 3：朝阳升起观测台", "peg": "🗝️ 空间锚点：金色阳光下的今朝风流人物巨雕", "story": "🧠 图像联想：登上顶峰观测台，红日东升，万丈光芒照亮当代真正有抱负的风流人物！", "text": "俱往矣，数风流人物，还看今朝。"}], "4": [{"spot": "📍 宫殿位置 1：诗词开篇门廊", "peg": "🗝️ 空间锚点：卷轴前展示的首段具象意象", "story": "🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。", "text": "..."}, {"spot": "📍 宫殿位置 2：意境升华主殿", "peg": "🗝️ 空间锚点：主殿中央名句书法金匾", "story": "🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。", "text": "..."}], "5": [{"spot": "📍 宫殿位置 1：诗词开篇门廊", "peg": "🗝️ 空间锚点：卷轴前展示的首段具象意象", "story": "🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。", "text": "..."}, {"spot": "📍 宫殿位置 2：意境升华主殿", "peg": "🗝️ 空间锚点：主殿中央名句书法金匾", "story": "🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。", "text": "..."}], "6": [{"spot": "📍 宫殿位置 1：诗词开篇门廊", "peg": "🗝️ 空间锚点：卷轴前展示的首段具象意象", "story": "🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。", "text": "..."}, {"spot": "📍 宫殿位置 2：意境升华主殿", "peg": "🗝️ 空间锚点：主殿中央名句书法金匾", "story": "🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。", "text": "..."}], "7": [{"spot": "📍 宫殿位置 1：诗词开篇门廊", "peg": "🗝️ 空间锚点：卷轴前展示的首段具象意象", "story": "🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。", "text": "..."}, {"spot": "📍 宫殿位置 2：意境升华主殿", "peg": "🗝️ 空间锚点：主殿中央名句书法金匾", "story": "🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。", "text": "..."}], "8": [{"spot": "📍 宫殿位置 1：诗词开篇门廊", "peg": "🗝️ 空间锚点：卷轴前展示的首段具象意象", "story": "🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。", "text": "..."}, {"spot": "📍 宫殿位置 2：意境升华主殿", "peg": "🗝️ 空间锚点：主殿中央名句书法金匾", "story": "🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。", "text": "..."}], "9": [{"spot": "📍 宫殿位置 1：诗词开篇门廊", "peg": "🗝️ 空间锚点：卷轴前展示的首段具象意象", "story": "🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。", "text": "..."}, {"spot": "📍 宫殿位置 2：意境升华主殿", "peg": "🗝️ 空间锚点：主殿中央名句书法金匾", "story": "🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。", "text": "..."}], "10": [{"spot": "📍 宫殿位置 1：诗词开篇门廊", "peg": "🗝️ 空间锚点：卷轴前展示的首段具象意象", "story": "🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。", "text": "..."}, {"spot": "📍 宫殿位置 2：意境升华主殿", "peg": "🗝️ 空间锚点：主殿中央名句书法金匾", "story": "🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。", "text": "..."}], "11": [{"spot": "📍 宫殿位置 1：诗词开篇门廊", "peg": "🗝️ 空间锚点：卷轴前展示的首段具象意象", "story": "🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。", "text": "..."}, {"spot": "📍 宫殿位置 2：意境升华主殿", "peg": "🗝️ 空间锚点：主殿中央名句书法金匾", "story": "🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。", "text": "..."}]};
+    let currentPalaceSpotIndex = 0;
+
+    function renderPalaceMode() {
+      const art = articles[currentArticleIndex];
+      const spots = palaceData[currentArticleIndex] || [];
+      
+      const routeMapEl = document.getElementById('palace-route-map');
+      const cardsEl = document.getElementById('palace-cards-container');
+
+      if (!spots.length) {
+        routeMapEl.innerHTML = '';
+        cardsEl.innerHTML = '<div class="palace-card">宫殿锚点建设中...</div>';
+        return;
+      }
+
+      // Render Route Map Chips
+      routeMapEl.innerHTML = spots.map((spot, sIdx) => `
+        <div class="palace-spot-chip ${sIdx === currentPalaceSpotIndex ? 'active' : ''}" onclick="selectPalaceSpot($${sIdx})">
+          <span>${spot.spot}</span>
+        </div>
+      `).join('');
+
+      // Render Active Palace Spot Card
+      const curSpot = spots[currentPalaceSpotIndex] || spots[0];
+      const passageText = (art.storyboard && art.storyboard[currentPalaceSpotIndex]) ? art.storyboard[currentPalaceSpotIndex].passage : curSpot.text;
+
+      cardsEl.innerHTML = `
+        <div class="palace-card">
+          <div class="palace-card-spot-title">${curSpot.spot}</div>
+          <div class="palace-card-peg">${curSpot.peg}</div>
+          <div class="palace-card-story">${curSpot.story}</div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px;">📜 对应背诵原文段落：</div>
+          <div class="palace-card-text chinese-text">${passageText}</div>
+        </div>
+      `;
+    }
+
+    function selectPalaceSpot(sIdx) {
+      currentPalaceSpotIndex = sIdx;
+      renderPalaceMode();
+    }
+
     loadArticle(0);
+  
+    
+    // 分组手风琴折叠切换 V9.0
+    function toggleNavGroup(headerEl) {
+      const navGroup = headerEl.closest('.nav-group');
+      if (navGroup) {
+        navGroup.classList.toggle('collapsed');
+      }
+    }
+
+    function toggleSidebar() {
+      const layout = document.querySelector('.app-layout');
+      if (!layout) return;
+      const isCollapsed = layout.classList.toggle('sidebar-collapsed');
+      document.body.classList.toggle('sidebar-is-collapsed', isCollapsed);
+      
+      const toggleBtn = document.querySelector('.sidebar-toggle-btn');
+      if (toggleBtn) {
+        toggleBtn.innerHTML = isCollapsed ? '▶ 展开' : '◀ 折叠';
+      }
+      
+      const topbarToggle = document.getElementById('topbarSidebarToggle');
+      if (topbarToggle) {
+        topbarToggle.innerHTML = isCollapsed ? '📖 展开目录' : '📁 隐藏目录';
+      }
+      
+      localStorage.setItem('sidebar_collapsed', isCollapsed ? 'true' : 'false');
+    }
+
+    // 页面加载恢复侧边栏状态（手机端默认收起，PC端恢复偏好）
+    document.addEventListener('DOMContentLoaded', () => {
+      const isMobile = window.innerWidth <= 768;
+      const savedState = localStorage.getItem('sidebar_collapsed');
+      
+      // 手机端如果未手动设定，默认不占满屏幕；或者按 savedState
+      if (savedState === 'true' || (savedState === null && isMobile)) {
+        const layout = document.querySelector('.app-layout');
+        if (layout) {
+          layout.classList.add('sidebar-collapsed');
+          document.body.classList.add('sidebar-is-collapsed');
+          const toggleBtn = document.querySelector('.sidebar-toggle-btn');
+          if (toggleBtn) toggleBtn.innerHTML = '▶ 展开';
+          const topbarToggle = document.getElementById('topbarSidebarToggle');
+          if (topbarToggle) topbarToggle.innerHTML = '📖 展开目录';
+        }
+      }
+    });
+
   </script>
+
+  <!-- 浮动展开目录按钮（当侧边栏隐藏时显示） -->
+  <button class="show-sidebar-fab" id="showSidebarFab" onclick="toggleSidebar()">
+    <span>📖 展开篇目目录</span>
+  </button>
+
 </body>
 </html>
