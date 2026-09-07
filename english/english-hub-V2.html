@@ -6,7 +6,7 @@
   <meta http-equiv="Expires" content="0">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>初中英语九年级全套教材音频 & 听力中心 V2.2 真实原声无损版</title>
+  <title>初中英语九年级全套教材音频 & 听力中心 V2.4 真实原声智能多通道极速版</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -602,7 +602,7 @@
       </div>
       <div class="audio-list">
   
-        <div class="audio-row" onclick="playAudio('13 Unit 3 Travellers\' tales', './audio/textbook/Unit_3/13_Unit_3_Travellers\' tales.mp3', this)">
+        <div class="audio-row" onclick="playAudio('13 Unit 3 Travellers tales', './audio/textbook/Unit_3/13_Unit_3_Travellers_tales.mp3', this)">
           <div class="audio-info">
             <span class="audio-type-tag tag-reading">课本朗读</span>
             <span class="audio-name">13 Unit 3 Travellers' tales</span>
@@ -1136,7 +1136,7 @@
   </div>
 
   <footer>
-    <p>© 2026 初中英语九年级全套教材音频 & 听力中心 V2.2 真实原声无损版 · 保持版本独立控制</p>
+    <p>© 2026 初中英语九年级全套教材音频 & 听力中心 V2.4 真实原声智能多通道极速版 · 保持版本独立控制</p>
   </footer>
 
   <script>
@@ -1154,38 +1154,63 @@
       document.querySelectorAll('.audio-row').forEach(row => row.classList.remove('active-playing'));
       if (element) element.classList.add('active-playing');
 
-      if (titleSpan) titleSpan.innerText = name;
+      if (titleSpan) titleSpan.innerText = '🎵 正在播放: ' + name;
 
-      // 智能生成兼容线上服务器的 3 种候选 URL 路径
-      const cleanPath = path.startsWith('./') ? path.substring(2) : path;
-      const encodedParts = cleanPath.split('/').map(part => encodeURIComponent(part)).join('/');
+      // 规范化相对路径 (去掉开头的 ./ )
+      const cleanPath = path.replace(/^\.\//, '');
+      const encodedPath = cleanPath.split('/').map(part => encodeURIComponent(part)).join('/');
+
+      // 构建多重稳健降级候选 URL
+      const currentDir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
       
-      // 优先尝试标准 URL 转义路径
-      player.src = encodedParts;
+      const audioSources = [
+        // 候选 1: 相对当前 HTML 目录的 URL (如 ./audio/...)
+        encodedPath,
+        // 候选 2: 当前页面所在的完整绝对 URL
+        window.location.origin + currentDir + encodedPath,
+        // 候选 3: 全球高可用 jsDelivr CDN 极速镜像保底
+        'https://cdn.jsdelivr.net/gh/bolicity/englishlearning@main/english/' + encodedPath,
+        // 候选 4: GitHub Raw 官方仓库镜像保底
+        'https://raw.githubusercontent.com/bolicity/englishlearning/main/english/' + encodedPath
+      ];
 
-      let retryCount = 0;
-      player.onerror = function() {
-        if (retryCount === 0) {
-          retryCount++;
-          // 备用尝试 1：不带编码直接访问或加根路径
-          player.src = '/' + cleanPath;
-          player.play().catch(e => console.warn('Retry 1 failed:', e));
-        } else if (retryCount === 1) {
-          retryCount++;
-          // 备用尝试 2：相对原始路径
-          player.src = cleanPath;
-          player.play().catch(e => console.warn('Retry 2 failed:', e));
-        } else {
+      let sourceIndex = 0;
+
+      function tryPlaySource() {
+        if (sourceIndex >= audioSources.length) {
+          console.error('All audio sources failed for:', name);
           if (toast) {
-            toast.innerHTML = '⚠️ 音频正在从服务器同步中，请稍后刷新重试！';
+            toast.innerHTML = '⚠️ 音频文件加载失败，请检查网络连接或稍后刷新重试！';
             toast.style.display = 'block';
           }
+          if (titleSpan) titleSpan.innerText = '❌ 播放失败: ' + name;
+          return;
         }
+
+        const currentSource = audioSources[sourceIndex];
+        console.log(`[AudioPlayer] Attempting source ${sourceIndex + 1}/${audioSources.length}: ${currentSource}`);
+        
+        player.src = currentSource;
+        player.load();
+
+        const playPromise = player.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            console.log(`[AudioPlayer] Playback started successfully from source ${sourceIndex + 1}`);
+          }).catch(err => {
+            console.warn(`[AudioPlayer] Source ${sourceIndex + 1} play failed/rejected:`, err);
+            // 如果是因为网络加载/404导致的 error，由 player.onerror 处理；如果是 autoplay 被浏览器拦截，保留事件
+          });
+        }
+      }
+
+      player.onerror = function(e) {
+        console.warn(`[AudioPlayer] Error on source ${sourceIndex + 1} (${player.src}):`, e);
+        sourceIndex++;
+        tryPlaySource();
       };
 
-      player.play().catch(err => {
-        console.warn('Playback initiation warning:', err);
-      });
+      tryPlaySource();
     }
 
     function fallbackSpeech(text) {
