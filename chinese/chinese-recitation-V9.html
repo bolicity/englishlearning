@@ -708,7 +708,7 @@
   <header>
     <div class="header-container">
       <div class="logo-area">
-        <h1>九上古诗文虚拟记忆宫殿背诵卡 <span class="logo-badge" style="background: linear-gradient(135deg, #2563EB, #7C3AED); color: #fff;">V9.3 iOS与全设备兼容版</span></h1>
+        <h1>九上古诗文虚拟记忆宫殿背诵卡 <span class="logo-badge" style="background: linear-gradient(135deg, #2563EB, #7C3AED); color: #fff;">V9.4 PC与全终端重构版</span></h1>
         <div class="header-desc">空间场所锚点 + 具象联想卡 + 宫殿路径寻宝；专为青少年高效记忆打造的具象宫殿背诵系统</div>
       </div>
       <div style="display: flex; gap: 10px; align-items: center;">
@@ -1585,7 +1585,6 @@
     function renderPalaceMode() {
       const art = articles[currentArticleIndex];
       const spots = palaceData[currentArticleIndex] || [];
-      
       const routeMapEl = document.getElementById('palace-route-map');
       const cardsEl = document.getElementById('palace-cards-container');
 
@@ -1595,14 +1594,12 @@
         return;
       }
 
-      // Render Route Map Chips
       routeMapEl.innerHTML = spots.map((spot, sIdx) => `
         <div class="palace-spot-chip ${sIdx === currentPalaceSpotIndex ? 'active' : ''}" onclick="selectPalaceSpot(${sIdx})">
           <span>${spot.spot}</span>
         </div>
       `).join('');
 
-      // Render Active Palace Spot Card
       const curSpot = spots[currentPalaceSpotIndex] || spots[0];
       const passageText = (art.storyboard && art.storyboard[currentPalaceSpotIndex]) ? art.storyboard[currentPalaceSpotIndex].passage : curSpot.text;
 
@@ -1622,9 +1619,7 @@
       renderPalaceMode();
     }
 
-    
-    /* ==================== 侧边栏与分组手风琴控制核心 V9.1 ==================== */
-    // 兼容所有终端与移动端的手风琴折叠
+    /* ==================== 侧边栏与手风琴极简控制核心 ==================== */
     function toggleNavGroup(evt, btnEl) {
       if (evt) {
         evt.preventDefault();
@@ -1656,88 +1651,52 @@
       if (topbarToggle) {
         topbarToggle.innerHTML = isCollapsed ? '📖 展开目录' : '📁 隐藏目录';
       }
-      
-      localStorage.setItem('sidebar_collapsed_pref', isCollapsed ? 'true' : 'false');
     }
 
-    // 初始化侧边栏与分组状态
+    // 页面加载彻底清除旧的 localStorage 干扰
     document.addEventListener('DOMContentLoaded', () => {
-      // 侧边栏整体默认展开（用户未手动折叠时）
-      const savedPref = localStorage.getItem('sidebar_collapsed_pref');
-      const layout = document.querySelector('.app-layout');
-      if (layout) {
-        if (savedPref === 'true') {
-          layout.classList.add('sidebar-collapsed');
-          document.body.classList.add('sidebar-is-collapsed');
-          const toggleBtn = document.querySelector('.sidebar-toggle-btn');
-          if (toggleBtn) toggleBtn.innerHTML = '▶ 展开';
-          const topbarToggle = document.getElementById('topbarSidebarToggle');
-          if (topbarToggle) topbarToggle.innerHTML = '📖 展开目录';
-        } else {
-          layout.classList.remove('sidebar-collapsed');
-          document.body.classList.remove('sidebar-is-collapsed');
-        }
-      }
+      localStorage.removeItem('sidebar_collapsed');
+      localStorage.removeItem('sidebar_collapsed_pref');
     });
 
     loadArticle(0);
-  
-    
-    
-    // 兼容所有终端与移动端的手风琴折叠
-    function toggleNavGroup(evt, btnEl) {
-      if (evt) {
-        evt.preventDefault();
-        evt.stopPropagation();
-      }
-      const group = btnEl.closest('.nav-group');
-      if (group) {
-        const isCollapsed = group.classList.toggle('collapsed');
-        const arrow = btnEl.querySelector('.nav-group-arrow');
-        if (arrow) {
-          arrow.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
-        }
+  </script>
+
+  <!-- Image Lightbox Modal -->
+  <div id="image-modal" class="modal-overlay" onclick="closeImageModal(event)">
+    <span class="modal-close-btn" onclick="closeImageModal()">&times;</span>
+    <img id="modal-img" class="modal-img-content" src="" alt="大图预览"/>
+    <div id="modal-caption" class="modal-caption"></div>
+  </div>
+
+  <script>
+    function openImageModalFromEl(el) {
+      const src = el.src;
+      const title = el.getAttribute('data-title') || '';
+      openImageModal(src, title);
+    }
+
+    function openImageModal(src, title) {
+      const modal = document.getElementById('image-modal');
+      const modalImg = document.getElementById('modal-img');
+      const modalCaption = document.getElementById('modal-caption');
+      modalImg.src = src;
+      modalCaption.innerText = title;
+      modal.classList.add('active');
+    }
+
+    function closeImageModal(e) {
+      if (!e || e.target.id === 'image-modal' || e.target.classList.contains('modal-close-btn')) {
+        const modal = document.getElementById('image-modal');
+        modal.classList.remove('active');
       }
     }
 
-    function toggleSidebar() {
-      const layout = document.querySelector('.app-layout');
-      if (!layout) return;
-      const isCollapsed = layout.classList.toggle('sidebar-collapsed');
-      document.body.classList.toggle('sidebar-is-collapsed', isCollapsed);
-      
-      const toggleBtn = document.querySelector('.sidebar-toggle-btn');
-      if (toggleBtn) {
-        toggleBtn.innerHTML = isCollapsed ? '▶ 展开' : '◀ 折叠';
-      }
-      
-      const topbarToggle = document.getElementById('topbarSidebarToggle');
-      if (topbarToggle) {
-        topbarToggle.innerHTML = isCollapsed ? '📖 展开目录' : '📁 隐藏目录';
-      }
-      
-      localStorage.setItem('sidebar_collapsed', isCollapsed ? 'true' : 'false');
-    }
-
-    // 页面加载恢复侧边栏状态（手机端默认收起，PC端恢复偏好）
-    document.addEventListener('DOMContentLoaded', () => {
-      const isMobile = window.innerWidth <= 768;
-      const savedState = localStorage.getItem('sidebar_collapsed');
-      
-      // 手机端如果未手动设定，默认不占满屏幕；或者按 savedState
-      if (savedState === 'true' || (savedState === null && isMobile)) {
-        const layout = document.querySelector('.app-layout');
-        if (layout) {
-          layout.classList.add('sidebar-collapsed');
-          document.body.classList.add('sidebar-is-collapsed');
-          const toggleBtn = document.querySelector('.sidebar-toggle-btn');
-          if (toggleBtn) toggleBtn.innerHTML = '▶ 展开';
-          const topbarToggle = document.getElementById('topbarSidebarToggle');
-          if (topbarToggle) topbarToggle.innerHTML = '📖 展开目录';
-        }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeImageModal();
       }
     });
-
   </script>
 
   <!-- 浮动展开目录按钮（当侧边栏隐藏时显示） -->
