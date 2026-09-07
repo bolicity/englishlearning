@@ -1522,7 +1522,7 @@
 
       // Render Route Map Chips
       routeMapEl.innerHTML = spots.map((spot, sIdx) => `
-        <div class="palace-spot-chip ${sIdx === currentPalaceSpotIndex ? 'active' : ''}" onclick="selectPalaceSpot($${sIdx})">
+        <div class="palace-spot-chip ${sIdx === currentPalaceSpotIndex ? 'active' : ''}" onclick="selectPalaceSpot(${sIdx})">
           <span>${spot.spot}</span>
         </div>
       `).join('');
