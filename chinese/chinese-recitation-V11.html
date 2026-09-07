@@ -6,7 +6,7 @@
   <meta http-equiv="Expires" content="0">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>九上古诗文图文分镜 & 记忆宫殿整合带拼音背诵卡 V12.0</title>
+  <title>九上古诗文全文声调拼音背诵卡 V11.0</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -858,7 +858,7 @@
     }
     rt {
       font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-      font-size: 0.58em;
+      font-size: 0.56em;
       font-weight: 600;
       color: #2563EB; /* 商务优雅高质感蓝色注音 */
       user-select: none;
@@ -872,40 +872,13 @@
     body.hide-pinyin ruby {
       margin: 0;
     }
+    .pinyin-toggle-btn {
+      transition: all 0.2s ease;
+    }
     .pinyin-toggle-btn.active {
       background: #EFF6FF !important;
       color: #2563EB !important;
       border-color: #BFDBFE !important;
-    }
-
-    /* 整合到图文分镜卡内的记忆宫殿融合盒 */
-    .palace-integration-box {
-      background: linear-gradient(135deg, #F5F3FF, #EFF6FF);
-      border: 1px solid #DDD6FE;
-      border-radius: var(--radius-sm);
-      padding: 10px 14px;
-      margin-top: 6px;
-      margin-bottom: 12px;
-      font-size: 13px;
-      line-height: 1.5;
-    }
-    .palace-spot-badge {
-      display: inline-flex;
-      align-items: center;
-      background: #7C3AED;
-      color: #FFFFFF;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 12px;
-    }
-    .palace-peg-line {
-      color: #5B21B6;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .palace-story-line {
-      color: #4C1D95;
     }
 
 </style>
@@ -915,8 +888,8 @@
   <header>
     <div class="header-container">
       <div class="logo-area">
-        <h1>九上古诗文虚拟记忆宫殿背诵卡 <span class="logo-badge" style="background: linear-gradient(135deg, #2563EB, #7C3AED); color: #fff;">V12.0 全文拼音 & 宫殿分镜深度融合版</span></h1>
-        <div class="header-desc">图文同框分镜 + 记忆宫殿空间锚点与图像联想深度整合 + 全文声调拼音；支持拼音一键显隐</div>
+        <h1>九上古诗文虚拟记忆宫殿背诵卡 <span class="logo-badge" style="background: linear-gradient(135deg, #2563EB, #7C3AED); color: #fff;">V11.0 完美全文拼音版</span></h1>
+        <div class="header-desc">带权威注音与通假字纠错 + 具象分镜联想卡 + 虚拟记忆宫殿；支持拼音一键显隐</div>
       </div>
       <div style="display: flex; gap: 10px; align-items: center;">
         <a href="chinese.html" style="text-decoration: none;">
@@ -991,10 +964,11 @@
           📁 隐藏目录
         </button>
         <div class="mode-tabs">
-          <button class="mode-tab active" onclick="switchMode('visual')">🎬 1. 图文分镜 (含记忆宫殿锚点)</button>
-          <button class="mode-tab" onclick="switchMode('firstchar')">🔤 2. 首字线索提示</button>
-          <button class="mode-tab" onclick="switchMode('cloze')">🙈 3. 默写填空测试</button>
-          <button class="mode-tab" onclick="switchMode('full')">📖 4. 完整对照</button>
+          <button class="mode-tab active" onclick="switchMode('visual')">🎬 1. 图文同框分镜</button>
+          <button class="mode-tab" onclick="switchMode('palace')">🏰 2. 虚拟记忆宫殿</button>
+          <button class="mode-tab" onclick="switchMode('firstchar')">🔤 3. 首字线索提示</button>
+          <button class="mode-tab" onclick="switchMode('cloze')">🙈 4. 默写填空测试</button>
+          <button class="mode-tab" onclick="switchMode('full')">📖 5. 完整对照</button>
         </div>
         <button class="tool-btn pinyin-toggle-btn active" id="pinyinToggleBtn" onclick="togglePinyin()">🔤 拼音: 显示</button>
         <button class="tool-btn" onclick="toggleAllRevealed()">👁️ 显/隐答案</button>
@@ -1644,24 +1618,13 @@
       artAuthor.innerText = art.author;
 
       // Render Side-by-Side Storyboard Cards (Left image, Right text)
-      const pData = (typeof palaceData !== 'undefined' && palaceData[index]) ? palaceData[index] : [];
-
       storyboardGrid.innerHTML = art.storyboard.map((s, sIdx) => {
         const stepName = s.title || s.step || '';
         const imgSrc = s.img || '';
-        const passageText = s.passageRuby || s.passage || '';
+        const passageText = s.passage || '';
         const clueText = s.clue || '';
         const displayTitle = art.title + ' - ' + stepName;
         
-        const pItem = pData[sIdx] || {};
-        const spotBadge = pItem.spot ? `<span class="palace-spot-badge">${pItem.spot}</span>` : '';
-        const palaceBoxHtml = (pItem.peg || pItem.story) ? `
-          <div class="palace-integration-box">
-            ${pItem.peg ? `<div class="palace-peg-line">${pItem.peg}</div>` : ''}
-            ${pItem.story ? `<div class="palace-story-line">${pItem.story}</div>` : ''}
-          </div>
-        ` : '';
-
         return `
         <div class="side-by-side-card">
           <div class="storyboard-img-side">
@@ -1669,12 +1632,8 @@
             <img src="${imgSrc}" alt="${stepName}" data-title="${displayTitle}" class="clickable-img scene-filter-${(sIdx % 5) + 1}" onclick="openImageModalFromEl(this)" loading="lazy" decoding="async" title="点击查看高清大图"/>
           </div>
           <div class="storyboard-text-side">
-            <div class="storyboard-title-line" style="display: flex; align-items: center; justify-content: space-between;">
-              <span>${stepName}</span>
-              ${spotBadge}
-            </div>
-            ${palaceBoxHtml}
-            <div class="storyboard-passage-box chinese-text" style="font-size: 1.12rem; line-height: 2.2;">${passageText}</div>
+            <div class="storyboard-title-line">${stepName}</div>
+            <div class="storyboard-passage-box chinese-text">${passageText}</div>
             ${s.translation ? `<div class="storyboard-trans-box" style="margin-top: 8px; padding: 8px 12px; background: #F0F9FF; border-left: 3px solid #2563EB; border-radius: 6px; font-size: 13px; color: #334155; line-height: 1.6;"><span style="font-weight: 700; color: #2563EB; margin-right: 4px;">【译文】</span>${s.translation}</div>` : ''}
             <div class="storyboard-clue-line">${clueText}</div>
           </div>
