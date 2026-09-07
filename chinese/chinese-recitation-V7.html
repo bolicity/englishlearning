@@ -701,6 +701,153 @@
       transform: scale(0.99) !important;
     }
 
+
+    /* 彻底硬核隐藏侧边栏 V9.5 */
+    .app-layout.sidebar-collapsed {
+      grid-template-columns: 1fr !important;
+      gap: 0 !important;
+    }
+
+    .app-layout.sidebar-collapsed .sidebar {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+    }
+
+
+    /* ==================== V10.0 精致紧凑型商务设计系统 ==================== */
+    .app-layout {
+      max-width: 1380px !important;
+      margin: 16px auto !important;
+      padding: 0 16px !important;
+      display: grid !important;
+      grid-template-columns: 200px 1fr !important;
+      gap: 16px !important;
+    }
+
+    .app-layout.sidebar-collapsed {
+      grid-template-columns: 1fr !important;
+      gap: 0 !important;
+    }
+
+    .app-layout.sidebar-collapsed .sidebar {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+    }
+
+    .sidebar {
+      padding: 10px !important;
+      border-radius: 8px !important;
+    }
+
+    .sidebar-title {
+      font-size: 12px !important;
+    }
+
+    button.nav-group-header {
+      padding: 7px 9px !important;
+      font-size: 12px !important;
+      margin-bottom: 6px !important;
+    }
+
+    .article-item {
+      padding: 7px 10px !important;
+      font-size: 13px !important;
+      margin-bottom: 3px !important;
+    }
+
+    .article-tag {
+      font-size: 10px !important;
+      padding: 1px 5px !important;
+    }
+
+    /* 顶部导航与主区域紧凑化 */
+    .mode-bar {
+      padding: 8px 12px !important;
+      margin-bottom: 14px !important;
+      border-radius: 8px !important;
+    }
+
+    .mode-tab {
+      padding: 6px 12px !important;
+      font-size: 13px !important;
+    }
+
+    .article-card {
+      padding: 18px !important;
+      border-radius: 10px !important;
+    }
+
+    .article-title {
+      font-size: 22px !important;
+      margin-bottom: 4px !important;
+    }
+
+    .article-author {
+      font-size: 13px !important;
+      margin-bottom: 16px !important;
+    }
+
+    /* 分镜头卡片比例精简（左图250px，右文） */
+    .scene-card {
+      grid-template-columns: 250px 1fr !important;
+      gap: 16px !important;
+      padding: 14px !important;
+      margin-bottom: 16px !important;
+      border-radius: 10px !important;
+    }
+
+    .scene-img-wrapper {
+      border-radius: 6px !important;
+    }
+
+    .scene-title {
+      font-size: 15px !important;
+      margin-bottom: 8px !important;
+    }
+
+    .passage-box {
+      font-size: 14px !important;
+      line-height: 1.6 !important;
+      padding: 10px 12px !important;
+    }
+
+    .translation-box {
+      font-size: 13px !important;
+      line-height: 1.55 !important;
+      padding: 8px 12px !important;
+      margin-top: 8px !important;
+    }
+
+    .cue-box {
+      font-size: 12px !important;
+      padding: 5px 8px !important;
+      margin-top: 8px !important;
+    }
+
+    /* 记忆宫殿与默写测试 */
+    .palace-card {
+      padding: 16px !important;
+    }
+
+    .palace-spot-chip {
+      padding: 6px 12px !important;
+      font-size: 12px !important;
+    }
+
 </style>
 </head>
 <body ontouchstart="">
@@ -708,7 +855,7 @@
   <header>
     <div class="header-container">
       <div class="logo-area">
-        <h1>九上古诗文虚拟记忆宫殿背诵卡 <span class="logo-badge" style="background: linear-gradient(135deg, #2563EB, #7C3AED); color: #fff;">V9.4 PC与全终端重构版</span></h1>
+        <h1>九上古诗文虚拟记忆宫殿背诵卡 <span class="logo-badge" style="background: linear-gradient(135deg, #2563EB, #7C3AED); color: #fff;">V10.0 精致紧凑高视野版</span></h1>
         <div class="header-desc">空间场所锚点 + 具象联想卡 + 宫殿路径寻宝；专为青少年高效记忆打造的具象宫殿背诵系统</div>
       </div>
       <div style="display: flex; gap: 10px; align-items: center;">
