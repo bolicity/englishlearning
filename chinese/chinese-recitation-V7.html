@@ -674,14 +674,41 @@
       border-left: 3px solid var(--primary) !important;
     }
 
+
+    /* iOS & All Device Compatibility Layer V9.3 */
+    button.nav-group-header {
+      width: 100% !important;
+      text-align: left !important;
+      border: 1px solid #cbd5e1 !important;
+      background: #f1f5f9 !important;
+      color: #0f172a !important;
+      font-family: inherit !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      padding: 10px 12px !important;
+      margin-bottom: 8px !important;
+      border-radius: 8px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      cursor: pointer !important;
+      -webkit-tap-highlight-color: rgba(37, 99, 235, 0.15) !important;
+      outline: none !important;
+    }
+    
+    button.nav-group-header:active {
+      background: #cbd5e1 !important;
+      transform: scale(0.99) !important;
+    }
+
 </style>
 </head>
-<body>
+<body ontouchstart="">
 
   <header>
     <div class="header-container">
       <div class="logo-area">
-        <h1>九上古诗文虚拟记忆宫殿背诵卡 <span class="logo-badge" style="background: linear-gradient(135deg, #2563EB, #7C3AED); color: #fff;">V9.2 智能折叠与防缓存版</span></h1>
+        <h1>九上古诗文虚拟记忆宫殿背诵卡 <span class="logo-badge" style="background: linear-gradient(135deg, #2563EB, #7C3AED); color: #fff;">V9.3 iOS与全设备兼容版</span></h1>
         <div class="header-desc">空间场所锚点 + 具象联想卡 + 宫殿路径寻宝；专为青少年高效记忆打造的具象宫殿背诵系统</div>
       </div>
       <div style="display: flex; gap: 10px; align-items: center;">
@@ -707,10 +734,10 @@
       </div>
       
       <div class="nav-group">
-        <div class="nav-group-header" onclick="toggleNavGroup(event, this)">
+        <button type="button" class="nav-group-header" onclick="toggleNavGroup(event, this)">
           <span>📜 文言文名篇</span>
           <span class="nav-group-arrow">▼</span>
-        </div>
+        </button>
         <ul class="article-list">
           <li class="article-item active" onclick="loadArticle(0)">
             <span>岳阳楼记</span>
@@ -732,10 +759,10 @@
       </div>
 
       <div class="nav-group collapsed">
-        <div class="nav-group-header" onclick="toggleNavGroup(event, this)">
+        <button type="button" class="nav-group-header" onclick="toggleNavGroup(event, this)">
           <span>承 古诗词名篇</span>
           <span class="nav-group-arrow">▼</span>
-        </div>
+        </button>
         <ul class="article-list">
           <li class="article-item" onclick="loadArticle(4)"><span>行路难（其一）</span><span class="article-tag">李白</span></li>
           <li class="article-item" onclick="loadArticle(5)"><span>酬乐天扬州初逢席上见赠</span><span class="article-tag">刘禹锡</span></li>
@@ -1459,10 +1486,19 @@
   
     
     
-    function toggleNavGroup(headerEl) {
-      const navGroup = headerEl.closest('.nav-group');
-      if (navGroup) {
-        navGroup.classList.toggle('collapsed');
+    // 兼容所有终端与移动端的手风琴折叠
+    function toggleNavGroup(evt, btnEl) {
+      if (evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+      }
+      const group = btnEl.closest('.nav-group');
+      if (group) {
+        const isCollapsed = group.classList.toggle('collapsed');
+        const arrow = btnEl.querySelector('.nav-group-arrow');
+        if (arrow) {
+          arrow.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
+        }
       }
     }
 
@@ -1588,11 +1624,19 @@
 
     
     /* ==================== 侧边栏与分组手风琴控制核心 V9.1 ==================== */
-    function toggleNavGroup(evt, headerEl) {
-      if (evt) evt.stopPropagation();
-      const navGroup = headerEl.closest('.nav-group');
-      if (navGroup) {
-        navGroup.classList.toggle('collapsed');
+    // 兼容所有终端与移动端的手风琴折叠
+    function toggleNavGroup(evt, btnEl) {
+      if (evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+      }
+      const group = btnEl.closest('.nav-group');
+      if (group) {
+        const isCollapsed = group.classList.toggle('collapsed');
+        const arrow = btnEl.querySelector('.nav-group-arrow');
+        if (arrow) {
+          arrow.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
+        }
       }
     }
 
@@ -1640,10 +1684,19 @@
   
     
     
-    function toggleNavGroup(headerEl) {
-      const navGroup = headerEl.closest('.nav-group');
-      if (navGroup) {
-        navGroup.classList.toggle('collapsed');
+    // 兼容所有终端与移动端的手风琴折叠
+    function toggleNavGroup(evt, btnEl) {
+      if (evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+      }
+      const group = btnEl.closest('.nav-group');
+      if (group) {
+        const isCollapsed = group.classList.toggle('collapsed');
+        const arrow = btnEl.querySelector('.nav-group-arrow');
+        if (arrow) {
+          arrow.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
+        }
       }
     }
 
