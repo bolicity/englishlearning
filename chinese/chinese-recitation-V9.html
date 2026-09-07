@@ -593,6 +593,57 @@
       border-left: 4px solid var(--primary);
     }
 
+
+    /* ==================== 手风琴折叠增强 CSS V9.1 ==================== */
+    .nav-group-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      color: var(--primary) !important;
+      margin-bottom: 6px !important;
+      padding: 8px 10px !important;
+      background: var(--bg-hover) !important;
+      border-radius: 6px !important;
+      cursor: pointer !important;
+      user-select: none !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .nav-group-header:hover {
+      background: #e2e8f0 !important;
+      color: #1d4ed8 !important;
+    }
+
+    .nav-group-arrow {
+      font-size: 11px !important;
+      color: #64748b !important;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      display: inline-block !important;
+    }
+
+    .nav-group.collapsed .nav-group-arrow {
+      transform: rotate(-90deg) !important;
+    }
+
+    .nav-group .article-list {
+      max-height: 800px;
+      opacity: 1;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin 0.25s ease !important;
+    }
+
+    .nav-group.collapsed .article-list {
+      max-height: 0 !important;
+      opacity: 0 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      pointer-events: none !important;
+    }
+
 </style>
 </head>
 <body>
@@ -626,7 +677,7 @@
       </div>
       
       <div class="nav-group collapsed">
-        <div class="nav-group-header" onclick="toggleNavGroup(this)">
+        <div class="nav-group-header" onclick="toggleNavGroup(event, this)">
           <span>📜 文言文名篇</span>
           <span class="nav-group-arrow">▼</span>
         </div>
@@ -651,7 +702,7 @@
       </div>
 
       <div class="nav-group collapsed">
-        <div class="nav-group-header" onclick="toggleNavGroup(this)">
+        <div class="nav-group-header" onclick="toggleNavGroup(event, this)">
           <span>承 古诗词名篇</span>
           <span class="nav-group-arrow">▼</span>
         </div>
@@ -1368,7 +1419,7 @@
     }
   
     
-    // 分组手风琴折叠切换 V9.0
+    
     function toggleNavGroup(headerEl) {
       const navGroup = headerEl.closest('.nav-group');
       if (navGroup) {
@@ -1496,10 +1547,60 @@
       renderPalaceMode();
     }
 
+    
+    /* ==================== 侧边栏与分组手风琴控制核心 V9.1 ==================== */
+    function toggleNavGroup(evt, headerEl) {
+      if (evt) evt.stopPropagation();
+      const navGroup = headerEl.closest('.nav-group');
+      if (navGroup) {
+        navGroup.classList.toggle('collapsed');
+      }
+    }
+
+    function toggleSidebar() {
+      const layout = document.querySelector('.app-layout');
+      if (!layout) return;
+      
+      const isCollapsed = layout.classList.toggle('sidebar-collapsed');
+      document.body.classList.toggle('sidebar-is-collapsed', isCollapsed);
+      
+      const toggleBtn = document.querySelector('.sidebar-toggle-btn');
+      if (toggleBtn) {
+        toggleBtn.innerHTML = isCollapsed ? '▶ 展开' : '◀ 折叠';
+      }
+      
+      const topbarToggle = document.getElementById('topbarSidebarToggle');
+      if (topbarToggle) {
+        topbarToggle.innerHTML = isCollapsed ? '📖 展开目录' : '📁 隐藏目录';
+      }
+      
+      localStorage.setItem('sidebar_collapsed_pref', isCollapsed ? 'true' : 'false');
+    }
+
+    // 初始化侧边栏与分组状态
+    document.addEventListener('DOMContentLoaded', () => {
+      // 侧边栏整体默认展开（用户未手动折叠时）
+      const savedPref = localStorage.getItem('sidebar_collapsed_pref');
+      const layout = document.querySelector('.app-layout');
+      if (layout) {
+        if (savedPref === 'true') {
+          layout.classList.add('sidebar-collapsed');
+          document.body.classList.add('sidebar-is-collapsed');
+          const toggleBtn = document.querySelector('.sidebar-toggle-btn');
+          if (toggleBtn) toggleBtn.innerHTML = '▶ 展开';
+          const topbarToggle = document.getElementById('topbarSidebarToggle');
+          if (topbarToggle) topbarToggle.innerHTML = '📖 展开目录';
+        } else {
+          layout.classList.remove('sidebar-collapsed');
+          document.body.classList.remove('sidebar-is-collapsed');
+        }
+      }
+    });
+
     loadArticle(0);
   
     
-    // 分组手风琴折叠切换 V9.0
+    
     function toggleNavGroup(headerEl) {
       const navGroup = headerEl.closest('.nav-group');
       if (navGroup) {
