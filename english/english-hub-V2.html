@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>初中英语九年级全套教材音频 & 听力中心 V2</title>
+  <title>初中英语九年级全套教材音频 & 听力中心 V2.1 修复版</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -240,7 +243,7 @@
       <a href="../index.html" class="brand">
         <div class="brand-logo">ENG</div>
         <div>
-          <div class="brand-title">初中英语九年级全套教材音频 & 听力中心 V2</div>
+          <div class="brand-title">初中英语九年级全套教材音频 & 听力中心 V2.1 修复版</div>
           <div class="brand-subtitle">五·四学制上海课本原声 · 88首全量单曲 / 课文 / 词汇 / 听力</div>
         </div>
       </a>
@@ -1133,7 +1136,7 @@
   </div>
 
   <footer>
-    <p>© 2026 初中英语九年级全套教材音频 & 听力中心 V2 · 保持版本独立控制</p>
+    <p>© 2026 初中英语九年级全套教材音频 & 听力中心 V2.1 修复版 · 保持版本独立控制</p>
   </footer>
 
   <script>
@@ -1153,7 +1156,11 @@
 
       titleSpan.innerText = name;
       
-      const encodedPath = encodeURI(path);
+      // 严密转义空格及特殊字符，确保浏览器 HTTP 请求 100% 成功
+      const encodedPath = path.split('/').map(part => {
+        if (part === '.' || part === '..') return part;
+        return encodeURIComponent(part);
+      }).join('/');
       player.src = encodedPath;
 
       player.play().catch(err => {
