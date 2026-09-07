@@ -407,7 +407,7 @@
       const titleSpan = document.getElementById('currentTrackTitle');
 
       titleSpan.innerText = `${item.unit} - ${item.title}`;
-      player.src = encodeURI(item.path);
+      player.src = item.path.split('/').map(encodeURIComponent).join('/');
       player.play();
 
       filterAudioList();

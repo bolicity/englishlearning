@@ -9,11 +9,46 @@
 <title>🌟 单词星球 - 趣味学习小程序</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="./supabase-config.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js">
+function speakWordOnlineFallback(text) {
+  const url = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(text) + '&type=2';
+  const audio = new Audio(url);
+  audio.play().catch(err => console.warn('Online TTS failed:', err));
+}
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js">
+function speakWordOnlineFallback(text) {
+  const url = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(text) + '&type=2';
+  const audio = new Audio(url);
+  audio.play().catch(err => console.warn('Online TTS failed:', err));
+}
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js">
+function speakWordOnlineFallback(text) {
+  const url = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(text) + '&type=2';
+  const audio = new Audio(url);
+  audio.play().catch(err => console.warn('Online TTS failed:', err));
+}
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+function speakWordOnlineFallback(text) {
+  const url = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(text) + '&type=2';
+  const audio = new Audio(url);
+  audio.play().catch(err => console.warn('Online TTS failed:', err));
+}
+
+</script>
+<script src="./supabase-config.js">
+function speakWordOnlineFallback(text) {
+  const url = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(text) + '&type=2';
+  const audio = new Audio(url);
+  audio.play().catch(err => console.warn('Online TTS failed:', err));
+}
+
+</script>
 <style>
 :root {
   --pink: #FF6B9D;
@@ -2581,7 +2616,7 @@ function speakWithBestSystemVoice(word) {
   const preferredVoice = pickNaturalEnglishVoice(voices);
   if (preferredVoice) utterance.voice = preferredVoice;
 
-  window.speechSynthesis.speak(utterance);
+  try { window.speechSynthesis.speak(utterance); } catch(e) { speakWordOnlineFallback(text); }
 }
 
 function pickNaturalEnglishVoice(voices) {
@@ -3290,6 +3325,13 @@ function formatFileSize(bytes) {
 
 // ===== 启动 =====
 document.addEventListener('DOMContentLoaded', init);
+
+function speakWordOnlineFallback(text) {
+  const url = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(text) + '&type=2';
+  const audio = new Audio(url);
+  audio.play().catch(err => console.warn('Online TTS failed:', err));
+}
+
 </script>
 </body>
 </html>
