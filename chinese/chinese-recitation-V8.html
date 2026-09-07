@@ -594,18 +594,29 @@
     }
 
 
-    /* ==================== 手风琴折叠增强 CSS V9.1 ==================== */
+    
+    /* ==================== 智能手风琴与极致交互 UX V9.2 ==================== */
+    .sidebar-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding-bottom: 10px !important;
+      margin-bottom: 12px !important;
+      border-bottom: 1px dashed var(--border-color) !important;
+    }
+
     .nav-group-header {
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
       font-size: 13px !important;
       font-weight: 700 !important;
-      color: var(--primary) !important;
-      margin-bottom: 6px !important;
-      padding: 8px 10px !important;
-      background: var(--bg-hover) !important;
-      border-radius: 6px !important;
+      color: #1e293b !important;
+      margin-bottom: 8px !important;
+      padding: 9px 12px !important;
+      background: #f1f5f9 !important;
+      border: 1px solid #e2e8f0 !important;
+      border-radius: 8px !important;
       cursor: pointer !important;
       user-select: none !important;
       transition: all 0.2s ease !important;
@@ -613,7 +624,8 @@
 
     .nav-group-header:hover {
       background: #e2e8f0 !important;
-      color: #1d4ed8 !important;
+      color: var(--primary) !important;
+      border-color: #cbd5e1 !important;
     }
 
     .nav-group-arrow {
@@ -642,6 +654,21 @@
       padding-top: 0 !important;
       padding-bottom: 0 !important;
       pointer-events: none !important;
+    }
+
+    .article-item {
+      padding: 10px 12px !important;
+      border-radius: 8px !important;
+      margin-bottom: 4px !important;
+      cursor: pointer !important;
+      transition: all 0.15s ease !important;
+    }
+    
+    .article-item.active {
+      background: var(--bg-hover) !important;
+      color: var(--primary) !important;
+      font-weight: 700 !important;
+      border-left: 3px solid var(--primary) !important;
     }
 
 </style>
@@ -676,7 +703,7 @@
         </button>
       </div>
       
-      <div class="nav-group collapsed">
+      <div class="nav-group">
         <div class="nav-group-header" onclick="toggleNavGroup(event, this)">
           <span>📜 文言文名篇</span>
           <span class="nav-group-arrow">▼</span>
@@ -1255,6 +1282,15 @@
 
     function loadArticle(index) {
       currentArticleIndex = index;
+
+      // 自动展开激活文章所在的分组，收起其他分组（手风琴效果）
+      const allItems = document.querySelectorAll('.article-item');
+      if (allItems[index]) {
+        const parentGroup = allItems[index].closest('.nav-group');
+        if (parentGroup && parentGroup.classList.contains('collapsed')) {
+          parentGroup.classList.remove('collapsed');
+        }
+      }
       
       const items = document.querySelectorAll('.article-item');
       items.forEach((item, idx) => {
