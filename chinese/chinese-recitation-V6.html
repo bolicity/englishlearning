@@ -1039,19 +1039,26 @@
       artAuthor.innerText = art.author;
 
       // Render Side-by-Side Storyboard Cards (Left image, Right text)
-      storyboardGrid.innerHTML = art.storyboard.map(s => `
+      storyboardGrid.innerHTML = art.storyboard.map(s => {
+        const stepName = s.title || s.step || '';
+        const imgSrc = s.img || '';
+        const passageText = s.passage || '';
+        const clueText = s.clue || '';
+        const displayTitle = art.title + ' - ' + stepName;
+        
+        return `
         <div class="side-by-side-card">
           <div class="storyboard-img-side">
-            <span class="storyboard-badge">${s.badge}</span>
-            <img src="${s.img}" alt="${s.title}" class="clickable-img" onclick="openImageModal('${s.img}', '${art.title} - ${s.title}')" loading="lazy" decoding="async" title="点击查看高清大图"/>
+            <span class="storyboard-badge">${s.badge || ''}</span>
+            <img src="${imgSrc}" alt="${stepName}" data-title="${displayTitle}" class="clickable-img" onclick="openImageModalFromEl(this)" loading="lazy" decoding="async" title="点击查看高清大图"/>
           </div>
           <div class="storyboard-text-side">
-            <div class="storyboard-title-line">${s.title}</div>
-            <div class="storyboard-passage-box chinese-text">${s.passage}</div>
-            <div class="storyboard-clue-line">${s.clue}</div>
+            <div class="storyboard-title-line">${stepName}</div>
+            <div class="storyboard-passage-box chinese-text">${passageText}</div>
+            <div class="storyboard-clue-line">${clueText}</div>
           </div>
-        </div>
-      `).join('');
+        </div>`;
+      }).join('');
 
       renderTextContent();
     }
@@ -1162,6 +1169,7 @@
       });
       alert(`测试完成！得分：${correct}/${total} (${Math.round((correct/total)*100)}%)`);
     }
+  </script>
 
   <!-- Image Lightbox Modal -->
   <div id="image-modal" class="modal-overlay" onclick="closeImageModal(event)">
@@ -1171,6 +1179,12 @@
   </div>
 
   <script>
+    function openImageModalFromEl(el) {
+      const src = el.src;
+      const title = el.getAttribute('data-title') || '';
+      openImageModal(src, title);
+    }
+
     function openImageModal(src, title) {
       const modal = document.getElementById('image-modal');
       const modalImg = document.getElementById('modal-img');
