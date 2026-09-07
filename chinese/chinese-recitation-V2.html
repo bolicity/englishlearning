@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>九上古诗文形象视觉背诵卡 V2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-card-subtle: #F1F5F9;
+      --text-main: #0F172A;
+      --text-muted: #475569;
+      --text-light: #64748B;
+      --primary: #2563EB;
+      --primary-soft: #EFF6FF;
+      --primary-border: #BFDBFE;
+      --accent: #7C3AED;
+      --accent-soft: #F5F3FF;
+      --success: #059669;
+      --success-soft: #ECFDF5;
+      --warning: #D97706;
+      --warning-soft: #FFFBEB;
+      --border-color: #E2E8F0;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    .chinese-text {
+      font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+    }
+
+    header {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-area h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-badge {
+      background: #DCFCE7;
+      color: #15803D;
+      border: 1px solid #86EFAC;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    .header-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .app-layout {
+      max-width: 1280px;
+      margin: 24px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+    }
+
+    .sidebar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      height: fit-content;
+      position: sticky;
+      top: 90px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-light);
+      margin-bottom: 12px;
+      padding-left: 8px;
+    }
+
+    .nav-group { margin-bottom: 20px; }
+
+    .nav-group-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 8px;
+      padding-left: 8px;
+    }
+
+    .article-list { list-style: none; }
+
+    .article-item {
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+
+    .article-item:hover {
+      background: var(--bg-card-subtle);
+      color: var(--text-main);
+    }
+
+    .article-item.active {
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-weight: 600;
+      border-left: 3px solid var(--primary);
+    }
+
+    .article-tag {
+      font-size: 11px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: #F1F5F9;
+      color: #64748B;
+    }
+
+    .content-area {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .mode-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .mode-tabs {
+      display: flex;
+      gap: 8px;
+      background: var(--bg-card-subtle);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+    }
+
+    .mode-tab {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .mode-tab.active {
+      background: #FFFFFF;
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tool-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: #FFFFFF;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .article-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .article-header {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .article-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .article-title {
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .article-author {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    /* Image Illustration Banner */
+    .image-illustration-container {
+      margin-bottom: 20px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      background: #FAFAFA;
+      position: relative;
+    }
+
+    .image-illustration-container img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(0deg, rgba(15,23,42,0.8) 0%, rgba(15,23,42,0) 100%);
+      color: #FFFFFF;
+      padding: 16px 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .visual-guide-box {
+      background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+      border: 1px solid var(--primary-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .visual-guide-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .visual-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .flow-step {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      align-items: start;
+      background: #FFFFFF;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid #E2E8F0;
+    }
+
+    .step-tag {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 8px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .step-content {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .text-display-area {
+      font-size: 18px;
+      line-height: 2.2;
+      color: var(--text-main);
+      margin-top: 16px;
+    }
+
+    .sentence-block {
+      margin-bottom: 16px;
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      background: #FAFAFA;
+      border: 1px solid #F1F5F9;
+    }
+
+    .first-char-highlight {
+      display: inline-block;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 0 6px;
+      border-radius: 4px;
+      margin-right: 2px;
+      border: 1px dashed var(--primary-border);
+    }
+
+    .cloze-input {
+      border: 1px solid var(--border-color);
+      border-bottom: 2px solid var(--primary);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 16px;
+      width: 80px;
+      text-align: center;
+      outline: none;
+    }
+
+    .cloze-input.correct {
+      border-color: var(--success);
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .cloze-input.wrong {
+      border-color: #EF4444;
+      background: #FEF2F2;
+      color: #DC2626;
+    }
+
+    .practice-bar {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo-area">
+        <h1>九上古诗文形象视觉背诵卡 <span class="logo-badge">V2.0 画面插画版</span></h1>
+        <div class="header-desc">为九上12篇必背古诗文提供高精度场景画面插画、分镜镜头与线索卡</div>
+      </div>
+      <div>
+        <button class="tool-btn" onclick="window.print()">🖨️ 打印记忆卡片</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-title">背诵篇目 (12篇)</div>
+      
+      <div class="nav-group">
+        <div class="nav-group-label">📜 文言文名篇</div>
+        <ul class="article-list">
+          <li class="article-item active" onclick="loadArticle(0)">
+            <span>岳阳楼记</span>
+            <span class="article-tag">🖼️ 配图画卷</span>
+          </li>
+          <li class="article-item" onclick="loadArticle(1)">
+            <span>醉翁亭记</span>
+            <span class="article-tag">欧阳修</span>
+          </li>
+          <li class="article-item" onclick="loadArticle(2)">
+            <span>湖心亭看雪</span>
+            <span class="article-tag">张岱</span>
+          </li>
+          <li class="article-item" onclick="loadArticle(3)">
+            <span>沁园春·雪</span>
+            <span class="article-tag">毛泽东</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-label">承 古诗词名篇</div>
+        <ul class="article-list">
+          <li class="article-item" onclick="loadArticle(4)"><span>行路难（其一）</span><span class="article-tag">李白</span></li>
+          <li class="article-item" onclick="loadArticle(5)"><span>酬乐天扬州初逢席上见赠</span><span class="article-tag">刘禹锡</span></li>
+          <li class="article-item" onclick="loadArticle(6)"><span>水调歌头</span><span class="article-tag">苏轼</span></li>
+          <li class="article-item" onclick="loadArticle(7)"><span>十五从军征</span><span class="article-tag">汉乐府</span></li>
+          <li class="article-item" onclick="loadArticle(8)"><span>白雪歌送武判官归京</span><span class="article-tag">岑参</span></li>
+          <li class="article-item" onclick="loadArticle(9)"><span>南乡子·登京口北固亭</span><span class="article-tag">辛弃疾</span></li>
+          <li class="article-item" onclick="loadArticle(10)"><span>过零丁洋</span><span class="article-tag">文天祥</span></li>
+          <li class="article-item" onclick="loadArticle(11)"><span>山坡羊·潼关怀古</span><span class="article-tag">张养浩</span></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+
+      <div class="mode-bar">
+        <div class="mode-tabs">
+          <button class="mode-tab active" onclick="switchMode('visual')">🖼️ 1. 形象画卷与分镜</button>
+          <button class="mode-tab" onclick="switchMode('firstchar')">🔤 2. 首字/线索提示</button>
+          <button class="mode-tab" onclick="switchMode('cloze')">🙈 3. 默写填空测试</button>
+          <button class="mode-tab" onclick="switchMode('full')">📖 4. 完整对照</button>
+        </div>
+        <button class="tool-btn" onclick="toggleAllRevealed()">👁️ 显/隐答案</button>
+      </div>
+
+      <article class="article-card">
+        <div class="article-header">
+          <div class="article-title-row">
+            <h2 class="article-title" id="art-title">岳阳楼记</h2>
+            <span class="article-author" id="art-author">〔宋〕范仲淹</span>
+          </div>
+        </div>
+
+        <!-- Image Illustration Banner -->
+        <div class="image-illustration-container" id="img-container">
+          <img id="art-illustration" src="images/yueyang_tower.jpg" alt="形象画卷"/>
+          <div class="image-caption" id="art-caption">🎨 形象记忆画卷：《岳阳楼记》洞庭浩瀚水景与岳阳楼雄姿图</div>
+        </div>
+
+        <!-- Visual Memory Guide Box -->
+        <div class="visual-guide-box" id="visual-guide-area">
+          <div class="visual-guide-title">💡 形象分镜分解（脑海记忆链）</div>
+          <div class="visual-flow" id="visual-flow-content"></div>
+        </div>
+
+        <!-- Text Display Area -->
+        <div class="text-display-area chinese-text" id="text-display-area"></div>
+
+        <div class="practice-bar">
+          <span style="font-size: 13px; color: var(--text-light);" id="mode-tip">💡 提示：按画面线索在脑海中拉镜头。</span>
+          <button class="btn-primary" onclick="checkAnswers()">提交填空验收</button>
+        </div>
+      </article>
+
+    </main>
+  </div>
+
+  <script>
+    const articles = [
+      {
+        id: 0,
+        title: "岳阳楼记",
+        author: "〔宋〕范仲淹",
+        image: "images/yueyang_tower.jpg",
+        caption: "🎨 形象记忆画卷：《岳阳楼记》洞庭浩瀚水景、巴陵胜状与岳阳楼雄姿",
+        visualFlow: [
+          { step: "镜头1：背景缘由", desc: "<strong>庆历四年春，滕子京谪守巴陵郡</strong> ➔ 政通人和，百废具兴 ➔ 重修岳阳楼 ➔ 刻诗赋 ➔ 属予作文。" },
+          { step: "镜头2：洞庭胜状", desc: "<strong>衔远山，吞长江</strong> ➔ 浩浩汤汤，横无际涯 ➔ 朝晖夕阴，气象万千 ➔ 迁客骚人览物之情。" },
+          { step: "镜头3：阴雨悲景", desc: "<strong>淫雨霏霏，连月不开</strong> ➔ 阴风怒号/浊浪排空 ➔ 日星隐曜/山岳潜形 ➔ 虎啸猿啼 ➔ 登斯楼：<strong>感极而悲者矣</strong>。" },
+          { step: "镜头4：春晴喜景", desc: "<strong>春和景明，波澜不惊</strong> ➔ 上下天光/一碧万顷 ➔ 沙鸥翔集/锦鳞游泳 ➔ 长烟一空/皓月千里 ➔ 登斯楼：<strong>其喜洋洋者矣</strong>。" },
+          { step: "镜头5：升华主旨", desc: "<strong>古仁人之心</strong> ➔ 不以物喜，不以己悲 ➔ 居庙堂之高则忧其民，处江湖之远则忧其君 ➔ <strong>先天下之忧而忧，后天下之乐而乐</strong>！" }
+        ],
+        paragraphs: [
+          "庆历四年春，滕子京谪守巴陵郡。越明年，政通人和，百废具兴，乃重修岳阳楼，增其旧制，刻唐贤今人诗赋于其上，属予作文以记之。",
+          "予观夫巴陵胜状，在洞庭一湖。衔远山，吞长江，浩浩汤汤，横无际涯，朝晖夕阴，气象万千，此则岳阳楼之大观也，前人之述备矣。然则北通巫峡，南极潇湘，迁客骚人，多会于此，览物之情，得无异乎？",
+          "若夫淫雨霏霏，连月不开，阴风怒号，浊浪排空，日星隐曜，山岳潜形，商旅不行，樯倾楫摧，薄暮冥冥，虎啸猿啼。登斯楼也，则有去国怀乡，忧谗畏讥，满目萧然，感极而悲者矣。",
+          "至若春和景明，波澜不惊，上下天光，一碧万顷，沙鸥翔集，锦鳞游泳，岸芷汀兰，郁郁青青。而或长烟一空，皓月千里，浮光跃金，静影沉璧，渔歌互答，此乐何极！登斯楼也，则有心旷神怡，宠辱偕忘，把酒临风，其喜洋洋者矣。",
+          "嗟夫！尝求古仁人之心，或异二者之为，何哉？不以物喜，不以己悲，居庙堂之高则忧其民，处江湖之远则忧其君。是进亦忧，退亦忧。然则何时而乐耶？其必曰“先天下之忧而忧，后天下之乐而乐”乎！噫！微斯人，吾谁与归？"
+        ],
+        clozeKeyWords: ["谪守", "具兴", "属予作文", "胜状", "衔远山", "吞长江", "浩浩汤汤", "横无际涯", "朝晖夕阴", "淫雨霏霏", "阴风怒号", "浊浪排空", "日星隐曜", "山岳潜形", "樯倾楫摧", "忧谗畏讥", "春和景明", "沙鸥翔集", "锦鳞游泳", "岸芷汀兰", "皓月千里", "浮光跃金", "静影沉璧", "心旷神怡", "宠辱偕忘", "不以物喜", "不以己悲", "先天下之忧而忧", "后天下之乐而乐", "微斯人"]
+      },
+      {
+        id: 1,
+        title: "醉翁亭记",
+        author: "〔宋〕欧阳修",
+        image: "",
+        caption: "🎨 形象记忆画卷：环滁皆山，醉翁亭翼然临于泉上，游人与太守乐",
+        visualFlow: [
+          { step: "镜头1：空间缩放", desc: "环滁皆山 ➔ 西南诸峰（琅琊山） ➔ 渐闻水声（酿泉） ➔ 峰回路转 ➔ <strong>有亭翼然临于泉上（醉翁亭）</strong> ➔ 醉翁之意不在酒，在乎山水之间。" },
+          { step: "镜头2：朝夕与四时", desc: "<strong>朝夕</strong>：日出林霏开 vs 云归岩穴暝 ➔ <strong>四时</strong>：野芳发（春） ➔ 佳木秀（夏） ➔ 风霜高（秋） ➔ 水落石出（冬）。" },
+          { step: "镜头3：游宴乐图", desc: "滁人游 ➔ 太守宴 ➔ 众宾欢 ➔ <strong>太守醉（苍颜白发，颓然乎其中）</strong>。" }
+        ],
+        paragraphs: [
+          "环滁皆山也。其西南诸峰，林壑尤美，望之蔚然而深秀者，琅琊也。山行六七里，渐闻水声潺潺而泻出于两峰之间者，酿泉也。峰回路转，有亭翼然临于泉上者，醉翁亭也。作亭者谁？山之僧智仙也。名之者谁？太守自谓也。太守与客来饮于此，饮少辄醉，而年又最高，故自号曰醉翁也。醉翁之意不在酒，在乎山水之间也。山水之乐，得之心而寓之酒也。",
+          "若夫日出而林霏开，云归而岩穴暝，晦明变化者，山间之朝暮也。野芳发而幽香，佳木秀而繁阴，风霜高洁，水落石出者，山间之四时也。朝而往，暮而归，四时之景不同，而乐亦无穷也。",
+          "至于负者歌于途，行者休于树，前者呼，后者应，伛偻提携，往来而不绝者，滁人游也。临溪而渔，溪深而鱼肥，酿泉为酒，泉香而酒洌，山肴野蔌，杂然而前陈者，太守宴也。宴酣之乐，非丝非竹，射者中，弈者胜，觥筹交错，起坐而喧哗者，众宾欢也。苍颜白发，颓然乎其间者，太守醉也。",
+          "已而夕阳在山，人影散乱，太守归而宾客从也。树林阴翳，鸣声上下，游人去而禽鸟乐也。然而禽鸟知山林之乐，而不知人之乐；人知从太守游而乐，而不知太守之乐其乐也。醉能同其乐，醒能述以文者，太守也。太守谓谁？庐陵欧阳修也。"
+        ],
+        clozeKeyWords: ["琅琊", "酿泉", "峰回路转", "翼然", "寓之酒", "林霏开", "岩穴暝", "野芳发", "佳木秀", "风霜高洁", "水落石出", "伛偻提携", "酒洌", "山肴野蔌", "觥筹交错", "苍颜白发", "颓然", "树林阴翳", "乐其乐"]
+      },
+      {
+        id: 2,
+        title: "湖心亭看雪",
+        author: "〔明〕张岱",
+        image: "",
+        caption: "🎨 形象记忆画卷：西湖大雪，雾凇沆砀，上下一白，长堤一痕与湖心亭一点",
+        visualFlow: [
+          { step: "镜头1：大雪独往", desc: "崇祯五年十二月 ➔ 大雪三日，人鸟声俱绝 ➔ 独往湖心亭看雪。" },
+          { step: "镜头2：广角白描", desc: "<strong>雾凇沆砀，天与云与山与水，上下一白</strong> ➔ 微缩：长堤一痕、湖心亭一点、余舟一芥、舟中人两三粒。" }
+        ],
+        paragraphs: [
+          "崇祯五年十二月，余住西湖。大雪三日，湖中人鸟声俱绝。是日更定矣，余挐一小舟，拥毳衣炉火，独往湖心亭看雪。雾凇沆砀，天与云与山与水，上下一白。湖上影子，惟长堤一痕、湖心亭一点、与余舟一芥、舟中人两三粒而已。",
+          "到亭上，有两人铺毡对坐，一童子烧酒，炉正沸。见余大惊喜，曰：“湖中焉得更有此人！”拉余同饮。余强饮三大白而别。问其姓氏，是金陵人，客此。及下船，舟子喃喃曰：“莫说相公痴，更有痴似相公者！”"
+        ],
+        clozeKeyWords: ["人鸟声俱绝", "更定", "挐一小舟", "拥毳衣", "雾凇沆砀", "上下一白", "长堤一痕", "湖心亭一点", "余舟一芥", "两三粒", "铺毡对坐", "强饮三大白", "客此", "痴似相公者"]
+      },
+      {
+        id: 3,
+        title: "沁园春·雪",
+        author: "毛泽东",
+        image: "",
+        caption: "🎨 形象记忆画卷：千里冰封，万里雪飘，山舞银蛇，原驰蜡象",
+        visualFlow: [
+          { step: "上阕：冰雪壮景", desc: "北国风光 ➔ 望长城内外（莽莽）/大河上下（顿失滔滔） ➔ <strong>山舞银蛇/原驰蜡象</strong> ➔ 看红装素裹。" },
+          { step: "下阕：纵论英雄", desc: "江山多娇 ➔ 英雄折腰 ➔ <strong>惜秦皇汉武 / 唐宗宋祖 / 成吉思汗</strong> ➔ 俱往矣，还看今朝。" }
+        ],
+        paragraphs: [
+          "北国风光，千里冰封，万里雪飘。望长城内外，惟余莽莽；大河上下，顿失滔滔。山舞银蛇，原驰蜡象，欲与天公试比高。须晴日，看红装素裹，分外妖娆。",
+          "江山如此多娇，引无数英雄竞折腰。惜秦皇汉武，略输文采；唐宗宋祖，稍逊风骚。一代天骄，成吉思汗，只识弯弓射大雕。俱往矣，数风流人物，还看今朝。"
+        ],
+        clozeKeyWords: ["冰封", "雪飘", "惟余莽莽", "顿失滔滔", "山舞银蛇", "原驰蜡象", "红装素裹", "分外妖娆", "折腰", "略输文采", "稍逊风骚", "弯弓射大雕", "俱往矣", "还看今朝"]
+      },
+      {
+        id: 4,
+        title: "行路难（其一）",
+        author: "李白",
+        image: "",
+        caption: "🎨 形象记忆画卷：停杯投箸，拔剑四顾，冰塞黄河，雪满太行",
+        visualFlow: [
+          { step: "画面1：盛宴与停杯", desc: "金樽清酒 ➔ <strong>停杯投箸不能食，拔剑四顾心茫然</strong>。" },
+          { step: "画面2：冰雪阻路", desc: "<strong>欲渡黄河冰塞川，将登太行雪满山</strong>。" },
+          { step: "画面3：豪情爆发", desc: "<strong>长风破浪会有时，直挂云帆济沧海</strong>！" }
+        ],
+        paragraphs: [
+          "金樽清酒斗十千，玉盘珍羞直万钱。",
+          "停杯投箸不能食，拔剑四顾心茫然。",
+          "欲渡黄河冰塞川，将登太行雪满山。",
+          "闲来垂钓碧溪上，忽复乘舟梦日边。",
+          "行路难，行路难，多歧路，今安在？",
+          "长风破浪会有时，直挂云帆济沧海。"
+        ],
+        clozeKeyWords: ["金樽", "玉盘珍羞", "停杯投箸", "拔剑四顾", "冰塞川", "雪满山", "垂钓碧溪", "乘舟梦日", "多歧路", "长风破浪", "直挂云帆"]
+      },
+      {
+        id: 5,
+        title: "酬乐天扬州初逢席上见赠",
+        author: "刘禹锡",
+        image: "",
+        caption: "🎨 形象记忆画卷：沉舟侧畔千帆过，病树前头万木春",
+        visualFlow: [
+          { step: "联1：身世凄凉", desc: "巴山楚水凄凉地，二十三年弃置身。" },
+          { step: "联2：哲理名句", desc: "<strong>沉舟侧畔千帆过，病树前头万木春</strong>。" }
+        ],
+        paragraphs: [
+          "巴山楚水凄凉地，二十三年弃置身。",
+          "怀旧空吟闻笛赋，到乡翻似烂柯人。",
+          "沉舟侧畔千帆过，病树前头万木春。",
+          "今日听君歌一曲，暂凭杯酒长精神。"
+        ],
+        clozeKeyWords: ["凄凉地", "弃置身", "闻笛赋", "烂柯人", "沉舟侧畔", "病树前头", "长精神"]
+      },
+      {
+        id: 6,
+        title: "水调歌头",
+        author: "苏轼",
+        image: "",
+        caption: "🎨 形象记忆画卷：明月几时有？把酒问青天，起舞弄清影，千里共婵娟",
+        visualFlow: [
+          { step: "上阕：问月与乘风", desc: "明月几时有？把酒问青天 ➔ 琼楼玉宇，高处不胜寒。" },
+          { step: "下阕：月圆怀人", desc: "人有悲欢离合，月有阴晴圆缺 ➔ 千里共婵娟。" }
+        ],
+        paragraphs: [
+          "丙辰中秋，欢饮达旦，大醉，作此篇，兼怀子由。",
+          "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。",
+          "转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。"
+        ],
+        clozeKeyWords: ["把酒问青天", "天上宫阙", "琼楼玉宇", "高处不胜寒", "起舞弄清影", "转朱阁", "低绮户", "照无眠", "悲欢离合", "阴晴圆缺", "千里共婵娟"]
+      },
+      {
+        id: 7,
+        title: "十五从军征",
+        author: "汉乐府",
+        image: "",
+        caption: "🎨 形象记忆画卷：十五从军征，八十始得归，松柏冢累累，兔从狗窦入",
+        visualFlow: [
+          { step: "镜头1：归途问乡人", desc: "15岁出征 ➔ 80岁才归 ➔ 问路人：“家中有阿谁？”" },
+          { step: "镜头2：入门破败", desc: "兔从狗窦入，雉从梁上飞 ➔ 羹饭熟：不知贻阿谁！" }
+        ],
+        paragraphs: [
+          "十五从军征，八十始得归。道逢乡里人：“家中有阿谁？”",
+          "遥看是君家，松柏冢累累。兔从狗窦入，雉从梁上飞。",
+          "中庭生旅谷，井上生旅葵。舂谷持作饭，采葵持作羹。",
+          "羹饭一时熟，不知贻阿谁！出门东向看，泪落沾我衣。"
+        ],
+        clozeKeyWords: ["始得归", "阿谁", "松柏冢累累", "狗窦", "雉从梁上飞", "旅谷", "旅葵", "舂谷", "不知贻阿谁", "泪落沾我衣"]
+      },
+      {
+        id: 8,
+        title: "白雪歌送武判官归京",
+        author: "岑参",
+        image: "",
+        caption: "🎨 形象记忆画卷：忽如一夜春风来，千树万树梨花开，山回路转不见君",
+        visualFlow: [
+          { step: "镜头1：边塞飞雪名句", desc: "忽如一夜春风来，千树万树梨花开。" },
+          { step: "镜头2：送别远去", desc: "山回路转不见君，雪上空留马行处。" }
+        ],
+        paragraphs: [
+          "北风卷地白草折，胡天八月即飞雪。",
+          "忽如一夜春风来，千树万树梨花开。",
+          "散入珠帘湿罗幕，狐裘不暖锦衾薄。",
+          "将军角弓不得控，都护铁衣冷难着。",
+          "瀚海阑干百丈冰，愁云惨淡万里凝。",
+          "中军置酒饮归客，胡琴琵琶与羌笛。",
+          "纷纷暮雪下辕门，风掣红旗冻不翻。",
+          "轮台东门送君去，去时雪满天山路。",
+          "山回路转不见君，雪上空留马行处。"
+        ],
+        clozeKeyWords: ["白草折", "梨花开", "湿罗幕", "锦衾薄", "角弓不得控", "铁衣冷难着", "瀚海阑干", "愁云惨淡", "风掣红旗", "雪满天山路", "山回路转", "马行处"]
+      },
+      {
+        id: 9,
+        title: "南乡子·登京口北固亭",
+        author: "辛弃疾",
+        image: "",
+        caption: "🎨 形象记忆画卷：何处望神州？满眼风光北固楼，生子当如孙仲谋",
+        visualFlow: [
+          { step: "上阕：凭高远眺", desc: "何处望神州？满眼风光北固楼。" },
+          { step: "下阕：赞孙权", desc: "生子当如孙仲谋。" }
+        ],
+        paragraphs: [
+          "何处望神州？满眼风光北固楼。千古兴亡多少事？悠悠。不尽长江滚滚流。",
+          "年少万兜鍪，坐断东南战未休。天下英雄谁敌手？曹刘。生子当如孙仲谋。"
+        ],
+        clozeKeyWords: ["望神州", "北固楼", "千古兴亡", "不尽长江", "万兜鍪", "坐断东南", "曹刘", "孙仲谋"]
+      },
+      {
+        id: 10,
+        title: "过零丁洋",
+        author: "文天祥",
+        image: "",
+        caption: "🎨 形象记忆画卷：山河破碎风飘絮，身世浮沉雨打萍，留取丹心照汗青",
+        visualFlow: [
+          { step: "联2：国家与身世", desc: "山河破碎风飘絮，身世浮沉雨打萍。" },
+          { step: "联4：千古名句", desc: "人生自古谁无死？留取丹心照汗青。" }
+        ],
+        paragraphs: [
+          "辛苦遭逢起一经，干戈寥落四周星。",
+          "山河破碎风飘絮，身世浮沉雨打萍。",
+          "惶恐滩头说惶恐，零丁洋里叹零丁。",
+          "人生自古谁无死？留取丹心照汗青。"
+        ],
+        clozeKeyWords: ["起一经", "干戈寥落", "风飘絮", "雨打萍", "惶恐滩头", "零丁洋", "谁无死", "丹心照汗青"]
+      },
+      {
+        id: 11,
+        title: "山坡羊·潼关怀古",
+        author: "张养浩",
+        image: "",
+        caption: "🎨 形象记忆画卷：峰峦如聚，波涛如怒，山河表里潼关路，兴/亡百姓苦",
+        visualFlow: [
+          { step: "画面1：潼关险要", desc: "峰峦如聚，波涛如怒，山河表里潼关路。" },
+          { step: "核心总结", desc: "兴，百姓苦；亡，百姓苦。" }
+        ],
+        paragraphs: [
+          "峰峦如聚，波涛如怒，山河表里潼关路。望西都，意踌躇。伤心秦汉经行处，宫阙万间都做了土。兴，百姓苦；亡，百姓苦。"
+        ],
+        clozeKeyWords: ["峰峦如聚", "波涛如怒", "山河表里", "意踌躇", "宫阙万间", "都做了土", "百姓苦"]
+      }
+    ];
+
+    let currentArticleIndex = 0;
+    let currentMode = 'visual';
+
+    const artTitle = document.getElementById('art-title');
+    const artAuthor = document.getElementById('art-author');
+    const artIllustration = document.getElementById('art-illustration');
+    const artCaption = document.getElementById('art-caption');
+    const imgContainer = document.getElementById('img-container');
+    const visualGuideArea = document.getElementById('visual-guide-area');
+    const visualFlowContent = document.getElementById('visual-flow-content');
+    const textDisplayArea = document.getElementById('text-display-area');
+
+    function loadArticle(index) {
+      currentArticleIndex = index;
+      
+      const items = document.querySelectorAll('.article-item');
+      items.forEach((item, idx) => {
+        if (idx === index) item.classList.add('active');
+        else item.classList.remove('active');
+      });
+
+      const art = articles[index];
+      artTitle.innerText = art.title;
+      artAuthor.innerText = art.author;
+
+      if (art.image) {
+        imgContainer.style.display = 'block';
+        artIllustration.src = art.image;
+        artCaption.innerText = art.caption;
+      } else {
+        imgContainer.style.display = 'block';
+        // SVG Placeholder visual for text cards
+        artIllustration.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="280" viewBox="0 0 800 280"><rect width="800" height="280" fill="%23F8FAFC"/><text x="400" y="130" font-family="sans-serif" font-size="22" font-weight="bold" fill="%232563EB" text-anchor="middle">🎨 ${art.title} 形象记忆导图</text><text x="400" y="170" font-family="sans-serif" font-size="14" fill="%2364748B" text-anchor="middle">${art.caption}</text></svg>`;
+        artCaption.innerText = art.caption;
+      }
+
+      visualFlowContent.innerHTML = art.visualFlow.map(f => `
+        <div class="flow-step">
+          <div class="step-tag">${f.step}</div>
+          <div class="step-content">${f.desc}</div>
+        </div>
+      `).join('');
+
+      renderTextContent();
+    }
+
+    function switchMode(mode) {
+      currentMode = mode;
+      const tabs = document.querySelectorAll('.mode-tab');
+      tabs.forEach(tab => {
+        if (tab.getAttribute('onclick').includes(mode)) tab.classList.add('active');
+        else tab.classList.remove('active');
+      });
+
+      const modeTip = document.getElementById('mode-tip');
+      if (mode === 'visual') {
+        visualGuideArea.style.display = 'block';
+        imgContainer.style.display = 'block';
+        modeTip.innerText = '💡 提示：形象画卷与分镜图解帮助孩子在脑海中快速建立画面记忆。';
+      } else if (mode === 'firstchar') {
+        visualGuideArea.style.display = 'none';
+        imgContainer.style.display = 'none';
+        modeTip.innerText = '💡 提示：高亮每一句的首字/首词。背诵卡住时看首字即可。';
+      } else if (mode === 'cloze') {
+        visualGuideArea.style.display = 'none';
+        imgContainer.style.display = 'none';
+        modeTip.innerText = '💡 提示：核心词被遮挡。孩子可在线填空自测并验收。';
+      } else {
+        visualGuideArea.style.display = 'none';
+        imgContainer.style.display = 'none';
+        modeTip.innerText = '💡 提示：全文对照模式。';
+      }
+
+      renderTextContent();
+    }
+
+    function renderTextContent() {
+      const art = articles[currentArticleIndex];
+      let html = '';
+
+      art.paragraphs.forEach((pText) => {
+        if (currentMode === 'visual' || currentMode === 'full') {
+          html += `<div class="sentence-block">${pText}</div>`;
+        } else if (currentMode === 'firstchar') {
+          const sentences = pText.split(/(?<=[。！？；])/);
+          let pFormatted = sentences.map(s => {
+            if (!s.trim()) return '';
+            const match = s.match(/^([\u4e00-\u9fa5A-Za-z0-9]{1,2})(.*)/);
+            if (match) {
+              return `<span class="first-char-highlight">${match[1]}</span>${match[2]}`;
+            }
+            return s;
+          }).join('');
+          html += `<div class="sentence-block">${pFormatted}</div>`;
+        } else if (currentMode === 'cloze') {
+          let pCloze = pText;
+          art.clozeKeyWords.forEach(kw => {
+            if (pCloze.includes(kw)) {
+              const placeholder = `<input class="cloze-input" data-ans="${kw}" placeholder="${kw.length}字" onblur="validateInput(this)"/>`;
+              pCloze = pCloze.replaceAll(kw, placeholder);
+            }
+          });
+          html += `<div class="sentence-block">${pCloze}</div>`;
+        }
+      });
+
+      textDisplayArea.innerHTML = html;
+    }
+
+    function toggleAllRevealed() {
+      if (currentMode === 'cloze') {
+        const inputs = document.querySelectorAll('.cloze-input');
+        inputs.forEach(input => {
+          input.value = input.getAttribute('data-ans');
+          input.classList.add('correct');
+        });
+      }
+    }
+
+    function validateInput(input) {
+      const ans = input.getAttribute('data-ans');
+      const val = input.value.trim();
+      if (val === ans) {
+        input.classList.remove('wrong');
+        input.classList.add('correct');
+      } else if (val !== '') {
+        input.classList.remove('correct');
+        input.classList.add('wrong');
+      } else {
+        input.classList.remove('correct', 'wrong');
+      }
+    }
+
+    function checkAnswers() {
+      if (currentMode !== 'cloze') {
+        alert('请切换到“3. 默写填空测试”模式！');
+        return;
+      }
+      const inputs = document.querySelectorAll('.cloze-input');
+      let total = inputs.length;
+      let correct = 0;
+      inputs.forEach(input => {
+        const ans = input.getAttribute('data-ans');
+        if (input.value.trim() === ans) {
+          correct++;
+          input.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+        }
+      });
+      alert(`测试完成！得分：${correct}/${total} (${Math.round((correct/total)*100)}%)`);
+    }
+
+    loadArticle(0);
+  </script>
+</body>
+</html>
