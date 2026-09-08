@@ -293,7 +293,7 @@
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <div class="sidebar-title">
-          <span>📚 英语配全材料 (3 份)</span>
+          <span>📚 英语配全材料 (2 份)</span>
           <span style="font-size: 11px; color: var(--text-muted);">PDF扫描版</span>
         </div>
         <input type="text" class="search-input" placeholder="🔍 搜索资料名称..." oninput="filterFiles(this.value)">
@@ -307,7 +307,7 @@
   </div>
 
   <script>
-    const filesData = [{"filename": "Unit 1 Teenage life 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf", "rel_path": "docs/Unit 1 Teenage life 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf", "size": "2.0 MB", "tag": "必背考点"}, {"filename": "【英语】26秋上海九年级上英语练习册答案_扫描版.pdf", "rel_path": "docs/【英语】26秋上海九年级上英语练习册答案_扫描版.pdf", "size": "57.09 MB", "tag": "练习册答案"}, {"filename": "2027上海中考考纲词汇新增200词及例句（完整版）_扫描版.pdf", "rel_path": "docs/2027上海中考考纲词汇新增200词及例句（完整版）_扫描版.pdf", "size": "8.96 MB", "tag": "扫描版资料"}];
+    const filesData = [{"filename": "【英语】26秋上海九年级上英语练习册答案_扫描版.pdf", "rel_path": "docs/【英语】26秋上海九年级上英语练习册答案_扫描版.pdf", "size": "57.09 MB", "tag": "练习册答案"}, {"filename": "2027上海中考考纲词汇新增200词及例句（完整版）_扫描版.pdf", "rel_path": "docs/2027上海中考考纲词汇新增200词及例句（完整版）_扫描版.pdf", "size": "8.96 MB", "tag": "扫描版资料"}];
     let currentFileIndex = 0;
 
     function renderFileList(filterText = '') {
@@ -341,7 +341,7 @@
 
       document.getElementById('currentDocTitle').innerText = file.filename;
       
-      const fileUrl = file.rel_path;
+      const fileUrl = encodeURI(file.rel_path);
       document.getElementById('pdfViewer').src = fileUrl;
       document.getElementById('downloadBtn').href = fileUrl;
       document.getElementById('openNewTabBtn').href = fileUrl;
