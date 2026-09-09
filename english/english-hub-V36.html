@@ -1760,28 +1760,30 @@ function playAudio(title, url, elem, badgeStr, shouldPlay = true) {
   }
   
   // 自动跟读滚屏状态与防误触控制
-  let isAutoScrollEnabled = true;
-  let isUserInteracting = false;
+  if (typeof window.isAutoScrollEnabled === 'undefined') {
+    window.isAutoScrollEnabled = true;
+  }
+  window.isUserInteracting = false;
   let userInteractionTimer = null;
 
   function markUserInteraction() {
-    isUserInteracting = true;
+    window.isUserInteracting = true;
     if (userInteractionTimer) clearTimeout(userInteractionTimer);
     userInteractionTimer = setTimeout(() => {
-      isUserInteracting = false;
-    }, 3500);
+      window.isUserInteracting = false;
+    }, 800); // 降低至800ms，手指拖拽离开后迅速恢复自动跟随
   }
 
+  // 仅监听真正的拖拽/滚轮手势，绝不监听 mousedown / click，避免点击任何按钮锁定滚屏
   window.addEventListener('wheel', markUserInteraction, { passive: true });
   window.addEventListener('touchmove', markUserInteraction, { passive: true });
-  window.addEventListener('mousedown', markUserInteraction, { passive: true });
 
   window.toggleAutoScroll = function() {
-    isAutoScrollEnabled = !isAutoScrollEnabled;
+    window.isAutoScrollEnabled = !window.isAutoScrollEnabled;
     let btn = document.getElementById('autoScrollToggleBtn');
     let status = document.getElementById('autoScrollStatus');
     if (btn) {
-      if (isAutoScrollEnabled) {
+      if (window.isAutoScrollEnabled) {
         btn.classList.add('active');
         if (status) status.innerText = '开';
       } else {
@@ -1798,9 +1800,13 @@ function playAudio(title, url, elem, badgeStr, shouldPlay = true) {
     document.querySelectorAll('.bilingual-sentence-box').forEach(b => b.classList.remove('sentence-active'));
     targetElem.classList.add('sentence-active');
 
-    // 2. 递归查找最邻近的有有效高度和 overflow 的滚动父容器并平滑滚动
+    // 2. 浏览器原生最可靠居中 API
+    try {
+      targetElem.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+    } catch(e) {}
+
+    // 3. 递归查找最邻近的 overflow-y 滚动父容器并平滑滚动
     let current = targetElem.parentElement;
-    let foundContainer = false;
     while (current && current !== document.body && current !== document.documentElement) {
       let style = window.getComputedStyle(current);
       if ((style.overflowY === 'auto' || style.overflowY === 'scroll') && current.scrollHeight > current.clientHeight) {
@@ -1809,33 +1815,34 @@ function playAudio(title, url, elem, badgeStr, shouldPlay = true) {
         let relTop = eRect.top - cRect.top + current.scrollTop;
         let targetY = relTop - (current.clientHeight / 2) + (eRect.height / 2);
         current.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
-        foundContainer = true;
         break;
       }
       current = current.parentElement;
     }
 
-    // 3. 强制在全局 window 视口层精准上下平滑滚动
+    // 4. 全局 window 视口层平滑滚动 (减去移动端顶部固定播放器偏移)
     let elemRect = targetElem.getBoundingClientRect();
     let viewH = window.innerHeight || document.documentElement.clientHeight;
     let winScroll = window.pageYOffset || document.documentElement.scrollTop;
-    let winTargetY = elemRect.top + winScroll - (viewH / 2) + (elemRect.height / 2);
-
-    if (window.innerWidth <= 1024) {
-      winTargetY -= 75; // 扣除移动端 fixed header 和浮动播放器遮挡
-    }
+    let offsetHeader = (window.innerWidth <= 1024) ? 140 : 80;
+    let winTargetY = elemRect.top + winScroll - (viewH / 2) + (elemRect.height / 2) - offsetHeader;
 
     window.scrollTo({ top: Math.max(0, winTargetY), behavior: 'smooth' });
-
-    // 4. 原生 scrollIntoView 备用
-    try {
-      targetElem.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-    } catch(e) {}
   };
 
   window.highlightAndScrollSentence = function(idx) {
     let boxes = document.querySelectorAll('.bilingual-sentence-box');
+    let masterPlayer = document.getElementById('masterAudio');
+
     if (boxes[idx]) {
+      // 点击某句时，把音频定位到对应进度
+      if (masterPlayer && masterPlayer.duration && boxes.length > 0) {
+        masterPlayer.currentTime = (idx / boxes.length) * masterPlayer.duration;
+        if (masterPlayer.paused) {
+          masterPlayer.play().catch(() => {});
+        }
+      }
+      window.isUserInteracting = false; // 强行解除手势锁
       smoothScrollElementToCenter(boxes[idx]);
     }
   };
@@ -1848,7 +1855,7 @@ function playAudio(title, url, elem, badgeStr, shouldPlay = true) {
     h += '<h3 style="font-size:15px; font-weight:700; color:#0F172A; margin:0;">📖 原声听力正文 (全维度中考语法解析)</h3>';
     h += '</div>';
     h += '<div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">';
-    h += '<button id="autoScrollToggleBtn" class="grammar-toggle-btn ' + (isAutoScrollEnabled ? 'active' : '') + '" onclick="toggleAutoScroll()">📜 自动跟随滚屏: <span id="autoScrollStatus">' + (isAutoScrollEnabled ? '开' : '关') + '</span></button>';
+    h += '<button id="autoScrollToggleBtn" class="grammar-toggle-btn ' + (window.isAutoScrollEnabled ? 'active' : '') + '" onclick="toggleAutoScroll()">📜 自动跟随滚屏: <span id="autoScrollStatus">' + (window.isAutoScrollEnabled ? '开' : '关') + '</span></button>';
     h += '<button id="grammarToggleBtn" class="grammar-toggle-btn" onclick="toggleGrammarAnalysis()">🏷️ 全维度语法解析: ' + (showGrammarAnalysis ? '开' : '关') + '</button>';
     h += '<span style="font-size:11px; color:#64748B; font-weight:600;">共 ' + pairs.length + ' 句</span>';
     h += '</div>';
@@ -1883,12 +1890,12 @@ function playAudio(title, url, elem, badgeStr, shouldPlay = true) {
     h += '</div></div>';
     cardBox.innerHTML = h;
 
-    if (window.innerWidth <= 1024 && elem && shouldPlay) {
+    if (shouldPlay) {
       setTimeout(() => {
-        let rect = cardBox.getBoundingClientRect();
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        let targetY = rect.top + scrollTop - 145;
-        window.scrollTo({ top: targetY, behavior: 'smooth' });
+        let firstBox = document.getElementById('bilingual-sentence-0');
+        if (firstBox) {
+          window.smoothScrollElementToCenter(firstBox);
+        }
       }, 150);
     }
   }
@@ -1924,14 +1931,14 @@ document.addEventListener("DOMContentLoaded", function() {
         lastActiveIdx = targetIdx;
         let targetBox = boxes[targetIdx];
         if (targetBox) {
-          // 无论是否拖拽，进入新句子时自动刷新高亮
+          // 切换句子时自动高亮
           boxes.forEach((b, i) => {
             if (i === targetIdx) b.classList.add('sentence-active');
             else b.classList.remove('sentence-active');
           });
 
-          // 如果开启了自动跟随且用户当前没有在手指拖动屏幕，平滑滚动至视口中央
-          if (isAutoScrollEnabled && !isUserInteracting) {
+          // 如果开启了自动跟随，平滑滚动至视口中央
+          if (window.isAutoScrollEnabled && !window.isUserInteracting) {
             smoothScrollElementToCenter(targetBox);
           }
         }
