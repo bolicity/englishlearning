@@ -1225,6 +1225,20 @@
   
 <script>
 
+function toggleNavGroup(headerElem) {
+  let groupElem = headerElem.closest('.nav-unit-group');
+  if (!groupElem) return;
+  
+  if (groupElem.classList.contains('expanded')) {
+    groupElem.classList.remove('expanded');
+    groupElem.classList.add('collapsed');
+  } else {
+    groupElem.classList.remove('collapsed');
+    groupElem.classList.add('expanded');
+  }
+}
+
+
 let showGrammarAnalysis = true;
 
 function toggleGrammarAnalysis() {
