@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>英语学科资料在线预览中心 V1.0 - 商务极简版</title>
+  <title>英语学科资料在线预览中心 V3.0 - 商务极简版</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -19,6 +19,8 @@
       --primary: #2563EB;
       --primary-soft: #EFF6FF;
       --primary-border: #BFDBFE;
+      --brand-green: #15803D;
+      --brand-green-soft: #F0FDF4;
       --radius-sm: 8px;
       --radius-md: 12px;
       --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -71,9 +73,9 @@
     }
 
     .back-btn:hover {
-      background: var(--primary-soft);
-      color: var(--primary);
-      border-color: var(--primary-border);
+      background: var(--brand-green-soft);
+      color: var(--brand-green);
+      border-color: #BBF7D0;
     }
 
     .title-area {
@@ -83,7 +85,7 @@
     }
 
     .subj-badge {
-      background: linear-gradient(135deg, #2563EB, #1D4ED8);
+      background: linear-gradient(135deg, #16A34A, #15803D);
       color: #FFFFFF;
       font-size: 12px;
       font-weight: 700;
@@ -129,18 +131,18 @@
     }
 
     .tool-btn.primary {
-      background: var(--primary);
+      background: var(--brand-green);
       color: #FFFFFF;
-      border-color: var(--primary);
+      border-color: var(--brand-green);
     }
 
     .tool-btn.primary:hover {
-      background: #1D4ED8;
+      background: #16A34A;
     }
 
     .viewer-layout {
       display: grid;
-      grid-template-columns: 340px 1fr;
+      grid-template-columns: 360px 1fr;
       flex: 1;
       height: calc(100vh - 64px);
       overflow: hidden;
@@ -180,7 +182,7 @@
     }
 
     .search-input:focus {
-      border-color: var(--primary);
+      border-color: var(--brand-green);
     }
 
     .file-list {
@@ -202,13 +204,13 @@
     }
 
     .file-item:hover {
-      border-color: var(--primary-border);
-      background: var(--primary-soft);
+      border-color: #BBF7D0;
+      background: var(--brand-green-soft);
     }
 
     .file-item.active {
-      border-color: var(--primary);
-      background: var(--primary-soft);
+      border-color: var(--brand-green);
+      background: var(--brand-green-soft);
       box-shadow: var(--shadow-sm);
     }
 
@@ -235,6 +237,16 @@
       padding: 1px 6px;
       border-radius: 4px;
       font-weight: 500;
+    }
+
+    .file-tag.recite {
+      background: #DCFCE7;
+      color: #15803D;
+    }
+
+    .file-tag.dictation {
+      background: #FEF3C7;
+      color: #B45309;
     }
 
     .preview-container {
@@ -274,7 +286,7 @@
 
   <header>
     <div class="header-left">
-      <a href="english-hub-V37.html" class="back-btn">
+      <a href="english-hub-V37.html" id="backBtn" class="back-btn">
         ← 返回英语中心
       </a>
       <div class="title-area">
@@ -293,11 +305,12 @@
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <div class="sidebar-title">
-          <span>📚 英语配全材料 (2 份)</span>
+          <span>📚 英语必背&配套资料 (8 份)</span>
           <span style="font-size: 11px; color: var(--text-muted);">PDF扫描版</span>
         </div>
-        <input type="text" class="search-input" placeholder="🔍 搜索资料名称..." oninput="filterFiles(this.value)">
+        <input type="text" class="search-input" placeholder="🔍 搜索资料或单元名称..." oninput="filterFiles(this.value)">
       </div>
+
       <div class="file-list" id="fileList"></div>
     </aside>
 
@@ -307,7 +320,65 @@
   </div>
 
   <script>
-    const filesData = [{"filename": "【英语】26秋上海九年级上英语练习册答案_扫描版.pdf", "rel_path": "docs/【英语】26秋上海九年级上英语练习册答案_扫描版.pdf", "size": "57.09 MB", "tag": "练习册答案"}, {"filename": "2027上海中考考纲词汇新增200词及例句（完整版）_扫描版.pdf", "rel_path": "docs/2027上海中考考纲词汇新增200词及例句（完整版）_扫描版.pdf", "size": "8.96 MB", "tag": "扫描版资料"}];
+    const filesData = [
+      {
+        "filename": "Unit 1 Teenage life 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
+        "rel_path": "docs/Unit 1 Teenage life 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
+        "size": "2.00 MB",
+        "tag": "Unit 1 背诵版",
+        "tagClass": "recite"
+      },
+      {
+        "filename": "Unit 2 People and their jobs 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
+        "rel_path": "docs/Unit 2 People and their jobs 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
+        "size": "2.30 MB",
+        "tag": "Unit 2 背诵版",
+        "tagClass": "recite"
+      },
+      {
+        "filename": "Unit 3 Travellers  tales 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
+        "rel_path": "docs/Unit 3 Travellers  tales 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
+        "size": "1.90 MB",
+        "tag": "Unit 3 背诵版",
+        "tagClass": "recite"
+      },
+      {
+        "filename": "Unit 4 Folk customs 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
+        "rel_path": "docs/Unit 4 Folk customs 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
+        "size": "1.60 MB",
+        "tag": "Unit 4 背诵版",
+        "tagClass": "recite"
+      },
+      {
+        "filename": "Unit 5 Buildings 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
+        "rel_path": "docs/Unit 5 Buildings 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
+        "size": "1.60 MB",
+        "tag": "Unit 5 背诵版",
+        "tagClass": "recite"
+      },
+      {
+        "filename": "Unit 6 Pollution 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
+        "rel_path": "docs/Unit 6 Pollution 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
+        "size": "1.60 MB",
+        "tag": "Unit 6 背诵版",
+        "tagClass": "recite"
+      },
+      {
+        "filename": "【英语】26秋上海九年级上英语练习册答案_扫描版.pdf",
+        "rel_path": "docs/【英语】26秋上海九年级上英语练习册答案_扫描版.pdf",
+        "size": "57.09 MB",
+        "tag": "练习册答案",
+        "tagClass": ""
+      },
+      {
+        "filename": "2027上海中考考纲词汇新增200词及例句（完整版）_扫描版.pdf",
+        "rel_path": "docs/2027上海中考考纲词汇新增200词及例句（完整版）_扫描版.pdf",
+        "size": "8.96 MB",
+        "tag": "考纲词汇",
+        "tagClass": ""
+      }
+    ];
+
     let currentFileIndex = 0;
 
     function renderFileList(filterText = '') {
@@ -326,7 +397,7 @@
         item.innerHTML = `
           <div class="file-item-title">${file.filename}</div>
           <div class="file-item-meta">
-            <span class="file-tag">${file.tag}</span>
+            <span class="file-tag ${file.tagClass || ''}">${file.tag}</span>
             <span>💾 ${file.size}</span>
           </div>
         `;
@@ -367,7 +438,15 @@
 
     let initialIndex = 0;
     if (targetFile) {
-      const foundIdx = filesData.findIndex(f => f.rel_path === targetFile || f.filename === targetFile || targetFile.includes(f.filename));
+      const decodedTarget = decodeURIComponent(targetFile);
+      const foundIdx = filesData.findIndex(f => 
+        f.rel_path === targetFile || 
+        f.rel_path === decodedTarget ||
+        f.filename === targetFile || 
+        f.filename === decodedTarget ||
+        decodedTarget.includes(f.filename) ||
+        f.filename.includes(decodedTarget)
+      );
       if (foundIdx !== -1) initialIndex = foundIdx;
     }
 
@@ -378,6 +457,23 @@
     if (window.innerWidth <= 768) {
       document.getElementById('mobileListBtn').style.display = 'inline-flex';
     }
+  
+    // 智能路由返回最新英语中心
+    document.addEventListener('DOMContentLoaded', function() {
+      const backBtn = document.getElementById('backBtn');
+      if (backBtn) {
+        backBtn.addEventListener('click', function(e) {
+          if (document.referrer && (document.referrer.includes('english-hub') || document.referrer.includes('index.html'))) {
+            e.preventDefault();
+            window.location.href = document.referrer;
+          } else {
+            e.preventDefault();
+            window.location.href = 'english-hub-V37.html';
+          }
+        });
+      }
+    });
   </script>
 </body>
+
 </html>
