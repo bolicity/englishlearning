@@ -3089,7 +3089,9 @@
       globalAudio.play().catch(() => {
         playDirectSyncMobileSpeech(cleanText, element);
       });
-    }\n\n    function getBestNaturalVoice() {
+    }
+
+    function getBestNaturalVoice() {
       if (!('speechSynthesis' in window)) return null;
       const voices = window.speechSynthesis.getVoices();
       if (!voices || voices.length === 0) return null;
