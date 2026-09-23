@@ -2947,17 +2947,15 @@
     }
 
     // ----------------------------------------------------
-    // 谷歌真人广播级播音引擎 (Google Standard Voice TTS API)
+    // 【词汇/短语 有道美音】 + 【例句 百度广播级自然发音】双极速高保真发音系统
     // ----------------------------------------------------
     function playAudio(text, element) {
       if (activeAudio) {
         try { activeAudio.pause(); } catch(e){}
         activeAudio = null;
       }
-      if ('speechSynthesis' in window) {
-        try { window.speechSynthesis.cancel(); } catch(e){}
-      }
 
+      // 清洗无法识别的异常控制字符，保留正常标点
       let cleanText = text
         .replace(/[^\w\s',.?!-]/g, ' ')
         .replace(/\s+/g, ' ')
@@ -2971,10 +2969,21 @@
         btn.classList.add('playing');
       }
 
+      // 判断单词/短语 vs 句子
+      const wordCount = cleanText.split(' ').length;
       const encodedText = encodeURIComponent(cleanText);
-      const googleAudioUrl = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=' + encodedText;
 
-      const audio = new Audio(googleAudioUrl);
+      // 单词/短语 (<=4词)：走 有道词典权威美音 (type=2 保证100%发音正确)
+      // 经典例句 (>4词)：走 百度广播级高清长句发音 (spd=3 极速优雅)
+      let primaryUrl = (wordCount <= 4)
+        ? 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2'
+        : 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web';
+
+      let fallbackUrl = (wordCount <= 4)
+        ? 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web'
+        : 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2';
+
+      const audio = new Audio(primaryUrl);
       activeAudio = audio;
 
       const clearPlaying = () => {
@@ -2986,13 +2995,32 @@
 
       audio.play().then(() => {
         audio.onended = clearPlaying;
-        audio.onerror = () => { playWebSpeechFallback(cleanText, element); };
+        audio.onerror = () => { tryFallbackAudio(fallbackUrl, cleanText, element); };
       }).catch(() => {
-        playWebSpeechFallback(cleanText, element);
+        tryFallbackAudio(fallbackUrl, cleanText, element);
       });
     }
 
-    function playWebSpeechFallback(cleanText, element) {
+    function tryFallbackAudio(fallbackUrl, cleanText, element) {
+      const audio = new Audio(fallbackUrl);
+      activeAudio = audio;
+
+      const clearPlaying = () => {
+        if (element) {
+          const btn = element.querySelector('.audio-btn') || element;
+          btn.classList.remove('playing');
+        }
+      };
+
+      audio.play().then(() => {
+        audio.onended = clearPlaying;
+        audio.onerror = () => { playNativeSpeech(cleanText, element); };
+      }).catch(() => {
+        playNativeSpeech(cleanText, element);
+      });
+    }
+
+    function playNativeSpeech(cleanText, element) {
       if (!('speechSynthesis' in window)) return;
       
       try {
@@ -3003,7 +3031,7 @@
       setTimeout(() => {
         const u = new SpeechSynthesisUtterance(cleanText);
         u.lang = 'en-US';
-        u.rate = 0.9;
+        u.rate = 0.88;
         u.pitch = 1.0;
 
         const voices = window.speechSynthesis.getVoices();

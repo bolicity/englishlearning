@@ -923,9 +923,6 @@
         try { activeAudio.pause(); } catch(e){}
         activeAudio = null;
       }
-      if ('speechSynthesis' in window) {
-        try { window.speechSynthesis.cancel(); } catch(e){}
-      }
 
       let cleanText = text
         .replace(/[^\w\s',.?!-]/g, ' ')
@@ -940,10 +937,18 @@
         btn.classList.add('playing');
       }
 
+      const wordCount = cleanText.split(' ').length;
       const encodedText = encodeURIComponent(cleanText);
-      const googleAudioUrl = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=' + encodedText;
 
-      const audio = new Audio(googleAudioUrl);
+      let primaryUrl = (wordCount <= 4)
+        ? 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2'
+        : 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web';
+
+      let fallbackUrl = (wordCount <= 4)
+        ? 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web'
+        : 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2';
+
+      const audio = new Audio(primaryUrl);
       activeAudio = audio;
 
       const clearPlaying = () => {
@@ -955,13 +960,32 @@
 
       audio.play().then(() => {
         audio.onended = clearPlaying;
-        audio.onerror = () => { playWebSpeechFallback(cleanText, element); };
+        audio.onerror = () => { tryFallbackAudio(fallbackUrl, cleanText, element); };
       }).catch(() => {
-        playWebSpeechFallback(cleanText, element);
+        tryFallbackAudio(fallbackUrl, cleanText, element);
       });
     }
 
-    function playWebSpeechFallback(cleanText, element) {
+    function tryFallbackAudio(fallbackUrl, cleanText, element) {
+      const audio = new Audio(fallbackUrl);
+      activeAudio = audio;
+
+      const clearPlaying = () => {
+        if (element) {
+          const btn = element.querySelector('.audio-btn') || element;
+          btn.classList.remove('playing');
+        }
+      };
+
+      audio.play().then(() => {
+        audio.onended = clearPlaying;
+        audio.onerror = () => { playNativeSpeech(cleanText, element); };
+      }).catch(() => {
+        playNativeSpeech(cleanText, element);
+      });
+    }
+
+    function playNativeSpeech(cleanText, element) {
       if (!('speechSynthesis' in window)) return;
       
       try {
@@ -972,7 +996,7 @@
       setTimeout(() => {
         const u = new SpeechSynthesisUtterance(cleanText);
         u.lang = 'en-US';
-        u.rate = 0.9;
+        u.rate = 0.88;
         u.pitch = 1.0;
 
         const voices = window.speechSynthesis.getVoices();
