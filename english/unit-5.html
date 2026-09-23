@@ -79,6 +79,13 @@
       color: var(--text-main);
     }
 
+    .controls-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     .mode-toggle {
       display: flex;
       align-items: center;
@@ -307,6 +314,7 @@
     @media (max-width: 640px) {
       body { padding: 12px; }
       header { flex-direction: column; align-items: stretch; }
+      .controls-wrapper { justify-content: center; }
       .words-grid, .phrases-grid { grid-template-columns: 1fr; }
       .sentence-card { flex-direction: column; align-items: flex-start; }
       .sentence-card .audio-btn { align-self: flex-end; }
@@ -323,9 +331,17 @@
 
     <div class="header-title">Unit 5 Buildings</div>
 
-    <div class="mode-toggle">
-      <button class="mode-btn active" id="btnRecite" onclick="setMode('recite')">📖 背诵模式</button>
-      <button class="mode-btn" id="btnMask" onclick="setMode('mask')">🙈 默写模式</button>
+    <div class="controls-wrapper">
+      <!-- 声音口音切换：英音 vs 美音 -->
+      <div class="mode-toggle">
+        <button class="mode-btn active" id="btnAccentUK" onclick="setAccent('1')">🇬🇧 英音</button>
+        <button class="mode-btn" id="btnAccentUS" onclick="setAccent('2')">🇺🇸 美音</button>
+      </div>
+
+      <div class="mode-toggle">
+        <button class="mode-btn active" id="btnRecite" onclick="setMode('recite')">📖 背诵</button>
+        <button class="mode-btn" id="btnMask" onclick="setMode('mask')">🙈 默写</button>
+      </div>
     </div>
   </header>
 
@@ -972,6 +988,7 @@
   <div id="toast">提示</div>
 
   <script>
+    let currentAccent = '1';
     let globalAudio = new Audio();
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -982,6 +999,13 @@
         }
       }
     });
+
+    function setAccent(accent) {
+      currentAccent = accent;
+      document.getElementById('btnAccentUK').classList.toggle('active', accent === '1');
+      document.getElementById('btnAccentUS').classList.toggle('active', accent === '2');
+      showToast(accent === '1' ? '已切换为 🇬🇧 标准英式发音 (UK Accent)' : '已切换为 🇺🇸 标准美式发音 (US Accent)');
+    }
 
     function setMode(mode) {
       document.getElementById('btnRecite').classList.toggle('active', mode === 'recite');
@@ -1021,16 +1045,10 @@
         btn.classList.add('playing');
       }
 
-      const wordCount = cleanText.split(' ').length;
       const encodedText = encodeURIComponent(cleanText);
 
-      let primaryUrl = (wordCount <= 4)
-        ? 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2'
-        : 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web';
-
-      let fallbackUrl = (wordCount <= 4)
-        ? 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web'
-        : 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2';
+      let primaryUrl = 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=' + currentAccent;
+      let fallbackUrl = 'https://fanyi.baidu.com/gettts?lan=' + (currentAccent === '1' ? 'uk' : 'en') + '&text=' + encodedText + '&spd=3&source=web';
 
       globalAudio.src = primaryUrl;
 
@@ -1042,7 +1060,9 @@
       };
 
       globalAudio.onended = clearPlaying;
-      globalAudio.onerror = () => { tryFallbackAudio(fallbackUrl, cleanText, element); };
+      globalAudio.onerror = () => {
+        tryFallbackAudio(fallbackUrl, cleanText, element);
+      };
 
       globalAudio.play().catch(() => {
         tryFallbackAudio(fallbackUrl, cleanText, element);
@@ -1071,14 +1091,16 @@
       const voices = window.speechSynthesis.getVoices();
       if (!voices || voices.length === 0) return null;
 
+      const targetLang = (currentAccent === '1') ? 'en-GB' : 'en-US';
+
       const topVoice = voices.find(v => 
-        v.lang && v.lang.startsWith('en') &&
-        (v.name.includes('Natural') || v.name.includes('Premium') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Jenny') || v.name.includes('Aria') || v.name.includes('Alex'))
+        v.lang && (v.lang === targetLang || v.lang.replace('_', '-').startsWith(targetLang)) &&
+        (v.name.includes('Natural') || v.name.includes('Premium') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Jenny') || v.name.includes('Aria') || v.name.includes('Oliver') || v.name.includes('Kate'))
       );
       if (topVoice) return topVoice;
 
-      const usVoice = voices.find(v => v.lang === 'en-US' || v.lang === 'en_US' || v.lang === 'en-GB');
-      if (usVoice) return usVoice;
+      const accentVoice = voices.find(v => v.lang && (v.lang === targetLang || v.lang.replace('_', '-').startsWith(targetLang)));
+      if (accentVoice) return accentVoice;
 
       return voices.find(v => v.lang && v.lang.startsWith('en')) || null;
     }
@@ -1093,7 +1115,7 @@
 
       setTimeout(() => {
         const u = new SpeechSynthesisUtterance(cleanText);
-        u.lang = 'en-US';
+        u.lang = (currentAccent === '1') ? 'en-GB' : 'en-US';
         u.rate = 0.88;
         u.pitch = 1.0;
 

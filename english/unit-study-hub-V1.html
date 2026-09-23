@@ -86,6 +86,13 @@
       gap: 8px;
     }
 
+    .controls-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     .mode-toggle {
       display: flex;
       align-items: center;
@@ -378,7 +385,7 @@
       body { padding: 12px; }
       header { flex-direction: column; align-items: stretch; gap: 10px; }
       .header-title { font-size: 1.1rem; justify-content: center; }
-      .mode-toggle { justify-content: center; }
+      .controls-wrapper { justify-content: center; }
       .words-grid, .phrases-grid { grid-template-columns: 1fr; }
       .sentence-card { flex-direction: column; align-items: flex-start; }
       .sentence-card .audio-btn { align-self: flex-end; }
@@ -397,9 +404,18 @@
       <span>高中英语必背知识点读中心</span>
     </div>
 
-    <div class="mode-toggle">
-      <button class="mode-btn active" id="btnRecite" onclick="setMode('recite')">📖 背诵模式</button>
-      <button class="mode-btn" id="btnMask" onclick="setMode('mask')">🙈 默写模式</button>
+    <div class="controls-wrapper">
+      <!-- 声音口音音调切换：英音 vs 美音 -->
+      <div class="mode-toggle">
+        <button class="mode-btn active" id="btnAccentUK" onclick="setAccent('1')">🇬🇧 英音</button>
+        <button class="mode-btn" id="btnAccentUS" onclick="setAccent('2')">🇺🇸 美音</button>
+      </div>
+
+      <!-- 背诵模式 vs 默写模式 -->
+      <div class="mode-toggle">
+        <button class="mode-btn active" id="btnRecite" onclick="setMode('recite')">📖 背诵</button>
+        <button class="mode-btn" id="btnMask" onclick="setMode('mask')">🙈 默写</button>
+      </div>
     </div>
   </header>
 
@@ -2809,15 +2825,13 @@
 
   <script>
     let currentUnitId = 1;
-
-    // 全局单例 Audio 对象，彻底解决 iOS Safari 异步创建 Audio 拦截问题
+    let currentAccent = '1'; // '1' 为标准牛津/人教版英音 (UK), '2' 为标准美音 (US)
     let globalAudio = new Audio();
 
     document.addEventListener('DOMContentLoaded', () => {
       renderUnitTabs();
       loadUnit(1);
 
-      // 针对 iOS 的 voices 异步加载预激活
       if ('speechSynthesis' in window) {
         window.speechSynthesis.getVoices();
         if (speechSynthesis.onvoiceschanged !== undefined) {
@@ -2825,6 +2839,13 @@
         }
       }
     });
+
+    function setAccent(accent) {
+      currentAccent = accent;
+      document.getElementById('btnAccentUK').classList.toggle('active', accent === '1');
+      document.getElementById('btnAccentUS').classList.toggle('active', accent === '2');
+      showToast(accent === '1' ? '已切换为 🇬🇧 标准英式发音 (UK Accent)' : '已切换为 🇺🇸 标准美式发音 (US Accent)');
+    }
 
     function renderUnitTabs() {
       const container = document.getElementById('unitTabsContainer');
@@ -2960,7 +2981,7 @@
     }
 
     // ----------------------------------------------------
-    // 杜绝任何机械音的真人人声引擎系统
+    // 支持 [🇬🇧 英音 / 🇺🇸 美音] 自由切换的专业全向发音系统
     // ----------------------------------------------------
     function playAudio(text, element) {
       try { globalAudio.pause(); } catch(e){}
@@ -2981,20 +3002,12 @@
         btn.classList.add('playing');
       }
 
-      const wordCount = cleanText.split(' ').length;
       const encodedText = encodeURIComponent(cleanText);
 
-      // 单词/短语 (<=4词): 走有道官方词典美音 API
-      // 经典长句 (>4词): 走百度广播级美语发音 API
-      let primaryUrl = (wordCount <= 4)
-        ? 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2'
-        : 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web';
+      // 根据选中的口音(type=1:标准英音, type=2:标准美音)，精确匹配最权威音调MP3
+      let primaryUrl = 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=' + currentAccent;
+      let fallbackUrl = 'https://fanyi.baidu.com/gettts?lan=' + (currentAccent === '1' ? 'uk' : 'en') + '&text=' + encodedText + '&spd=3&source=web';
 
-      let fallbackUrl = (wordCount <= 4)
-        ? 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web'
-        : 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2';
-
-      // 使用全局单例 Audio 对象，防止 iOS/Safari 的异步创建死锁
       globalAudio.src = primaryUrl;
 
       const clearPlaying = () => {
@@ -3031,24 +3044,23 @@
       });
     }
 
-    // 智能筛选广播级/自然极品真人人声，决不使用难听的系统默认机械音！
     function getBestNaturalVoice() {
       if (!('speechSynthesis' in window)) return null;
       const voices = window.speechSynthesis.getVoices();
       if (!voices || voices.length === 0) return null;
 
-      // 1. 优先搜寻找包含 Natural / Premium / Google / Samantha / Jenny / Aria / Alex 的美语/英语人声
+      const targetLang = (currentAccent === '1') ? 'en-GB' : 'en-US';
+
+      // 1. 精确匹配口音 (英音 vs 美音) 极品人声
       const topVoice = voices.find(v => 
-        v.lang && v.lang.startsWith('en') &&
-        (v.name.includes('Natural') || v.name.includes('Premium') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Jenny') || v.name.includes('Aria') || v.name.includes('Alex'))
+        v.lang && (v.lang === targetLang || v.lang.replace('_', '-').startsWith(targetLang)) &&
+        (v.name.includes('Natural') || v.name.includes('Premium') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Jenny') || v.name.includes('Aria') || v.name.includes('Oliver') || v.name.includes('Kate'))
       );
       if (topVoice) return topVoice;
 
-      // 2. 搜寻找 en-US / en-GB
-      const usVoice = voices.find(v => v.lang === 'en-US' || v.lang === 'en_US' || v.lang === 'en-GB');
-      if (usVoice) return usVoice;
+      const accentVoice = voices.find(v => v.lang && (v.lang === targetLang || v.lang.replace('_', '-').startsWith(targetLang)));
+      if (accentVoice) return accentVoice;
 
-      // 3. 任何英文
       return voices.find(v => v.lang && v.lang.startsWith('en')) || null;
     }
 
@@ -3062,7 +3074,7 @@
 
       setTimeout(() => {
         const u = new SpeechSynthesisUtterance(cleanText);
-        u.lang = 'en-US';
+        u.lang = (currentAccent === '1') ? 'en-GB' : 'en-US';
         u.rate = 0.88;
         u.pitch = 1.0;
 
