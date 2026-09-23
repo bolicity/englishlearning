@@ -917,78 +917,111 @@
   </div>
 
   <script>
-        let activeAudio = null;
+            let activeAudio = null;
 
-    // 手机端 (iOS Safari / Android) & PC 端双极速发音引擎 (彻底解决手机长句静音拦截)
+    // 极清广播级音频发音引擎（彻底解决长句破音、切片爆音与嘈杂杂音问题）
     function playAudio(text, element) {
       if (activeAudio) {
         try { activeAudio.pause(); } catch(e){}
         activeAudio = null;
       }
+      if ('speechSynthesis' in window) {
+        try { window.speechSynthesis.cancel(); } catch(e){}
+      }
 
-      // 文本清洗与标点规范化
-      const cleanText = text.replace(/[^a-zA-Z0-9\s,'\.\?!\-]/g, ' ').replace(/\s+/g, ' ').trim();
-      if (!cleanText) return;
+      // 1. 文本极纯化处理：展开常见缩写并彻底剥离所有会引起切片爆音的标点符号
+      let pureText = text
+        .replace(/\bcan't\b/gi, 'cannot')
+        .replace(/\bwon't\b/gi, 'will not')
+        .replace(/\bdon't\b/gi, 'do not')
+        .replace(/\bdoesn't\b/gi, 'does not')
+        .replace(/\bdidn't\b/gi, 'did not')
+        .replace(/\bit's\b/gi, 'it is')
+        .replace(/\bI'm\b/gi, 'I am')
+        .replace(/\bthey're\b/gi, 'they are')
+        .replace(/\bwe're\b/gi, 'we are')
+        .replace(/\byou're\b/gi, 'you are')
+        .replace(/[^a-zA-Z0-9\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      if (!pureText) return;
 
       if (element) {
         document.querySelectorAll('.playing').forEach(el => el.classList.remove('playing'));
         element.classList.add('playing');
       }
 
+      const encodedText = encodeURIComponent(pureText);
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      const isLongSentence = cleanText.split(' ').length > 4;
+
+      // 高清广播级双音源（支持长例句与单词）：
+      // 音源 1: Google 广播级极清 TTS 音轨 (绝对无杂音/无破音)
+      // 音源 2: 有道高清美音 API 兜底
+      const primaryUrl = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=' + encodedText;
+      const secondaryUrl = 'https://dict.youdao.com/dictvoice?type=2&audio=' + encodedText;
 
       if (isMobile) {
-        // 手机端：必须在同步主流程中直接触发 Speech API，绝不经过异步 Promise!
-        playDirectMobileSpeech(cleanText, element);
+        // 移动端：同步直接调用系统最高品质 Speech API，绝不经过异步拦截
+        playDirectCleanSpeech(pureText, element, primaryUrl);
       } else {
-        // 桌面端：短句走有道高保真发音，长句走 Google/百度极清长句发音 API
-        playOnlineAudio(cleanText, element, isLongSentence);
+        // 桌面端：优先加载 Google/有道高保真 MP3 音轨
+        playCleanAudioStream(primaryUrl, secondaryUrl, pureText, element);
       }
     }
 
-    function playDirectMobileSpeech(cleanText, element) {
-      if (!('speechSynthesis' in window)) {
-        playOnlineAudio(cleanText, element, false);
-        return;
-      }
-      
-      try {
-        if (window.speechSynthesis.paused) window.speechSynthesis.resume();
-        window.speechSynthesis.cancel();
-      } catch(e) {}
-
-      // 手机端同步发音（无 setTimeout / 无 Promise 拦截）
-      const u = new SpeechSynthesisUtterance(cleanText);
-      u.lang = 'en-US';
-      u.rate = 0.88;
-      u.pitch = 1.0;
-
-      const voices = window.speechSynthesis.getVoices();
-      const usVoice = voices.find(v => v.lang && (v.lang === 'en-US' || v.lang.startsWith('en')));
-      if (usVoice) u.voice = usVoice;
-
-      u.onend = () => { if (element) element.classList.remove('playing'); };
-      u.onerror = () => { if (element) element.classList.remove('playing'); };
-
-      window.speechSynthesis.speak(u);
-    }
-
-    function playOnlineAudio(cleanText, element, isLongSentence) {
-      const encodedText = encodeURIComponent(cleanText);
-      let audioUrl = isLongSentence
-        ? 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web'
-        : 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2';
-
-      const audio = new Audio(audioUrl);
+    function playCleanAudioStream(primaryUrl, secondaryUrl, pureText, element) {
+      const audio = new Audio(primaryUrl);
       activeAudio = audio;
 
       audio.play().then(() => {
         audio.onended = () => { if (element) element.classList.remove('playing'); };
-        audio.onerror = () => { playDirectMobileSpeech(cleanText, element); };
+        audio.onerror = () => { trySecondaryAudio(secondaryUrl, pureText, element); };
       }).catch(() => {
-        playDirectMobileSpeech(cleanText, element);
+        trySecondaryAudio(secondaryUrl, pureText, element);
       });
+    }
+
+    function trySecondaryAudio(secondaryUrl, pureText, element) {
+      const bAudio = new Audio(secondaryUrl);
+      activeAudio = bAudio;
+      bAudio.play().then(() => {
+        bAudio.onended = () => { if (element) element.classList.remove('playing'); };
+        bAudio.onerror = () => { playDirectCleanSpeech(pureText, element, null); };
+      }).catch(() => {
+        playDirectCleanSpeech(pureText, element, null);
+      });
+    }
+
+    function playDirectCleanSpeech(pureText, element, fallbackUrl) {
+      if ('speechSynthesis' in window) {
+        try {
+          if (window.speechSynthesis.paused) window.speechSynthesis.resume();
+          window.speechSynthesis.cancel();
+        } catch(e) {}
+
+        const u = new SpeechSynthesisUtterance(pureText);
+        u.lang = 'en-US';
+        u.rate = 0.85; // 稳健语速，无切片爆音
+        u.pitch = 1.0;
+
+        const voices = window.speechSynthesis.getVoices();
+        // 优先绑定专业纯正发音人
+        const cleanVoice = voices.find(v => v.lang && (v.lang === 'en-US' || v.lang === 'en-GB') && (v.name.includes('Samantha') || v.name.includes('Alex') || v.name.includes('Google') || v.name.includes('Natural')))
+                        || voices.find(v => v.lang && v.lang.startsWith('en'));
+        if (cleanVoice) u.voice = cleanVoice;
+
+        u.onend = () => { if (element) element.classList.remove('playing'); };
+        u.onerror = () => { if (element) element.classList.remove('playing'); };
+
+        window.speechSynthesis.speak(u);
+      } else if (fallbackUrl) {
+        const audio = new Audio(fallbackUrl);
+        activeAudio = audio;
+        audio.play().then(() => {
+          audio.onended = () => { if (element) element.classList.remove('playing'); };
+        });
+      }
     }
 
     function toggleMask() {
