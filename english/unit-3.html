@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <meta name="referrer" content="no-referrer">
   <meta charset="UTF-8">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
@@ -974,14 +975,7 @@
         btn.classList.add('playing');
       }
 
-      const clearPlaying = () => {
-        if (element) {
-          const btn = element.querySelector('.audio-btn') || element;
-          btn.classList.remove('playing');
-        }
-      };
-
-      // 彻底清理文本：去掉括号注释(如CBD)、省略号...、斜杠/、中英文注释，提取纯粹可读英文文本
+      // 提取纯净发音文本：剔除括号注释(如CBD)、换行符和多余空格
       let cleanText = text
         .replace(/\(.*?\)/g, '')
         .replace(/（.*?）/g, '')
@@ -993,43 +987,20 @@
         .replace(/\s+/g, ' ')
         .trim();
 
-      if (!cleanText) {
-        clearPlaying();
-        return;
-      }
+      if (!cleanText) return;
 
-      const wordCount = cleanText.split(' ').length;
-      const encodedText = encodeURIComponent(cleanText);
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-      // 1~3个词的单词与短词组：走有道极清真人词典原声MP3
-      // 4个词以上的短语与经典例句：走高保真自然人声MP3 (spd=4标准自然语速，不拖音不机械)
-      let primaryUrl = (wordCount <= 3)
-        ? 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=' + currentAccent
-        : 'https://fanyi.baidu.com/gettts?lan=' + (currentAccent === '1' ? 'uk' : 'en') + '&text=' + encodedText + '&spd=4&source=web';
-
-      try {
-        globalAudio.pause();
-        globalAudio.currentTime = 0;
-      } catch(e){}
-
-      globalAudio.src = primaryUrl;
-      globalAudio.onended = clearPlaying;
-      globalAudio.onerror = () => {
-        speakNativeFallback(cleanText, clearPlaying);
-      };
-
-      const playPromise = globalAudio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(err => {
-          console.warn('Audio play failed, fallback to native speech', err);
-          speakNativeFallback(cleanText, clearPlaying);
-        });
+      if (isMobile) {
+        playDirectSyncMobileSpeech(cleanText, element);
+      } else {
+        playOnlineAudioPC(cleanText, element);
       }
     }
 
-    function speakNativeFallback(cleanText, onEndCallback) {
+    function playDirectSyncMobileSpeech(cleanText, element) {
       if (!('speechSynthesis' in window)) {
-        if (onEndCallback) onEndCallback();
+        playOnlineAudioPC(cleanText, element);
         return;
       }
 
@@ -1041,16 +1012,55 @@
         u.rate = 1.0;
         u.pitch = 1.0;
 
-        u.onend = onEndCallback;
-        u.onerror = onEndCallback;
+        const bestVoice = getBestNaturalVoice();
+        if (bestVoice) u.voice = bestVoice;
+
+        const clearPlaying = () => {
+          if (element) {
+            const btn = element.querySelector('.audio-btn') || element;
+            btn.classList.remove('playing');
+          }
+        };
+
+        u.onend = clearPlaying;
+        u.onerror = clearPlaying;
 
         window.speechSynthesis.speak(u);
       } catch(e) {
-        if (onEndCallback) onEndCallback();
+        playOnlineAudioPC(cleanText, element);
       }
     }
 
-    function getBestNaturalVoice() {
+    function playOnlineAudioPC(cleanText, element) {
+      const wordCount = cleanText.split(' ').length;
+      const encodedText = encodeURIComponent(cleanText);
+
+      // 单字走有道，短语和例句走百度MP3
+      let primaryUrl = (wordCount <= 2)
+        ? 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=' + currentAccent
+        : 'https://fanyi.baidu.com/gettts?lan=' + (currentAccent === '1' ? 'uk' : 'en') + '&text=' + encodedText + '&spd=3&source=web';
+
+      try {
+        globalAudio.pause();
+        globalAudio.currentTime = 0;
+      } catch(e){}
+
+      globalAudio.src = primaryUrl;
+
+      const clearPlaying = () => {
+        if (element) {
+          const btn = element.querySelector('.audio-btn') || element;
+          btn.classList.remove('playing');
+        }
+      };
+
+      globalAudio.onended = clearPlaying;
+      globalAudio.onerror = () => { playDirectSyncMobileSpeech(cleanText, element); };
+
+      globalAudio.play().catch(() => {
+        playDirectSyncMobileSpeech(cleanText, element);
+      });
+    }\n\n    function getBestNaturalVoice() {
       if (!('speechSynthesis' in window)) return null;
       const voices = window.speechSynthesis.getVoices();
       if (!voices || voices.length === 0) return null;
