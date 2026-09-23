@@ -405,13 +405,11 @@
     </div>
 
     <div class="controls-wrapper">
-      <!-- 声音口音音调切换：英音 vs 美音 -->
       <div class="mode-toggle">
         <button class="mode-btn active" id="btnAccentUK" onclick="setAccent('1')">🇬🇧 英音</button>
         <button class="mode-btn" id="btnAccentUS" onclick="setAccent('2')">🇺🇸 美音</button>
       </div>
 
-      <!-- 背诵模式 vs 默写模式 -->
       <div class="mode-toggle">
         <button class="mode-btn active" id="btnRecite" onclick="setMode('recite')">📖 背诵</button>
         <button class="mode-btn" id="btnMask" onclick="setMode('mask')">🙈 默写</button>
@@ -2825,7 +2823,7 @@
 
   <script>
     let currentUnitId = 1;
-    let currentAccent = '1'; // '1' 为标准牛津/人教版英音 (UK), '2' 为标准美音 (US)
+    let currentAccent = '1';
     let globalAudio = new Audio();
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -2981,7 +2979,7 @@
     }
 
     // ----------------------------------------------------
-    // 支持 [🇬🇧 英音 / 🇺🇸 美音] 自由切换的专业全向发音系统
+    // 移动端&桌面端防拦截、零延迟例句与单词点读系统
     // ----------------------------------------------------
     function playAudio(text, element) {
       try { globalAudio.pause(); } catch(e){}
@@ -3002,13 +3000,17 @@
         btn.classList.add('playing');
       }
 
+      const wordCount = cleanText.split(' ').length;
       const encodedText = encodeURIComponent(cleanText);
 
-      // 根据选中的口音(type=1:标准英音, type=2:标准美音)，精确匹配最权威音调MP3
-      let primaryUrl = 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=' + currentAccent;
-      let fallbackUrl = 'https://fanyi.baidu.com/gettts?lan=' + (currentAccent === '1' ? 'uk' : 'en') + '&text=' + encodedText + '&spd=3&source=web';
+      // 【核心突破】：在手势点击的第一时间（主线程同步）直接匹配 URL！
+      // 单词/短语 (<=4词)：有道权威美音/英音 (type=1/2)
+      // 经典例句 (>4词)：百度广播级长句原声 (spd=3)
+      let directUrl = (wordCount <= 4)
+        ? 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=' + currentAccent
+        : 'https://fanyi.baidu.com/gettts?lan=' + (currentAccent === '1' ? 'uk' : 'en') + '&text=' + encodedText + '&spd=3&source=web';
 
-      globalAudio.src = primaryUrl;
+      globalAudio.src = directUrl;
 
       const clearPlaying = () => {
         if (element) {
@@ -3019,52 +3021,15 @@
 
       globalAudio.onended = clearPlaying;
       globalAudio.onerror = () => {
-        tryFallbackAudio(fallbackUrl, cleanText, element);
+        playDirectMobileSpeech(cleanText, element);
       };
 
       globalAudio.play().catch(() => {
-        tryFallbackAudio(fallbackUrl, cleanText, element);
+        playDirectMobileSpeech(cleanText, element);
       });
     }
 
-    function tryFallbackAudio(fallbackUrl, cleanText, element) {
-      globalAudio.src = fallbackUrl;
-      const clearPlaying = () => {
-        if (element) {
-          const btn = element.querySelector('.audio-btn') || element;
-          btn.classList.remove('playing');
-        }
-      };
-
-      globalAudio.onended = clearPlaying;
-      globalAudio.onerror = () => { playPremiumWebSpeech(cleanText, element); };
-
-      globalAudio.play().catch(() => {
-        playPremiumWebSpeech(cleanText, element);
-      });
-    }
-
-    function getBestNaturalVoice() {
-      if (!('speechSynthesis' in window)) return null;
-      const voices = window.speechSynthesis.getVoices();
-      if (!voices || voices.length === 0) return null;
-
-      const targetLang = (currentAccent === '1') ? 'en-GB' : 'en-US';
-
-      // 1. 精确匹配口音 (英音 vs 美音) 极品人声
-      const topVoice = voices.find(v => 
-        v.lang && (v.lang === targetLang || v.lang.replace('_', '-').startsWith(targetLang)) &&
-        (v.name.includes('Natural') || v.name.includes('Premium') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Jenny') || v.name.includes('Aria') || v.name.includes('Oliver') || v.name.includes('Kate'))
-      );
-      if (topVoice) return topVoice;
-
-      const accentVoice = voices.find(v => v.lang && (v.lang === targetLang || v.lang.replace('_', '-').startsWith(targetLang)));
-      if (accentVoice) return accentVoice;
-
-      return voices.find(v => v.lang && v.lang.startsWith('en')) || null;
-    }
-
-    function playPremiumWebSpeech(cleanText, element) {
+    function playDirectMobileSpeech(cleanText, element) {
       if (!('speechSynthesis' in window)) return;
 
       try {
@@ -3093,6 +3058,25 @@
 
         window.speechSynthesis.speak(u);
       }, 30);
+    }
+
+    function getBestNaturalVoice() {
+      if (!('speechSynthesis' in window)) return null;
+      const voices = window.speechSynthesis.getVoices();
+      if (!voices || voices.length === 0) return null;
+
+      const targetLang = (currentAccent === '1') ? 'en-GB' : 'en-US';
+
+      const topVoice = voices.find(v => 
+        v.lang && (v.lang === targetLang || v.lang.replace('_', '-').startsWith(targetLang)) &&
+        (v.name.includes('Natural') || v.name.includes('Premium') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Jenny') || v.name.includes('Aria') || v.name.includes('Oliver') || v.name.includes('Kate'))
+      );
+      if (topVoice) return topVoice;
+
+      const accentVoice = voices.find(v => v.lang && (v.lang === targetLang || v.lang.replace('_', '-').startsWith(targetLang)));
+      if (accentVoice) return accentVoice;
+
+      return voices.find(v => v.lang && v.lang.startsWith('en')) || null;
     }
   </script>
 </body>
