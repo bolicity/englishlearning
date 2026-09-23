@@ -1544,18 +1544,52 @@
 
       if (!cleanText) return;
 
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      // 手机端与PC端完全统一：优先采用真人高保真MP3在线流，消除手机端原生TTS无声问题
+      playOnlineAudio(cleanText, element);
+    }
 
-      if (isMobile) {
-        playDirectSyncMobileSpeech(cleanText, element);
-      } else {
-        playOnlineAudioPC(cleanText, element);
+    function playOnlineAudio(cleanText, element) {
+      const wordCount = cleanText.split(' ').length;
+      const encodedText = encodeURIComponent(cleanText);
+
+      // 单字走有道真人词典，短语和例句走百度MP3
+      let primaryUrl = (wordCount <= 2)
+        ? 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=' + currentAccent
+        : 'https://fanyi.baidu.com/gettts?lan=' + (currentAccent === '1' ? 'uk' : 'en') + '&text=' + encodedText + '&spd=3&source=web';
+
+      try {
+        globalAudio.pause();
+        globalAudio.currentTime = 0;
+      } catch(e){}
+
+      globalAudio.src = primaryUrl;
+
+      const clearPlaying = () => {
+        if (element) {
+          const btn = element.querySelector('.audio-btn') || element;
+          btn.classList.remove('playing');
+        }
+      };
+
+      globalAudio.onended = clearPlaying;
+      globalAudio.onerror = () => {
+        playDirectSpeechFallback(cleanText, element);
+      };
+
+      const p = globalAudio.play();
+      if (p !== undefined) {
+        p.catch(() => {
+          playDirectSpeechFallback(cleanText, element);
+        });
       }
     }
 
-    function playDirectSyncMobileSpeech(cleanText, element) {
+    function playDirectSpeechFallback(cleanText, element) {
       if (!('speechSynthesis' in window)) {
-        playOnlineAudioPC(cleanText, element);
+        if (element) {
+          const btn = element.querySelector('.audio-btn') || element;
+          btn.classList.remove('playing');
+        }
         return;
       }
 
@@ -1582,39 +1616,11 @@
 
         window.speechSynthesis.speak(u);
       } catch(e) {
-        playOnlineAudioPC(cleanText, element);
-      }
-    }
-
-    function playOnlineAudioPC(cleanText, element) {
-      const wordCount = cleanText.split(' ').length;
-      const encodedText = encodeURIComponent(cleanText);
-
-      // 单字走有道，短语和例句走百度MP3
-      let primaryUrl = (wordCount <= 2)
-        ? 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=' + currentAccent
-        : 'https://fanyi.baidu.com/gettts?lan=' + (currentAccent === '1' ? 'uk' : 'en') + '&text=' + encodedText + '&spd=3&source=web';
-
-      try {
-        globalAudio.pause();
-        globalAudio.currentTime = 0;
-      } catch(e){}
-
-      globalAudio.src = primaryUrl;
-
-      const clearPlaying = () => {
         if (element) {
           const btn = element.querySelector('.audio-btn') || element;
           btn.classList.remove('playing');
         }
-      };
-
-      globalAudio.onended = clearPlaying;
-      globalAudio.onerror = () => { playDirectSyncMobileSpeech(cleanText, element); };
-
-      globalAudio.play().catch(() => {
-        playDirectSyncMobileSpeech(cleanText, element);
-      });
+      }
     }
 
     function getBestNaturalVoice() {
