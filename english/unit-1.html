@@ -1014,7 +1014,7 @@
         }
       };
 
-      // 彻底清理文本：剔除括号及括号内容(CBD)、省略号...、斜杠/、中英文注释，提取纯粹英文发音文本
+      // 彻底清理文本：去掉括号注释(如CBD)、省略号...、斜杠/、中英文注释，提取纯粹可读英文文本
       let cleanText = text
         .replace(/\(.*?\)/g, '')
         .replace(/（.*?）/g, '')
@@ -1032,67 +1032,47 @@
       }
 
       const wordCount = cleanText.split(' ').length;
+      const encodedText = encodeURIComponent(cleanText);
 
-      // 1. 单词 (1个词)：走有道极清词典音频 (有道单字发音极纯正)
-      if (wordCount === 1) {
-        const encodedText = encodeURIComponent(cleanText);
-        const audioUrl = 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=' + (currentAccent === '1' ? '1' : '2');
-        
-        try {
-          globalAudio.pause();
-          globalAudio.currentTime = 0;
-        } catch(e){}
+      // 1~3个词的单词与短词组：走有道极清真人词典原声MP3
+      // 4个词以上的短语与经典例句：走高保真自然人声MP3 (spd=4标准自然语速，不拖音不机械)
+      let primaryUrl = (wordCount <= 3)
+        ? 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=' + currentAccent
+        : 'https://fanyi.baidu.com/gettts?lan=' + (currentAccent === '1' ? 'uk' : 'en') + '&text=' + encodedText + '&spd=4&source=web';
 
-        globalAudio.src = audioUrl;
-        globalAudio.onended = clearPlaying;
-        globalAudio.onerror = () => { speakSyncNative(cleanText, clearPlaying); };
-        
-        const promise = globalAudio.play();
-        if (promise !== undefined) {
-          promise.catch(() => { speakSyncNative(cleanText, clearPlaying); });
-        }
-      } else {
-        // 2. 短语与例句 (>=2个词)：在点击处理回调中【同步直接触发】原生 Web Speech 引擎
-        // 彻底解决有道404/跨域失败/异步onerror导致iOS静音拦截的问题！
-        speakSyncNative(cleanText, clearPlaying);
+      try {
+        globalAudio.pause();
+        globalAudio.currentTime = 0;
+      } catch(e){}
+
+      globalAudio.src = primaryUrl;
+      globalAudio.onended = clearPlaying;
+      globalAudio.onerror = () => {
+        speakNativeFallback(cleanText, clearPlaying);
+      };
+
+      const playPromise = globalAudio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+          console.warn('Audio play failed, fallback to native speech', err);
+          speakNativeFallback(cleanText, clearPlaying);
+        });
       }
     }
 
-    function speakSyncNative(cleanText, onEndCallback) {
+    function speakNativeFallback(cleanText, onEndCallback) {
       if (!('speechSynthesis' in window)) {
-        // 浏览器不支持 SpeechSynthesis 时的在线音源兜底
-        const encodedText = encodeURIComponent(cleanText);
-        const fallbackUrl = 'https://tts.baidu.com/text2audio?cuid=baike&lan=en&ctp=1&pdt=301&vol=9&spd=4&tex=' + encodedText;
-        try {
-          globalAudio.pause();
-          globalAudio.src = fallbackUrl;
-          globalAudio.onended = onEndCallback;
-          globalAudio.onerror = onEndCallback;
-          globalAudio.play().catch(onEndCallback);
-        } catch(e) { onEndCallback(); }
+        if (onEndCallback) onEndCallback();
         return;
       }
 
       try {
         if (window.speechSynthesis.paused) window.speechSynthesis.resume();
-        if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
 
         const u = new SpeechSynthesisUtterance(cleanText);
         u.lang = (currentAccent === '1') ? 'en-GB' : 'en-US';
         u.rate = 1.0;
         u.pitch = 1.0;
-
-        // 挑选最高保真系统原声音色
-        const voices = window.speechSynthesis.getVoices();
-        if (voices && voices.length > 0) {
-          const targetLang = (currentAccent === '1') ? 'en-GB' : 'en-US';
-          const matched = voices.find(v => 
-            v.lang && (v.lang === targetLang || v.lang.replace('_', '-').startsWith(targetLang)) &&
-            (v.name.includes('Natural') || v.name.includes('Premium') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Jenny') || v.name.includes('Online'))
-          ) || voices.find(v => v.lang && (v.lang === targetLang || v.lang.replace('_', '-').startsWith(targetLang)));
-          
-          if (matched) u.voice = matched;
-        }
 
         u.onend = onEndCallback;
         u.onerror = onEndCallback;
