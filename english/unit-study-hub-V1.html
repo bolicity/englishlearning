@@ -3053,160 +3053,16 @@
     let currentRate = 1.0;
     let currentLang = 'en-US';
     let isMaskMode = false;
-    let activeAudio = null;
+        let activeAudio = null;
 
-    function initApp() {
-      if (window.appInitialized) return;
-      if (!window.UNIT_KNOWLEDGE_BASE) return;
-      window.appInitialized = true;
-      renderUnitTabs();
-      loadUnit(0);
-    }
-
-    window.addEventListener('DOMContentLoaded', initApp);
-    window.addEventListener('load', initApp);
-    setTimeout(initApp, 100);
-
-    function renderUnitTabs() {
-      const container = document.getElementById('unitTabsNav');
-      if (!container) return;
-      container.innerHTML = '';
-      window.UNIT_KNOWLEDGE_BASE.forEach((unit, idx) => {
-        const btn = document.createElement('button');
-        btn.className = `unit-tab ${idx === 0 ? 'active' : ''}`;
-        btn.textContent = unit.title.split(' ')[0] + ' ' + (unit.title.split(' ')[1] || '');
-        btn.onclick = () => {
-          document.querySelectorAll('.unit-tab').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          loadUnit(idx);
-        };
-        container.appendChild(btn);
-      });
-    }
-
-    function loadUnit(index) {
-      currentUnitIndex = index;
-      const unit = window.UNIT_KNOWLEDGE_BASE[index];
-      if (!unit) return;
-
-      document.getElementById('bannerTitle').textContent = unit.title;
-      document.getElementById('bannerSubtitle').textContent = unit.subtitle || '';
-      document.getElementById('statWords').textContent = unit.words ? unit.words.length : 0;
-      document.getElementById('statPhrases').textContent = unit.phrases ? unit.phrases.length : 0;
-      document.getElementById('statSentences').textContent = unit.sentences ? unit.sentences.length : 0;
-
-      renderWords(unit.words || []);
-      renderPhrases(unit.phrases || []);
-      renderSentences(unit.sentences || []);
-      renderGrammar(unit.grammar || []);
-      renderPDFImages(unit.images || []);
-    }
-
-    function renderWords(words) {
-      const container = document.getElementById('wordsGrid');
-      if (!container) return;
-      container.innerHTML = '';
-      words.forEach(w => {
-        const card = document.createElement('div');
-        card.className = 'word-card';
-        card.onclick = () => playAudio(w.word, card);
-        card.innerHTML = `
-          <div>
-            <div class="word-top">
-              <span class="word-title">${w.word}</span>
-              <div class="word-speaker">🔊</div>
-            </div>
-            <div class="word-phonetic">${w.phonetic || ''} <span style="color:var(--primary); font-weight:600;">${w.pos || ''}</span></div>
-          </div>
-          <div class="word-trans">${w.trans}</div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function renderPhrases(phrases) {
-      const container = document.getElementById('phrasesList');
-      if (!container) return;
-      container.innerHTML = '';
-      phrases.forEach(p => {
-        const item = document.createElement('div');
-        item.className = 'phrase-item';
-        item.onclick = () => playAudio(p.en, item);
-        item.innerHTML = `
-          <div class="phrase-left">
-            <span class="phrase-num">${p.id}</span>
-            <span class="phrase-en">${p.en}</span>
-          </div>
-          <div style="display:flex; align-items:center; gap:12px;">
-            <span class="phrase-cn">${p.cn}</span>
-            <span class="phrase-speak-icon">🔊</span>
-          </div>
-        `;
-        container.appendChild(item);
-      });
-    }
-
-    function renderSentences(sentences) {
-      const container = document.getElementById('sentencesList');
-      if (!container) return;
-      container.innerHTML = '';
-      sentences.forEach(s => {
-        const card = document.createElement('div');
-        card.className = 'sentence-card';
-        card.onclick = () => playAudio(s.en, card);
-        card.innerHTML = `
-          <div class="sentence-audio-btn">🔊</div>
-          <div class="sentence-en">${s.en}</div>
-          <div class="sentence-cn">${s.cn}</div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function renderGrammar(grammarList) {
-      const container = document.getElementById('grammarList');
-      if (!container) return;
-      container.innerHTML = '';
-      grammarList.forEach(g => {
-        const card = document.createElement('div');
-        card.className = 'grammar-card';
-        card.innerHTML = `
-          <div class="grammar-title">📌 ${g.title}</div>
-          <div class="grammar-content">${g.content}</div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function renderPDFImages(images) {
-      const container = document.getElementById('pdfImagesGrid');
-      if (!container) return;
-      container.innerHTML = '';
-      images.forEach((imgSrc, idx) => {
-        const wrap = document.createElement('div');
-        wrap.className = 'pdf-img-wrapper';
-        wrap.innerHTML = `
-          <img src="${imgSrc}" alt="Page ${idx + 1}" loading="lazy">
-          <div class="pdf-img-caption">扫描版原件 - 第 ${idx + 1} 页</div>
-        `;
-        container.appendChild(wrap);
-      });
-    }
-
-    function switchSection(secId, tabEl) {
-      document.querySelectorAll('.sec-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
-      if (tabEl) tabEl.classList.add('active');
-      const p = document.getElementById(`panel-${secId}`);
-      if (p) p.classList.add('active');
-    }
-
+    // 手机端 (iOS Safari / Android) & PC 端双极速发音引擎 (彻底解决手机长句静音拦截)
     function playAudio(text, element) {
       if (activeAudio) {
         try { activeAudio.pause(); } catch(e){}
         activeAudio = null;
       }
 
+      // 文本清洗与标点规范化
       const cleanText = text.replace(/[^a-zA-Z0-9\s,'\.\?!\-]/g, ' ').replace(/\s+/g, ' ').trim();
       if (!cleanText) return;
 
@@ -3216,48 +3072,58 @@
       }
 
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      const isLongSentence = cleanText.split(' ').length > 4;
+
       if (isMobile) {
-        playMobileSpeech(cleanText, element);
+        // 手机端：必须在同步主流程中直接触发 Speech API，绝不经过异步 Promise!
+        playDirectMobileSpeech(cleanText, element);
       } else {
-        playOnlineAudio(cleanText, element);
+        // 桌面端：短句走有道高保真发音，长句走 Google/百度极清长句发音 API
+        playOnlineAudio(cleanText, element, isLongSentence);
       }
     }
 
-    function playMobileSpeech(cleanText, element) {
+    function playDirectMobileSpeech(cleanText, element) {
       if (!('speechSynthesis' in window)) {
-        playOnlineAudio(cleanText, element);
+        playOnlineAudio(cleanText, element, false);
         return;
       }
+      
       try {
         if (window.speechSynthesis.paused) window.speechSynthesis.resume();
         window.speechSynthesis.cancel();
       } catch(e) {}
 
-      setTimeout(() => {
-        const u = new SpeechSynthesisUtterance(cleanText);
-        u.lang = 'en-US';
-        u.rate = 0.9;
-        u.pitch = 1.0;
-        const voices = window.speechSynthesis.getVoices();
-        const usVoice = voices.find(v => v.lang && (v.lang === 'en-US' || v.lang.startsWith('en')));
-        if (usVoice) u.voice = usVoice;
-        u.onend = () => { if (element) element.classList.remove('playing'); };
-        u.onerror = () => { if (element) element.classList.remove('playing'); };
-        window.speechSynthesis.speak(u);
-      }, 50);
+      // 手机端同步发音（无 setTimeout / 无 Promise 拦截）
+      const u = new SpeechSynthesisUtterance(cleanText);
+      u.lang = 'en-US';
+      u.rate = 0.88;
+      u.pitch = 1.0;
+
+      const voices = window.speechSynthesis.getVoices();
+      const usVoice = voices.find(v => v.lang && (v.lang === 'en-US' || v.lang.startsWith('en')));
+      if (usVoice) u.voice = usVoice;
+
+      u.onend = () => { if (element) element.classList.remove('playing'); };
+      u.onerror = () => { if (element) element.classList.remove('playing'); };
+
+      window.speechSynthesis.speak(u);
     }
 
-    function playOnlineAudio(cleanText, element) {
+    function playOnlineAudio(cleanText, element, isLongSentence) {
       const encodedText = encodeURIComponent(cleanText);
-      const audioUrl = 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2';
+      let audioUrl = isLongSentence
+        ? 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web'
+        : 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2';
+
       const audio = new Audio(audioUrl);
       activeAudio = audio;
 
       audio.play().then(() => {
         audio.onended = () => { if (element) element.classList.remove('playing'); };
-        audio.onerror = () => { playMobileSpeech(cleanText, element); };
+        audio.onerror = () => { playDirectMobileSpeech(cleanText, element); };
       }).catch(() => {
-        playMobileSpeech(cleanText, element);
+        playDirectMobileSpeech(cleanText, element);
       });
     }
 

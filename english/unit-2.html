@@ -1161,19 +1161,16 @@
   </div>
 
   <script>
-    let activeAudio = null;
+        let activeAudio = null;
 
-    // 清亮级多音源高保真发音引擎（解决长句子破音/嘈杂/杂音问题）
+    // 手机端 (iOS Safari / Android) & PC 端双极速发音引擎 (彻底解决手机长句静音拦截)
     function playAudio(text, element) {
       if (activeAudio) {
-        activeAudio.pause();
+        try { activeAudio.pause(); } catch(e){}
         activeAudio = null;
       }
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
 
-      // 1. 过滤任何非英文标点与特殊乱码字符，防止引起爆音杂音
+      // 文本清洗与标点规范化
       const cleanText = text.replace(/[^a-zA-Z0-9\s,'\.\?!\-]/g, ' ').replace(/\s+/g, ' ').trim();
       if (!cleanText) return;
 
@@ -1182,64 +1179,63 @@
         element.classList.add('playing');
       }
 
-      // 音频选择引擎:
-      // 音源1: 微软/有道高保真真人发音 API (短句/单词最优)
-      // 音源2: 百度高清广播级英文发音 API (长句/复杂例句最优)
-      const encodedText = encodeURIComponent(cleanText);
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
       const isLongSentence = cleanText.split(' ').length > 4;
 
-      let primaryUrl = isLongSentence 
-        ? 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web'
-        : 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2';
-      
-      let backupUrl = isLongSentence
-        ? 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2'
-        : 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web';
-
-      const audio = new Audio(primaryUrl);
-      activeAudio = audio;
-
-      audio.play().then(() => {
-        audio.onended = () => { if (element) element.classList.remove('playing'); };
-        audio.onerror = () => { tryBackupAudio(backupUrl, cleanText, element); };
-      }).catch(() => {
-        tryBackupAudio(backupUrl, cleanText, element);
-      });
+      if (isMobile) {
+        // 手机端：必须在同步主流程中直接触发 Speech API，绝不经过异步 Promise!
+        playDirectMobileSpeech(cleanText, element);
+      } else {
+        // 桌面端：短句走有道高保真发音，长句走 Google/百度极清长句发音 API
+        playOnlineAudio(cleanText, element, isLongSentence);
+      }
     }
 
-    function tryBackupAudio(backupUrl, cleanText, element) {
-      const bAudio = new Audio(backupUrl);
-      activeAudio = bAudio;
-      bAudio.play().then(() => {
-        bAudio.onended = () => { if (element) element.classList.remove('playing'); };
-        bAudio.onerror = () => { playCleanWebSpeech(cleanText, element); };
-      }).catch(() => {
-        playCleanWebSpeech(cleanText, element);
-      });
-    }
-
-    // 绑定高质量极清声线 (Samantha / Alex / Daniel) 彻底杜绝嘈杂声
-    function playCleanWebSpeech(text, element) {
-      if (!('speechSynthesis' in window)) return;
+    function playDirectMobileSpeech(cleanText, element) {
+      if (!('speechSynthesis' in window)) {
+        playOnlineAudio(cleanText, element, false);
+        return;
+      }
       
-      const u = new SpeechSynthesisUtterance(text);
+      try {
+        if (window.speechSynthesis.paused) window.speechSynthesis.resume();
+        window.speechSynthesis.cancel();
+      } catch(e) {}
+
+      // 手机端同步发音（无 setTimeout / 无 Promise 拦截）
+      const u = new SpeechSynthesisUtterance(cleanText);
       u.lang = 'en-US';
-      u.rate = 0.88; // 降低语速，使长句清晰无比
+      u.rate = 0.88;
       u.pitch = 1.0;
-      u.volume = 1.0;
 
       const voices = window.speechSynthesis.getVoices();
-      const topVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Samantha') || v.name.includes('Alex') || v.name.includes('Daniel') || v.name.includes('Google US English') || v.name.includes('Natural'))) 
-                    || voices.find(v => v.lang.startsWith('en'));
-      
-      if (topVoice) u.voice = topVoice;
+      const usVoice = voices.find(v => v.lang && (v.lang === 'en-US' || v.lang.startsWith('en')));
+      if (usVoice) u.voice = usVoice;
 
       u.onend = () => { if (element) element.classList.remove('playing'); };
       u.onerror = () => { if (element) element.classList.remove('playing'); };
 
       window.speechSynthesis.speak(u);
     }
-function toggleMask() {
+
+    function playOnlineAudio(cleanText, element, isLongSentence) {
+      const encodedText = encodeURIComponent(cleanText);
+      let audioUrl = isLongSentence
+        ? 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web'
+        : 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2';
+
+      const audio = new Audio(audioUrl);
+      activeAudio = audio;
+
+      audio.play().then(() => {
+        audio.onended = () => { if (element) element.classList.remove('playing'); };
+        audio.onerror = () => { playDirectMobileSpeech(cleanText, element); };
+      }).catch(() => {
+        playDirectMobileSpeech(cleanText, element);
+      });
+    }
+
+    function toggleMask() {
       isMask = !isMask;
       document.body.classList.toggle('mask-mode', isMask);
       document.getElementById('maskBtn').textContent = isMask ? '🙈 默写遮罩模式: 开' : '🙈 默写遮罩模式: 关';
