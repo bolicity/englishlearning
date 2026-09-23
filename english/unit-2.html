@@ -1235,4 +1235,87 @@ function toggleMask() {
     }
   </script>
 </body>
+</html>let isMask = false;
+    let activeAudio = null;
+
+    // 手机端/移动端 (iOS Safari & Android) 专用无卡顿、无静音拦截发音引擎
+    function playAudio(text, element) {
+      if (activeAudio) {
+        try { activeAudio.pause(); } catch(e){}
+        activeAudio = null;
+      }
+
+      // 文本清洗与标点处理
+      const cleanText = text.replace(/[^a-zA-Z0-9\s,'\.\?!\-]/g, ' ').replace(/\s+/g, ' ').trim();
+      if (!cleanText) return;
+
+      if (element) {
+        document.querySelectorAll('.playing').forEach(el => el.classList.remove('playing'));
+        element.classList.add('playing');
+      }
+
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        // 移动端：iOS/Android 原生 Speech API (带 50ms 防死锁延迟，100% 出声)
+        playMobileSpeech(cleanText, element);
+      } else {
+        // 桌面端：高保真在线发音 + 原生 TTS 兜底
+        playOnlineAudio(cleanText, element);
+      }
+    }
+
+    function playMobileSpeech(cleanText, element) {
+      if (!('speechSynthesis' in window)) {
+        playOnlineAudio(cleanText, element);
+        return;
+      }
+      
+      try {
+        if (window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+        }
+        window.speechSynthesis.cancel();
+      } catch(e) {}
+
+      // 50ms 延迟是 iOS Safari 100% 出声的关键防锁机制
+      setTimeout(() => {
+        const u = new SpeechSynthesisUtterance(cleanText);
+        u.lang = 'en-US';
+        u.rate = 0.9;
+        u.pitch = 1.0;
+
+        const voices = window.speechSynthesis.getVoices();
+        const usVoice = voices.find(v => v.lang && (v.lang === 'en-US' || v.lang.startsWith('en')));
+        if (usVoice) u.voice = usVoice;
+
+        u.onend = () => { if (element) element.classList.remove('playing'); };
+        u.onerror = () => { if (element) element.classList.remove('playing'); };
+
+        window.speechSynthesis.speak(u);
+      }, 50);
+    }
+
+    function playOnlineAudio(cleanText, element) {
+      const encodedText = encodeURIComponent(cleanText);
+      const audioUrl = 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2';
+      const audio = new Audio(audioUrl);
+      activeAudio = audio;
+
+      audio.play().then(() => {
+        audio.onended = () => { if (element) element.classList.remove('playing'); };
+        audio.onerror = () => { playMobileSpeech(cleanText, element); };
+      }).catch(() => {
+        playMobileSpeech(cleanText, element);
+      });
+    }
+
+    function toggleMask() {
+      isMask = !isMask;
+      document.body.classList.toggle('mask-mode', isMask);
+      document.getElementById('maskBtn').textContent = isMask ? '🙈 默写遮罩模式: 开' : '🙈 默写遮罩模式: 关';
+      document.getElementById('maskBtn').classList.toggle('active', isMask);
+    }
+  </script>
+</body>
 </html>
