@@ -672,7 +672,20 @@
       
       dashboard.style.display = 'none';
       iframe.style.display = 'block';
-      iframe.src = fileUrl;
+      
+      // 网页原生点读版映射
+      const unitHtmlMap = {
+        0: 'unit-1.html',
+        1: 'unit-2.html',
+        2: 'unit-3.html',
+        3: 'unit-4.html',
+        4: 'unit-5.html',
+        5: 'unit-6.html'
+      };
+      const finalUrl = unitHtmlMap[index] ? unitHtmlMap[index] : fileUrl;
+      iframe.src = finalUrl;
+      document.getElementById('openNewTabBtn').href = finalUrl;
+
 
       document.getElementById('downloadBtn').href = fileUrl;
       document.getElementById('downloadBtn').style.display = 'inline-flex';

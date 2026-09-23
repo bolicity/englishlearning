@@ -448,7 +448,7 @@
               </div>
               <div class="recite-card-actions">
                 <a href="unit-study-hub-V1.html" class="recite-btn" style="background:#16A34A; color:#FFF; border-color:#16A34A; font-weight:700;">🔊 网页点读</a>
-                <button onclick="selectFile(0)" class="recite-btn recite-btn-preview">👁️ 在线预览</button>
+                <button onclick="selectFile(0)" class="recite-btn recite-btn-preview">🔊 网页点读</button>
                 <a href="docs/Unit 1 Teenage life 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf" download class="recite-btn recite-btn-download">⬇️ 下载</a>
               </div>
             </div>
@@ -462,7 +462,7 @@
               </div>
               <div class="recite-card-actions">
                 <a href="unit-study-hub-V1.html" class="recite-btn" style="background:#16A34A; color:#FFF; border-color:#16A34A; font-weight:700;">🔊 网页点读</a>
-                <button onclick="selectFile(1)" class="recite-btn recite-btn-preview">👁️ 在线预览</button>
+                <button onclick="selectFile(1)" class="recite-btn recite-btn-preview">🔊 网页点读</button>
                 <a href="docs/Unit 2 People and their jobs 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf" download class="recite-btn recite-btn-download">⬇️ 下载</a>
               </div>
             </div>
@@ -476,7 +476,7 @@
               </div>
               <div class="recite-card-actions">
                 <a href="unit-study-hub-V1.html" class="recite-btn" style="background:#16A34A; color:#FFF; border-color:#16A34A; font-weight:700;">🔊 网页点读</a>
-                <button onclick="selectFile(2)" class="recite-btn recite-btn-preview">👁️ 在线预览</button>
+                <button onclick="selectFile(2)" class="recite-btn recite-btn-preview">🔊 网页点读</button>
                 <a href="docs/Unit 3 Travellers  tales 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf" download class="recite-btn recite-btn-download">⬇️ 下载</a>
               </div>
             </div>
@@ -490,7 +490,7 @@
               </div>
               <div class="recite-card-actions">
                 <a href="unit-study-hub-V1.html" class="recite-btn" style="background:#16A34A; color:#FFF; border-color:#16A34A; font-weight:700;">🔊 网页点读</a>
-                <button onclick="selectFile(3)" class="recite-btn recite-btn-preview">👁️ 在线预览</button>
+                <button onclick="selectFile(3)" class="recite-btn recite-btn-preview">🔊 网页点读</button>
                 <a href="docs/Unit 4 Folk customs 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf" download class="recite-btn recite-btn-download">⬇️ 下载</a>
               </div>
             </div>
@@ -504,7 +504,7 @@
               </div>
               <div class="recite-card-actions">
                 <a href="unit-study-hub-V1.html" class="recite-btn" style="background:#16A34A; color:#FFF; border-color:#16A34A; font-weight:700;">🔊 网页点读</a>
-                <button onclick="selectFile(4)" class="recite-btn recite-btn-preview">👁️ 在线预览</button>
+                <button onclick="selectFile(4)" class="recite-btn recite-btn-preview">🔊 网页点读</button>
                 <a href="docs/Unit 5 Buildings 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf" download class="recite-btn recite-btn-download">⬇️ 下载</a>
               </div>
             </div>
@@ -518,7 +518,7 @@
               </div>
               <div class="recite-card-actions">
                 <a href="unit-study-hub-V1.html" class="recite-btn" style="background:#16A34A; color:#FFF; border-color:#16A34A; font-weight:700;">🔊 网页点读</a>
-                <button onclick="selectFile(5)" class="recite-btn recite-btn-preview">👁️ 在线预览</button>
+                <button onclick="selectFile(5)" class="recite-btn recite-btn-preview">🔊 网页点读</button>
                 <a href="docs/Unit 6 Pollution 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf" download class="recite-btn recite-btn-download">⬇️ 下载</a>
               </div>
             </div>
@@ -672,7 +672,20 @@
       
       dashboard.style.display = 'none';
       iframe.style.display = 'block';
-      iframe.src = fileUrl;
+      
+      // 网页原生点读版映射
+      const unitHtmlMap = {
+        0: 'unit-1.html',
+        1: 'unit-2.html',
+        2: 'unit-3.html',
+        3: 'unit-4.html',
+        4: 'unit-5.html',
+        5: 'unit-6.html'
+      };
+      const finalUrl = unitHtmlMap[index] ? unitHtmlMap[index] : fileUrl;
+      iframe.src = finalUrl;
+      document.getElementById('openNewTabBtn').href = finalUrl;
+
 
       document.getElementById('downloadBtn').href = fileUrl;
       document.getElementById('downloadBtn').style.display = 'inline-flex';
