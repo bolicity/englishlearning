@@ -2840,7 +2840,7 @@
     document.addEventListener('touchstart', unlockAudio, { once: true });
     document.addEventListener('click', unlockAudio, { once: true });
 
-    document.addEventListener('DOMContentLoaded', () => {
+    function initApp() {
       renderUnitTabs();
       loadUnit(1);
 
@@ -2850,7 +2850,13 @@
           speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
         }
       }
-    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initApp);
+    } else {
+      initApp();
+    }
 
     function setAccent(accent) {
       currentAccent = accent;
