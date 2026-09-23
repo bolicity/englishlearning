@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unit 6 Pollution - 纯净网页版（高清发音）</title>
+  <title>Unit 6 Pollution - 高中英语必背知识点读中心</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -17,1047 +17,1121 @@
       --text-secondary: #334155;
       --text-muted: #64748B;
       --primary: #2563EB;
+      --primary-hover: #1D4ED8;
       --primary-soft: #EFF6FF;
-      --accent-green: #16A34A;
-      --accent-green-soft: #F0FDF4;
+      --accent-green: #059669;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.06);
       --radius-md: 12px;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --radius-lg: 16px;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+      font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
       background: var(--bg-main);
       color: var(--text-main);
-      padding: 20px;
+      padding: 16px;
       max-width: 1000px;
       margin: 0 auto;
-      line-height: 1.5;
+      line-height: 1.6;
     }
+
     header {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 20px 24px;
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
       margin-bottom: 20px;
       box-shadow: var(--shadow-sm);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 12px;
     }
-    .back-link {
+
+    .back-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      text-decoration: none;
+      gap: 8px;
       color: var(--primary);
-      font-weight: 700;
-      font-size: 14px;
-    }
-    h1 { font-size: 22px; font-weight: 800; color: #1E40AF; }
-    p.sub { font-size: 14px; color: var(--text-muted); font-weight: 500; margin-top: 4px; }
-    
-    .ctrl-bar {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 24px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .ctrl-btn {
+      background: var(--primary-soft);
+      border: 1px solid rgba(37, 99, 235, 0.15);
       padding: 8px 16px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-secondary);
-      cursor: pointer;
-      outline: none;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
     }
-    .ctrl-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .back-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+    }
 
-    .section-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      margin-bottom: 24px;
-      box-shadow: var(--shadow-sm);
-    }
-    .sec-title {
-      font-size: 18px;
+    .header-title {
+      font-size: 1.2rem;
       font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 16px;
+    }
+
+    .mode-toggle {
+      display: flex;
+      align-items: center;
+      background: var(--bg-subtle);
+      border-radius: 9999px;
+      padding: 4px;
+      border: 1px solid var(--border-color);
+    }
+
+    .mode-btn {
+      padding: 6px 14px;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .mode-btn.active {
+      background: var(--bg-card);
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .unit-quick-nav {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .nav-pill {
+      padding: 6px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .nav-pill:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .nav-pill.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 20px 0 12px 4px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .grid-words {
+    .section-badge {
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 9999px;
+    }
+
+    .words-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 12px;
+      margin-bottom: 24px;
     }
-    .item-card {
-      background: var(--bg-subtle);
+    .word-card {
+      background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 14px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .item-card:hover { border-color: var(--primary); background: var(--primary-soft); }
-    .item-card.playing { border-color: var(--accent-green); background: var(--accent-green-soft); }
-    
-    .item-en { font-weight: 700; font-size: 16px; color: var(--text-main); margin-bottom: 4px; display: flex; justify-content: space-between; }
-    .item-cn { font-size: 13px; color: var(--text-muted); font-weight: 500; transition: filter 0.2s; }
-
-    /* 默写模式：隐藏英文，保持中文显示 */
-    body.mask-mode .item-en,
-    body.mask-mode .row-left span[style*="font-weight:700"],
-    body.mask-mode .sentence-card .sentence-en,
-    body.mask-mode span[style*="font-size:16px"] {
-      filter: blur(6px);
-      user-select: none;
-      transition: filter 0.2s;
-    }
-    body.mask-mode .item-card:hover .item-en,
-    body.mask-mode .list-row:hover .row-left span,
-    body.mask-mode .list-row:hover span[style*="font-size:16px"] {
-      filter: blur(0);
-    }
-    body.mask-mode .item-cn { filter: none !important; }
-
-    .list-phrases, .list-sentences { display: flex; flex-direction: column; gap: 10px; }
-    .list-row {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 14px 18px;
-      cursor: pointer;
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      box-shadow: var(--shadow-sm);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
+      cursor: pointer;
     }
-    .list-row:hover { border-color: var(--primary); background: var(--primary-soft); }
-    .list-row.playing { border-color: var(--accent-green); background: var(--accent-green-soft); }
-    
-    .row-left { display: flex; align-items: center; gap: 12px; }
-    .num-badge { font-size: 12px; font-weight: 700; color: var(--text-muted); background: white; padding: 2px 8px; border-radius: 4px; }
+    .word-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .word-info { flex: 1; padding-right: 12px; }
+    .word-top { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+    .word-target { font-size: 1.15rem; font-weight: 800; color: var(--text-main); }
+    .word-phonetic { font-size: 0.85rem; color: var(--text-muted); }
+    .word-trans { font-size: 0.9rem; color: var(--text-secondary); }
+
+    body.mask-mode .en-text {
+      background: #E2E8F0;
+      color: transparent !important;
+      border-radius: 4px;
+      user-select: none;
+    }
+    body.mask-mode .word-card:hover .en-text,
+    body.mask-mode .phrase-card:hover .en-text,
+    body.mask-mode .sentence-card:hover .en-text {
+      background: transparent;
+      color: var(--primary) !important;
+    }
+
+    .audio-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    .word-card:hover .audio-btn,
+    .phrase-card:hover .audio-btn,
+    .sentence-card:hover .audio-btn {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+    .audio-btn.playing {
+      background: var(--accent-green) !important;
+      color: #FFFFFF !important;
+      border-color: var(--accent-green) !important;
+      animation: pulse 1.2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .phrases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .phrase-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .phrase-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .phrase-en { font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px; }
+    .phrase-cn { font-size: 0.88rem; color: var(--text-secondary); }
+
+    .sentences-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+    .sentence-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .sentence-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateX(2px);
+    }
+    .sentence-content { flex: 1; }
+    .sentence-en { font-size: 1.05rem; font-weight: 600; color: var(--text-main); margin-bottom: 4px; }
+    .sentence-cn { font-size: 0.9rem; color: var(--text-muted); }
+
+    .grammar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 24px;
+    }
+    .grammar-title { font-size: 1.1rem; font-weight: 800; color: var(--primary); margin-bottom: 8px; }
+    .grammar-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; white-space: pre-line; }
+
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0F172A;
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 640px) {
+      body { padding: 12px; }
+      header { flex-direction: column; align-items: stretch; }
+      .words-grid, .phrases-grid { grid-template-columns: 1fr; }
+      .sentence-card { flex-direction: column; align-items: flex-start; }
+      .sentence-card .audio-btn { align-self: flex-end; }
+    }
   </style>
 </head>
 <body>
+
   <header>
-    <div>
-      <a href="english-hub.html" class="back-link" style="margin-right:12px;">← 返回英语中心</a> <a href="unit-study-hub-V1.html" class="back-link">📖 单元总览</a>
-      <h1 style="margin-top:8px;">Unit 6 Pollution</h1>
-      <p class="sub">环境保护·污染治理与绿色行动（全量必背单） · 原生网页点读版（无PDF）</p>
-    </div>
-    <div>
-      <span style="font-size:13px; background:var(--accent-green-soft); color:var(--accent-green); border:1px solid #BBF7D0; padding:6px 14px; border-radius:20px; font-weight:700;">🔊 清晰真人语音模式</span>
+    <a href="unit-study-hub-V1.html" class="back-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回点读中心
+    </a>
+
+    <div class="header-title">Unit 6 Pollution</div>
+
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="btnRecite" onclick="setMode('recite')">📖 背诵模式</button>
+      <button class="mode-btn" id="btnMask" onclick="setMode('mask')">🙈 默写模式</button>
     </div>
   </header>
 
-  <div class="ctrl-bar">
-    <button class="ctrl-btn" id="maskBtn" onclick="toggleMask()">🙈 默写遮罩模式: 关</button>
-    <select class="ctrl-btn" id="audioEngineSelect">
-      <option value="dict">🔊 高音质在线发音 (推荐)</option>
-      <option value="speech">🤖 浏览器原生发音</option>
-    </select>
+  <div class="unit-quick-nav">
+    <a href="unit-1.html" class="nav-pill ">Unit 1</a><a href="unit-2.html" class="nav-pill ">Unit 2</a><a href="unit-3.html" class="nav-pill ">Unit 3</a><a href="unit-4.html" class="nav-pill ">Unit 4</a><a href="unit-5.html" class="nav-pill ">Unit 5</a><a href="unit-6.html" class="nav-pill active">Unit 6</a>
   </div>
 
-  <!-- 单词 -->
-  <div class="section-box">
-    <div class="sec-title">🔤 重点词汇 (15个)</div>
-    <div class="grid-words">
-      
-        <div class="item-card" onclick="playAudio('pollution', this)">
-          <div class="item-en"><span>pollution</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/pəˈluːʃn/ n.</div>
-          <div class="item-cn">污染</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('loss', this)">
-          <div class="item-en"><span>loss</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/lɒs/ n.</div>
-          <div class="item-cn">损失；丧失</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('soil', this)">
-          <div class="item-en"><span>soil</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/sɔɪl/ n.</div>
-          <div class="item-cn">土壤</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('shark', this)">
-          <div class="item-en"><span>shark</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/ʃɑːk/ n.</div>
-          <div class="item-cn">鲨鱼</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('polluted', this)">
-          <div class="item-en"><span>polluted</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/pəˈluːtɪd/ adj.</div>
-          <div class="item-cn">受污染的</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('compare', this)">
-          <div class="item-en"><span>compare</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/kəmˈpeə(r)/ v.</div>
-          <div class="item-cn">比较；对比</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('air conditioner', this)">
-          <div class="item-en"><span>air conditioner</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/ˈeə kənˈdɪʃənə(r)/ n.</div>
-          <div class="item-cn">空调</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('spill', this)">
-          <div class="item-en"><span>spill</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/spɪl/ n./v.</div>
-          <div class="item-cn">溢出；泄漏</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('mine', this)">
-          <div class="item-en"><span>mine</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/maɪn/ v./n.</div>
-          <div class="item-cn">开矿；矿山</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('break down', this)">
-          <div class="item-en"><span>break down</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/breɪk daʊn/ phr.</div>
-          <div class="item-cn">分解；故障</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('harmful', this)">
-          <div class="item-en"><span>harmful</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/ˈhɑːmfl/ adj.</div>
-          <div class="item-cn">有害的</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('remotely', this)">
-          <div class="item-en"><span>remotely</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/rɪˈməʊtli/ adv.</div>
-          <div class="item-cn">远程地；偏远地</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('operate', this)">
-          <div class="item-en"><span>operate</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/ˈɒpəreɪt/ v.</div>
-          <div class="item-cn">操作；控制</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('vehicle', this)">
-          <div class="item-en"><span>vehicle</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/ˈviːəkl/ n.</div>
-          <div class="item-cn">车辆；交通工具</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('bottom', this)">
-          <div class="item-en"><span>bottom</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/ˈbɒtəm/ n.</div>
-          <div class="item-cn">底部；海底</div>
-        </div>
-        
+  <main>
+    <div class="section-title">
+      <span>📝 核心词汇</span>
+      <span class="section-badge">15</span>
     </div>
-  </div>
+    <div class="words-grid">
+      <div class="word-card" onclick="playAudio('pollution', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">pollution</span>
+              <span class="word-phonetic">/pəˈluːʃn/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>污染
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('loss', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">loss</span>
+              <span class="word-phonetic">/lɒs/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>损失；丧失
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('soil', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">soil</span>
+              <span class="word-phonetic">/sɔɪl/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>土壤
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('shark', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">shark</span>
+              <span class="word-phonetic">/ʃɑːk/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>鲨鱼
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('polluted', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">polluted</span>
+              <span class="word-phonetic">/pəˈluːtɪd/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">adj.</span>受污染的
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('compare', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">compare</span>
+              <span class="word-phonetic">/kəmˈpeə(r)/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">v.</span>比较；对比
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('air conditioner', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">air conditioner</span>
+              <span class="word-phonetic">/ˈeə kənˈdɪʃənə(r)/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>空调
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('spill', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">spill</span>
+              <span class="word-phonetic">/spɪl/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n./v.</span>溢出；泄漏
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('mine', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">mine</span>
+              <span class="word-phonetic">/maɪn/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">v./n.</span>开矿；矿山
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('break down', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">break down</span>
+              <span class="word-phonetic">/breɪk daʊn/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">phr.</span>分解；故障
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('harmful', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">harmful</span>
+              <span class="word-phonetic">/ˈhɑːmfl/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">adj.</span>有害的
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('remotely', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">remotely</span>
+              <span class="word-phonetic">/rɪˈməʊtli/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">adv.</span>远程地；偏远地
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('operate', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">operate</span>
+              <span class="word-phonetic">/ˈɒpəreɪt/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">v.</span>操作；控制
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('vehicle', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">vehicle</span>
+              <span class="word-phonetic">/ˈviːəkl/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>车辆；交通工具
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('bottom', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">bottom</span>
+              <span class="word-phonetic">/ˈbɒtəm/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>底部；海底
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div>
+    </div>
 
-  <!-- 短语 -->
-  <div class="section-box">
-    <div class="sec-title">🗣️ 核心短语 (40条)</div>
-    <div class="list-phrases">
-      
-        <div class="list-row" onclick="playAudio('air pollution', this)">
-          <div class="row-left">
-            <span class="num-badge">1</span>
-            <span style="font-weight:700;">air pollution</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">空气污染</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('water pollution', this)">
-          <div class="row-left">
-            <span class="num-badge">2</span>
-            <span style="font-weight:700;">water pollution</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">水污染</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('soil pollution', this)">
-          <div class="row-left">
-            <span class="num-badge">3</span>
-            <span style="font-weight:700;">soil pollution</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">土壤污染</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('noise pollution', this)">
-          <div class="row-left">
-            <span class="num-badge">4</span>
-            <span style="font-weight:700;">noise pollution</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">噪声污染</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('breathing problems', this)">
-          <div class="row-left">
-            <span class="num-badge">5</span>
-            <span style="font-weight:700;">breathing problems</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">呼吸系统问题</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('PM2.5', this)">
-          <div class="row-left">
-            <span class="num-badge">6</span>
-            <span style="font-weight:700;">PM2.5</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">细颗粒物PM2.5</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('traffic smoke', this)">
-          <div class="row-left">
-            <span class="num-badge">7</span>
-            <span style="font-weight:700;">traffic smoke</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">汽车尾气/交通废气</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('factory smoke', this)">
-          <div class="row-left">
-            <span class="num-badge">8</span>
-            <span style="font-weight:700;">factory smoke</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">工厂黑烟</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('oil spill', this)">
-          <div class="row-left">
-            <span class="num-badge">9</span>
-            <span style="font-weight:700;">oil spill</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">漏油事故</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('chemical waste', this)">
-          <div class="row-left">
-            <span class="num-badge">10</span>
-            <span style="font-weight:700;">chemical waste</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">化学废料</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('plastic waste', this)">
-          <div class="row-left">
-            <span class="num-badge">11</span>
-            <span style="font-weight:700;">plastic waste</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">塑料垃圾</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('break down', this)">
-          <div class="row-left">
-            <span class="num-badge">12</span>
-            <span style="font-weight:700;">break down</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">分解（成微粒）</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('tiny pieces of plastic', this)">
-          <div class="row-left">
-            <span class="num-badge">13</span>
-            <span style="font-weight:700;">tiny pieces of plastic</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">微塑料/细微塑料碎片</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('ocean animals', this)">
-          <div class="row-left">
-            <span class="num-badge">14</span>
-            <span style="font-weight:700;">ocean animals</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">海洋生物</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('remotely-operated vehicle (ROV)', this)">
-          <div class="row-left">
-            <span class="num-badge">15</span>
-            <span style="font-weight:700;">remotely-operated vehicle (ROV)</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">水下遥控无人潜航器</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('stand out', this)">
-          <div class="row-left">
-            <span class="num-badge">16</span>
-            <span style="font-weight:700;">stand out</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">脱颖而出；突出</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('pick up engineering skills', this)">
-          <div class="row-left">
-            <span class="num-badge">17</span>
-            <span style="font-weight:700;">pick up engineering skills</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">掌握工程技能</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('make a difference', this)">
-          <div class="row-left">
-            <span class="num-badge">18</span>
-            <span style="font-weight:700;">make a difference</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">产生影响；有所作为</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('spread the word', this)">
-          <div class="row-left">
-            <span class="num-badge">19</span>
-            <span style="font-weight:700;">spread the word</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">宣传推广；宣讲</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('clean up a beach', this)">
-          <div class="row-left">
-            <span class="num-badge">20</span>
-            <span style="font-weight:700;">clean up a beach</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">清理海滩</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('recycling projects', this)">
-          <div class="row-left">
-            <span class="num-badge">21</span>
-            <span style="font-weight:700;">recycling projects</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">回收利用项目</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('environmental exhibits', this)">
-          <div class="row-left">
-            <span class="num-badge">22</span>
-            <span style="font-weight:700;">environmental exhibits</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">环保展品</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('repair centre', this)">
-          <div class="row-left">
-            <span class="num-badge">23</span>
-            <span style="font-weight:700;">repair centre</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">维修中心</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('recycling bins', this)">
-          <div class="row-left">
-            <span class="num-badge">24</span>
-            <span style="font-weight:700;">recycling bins</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">垃圾回收箱</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('convenient locations', this)">
-          <div class="row-left">
-            <span class="num-badge">25</span>
-            <span style="font-weight:700;">convenient locations</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">便利的位置</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('carry out the proposal', this)">
-          <div class="row-left">
-            <span class="num-badge">26</span>
-            <span style="font-weight:700;">carry out the proposal</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">落实提议/方案</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('formal language', this)">
-          <div class="row-left">
-            <span class="num-badge">27</span>
-            <span style="font-weight:700;">formal language</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">正式语言</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('non-polluting transport', this)">
-          <div class="row-left">
-            <span class="num-badge">28</span>
-            <span style="font-weight:700;">non-polluting transport</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">无污染交通方式</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('used vegetable oil', this)">
-          <div class="row-left">
-            <span class="num-badge">29</span>
-            <span style="font-weight:700;">used vegetable oil</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">废弃植物油/地沟油</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('biodiesel', this)">
-          <div class="row-left">
-            <span class="num-badge">30</span>
-            <span style="font-weight:700;">biodiesel</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">生物柴油</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('collect data', this)">
-          <div class="row-left">
-            <span class="num-badge">31</span>
-            <span style="font-weight:700;">collect data</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">收集数据</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('digital maps', this)">
-          <div class="row-left">
-            <span class="num-badge">32</span>
-            <span style="font-weight:700;">digital maps</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">电子数字地图</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('act locally', this)">
-          <div class="row-left">
-            <span class="num-badge">33</span>
-            <span style="font-weight:700;">act locally</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">立足本地行动</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('think globally', this)">
-          <div class="row-left">
-            <span class="num-badge">34</span>
-            <span style="font-weight:700;">think globally</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">放眼全球思考</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('action lapbook', this)">
-          <div class="row-left">
-            <span class="num-badge">35</span>
-            <span style="font-weight:700;">action lapbook</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">行动折叠书/资料集</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('cut out ideas', this)">
-          <div class="row-left">
-            <span class="num-badge">36</span>
-            <span style="font-weight:700;">cut out ideas</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">剪切剔除想法</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('peer pressure', this)">
-          <div class="row-left">
-            <span class="num-badge">37</span>
-            <span style="font-weight:700;">peer pressure</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">同伴压力</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('harmful effects', this)">
-          <div class="row-left">
-            <span class="num-badge">38</span>
-            <span style="font-weight:700;">harmful effects</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">有害影响</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('climate change', this)">
-          <div class="row-left">
-            <span class="num-badge">39</span>
-            <span style="font-weight:700;">climate change</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">气候变化</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('youth unemployment', this)">
-          <div class="row-left">
-            <span class="num-badge">40</span>
-            <span style="font-weight:700;">youth unemployment</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">青年失业率</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
+    <div class="section-title">
+      <span>💡 必备短语</span>
+      <span class="section-badge">40</span>
     </div>
-  </div>
+    <div class="phrases-grid">
+      <div class="phrase-card" onclick="playAudio('air pollution', this)">
+          <div>
+            <div class="phrase-en en-text">air pollution</div>
+            <div class="phrase-cn">空气污染</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('water pollution', this)">
+          <div>
+            <div class="phrase-en en-text">water pollution</div>
+            <div class="phrase-cn">水污染</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('soil pollution', this)">
+          <div>
+            <div class="phrase-en en-text">soil pollution</div>
+            <div class="phrase-cn">土壤污染</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('noise pollution', this)">
+          <div>
+            <div class="phrase-en en-text">noise pollution</div>
+            <div class="phrase-cn">噪声污染</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('breathing problems', this)">
+          <div>
+            <div class="phrase-en en-text">breathing problems</div>
+            <div class="phrase-cn">呼吸系统问题</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('PM2.5', this)">
+          <div>
+            <div class="phrase-en en-text">PM2.5</div>
+            <div class="phrase-cn">细颗粒物PM2.5</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('traffic smoke', this)">
+          <div>
+            <div class="phrase-en en-text">traffic smoke</div>
+            <div class="phrase-cn">汽车尾气/交通废气</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('factory smoke', this)">
+          <div>
+            <div class="phrase-en en-text">factory smoke</div>
+            <div class="phrase-cn">工厂黑烟</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('oil spill', this)">
+          <div>
+            <div class="phrase-en en-text">oil spill</div>
+            <div class="phrase-cn">漏油事故</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('chemical waste', this)">
+          <div>
+            <div class="phrase-en en-text">chemical waste</div>
+            <div class="phrase-cn">化学废料</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('plastic waste', this)">
+          <div>
+            <div class="phrase-en en-text">plastic waste</div>
+            <div class="phrase-cn">塑料垃圾</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('break down', this)">
+          <div>
+            <div class="phrase-en en-text">break down</div>
+            <div class="phrase-cn">分解（成微粒）</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('tiny pieces of plastic', this)">
+          <div>
+            <div class="phrase-en en-text">tiny pieces of plastic</div>
+            <div class="phrase-cn">微塑料/细微塑料碎片</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('ocean animals', this)">
+          <div>
+            <div class="phrase-en en-text">ocean animals</div>
+            <div class="phrase-cn">海洋生物</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('remotely-operated vehicle (ROV)', this)">
+          <div>
+            <div class="phrase-en en-text">remotely-operated vehicle (ROV)</div>
+            <div class="phrase-cn">水下遥控无人潜航器</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('stand out', this)">
+          <div>
+            <div class="phrase-en en-text">stand out</div>
+            <div class="phrase-cn">脱颖而出；突出</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('pick up engineering skills', this)">
+          <div>
+            <div class="phrase-en en-text">pick up engineering skills</div>
+            <div class="phrase-cn">掌握工程技能</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('make a difference', this)">
+          <div>
+            <div class="phrase-en en-text">make a difference</div>
+            <div class="phrase-cn">产生影响；有所作为</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('spread the word', this)">
+          <div>
+            <div class="phrase-en en-text">spread the word</div>
+            <div class="phrase-cn">宣传推广；宣讲</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('clean up a beach', this)">
+          <div>
+            <div class="phrase-en en-text">clean up a beach</div>
+            <div class="phrase-cn">清理海滩</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('recycling projects', this)">
+          <div>
+            <div class="phrase-en en-text">recycling projects</div>
+            <div class="phrase-cn">回收利用项目</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('environmental exhibits', this)">
+          <div>
+            <div class="phrase-en en-text">environmental exhibits</div>
+            <div class="phrase-cn">环保展品</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('repair centre', this)">
+          <div>
+            <div class="phrase-en en-text">repair centre</div>
+            <div class="phrase-cn">维修中心</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('recycling bins', this)">
+          <div>
+            <div class="phrase-en en-text">recycling bins</div>
+            <div class="phrase-cn">垃圾回收箱</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('convenient locations', this)">
+          <div>
+            <div class="phrase-en en-text">convenient locations</div>
+            <div class="phrase-cn">便利的位置</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('carry out the proposal', this)">
+          <div>
+            <div class="phrase-en en-text">carry out the proposal</div>
+            <div class="phrase-cn">落实提议/方案</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('formal language', this)">
+          <div>
+            <div class="phrase-en en-text">formal language</div>
+            <div class="phrase-cn">正式语言</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('non-polluting transport', this)">
+          <div>
+            <div class="phrase-en en-text">non-polluting transport</div>
+            <div class="phrase-cn">无污染交通方式</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('used vegetable oil', this)">
+          <div>
+            <div class="phrase-en en-text">used vegetable oil</div>
+            <div class="phrase-cn">废弃植物油/地沟油</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('biodiesel', this)">
+          <div>
+            <div class="phrase-en en-text">biodiesel</div>
+            <div class="phrase-cn">生物柴油</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('collect data', this)">
+          <div>
+            <div class="phrase-en en-text">collect data</div>
+            <div class="phrase-cn">收集数据</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('digital maps', this)">
+          <div>
+            <div class="phrase-en en-text">digital maps</div>
+            <div class="phrase-cn">电子数字地图</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('act locally', this)">
+          <div>
+            <div class="phrase-en en-text">act locally</div>
+            <div class="phrase-cn">立足本地行动</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('think globally', this)">
+          <div>
+            <div class="phrase-en en-text">think globally</div>
+            <div class="phrase-cn">放眼全球思考</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('action lapbook', this)">
+          <div>
+            <div class="phrase-en en-text">action lapbook</div>
+            <div class="phrase-cn">行动折叠书/资料集</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('cut out ideas', this)">
+          <div>
+            <div class="phrase-en en-text">cut out ideas</div>
+            <div class="phrase-cn">剪切剔除想法</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('peer pressure', this)">
+          <div>
+            <div class="phrase-en en-text">peer pressure</div>
+            <div class="phrase-cn">同伴压力</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('harmful effects', this)">
+          <div>
+            <div class="phrase-en en-text">harmful effects</div>
+            <div class="phrase-cn">有害影响</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('climate change', this)">
+          <div>
+            <div class="phrase-en en-text">climate change</div>
+            <div class="phrase-cn">气候变化</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('youth unemployment', this)">
+          <div>
+            <div class="phrase-en en-text">youth unemployment</div>
+            <div class="phrase-cn">青年失业率</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div>
+    </div>
 
-  <!-- 句型 -->
-  <div class="section-box">
-    <div class="sec-title">💬 重点句型与经典例句 (24句)</div>
-    <div class="list-sentences">
-      
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Noise is often caused by fans and air conditioners.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">1</span> Noise is often caused by fans and air conditioners.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">噪音通常是由风扇和空调引起的。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Traffic noise is the biggest cause of noise in cities.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">2</span> Traffic noise is the biggest cause of noise in cities.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">交通噪音是城市噪音的最大诱因。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Road works play a big part in noise pollution too.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">3</span> Road works play a big part in noise pollution too.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">道路施工也在噪音污染中占很大比重。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('I couldn\'t agree more!', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">4</span> I couldn't agree more!</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">我完全赞同！</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('About eight million tons of plastic waste is thrown into the ocean every year.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">5</span> About eight million tons of plastic waste is thrown into the ocean every year.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">每年大约有八百万吨塑料垃圾被倒入海洋。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('It can take hundreds of years for plastic to break down naturally.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">6</span> It can take hundreds of years for plastic to break down naturally.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">塑料自然分解可能需要数百年的时间。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Tiny pieces of plastic are harder to clean up and more harmful.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">7</span> Tiny pieces of plastic are harder to clean up and more harmful.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">细小的微塑料碎片更难清理，危害也更大。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Its special lights make plastic stand out from sand and seaweed.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">8</span> Its special lights make plastic stand out from sand and seaweed.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">其特殊的照明光线使塑料能够从沙子和海藻中显现脱颖而出。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('She failed many times but she never gave up testing the robot.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">9</span> She failed many times but she never gave up testing the robot.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">她失败了很多次，但她从未放弃对机器人的测试。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Everyone can make a difference to cut plastic pollution.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">10</span> Everyone can make a difference to cut plastic pollution.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">每一个人都能为减少塑料污染贡献一份力量。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('The pollution problem will be solved little by little.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">11</span> The pollution problem will be solved little by little.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">污染问题将会一点一点逐步得到解决。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Air pollution will not be reduced if we take no action.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">12</span> Air pollution will not be reduced if we take no action.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">如果我们不采取行动，空气污染将不会减少。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Broken objects won\'t be thrown away in the school repair centre.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">13</span> Broken objects won't be thrown away in the school repair centre.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">损坏的物品在学校维修中心不会被直接丢弃。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('All useful suggestions will be printed in the school newspaper.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">14</span> All useful suggestions will be printed in the school newspaper.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">所有有用的建议都会刊登在校报上。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Will more recycling bins be placed around our campus?', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">15</span> Will more recycling bins be placed around our campus?</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">校园周围会放置更多的分类回收箱吗？</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Plastic waste is harmful to both the environment and our health.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">16</span> Plastic waste is harmful to both the environment and our health.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">塑料垃圾对环境和我们的健康都有害。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('I recommend that the school use recycled plastic for art works.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">17</span> I recommend that the school use recycled plastic for art works.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">我建议学校在艺术创作中使用回收塑料。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Clear signs can be put up to guide correct waste sorting.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">18</span> Clear signs can be put up to guide correct waste sorting.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">可以树立清晰的标识牌来指导正确的垃圾分类。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('If the proposal could be carried out, plastic waste will drop greatly.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">19</span> If the proposal could be carried out, plastic waste will drop greatly.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">如果该提案能够落实实施，塑料垃圾将会大幅减少。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('I am writing to propose practical ways to cut school plastic waste.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">20</span> I am writing to propose practical ways to cut school plastic waste.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">我写此信是为了提出减少校园塑料垃圾的实用方法。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Bamboo bikes provide a pollution-free way of travelling.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">21</span> Bamboo bikes provide a pollution-free way of travelling.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">竹制自行车提供了一种无污染的出游方式。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Used cooking oil can be turned into eco-friendly biodiesel fuel.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">22</span> Used cooking oil can be turned into eco-friendly biodiesel fuel.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">废弃地沟油可以转化为环保的生物柴油燃料。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Teenagers create digital maps to mark heavily polluted areas.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">23</span> Teenagers create digital maps to mark heavily polluted areas.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">青少年们制作电子地图来标注受污染严重的区域。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('They spread environmental knowledge to parents and classmates.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">24</span> They spread environmental knowledge to parents and classmates.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">他们向父母和同学们宣讲普及环保知识。</div>
-        </div>
-        
+    <div class="section-title">
+      <span>🗣️ 经典例句</span>
+      <span class="section-badge">24</span>
     </div>
-  </div>
+    <div class="sentences-list">
+      <div class="sentence-card" onclick="playAudio('Noise is often caused by fans and air conditioners.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Noise is often caused by fans and air conditioners.</div>
+            <div class="sentence-cn">噪音通常是由风扇和空调引起的。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Traffic noise is the biggest cause of noise in cities.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Traffic noise is the biggest cause of noise in cities.</div>
+            <div class="sentence-cn">交通噪音是城市噪音的最大诱因。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Road works play a big part in noise pollution too.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Road works play a big part in noise pollution too.</div>
+            <div class="sentence-cn">道路施工也在噪音污染中占很大比重。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('I couldn\'t agree more!', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">I couldn't agree more!</div>
+            <div class="sentence-cn">我完全赞同！</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('About eight million tons of plastic waste is thrown into the ocean every year.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">About eight million tons of plastic waste is thrown into the ocean every year.</div>
+            <div class="sentence-cn">每年大约有八百万吨塑料垃圾被倒入海洋。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('It can take hundreds of years for plastic to break down naturally.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">It can take hundreds of years for plastic to break down naturally.</div>
+            <div class="sentence-cn">塑料自然分解可能需要数百年的时间。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Tiny pieces of plastic are harder to clean up and more harmful.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Tiny pieces of plastic are harder to clean up and more harmful.</div>
+            <div class="sentence-cn">细小的微塑料碎片更难清理，危害也更大。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Its special lights make plastic stand out from sand and seaweed.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Its special lights make plastic stand out from sand and seaweed.</div>
+            <div class="sentence-cn">其特殊的照明光线使塑料能够从沙子和海藻中显现脱颖而出。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('She failed many times but she never gave up testing the robot.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">She failed many times but she never gave up testing the robot.</div>
+            <div class="sentence-cn">她失败了很多次，但她从未放弃对机器人的测试。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Everyone can make a difference to cut plastic pollution.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Everyone can make a difference to cut plastic pollution.</div>
+            <div class="sentence-cn">每一个人都能为减少塑料污染贡献一份力量。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('The pollution problem will be solved little by little.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">The pollution problem will be solved little by little.</div>
+            <div class="sentence-cn">污染问题将会一点一点逐步得到解决。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Air pollution will not be reduced if we take no action.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Air pollution will not be reduced if we take no action.</div>
+            <div class="sentence-cn">如果我们不采取行动，空气污染将不会减少。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Broken objects won\'t be thrown away in the school repair centre.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Broken objects won't be thrown away in the school repair centre.</div>
+            <div class="sentence-cn">损坏的物品在学校维修中心不会被直接丢弃。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('All useful suggestions will be printed in the school newspaper.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">All useful suggestions will be printed in the school newspaper.</div>
+            <div class="sentence-cn">所有有用的建议都会刊登在校报上。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Will more recycling bins be placed around our campus?', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Will more recycling bins be placed around our campus?</div>
+            <div class="sentence-cn">校园周围会放置更多的分类回收箱吗？</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Plastic waste is harmful to both the environment and our health.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Plastic waste is harmful to both the environment and our health.</div>
+            <div class="sentence-cn">塑料垃圾对环境和我们的健康都有害。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('I recommend that the school use recycled plastic for art works.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">I recommend that the school use recycled plastic for art works.</div>
+            <div class="sentence-cn">我建议学校在艺术创作中使用回收塑料。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Clear signs can be put up to guide correct waste sorting.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Clear signs can be put up to guide correct waste sorting.</div>
+            <div class="sentence-cn">可以树立清晰的标识牌来指导正确的垃圾分类。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('If the proposal could be carried out, plastic waste will drop greatly.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">If the proposal could be carried out, plastic waste will drop greatly.</div>
+            <div class="sentence-cn">如果该提案能够落实实施，塑料垃圾将会大幅减少。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('I am writing to propose practical ways to cut school plastic waste.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">I am writing to propose practical ways to cut school plastic waste.</div>
+            <div class="sentence-cn">我写此信是为了提出减少校园塑料垃圾的实用方法。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Bamboo bikes provide a pollution-free way of travelling.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Bamboo bikes provide a pollution-free way of travelling.</div>
+            <div class="sentence-cn">竹制自行车提供了一种无污染的出游方式。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Used cooking oil can be turned into eco-friendly biodiesel fuel.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Used cooking oil can be turned into eco-friendly biodiesel fuel.</div>
+            <div class="sentence-cn">废弃地沟油可以转化为环保的生物柴油燃料。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Teenagers create digital maps to mark heavily polluted areas.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Teenagers create digital maps to mark heavily polluted areas.</div>
+            <div class="sentence-cn">青少年们制作电子地图来标注受污染严重的区域。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('They spread environmental knowledge to parents and classmates.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">They spread environmental knowledge to parents and classmates.</div>
+            <div class="sentence-cn">他们向父母和同学们宣讲普及环保知识。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div>
+    </div>
+
+    <div class="section-title">
+      <span>📘 语法解析</span>
+    </div>
+    <div class="grammar-card">
+              <div class="grammar-title">原因与结果状语及一般将来时被动语态 (Passive Voice in Future Tense)</div>
+              <div class="grammar-desc">1. 一般将来时的被动语态: Subject + will (not) be + past participle
+   • The pollution problem will be solved little by little.
+   • Air pollution will not be reduced if we take no action.
+2. 条件状语从句主将从现: If the proposal is carried out, plastic waste will drop greatly.</div>
+            </div>
+  </main>
+
+  <div id="toast">提示</div>
 
   <script>
-            let activeAudio = null;
+    let activeAudio = null;
 
-    // 极清广播级音频发音引擎（彻底解决长句破音、切片爆音与嘈杂杂音问题）
+    function setMode(mode) {
+      document.getElementById('btnRecite').classList.toggle('active', mode === 'recite');
+      document.getElementById('btnMask').classList.toggle('active', mode === 'mask');
+      if (mode === 'mask') {
+        document.body.classList.add('mask-mode');
+        showToast('已开启默写模式：隐藏英文，看中文默写');
+      } else {
+        document.body.classList.remove('mask-mode');
+        showToast('已开启背诵模式：英文中文全显');
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
     function playAudio(text, element) {
       if (activeAudio) {
         try { activeAudio.pause(); } catch(e){}
         activeAudio = null;
       }
-      if ('speechSynthesis' in window) {
-        try { window.speechSynthesis.cancel(); } catch(e){}
-      }
 
-      // 1. 文本极纯化处理：展开常见缩写并彻底剥离所有会引起切片爆音的标点符号
-      let pureText = text
-        .replace(/\bcan't\b/gi, 'cannot')
-        .replace(/\bwon't\b/gi, 'will not')
-        .replace(/\bdon't\b/gi, 'do not')
-        .replace(/\bdoesn't\b/gi, 'does not')
-        .replace(/\bdidn't\b/gi, 'did not')
-        .replace(/\bit's\b/gi, 'it is')
-        .replace(/\bI'm\b/gi, 'I am')
-        .replace(/\bthey're\b/gi, 'they are')
-        .replace(/\bwe're\b/gi, 'we are')
-        .replace(/\byou're\b/gi, 'you are')
+      let cleanText = text
+        .replace(/can't/gi, 'cannot')
+        .replace(/won't/gi, 'will not')
+        .replace(/don't/gi, 'do not')
+        .replace(/doesn't/gi, 'does not')
+        .replace(/didn't/gi, 'did not')
+        .replace(/it's/gi, 'it is')
+        .replace(/I'm/gi, 'I am')
+        .replace(/they're/gi, 'they are')
+        .replace(/we're/gi, 'we are')
+        .replace(/you're/gi, 'you are')
         .replace(/[^a-zA-Z0-9\s]/g, ' ')
         .replace(/\s+/g, ' ')
         .trim();
 
-      if (!pureText) return;
-
-      if (element) {
-        document.querySelectorAll('.playing').forEach(el => el.classList.remove('playing'));
-        element.classList.add('playing');
-      }
-
-      const encodedText = encodeURIComponent(pureText);
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-      // 高清广播级双音源（支持长例句与单词）：
-      // 音源 1: Google 广播级极清 TTS 音轨 (绝对无杂音/无破音)
-      // 音源 2: 有道高清美音 API 兜底
-      const primaryUrl = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=' + encodedText;
-      const secondaryUrl = 'https://dict.youdao.com/dictvoice?type=2&audio=' + encodedText;
-
-      if (isMobile) {
-        // 移动端：同步直接调用系统最高品质 Speech API，绝不经过异步拦截
-        playDirectCleanSpeech(pureText, element, primaryUrl);
-      } else {
-        // 桌面端：优先加载 Google/有道高保真 MP3 音轨
-        playCleanAudioStream(primaryUrl, secondaryUrl, pureText, element);
-      }
-    }
-
-    function playCleanAudioStream(primaryUrl, secondaryUrl, pureText, element) {
-      const audio = new Audio(primaryUrl);
-      activeAudio = audio;
-
-      audio.play().then(() => {
-        audio.onended = () => { if (element) element.classList.remove('playing'); };
-        audio.onerror = () => { trySecondaryAudio(secondaryUrl, pureText, element); };
-      }).catch(() => {
-        trySecondaryAudio(secondaryUrl, pureText, element);
-      });
-    }
-
-    function trySecondaryAudio(secondaryUrl, pureText, element) {
-      const bAudio = new Audio(secondaryUrl);
-      activeAudio = bAudio;
-      bAudio.play().then(() => {
-        bAudio.onended = () => { if (element) element.classList.remove('playing'); };
-        bAudio.onerror = () => { playDirectCleanSpeech(pureText, element, null); };
-      }).catch(() => {
-        playDirectCleanSpeech(pureText, element, null);
-      });
-    }
-
-    function playDirectCleanSpeech(pureText, element, fallbackUrl) {
-      if ('speechSynthesis' in window) {
-        try {
-          if (window.speechSynthesis.paused) window.speechSynthesis.resume();
-          window.speechSynthesis.cancel();
-        } catch(e) {}
-
-        const u = new SpeechSynthesisUtterance(pureText);
-        u.lang = 'en-US';
-        u.rate = 0.85; // 稳健语速，无切片爆音
-        u.pitch = 1.0;
-
-        const voices = window.speechSynthesis.getVoices();
-        // 优先绑定专业纯正发音人
-        const cleanVoice = voices.find(v => v.lang && (v.lang === 'en-US' || v.lang === 'en-GB') && (v.name.includes('Samantha') || v.name.includes('Alex') || v.name.includes('Google') || v.name.includes('Natural')))
-                        || voices.find(v => v.lang && v.lang.startsWith('en'));
-        if (cleanVoice) u.voice = cleanVoice;
-
-        u.onend = () => { if (element) element.classList.remove('playing'); };
-        u.onerror = () => { if (element) element.classList.remove('playing'); };
-
-        window.speechSynthesis.speak(u);
-      } else if (fallbackUrl) {
-        const audio = new Audio(fallbackUrl);
-        activeAudio = audio;
-        audio.play().then(() => {
-          audio.onended = () => { if (element) element.classList.remove('playing'); };
-        });
-      }
-    }
-
-    function toggleMask() {
-      isMask = !isMask;
-      document.body.classList.toggle('mask-mode', isMask);
-      document.getElementById('maskBtn').textContent = isMask ? '🙈 默写遮罩模式: 开' : '🙈 默写遮罩模式: 关';
-      document.getElementById('maskBtn').classList.toggle('active', isMask);
-    }
-  </script>
-</body>
-</html>let isMask = false;
-    let activeAudio = null;
-
-    // 手机端/移动端 (iOS Safari & Android) 专用无卡顿、无静音拦截发音引擎
-    function playAudio(text, element) {
-      if (activeAudio) {
-        try { activeAudio.pause(); } catch(e){}
-        activeAudio = null;
-      }
-
-      // 文本清洗与标点处理
-      const cleanText = text.replace(/[^a-zA-Z0-9\s,'\.\?!\-]/g, ' ').replace(/\s+/g, ' ').trim();
       if (!cleanText) return;
 
       if (element) {
-        document.querySelectorAll('.playing').forEach(el => el.classList.remove('playing'));
-        element.classList.add('playing');
+        document.querySelectorAll('.audio-btn.playing').forEach(el => el.classList.remove('playing'));
+        const btn = element.querySelector('.audio-btn') || element;
+        btn.classList.add('playing');
       }
 
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
       if (isMobile) {
-        // 移动端：iOS/Android 原生 Speech API (带 50ms 防死锁延迟，100% 出声)
         playMobileSpeech(cleanText, element);
       } else {
-        // 桌面端：高保真在线发音 + 原生 TTS 兜底
         playOnlineAudio(cleanText, element);
       }
     }
@@ -1075,7 +1149,6 @@
         window.speechSynthesis.cancel();
       } catch(e) {}
 
-      // 50ms 延迟是 iOS Safari 100% 出声的关键防锁机制
       setTimeout(() => {
         const u = new SpeechSynthesisUtterance(cleanText);
         u.lang = 'en-US';
@@ -1086,8 +1159,15 @@
         const usVoice = voices.find(v => v.lang && (v.lang === 'en-US' || v.lang.startsWith('en')));
         if (usVoice) u.voice = usVoice;
 
-        u.onend = () => { if (element) element.classList.remove('playing'); };
-        u.onerror = () => { if (element) element.classList.remove('playing'); };
+        const clearPlaying = () => {
+          if (element) {
+            const btn = element.querySelector('.audio-btn') || element;
+            btn.classList.remove('playing');
+          }
+        };
+
+        u.onend = clearPlaying;
+        u.onerror = clearPlaying;
 
         window.speechSynthesis.speak(u);
       }, 50);
@@ -1099,19 +1179,19 @@
       const audio = new Audio(audioUrl);
       activeAudio = audio;
 
+      const clearPlaying = () => {
+        if (element) {
+          const btn = element.querySelector('.audio-btn') || element;
+          btn.classList.remove('playing');
+        }
+      };
+
       audio.play().then(() => {
-        audio.onended = () => { if (element) element.classList.remove('playing'); };
+        audio.onended = clearPlaying;
         audio.onerror = () => { playMobileSpeech(cleanText, element); };
       }).catch(() => {
         playMobileSpeech(cleanText, element);
       });
-    }
-
-    function toggleMask() {
-      isMask = !isMask;
-      document.body.classList.toggle('mask-mode', isMask);
-      document.getElementById('maskBtn').textContent = isMask ? '🙈 默写遮罩模式: 开' : '🙈 默写遮罩模式: 关';
-      document.getElementById('maskBtn').classList.toggle('active', isMask);
     }
   </script>
 </body>

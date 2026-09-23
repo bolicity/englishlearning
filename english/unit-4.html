@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unit 4 Folk Customs - 纯净网页版（高清发音）</title>
+  <title>Unit 4 Folk Customs - 高中英语必背知识点读中心</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -17,831 +17,941 @@
       --text-secondary: #334155;
       --text-muted: #64748B;
       --primary: #2563EB;
+      --primary-hover: #1D4ED8;
       --primary-soft: #EFF6FF;
-      --accent-green: #16A34A;
-      --accent-green-soft: #F0FDF4;
+      --accent-green: #059669;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.06);
       --radius-md: 12px;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --radius-lg: 16px;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+      font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
       background: var(--bg-main);
       color: var(--text-main);
-      padding: 20px;
+      padding: 16px;
       max-width: 1000px;
       margin: 0 auto;
-      line-height: 1.5;
+      line-height: 1.6;
     }
+
     header {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 20px 24px;
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
       margin-bottom: 20px;
       box-shadow: var(--shadow-sm);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 12px;
     }
-    .back-link {
+
+    .back-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      text-decoration: none;
+      gap: 8px;
       color: var(--primary);
-      font-weight: 700;
-      font-size: 14px;
-    }
-    h1 { font-size: 22px; font-weight: 800; color: #1E40AF; }
-    p.sub { font-size: 14px; color: var(--text-muted); font-weight: 500; margin-top: 4px; }
-    
-    .ctrl-bar {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 24px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .ctrl-btn {
+      background: var(--primary-soft);
+      border: 1px solid rgba(37, 99, 235, 0.15);
       padding: 8px 16px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-secondary);
-      cursor: pointer;
-      outline: none;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
     }
-    .ctrl-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .back-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+    }
 
-    .section-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      margin-bottom: 24px;
-      box-shadow: var(--shadow-sm);
-    }
-    .sec-title {
-      font-size: 18px;
+    .header-title {
+      font-size: 1.2rem;
       font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 16px;
+    }
+
+    .mode-toggle {
+      display: flex;
+      align-items: center;
+      background: var(--bg-subtle);
+      border-radius: 9999px;
+      padding: 4px;
+      border: 1px solid var(--border-color);
+    }
+
+    .mode-btn {
+      padding: 6px 14px;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .mode-btn.active {
+      background: var(--bg-card);
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .unit-quick-nav {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .nav-pill {
+      padding: 6px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .nav-pill:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .nav-pill.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 20px 0 12px 4px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .grid-words {
+    .section-badge {
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 9999px;
+    }
+
+    .words-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 12px;
+      margin-bottom: 24px;
     }
-    .item-card {
-      background: var(--bg-subtle);
+    .word-card {
+      background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 14px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .item-card:hover { border-color: var(--primary); background: var(--primary-soft); }
-    .item-card.playing { border-color: var(--accent-green); background: var(--accent-green-soft); }
-    
-    .item-en { font-weight: 700; font-size: 16px; color: var(--text-main); margin-bottom: 4px; display: flex; justify-content: space-between; }
-    .item-cn { font-size: 13px; color: var(--text-muted); font-weight: 500; transition: filter 0.2s; }
-
-    /* 默写模式：隐藏英文，保持中文显示 */
-    body.mask-mode .item-en,
-    body.mask-mode .row-left span[style*="font-weight:700"],
-    body.mask-mode .sentence-card .sentence-en,
-    body.mask-mode span[style*="font-size:16px"] {
-      filter: blur(6px);
-      user-select: none;
-      transition: filter 0.2s;
-    }
-    body.mask-mode .item-card:hover .item-en,
-    body.mask-mode .list-row:hover .row-left span,
-    body.mask-mode .list-row:hover span[style*="font-size:16px"] {
-      filter: blur(0);
-    }
-    body.mask-mode .item-cn { filter: none !important; }
-
-    .list-phrases, .list-sentences { display: flex; flex-direction: column; gap: 10px; }
-    .list-row {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 14px 18px;
-      cursor: pointer;
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      box-shadow: var(--shadow-sm);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
+      cursor: pointer;
     }
-    .list-row:hover { border-color: var(--primary); background: var(--primary-soft); }
-    .list-row.playing { border-color: var(--accent-green); background: var(--accent-green-soft); }
-    
-    .row-left { display: flex; align-items: center; gap: 12px; }
-    .num-badge { font-size: 12px; font-weight: 700; color: var(--text-muted); background: white; padding: 2px 8px; border-radius: 4px; }
+    .word-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .word-info { flex: 1; padding-right: 12px; }
+    .word-top { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+    .word-target { font-size: 1.15rem; font-weight: 800; color: var(--text-main); }
+    .word-phonetic { font-size: 0.85rem; color: var(--text-muted); }
+    .word-trans { font-size: 0.9rem; color: var(--text-secondary); }
+
+    body.mask-mode .en-text {
+      background: #E2E8F0;
+      color: transparent !important;
+      border-radius: 4px;
+      user-select: none;
+    }
+    body.mask-mode .word-card:hover .en-text,
+    body.mask-mode .phrase-card:hover .en-text,
+    body.mask-mode .sentence-card:hover .en-text {
+      background: transparent;
+      color: var(--primary) !important;
+    }
+
+    .audio-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    .word-card:hover .audio-btn,
+    .phrase-card:hover .audio-btn,
+    .sentence-card:hover .audio-btn {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+    .audio-btn.playing {
+      background: var(--accent-green) !important;
+      color: #FFFFFF !important;
+      border-color: var(--accent-green) !important;
+      animation: pulse 1.2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .phrases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .phrase-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .phrase-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .phrase-en { font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 2px; }
+    .phrase-cn { font-size: 0.88rem; color: var(--text-secondary); }
+
+    .sentences-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+    .sentence-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .sentence-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateX(2px);
+    }
+    .sentence-content { flex: 1; }
+    .sentence-en { font-size: 1.05rem; font-weight: 600; color: var(--text-main); margin-bottom: 4px; }
+    .sentence-cn { font-size: 0.9rem; color: var(--text-muted); }
+
+    .grammar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 24px;
+    }
+    .grammar-title { font-size: 1.1rem; font-weight: 800; color: var(--primary); margin-bottom: 8px; }
+    .grammar-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; white-space: pre-line; }
+
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0F172A;
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 640px) {
+      body { padding: 12px; }
+      header { flex-direction: column; align-items: stretch; }
+      .words-grid, .phrases-grid { grid-template-columns: 1fr; }
+      .sentence-card { flex-direction: column; align-items: flex-start; }
+      .sentence-card .audio-btn { align-self: flex-end; }
+    }
   </style>
 </head>
 <body>
+
   <header>
-    <div>
-      <a href="english-hub.html" class="back-link" style="margin-right:12px;">← 返回英语中心</a> <a href="unit-study-hub-V1.html" class="back-link">📖 单元总览</a>
-      <h1 style="margin-top:8px;">Unit 4 Folk Customs</h1>
-      <p class="sub">民俗文化·风土人情与传统节日（全量必背单） · 原生网页点读版（无PDF）</p>
-    </div>
-    <div>
-      <span style="font-size:13px; background:var(--accent-green-soft); color:var(--accent-green); border:1px solid #BBF7D0; padding:6px 14px; border-radius:20px; font-weight:700;">🔊 清晰真人语音模式</span>
+    <a href="unit-study-hub-V1.html" class="back-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回点读中心
+    </a>
+
+    <div class="header-title">Unit 4 Folk Customs</div>
+
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="btnRecite" onclick="setMode('recite')">📖 背诵模式</button>
+      <button class="mode-btn" id="btnMask" onclick="setMode('mask')">🙈 默写模式</button>
     </div>
   </header>
 
-  <div class="ctrl-bar">
-    <button class="ctrl-btn" id="maskBtn" onclick="toggleMask()">🙈 默写遮罩模式: 关</button>
-    <select class="ctrl-btn" id="audioEngineSelect">
-      <option value="dict">🔊 高音质在线发音 (推荐)</option>
-      <option value="speech">🤖 浏览器原生发音</option>
-    </select>
+  <div class="unit-quick-nav">
+    <a href="unit-1.html" class="nav-pill ">Unit 1</a><a href="unit-2.html" class="nav-pill ">Unit 2</a><a href="unit-3.html" class="nav-pill ">Unit 3</a><a href="unit-4.html" class="nav-pill active">Unit 4</a><a href="unit-5.html" class="nav-pill ">Unit 5</a><a href="unit-6.html" class="nav-pill ">Unit 6</a>
   </div>
 
-  <!-- 单词 -->
-  <div class="section-box">
-    <div class="sec-title">🔤 重点词汇 (16个)</div>
-    <div class="grid-words">
-      
-        <div class="item-card" onclick="playAudio('suit', this)">
-          <div class="item-en"><span>suit</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/sjuːt/ n.</div>
-          <div class="item-cn">套装；西装</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('exhibition', this)">
-          <div class="item-en"><span>exhibition</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/ˌeksɪˈbɪʃn/ n.</div>
-          <div class="item-cn">展览；展会</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('stand', this)">
-          <div class="item-en"><span>stand</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/stænd/ n.</div>
-          <div class="item-cn">展位；货摊</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('sandwich', this)">
-          <div class="item-en"><span>sandwich</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/ˈsænwɪtʃ/ n.</div>
-          <div class="item-cn">三明治</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('biscuit', this)">
-          <div class="item-en"><span>biscuit</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/ˈbɪskɪt/ n.</div>
-          <div class="item-cn">饼干</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('leather', this)">
-          <div class="item-en"><span>leather</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/ˈleðə(r)/ n.</div>
-          <div class="item-cn">皮革</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('be all ears', this)">
-          <div class="item-en"><span>be all ears</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/biː ɔːl ɪəz/ phr.</div>
-          <div class="item-cn">全神贯注地倾听</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('lunar', this)">
-          <div class="item-en"><span>lunar</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/ˈluːnə(r)/ adj.</div>
-          <div class="item-cn">农历的；阴历的；月球的</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('clay', this)">
-          <div class="item-en"><span>clay</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/kleɪ/ n.</div>
-          <div class="item-cn">黏土；陶土</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('beer', this)">
-          <div class="item-en"><span>beer</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/bɪə(r)/ n.</div>
-          <div class="item-cn">啤酒</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('sausage', this)">
-          <div class="item-en"><span>sausage</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/ˈsɒsɪdʒ/ n.</div>
-          <div class="item-cn">香肠；腊肠</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('suppose', this)">
-          <div class="item-en"><span>suppose</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/səˈpəʊz/ v.</div>
-          <div class="item-cn">假设；认为</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('mirror', this)">
-          <div class="item-en"><span>mirror</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/ˈmɪrə(r)/ n.</div>
-          <div class="item-cn">镜子</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('exist', this)">
-          <div class="item-en"><span>exist</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/ɪɡˈzɪst/ v.</div>
-          <div class="item-cn">存在</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('identity', this)">
-          <div class="item-en"><span>identity</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/aɪˈdentəti/ n.</div>
-          <div class="item-cn">身份；认同</div>
-        </div>
-        
-        <div class="item-card" onclick="playAudio('unite', this)">
-          <div class="item-en"><span>unite</span><span>🔊</span></div>
-          <div style="font-size:12px; color:var(--text-muted);">/juˈnaɪt/ v.</div>
-          <div class="item-cn">团结；联合</div>
-        </div>
-        
+  <main>
+    <div class="section-title">
+      <span>📝 核心词汇</span>
+      <span class="section-badge">16</span>
     </div>
-  </div>
+    <div class="words-grid">
+      <div class="word-card" onclick="playAudio('suit', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">suit</span>
+              <span class="word-phonetic">/sjuːt/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>套装；西装
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('exhibition', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">exhibition</span>
+              <span class="word-phonetic">/ˌeksɪˈbɪʃn/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>展览；展会
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('stand', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">stand</span>
+              <span class="word-phonetic">/stænd/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>展位；货摊
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('sandwich', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">sandwich</span>
+              <span class="word-phonetic">/ˈsænwɪtʃ/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>三明治
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('biscuit', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">biscuit</span>
+              <span class="word-phonetic">/ˈbɪskɪt/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>饼干
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('leather', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">leather</span>
+              <span class="word-phonetic">/ˈleðə(r)/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>皮革
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('be all ears', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">be all ears</span>
+              <span class="word-phonetic">/biː ɔːl ɪəz/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">phr.</span>全神贯注地倾听
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('lunar', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">lunar</span>
+              <span class="word-phonetic">/ˈluːnə(r)/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">adj.</span>农历的；阴历的；月球的
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('clay', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">clay</span>
+              <span class="word-phonetic">/kleɪ/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>黏土；陶土
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('beer', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">beer</span>
+              <span class="word-phonetic">/bɪə(r)/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>啤酒
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('sausage', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">sausage</span>
+              <span class="word-phonetic">/ˈsɒsɪdʒ/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>香肠；腊肠
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('suppose', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">suppose</span>
+              <span class="word-phonetic">/səˈpəʊz/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">v.</span>假设；认为
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('mirror', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">mirror</span>
+              <span class="word-phonetic">/ˈmɪrə(r)/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>镜子
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('exist', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">exist</span>
+              <span class="word-phonetic">/ɪɡˈzɪst/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">v.</span>存在
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('identity', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">identity</span>
+              <span class="word-phonetic">/aɪˈdentəti/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">n.</span>身份；认同
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="word-card" onclick="playAudio('unite', this)">
+          <div class="word-info">
+            <div class="word-top">
+              <span class="word-target en-text">unite</span>
+              <span class="word-phonetic">/juˈnaɪt/</span>
+            </div>
+            <div class="word-trans">
+              <span style="color:var(--primary); font-weight:700; margin-right:4px;">v.</span>团结；联合
+            </div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div>
+    </div>
 
-  <!-- 短语 -->
-  <div class="section-box">
-    <div class="sec-title">🗣️ 核心短语 (30条)</div>
-    <div class="list-phrases">
-      
-        <div class="list-row" onclick="playAudio('folk customs', this)">
-          <div class="row-left">
-            <span class="num-badge">1</span>
-            <span style="font-weight:700;">folk customs</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">民俗风尚；民间习俗</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('Folk Customs Festival', this)">
-          <div class="row-left">
-            <span class="num-badge">2</span>
-            <span style="font-weight:700;">Folk Customs Festival</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">民俗文化节</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('opening speech', this)">
-          <div class="row-left">
-            <span class="num-badge">3</span>
-            <span style="font-weight:700;">opening speech</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">开幕致辞</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('exhibition stands', this)">
-          <div class="row-left">
-            <span class="num-badge">4</span>
-            <span style="font-weight:700;">exhibition stands</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">展览展位</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('folk costumes', this)">
-          <div class="row-left">
-            <span class="num-badge">5</span>
-            <span style="font-weight:700;">folk costumes</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">民族服饰</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('folk art', this)">
-          <div class="row-left">
-            <span class="num-badge">6</span>
-            <span style="font-weight:700;">folk art</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">民间艺术</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('folk eating customs', this)">
-          <div class="row-left">
-            <span class="num-badge">7</span>
-            <span style="font-weight:700;">folk eating customs</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">民间饮食习俗</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('folk dances', this)">
-          <div class="row-left">
-            <span class="num-badge">8</span>
-            <span style="font-weight:700;">folk dances</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">民间舞蹈</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('writing competition', this)">
-          <div class="row-left">
-            <span class="num-badge">9</span>
-            <span style="font-weight:700;">writing competition</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">写作比赛</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('afternoon tea', this)">
-          <div class="row-left">
-            <span class="num-badge">10</span>
-            <span style="font-weight:700;">afternoon tea</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">下午茶</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('leather suits', this)">
-          <div class="row-left">
-            <span class="num-badge">11</span>
-            <span style="font-weight:700;">leather suits</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">皮衣套装</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('war dance', this)">
-          <div class="row-left">
-            <span class="num-badge">12</span>
-            <span style="font-weight:700;">war dance</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">战舞</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('clay pots', this)">
-          <div class="row-left">
-            <span class="num-badge">13</span>
-            <span style="font-weight:700;">clay pots</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">黏土陶罐</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('lunar calendar', this)">
-          <div class="row-left">
-            <span class="num-badge">14</span>
-            <span style="font-weight:700;">lunar calendar</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">农历；阴历</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('set off fireworks', this)">
-          <div class="row-left">
-            <span class="num-badge">15</span>
-            <span style="font-weight:700;">set off fireworks</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">燃放烟花</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('wash away bad luck', this)">
-          <div class="row-left">
-            <span class="num-badge">16</span>
-            <span style="font-weight:700;">wash away bad luck</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">洗去厄运</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('Midsummer Day', this)">
-          <div class="row-left">
-            <span class="num-badge">17</span>
-            <span style="font-weight:700;">Midsummer Day</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">仲夏节</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('set campfires', this)">
-          <div class="row-left">
-            <span class="num-badge">18</span>
-            <span style="font-weight:700;">set campfires</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">点燃篝火</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('midsummer pole', this)">
-          <div class="row-left">
-            <span class="num-badge">19</span>
-            <span style="font-weight:700;">midsummer pole</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">仲夏柱</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('autumn harvest', this)">
-          <div class="row-left">
-            <span class="num-badge">20</span>
-            <span style="font-weight:700;">autumn harvest</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">秋收</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('Oktoberfest', this)">
-          <div class="row-left">
-            <span class="num-badge">21</span>
-            <span style="font-weight:700;">Oktoberfest</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">啤酒节</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('traditional costumes', this)">
-          <div class="row-left">
-            <span class="num-badge">22</span>
-            <span style="font-weight:700;">traditional costumes</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">传统服饰</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('identify with', this)">
-          <div class="row-left">
-            <span class="num-badge">23</span>
-            <span style="font-weight:700;">identify with</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">认同；产生共鸣</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('relate to', this)">
-          <div class="row-left">
-            <span class="num-badge">24</span>
-            <span style="font-weight:700;">relate to</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">与...相关联</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('connect us back to our roots', this)">
-          <div class="row-left">
-            <span class="num-badge">25</span>
-            <span style="font-weight:700;">connect us back to our roots</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">将我们与文化之根紧密相连</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('pass on history', this)">
-          <div class="row-left">
-            <span class="num-badge">26</span>
-            <span style="font-weight:700;">pass on history</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">传承历史</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('unite the world', this)">
-          <div class="row-left">
-            <span class="num-badge">27</span>
-            <span style="font-weight:700;">unite the world</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">团结世界</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('the bridge between past and present', this)">
-          <div class="row-left">
-            <span class="num-badge">28</span>
-            <span style="font-weight:700;">the bridge between past and present</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">连接过去与现在的桥梁</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('different background', this)">
-          <div class="row-left">
-            <span class="num-badge">29</span>
-            <span style="font-weight:700;">different background</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">不同的背景</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
-        <div class="list-row" onclick="playAudio('sugar painting', this)">
-          <div class="row-left">
-            <span class="num-badge">30</span>
-            <span style="font-weight:700;">sugar painting</span>
-          </div>
-          <div>
-            <span class="item-cn" style="margin-right:10px;">画糖人；糖画</span>
-            <span>🔊</span>
-          </div>
-        </div>
-        
+    <div class="section-title">
+      <span>💡 必备短语</span>
+      <span class="section-badge">30</span>
     </div>
-  </div>
+    <div class="phrases-grid">
+      <div class="phrase-card" onclick="playAudio('folk customs', this)">
+          <div>
+            <div class="phrase-en en-text">folk customs</div>
+            <div class="phrase-cn">民俗风尚；民间习俗</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('Folk Customs Festival', this)">
+          <div>
+            <div class="phrase-en en-text">Folk Customs Festival</div>
+            <div class="phrase-cn">民俗文化节</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('opening speech', this)">
+          <div>
+            <div class="phrase-en en-text">opening speech</div>
+            <div class="phrase-cn">开幕致辞</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('exhibition stands', this)">
+          <div>
+            <div class="phrase-en en-text">exhibition stands</div>
+            <div class="phrase-cn">展览展位</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('folk costumes', this)">
+          <div>
+            <div class="phrase-en en-text">folk costumes</div>
+            <div class="phrase-cn">民族服饰</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('folk art', this)">
+          <div>
+            <div class="phrase-en en-text">folk art</div>
+            <div class="phrase-cn">民间艺术</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('folk eating customs', this)">
+          <div>
+            <div class="phrase-en en-text">folk eating customs</div>
+            <div class="phrase-cn">民间饮食习俗</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('folk dances', this)">
+          <div>
+            <div class="phrase-en en-text">folk dances</div>
+            <div class="phrase-cn">民间舞蹈</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('writing competition', this)">
+          <div>
+            <div class="phrase-en en-text">writing competition</div>
+            <div class="phrase-cn">写作比赛</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('afternoon tea', this)">
+          <div>
+            <div class="phrase-en en-text">afternoon tea</div>
+            <div class="phrase-cn">下午茶</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('leather suits', this)">
+          <div>
+            <div class="phrase-en en-text">leather suits</div>
+            <div class="phrase-cn">皮衣套装</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('war dance', this)">
+          <div>
+            <div class="phrase-en en-text">war dance</div>
+            <div class="phrase-cn">战舞</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('clay pots', this)">
+          <div>
+            <div class="phrase-en en-text">clay pots</div>
+            <div class="phrase-cn">黏土陶罐</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('lunar calendar', this)">
+          <div>
+            <div class="phrase-en en-text">lunar calendar</div>
+            <div class="phrase-cn">农历；阴历</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('set off fireworks', this)">
+          <div>
+            <div class="phrase-en en-text">set off fireworks</div>
+            <div class="phrase-cn">燃放烟花</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('wash away bad luck', this)">
+          <div>
+            <div class="phrase-en en-text">wash away bad luck</div>
+            <div class="phrase-cn">洗去厄运</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('Midsummer Day', this)">
+          <div>
+            <div class="phrase-en en-text">Midsummer Day</div>
+            <div class="phrase-cn">仲夏节</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('set campfires', this)">
+          <div>
+            <div class="phrase-en en-text">set campfires</div>
+            <div class="phrase-cn">点燃篝火</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('midsummer pole', this)">
+          <div>
+            <div class="phrase-en en-text">midsummer pole</div>
+            <div class="phrase-cn">仲夏柱</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('autumn harvest', this)">
+          <div>
+            <div class="phrase-en en-text">autumn harvest</div>
+            <div class="phrase-cn">秋收</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('Oktoberfest', this)">
+          <div>
+            <div class="phrase-en en-text">Oktoberfest</div>
+            <div class="phrase-cn">啤酒节</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('traditional costumes', this)">
+          <div>
+            <div class="phrase-en en-text">traditional costumes</div>
+            <div class="phrase-cn">传统服饰</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('identify with', this)">
+          <div>
+            <div class="phrase-en en-text">identify with</div>
+            <div class="phrase-cn">认同；产生共鸣</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('relate to', this)">
+          <div>
+            <div class="phrase-en en-text">relate to</div>
+            <div class="phrase-cn">与...相关联</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('connect us back to our roots', this)">
+          <div>
+            <div class="phrase-en en-text">connect us back to our roots</div>
+            <div class="phrase-cn">将我们与文化之根紧密相连</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('pass on history', this)">
+          <div>
+            <div class="phrase-en en-text">pass on history</div>
+            <div class="phrase-cn">传承历史</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('unite the world', this)">
+          <div>
+            <div class="phrase-en en-text">unite the world</div>
+            <div class="phrase-cn">团结世界</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('the bridge between past and present', this)">
+          <div>
+            <div class="phrase-en en-text">the bridge between past and present</div>
+            <div class="phrase-cn">连接过去与现在的桥梁</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('different background', this)">
+          <div>
+            <div class="phrase-en en-text">different background</div>
+            <div class="phrase-cn">不同的背景</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="phrase-card" onclick="playAudio('sugar painting', this)">
+          <div>
+            <div class="phrase-en en-text">sugar painting</div>
+            <div class="phrase-cn">画糖人；糖画</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div>
+    </div>
 
-  <!-- 句型 -->
-  <div class="section-box">
-    <div class="sec-title">💬 重点句型与经典例句 (10句)</div>
-    <div class="list-sentences">
-      
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Folk customs connect us back to our cultural roots.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">1</span> Folk customs connect us back to our cultural roots.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">民间习俗将我们与自己的文化根基紧密相连。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Setting off fireworks on New Year\'s Eve is believed to wash away bad luck.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">2</span> Setting off fireworks on New Year's Eve is believed to wash away bad luck.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">除夕夜燃放烟花被认为能够洗去厄运。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Traditional festivals serve as a bridge between the past and the present.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">3</span> Traditional festivals serve as a bridge between the past and the present.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">传统节日构筑起了连接过去与现在的桥梁。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('People wear colourful folk costumes and perform traditional dances during the festival.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">4</span> People wear colourful folk costumes and perform traditional dances during the festival.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">节日期间，人们身穿绚丽的民族服饰，表演传统舞蹈。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Folk customs are the mirror of the past.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">5</span> Folk customs are the mirror of the past.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">民俗文化是照见历史过去的一面镜子。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('As people from different backgrounds learn about each other, society becomes stronger.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">6</span> As people from different backgrounds learn about each other, society becomes stronger.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">随着来自不同背景的人们相互了解，社会变得更加凝聚强大。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Traditional dishes are cooked with love and shared among family and friends.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">7</span> Traditional dishes are cooked with love and shared among family and friends.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">传统美食饱含爱意被精心烹制，并在亲朋好友间共享。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('An old man painting with sugar caught my eye in the street.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">8</span> An old man painting with sugar caught my eye in the street.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">街头一位画糖人的老人吸引了我的目光。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Thousands of monkeys enjoy a big fruit feast every November in Thailand.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">9</span> Thousands of monkeys enjoy a big fruit feast every November in Thailand.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">每年十一月，泰国成千上万只猴子享用着丰盛的水果盛宴。</div>
-        </div>
-        
-        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('This cultural treasure will disappear if we don\'t find ways to save it.', this)">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">10</span> This cultural treasure will disappear if we don't find ways to save it.</span>
-            <span>🔊</span>
-          </div>
-          <div class="item-cn" style="font-size:14px;">如果我们不想法设法挽救，这一文化瑰宝将会消逝。</div>
-        </div>
-        
+    <div class="section-title">
+      <span>🗣️ 经典例句</span>
+      <span class="section-badge">10</span>
     </div>
-  </div>
+    <div class="sentences-list">
+      <div class="sentence-card" onclick="playAudio('Folk customs connect us back to our cultural roots.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Folk customs connect us back to our cultural roots.</div>
+            <div class="sentence-cn">民间习俗将我们与自己的文化根基紧密相连。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Setting off fireworks on New Year\'s Eve is believed to wash away bad luck.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Setting off fireworks on New Year's Eve is believed to wash away bad luck.</div>
+            <div class="sentence-cn">除夕夜燃放烟花被认为能够洗去厄运。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Traditional festivals serve as a bridge between the past and the present.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Traditional festivals serve as a bridge between the past and the present.</div>
+            <div class="sentence-cn">传统节日构筑起了连接过去与现在的桥梁。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('People wear colourful folk costumes and perform traditional dances during the festival.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">People wear colourful folk costumes and perform traditional dances during the festival.</div>
+            <div class="sentence-cn">节日期间，人们身穿绚丽的民族服饰，表演传统舞蹈。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Folk customs are the mirror of the past.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Folk customs are the mirror of the past.</div>
+            <div class="sentence-cn">民俗文化是照见历史过去的一面镜子。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('As people from different backgrounds learn about each other, society becomes stronger.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">As people from different backgrounds learn about each other, society becomes stronger.</div>
+            <div class="sentence-cn">随着来自不同背景的人们相互了解，社会变得更加凝聚强大。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Traditional dishes are cooked with love and shared among family and friends.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Traditional dishes are cooked with love and shared among family and friends.</div>
+            <div class="sentence-cn">传统美食饱含爱意被精心烹制，并在亲朋好友间共享。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('An old man painting with sugar caught my eye in the street.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">An old man painting with sugar caught my eye in the street.</div>
+            <div class="sentence-cn">街头一位画糖人的老人吸引了我的目光。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('Thousands of monkeys enjoy a big fruit feast every November in Thailand.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">Thousands of monkeys enjoy a big fruit feast every November in Thailand.</div>
+            <div class="sentence-cn">每年十一月，泰国成千上万只猴子享用着丰盛的水果盛宴。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div><div class="sentence-card" onclick="playAudio('This cultural treasure will disappear if we don\'t find ways to save it.', this)">
+          <div class="sentence-content">
+            <div class="sentence-en en-text">This cultural treasure will disappear if we don't find ways to save it.</div>
+            <div class="sentence-cn">如果我们不想法设法挽救，这一文化瑰宝将会消逝。</div>
+          </div>
+          <div class="audio-btn" title="点击发音">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </div>
+        </div>
+    </div>
+
+    <div class="section-title">
+      <span>📘 语法解析</span>
+    </div>
+    <div class="grammar-card">
+              <div class="grammar-title">被动语态与形式主语 (Passive Voice & It is + adj.)</div>
+              <div class="grammar-desc">1. It is believed/said that ... (人们相信/据说...)
+2. Passive Voice in Present/Past: Fireworks are set off to celebrate the coming new year.
+3. 不可数名词作主语的主谓一致</div>
+            </div>
+  </main>
+
+  <div id="toast">提示</div>
 
   <script>
-            let activeAudio = null;
+    let activeAudio = null;
 
-    // 极清广播级音频发音引擎（彻底解决长句破音、切片爆音与嘈杂杂音问题）
+    function setMode(mode) {
+      document.getElementById('btnRecite').classList.toggle('active', mode === 'recite');
+      document.getElementById('btnMask').classList.toggle('active', mode === 'mask');
+      if (mode === 'mask') {
+        document.body.classList.add('mask-mode');
+        showToast('已开启默写模式：隐藏英文，看中文默写');
+      } else {
+        document.body.classList.remove('mask-mode');
+        showToast('已开启背诵模式：英文中文全显');
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
     function playAudio(text, element) {
       if (activeAudio) {
         try { activeAudio.pause(); } catch(e){}
         activeAudio = null;
       }
-      if ('speechSynthesis' in window) {
-        try { window.speechSynthesis.cancel(); } catch(e){}
-      }
 
-      // 1. 文本极纯化处理：展开常见缩写并彻底剥离所有会引起切片爆音的标点符号
-      let pureText = text
-        .replace(/\bcan't\b/gi, 'cannot')
-        .replace(/\bwon't\b/gi, 'will not')
-        .replace(/\bdon't\b/gi, 'do not')
-        .replace(/\bdoesn't\b/gi, 'does not')
-        .replace(/\bdidn't\b/gi, 'did not')
-        .replace(/\bit's\b/gi, 'it is')
-        .replace(/\bI'm\b/gi, 'I am')
-        .replace(/\bthey're\b/gi, 'they are')
-        .replace(/\bwe're\b/gi, 'we are')
-        .replace(/\byou're\b/gi, 'you are')
+      let cleanText = text
+        .replace(/can't/gi, 'cannot')
+        .replace(/won't/gi, 'will not')
+        .replace(/don't/gi, 'do not')
+        .replace(/doesn't/gi, 'does not')
+        .replace(/didn't/gi, 'did not')
+        .replace(/it's/gi, 'it is')
+        .replace(/I'm/gi, 'I am')
+        .replace(/they're/gi, 'they are')
+        .replace(/we're/gi, 'we are')
+        .replace(/you're/gi, 'you are')
         .replace(/[^a-zA-Z0-9\s]/g, ' ')
         .replace(/\s+/g, ' ')
         .trim();
 
-      if (!pureText) return;
-
-      if (element) {
-        document.querySelectorAll('.playing').forEach(el => el.classList.remove('playing'));
-        element.classList.add('playing');
-      }
-
-      const encodedText = encodeURIComponent(pureText);
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-      // 高清广播级双音源（支持长例句与单词）：
-      // 音源 1: Google 广播级极清 TTS 音轨 (绝对无杂音/无破音)
-      // 音源 2: 有道高清美音 API 兜底
-      const primaryUrl = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=' + encodedText;
-      const secondaryUrl = 'https://dict.youdao.com/dictvoice?type=2&audio=' + encodedText;
-
-      if (isMobile) {
-        // 移动端：同步直接调用系统最高品质 Speech API，绝不经过异步拦截
-        playDirectCleanSpeech(pureText, element, primaryUrl);
-      } else {
-        // 桌面端：优先加载 Google/有道高保真 MP3 音轨
-        playCleanAudioStream(primaryUrl, secondaryUrl, pureText, element);
-      }
-    }
-
-    function playCleanAudioStream(primaryUrl, secondaryUrl, pureText, element) {
-      const audio = new Audio(primaryUrl);
-      activeAudio = audio;
-
-      audio.play().then(() => {
-        audio.onended = () => { if (element) element.classList.remove('playing'); };
-        audio.onerror = () => { trySecondaryAudio(secondaryUrl, pureText, element); };
-      }).catch(() => {
-        trySecondaryAudio(secondaryUrl, pureText, element);
-      });
-    }
-
-    function trySecondaryAudio(secondaryUrl, pureText, element) {
-      const bAudio = new Audio(secondaryUrl);
-      activeAudio = bAudio;
-      bAudio.play().then(() => {
-        bAudio.onended = () => { if (element) element.classList.remove('playing'); };
-        bAudio.onerror = () => { playDirectCleanSpeech(pureText, element, null); };
-      }).catch(() => {
-        playDirectCleanSpeech(pureText, element, null);
-      });
-    }
-
-    function playDirectCleanSpeech(pureText, element, fallbackUrl) {
-      if ('speechSynthesis' in window) {
-        try {
-          if (window.speechSynthesis.paused) window.speechSynthesis.resume();
-          window.speechSynthesis.cancel();
-        } catch(e) {}
-
-        const u = new SpeechSynthesisUtterance(pureText);
-        u.lang = 'en-US';
-        u.rate = 0.85; // 稳健语速，无切片爆音
-        u.pitch = 1.0;
-
-        const voices = window.speechSynthesis.getVoices();
-        // 优先绑定专业纯正发音人
-        const cleanVoice = voices.find(v => v.lang && (v.lang === 'en-US' || v.lang === 'en-GB') && (v.name.includes('Samantha') || v.name.includes('Alex') || v.name.includes('Google') || v.name.includes('Natural')))
-                        || voices.find(v => v.lang && v.lang.startsWith('en'));
-        if (cleanVoice) u.voice = cleanVoice;
-
-        u.onend = () => { if (element) element.classList.remove('playing'); };
-        u.onerror = () => { if (element) element.classList.remove('playing'); };
-
-        window.speechSynthesis.speak(u);
-      } else if (fallbackUrl) {
-        const audio = new Audio(fallbackUrl);
-        activeAudio = audio;
-        audio.play().then(() => {
-          audio.onended = () => { if (element) element.classList.remove('playing'); };
-        });
-      }
-    }
-
-    function toggleMask() {
-      isMask = !isMask;
-      document.body.classList.toggle('mask-mode', isMask);
-      document.getElementById('maskBtn').textContent = isMask ? '🙈 默写遮罩模式: 开' : '🙈 默写遮罩模式: 关';
-      document.getElementById('maskBtn').classList.toggle('active', isMask);
-    }
-  </script>
-</body>
-</html>let isMask = false;
-    let activeAudio = null;
-
-    // 手机端/移动端 (iOS Safari & Android) 专用无卡顿、无静音拦截发音引擎
-    function playAudio(text, element) {
-      if (activeAudio) {
-        try { activeAudio.pause(); } catch(e){}
-        activeAudio = null;
-      }
-
-      // 文本清洗与标点处理
-      const cleanText = text.replace(/[^a-zA-Z0-9\s,'\.\?!\-]/g, ' ').replace(/\s+/g, ' ').trim();
       if (!cleanText) return;
 
       if (element) {
-        document.querySelectorAll('.playing').forEach(el => el.classList.remove('playing'));
-        element.classList.add('playing');
+        document.querySelectorAll('.audio-btn.playing').forEach(el => el.classList.remove('playing'));
+        const btn = element.querySelector('.audio-btn') || element;
+        btn.classList.add('playing');
       }
 
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
       if (isMobile) {
-        // 移动端：iOS/Android 原生 Speech API (带 50ms 防死锁延迟，100% 出声)
         playMobileSpeech(cleanText, element);
       } else {
-        // 桌面端：高保真在线发音 + 原生 TTS 兜底
         playOnlineAudio(cleanText, element);
       }
     }
@@ -859,7 +969,6 @@
         window.speechSynthesis.cancel();
       } catch(e) {}
 
-      // 50ms 延迟是 iOS Safari 100% 出声的关键防锁机制
       setTimeout(() => {
         const u = new SpeechSynthesisUtterance(cleanText);
         u.lang = 'en-US';
@@ -870,8 +979,15 @@
         const usVoice = voices.find(v => v.lang && (v.lang === 'en-US' || v.lang.startsWith('en')));
         if (usVoice) u.voice = usVoice;
 
-        u.onend = () => { if (element) element.classList.remove('playing'); };
-        u.onerror = () => { if (element) element.classList.remove('playing'); };
+        const clearPlaying = () => {
+          if (element) {
+            const btn = element.querySelector('.audio-btn') || element;
+            btn.classList.remove('playing');
+          }
+        };
+
+        u.onend = clearPlaying;
+        u.onerror = clearPlaying;
 
         window.speechSynthesis.speak(u);
       }, 50);
@@ -883,19 +999,19 @@
       const audio = new Audio(audioUrl);
       activeAudio = audio;
 
+      const clearPlaying = () => {
+        if (element) {
+          const btn = element.querySelector('.audio-btn') || element;
+          btn.classList.remove('playing');
+        }
+      };
+
       audio.play().then(() => {
-        audio.onended = () => { if (element) element.classList.remove('playing'); };
+        audio.onended = clearPlaying;
         audio.onerror = () => { playMobileSpeech(cleanText, element); };
       }).catch(() => {
         playMobileSpeech(cleanText, element);
       });
-    }
-
-    function toggleMask() {
-      isMask = !isMask;
-      document.body.classList.toggle('mask-mode', isMask);
-      document.getElementById('maskBtn').textContent = isMask ? '🙈 默写遮罩模式: 开' : '🙈 默写遮罩模式: 关';
-      document.getElementById('maskBtn').classList.toggle('active', isMask);
     }
   </script>
 </body>
