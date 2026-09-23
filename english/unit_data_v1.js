@@ -1,15 +1,9 @@
 window.UNIT_KNOWLEDGE_BASE = [
   {
+    "unit_id": 1,
     "title": "Unit 1 Teenage Life",
     "subtitle": "青春期生活与成长心理",
     "pdf_filename": "Unit 1 Teenage life 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
-    "images": [
-      "docs/unit_images/Unit_1_p1.png",
-      "docs/unit_images/Unit_1_p2.png",
-      "docs/unit_images/Unit_1_p3.png",
-      "docs/unit_images/Unit_1_p4.png",
-      "docs/unit_images/Unit_1_p5.png"
-    ],
     "words": [
       {
         "word": "teenage",
@@ -330,17 +324,10 @@ window.UNIT_KNOWLEDGE_BASE = [
     ]
   },
   {
+    "unit_id": 2,
     "title": "Unit 2 People and Their Jobs",
-    "subtitle": "职业与人物·古籍修复与百业匠心",
+    "subtitle": "职业与人物·古籍修复与百业匠心（全量必背单）",
     "pdf_filename": "Unit 2 People and their jobs 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
-    "images": [
-      "docs/unit_images/Unit_2_p1.png",
-      "docs/unit_images/Unit_2_p2.png",
-      "docs/unit_images/Unit_2_p3.png",
-      "docs/unit_images/Unit_2_p4.png",
-      "docs/unit_images/Unit_2_p5.png",
-      "docs/unit_images/Unit_2_p6.png"
-    ],
     "words": [
       {
         "word": "vox pop",
@@ -445,6 +432,12 @@ window.UNIT_KNOWLEDGE_BASE = [
         "trans": "由于；因为"
       },
       {
+        "word": "worm",
+        "phonetic": "/wɜːm/",
+        "pos": "n.",
+        "trans": "蠕虫；书虫"
+      },
+      {
         "word": "damp",
         "phonetic": "/dæmp/",
         "pos": "n./adj.",
@@ -517,6 +510,12 @@ window.UNIT_KNOWLEDGE_BASE = [
         "trans": "邮递员"
       },
       {
+        "word": "boss",
+        "phonetic": "/bɒs/",
+        "pos": "n.",
+        "trans": "老板；上司"
+      },
+      {
         "word": "dentist",
         "phonetic": "/ˈdentɪst/",
         "pos": "n.",
@@ -538,7 +537,7 @@ window.UNIT_KNOWLEDGE_BASE = [
     "phrases": [
       {
         "id": 1,
-        "en": "carry out research",
+        "en": "carry out a research",
         "cn": "开展研究"
       },
       {
@@ -668,68 +667,103 @@ window.UNIT_KNOWLEDGE_BASE = [
       },
       {
         "id": 27,
+        "en": "carry out research",
+        "cn": "进行科学研究"
+      },
+      {
+        "id": 28,
         "en": "race against time",
         "cn": "与时间赛跑"
       },
       {
-        "id": 28,
-        "en": "work extra hours",
-        "cn": "加班工作"
-      },
-      {
         "id": 29,
-        "en": "pass down skills",
-        "cn": "传承技艺"
+        "en": "work extra hours",
+        "cn": "加班加点工作"
       },
       {
         "id": 30,
+        "en": "pass down skills",
+        "cn": "传承技艺与技能"
+      },
+      {
+        "id": 31,
         "en": "digitalisation of books",
         "cn": "图书数字化"
       },
       {
-        "id": 31,
+        "id": 32,
         "en": "valuable records",
         "cn": "珍贵的记录"
       },
       {
-        "id": 32,
+        "id": 33,
         "en": "make notes",
         "cn": "做笔记；做记录"
       },
       {
-        "id": 33,
+        "id": 34,
         "en": "job requirements",
         "cn": "工作要求/岗位条件"
       },
       {
-        "id": 34,
+        "id": 35,
         "en": "take up this work",
         "cn": "从事这份工作"
       },
       {
-        "id": 35,
+        "id": 36,
         "en": "for life",
         "cn": "终身的；一辈子的"
       },
       {
-        "id": 36,
-        "en": "educational background",
-        "cn": "学历背景"
+        "id": 37,
+        "en": "good educational backgrounds",
+        "cn": "良好的学历背景"
       },
       {
-        "id": 37,
+        "id": 38,
+        "en": "try one's best",
+        "cn": "竭尽全力"
+      },
+      {
+        "id": 39,
+        "en": "solve problems",
+        "cn": "解决问题"
+      },
+      {
+        "id": 40,
         "en": "craftsmanship spirit",
         "cn": "工匠精神"
       },
       {
-        "id": 38,
+        "id": 41,
+        "en": "concentrate on",
+        "cn": "全神贯注于..."
+      },
+      {
+        "id": 42,
         "en": "be devoted to",
         "cn": "致力于...；全心投入..."
       },
       {
-        "id": 39,
+        "id": 43,
+        "en": "glass-blowing",
+        "cn": "吹制玻璃工艺"
+      },
+      {
+        "id": 44,
+        "en": "hollow steel tube",
+        "cn": "中空钢管"
+      },
+      {
+        "id": 45,
         "en": "worthwhile job",
         "cn": "有价值/有意义的工作"
+      },
+      {
+        "id": 46,
+        "en": "bind books",
+        "cn": "装订书籍"
       }
     ],
     "sentences": [
@@ -750,36 +784,146 @@ window.UNIT_KNOWLEDGE_BASE = [
       },
       {
         "id": 4,
+        "en": "You need to have some knowledge of art.",
+        "cn": "你需要具备一些艺术知识。"
+      },
+      {
+        "id": 5,
         "en": "Set a goal and work towards it.",
         "cn": "树立一个目标，并为之努力。"
       },
       {
-        "id": 5,
+        "id": 6,
+        "en": "I'm sure your dream will come true.",
+        "cn": "我相信你的梦想一定会实现。"
+      },
+      {
+        "id": 7,
+        "en": "It's my responsibility to do it.",
+        "cn": "做好这件事是我的责任。"
+      },
+      {
+        "id": 8,
         "en": "My job is to repair the ancient books which have been damaged over long periods of time.",
         "cn": "我的工作是修复那些历经岁月长河受损的古籍。"
       },
       {
-        "id": 6,
+        "id": 9,
         "en": "More than 10 million old books are waiting for restoration.",
         "cn": "超过一千万册古籍等待修复。"
       },
       {
-        "id": 7,
+        "id": 10,
+        "en": "Simple tools like scissors, tweezers and brushes were used in the past.",
+        "cn": "过去人们使用剪刀、镊子和毛刷等简单工具。"
+      },
+      {
+        "id": 11,
         "en": "Repairing an ancient book is like doing an operation on a patient.",
         "cn": "修复一本古籍就像给病人做一场手术。"
       },
       {
-        "id": 8,
+        "id": 12,
+        "en": "I soon took interest in this work.",
+        "cn": "我很快对这项工作产生了兴趣。"
+      },
+      {
+        "id": 13,
+        "en": "It's love and passion that keep me going.",
+        "cn": "正是热爱与激情支撑着我不断前行。"
+      },
+      {
+        "id": 14,
         "en": "Once I took up this work, it meant a job for life.",
         "cn": "一旦我从事了这项工作，这就意味着一辈子的坚守。"
       },
       {
-        "id": 9,
+        "id": 15,
         "en": "We are racing against time to rescue old books.",
         "cn": "我们正在与时间赛跑，抢救古籍。"
       },
       {
-        "id": 10,
+        "id": 16,
+        "en": "They have good educational backgrounds and use more scientific methods.",
+        "cn": "他们有着良好的教育背景，并采用更为科学的方法。"
+      },
+      {
+        "id": 17,
+        "en": "Some masters might be unwilling to pass down all their skills.",
+        "cn": "有些大师可能不愿意把所有的技艺都传承下去。"
+      },
+      {
+        "id": 18,
+        "en": "I will interview someone who restores ancient books.",
+        "cn": "我将采访一位古籍修复师。"
+      },
+      {
+        "id": 19,
+        "en": "We save each piece of paper which breaks off from the book.",
+        "cn": "我们保存从书上脱落的每一碎片纸张。"
+      },
+      {
+        "id": 20,
+        "en": "The company is looking for someone who can help sell its products online.",
+        "cn": "公司正在寻找能够帮助在网上销售产品的员工。"
+      },
+      {
+        "id": 21,
+        "en": "The chest, which was over 100 years old, had detailed carvings.",
+        "cn": "那个已有100多年历史的箱子雕刻精致。"
+      },
+      {
+        "id": 22,
+        "en": "I want to be a scientist who studies living things.",
+        "cn": "我想成为一名研究生物的科学家。"
+      },
+      {
+        "id": 23,
+        "en": "It's important to let people know how valuable nature is.",
+        "cn": "让人们了解大自然的珍贵至关重要。"
+      },
+      {
+        "id": 24,
+        "en": "I know it will be hard to become a life scientist, but I'll try my best to make it happen.",
+        "cn": "我知道成为一名生命科学家很难，但我会尽最大努力去实现它。"
+      },
+      {
+        "id": 25,
+        "en": "I have always loved animals, but being a full-time vet is very challenging.",
+        "cn": "我一直很喜欢动物，但成为一名全职兽医非常有挑战性。"
+      },
+      {
+        "id": 26,
+        "en": "When he was young, he dreamed of being a firefighter.",
+        "cn": "当他年轻时，他梦想成为一名消防员。"
+      },
+      {
+        "id": 27,
+        "en": "FAST aims to discover how life began and to receive possible messages from alien civilisations.",
+        "cn": "中国天眼旨在探索生命起源并接收外星文明可能发出的信号。"
+      },
+      {
+        "id": 28,
+        "en": "He oversaw everything despite suffering from cancer.",
+        "cn": "尽管患有癌症，他依然监督指导着一切。"
+      },
+      {
+        "id": 29,
+        "en": "Germany's workers have craftsmanship spirit, while he worked for it.",
+        "cn": "德国工人富有工匠精神，他也为此努力倾注了心血。"
+      },
+      {
+        "id": 30,
+        "en": "It takes a craftsman a lot of skills to shape melted glass.",
+        "cn": "工匠需要精湛的技艺才能将熔化的玻璃塑造造型。"
+      },
+      {
+        "id": 31,
+        "en": "We need to list the duties and requirements of the book restorer on the poster.",
+        "cn": "我们需要在海报上列出图书修复师的职责和要求。"
+      },
+      {
+        "id": 32,
         "en": "Saving valuable ancient books is the most meaningful part of this job.",
         "cn": "拯救珍贵的古籍是这份工作中最有意义的部分。"
       }
@@ -787,20 +931,15 @@ window.UNIT_KNOWLEDGE_BASE = [
     "grammar": [
       {
         "title": "定语从句 (Relative Clauses: who / which / that)",
-        "content": "1. 先行词为人时，引导词用 who 或 that:\n   • The man who/that restores old books is Mr. Du. (修复古籍的那位先生是杜老师。)\n2. 先行词为物时，引导词用 which 或 that:\n   • This is the book which/that I bought last week. (这是我上周买的书。)\n3. 关系代词在从句中作宾语时可省略:\n   • The boy (that/who) you saw is a book restorer."
+        "content": "1. 先行词为人时，引导词用 who 或 that:\n   • The girl who helps me is my deskmate.\n   • The man who restores old books is Mr. Du.\n   • The boy that you saw is a book restorer.\n2. 先行词为物时，引导词用 which 或 that:\n   • This is the book which I bought last week.\n   • The clay pot which is colourful is Mexican art.\n   • I like songs that are soft.\n3. 只能用 that 的情况 (包含人与物 / 最高级 / 序数词 / all, everything 等):\n   • He talked about the teachers and schools that he visited.\n   • This is the most valuable book that I have ever read.\n   • Tell me everything that you know.\n4. 介词后不能用 that，用 in which / for whom 等:\n   • This is the house in which I lived."
       }
     ]
   },
   {
+    "unit_id": 3,
     "title": "Unit 3 Travellers' Tales",
-    "subtitle": "旅行见闻·行者物语与环球足迹",
+    "subtitle": "旅行见闻·行者物语与环球足迹（全量必背单）",
     "pdf_filename": "Unit 3 Travellers  tales 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
-    "images": [
-      "docs/unit_images/Unit_3_p1.png",
-      "docs/unit_images/Unit_3_p2.png",
-      "docs/unit_images/Unit_3_p3.png",
-      "docs/unit_images/Unit_3_p4.png"
-    ],
     "words": [
       {
         "word": "essential",
@@ -970,71 +1109,96 @@ window.UNIT_KNOWLEDGE_BASE = [
       },
       {
         "id": 11,
+        "en": "climbing & expedition",
+        "cn": "登山与远征"
+      },
+      {
+        "id": 12,
         "en": "reach an agreement",
         "cn": "达成协议/一致"
       },
       {
-        "id": 12,
+        "id": 13,
         "en": "persuade sb to do sth",
         "cn": "说服某人做某事"
       },
       {
-        "id": 13,
+        "id": 14,
         "en": "work out a day trip plan",
         "cn": "制定一日游计划"
       },
       {
-        "id": 14,
+        "id": 15,
+        "en": "volunteer in Dar",
+        "cn": "在达尔实施志愿服务"
+      },
+      {
+        "id": 16,
         "en": "accept an invitation",
         "cn": "接受邀请"
       },
       {
-        "id": 15,
+        "id": 17,
         "en": "share whatever one has",
         "cn": "分享所拥有的一切"
       },
       {
-        "id": 16,
+        "id": 18,
+        "en": "jump into one's arms",
+        "cn": "扑进某人的怀抱"
+      },
+      {
+        "id": 19,
+        "en": "unplanned visitors",
+        "cn": "未约而至的访客"
+      },
+      {
+        "id": 20,
         "en": "harmonious neighbourhood life",
         "cn": "和谐的邻里生活"
       },
       {
-        "id": 17,
+        "id": 21,
+        "en": "present one's phone",
+        "cn": "出示某人的手机"
+      },
+      {
+        "id": 22,
         "en": "no wonder",
         "cn": "难怪；怪不得"
       },
       {
-        "id": 18,
+        "id": 23,
         "en": "can't wait to go back",
         "cn": "迫不及待想回去"
       },
       {
-        "id": 19,
+        "id": 24,
         "en": "be shocked by",
         "cn": "对...感到震惊"
       },
       {
-        "id": 20,
+        "id": 25,
         "en": "travel blog",
         "cn": "旅行博客"
       },
       {
-        "id": 21,
+        "id": 26,
         "en": "memorable trip",
         "cn": "难忘的旅行"
       },
       {
-        "id": 22,
+        "id": 27,
         "en": "street performances",
         "cn": "街头表演"
       },
       {
-        "id": 23,
+        "id": 28,
         "en": "catch one's attention",
         "cn": "吸引某人的注意"
       },
       {
-        "id": 24,
+        "id": 29,
         "en": "conduct surveys",
         "cn": "开展问卷调查"
       }
@@ -1064,6 +1228,11 @@ window.UNIT_KNOWLEDGE_BASE = [
         "id": 5,
         "en": "I can't wait to share my travel experience on my blog.",
         "cn": "我迫不及待想在博客上分享我的旅行见闻。"
+      },
+      {
+        "id": 6,
+        "en": "They offered us fresh fruit and local snacks with great enthusiasm.",
+        "cn": "他们热情地为我们提供了新鲜水果和当地特色小吃。"
       }
     ],
     "grammar": [
@@ -1074,15 +1243,10 @@ window.UNIT_KNOWLEDGE_BASE = [
     ]
   },
   {
+    "unit_id": 4,
     "title": "Unit 4 Folk Customs",
-    "subtitle": "民俗文化·风土人情与传统节日",
+    "subtitle": "民俗文化·风土人情与传统节日（全量必背单）",
     "pdf_filename": "Unit 4 Folk customs 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
-    "images": [
-      "docs/unit_images/Unit_4_p1.png",
-      "docs/unit_images/Unit_4_p2.png",
-      "docs/unit_images/Unit_4_p3.png",
-      "docs/unit_images/Unit_4_p4.png"
-    ],
     "words": [
       {
         "word": "suit",
@@ -1229,56 +1393,106 @@ window.UNIT_KNOWLEDGE_BASE = [
       },
       {
         "id": 10,
+        "en": "afternoon tea",
+        "cn": "下午茶"
+      },
+      {
+        "id": 11,
+        "en": "leather suits",
+        "cn": "皮衣套装"
+      },
+      {
+        "id": 12,
+        "en": "war dance",
+        "cn": "战舞"
+      },
+      {
+        "id": 13,
+        "en": "clay pots",
+        "cn": "黏土陶罐"
+      },
+      {
+        "id": 14,
         "en": "lunar calendar",
         "cn": "农历；阴历"
       },
       {
-        "id": 11,
+        "id": 15,
         "en": "set off fireworks",
         "cn": "燃放烟花"
       },
       {
-        "id": 12,
+        "id": 16,
         "en": "wash away bad luck",
         "cn": "洗去厄运"
       },
       {
-        "id": 13,
+        "id": 17,
         "en": "Midsummer Day",
         "cn": "仲夏节"
       },
       {
-        "id": 14,
+        "id": 18,
         "en": "set campfires",
         "cn": "点燃篝火"
       },
       {
-        "id": 15,
+        "id": 19,
+        "en": "midsummer pole",
+        "cn": "仲夏柱"
+      },
+      {
+        "id": 20,
         "en": "autumn harvest",
         "cn": "秋收"
       },
       {
-        "id": 16,
+        "id": 21,
+        "en": "Oktoberfest",
+        "cn": "啤酒节"
+      },
+      {
+        "id": 22,
         "en": "traditional costumes",
         "cn": "传统服饰"
       },
       {
-        "id": 17,
+        "id": 23,
+        "en": "identify with",
+        "cn": "认同；产生共鸣"
+      },
+      {
+        "id": 24,
+        "en": "relate to",
+        "cn": "与...相关联"
+      },
+      {
+        "id": 25,
         "en": "connect us back to our roots",
         "cn": "将我们与文化之根紧密相连"
       },
       {
-        "id": 18,
+        "id": 26,
         "en": "pass on history",
         "cn": "传承历史"
       },
       {
-        "id": 19,
+        "id": 27,
+        "en": "unite the world",
+        "cn": "团结世界"
+      },
+      {
+        "id": 28,
         "en": "the bridge between past and present",
         "cn": "连接过去与现在的桥梁"
       },
       {
-        "id": 20,
+        "id": 29,
+        "en": "different background",
+        "cn": "不同的背景"
+      },
+      {
+        "id": 30,
         "en": "sugar painting",
         "cn": "画糖人；糖画"
       }
@@ -1303,24 +1517,50 @@ window.UNIT_KNOWLEDGE_BASE = [
         "id": 4,
         "en": "People wear colourful folk costumes and perform traditional dances during the festival.",
         "cn": "节日期间，人们身穿绚丽的民族服饰，表演传统舞蹈。"
+      },
+      {
+        "id": 5,
+        "en": "Folk customs are the mirror of the past.",
+        "cn": "民俗文化是照见历史过去的一面镜子。"
+      },
+      {
+        "id": 6,
+        "en": "As people from different backgrounds learn about each other, society becomes stronger.",
+        "cn": "随着来自不同背景的人们相互了解，社会变得更加凝聚强大。"
+      },
+      {
+        "id": 7,
+        "en": "Traditional dishes are cooked with love and shared among family and friends.",
+        "cn": "传统美食饱含爱意被精心烹制，并在亲朋好友间共享。"
+      },
+      {
+        "id": 8,
+        "en": "An old man painting with sugar caught my eye in the street.",
+        "cn": "街头一位画糖人的老人吸引了我的目光。"
+      },
+      {
+        "id": 9,
+        "en": "Thousands of monkeys enjoy a big fruit feast every November in Thailand.",
+        "cn": "每年十一月，泰国成千上万只猴子享用着丰盛的水果盛宴。"
+      },
+      {
+        "id": 10,
+        "en": "This cultural treasure will disappear if we don't find ways to save it.",
+        "cn": "如果我们不想法设法挽救，这一文化瑰宝将会消逝。"
       }
     ],
     "grammar": [
       {
         "title": "被动语态与形式主语 (Passive Voice & It is + adj.)",
-        "content": "1. It is believed/said that ... (人们相信/据说...)\n2. behave / custom 中的代词指代与主谓一致"
+        "content": "1. It is believed/said that ... (人们相信/据说...)\n2. Passive Voice in Present/Past: Fireworks are set off to celebrate the coming new year.\n3. 不可数名词作主语的主谓一致"
       }
     ]
   },
   {
+    "unit_id": 5,
     "title": "Unit 5 Buildings",
-    "subtitle": "建筑艺术·古今建筑与绿色科技",
+    "subtitle": "建筑艺术·古今建筑与绿色科技（全量必背单）",
     "pdf_filename": "Unit 5 Buildings 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
-    "images": [
-      "docs/unit_images/Unit_5_p1.png",
-      "docs/unit_images/Unit_5_p2.png",
-      "docs/unit_images/Unit_5_p3.png"
-    ],
     "words": [
       {
         "word": "construct",
@@ -1411,6 +1651,12 @@ window.UNIT_KNOWLEDGE_BASE = [
         "phonetic": "/ˈnɔːðən/",
         "pos": "adj.",
         "trans": "北方的"
+      },
+      {
+        "word": "inner",
+        "phonetic": "/ˈɪnə(r)/",
+        "pos": "adj.",
+        "trans": "内部的；内心的"
       }
     ],
     "phrases": [
@@ -1426,118 +1672,254 @@ window.UNIT_KNOWLEDGE_BASE = [
       },
       {
         "id": 3,
+        "en": "city centre",
+        "cn": "市中心"
+      },
+      {
+        "id": 4,
         "en": "built of steel",
         "cn": "由钢铁建成"
       },
       {
-        "id": 4,
+        "id": 5,
         "en": "break the record",
         "cn": "打破纪录"
       },
       {
-        "id": 5,
+        "id": 6,
         "en": "have pros and cons",
         "cn": "利弊兼有"
       },
       {
-        "id": 6,
+        "id": 7,
+        "en": "not well kept",
+        "cn": "没有被很好保护"
+      },
+      {
+        "id": 8,
         "en": "Chinese landscape garden",
         "cn": "中国古典园林"
       },
       {
-        "id": 7,
+        "id": 9,
+        "en": "manmade buildings",
+        "cn": "人造建筑"
+      },
+      {
+        "id": 10,
         "en": "combine A with B",
         "cn": "将A与B结合起来"
       },
       {
-        "id": 8,
+        "id": 11,
+        "en": "modernist forms",
+        "cn": "现代主义形式"
+      },
+      {
+        "id": 12,
         "en": "central axis",
         "cn": "中轴线"
       },
       {
-        "id": 9,
+        "id": 13,
         "en": "Inner Court & Outer Court",
         "cn": "内廷与外朝（故宫）"
       },
       {
-        "id": 10,
+        "id": 14,
         "en": "a symbol of power",
         "cn": "权力的象征"
       },
       {
-        "id": 11,
+        "id": 15,
+        "en": "turn up (roof corners)",
+        "cn": "（屋檐角）向上飞檐翘起"
+      },
+      {
+        "id": 16,
+        "en": "run off water",
+        "cn": "排水；流走雨水"
+      },
+      {
+        "id": 17,
+        "en": "slippery tiles",
+        "cn": "光滑的瓦片/瓷砖"
+      },
+      {
+        "id": 18,
         "en": "stand up to earthquakes",
         "cn": "抗击/经受住地震"
       },
       {
-        "id": 12,
+        "id": 19,
         "en": "construction craftsmanship",
         "cn": "营造工艺/建筑匠心"
       },
       {
-        "id": 13,
+        "id": 20,
+        "en": "cultural collections",
+        "cn": "文化收藏品/文物"
+      },
+      {
+        "id": 21,
         "en": "environmentally friendly building",
         "cn": "环保型建筑/绿色建筑"
       },
       {
-        "id": 14,
+        "id": 22,
+        "en": "common area",
+        "cn": "公共区域"
+      },
+      {
+        "id": 23,
+        "en": "separate units",
+        "cn": "独立的单元"
+      },
+      {
+        "id": 24,
         "en": "vertical forest",
         "cn": "垂直森林（建筑）"
       },
       {
-        "id": 15,
+        "id": 25,
         "en": "absorb carbon dioxide",
         "cn": "吸收二氧化碳"
       },
       {
-        "id": 16,
+        "id": 26,
+        "en": "clean energy",
+        "cn": "清洁能源"
+      },
+      {
+        "id": 27,
         "en": "3D-printed building",
         "cn": "3D打印建筑"
       },
       {
-        "id": 17,
+        "id": 28,
         "en": "carbon footprint",
         "cn": "碳足迹"
       },
       {
-        "id": 18,
+        "id": 29,
         "en": "recycle rainwater",
         "cn": "回收利用雨水"
+      },
+      {
+        "id": 30,
+        "en": "floor plan",
+        "cn": "平面户型图"
+      },
+      {
+        "id": 31,
+        "en": "design sketch",
+        "cn": "设计草图"
+      },
+      {
+        "id": 32,
+        "en": "green curtain",
+        "cn": "绿色植物绿帘"
+      },
+      {
+        "id": 33,
+        "en": "take up space",
+        "cn": "占用空间"
+      },
+      {
+        "id": 34,
+        "en": "make a proposal",
+        "cn": "提出建议案"
+      },
+      {
+        "id": 35,
+        "en": "storeys of building",
+        "cn": "建筑楼层"
+      },
+      {
+        "id": 36,
+        "en": "smart use of energy",
+        "cn": "能源的智能利用"
+      },
+      {
+        "id": 37,
+        "en": "double skin",
+        "cn": "双层幕墙外皮"
       }
     ],
     "sentences": [
       {
         "id": 1,
+        "en": "They are located in the city centre.",
+        "cn": "它们坐落于市中心。"
+      },
+      {
+        "id": 2,
+        "en": "Tall buildings show our progress in technology and design.",
+        "cn": "摩天大楼展现了我们在科技与设计上的进步。"
+      },
+      {
+        "id": 3,
+        "en": "Every few years, the record for the highest building is broken.",
+        "cn": "每隔几年，最高建筑的纪录就会被刷新。"
+      },
+      {
+        "id": 4,
+        "en": "The Palace Museum started to be built in 1406 and was completed in 1420.",
+        "cn": "故宫博物院始建于1406年，竣工于1420年。"
+      },
+      {
+        "id": 5,
+        "en": "Yellow was a symbol of power, used only by the emperors.",
+        "cn": "黄色是权力的象征，过去仅供皇帝专享。"
+      },
+      {
+        "id": 6,
         "en": "Ancient Chinese wooden structures can stand up to severe earthquakes without single nails.",
         "cn": "中国古代木结构建筑不用一根钉子就能经受住强震。"
       },
       {
-        "id": 2,
+        "id": 7,
+        "en": "The upturned blocks under roofs act like springs against earthquakes.",
+        "cn": "屋檐下翘起的斗拱在抗震时起到了弹簧般的缓冲作用。"
+      },
+      {
+        "id": 8,
         "en": "Modern architect designs combine traditional features with eco-friendly concepts.",
         "cn": "现代建筑师的设计将传统特色与环保理念完美结合。"
       },
       {
-        "id": 3,
+        "id": 9,
+        "en": "Waste and rubbish are quickly cleared in this environmentally friendly building.",
+        "cn": "在这座环保型建筑中，废弃物和垃圾都能被快速清运处理。"
+      },
+      {
+        "id": 10,
         "en": "Green buildings reduce carbon footprints by absorbing CO2 and recycling rainwater.",
         "cn": "绿色建筑通过吸收二氧化碳和循环利用雨水来减少碳足迹。"
+      },
+      {
+        "id": 11,
+        "en": "The green curtain produces oxygen and absorbs carbon dioxide.",
+        "cn": "绿帘植物制造氧气并吸收二氧化碳。"
+      },
+      {
+        "id": 12,
+        "en": "Only three workers were needed to print the whole building's walls.",
+        "cn": "打印整座建筑的墙体仅仅需要三名工人。"
       }
     ],
     "grammar": [
       {
         "title": "形容词与分词短语 (Adjectives & Participle Modifiers)",
-        "content": "1. 过去分词短语作后置定语: buildings built of steel (用钢铁建成的建筑)\n2. 介词短语: without any nails (没有任何钉子)"
+        "content": "1. 过去分词短语作后置定语: buildings built of steel (用钢铁建成的建筑)\n2. 介词短语: without any nails (没有任何钉子)\n3. 不可数名词与数词表达: thousands of years of Chinese culture"
       }
     ]
   },
   {
+    "unit_id": 6,
     "title": "Unit 6 Pollution",
-    "subtitle": "环境保护·污染治理与绿色行动",
+    "subtitle": "环境保护·污染治理与绿色行动（全量必背单）",
     "pdf_filename": "Unit 6 Pollution 单元必背知识（背诵默写任务单）（背诵版）_扫描版.pdf",
-    "images": [
-      "docs/unit_images/Unit_6_p1.png",
-      "docs/unit_images/Unit_6_p2.png",
-      "docs/unit_images/Unit_6_p3.png"
-    ],
     "words": [
       {
         "word": "pollution",
@@ -1658,121 +2040,306 @@ window.UNIT_KNOWLEDGE_BASE = [
       },
       {
         "id": 6,
+        "en": "PM2.5",
+        "cn": "细颗粒物PM2.5"
+      },
+      {
+        "id": 7,
         "en": "traffic smoke",
         "cn": "汽车尾气/交通废气"
       },
       {
-        "id": 7,
+        "id": 8,
         "en": "factory smoke",
         "cn": "工厂黑烟"
       },
       {
-        "id": 8,
+        "id": 9,
         "en": "oil spill",
         "cn": "漏油事故"
       },
       {
-        "id": 9,
+        "id": 10,
         "en": "chemical waste",
         "cn": "化学废料"
       },
       {
-        "id": 10,
+        "id": 11,
         "en": "plastic waste",
         "cn": "塑料垃圾"
       },
       {
-        "id": 11,
+        "id": 12,
         "en": "break down",
         "cn": "分解（成微粒）"
       },
       {
-        "id": 12,
+        "id": 13,
         "en": "tiny pieces of plastic",
         "cn": "微塑料/细微塑料碎片"
       },
       {
-        "id": 13,
+        "id": 14,
         "en": "ocean animals",
         "cn": "海洋生物"
       },
       {
-        "id": 14,
+        "id": 15,
         "en": "remotely-operated vehicle (ROV)",
         "cn": "水下遥控无人潜航器"
       },
       {
-        "id": 15,
+        "id": 16,
         "en": "stand out",
         "cn": "脱颖而出；突出"
       },
       {
-        "id": 16,
+        "id": 17,
+        "en": "pick up engineering skills",
+        "cn": "掌握工程技能"
+      },
+      {
+        "id": 18,
         "en": "make a difference",
         "cn": "产生影响；有所作为"
       },
       {
-        "id": 17,
+        "id": 19,
         "en": "spread the word",
         "cn": "宣传推广；宣讲"
       },
       {
-        "id": 18,
+        "id": 20,
         "en": "clean up a beach",
         "cn": "清理海滩"
       },
       {
-        "id": 19,
+        "id": 21,
         "en": "recycling projects",
         "cn": "回收利用项目"
       },
       {
-        "id": 20,
+        "id": 22,
         "en": "environmental exhibits",
         "cn": "环保展品"
       },
       {
-        "id": 21,
+        "id": 23,
+        "en": "repair centre",
+        "cn": "维修中心"
+      },
+      {
+        "id": 24,
         "en": "recycling bins",
         "cn": "垃圾回收箱"
       },
       {
-        "id": 22,
+        "id": 25,
+        "en": "convenient locations",
+        "cn": "便利的位置"
+      },
+      {
+        "id": 26,
+        "en": "carry out the proposal",
+        "cn": "落实提议/方案"
+      },
+      {
+        "id": 27,
+        "en": "formal language",
+        "cn": "正式语言"
+      },
+      {
+        "id": 28,
         "en": "non-polluting transport",
         "cn": "无污染交通方式"
       },
       {
-        "id": 23,
+        "id": 29,
+        "en": "used vegetable oil",
+        "cn": "废弃植物油/地沟油"
+      },
+      {
+        "id": 30,
         "en": "biodiesel",
         "cn": "生物柴油"
+      },
+      {
+        "id": 31,
+        "en": "collect data",
+        "cn": "收集数据"
+      },
+      {
+        "id": 32,
+        "en": "digital maps",
+        "cn": "电子数字地图"
+      },
+      {
+        "id": 33,
+        "en": "act locally",
+        "cn": "立足本地行动"
+      },
+      {
+        "id": 34,
+        "en": "think globally",
+        "cn": "放眼全球思考"
+      },
+      {
+        "id": 35,
+        "en": "action lapbook",
+        "cn": "行动折叠书/资料集"
+      },
+      {
+        "id": 36,
+        "en": "cut out ideas",
+        "cn": "剪切剔除想法"
+      },
+      {
+        "id": 37,
+        "en": "peer pressure",
+        "cn": "同伴压力"
+      },
+      {
+        "id": 38,
+        "en": "harmful effects",
+        "cn": "有害影响"
+      },
+      {
+        "id": 39,
+        "en": "climate change",
+        "cn": "气候变化"
+      },
+      {
+        "id": 40,
+        "en": "youth unemployment",
+        "cn": "青年失业率"
       }
     ],
     "sentences": [
       {
         "id": 1,
-        "en": "Plastic waste breaks down into tiny pieces and harms marine animals.",
-        "cn": "塑料废弃物分解成微小碎片，伤害海洋生物。"
+        "en": "Noise is often caused by fans and air conditioners.",
+        "cn": "噪音通常是由风扇和空调引起的。"
       },
       {
         "id": 2,
-        "en": "Remotely-operated vehicles (ROVs) help scientists explore polluted ocean floors.",
-        "cn": "水下遥控无人潜航器帮助科学家探测受污染的海底。"
+        "en": "Traffic noise is the biggest cause of noise in cities.",
+        "cn": "交通噪音是城市噪音的最大诱因。"
       },
       {
         "id": 3,
-        "en": "Every small action can make a difference in protecting our environment.",
-        "cn": "保护我们的环境，每一个微小的行动都能带来改变。"
+        "en": "Road works play a big part in noise pollution too.",
+        "cn": "道路施工也在噪音污染中占很大比重。"
       },
       {
         "id": 4,
-        "en": "We should use non-polluting transport like bicycles and electric buses.",
-        "cn": "我们应当使用自行车和电动公交车等无污染交通工具。"
+        "en": "I couldn't agree more!",
+        "cn": "我完全赞同！"
+      },
+      {
+        "id": 5,
+        "en": "About eight million tons of plastic waste is thrown into the ocean every year.",
+        "cn": "每年大约有八百万吨塑料垃圾被倒入海洋。"
+      },
+      {
+        "id": 6,
+        "en": "It can take hundreds of years for plastic to break down naturally.",
+        "cn": "塑料自然分解可能需要数百年的时间。"
+      },
+      {
+        "id": 7,
+        "en": "Tiny pieces of plastic are harder to clean up and more harmful.",
+        "cn": "细小的微塑料碎片更难清理，危害也更大。"
+      },
+      {
+        "id": 8,
+        "en": "Its special lights make plastic stand out from sand and seaweed.",
+        "cn": "其特殊的照明光线使塑料能够从沙子和海藻中显现脱颖而出。"
+      },
+      {
+        "id": 9,
+        "en": "She failed many times but she never gave up testing the robot.",
+        "cn": "她失败了很多次，但她从未放弃对机器人的测试。"
+      },
+      {
+        "id": 10,
+        "en": "Everyone can make a difference to cut plastic pollution.",
+        "cn": "每一个人都能为减少塑料污染贡献一份力量。"
+      },
+      {
+        "id": 11,
+        "en": "The pollution problem will be solved little by little.",
+        "cn": "污染问题将会一点一点逐步得到解决。"
+      },
+      {
+        "id": 12,
+        "en": "Air pollution will not be reduced if we take no action.",
+        "cn": "如果我们不采取行动，空气污染将不会减少。"
+      },
+      {
+        "id": 13,
+        "en": "Broken objects won't be thrown away in the school repair centre.",
+        "cn": "损坏的物品在学校维修中心不会被直接丢弃。"
+      },
+      {
+        "id": 14,
+        "en": "All useful suggestions will be printed in the school newspaper.",
+        "cn": "所有有用的建议都会刊登在校报上。"
+      },
+      {
+        "id": 15,
+        "en": "Will more recycling bins be placed around our campus?",
+        "cn": "校园周围会放置更多的分类回收箱吗？"
+      },
+      {
+        "id": 16,
+        "en": "Plastic waste is harmful to both the environment and our health.",
+        "cn": "塑料垃圾对环境和我们的健康都有害。"
+      },
+      {
+        "id": 17,
+        "en": "I recommend that the school use recycled plastic for art works.",
+        "cn": "我建议学校在艺术创作中使用回收塑料。"
+      },
+      {
+        "id": 18,
+        "en": "Clear signs can be put up to guide correct waste sorting.",
+        "cn": "可以树立清晰的标识牌来指导正确的垃圾分类。"
+      },
+      {
+        "id": 19,
+        "en": "If the proposal could be carried out, plastic waste will drop greatly.",
+        "cn": "如果该提案能够落实实施，塑料垃圾将会大幅减少。"
+      },
+      {
+        "id": 20,
+        "en": "I am writing to propose practical ways to cut school plastic waste.",
+        "cn": "我写此信是为了提出减少校园塑料垃圾的实用方法。"
+      },
+      {
+        "id": 21,
+        "en": "Bamboo bikes provide a pollution-free way of travelling.",
+        "cn": "竹制自行车提供了一种无污染的出游方式。"
+      },
+      {
+        "id": 22,
+        "en": "Used cooking oil can be turned into eco-friendly biodiesel fuel.",
+        "cn": "废弃地沟油可以转化为环保的生物柴油燃料。"
+      },
+      {
+        "id": 23,
+        "en": "Teenagers create digital maps to mark heavily polluted areas.",
+        "cn": "青少年们制作电子地图来标注受污染严重的区域。"
+      },
+      {
+        "id": 24,
+        "en": "They spread environmental knowledge to parents and classmates.",
+        "cn": "他们向父母和同学们宣讲普及环保知识。"
       }
     ],
     "grammar": [
       {
-        "title": "原因与结果状语 (Cause & Effect: because, so that, so as to)",
-        "content": "1. Plastic waste does not break down easily, so it causes long-term pollution.\n2. We should sort garbage so as to protect the environment."
+        "title": "原因与结果状语及一般将来时被动语态 (Passive Voice in Future Tense)",
+        "content": "1. 一般将来时的被动语态: Subject + will (not) be + past participle\n   • The pollution problem will be solved little by little.\n   • Air pollution will not be reduced if we take no action.\n2. 条件状语从句主将从现: If the proposal is carried out, plastic waste will drop greatly."
       }
     ]
   }

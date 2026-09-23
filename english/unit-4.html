@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 4 Folk Customs - 纯净网页版（高清发音）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --text-main: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      --primary: #2563EB;
+      --primary-soft: #EFF6FF;
+      --accent-green: #16A34A;
+      --accent-green-soft: #F0FDF4;
+      --radius-md: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    header {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    h1 { font-size: 22px; font-weight: 800; color: #1E40AF; }
+    p.sub { font-size: 14px; color: var(--text-muted); font-weight: 500; margin-top: 4px; }
+    
+    .ctrl-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .ctrl-btn {
+      padding: 8px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      outline: none;
+    }
+    .ctrl-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    .section-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .sec-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .grid-words {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .item-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .item-card:hover { border-color: var(--primary); background: var(--primary-soft); }
+    .item-card.playing { border-color: var(--accent-green); background: var(--accent-green-soft); }
+    
+    .item-en { font-weight: 700; font-size: 16px; color: var(--text-main); margin-bottom: 4px; display: flex; justify-content: space-between; }
+    .item-cn { font-size: 13px; color: var(--text-muted); font-weight: 500; transition: filter 0.2s; }
+
+    body.mask-mode .item-cn { filter: blur(5px); user-select: none; }
+    body.mask-mode .item-card:hover .item-cn { filter: blur(0); }
+    body.mask-mode .list-row:hover .item-cn { filter: blur(0); }
+
+    .list-phrases, .list-sentences { display: flex; flex-direction: column; gap: 10px; }
+    .list-row {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px 18px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s;
+    }
+    .list-row:hover { border-color: var(--primary); background: var(--primary-soft); }
+    .list-row.playing { border-color: var(--accent-green); background: var(--accent-green-soft); }
+    
+    .row-left { display: flex; align-items: center; gap: 12px; }
+    .num-badge { font-size: 12px; font-weight: 700; color: var(--text-muted); background: white; padding: 2px 8px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <a href="unit-study-hub-V1.html" class="back-link">← 返回英语单元总中心</a>
+      <h1 style="margin-top:8px;">Unit 4 Folk Customs</h1>
+      <p class="sub">民俗文化·风土人情与传统节日（全量必背单） · 原生网页点读版（无PDF）</p>
+    </div>
+    <div>
+      <span style="font-size:13px; background:var(--accent-green-soft); color:var(--accent-green); border:1px solid #BBF7D0; padding:6px 14px; border-radius:20px; font-weight:700;">🔊 清晰真人语音模式</span>
+    </div>
+  </header>
+
+  <div class="ctrl-bar">
+    <button class="ctrl-btn" id="maskBtn" onclick="toggleMask()">🙈 默写遮罩模式: 关</button>
+    <select class="ctrl-btn" id="audioEngineSelect">
+      <option value="dict">🔊 高音质在线发音 (推荐)</option>
+      <option value="speech">🤖 浏览器原生发音</option>
+    </select>
+  </div>
+
+  <!-- 单词 -->
+  <div class="section-box">
+    <div class="sec-title">🔤 重点词汇 (16个)</div>
+    <div class="grid-words">
+      
+        <div class="item-card" onclick="playAudio('suit', this)">
+          <div class="item-en"><span>suit</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/sjuːt/ n.</div>
+          <div class="item-cn">套装；西装</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('exhibition', this)">
+          <div class="item-en"><span>exhibition</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˌeksɪˈbɪʃn/ n.</div>
+          <div class="item-cn">展览；展会</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('stand', this)">
+          <div class="item-en"><span>stand</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/stænd/ n.</div>
+          <div class="item-cn">展位；货摊</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('sandwich', this)">
+          <div class="item-en"><span>sandwich</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈsænwɪtʃ/ n.</div>
+          <div class="item-cn">三明治</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('biscuit', this)">
+          <div class="item-en"><span>biscuit</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈbɪskɪt/ n.</div>
+          <div class="item-cn">饼干</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('leather', this)">
+          <div class="item-en"><span>leather</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈleðə(r)/ n.</div>
+          <div class="item-cn">皮革</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('be all ears', this)">
+          <div class="item-en"><span>be all ears</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/biː ɔːl ɪəz/ phr.</div>
+          <div class="item-cn">全神贯注地倾听</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('lunar', this)">
+          <div class="item-en"><span>lunar</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈluːnə(r)/ adj.</div>
+          <div class="item-cn">农历的；阴历的；月球的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('clay', this)">
+          <div class="item-en"><span>clay</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/kleɪ/ n.</div>
+          <div class="item-cn">黏土；陶土</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('beer', this)">
+          <div class="item-en"><span>beer</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/bɪə(r)/ n.</div>
+          <div class="item-cn">啤酒</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('sausage', this)">
+          <div class="item-en"><span>sausage</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈsɒsɪdʒ/ n.</div>
+          <div class="item-cn">香肠；腊肠</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('suppose', this)">
+          <div class="item-en"><span>suppose</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/səˈpəʊz/ v.</div>
+          <div class="item-cn">假设；认为</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('mirror', this)">
+          <div class="item-en"><span>mirror</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈmɪrə(r)/ n.</div>
+          <div class="item-cn">镜子</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('exist', this)">
+          <div class="item-en"><span>exist</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ɪɡˈzɪst/ v.</div>
+          <div class="item-cn">存在</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('identity', this)">
+          <div class="item-en"><span>identity</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/aɪˈdentəti/ n.</div>
+          <div class="item-cn">身份；认同</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('unite', this)">
+          <div class="item-en"><span>unite</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/juˈnaɪt/ v.</div>
+          <div class="item-cn">团结；联合</div>
+        </div>
+        
+    </div>
+  </div>
+
+  <!-- 短语 -->
+  <div class="section-box">
+    <div class="sec-title">🗣️ 核心短语 (30条)</div>
+    <div class="list-phrases">
+      
+        <div class="list-row" onclick="playAudio('folk customs', this)">
+          <div class="row-left">
+            <span class="num-badge">1</span>
+            <span style="font-weight:700;">folk customs</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">民俗风尚；民间习俗</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('Folk Customs Festival', this)">
+          <div class="row-left">
+            <span class="num-badge">2</span>
+            <span style="font-weight:700;">Folk Customs Festival</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">民俗文化节</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('opening speech', this)">
+          <div class="row-left">
+            <span class="num-badge">3</span>
+            <span style="font-weight:700;">opening speech</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">开幕致辞</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('exhibition stands', this)">
+          <div class="row-left">
+            <span class="num-badge">4</span>
+            <span style="font-weight:700;">exhibition stands</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">展览展位</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('folk costumes', this)">
+          <div class="row-left">
+            <span class="num-badge">5</span>
+            <span style="font-weight:700;">folk costumes</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">民族服饰</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('folk art', this)">
+          <div class="row-left">
+            <span class="num-badge">6</span>
+            <span style="font-weight:700;">folk art</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">民间艺术</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('folk eating customs', this)">
+          <div class="row-left">
+            <span class="num-badge">7</span>
+            <span style="font-weight:700;">folk eating customs</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">民间饮食习俗</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('folk dances', this)">
+          <div class="row-left">
+            <span class="num-badge">8</span>
+            <span style="font-weight:700;">folk dances</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">民间舞蹈</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('writing competition', this)">
+          <div class="row-left">
+            <span class="num-badge">9</span>
+            <span style="font-weight:700;">writing competition</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">写作比赛</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('afternoon tea', this)">
+          <div class="row-left">
+            <span class="num-badge">10</span>
+            <span style="font-weight:700;">afternoon tea</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">下午茶</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('leather suits', this)">
+          <div class="row-left">
+            <span class="num-badge">11</span>
+            <span style="font-weight:700;">leather suits</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">皮衣套装</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('war dance', this)">
+          <div class="row-left">
+            <span class="num-badge">12</span>
+            <span style="font-weight:700;">war dance</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">战舞</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('clay pots', this)">
+          <div class="row-left">
+            <span class="num-badge">13</span>
+            <span style="font-weight:700;">clay pots</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">黏土陶罐</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('lunar calendar', this)">
+          <div class="row-left">
+            <span class="num-badge">14</span>
+            <span style="font-weight:700;">lunar calendar</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">农历；阴历</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('set off fireworks', this)">
+          <div class="row-left">
+            <span class="num-badge">15</span>
+            <span style="font-weight:700;">set off fireworks</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">燃放烟花</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('wash away bad luck', this)">
+          <div class="row-left">
+            <span class="num-badge">16</span>
+            <span style="font-weight:700;">wash away bad luck</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">洗去厄运</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('Midsummer Day', this)">
+          <div class="row-left">
+            <span class="num-badge">17</span>
+            <span style="font-weight:700;">Midsummer Day</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">仲夏节</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('set campfires', this)">
+          <div class="row-left">
+            <span class="num-badge">18</span>
+            <span style="font-weight:700;">set campfires</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">点燃篝火</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('midsummer pole', this)">
+          <div class="row-left">
+            <span class="num-badge">19</span>
+            <span style="font-weight:700;">midsummer pole</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">仲夏柱</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('autumn harvest', this)">
+          <div class="row-left">
+            <span class="num-badge">20</span>
+            <span style="font-weight:700;">autumn harvest</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">秋收</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('Oktoberfest', this)">
+          <div class="row-left">
+            <span class="num-badge">21</span>
+            <span style="font-weight:700;">Oktoberfest</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">啤酒节</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('traditional costumes', this)">
+          <div class="row-left">
+            <span class="num-badge">22</span>
+            <span style="font-weight:700;">traditional costumes</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">传统服饰</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('identify with', this)">
+          <div class="row-left">
+            <span class="num-badge">23</span>
+            <span style="font-weight:700;">identify with</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">认同；产生共鸣</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('relate to', this)">
+          <div class="row-left">
+            <span class="num-badge">24</span>
+            <span style="font-weight:700;">relate to</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">与...相关联</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('connect us back to our roots', this)">
+          <div class="row-left">
+            <span class="num-badge">25</span>
+            <span style="font-weight:700;">connect us back to our roots</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">将我们与文化之根紧密相连</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('pass on history', this)">
+          <div class="row-left">
+            <span class="num-badge">26</span>
+            <span style="font-weight:700;">pass on history</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">传承历史</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('unite the world', this)">
+          <div class="row-left">
+            <span class="num-badge">27</span>
+            <span style="font-weight:700;">unite the world</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">团结世界</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('the bridge between past and present', this)">
+          <div class="row-left">
+            <span class="num-badge">28</span>
+            <span style="font-weight:700;">the bridge between past and present</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">连接过去与现在的桥梁</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('different background', this)">
+          <div class="row-left">
+            <span class="num-badge">29</span>
+            <span style="font-weight:700;">different background</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">不同的背景</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('sugar painting', this)">
+          <div class="row-left">
+            <span class="num-badge">30</span>
+            <span style="font-weight:700;">sugar painting</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">画糖人；糖画</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+
+  <!-- 句型 -->
+  <div class="section-box">
+    <div class="sec-title">💬 重点句型与经典例句 (10句)</div>
+    <div class="list-sentences">
+      
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Folk customs connect us back to our cultural roots.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">1</span> Folk customs connect us back to our cultural roots.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">民间习俗将我们与自己的文化根基紧密相连。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Setting off fireworks on New Year\'s Eve is believed to wash away bad luck.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">2</span> Setting off fireworks on New Year's Eve is believed to wash away bad luck.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">除夕夜燃放烟花被认为能够洗去厄运。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Traditional festivals serve as a bridge between the past and the present.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">3</span> Traditional festivals serve as a bridge between the past and the present.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">传统节日构筑起了连接过去与现在的桥梁。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('People wear colourful folk costumes and perform traditional dances during the festival.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">4</span> People wear colourful folk costumes and perform traditional dances during the festival.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">节日期间，人们身穿绚丽的民族服饰，表演传统舞蹈。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Folk customs are the mirror of the past.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">5</span> Folk customs are the mirror of the past.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">民俗文化是照见历史过去的一面镜子。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('As people from different backgrounds learn about each other, society becomes stronger.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">6</span> As people from different backgrounds learn about each other, society becomes stronger.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">随着来自不同背景的人们相互了解，社会变得更加凝聚强大。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Traditional dishes are cooked with love and shared among family and friends.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">7</span> Traditional dishes are cooked with love and shared among family and friends.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">传统美食饱含爱意被精心烹制，并在亲朋好友间共享。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('An old man painting with sugar caught my eye in the street.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">8</span> An old man painting with sugar caught my eye in the street.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">街头一位画糖人的老人吸引了我的目光。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Thousands of monkeys enjoy a big fruit feast every November in Thailand.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">9</span> Thousands of monkeys enjoy a big fruit feast every November in Thailand.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">每年十一月，泰国成千上万只猴子享用着丰盛的水果盛宴。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('This cultural treasure will disappear if we don\'t find ways to save it.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">10</span> This cultural treasure will disappear if we don't find ways to save it.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">如果我们不想法设法挽救，这一文化瑰宝将会消逝。</div>
+        </div>
+        
+    </div>
+  </div>
+
+  <script>
+    let isMask = false;
+    let activeAudio = null;
+
+    // 高声音质播放引擎 (解决杂音问题)
+    function playAudio(text, element) {
+      if (activeAudio) {
+        activeAudio.pause();
+        activeAudio = null;
+      }
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+
+      // 清理非发音字符
+      const cleanText = text.replace(/[^a-zA-Z0-9\s,'\.\?!\-]/g, '').trim();
+      if (!cleanText) return;
+
+      const engine = document.getElementById('audioEngineSelect').value;
+
+      if (element) {
+        document.querySelectorAll('.playing').forEach(el => el.classList.remove('playing'));
+        element.classList.add('playing');
+      }
+
+      if (engine === 'dict') {
+        // 高保真在线字典真人发音接口
+        const audioUrl = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(cleanText) + '&type=2';
+        const audio = new Audio(audioUrl);
+        activeAudio = audio;
+
+        audio.play().then(() => {
+          audio.onended = () => { if (element) element.classList.remove('playing'); };
+          audio.onerror = () => { playWebSpeech(cleanText, element); };
+        }).catch(() => {
+          // 网络失败备选
+          playWebSpeech(cleanText, element);
+        });
+      } else {
+        playWebSpeech(cleanText, element);
+      }
+    }
+
+    function playWebSpeech(text, element) {
+      if (!('speechSynthesis' in window)) return;
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-US';
+      u.rate = 0.9;
+      u.pitch = 1.0;
+
+      const voices = window.speechSynthesis.getVoices();
+      const usVoice = voices.find(v => v.lang.includes('en-US') || v.lang.includes('en-GB') || v.name.includes('Samantha') || v.name.includes('Alex'));
+      if (usVoice) u.voice = usVoice;
+
+      u.onend = () => { if (element) element.classList.remove('playing'); };
+      u.onerror = () => { if (element) element.classList.remove('playing'); };
+
+      window.speechSynthesis.speak(u);
+    }
+
+    function toggleMask() {
+      isMask = !isMask;
+      document.body.classList.toggle('mask-mode', isMask);
+      document.getElementById('maskBtn').textContent = isMask ? '🙈 默写遮罩模式: 开' : '🙈 默写遮罩模式: 关';
+      document.getElementById('maskBtn').classList.toggle('active', isMask);
+    }
+  </script>
+</body>
+</html>

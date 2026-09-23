@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 2 People and Their Jobs - 纯净网页版（高清发音）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --text-main: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      --primary: #2563EB;
+      --primary-soft: #EFF6FF;
+      --accent-green: #16A34A;
+      --accent-green-soft: #F0FDF4;
+      --radius-md: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    header {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    h1 { font-size: 22px; font-weight: 800; color: #1E40AF; }
+    p.sub { font-size: 14px; color: var(--text-muted); font-weight: 500; margin-top: 4px; }
+    
+    .ctrl-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .ctrl-btn {
+      padding: 8px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      outline: none;
+    }
+    .ctrl-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    .section-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .sec-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .grid-words {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .item-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .item-card:hover { border-color: var(--primary); background: var(--primary-soft); }
+    .item-card.playing { border-color: var(--accent-green); background: var(--accent-green-soft); }
+    
+    .item-en { font-weight: 700; font-size: 16px; color: var(--text-main); margin-bottom: 4px; display: flex; justify-content: space-between; }
+    .item-cn { font-size: 13px; color: var(--text-muted); font-weight: 500; transition: filter 0.2s; }
+
+    body.mask-mode .item-cn { filter: blur(5px); user-select: none; }
+    body.mask-mode .item-card:hover .item-cn { filter: blur(0); }
+    body.mask-mode .list-row:hover .item-cn { filter: blur(0); }
+
+    .list-phrases, .list-sentences { display: flex; flex-direction: column; gap: 10px; }
+    .list-row {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px 18px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s;
+    }
+    .list-row:hover { border-color: var(--primary); background: var(--primary-soft); }
+    .list-row.playing { border-color: var(--accent-green); background: var(--accent-green-soft); }
+    
+    .row-left { display: flex; align-items: center; gap: 12px; }
+    .num-badge { font-size: 12px; font-weight: 700; color: var(--text-muted); background: white; padding: 2px 8px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <a href="unit-study-hub-V1.html" class="back-link">← 返回英语单元总中心</a>
+      <h1 style="margin-top:8px;">Unit 2 People and Their Jobs</h1>
+      <p class="sub">职业与人物·古籍修复与百业匠心（全量必背单） · 原生网页点读版（无PDF）</p>
+    </div>
+    <div>
+      <span style="font-size:13px; background:var(--accent-green-soft); color:var(--accent-green); border:1px solid #BBF7D0; padding:6px 14px; border-radius:20px; font-weight:700;">🔊 清晰真人语音模式</span>
+    </div>
+  </header>
+
+  <div class="ctrl-bar">
+    <button class="ctrl-btn" id="maskBtn" onclick="toggleMask()">🙈 默写遮罩模式: 关</button>
+    <select class="ctrl-btn" id="audioEngineSelect">
+      <option value="dict">🔊 高音质在线发音 (推荐)</option>
+      <option value="speech">🤖 浏览器原生发音</option>
+    </select>
+  </div>
+
+  <!-- 单词 -->
+  <div class="section-box">
+    <div class="sec-title">🔤 重点词汇 (34个)</div>
+    <div class="grid-words">
+      
+        <div class="item-card" onclick="playAudio('vox pop', this)">
+          <div class="item-en"><span>vox pop</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈvɒks pɒp/ n.</div>
+          <div class="item-cn">街头采访；街采</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('patient', this)">
+          <div class="item-en"><span>patient</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈpeɪʃnt/ n./adj.</div>
+          <div class="item-cn">病人；有耐心的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('equipment', this)">
+          <div class="item-en"><span>equipment</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ɪˈkwɪpmənt/ n.</div>
+          <div class="item-cn">设备；器材</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('requirement', this)">
+          <div class="item-en"><span>requirement</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/rɪˈkwaɪəmənt/ n.</div>
+          <div class="item-cn">要求；必要条件</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('interior', this)">
+          <div class="item-en"><span>interior</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ɪnˈtɪəriə(r)/ adj.</div>
+          <div class="item-cn">室内的；内部的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('architecture', this)">
+          <div class="item-en"><span>architecture</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈɑːkɪtektʃə(r)/ n.</div>
+          <div class="item-cn">建筑设计；建筑学</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('delivery', this)">
+          <div class="item-en"><span>delivery</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/dɪˈlɪvəri/ n.</div>
+          <div class="item-cn">递送；交付</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('journalist', this)">
+          <div class="item-en"><span>journalist</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈdʒɜːnəlɪst/ n.</div>
+          <div class="item-cn">新闻记者</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('parcel', this)">
+          <div class="item-en"><span>parcel</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈpɑːsl/ n.</div>
+          <div class="item-cn">包裹</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('interviewee', this)">
+          <div class="item-en"><span>interviewee</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˌɪntəvjuːˈiː/ n.</div>
+          <div class="item-cn">受访者；被面试者</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('chemistry', this)">
+          <div class="item-en"><span>chemistry</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈkemɪstri/ n.</div>
+          <div class="item-cn">化学</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('certification', this)">
+          <div class="item-en"><span>certification</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˌsɜːtɪfɪˈkeɪʃn/ n.</div>
+          <div class="item-cn">资格证书；认证</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('organise', this)">
+          <div class="item-en"><span>organise</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈɔːɡənaɪz/ v.</div>
+          <div class="item-cn">组织；筹备</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('restorer', this)">
+          <div class="item-en"><span>restorer</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/rɪˈstɔːrə(r)/ n.</div>
+          <div class="item-cn">文物修复师；还原者</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('restoration', this)">
+          <div class="item-en"><span>restoration</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˌrestəˈreɪʃn/ n.</div>
+          <div class="item-cn">修复；还原</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('period', this)">
+          <div class="item-en"><span>period</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈpɪəriəd/ n.</div>
+          <div class="item-cn">时期；阶段</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('due to', this)">
+          <div class="item-en"><span>due to</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/djuː tuː/ phr.</div>
+          <div class="item-cn">由于；因为</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('worm', this)">
+          <div class="item-en"><span>worm</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/wɜːm/ n.</div>
+          <div class="item-cn">蠕虫；书虫</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('damp', this)">
+          <div class="item-en"><span>damp</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/dæmp/ n./adj.</div>
+          <div class="item-cn">潮湿；湿气</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('professional', this)">
+          <div class="item-en"><span>professional</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/prəˈfeʃənl/ adj.</div>
+          <div class="item-cn">专业的；职业的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('tweezers', this)">
+          <div class="item-en"><span>tweezers</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈtwiːzəz/ n.</div>
+          <div class="item-cn">镊子</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('fix', this)">
+          <div class="item-en"><span>fix</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/fɪks/ v.</div>
+          <div class="item-cn">修理；固定</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('army', this)">
+          <div class="item-en"><span>army</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈɑːmi/ n.</div>
+          <div class="item-cn">军队；陆军</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('race', this)">
+          <div class="item-en"><span>race</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/reɪs/ v./n.</div>
+          <div class="item-cn">比赛；赛跑；与...赛跑</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('extra', this)">
+          <div class="item-en"><span>extra</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈekstrə/ adj.</div>
+          <div class="item-cn">额外的；加班的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('background', this)">
+          <div class="item-en"><span>background</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈbækɡraʊnd/ n.</div>
+          <div class="item-cn">背景；学历背景</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('scientific', this)">
+          <div class="item-en"><span>scientific</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˌsaɪənˈtɪfɪk/ adj.</div>
+          <div class="item-cn">科学的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('digitalisation', this)">
+          <div class="item-en"><span>digitalisation</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˌdɪdʒɪtəlaɪˈzeɪʃn/ n.</div>
+          <div class="item-cn">数字化</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('policewoman', this)">
+          <div class="item-en"><span>policewoman</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/pəˈliːswʊmən/ n.</div>
+          <div class="item-cn">女警察</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('postman', this)">
+          <div class="item-en"><span>postman</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈpəʊstmən/ n.</div>
+          <div class="item-cn">邮递员</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('boss', this)">
+          <div class="item-en"><span>boss</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/bɒs/ n.</div>
+          <div class="item-cn">老板；上司</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('dentist', this)">
+          <div class="item-en"><span>dentist</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈdentɪst/ n.</div>
+          <div class="item-cn">牙医</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('lawyer', this)">
+          <div class="item-en"><span>lawyer</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈlɔːjə(r)/ n.</div>
+          <div class="item-cn">律师</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('fireman', this)">
+          <div class="item-en"><span>fireman</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈfaɪəmən/ n.</div>
+          <div class="item-cn">消防员</div>
+        </div>
+        
+    </div>
+  </div>
+
+  <!-- 短语 -->
+  <div class="section-box">
+    <div class="sec-title">🗣️ 核心短语 (46条)</div>
+    <div class="list-phrases">
+      
+        <div class="list-row" onclick="playAudio('carry out a research', this)">
+          <div class="row-left">
+            <span class="num-badge">1</span>
+            <span style="font-weight:700;">carry out a research</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">开展研究</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('different walks of life', this)">
+          <div class="row-left">
+            <span class="num-badge">2</span>
+            <span style="font-weight:700;">different walks of life</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">各行各业</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('medical equipment', this)">
+          <div class="row-left">
+            <span class="num-badge">3</span>
+            <span style="font-weight:700;">medical equipment</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">医疗设备</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('emergency care', this)">
+          <div class="row-left">
+            <span class="num-badge">4</span>
+            <span style="font-weight:700;">emergency care</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">急救；紧急护理</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('interior designer', this)">
+          <div class="row-left">
+            <span class="num-badge">5</span>
+            <span style="font-weight:700;">interior designer</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">室内设计师</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('home design', this)">
+          <div class="row-left">
+            <span class="num-badge">6</span>
+            <span style="font-weight:700;">home design</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">家居设计</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('social media influencer', this)">
+          <div class="row-left">
+            <span class="num-badge">7</span>
+            <span style="font-weight:700;">social media influencer</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">社交媒体网红/网络红人</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('communication skills', this)">
+          <div class="row-left">
+            <span class="num-badge">8</span>
+            <span style="font-weight:700;">communication skills</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">沟通技巧</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('collect parcels', this)">
+          <div class="row-left">
+            <span class="num-badge">9</span>
+            <span style="font-weight:700;">collect parcels</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">收包裹/收取快递</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('drive sth to people\'s homes', this)">
+          <div class="row-left">
+            <span class="num-badge">10</span>
+            <span style="font-weight:700;">drive sth to people's homes</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">把物品运送到人们家中</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('give first aid', this)">
+          <div class="row-left">
+            <span class="num-badge">11</span>
+            <span style="font-weight:700;">give first aid</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">给予急救</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('community volunteer', this)">
+          <div class="row-left">
+            <span class="num-badge">12</span>
+            <span style="font-weight:700;">community volunteer</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">社区志愿者</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('work towards a goal', this)">
+          <div class="row-left">
+            <span class="num-badge">13</span>
+            <span style="font-weight:700;">work towards a goal</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">朝目标努力</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('come true', this)">
+          <div class="row-left">
+            <span class="num-badge">14</span>
+            <span style="font-weight:700;">come true</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">实现；成为现实</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('teacher certification', this)">
+          <div class="row-left">
+            <span class="num-badge">15</span>
+            <span style="font-weight:700;">teacher certification</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">教师资格证书</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('basic instruments', this)">
+          <div class="row-left">
+            <span class="num-badge">16</span>
+            <span style="font-weight:700;">basic instruments</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">基本乐器/工具</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('organise performances', this)">
+          <div class="row-left">
+            <span class="num-badge">17</span>
+            <span style="font-weight:700;">organise performances</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">组织演出</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('office software', this)">
+          <div class="row-left">
+            <span class="num-badge">18</span>
+            <span style="font-weight:700;">office software</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">办公软件</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('presentation skills', this)">
+          <div class="row-left">
+            <span class="num-badge">19</span>
+            <span style="font-weight:700;">presentation skills</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">演讲与展示技能</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('damaged ancient books', this)">
+          <div class="row-left">
+            <span class="num-badge">20</span>
+            <span style="font-weight:700;">damaged ancient books</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">受损古籍</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('over long periods of time', this)">
+          <div class="row-left">
+            <span class="num-badge">21</span>
+            <span style="font-weight:700;">over long periods of time</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">长年累月；历经长久时期</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('eat one\'s way into books', this)">
+          <div class="row-left">
+            <span class="num-badge">22</span>
+            <span style="font-weight:700;">eat one's way into books</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">书虫蛀书（蠹虫蛀蚀书本）</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('due to damp', this)">
+          <div class="row-left">
+            <span class="num-badge">23</span>
+            <span style="font-weight:700;">due to damp</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">由于潮湿</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('give ... a new life', this)">
+          <div class="row-left">
+            <span class="num-badge">24</span>
+            <span style="font-weight:700;">give ... a new life</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">赋予...重获新生</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('modern equipment', this)">
+          <div class="row-left">
+            <span class="num-badge">25</span>
+            <span style="font-weight:700;">modern equipment</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">现代设备</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('test the paper', this)">
+          <div class="row-left">
+            <span class="num-badge">26</span>
+            <span style="font-weight:700;">test the paper</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">检测纸张</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('carry out research', this)">
+          <div class="row-left">
+            <span class="num-badge">27</span>
+            <span style="font-weight:700;">carry out research</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">进行科学研究</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('race against time', this)">
+          <div class="row-left">
+            <span class="num-badge">28</span>
+            <span style="font-weight:700;">race against time</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">与时间赛跑</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('work extra hours', this)">
+          <div class="row-left">
+            <span class="num-badge">29</span>
+            <span style="font-weight:700;">work extra hours</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">加班加点工作</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('pass down skills', this)">
+          <div class="row-left">
+            <span class="num-badge">30</span>
+            <span style="font-weight:700;">pass down skills</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">传承技艺与技能</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('digitalisation of books', this)">
+          <div class="row-left">
+            <span class="num-badge">31</span>
+            <span style="font-weight:700;">digitalisation of books</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">图书数字化</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('valuable records', this)">
+          <div class="row-left">
+            <span class="num-badge">32</span>
+            <span style="font-weight:700;">valuable records</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">珍贵的记录</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('make notes', this)">
+          <div class="row-left">
+            <span class="num-badge">33</span>
+            <span style="font-weight:700;">make notes</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">做笔记；做记录</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('job requirements', this)">
+          <div class="row-left">
+            <span class="num-badge">34</span>
+            <span style="font-weight:700;">job requirements</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">工作要求/岗位条件</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('take up this work', this)">
+          <div class="row-left">
+            <span class="num-badge">35</span>
+            <span style="font-weight:700;">take up this work</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">从事这份工作</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('for life', this)">
+          <div class="row-left">
+            <span class="num-badge">36</span>
+            <span style="font-weight:700;">for life</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">终身的；一辈子的</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('good educational backgrounds', this)">
+          <div class="row-left">
+            <span class="num-badge">37</span>
+            <span style="font-weight:700;">good educational backgrounds</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">良好的学历背景</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('try one\'s best', this)">
+          <div class="row-left">
+            <span class="num-badge">38</span>
+            <span style="font-weight:700;">try one's best</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">竭尽全力</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('solve problems', this)">
+          <div class="row-left">
+            <span class="num-badge">39</span>
+            <span style="font-weight:700;">solve problems</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">解决问题</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('craftsmanship spirit', this)">
+          <div class="row-left">
+            <span class="num-badge">40</span>
+            <span style="font-weight:700;">craftsmanship spirit</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">工匠精神</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('concentrate on', this)">
+          <div class="row-left">
+            <span class="num-badge">41</span>
+            <span style="font-weight:700;">concentrate on</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">全神贯注于...</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('be devoted to', this)">
+          <div class="row-left">
+            <span class="num-badge">42</span>
+            <span style="font-weight:700;">be devoted to</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">致力于...；全心投入...</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('glass-blowing', this)">
+          <div class="row-left">
+            <span class="num-badge">43</span>
+            <span style="font-weight:700;">glass-blowing</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">吹制玻璃工艺</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('hollow steel tube', this)">
+          <div class="row-left">
+            <span class="num-badge">44</span>
+            <span style="font-weight:700;">hollow steel tube</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">中空钢管</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('worthwhile job', this)">
+          <div class="row-left">
+            <span class="num-badge">45</span>
+            <span style="font-weight:700;">worthwhile job</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">有价值/有意义的工作</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('bind books', this)">
+          <div class="row-left">
+            <span class="num-badge">46</span>
+            <span style="font-weight:700;">bind books</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">装订书籍</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+
+  <!-- 句型 -->
+  <div class="section-box">
+    <div class="sec-title">💬 重点句型与经典例句 (32句)</div>
+    <div class="list-sentences">
+      
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('He complains he has no time for himself.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">1</span> He complains he has no time for himself.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">他抱怨自己没有属于自己的个人时间。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('She is happy to see her students making progress.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">2</span> She is happy to see her students making progress.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">看到学生们取得进步，她感到非常高兴。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Acting quickly to help patients is the main duty of emergency doctors.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">3</span> Acting quickly to help patients is the main duty of emergency doctors.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">迅速行动救治病人是急诊科医师的主要职责。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('You need to have some knowledge of art.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">4</span> You need to have some knowledge of art.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">你需要具备一些艺术知识。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Set a goal and work towards it.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">5</span> Set a goal and work towards it.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">树立一个目标，并为之努力。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('I\'m sure your dream will come true.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">6</span> I'm sure your dream will come true.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">我相信你的梦想一定会实现。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('It\'s my responsibility to do it.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">7</span> It's my responsibility to do it.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">做好这件事是我的责任。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('My job is to repair the ancient books which have been damaged over long periods of time.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">8</span> My job is to repair the ancient books which have been damaged over long periods of time.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">我的工作是修复那些历经岁月长河受损的古籍。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('More than 10 million old books are waiting for restoration.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">9</span> More than 10 million old books are waiting for restoration.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">超过一千万册古籍等待修复。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Simple tools like scissors, tweezers and brushes were used in the past.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">10</span> Simple tools like scissors, tweezers and brushes were used in the past.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">过去人们使用剪刀、镊子和毛刷等简单工具。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Repairing an ancient book is like doing an operation on a patient.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">11</span> Repairing an ancient book is like doing an operation on a patient.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">修复一本古籍就像给病人做一场手术。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('I soon took interest in this work.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">12</span> I soon took interest in this work.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">我很快对这项工作产生了兴趣。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('It\'s love and passion that keep me going.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">13</span> It's love and passion that keep me going.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">正是热爱与激情支撑着我不断前行。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Once I took up this work, it meant a job for life.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">14</span> Once I took up this work, it meant a job for life.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">一旦我从事了这项工作，这就意味着一辈子的坚守。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('We are racing against time to rescue old books.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">15</span> We are racing against time to rescue old books.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">我们正在与时间赛跑，抢救古籍。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('They have good educational backgrounds and use more scientific methods.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">16</span> They have good educational backgrounds and use more scientific methods.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">他们有着良好的教育背景，并采用更为科学的方法。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Some masters might be unwilling to pass down all their skills.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">17</span> Some masters might be unwilling to pass down all their skills.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">有些大师可能不愿意把所有的技艺都传承下去。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('I will interview someone who restores ancient books.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">18</span> I will interview someone who restores ancient books.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">我将采访一位古籍修复师。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('We save each piece of paper which breaks off from the book.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">19</span> We save each piece of paper which breaks off from the book.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">我们保存从书上脱落的每一碎片纸张。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('The company is looking for someone who can help sell its products online.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">20</span> The company is looking for someone who can help sell its products online.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">公司正在寻找能够帮助在网上销售产品的员工。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('The chest, which was over 100 years old, had detailed carvings.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">21</span> The chest, which was over 100 years old, had detailed carvings.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">那个已有100多年历史的箱子雕刻精致。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('I want to be a scientist who studies living things.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">22</span> I want to be a scientist who studies living things.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">我想成为一名研究生物的科学家。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('It\'s important to let people know how valuable nature is.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">23</span> It's important to let people know how valuable nature is.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">让人们了解大自然的珍贵至关重要。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('I know it will be hard to become a life scientist, but I\'ll try my best to make it happen.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">24</span> I know it will be hard to become a life scientist, but I'll try my best to make it happen.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">我知道成为一名生命科学家很难，但我会尽最大努力去实现它。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('I have always loved animals, but being a full-time vet is very challenging.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">25</span> I have always loved animals, but being a full-time vet is very challenging.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">我一直很喜欢动物，但成为一名全职兽医非常有挑战性。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('When he was young, he dreamed of being a firefighter.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">26</span> When he was young, he dreamed of being a firefighter.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">当他年轻时，他梦想成为一名消防员。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('FAST aims to discover how life began and to receive possible messages from alien civilisations.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">27</span> FAST aims to discover how life began and to receive possible messages from alien civilisations.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">中国天眼旨在探索生命起源并接收外星文明可能发出的信号。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('He oversaw everything despite suffering from cancer.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">28</span> He oversaw everything despite suffering from cancer.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">尽管患有癌症，他依然监督指导着一切。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Germany\'s workers have craftsmanship spirit, while he worked for it.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">29</span> Germany's workers have craftsmanship spirit, while he worked for it.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">德国工人富有工匠精神，他也为此努力倾注了心血。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('It takes a craftsman a lot of skills to shape melted glass.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">30</span> It takes a craftsman a lot of skills to shape melted glass.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">工匠需要精湛的技艺才能将熔化的玻璃塑造造型。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('We need to list the duties and requirements of the book restorer on the poster.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">31</span> We need to list the duties and requirements of the book restorer on the poster.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">我们需要在海报上列出图书修复师的职责和要求。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Saving valuable ancient books is the most meaningful part of this job.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">32</span> Saving valuable ancient books is the most meaningful part of this job.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">拯救珍贵的古籍是这份工作中最有意义的部分。</div>
+        </div>
+        
+    </div>
+  </div>
+
+  <script>
+    let isMask = false;
+    let activeAudio = null;
+
+    // 高声音质播放引擎 (解决杂音问题)
+    function playAudio(text, element) {
+      if (activeAudio) {
+        activeAudio.pause();
+        activeAudio = null;
+      }
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+
+      // 清理非发音字符
+      const cleanText = text.replace(/[^a-zA-Z0-9\s,'\.\?!\-]/g, '').trim();
+      if (!cleanText) return;
+
+      const engine = document.getElementById('audioEngineSelect').value;
+
+      if (element) {
+        document.querySelectorAll('.playing').forEach(el => el.classList.remove('playing'));
+        element.classList.add('playing');
+      }
+
+      if (engine === 'dict') {
+        // 高保真在线字典真人发音接口
+        const audioUrl = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(cleanText) + '&type=2';
+        const audio = new Audio(audioUrl);
+        activeAudio = audio;
+
+        audio.play().then(() => {
+          audio.onended = () => { if (element) element.classList.remove('playing'); };
+          audio.onerror = () => { playWebSpeech(cleanText, element); };
+        }).catch(() => {
+          // 网络失败备选
+          playWebSpeech(cleanText, element);
+        });
+      } else {
+        playWebSpeech(cleanText, element);
+      }
+    }
+
+    function playWebSpeech(text, element) {
+      if (!('speechSynthesis' in window)) return;
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-US';
+      u.rate = 0.9;
+      u.pitch = 1.0;
+
+      const voices = window.speechSynthesis.getVoices();
+      const usVoice = voices.find(v => v.lang.includes('en-US') || v.lang.includes('en-GB') || v.name.includes('Samantha') || v.name.includes('Alex'));
+      if (usVoice) u.voice = usVoice;
+
+      u.onend = () => { if (element) element.classList.remove('playing'); };
+      u.onerror = () => { if (element) element.classList.remove('playing'); };
+
+      window.speechSynthesis.speak(u);
+    }
+
+    function toggleMask() {
+      isMask = !isMask;
+      document.body.classList.toggle('mask-mode', isMask);
+      document.getElementById('maskBtn').textContent = isMask ? '🙈 默写遮罩模式: 开' : '🙈 默写遮罩模式: 关';
+      document.getElementById('maskBtn').classList.toggle('active', isMask);
+    }
+  </script>
+</body>
+</html>

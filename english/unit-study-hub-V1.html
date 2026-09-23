@@ -864,28 +864,53 @@
       document.getElementById(`panel-${secId}`).classList.add('active');
     }
 
-    // 核心语音点读 TTS 引擎
-    function playSpeech(text, element) {
-      if (!('speechSynthesis' in window)) {
-        alert('您的浏览器暂不支持语音点读功能');
-        return;
-      }
-      window.speechSynthesis.cancel(); // 取消正在播放的语音
+    let activeAudio = null;
 
+    // 核心高保真语音点读引擎 (双轨模式：高保真在线真人音质 + 原生 TTS 兜底)
+    function playSpeech(text, element) {
+      if (activeAudio) {
+        activeAudio.pause();
+        activeAudio = null;
+      }
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+
+      // 清理文本杂音字符
+      const cleanText = text.replace(/[^a-zA-Z0-9\s,'\.\?!\-]/g, '').trim();
+      if (!cleanText) return;
+
+      if (element) {
+        document.querySelectorAll('.playing').forEach(el => el.classList.remove('playing'));
+        element.classList.add('playing');
+      }
+
+      // 第一优先：使用高保真标准美音/英音在线音频 (无杂音)
+      const langType = currentLang === 'en-GB' ? '1' : '2';
+      const audioUrl = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(cleanText) + '&type=' + langType;
+      const audio = new Audio(audioUrl);
+      activeAudio = audio;
+
+      audio.play().then(() => {
+        audio.onended = () => { if (element) element.classList.remove('playing'); };
+        audio.onerror = () => { fallbackWebSpeech(cleanText, element); };
+      }).catch(() => {
+        fallbackWebSpeech(cleanText, element);
+      });
+    }
+
+    function fallbackWebSpeech(text, element) {
+      if (!('speechSynthesis' in window)) return;
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = currentLang;
       utterance.rate = parseFloat(currentRate);
 
-      // 匹配发音人
       const voices = window.speechSynthesis.getVoices();
       const matchVoice = voices.find(v => v.lang === currentLang || v.lang.includes(currentLang.split('-')[0]));
       if (matchVoice) utterance.voice = matchVoice;
 
-      if (element) {
-        element.classList.add('playing');
-        utterance.onend = () => element.classList.remove('playing');
-        utterance.onerror = () => element.classList.remove('playing');
-      }
+      utterance.onend = () => { if (element) element.classList.remove('playing'); };
+      utterance.onerror = () => { if (element) element.classList.remove('playing'); };
 
       window.speechSynthesis.speak(utterance);
     }

@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 5 Buildings - 纯净网页版（高清发音）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --text-main: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      --primary: #2563EB;
+      --primary-soft: #EFF6FF;
+      --accent-green: #16A34A;
+      --accent-green-soft: #F0FDF4;
+      --radius-md: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    header {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    h1 { font-size: 22px; font-weight: 800; color: #1E40AF; }
+    p.sub { font-size: 14px; color: var(--text-muted); font-weight: 500; margin-top: 4px; }
+    
+    .ctrl-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .ctrl-btn {
+      padding: 8px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      outline: none;
+    }
+    .ctrl-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    .section-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .sec-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .grid-words {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .item-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .item-card:hover { border-color: var(--primary); background: var(--primary-soft); }
+    .item-card.playing { border-color: var(--accent-green); background: var(--accent-green-soft); }
+    
+    .item-en { font-weight: 700; font-size: 16px; color: var(--text-main); margin-bottom: 4px; display: flex; justify-content: space-between; }
+    .item-cn { font-size: 13px; color: var(--text-muted); font-weight: 500; transition: filter 0.2s; }
+
+    body.mask-mode .item-cn { filter: blur(5px); user-select: none; }
+    body.mask-mode .item-card:hover .item-cn { filter: blur(0); }
+    body.mask-mode .list-row:hover .item-cn { filter: blur(0); }
+
+    .list-phrases, .list-sentences { display: flex; flex-direction: column; gap: 10px; }
+    .list-row {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px 18px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s;
+    }
+    .list-row:hover { border-color: var(--primary); background: var(--primary-soft); }
+    .list-row.playing { border-color: var(--accent-green); background: var(--accent-green-soft); }
+    
+    .row-left { display: flex; align-items: center; gap: 12px; }
+    .num-badge { font-size: 12px; font-weight: 700; color: var(--text-muted); background: white; padding: 2px 8px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <a href="unit-study-hub-V1.html" class="back-link">← 返回英语单元总中心</a>
+      <h1 style="margin-top:8px;">Unit 5 Buildings</h1>
+      <p class="sub">建筑艺术·古今建筑与绿色科技（全量必背单） · 原生网页点读版（无PDF）</p>
+    </div>
+    <div>
+      <span style="font-size:13px; background:var(--accent-green-soft); color:var(--accent-green); border:1px solid #BBF7D0; padding:6px 14px; border-radius:20px; font-weight:700;">🔊 清晰真人语音模式</span>
+    </div>
+  </header>
+
+  <div class="ctrl-bar">
+    <button class="ctrl-btn" id="maskBtn" onclick="toggleMask()">🙈 默写遮罩模式: 关</button>
+    <select class="ctrl-btn" id="audioEngineSelect">
+      <option value="dict">🔊 高音质在线发音 (推荐)</option>
+      <option value="speech">🤖 浏览器原生发音</option>
+    </select>
+  </div>
+
+  <!-- 单词 -->
+  <div class="section-box">
+    <div class="sec-title">🔤 重点词汇 (16个)</div>
+    <div class="grid-words">
+      
+        <div class="item-card" onclick="playAudio('construct', this)">
+          <div class="item-en"><span>construct</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/kənˈstrʌkt/ v.</div>
+          <div class="item-cn">建造；构建</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('steel', this)">
+          <div class="item-en"><span>steel</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/stiːl/ n.</div>
+          <div class="item-cn">钢铁</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('limit', this)">
+          <div class="item-en"><span>limit</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈlɪmɪt/ n./v.</div>
+          <div class="item-cn">限制；界限</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('combine', this)">
+          <div class="item-en"><span>combine</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/kəmˈbaɪn/ v.</div>
+          <div class="item-cn">结合；组合</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('modernist', this)">
+          <div class="item-en"><span>modernist</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈmɒdənɪst/ adj.</div>
+          <div class="item-cn">现代主义的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('tile', this)">
+          <div class="item-en"><span>tile</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/taɪl/ n.</div>
+          <div class="item-cn">瓦片；瓷砖</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('slippery', this)">
+          <div class="item-en"><span>slippery</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈslɪpəri/ adj.</div>
+          <div class="item-cn">滑的；光滑的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('structure', this)">
+          <div class="item-en"><span>structure</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈstrʌktʃə(r)/ n.</div>
+          <div class="item-cn">结构；建筑物</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('nail', this)">
+          <div class="item-en"><span>nail</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/neɪl/ n.</div>
+          <div class="item-cn">钉子；指甲</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('feature', this)">
+          <div class="item-en"><span>feature</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈfiːtʃə(r)/ n.</div>
+          <div class="item-cn">特征；特色</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('skylight', this)">
+          <div class="item-en"><span>skylight</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈskaɪlaɪt/ n.</div>
+          <div class="item-cn">天窗</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('concrete', this)">
+          <div class="item-en"><span>concrete</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈkɒŋkriːt/ n./adj.</div>
+          <div class="item-cn">混凝土；具体的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('pavilion', this)">
+          <div class="item-en"><span>pavilion</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/pəˈvɪliən/ n.</div>
+          <div class="item-cn">亭子；展馆</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('axis', this)">
+          <div class="item-en"><span>axis</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈæksɪs/ n.</div>
+          <div class="item-cn">中轴线；轴</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('northern', this)">
+          <div class="item-en"><span>northern</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈnɔːðən/ adj.</div>
+          <div class="item-cn">北方的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('inner', this)">
+          <div class="item-en"><span>inner</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈɪnə(r)/ adj.</div>
+          <div class="item-cn">内部的；内心的</div>
+        </div>
+        
+    </div>
+  </div>
+
+  <!-- 短语 -->
+  <div class="section-box">
+    <div class="sec-title">🗣️ 核心短语 (37条)</div>
+    <div class="list-phrases">
+      
+        <div class="list-row" onclick="playAudio('famous buildings', this)">
+          <div class="row-left">
+            <span class="num-badge">1</span>
+            <span style="font-weight:700;">famous buildings</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">著名建筑</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('Central Business District (CBD)', this)">
+          <div class="row-left">
+            <span class="num-badge">2</span>
+            <span style="font-weight:700;">Central Business District (CBD)</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">中央商务区</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('city centre', this)">
+          <div class="row-left">
+            <span class="num-badge">3</span>
+            <span style="font-weight:700;">city centre</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">市中心</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('built of steel', this)">
+          <div class="row-left">
+            <span class="num-badge">4</span>
+            <span style="font-weight:700;">built of steel</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">由钢铁建成</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('break the record', this)">
+          <div class="row-left">
+            <span class="num-badge">5</span>
+            <span style="font-weight:700;">break the record</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">打破纪录</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('have pros and cons', this)">
+          <div class="row-left">
+            <span class="num-badge">6</span>
+            <span style="font-weight:700;">have pros and cons</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">利弊兼有</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('not well kept', this)">
+          <div class="row-left">
+            <span class="num-badge">7</span>
+            <span style="font-weight:700;">not well kept</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">没有被很好保护</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('Chinese landscape garden', this)">
+          <div class="row-left">
+            <span class="num-badge">8</span>
+            <span style="font-weight:700;">Chinese landscape garden</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">中国古典园林</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('manmade buildings', this)">
+          <div class="row-left">
+            <span class="num-badge">9</span>
+            <span style="font-weight:700;">manmade buildings</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">人造建筑</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('combine A with B', this)">
+          <div class="row-left">
+            <span class="num-badge">10</span>
+            <span style="font-weight:700;">combine A with B</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">将A与B结合起来</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('modernist forms', this)">
+          <div class="row-left">
+            <span class="num-badge">11</span>
+            <span style="font-weight:700;">modernist forms</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">现代主义形式</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('central axis', this)">
+          <div class="row-left">
+            <span class="num-badge">12</span>
+            <span style="font-weight:700;">central axis</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">中轴线</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('Inner Court & Outer Court', this)">
+          <div class="row-left">
+            <span class="num-badge">13</span>
+            <span style="font-weight:700;">Inner Court & Outer Court</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">内廷与外朝（故宫）</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('a symbol of power', this)">
+          <div class="row-left">
+            <span class="num-badge">14</span>
+            <span style="font-weight:700;">a symbol of power</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">权力的象征</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('turn up (roof corners)', this)">
+          <div class="row-left">
+            <span class="num-badge">15</span>
+            <span style="font-weight:700;">turn up (roof corners)</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">（屋檐角）向上飞檐翘起</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('run off water', this)">
+          <div class="row-left">
+            <span class="num-badge">16</span>
+            <span style="font-weight:700;">run off water</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">排水；流走雨水</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('slippery tiles', this)">
+          <div class="row-left">
+            <span class="num-badge">17</span>
+            <span style="font-weight:700;">slippery tiles</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">光滑的瓦片/瓷砖</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('stand up to earthquakes', this)">
+          <div class="row-left">
+            <span class="num-badge">18</span>
+            <span style="font-weight:700;">stand up to earthquakes</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">抗击/经受住地震</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('construction craftsmanship', this)">
+          <div class="row-left">
+            <span class="num-badge">19</span>
+            <span style="font-weight:700;">construction craftsmanship</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">营造工艺/建筑匠心</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('cultural collections', this)">
+          <div class="row-left">
+            <span class="num-badge">20</span>
+            <span style="font-weight:700;">cultural collections</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">文化收藏品/文物</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('environmentally friendly building', this)">
+          <div class="row-left">
+            <span class="num-badge">21</span>
+            <span style="font-weight:700;">environmentally friendly building</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">环保型建筑/绿色建筑</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('common area', this)">
+          <div class="row-left">
+            <span class="num-badge">22</span>
+            <span style="font-weight:700;">common area</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">公共区域</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('separate units', this)">
+          <div class="row-left">
+            <span class="num-badge">23</span>
+            <span style="font-weight:700;">separate units</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">独立的单元</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('vertical forest', this)">
+          <div class="row-left">
+            <span class="num-badge">24</span>
+            <span style="font-weight:700;">vertical forest</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">垂直森林（建筑）</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('absorb carbon dioxide', this)">
+          <div class="row-left">
+            <span class="num-badge">25</span>
+            <span style="font-weight:700;">absorb carbon dioxide</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">吸收二氧化碳</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('clean energy', this)">
+          <div class="row-left">
+            <span class="num-badge">26</span>
+            <span style="font-weight:700;">clean energy</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">清洁能源</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('3D-printed building', this)">
+          <div class="row-left">
+            <span class="num-badge">27</span>
+            <span style="font-weight:700;">3D-printed building</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">3D打印建筑</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('carbon footprint', this)">
+          <div class="row-left">
+            <span class="num-badge">28</span>
+            <span style="font-weight:700;">carbon footprint</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">碳足迹</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('recycle rainwater', this)">
+          <div class="row-left">
+            <span class="num-badge">29</span>
+            <span style="font-weight:700;">recycle rainwater</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">回收利用雨水</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('floor plan', this)">
+          <div class="row-left">
+            <span class="num-badge">30</span>
+            <span style="font-weight:700;">floor plan</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">平面户型图</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('design sketch', this)">
+          <div class="row-left">
+            <span class="num-badge">31</span>
+            <span style="font-weight:700;">design sketch</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">设计草图</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('green curtain', this)">
+          <div class="row-left">
+            <span class="num-badge">32</span>
+            <span style="font-weight:700;">green curtain</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">绿色植物绿帘</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('take up space', this)">
+          <div class="row-left">
+            <span class="num-badge">33</span>
+            <span style="font-weight:700;">take up space</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">占用空间</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('make a proposal', this)">
+          <div class="row-left">
+            <span class="num-badge">34</span>
+            <span style="font-weight:700;">make a proposal</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">提出建议案</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('storeys of building', this)">
+          <div class="row-left">
+            <span class="num-badge">35</span>
+            <span style="font-weight:700;">storeys of building</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">建筑楼层</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('smart use of energy', this)">
+          <div class="row-left">
+            <span class="num-badge">36</span>
+            <span style="font-weight:700;">smart use of energy</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">能源的智能利用</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('double skin', this)">
+          <div class="row-left">
+            <span class="num-badge">37</span>
+            <span style="font-weight:700;">double skin</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">双层幕墙外皮</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+
+  <!-- 句型 -->
+  <div class="section-box">
+    <div class="sec-title">💬 重点句型与经典例句 (12句)</div>
+    <div class="list-sentences">
+      
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('They are located in the city centre.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">1</span> They are located in the city centre.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">它们坐落于市中心。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Tall buildings show our progress in technology and design.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">2</span> Tall buildings show our progress in technology and design.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">摩天大楼展现了我们在科技与设计上的进步。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Every few years, the record for the highest building is broken.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">3</span> Every few years, the record for the highest building is broken.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">每隔几年，最高建筑的纪录就会被刷新。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('The Palace Museum started to be built in 1406 and was completed in 1420.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">4</span> The Palace Museum started to be built in 1406 and was completed in 1420.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">故宫博物院始建于1406年，竣工于1420年。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Yellow was a symbol of power, used only by the emperors.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">5</span> Yellow was a symbol of power, used only by the emperors.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">黄色是权力的象征，过去仅供皇帝专享。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Ancient Chinese wooden structures can stand up to severe earthquakes without single nails.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">6</span> Ancient Chinese wooden structures can stand up to severe earthquakes without single nails.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">中国古代木结构建筑不用一根钉子就能经受住强震。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('The upturned blocks under roofs act like springs against earthquakes.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">7</span> The upturned blocks under roofs act like springs against earthquakes.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">屋檐下翘起的斗拱在抗震时起到了弹簧般的缓冲作用。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Modern architect designs combine traditional features with eco-friendly concepts.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">8</span> Modern architect designs combine traditional features with eco-friendly concepts.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">现代建筑师的设计将传统特色与环保理念完美结合。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Waste and rubbish are quickly cleared in this environmentally friendly building.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">9</span> Waste and rubbish are quickly cleared in this environmentally friendly building.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">在这座环保型建筑中，废弃物和垃圾都能被快速清运处理。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Green buildings reduce carbon footprints by absorbing CO2 and recycling rainwater.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">10</span> Green buildings reduce carbon footprints by absorbing CO2 and recycling rainwater.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">绿色建筑通过吸收二氧化碳和循环利用雨水来减少碳足迹。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('The green curtain produces oxygen and absorbs carbon dioxide.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">11</span> The green curtain produces oxygen and absorbs carbon dioxide.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">绿帘植物制造氧气并吸收二氧化碳。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Only three workers were needed to print the whole building\'s walls.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">12</span> Only three workers were needed to print the whole building's walls.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">打印整座建筑的墙体仅仅需要三名工人。</div>
+        </div>
+        
+    </div>
+  </div>
+
+  <script>
+    let isMask = false;
+    let activeAudio = null;
+
+    // 高声音质播放引擎 (解决杂音问题)
+    function playAudio(text, element) {
+      if (activeAudio) {
+        activeAudio.pause();
+        activeAudio = null;
+      }
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+
+      // 清理非发音字符
+      const cleanText = text.replace(/[^a-zA-Z0-9\s,'\.\?!\-]/g, '').trim();
+      if (!cleanText) return;
+
+      const engine = document.getElementById('audioEngineSelect').value;
+
+      if (element) {
+        document.querySelectorAll('.playing').forEach(el => el.classList.remove('playing'));
+        element.classList.add('playing');
+      }
+
+      if (engine === 'dict') {
+        // 高保真在线字典真人发音接口
+        const audioUrl = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(cleanText) + '&type=2';
+        const audio = new Audio(audioUrl);
+        activeAudio = audio;
+
+        audio.play().then(() => {
+          audio.onended = () => { if (element) element.classList.remove('playing'); };
+          audio.onerror = () => { playWebSpeech(cleanText, element); };
+        }).catch(() => {
+          // 网络失败备选
+          playWebSpeech(cleanText, element);
+        });
+      } else {
+        playWebSpeech(cleanText, element);
+      }
+    }
+
+    function playWebSpeech(text, element) {
+      if (!('speechSynthesis' in window)) return;
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-US';
+      u.rate = 0.9;
+      u.pitch = 1.0;
+
+      const voices = window.speechSynthesis.getVoices();
+      const usVoice = voices.find(v => v.lang.includes('en-US') || v.lang.includes('en-GB') || v.name.includes('Samantha') || v.name.includes('Alex'));
+      if (usVoice) u.voice = usVoice;
+
+      u.onend = () => { if (element) element.classList.remove('playing'); };
+      u.onerror = () => { if (element) element.classList.remove('playing'); };
+
+      window.speechSynthesis.speak(u);
+    }
+
+    function toggleMask() {
+      isMask = !isMask;
+      document.body.classList.toggle('mask-mode', isMask);
+      document.getElementById('maskBtn').textContent = isMask ? '🙈 默写遮罩模式: 开' : '🙈 默写遮罩模式: 关';
+      document.getElementById('maskBtn').classList.toggle('active', isMask);
+    }
+  </script>
+</body>
+</html>

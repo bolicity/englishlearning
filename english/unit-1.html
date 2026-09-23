@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 1 Teenage Life - 纯净网页版（高清发音）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --text-main: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      --primary: #2563EB;
+      --primary-soft: #EFF6FF;
+      --accent-green: #16A34A;
+      --accent-green-soft: #F0FDF4;
+      --radius-md: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    header {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    h1 { font-size: 22px; font-weight: 800; color: #1E40AF; }
+    p.sub { font-size: 14px; color: var(--text-muted); font-weight: 500; margin-top: 4px; }
+    
+    .ctrl-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .ctrl-btn {
+      padding: 8px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      outline: none;
+    }
+    .ctrl-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    .section-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .sec-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .grid-words {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .item-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .item-card:hover { border-color: var(--primary); background: var(--primary-soft); }
+    .item-card.playing { border-color: var(--accent-green); background: var(--accent-green-soft); }
+    
+    .item-en { font-weight: 700; font-size: 16px; color: var(--text-main); margin-bottom: 4px; display: flex; justify-content: space-between; }
+    .item-cn { font-size: 13px; color: var(--text-muted); font-weight: 500; transition: filter 0.2s; }
+
+    body.mask-mode .item-cn { filter: blur(5px); user-select: none; }
+    body.mask-mode .item-card:hover .item-cn { filter: blur(0); }
+    body.mask-mode .list-row:hover .item-cn { filter: blur(0); }
+
+    .list-phrases, .list-sentences { display: flex; flex-direction: column; gap: 10px; }
+    .list-row {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px 18px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s;
+    }
+    .list-row:hover { border-color: var(--primary); background: var(--primary-soft); }
+    .list-row.playing { border-color: var(--accent-green); background: var(--accent-green-soft); }
+    
+    .row-left { display: flex; align-items: center; gap: 12px; }
+    .num-badge { font-size: 12px; font-weight: 700; color: var(--text-muted); background: white; padding: 2px 8px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <a href="unit-study-hub-V1.html" class="back-link">← 返回英语单元总中心</a>
+      <h1 style="margin-top:8px;">Unit 1 Teenage Life</h1>
+      <p class="sub">青春期生活与成长心理 · 原生网页点读版（无PDF）</p>
+    </div>
+    <div>
+      <span style="font-size:13px; background:var(--accent-green-soft); color:var(--accent-green); border:1px solid #BBF7D0; padding:6px 14px; border-radius:20px; font-weight:700;">🔊 清晰真人语音模式</span>
+    </div>
+  </header>
+
+  <div class="ctrl-bar">
+    <button class="ctrl-btn" id="maskBtn" onclick="toggleMask()">🙈 默写遮罩模式: 关</button>
+    <select class="ctrl-btn" id="audioEngineSelect">
+      <option value="dict">🔊 高音质在线发音 (推荐)</option>
+      <option value="speech">🤖 浏览器原生发音</option>
+    </select>
+  </div>
+
+  <!-- 单词 -->
+  <div class="section-box">
+    <div class="sec-title">🔤 重点词汇 (21个)</div>
+    <div class="grid-words">
+      
+        <div class="item-card" onclick="playAudio('teenage', this)">
+          <div class="item-en"><span>teenage</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈtiːneɪdʒ/ adj.</div>
+          <div class="item-cn">十几岁的；青少年的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('counsellor', this)">
+          <div class="item-en"><span>counsellor</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈkaʊnsələ(r)/ n.</div>
+          <div class="item-cn">顾问；指导老师</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('none', this)">
+          <div class="item-en"><span>none</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/nʌn/ pron.</div>
+          <div class="item-cn">没有一个；毫无</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('pimple', this)">
+          <div class="item-en"><span>pimple</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈpɪmpl/ n.</div>
+          <div class="item-cn">粉刺；丘疹</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('stress', this)">
+          <div class="item-en"><span>stress</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/stres/ n.</div>
+          <div class="item-cn">压力；紧张</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('emotional', this)">
+          <div class="item-en"><span>emotional</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ɪˈməʊʃənl/ adj.</div>
+          <div class="item-cn">情绪的；情感的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('behavioural', this)">
+          <div class="item-en"><span>behavioural</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/bɪˈheɪvjərəl/ adj.</div>
+          <div class="item-cn">行为的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('emotion', this)">
+          <div class="item-en"><span>emotion</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ɪˈməʊʃn/ n.</div>
+          <div class="item-cn">情绪；情感</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('peer', this)">
+          <div class="item-en"><span>peer</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/pɪə(r)/ n.</div>
+          <div class="item-cn">同龄人；同辈</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('pressure', this)">
+          <div class="item-en"><span>pressure</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈpreʃə(r)/ n.</div>
+          <div class="item-cn">压力；压迫</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('fool', this)">
+          <div class="item-en"><span>fool</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/fuːl/ n.</div>
+          <div class="item-cn">傻瓜；蠢人</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('counsel', this)">
+          <div class="item-en"><span>counsel</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈkaʊnsl/ v.</div>
+          <div class="item-cn">提供建议；劝告</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('ugly', this)">
+          <div class="item-en"><span>ugly</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈʌɡli/ adj.</div>
+          <div class="item-cn">丑陋的；难看的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('duckling', this)">
+          <div class="item-en"><span>duckling</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈdʌklɪŋ/ n.</div>
+          <div class="item-cn">小鸭子</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('tiny', this)">
+          <div class="item-en"><span>tiny</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈtaɪni/ adj.</div>
+          <div class="item-cn">极小的；微小的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('struggle', this)">
+          <div class="item-en"><span>struggle</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈstrʌɡl/ v.</div>
+          <div class="item-cn">奋斗；努力；挣扎</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('blow', this)">
+          <div class="item-en"><span>blow</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/bləʊ/ n.</div>
+          <div class="item-cn">打击；挫折</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('poverty', this)">
+          <div class="item-en"><span>poverty</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈpɒvəti/ n.</div>
+          <div class="item-cn">贫穷；贫困</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('pay off', this)">
+          <div class="item-en"><span>pay off</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/peɪ ɒf/ phr.</div>
+          <div class="item-cn">取得成功；得到回报</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('promise', this)">
+          <div class="item-en"><span>promise</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈprɒmɪs/ n./v.</div>
+          <div class="item-cn">许诺；成功前景</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('positive', this)">
+          <div class="item-en"><span>positive</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈpɒzətɪv/ adj.</div>
+          <div class="item-cn">积极的；乐观的</div>
+        </div>
+        
+    </div>
+  </div>
+
+  <!-- 短语 -->
+  <div class="section-box">
+    <div class="sec-title">🗣️ 核心短语 (30条)</div>
+    <div class="list-phrases">
+      
+        <div class="list-row" onclick="playAudio('seem to do sth', this)">
+          <div class="row-left">
+            <span class="num-badge">1</span>
+            <span style="font-weight:700;">seem to do sth</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">似乎/好像做某事</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('be willing to do sth', this)">
+          <div class="row-left">
+            <span class="num-badge">2</span>
+            <span style="font-weight:700;">be willing to do sth</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">乐意做某事</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('suffer from stress', this)">
+          <div class="row-left">
+            <span class="num-badge">3</span>
+            <span style="font-weight:700;">suffer from stress</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">承受/患有压力</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('physical changes', this)">
+          <div class="row-left">
+            <span class="num-badge">4</span>
+            <span style="font-weight:700;">physical changes</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">身体上的变化</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('emotional changes', this)">
+          <div class="row-left">
+            <span class="num-badge">5</span>
+            <span style="font-weight:700;">emotional changes</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">情绪上的变化</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('social changes', this)">
+          <div class="row-left">
+            <span class="num-badge">6</span>
+            <span style="font-weight:700;">social changes</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">社交上的变化</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('behavioural changes', this)">
+          <div class="row-left">
+            <span class="num-badge">7</span>
+            <span style="font-weight:700;">behavioural changes</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">行为上的变化</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('calm strong emotions', this)">
+          <div class="row-left">
+            <span class="num-badge">8</span>
+            <span style="font-weight:700;">calm strong emotions</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">平复强烈的情绪</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('peer pressure', this)">
+          <div class="row-left">
+            <span class="num-badge">9</span>
+            <span style="font-weight:700;">peer pressure</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">同龄人压力</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('ease the trouble', this)">
+          <div class="row-left">
+            <span class="num-badge">10</span>
+            <span style="font-weight:700;">ease the trouble</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">缓解烦恼/困扰</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('have a hard time doing sth', this)">
+          <div class="row-left">
+            <span class="num-badge">11</span>
+            <span style="font-weight:700;">have a hard time doing sth</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">做某事有困难/过得很艰难</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('get along with others', this)">
+          <div class="row-left">
+            <span class="num-badge">12</span>
+            <span style="font-weight:700;">get along with others</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">与他人相处</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('ask sb for advice', this)">
+          <div class="row-left">
+            <span class="num-badge">13</span>
+            <span style="font-weight:700;">ask sb for advice</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">向某人寻求建议</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('make an appointment', this)">
+          <div class="row-left">
+            <span class="num-badge">14</span>
+            <span style="font-weight:700;">make an appointment</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">预约</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('make arrangements', this)">
+          <div class="row-left">
+            <span class="num-badge">15</span>
+            <span style="font-weight:700;">make arrangements</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">做安排</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('lunch break', this)">
+          <div class="row-left">
+            <span class="num-badge">16</span>
+            <span style="font-weight:700;">lunch break</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">午休时间</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('peer counsellor', this)">
+          <div class="row-left">
+            <span class="num-badge">17</span>
+            <span style="font-weight:700;">peer counsellor</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">同龄人辅导员</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('lively imagination', this)">
+          <div class="row-left">
+            <span class="num-badge">18</span>
+            <span style="font-weight:700;">lively imagination</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">丰富的想象力</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('speak highly of', this)">
+          <div class="row-left">
+            <span class="num-badge">19</span>
+            <span style="font-weight:700;">speak highly of</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">高度评价</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('speak fondly of', this)">
+          <div class="row-left">
+            <span class="num-badge">20</span>
+            <span style="font-weight:700;">speak fondly of</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">深情地谈及</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('a big blow', this)">
+          <div class="row-left">
+            <span class="num-badge">21</span>
+            <span style="font-weight:700;">a big blow</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">一次重大打击</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('pass away', this)">
+          <div class="row-left">
+            <span class="num-badge">22</span>
+            <span style="font-weight:700;">pass away</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">去世</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('put an end to', this)">
+          <div class="row-left">
+            <span class="num-badge">23</span>
+            <span style="font-weight:700;">put an end to</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">结束；终止</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('in extreme poverty', this)">
+          <div class="row-left">
+            <span class="num-badge">24</span>
+            <span style="font-weight:700;">in extreme poverty</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">处于极度贫困中</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('try different jobs', this)">
+          <div class="row-left">
+            <span class="num-badge">25</span>
+            <span style="font-weight:700;">try different jobs</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">尝试不同的工作</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('pay off', this)">
+          <div class="row-left">
+            <span class="num-badge">26</span>
+            <span style="font-weight:700;">pay off</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">得到回报；成功</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('show promise', this)">
+          <div class="row-left">
+            <span class="num-badge">27</span>
+            <span style="font-weight:700;">show promise</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">显露展现潜质</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('have difficulty in doing sth', this)">
+          <div class="row-left">
+            <span class="num-badge">28</span>
+            <span style="font-weight:700;">have difficulty in doing sth</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">做某事有困难</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('make fun of sb', this)">
+          <div class="row-left">
+            <span class="num-badge">29</span>
+            <span style="font-weight:700;">make fun of sb</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">取笑某人</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('stay positive', this)">
+          <div class="row-left">
+            <span class="num-badge">30</span>
+            <span style="font-weight:700;">stay positive</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">保持积极乐观</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+
+  <!-- 句型 -->
+  <div class="section-box">
+    <div class="sec-title">💬 重点句型与经典例句 (6句)</div>
+    <div class="list-sentences">
+      
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Many teenagers seem to suffer from stress in their daily lives.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">1</span> Many teenagers seem to suffer from stress in their daily lives.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">许多青少年在日常生活中似乎承受着压力。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('When faced with peer pressure, we should learn how to calm strong emotions.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">2</span> When faced with peer pressure, we should learn how to calm strong emotions.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">面对同龄人压力时，我们应该学会如何平复强烈的情绪。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Talking to a peer counsellor is a good way to ease your troubles.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">3</span> Talking to a peer counsellor is a good way to ease your troubles.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">与同龄辅导员倾诉是缓解烦恼的好方法。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('If you have a hard time getting along with others, ask a teacher for advice.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">4</span> If you have a hard time getting along with others, ask a teacher for advice.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">如果你在与他人相处上有困难，可以向老师寻求建议。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('His hard work finally paid off and he achieved his dream.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">5</span> His hard work finally paid off and he achieved his dream.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">他的努力最终得到了回报，实现了梦想。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('No matter what difficulties you face, always try to stay positive.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">6</span> No matter what difficulties you face, always try to stay positive.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">无论面对什么困难，都要尽量保持积极乐观。</div>
+        </div>
+        
+    </div>
+  </div>
+
+  <script>
+    let isMask = false;
+    let activeAudio = null;
+
+    // 高声音质播放引擎 (解决杂音问题)
+    function playAudio(text, element) {
+      if (activeAudio) {
+        activeAudio.pause();
+        activeAudio = null;
+      }
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+
+      // 清理非发音字符
+      const cleanText = text.replace(/[^a-zA-Z0-9\s,'\.\?!\-]/g, '').trim();
+      if (!cleanText) return;
+
+      const engine = document.getElementById('audioEngineSelect').value;
+
+      if (element) {
+        document.querySelectorAll('.playing').forEach(el => el.classList.remove('playing'));
+        element.classList.add('playing');
+      }
+
+      if (engine === 'dict') {
+        // 高保真在线字典真人发音接口
+        const audioUrl = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(cleanText) + '&type=2';
+        const audio = new Audio(audioUrl);
+        activeAudio = audio;
+
+        audio.play().then(() => {
+          audio.onended = () => { if (element) element.classList.remove('playing'); };
+          audio.onerror = () => { playWebSpeech(cleanText, element); };
+        }).catch(() => {
+          // 网络失败备选
+          playWebSpeech(cleanText, element);
+        });
+      } else {
+        playWebSpeech(cleanText, element);
+      }
+    }
+
+    function playWebSpeech(text, element) {
+      if (!('speechSynthesis' in window)) return;
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-US';
+      u.rate = 0.9;
+      u.pitch = 1.0;
+
+      const voices = window.speechSynthesis.getVoices();
+      const usVoice = voices.find(v => v.lang.includes('en-US') || v.lang.includes('en-GB') || v.name.includes('Samantha') || v.name.includes('Alex'));
+      if (usVoice) u.voice = usVoice;
+
+      u.onend = () => { if (element) element.classList.remove('playing'); };
+      u.onerror = () => { if (element) element.classList.remove('playing'); };
+
+      window.speechSynthesis.speak(u);
+    }
+
+    function toggleMask() {
+      isMask = !isMask;
+      document.body.classList.toggle('mask-mode', isMask);
+      document.getElementById('maskBtn').textContent = isMask ? '🙈 默写遮罩模式: 开' : '🙈 默写遮罩模式: 关';
+      document.getElementById('maskBtn').classList.toggle('active', isMask);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 3 Travellers' Tales - 纯净网页版（高清发音）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --text-main: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      --primary: #2563EB;
+      --primary-soft: #EFF6FF;
+      --accent-green: #16A34A;
+      --accent-green-soft: #F0FDF4;
+      --radius-md: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    header {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    h1 { font-size: 22px; font-weight: 800; color: #1E40AF; }
+    p.sub { font-size: 14px; color: var(--text-muted); font-weight: 500; margin-top: 4px; }
+    
+    .ctrl-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .ctrl-btn {
+      padding: 8px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      outline: none;
+    }
+    .ctrl-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    .section-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .sec-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .grid-words {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .item-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .item-card:hover { border-color: var(--primary); background: var(--primary-soft); }
+    .item-card.playing { border-color: var(--accent-green); background: var(--accent-green-soft); }
+    
+    .item-en { font-weight: 700; font-size: 16px; color: var(--text-main); margin-bottom: 4px; display: flex; justify-content: space-between; }
+    .item-cn { font-size: 13px; color: var(--text-muted); font-weight: 500; transition: filter 0.2s; }
+
+    body.mask-mode .item-cn { filter: blur(5px); user-select: none; }
+    body.mask-mode .item-card:hover .item-cn { filter: blur(0); }
+    body.mask-mode .list-row:hover .item-cn { filter: blur(0); }
+
+    .list-phrases, .list-sentences { display: flex; flex-direction: column; gap: 10px; }
+    .list-row {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px 18px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s;
+    }
+    .list-row:hover { border-color: var(--primary); background: var(--primary-soft); }
+    .list-row.playing { border-color: var(--accent-green); background: var(--accent-green-soft); }
+    
+    .row-left { display: flex; align-items: center; gap: 12px; }
+    .num-badge { font-size: 12px; font-weight: 700; color: var(--text-muted); background: white; padding: 2px 8px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <a href="unit-study-hub-V1.html" class="back-link">← 返回英语单元总中心</a>
+      <h1 style="margin-top:8px;">Unit 3 Travellers' Tales</h1>
+      <p class="sub">旅行见闻·行者物语与环球足迹（全量必背单） · 原生网页点读版（无PDF）</p>
+    </div>
+    <div>
+      <span style="font-size:13px; background:var(--accent-green-soft); color:var(--accent-green); border:1px solid #BBF7D0; padding:6px 14px; border-radius:20px; font-weight:700;">🔊 清晰真人语音模式</span>
+    </div>
+  </header>
+
+  <div class="ctrl-bar">
+    <button class="ctrl-btn" id="maskBtn" onclick="toggleMask()">🙈 默写遮罩模式: 关</button>
+    <select class="ctrl-btn" id="audioEngineSelect">
+      <option value="dict">🔊 高音质在线发音 (推荐)</option>
+      <option value="speech">🤖 浏览器原生发音</option>
+    </select>
+  </div>
+
+  <!-- 单词 -->
+  <div class="section-box">
+    <div class="sec-title">🔤 重点词汇 (19个)</div>
+    <div class="grid-words">
+      
+        <div class="item-card" onclick="playAudio('essential', this)">
+          <div class="item-en"><span>essential</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ɪˈsenʃl/ adj./n.</div>
+          <div class="item-cn">必不可少的；必需品</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('wherever', this)">
+          <div class="item-en"><span>wherever</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/weərˈevə(r)/ conj.</div>
+          <div class="item-cn">无论哪里；在任何地方</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('passport', this)">
+          <div class="item-en"><span>passport</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈpɑːspɔːt/ n.</div>
+          <div class="item-cn">护照</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('toothbrush', this)">
+          <div class="item-en"><span>toothbrush</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈtuːθbrʌʃ/ n.</div>
+          <div class="item-cn">牙刷</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('first-aid', this)">
+          <div class="item-en"><span>first-aid</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˌfɜːst ˈeɪd/ adj.</div>
+          <div class="item-cn">急救的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('kit', this)">
+          <div class="item-en"><span>kit</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/kɪt/ n.</div>
+          <div class="item-cn">工具包；成套设备</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('adapter', this)">
+          <div class="item-en"><span>adapter</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/əˈdæptə(r)/ n.</div>
+          <div class="item-cn">适配器；转换插头</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('mobile', this)">
+          <div class="item-en"><span>mobile</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈməʊbaɪl/ adj.</div>
+          <div class="item-cn">可移动的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('charger', this)">
+          <div class="item-en"><span>charger</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈtʃɑːdʒə(r)/ n.</div>
+          <div class="item-cn">充电器</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('abroad', this)">
+          <div class="item-en"><span>abroad</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/əˈbrɔːd/ adv.</div>
+          <div class="item-cn">在国外；到国外</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('pack', this)">
+          <div class="item-en"><span>pack</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/pæk/ v.</div>
+          <div class="item-cn">打包；收拾行李</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('worth', this)">
+          <div class="item-en"><span>worth</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/wɜːθ/ adj.</div>
+          <div class="item-cn">值得的；有...价值的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('stall', this)">
+          <div class="item-en"><span>stall</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/stɔːl/ n.</div>
+          <div class="item-cn">货摊；小吃摊</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('empty', this)">
+          <div class="item-en"><span>empty</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈempti/ adj.</div>
+          <div class="item-cn">空的；饥饿的</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('stomach', this)">
+          <div class="item-en"><span>stomach</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈstʌmək/ n.</div>
+          <div class="item-cn">胃；腹部</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('expedition', this)">
+          <div class="item-en"><span>expedition</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˌekspəˈdɪʃn/ n.</div>
+          <div class="item-cn">远征；探险队</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('invitation', this)">
+          <div class="item-en"><span>invitation</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˌɪnvɪˈteɪʃn/ n.</div>
+          <div class="item-cn">邀请；请柬</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('neighbourhood', this)">
+          <div class="item-en"><span>neighbourhood</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈneɪbəhʊd/ n.</div>
+          <div class="item-cn">邻里；街区</div>
+        </div>
+        
+        <div class="item-card" onclick="playAudio('memorable', this)">
+          <div class="item-en"><span>memorable</span><span>🔊</span></div>
+          <div style="font-size:12px; color:var(--text-muted);">/ˈmemərəbl/ adj.</div>
+          <div class="item-cn">难忘的；值得纪念的</div>
+        </div>
+        
+    </div>
+  </div>
+
+  <!-- 短语 -->
+  <div class="section-box">
+    <div class="sec-title">🗣️ 核心短语 (29条)</div>
+    <div class="list-phrases">
+      
+        <div class="list-row" onclick="playAudio('travel essentials', this)">
+          <div class="row-left">
+            <span class="num-badge">1</span>
+            <span style="font-weight:700;">travel essentials</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">旅行必需品</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('travel abroad', this)">
+          <div class="row-left">
+            <span class="num-badge">2</span>
+            <span style="font-weight:700;">travel abroad</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">出国旅行</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('travel within China', this)">
+          <div class="row-left">
+            <span class="num-badge">3</span>
+            <span style="font-weight:700;">travel within China</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">国内旅行</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('mobile phone charger', this)">
+          <div class="row-left">
+            <span class="num-badge">4</span>
+            <span style="font-weight:700;">mobile phone charger</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">手机充电器</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('go hiking', this)">
+          <div class="row-left">
+            <span class="num-badge">5</span>
+            <span style="font-weight:700;">go hiking</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">去徒步旅行</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('suitable for mountains', this)">
+          <div class="row-left">
+            <span class="num-badge">6</span>
+            <span style="font-weight:700;">suitable for mountains</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">适合登山/山区</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('local snacks', this)">
+          <div class="row-left">
+            <span class="num-badge">7</span>
+            <span style="font-weight:700;">local snacks</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">当地特色小吃</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('food stalls', this)">
+          <div class="row-left">
+            <span class="num-badge">8</span>
+            <span style="font-weight:700;">food stalls</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">路边小吃摊</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('do some sightseeing', this)">
+          <div class="row-left">
+            <span class="num-badge">9</span>
+            <span style="font-weight:700;">do some sightseeing</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">观光游览</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('buy souvenirs from locals', this)">
+          <div class="row-left">
+            <span class="num-badge">10</span>
+            <span style="font-weight:700;">buy souvenirs from locals</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">向当地人购买纪念品</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('climbing & expedition', this)">
+          <div class="row-left">
+            <span class="num-badge">11</span>
+            <span style="font-weight:700;">climbing & expedition</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">登山与远征</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('reach an agreement', this)">
+          <div class="row-left">
+            <span class="num-badge">12</span>
+            <span style="font-weight:700;">reach an agreement</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">达成协议/一致</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('persuade sb to do sth', this)">
+          <div class="row-left">
+            <span class="num-badge">13</span>
+            <span style="font-weight:700;">persuade sb to do sth</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">说服某人做某事</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('work out a day trip plan', this)">
+          <div class="row-left">
+            <span class="num-badge">14</span>
+            <span style="font-weight:700;">work out a day trip plan</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">制定一日游计划</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('volunteer in Dar', this)">
+          <div class="row-left">
+            <span class="num-badge">15</span>
+            <span style="font-weight:700;">volunteer in Dar</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">在达尔实施志愿服务</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('accept an invitation', this)">
+          <div class="row-left">
+            <span class="num-badge">16</span>
+            <span style="font-weight:700;">accept an invitation</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">接受邀请</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('share whatever one has', this)">
+          <div class="row-left">
+            <span class="num-badge">17</span>
+            <span style="font-weight:700;">share whatever one has</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">分享所拥有的一切</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('jump into one\'s arms', this)">
+          <div class="row-left">
+            <span class="num-badge">18</span>
+            <span style="font-weight:700;">jump into one's arms</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">扑进某人的怀抱</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('unplanned visitors', this)">
+          <div class="row-left">
+            <span class="num-badge">19</span>
+            <span style="font-weight:700;">unplanned visitors</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">未约而至的访客</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('harmonious neighbourhood life', this)">
+          <div class="row-left">
+            <span class="num-badge">20</span>
+            <span style="font-weight:700;">harmonious neighbourhood life</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">和谐的邻里生活</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('present one\'s phone', this)">
+          <div class="row-left">
+            <span class="num-badge">21</span>
+            <span style="font-weight:700;">present one's phone</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">出示某人的手机</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('no wonder', this)">
+          <div class="row-left">
+            <span class="num-badge">22</span>
+            <span style="font-weight:700;">no wonder</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">难怪；怪不得</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('can\'t wait to go back', this)">
+          <div class="row-left">
+            <span class="num-badge">23</span>
+            <span style="font-weight:700;">can't wait to go back</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">迫不及待想回去</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('be shocked by', this)">
+          <div class="row-left">
+            <span class="num-badge">24</span>
+            <span style="font-weight:700;">be shocked by</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">对...感到震惊</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('travel blog', this)">
+          <div class="row-left">
+            <span class="num-badge">25</span>
+            <span style="font-weight:700;">travel blog</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">旅行博客</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('memorable trip', this)">
+          <div class="row-left">
+            <span class="num-badge">26</span>
+            <span style="font-weight:700;">memorable trip</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">难忘的旅行</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('street performances', this)">
+          <div class="row-left">
+            <span class="num-badge">27</span>
+            <span style="font-weight:700;">street performances</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">街头表演</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('catch one\'s attention', this)">
+          <div class="row-left">
+            <span class="num-badge">28</span>
+            <span style="font-weight:700;">catch one's attention</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">吸引某人的注意</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+        <div class="list-row" onclick="playAudio('conduct surveys', this)">
+          <div class="row-left">
+            <span class="num-badge">29</span>
+            <span style="font-weight:700;">conduct surveys</span>
+          </div>
+          <div>
+            <span class="item-cn" style="margin-right:10px;">开展问卷调查</span>
+            <span>🔊</span>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+
+  <!-- 句型 -->
+  <div class="section-box">
+    <div class="sec-title">💬 重点句型与经典例句 (6句)</div>
+    <div class="list-sentences">
+      
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Before travelling abroad, make sure your passport and power adapter are packed.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">1</span> Before travelling abroad, make sure your passport and power adapter are packed.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">出国旅行前，请务必准备好护照和电源转换插头。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('Wherever you go, respect local customs and habits.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">2</span> Wherever you go, respect local customs and habits.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">无论你去哪里，都要尊重当地的风俗习惯。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('We were all shocked by the breathtaking scenery on top of the mountain.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">3</span> We were all shocked by the breathtaking scenery on top of the mountain.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">我们都被山顶美不胜收的景色所震撼。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('The warm hospitality of the locals made this trip truly memorable.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">4</span> The warm hospitality of the locals made this trip truly memorable.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">当地人的热情好客使这次旅行变得格外难忘。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('I can\'t wait to share my travel experience on my blog.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">5</span> I can't wait to share my travel experience on my blog.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">我迫不及待想在博客上分享我的旅行见闻。</div>
+        </div>
+        
+        <div class="list-row" style="flex-direction:column; align-items:flex-start; gap:6px;" onclick="playAudio('They offered us fresh fruit and local snacks with great enthusiasm.', this)">
+          <div style="display:flex; justify-content:space-between; width:100%;">
+            <span style="font-weight:700; font-size:16px; color:var(--text-main);"><span class="num-badge">6</span> They offered us fresh fruit and local snacks with great enthusiasm.</span>
+            <span>🔊</span>
+          </div>
+          <div class="item-cn" style="font-size:14px;">他们热情地为我们提供了新鲜水果和当地特色小吃。</div>
+        </div>
+        
+    </div>
+  </div>
+
+  <script>
+    let isMask = false;
+    let activeAudio = null;
+
+    // 高声音质播放引擎 (解决杂音问题)
+    function playAudio(text, element) {
+      if (activeAudio) {
+        activeAudio.pause();
+        activeAudio = null;
+      }
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+
+      // 清理非发音字符
+      const cleanText = text.replace(/[^a-zA-Z0-9\s,'\.\?!\-]/g, '').trim();
+      if (!cleanText) return;
+
+      const engine = document.getElementById('audioEngineSelect').value;
+
+      if (element) {
+        document.querySelectorAll('.playing').forEach(el => el.classList.remove('playing'));
+        element.classList.add('playing');
+      }
+
+      if (engine === 'dict') {
+        // 高保真在线字典真人发音接口
+        const audioUrl = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(cleanText) + '&type=2';
+        const audio = new Audio(audioUrl);
+        activeAudio = audio;
+
+        audio.play().then(() => {
+          audio.onended = () => { if (element) element.classList.remove('playing'); };
+          audio.onerror = () => { playWebSpeech(cleanText, element); };
+        }).catch(() => {
+          // 网络失败备选
+          playWebSpeech(cleanText, element);
+        });
+      } else {
+        playWebSpeech(cleanText, element);
+      }
+    }
+
+    function playWebSpeech(text, element) {
+      if (!('speechSynthesis' in window)) return;
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-US';
+      u.rate = 0.9;
+      u.pitch = 1.0;
+
+      const voices = window.speechSynthesis.getVoices();
+      const usVoice = voices.find(v => v.lang.includes('en-US') || v.lang.includes('en-GB') || v.name.includes('Samantha') || v.name.includes('Alex'));
+      if (usVoice) u.voice = usVoice;
+
+      u.onend = () => { if (element) element.classList.remove('playing'); };
+      u.onerror = () => { if (element) element.classList.remove('playing'); };
+
+      window.speechSynthesis.speak(u);
+    }
+
+    function toggleMask() {
+      isMask = !isMask;
+      document.body.classList.toggle('mask-mode', isMask);
+      document.getElementById('maskBtn').textContent = isMask ? '🙈 默写遮罩模式: 开' : '🙈 默写遮罩模式: 关';
+      document.getElementById('maskBtn').classList.toggle('active', isMask);
+    }
+  </script>
+</body>
+</html>
