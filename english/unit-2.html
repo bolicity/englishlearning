@@ -1489,46 +1489,10 @@
         btn.classList.add('playing');
       }
 
-      if ('speechSynthesis' in window) {
-        setTimeout(() => {
-          try {
-            if (window.speechSynthesis.paused) window.speechSynthesis.resume();
-            window.speechSynthesis.cancel();
-          } catch(e) {}
-
-          const u = new SpeechSynthesisUtterance(cleanText);
-          u.lang = 'en-US';
-          u.rate = 0.88;
-          u.pitch = 1.0;
-
-          const voices = window.speechSynthesis.getVoices();
-          const usVoice = voices.find(v => v.lang && (v.lang === 'en-US' || v.lang === 'en_US')) ||
-                          voices.find(v => v.lang && v.lang.startsWith('en'));
-          if (usVoice) u.voice = usVoice;
-
-          const clearPlaying = () => {
-            if (element) {
-              const btn = element.querySelector('.audio-btn') || element;
-              btn.classList.remove('playing');
-            }
-          };
-
-          u.onend = clearPlaying;
-          u.onerror = (e) => {
-            playOnlineAudio(cleanText, element);
-          };
-
-          window.speechSynthesis.speak(u);
-        }, 40);
-      } else {
-        playOnlineAudio(cleanText, element);
-      }
-    }
-
-    function playOnlineAudio(cleanText, element) {
       const encodedText = encodeURIComponent(cleanText);
-      const audioUrl = 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2';
-      const audio = new Audio(audioUrl);
+      const googleAudioUrl = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=en&q=' + encodedText;
+
+      const audio = new Audio(googleAudioUrl);
       activeAudio = audio;
 
       const clearPlaying = () => {
@@ -1540,8 +1504,43 @@
 
       audio.play().then(() => {
         audio.onended = clearPlaying;
-        audio.onerror = clearPlaying;
-      }).catch(clearPlaying);
+        audio.onerror = () => { playWebSpeechFallback(cleanText, element); };
+      }).catch(() => {
+        playWebSpeechFallback(cleanText, element);
+      });
+    }
+
+    function playWebSpeechFallback(cleanText, element) {
+      if (!('speechSynthesis' in window)) return;
+      
+      try {
+        if (window.speechSynthesis.paused) window.speechSynthesis.resume();
+        window.speechSynthesis.cancel();
+      } catch(e) {}
+
+      setTimeout(() => {
+        const u = new SpeechSynthesisUtterance(cleanText);
+        u.lang = 'en-US';
+        u.rate = 0.9;
+        u.pitch = 1.0;
+
+        const voices = window.speechSynthesis.getVoices();
+        const usVoice = voices.find(v => v.lang && (v.lang === 'en-US' || v.lang === 'en_US')) ||
+                        voices.find(v => v.lang && v.lang.startsWith('en'));
+        if (usVoice) u.voice = usVoice;
+
+        const clearPlaying = () => {
+          if (element) {
+            const btn = element.querySelector('.audio-btn') || element;
+            btn.classList.remove('playing');
+          }
+        };
+
+        u.onend = clearPlaying;
+        u.onerror = clearPlaying;
+
+        window.speechSynthesis.speak(u);
+      }, 40);
     }
   </script>
 </body>
