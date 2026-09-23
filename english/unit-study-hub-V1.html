@@ -388,16 +388,18 @@
       transition: filter 0.3s;
     }
 
-    body.mask-mode .word-trans,
-    body.mask-mode .phrase-cn,
-    body.mask-mode .sentence-cn {
-      filter: blur(5px);
+    /* 默写模式：隐藏英文，保留中文 */
+    body.mask-mode .word-title,
+    body.mask-mode .phrase-en,
+    body.mask-mode .sentence-en {
+      filter: blur(6px);
       user-select: none;
+      transition: filter 0.2s;
     }
 
-    body.mask-mode .word-card:hover .word-trans,
-    body.mask-mode .phrase-item:hover .phrase-cn,
-    body.mask-mode .sentence-card:hover .sentence-cn {
+    body.mask-mode .word-card:hover .word-title,
+    body.mask-mode .phrase-item:hover .phrase-en,
+    body.mask-mode .sentence-card:hover .sentence-en {
       filter: blur(0);
     }
 
