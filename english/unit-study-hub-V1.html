@@ -703,14 +703,13 @@
 
   <!-- 加载脚本数据 -->
   <script src="unit_data_v1.js"></script>
-
-  <script>
+<script>
     let currentUnitIndex = 0;
     let currentRate = 1.0;
     let currentLang = 'en-US';
     let isMaskMode = false;
+    let activeAudio = null;
 
-    // 初始化渲染页面
     window.addEventListener('DOMContentLoaded', () => {
       if (!window.UNIT_KNOWLEDGE_BASE) {
         alert('数据加载异常，请刷新页面');
@@ -720,14 +719,14 @@
       loadUnit(0);
     });
 
-    // 渲染单元 Tab
     function renderUnitTabs() {
       const container = document.getElementById('unitTabsNav');
+      if (!container) return;
       container.innerHTML = '';
       window.UNIT_KNOWLEDGE_BASE.forEach((unit, idx) => {
         const btn = document.createElement('button');
         btn.className = `unit-tab ${idx === 0 ? 'active' : ''}`;
-        btn.textContent = unit.title.split(' ')[0] + ' ' + unit.title.split(' ')[1];
+        btn.textContent = unit.title.split(' ')[0] + ' ' + (unit.title.split(' ')[1] || '');
         btn.onclick = () => {
           document.querySelectorAll('.unit-tab').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
@@ -737,42 +736,32 @@
       });
     }
 
-    // 加载某个单元的数据
     function loadUnit(index) {
       currentUnitIndex = index;
       const unit = window.UNIT_KNOWLEDGE_BASE[index];
+      if (!unit) return;
 
-      // 更新 Banner
       document.getElementById('bannerTitle').textContent = unit.title;
-      document.getElementById('bannerSubtitle').textContent = unit.subtitle;
+      document.getElementById('bannerSubtitle').textContent = unit.subtitle || '';
       document.getElementById('statWords').textContent = unit.words ? unit.words.length : 0;
       document.getElementById('statPhrases').textContent = unit.phrases ? unit.phrases.length : 0;
       document.getElementById('statSentences').textContent = unit.sentences ? unit.sentences.length : 0;
 
-      // 渲染词汇
       renderWords(unit.words || []);
-
-      // 渲染短语
       renderPhrases(unit.phrases || []);
-
-      // 渲染句型
       renderSentences(unit.sentences || []);
-
-      // 渲染语法
       renderGrammar(unit.grammar || []);
-
-      // 渲染 PDF 图片
       renderPDFImages(unit.images || []);
     }
 
-    // 1. 渲染词汇 Grid
     function renderWords(words) {
       const container = document.getElementById('wordsGrid');
+      if (!container) return;
       container.innerHTML = '';
       words.forEach(w => {
         const card = document.createElement('div');
         card.className = 'word-card';
-        card.onclick = () => playSpeech(w.word, card);
+        card.onclick = () => playAudio(w.word, card);
         card.innerHTML = `
           <div>
             <div class="word-top">
@@ -787,14 +776,14 @@
       });
     }
 
-    // 2. 渲染短语 List
     function renderPhrases(phrases) {
       const container = document.getElementById('phrasesList');
+      if (!container) return;
       container.innerHTML = '';
       phrases.forEach(p => {
         const item = document.createElement('div');
         item.className = 'phrase-item';
-        item.onclick = () => playSpeech(p.en, item);
+        item.onclick = () => playAudio(p.en, item);
         item.innerHTML = `
           <div class="phrase-left">
             <span class="phrase-num">${p.id}</span>
@@ -809,14 +798,14 @@
       });
     }
 
-    // 3. 渲染句型 List
     function renderSentences(sentences) {
       const container = document.getElementById('sentencesList');
+      if (!container) return;
       container.innerHTML = '';
       sentences.forEach(s => {
         const card = document.createElement('div');
         card.className = 'sentence-card';
-        card.onclick = () => playSpeech(s.en, card);
+        card.onclick = () => playAudio(s.en, card);
         card.innerHTML = `
           <div class="sentence-audio-btn">🔊</div>
           <div class="sentence-en">${s.en}</div>
@@ -826,9 +815,9 @@
       });
     }
 
-    // 4. 渲染语法 List
     function renderGrammar(grammarList) {
       const container = document.getElementById('grammarList');
+      if (!container) return;
       container.innerHTML = '';
       grammarList.forEach(g => {
         const card = document.createElement('div');
@@ -841,9 +830,9 @@
       });
     }
 
-    // 5. 渲染 PDF 高清原切片图
     function renderPDFImages(images) {
       const container = document.getElementById('pdfImagesGrid');
+      if (!container) return;
       container.innerHTML = '';
       images.forEach((imgSrc, idx) => {
         const wrap = document.createElement('div');
@@ -856,7 +845,6 @@
       });
     }
 
-    // 分类 Tab 切换
     function switchSection(secId, tabEl) {
       document.querySelectorAll('.sec-tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
@@ -864,10 +852,8 @@
       document.getElementById(`panel-${secId}`).classList.add('active');
     }
 
-    let activeAudio = null;
-
-    // 核心高保真语音点读引擎 (双轨模式：高保真在线真人音质 + 原生 TTS 兜底)
-    function playSpeech(text, element) {
+    // 清亮级多音源高保真发音引擎（解决长句子破音/嘈杂/杂音问题）
+    function playAudio(text, element) {
       if (activeAudio) {
         activeAudio.pause();
         activeAudio = null;
@@ -876,8 +862,8 @@
         window.speechSynthesis.cancel();
       }
 
-      // 清理文本杂音字符
-      const cleanText = text.replace(/[^a-zA-Z0-9\s,'\.\?!\-]/g, '').trim();
+      // 1. 过滤任何非英文标点与特殊乱码字符，防止引起爆音杂音
+      const cleanText = text.replace(/[^a-zA-Z0-9\s,'\.\?!\-]/g, ' ').replace(/\s+/g, ' ').trim();
       if (!cleanText) return;
 
       if (element) {
@@ -885,51 +871,70 @@
         element.classList.add('playing');
       }
 
-      // 第一优先：使用高保真标准美音/英音在线音频 (无杂音)
-      const langType = currentLang === 'en-GB' ? '1' : '2';
-      const audioUrl = 'https://dict.youdao.com/dictvoice?audio=' + encodeURIComponent(cleanText) + '&type=' + langType;
-      const audio = new Audio(audioUrl);
+      const encodedText = encodeURIComponent(cleanText);
+      const isLongSentence = cleanText.split(' ').length > 4;
+
+      let primaryUrl = isLongSentence 
+        ? 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web'
+        : 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2';
+      
+      let backupUrl = isLongSentence
+        ? 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2'
+        : 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web';
+
+      const audio = new Audio(primaryUrl);
       activeAudio = audio;
 
       audio.play().then(() => {
         audio.onended = () => { if (element) element.classList.remove('playing'); };
-        audio.onerror = () => { fallbackWebSpeech(cleanText, element); };
+        audio.onerror = () => { tryBackupAudio(backupUrl, cleanText, element); };
       }).catch(() => {
-        fallbackWebSpeech(cleanText, element);
+        tryBackupAudio(backupUrl, cleanText, element);
       });
     }
 
-    function fallbackWebSpeech(text, element) {
-      if (!('speechSynthesis' in window)) return;
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = currentLang;
-      utterance.rate = parseFloat(currentRate);
-
-      const voices = window.speechSynthesis.getVoices();
-      const matchVoice = voices.find(v => v.lang === currentLang || v.lang.includes(currentLang.split('-')[0]));
-      if (matchVoice) utterance.voice = matchVoice;
-
-      utterance.onend = () => { if (element) element.classList.remove('playing'); };
-      utterance.onerror = () => { if (element) element.classList.remove('playing'); };
-
-      window.speechSynthesis.speak(utterance);
+    function tryBackupAudio(backupUrl, cleanText, element) {
+      const bAudio = new Audio(backupUrl);
+      activeAudio = bAudio;
+      bAudio.play().then(() => {
+        bAudio.onended = () => { if (element) element.classList.remove('playing'); };
+        bAudio.onerror = () => { playCleanWebSpeech(cleanText, element); };
+      }).catch(() => {
+        playCleanWebSpeech(cleanText, element);
+      });
     }
 
-    // 默写模式切换
+    function playCleanWebSpeech(text, element) {
+      if (!('speechSynthesis' in window)) return;
+      
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'en-US';
+      u.rate = 0.88;
+      u.pitch = 1.0;
+
+      const voices = window.speechSynthesis.getVoices();
+      const topVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Samantha') || v.name.includes('Alex') || v.name.includes('Daniel') || v.name.includes('Google US English') || v.name.includes('Natural'))) 
+                    || voices.find(v => v.lang.startsWith('en'));
+      
+      if (topVoice) u.voice = topVoice;
+
+      u.onend = () => { if (element) element.classList.remove('playing'); };
+      u.onerror = () => { if (element) element.classList.remove('playing'); };
+
+      window.speechSynthesis.speak(u);
+    }
+
     function toggleMaskMode() {
       isMaskMode = !isMaskMode;
       document.body.classList.toggle('mask-mode', isMaskMode);
       document.getElementById('maskStatus').textContent = isMaskMode ? '开' : '关';
       const btn = document.getElementById('maskToggleBtn');
-      btn.classList.toggle('active', isMaskMode);
+      if (btn) btn.classList.toggle('active', isMaskMode);
     }
 
-    // 改变语速
     function changeRate(val) { currentRate = val; }
-    // 改变口音
     function changeLang(val) { currentLang = val; }
 
-    // 全局实时搜索功能
     function handleSearch(query) {
       const q = query.toLowerCase().trim();
       if (!q) {
@@ -937,6 +942,7 @@
         return;
       }
       const unit = window.UNIT_KNOWLEDGE_BASE[currentUnitIndex];
+      if (!unit) return;
       
       const filteredWords = (unit.words || []).filter(w => w.word.toLowerCase().includes(q) || w.trans.includes(q));
       const filteredPhrases = (unit.phrases || []).filter(p => p.en.toLowerCase().includes(q) || p.cn.includes(q));
@@ -946,6 +952,6 @@
       renderPhrases(filteredPhrases);
       renderSentences(filteredSentences);
     }
-  </script>
+</script>
 </body>
 </html>
