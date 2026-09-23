@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1449,7 +1449,16 @@
   <div id="toast">提示</div>
 
   <script>
-    let activeAudio = null;
+    let globalAudio = new Audio();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.getVoices();
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+          speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
+        }
+      }
+    });
 
     function setMode(mode) {
       document.getElementById('btnRecite').classList.toggle('active', mode === 'recite');
@@ -1471,9 +1480,9 @@
     }
 
     function playAudio(text, element) {
-      if (activeAudio) {
-        try { activeAudio.pause(); } catch(e){}
-        activeAudio = null;
+      try { globalAudio.pause(); } catch(e){}
+      if ('speechSynthesis' in window) {
+        try { window.speechSynthesis.cancel(); } catch(e){}
       }
 
       let cleanText = text
@@ -1500,8 +1509,7 @@
         ? 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web'
         : 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2';
 
-      const audio = new Audio(primaryUrl);
-      activeAudio = audio;
+      globalAudio.src = primaryUrl;
 
       const clearPlaying = () => {
         if (element) {
@@ -1510,18 +1518,16 @@
         }
       };
 
-      audio.play().then(() => {
-        audio.onended = clearPlaying;
-        audio.onerror = () => { tryFallbackAudio(fallbackUrl, cleanText, element); };
-      }).catch(() => {
+      globalAudio.onended = clearPlaying;
+      globalAudio.onerror = () => { tryFallbackAudio(fallbackUrl, cleanText, element); };
+
+      globalAudio.play().catch(() => {
         tryFallbackAudio(fallbackUrl, cleanText, element);
       });
     }
 
     function tryFallbackAudio(fallbackUrl, cleanText, element) {
-      const audio = new Audio(fallbackUrl);
-      activeAudio = audio;
-
+      globalAudio.src = fallbackUrl;
       const clearPlaying = () => {
         if (element) {
           const btn = element.querySelector('.audio-btn') || element;
@@ -1529,17 +1535,34 @@
         }
       };
 
-      audio.play().then(() => {
-        audio.onended = clearPlaying;
-        audio.onerror = () => { playNativeSpeech(cleanText, element); };
-      }).catch(() => {
-        playNativeSpeech(cleanText, element);
+      globalAudio.onended = clearPlaying;
+      globalAudio.onerror = () => { playPremiumWebSpeech(cleanText, element); };
+
+      globalAudio.play().catch(() => {
+        playPremiumWebSpeech(cleanText, element);
       });
     }
 
-    function playNativeSpeech(cleanText, element) {
+    function getBestNaturalVoice() {
+      if (!('speechSynthesis' in window)) return null;
+      const voices = window.speechSynthesis.getVoices();
+      if (!voices || voices.length === 0) return null;
+
+      const topVoice = voices.find(v => 
+        v.lang && v.lang.startsWith('en') &&
+        (v.name.includes('Natural') || v.name.includes('Premium') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Jenny') || v.name.includes('Aria') || v.name.includes('Alex'))
+      );
+      if (topVoice) return topVoice;
+
+      const usVoice = voices.find(v => v.lang === 'en-US' || v.lang === 'en_US' || v.lang === 'en-GB');
+      if (usVoice) return usVoice;
+
+      return voices.find(v => v.lang && v.lang.startsWith('en')) || null;
+    }
+
+    function playPremiumWebSpeech(cleanText, element) {
       if (!('speechSynthesis' in window)) return;
-      
+
       try {
         if (window.speechSynthesis.paused) window.speechSynthesis.resume();
         window.speechSynthesis.cancel();
@@ -1551,10 +1574,8 @@
         u.rate = 0.88;
         u.pitch = 1.0;
 
-        const voices = window.speechSynthesis.getVoices();
-        const usVoice = voices.find(v => v.lang && (v.lang === 'en-US' || v.lang === 'en_US')) ||
-                        voices.find(v => v.lang && v.lang.startsWith('en'));
-        if (usVoice) u.voice = usVoice;
+        const bestVoice = getBestNaturalVoice();
+        if (bestVoice) u.voice = bestVoice;
 
         const clearPlaying = () => {
           if (element) {
@@ -1567,7 +1588,7 @@
         u.onerror = clearPlaying;
 
         window.speechSynthesis.speak(u);
-      }, 40);
+      }, 30);
     }
   </script>
 </body>

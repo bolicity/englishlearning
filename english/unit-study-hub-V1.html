@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2809,11 +2809,21 @@
 
   <script>
     let currentUnitId = 1;
-    let activeAudio = null;
+
+    // 全局单例 Audio 对象，彻底解决 iOS Safari 异步创建 Audio 拦截问题
+    let globalAudio = new Audio();
 
     document.addEventListener('DOMContentLoaded', () => {
       renderUnitTabs();
       loadUnit(1);
+
+      // 针对 iOS 的 voices 异步加载预激活
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.getVoices();
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+          speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
+        }
+      }
     });
 
     function renderUnitTabs() {
@@ -2950,15 +2960,14 @@
     }
 
     // ----------------------------------------------------
-    // 【词汇/短语 有道美音】 + 【例句 百度广播级自然发音】双极速高保真发音系统
+    // 杜绝任何机械音的真人人声引擎系统
     // ----------------------------------------------------
     function playAudio(text, element) {
-      if (activeAudio) {
-        try { activeAudio.pause(); } catch(e){}
-        activeAudio = null;
+      try { globalAudio.pause(); } catch(e){}
+      if ('speechSynthesis' in window) {
+        try { window.speechSynthesis.cancel(); } catch(e){}
       }
 
-      // 清洗无法识别的异常控制字符，保留正常标点
       let cleanText = text
         .replace(/[^\w\s',.?!-]/g, ' ')
         .replace(/\s+/g, ' ')
@@ -2972,12 +2981,11 @@
         btn.classList.add('playing');
       }
 
-      // 判断单词/短语 vs 句子
       const wordCount = cleanText.split(' ').length;
       const encodedText = encodeURIComponent(cleanText);
 
-      // 单词/短语 (<=4词)：走 有道词典权威美音 (type=2 保证100%发音正确)
-      // 经典例句 (>4词)：走 百度广播级高清长句发音 (spd=3 极速优雅)
+      // 单词/短语 (<=4词): 走有道官方词典美音 API
+      // 经典长句 (>4词): 走百度广播级美语发音 API
       let primaryUrl = (wordCount <= 4)
         ? 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2'
         : 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web';
@@ -2986,8 +2994,8 @@
         ? 'https://fanyi.baidu.com/gettts?lan=en&text=' + encodedText + '&spd=3&source=web'
         : 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=2';
 
-      const audio = new Audio(primaryUrl);
-      activeAudio = audio;
+      // 使用全局单例 Audio 对象，防止 iOS/Safari 的异步创建死锁
+      globalAudio.src = primaryUrl;
 
       const clearPlaying = () => {
         if (element) {
@@ -2996,18 +3004,18 @@
         }
       };
 
-      audio.play().then(() => {
-        audio.onended = clearPlaying;
-        audio.onerror = () => { tryFallbackAudio(fallbackUrl, cleanText, element); };
-      }).catch(() => {
+      globalAudio.onended = clearPlaying;
+      globalAudio.onerror = () => {
+        tryFallbackAudio(fallbackUrl, cleanText, element);
+      };
+
+      globalAudio.play().catch(() => {
         tryFallbackAudio(fallbackUrl, cleanText, element);
       });
     }
 
     function tryFallbackAudio(fallbackUrl, cleanText, element) {
-      const audio = new Audio(fallbackUrl);
-      activeAudio = audio;
-
+      globalAudio.src = fallbackUrl;
       const clearPlaying = () => {
         if (element) {
           const btn = element.querySelector('.audio-btn') || element;
@@ -3015,17 +3023,38 @@
         }
       };
 
-      audio.play().then(() => {
-        audio.onended = clearPlaying;
-        audio.onerror = () => { playNativeSpeech(cleanText, element); };
-      }).catch(() => {
-        playNativeSpeech(cleanText, element);
+      globalAudio.onended = clearPlaying;
+      globalAudio.onerror = () => { playPremiumWebSpeech(cleanText, element); };
+
+      globalAudio.play().catch(() => {
+        playPremiumWebSpeech(cleanText, element);
       });
     }
 
-    function playNativeSpeech(cleanText, element) {
+    // 智能筛选广播级/自然极品真人人声，决不使用难听的系统默认机械音！
+    function getBestNaturalVoice() {
+      if (!('speechSynthesis' in window)) return null;
+      const voices = window.speechSynthesis.getVoices();
+      if (!voices || voices.length === 0) return null;
+
+      // 1. 优先搜寻找包含 Natural / Premium / Google / Samantha / Jenny / Aria / Alex 的美语/英语人声
+      const topVoice = voices.find(v => 
+        v.lang && v.lang.startsWith('en') &&
+        (v.name.includes('Natural') || v.name.includes('Premium') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Jenny') || v.name.includes('Aria') || v.name.includes('Alex'))
+      );
+      if (topVoice) return topVoice;
+
+      // 2. 搜寻找 en-US / en-GB
+      const usVoice = voices.find(v => v.lang === 'en-US' || v.lang === 'en_US' || v.lang === 'en-GB');
+      if (usVoice) return usVoice;
+
+      // 3. 任何英文
+      return voices.find(v => v.lang && v.lang.startsWith('en')) || null;
+    }
+
+    function playPremiumWebSpeech(cleanText, element) {
       if (!('speechSynthesis' in window)) return;
-      
+
       try {
         if (window.speechSynthesis.paused) window.speechSynthesis.resume();
         window.speechSynthesis.cancel();
@@ -3037,10 +3066,8 @@
         u.rate = 0.88;
         u.pitch = 1.0;
 
-        const voices = window.speechSynthesis.getVoices();
-        const usVoice = voices.find(v => v.lang && (v.lang === 'en-US' || v.lang === 'en_US')) ||
-                        voices.find(v => v.lang && v.lang.startsWith('en'));
-        if (usVoice) u.voice = usVoice;
+        const bestVoice = getBestNaturalVoice();
+        if (bestVoice) u.voice = bestVoice;
 
         const clearPlaying = () => {
           if (element) {
@@ -3053,7 +3080,7 @@
         u.onerror = clearPlaying;
 
         window.speechSynthesis.speak(u);
-      }, 40);
+      }, 30);
     }
   </script>
 </body>
