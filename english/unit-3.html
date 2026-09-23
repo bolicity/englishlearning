@@ -5,7 +5,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Unit 3 Travellers' Tales - 高中英语必背知识点读中心</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -917,6 +917,18 @@
   <script>
     let currentAccent = '1';
     let globalAudio = new Audio();
+    let audioUnlocked = false;
+
+    function unlockAudio() {
+      if (audioUnlocked) return;
+      try {
+        globalAudio.play().catch(() => {});
+        globalAudio.pause();
+        audioUnlocked = true;
+      } catch(e) {}
+    }
+    document.addEventListener('touchstart', unlockAudio, { once: true });
+    document.addEventListener('click', unlockAudio, { once: true });
 
     document.addEventListener('DOMContentLoaded', () => {
       if ('speechSynthesis' in window) {
@@ -954,6 +966,8 @@
     }
 
     function playAudio(text, element) {
+      unlockAudio();
+
       try { globalAudio.pause(); } catch(e){}
       if ('speechSynthesis' in window) {
         try { window.speechSynthesis.cancel(); } catch(e){}
@@ -972,41 +986,25 @@
         btn.classList.add('playing');
       }
 
-      const wordCount = cleanText.split(' ').length;
-      const encodedText = encodeURIComponent(cleanText);
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-      let directUrl = (wordCount <= 4)
-        ? 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=' + currentAccent
-        : 'https://fanyi.baidu.com/gettts?lan=' + (currentAccent === '1' ? 'uk' : 'en') + '&text=' + encodedText + '&spd=3&source=web';
-
-      globalAudio.src = directUrl;
-
-      const clearPlaying = () => {
-        if (element) {
-          const btn = element.querySelector('.audio-btn') || element;
-          btn.classList.remove('playing');
-        }
-      };
-
-      globalAudio.onended = clearPlaying;
-      globalAudio.onerror = () => {
-        playDirectMobileSpeech(cleanText, element);
-      };
-
-      globalAudio.play().catch(() => {
-        playDirectMobileSpeech(cleanText, element);
-      });
+      if (isMobile) {
+        playDirectSyncMobileSpeech(cleanText, element);
+      } else {
+        playOnlineAudioPC(cleanText, element);
+      }
     }
 
-    function playDirectMobileSpeech(cleanText, element) {
-      if (!('speechSynthesis' in window)) return;
+    function playDirectSyncMobileSpeech(cleanText, element) {
+      if (!('speechSynthesis' in window)) {
+        playOnlineAudioPC(cleanText, element);
+        return;
+      }
 
       try {
         if (window.speechSynthesis.paused) window.speechSynthesis.resume();
         window.speechSynthesis.cancel();
-      } catch(e) {}
 
-      setTimeout(() => {
         const u = new SpeechSynthesisUtterance(cleanText);
         u.lang = (currentAccent === '1') ? 'en-GB' : 'en-US';
         u.rate = 0.88;
@@ -1026,7 +1024,34 @@
         u.onerror = clearPlaying;
 
         window.speechSynthesis.speak(u);
-      }, 30);
+      } catch(e) {
+        playOnlineAudioPC(cleanText, element);
+      }
+    }
+
+    function playOnlineAudioPC(cleanText, element) {
+      const wordCount = cleanText.split(' ').length;
+      const encodedText = encodeURIComponent(cleanText);
+
+      let primaryUrl = (wordCount <= 4)
+        ? 'https://dict.youdao.com/dictvoice?audio=' + encodedText + '&type=' + currentAccent
+        : 'https://fanyi.baidu.com/gettts?lan=' + (currentAccent === '1' ? 'uk' : 'en') + '&text=' + encodedText + '&spd=3&source=web';
+
+      globalAudio.src = primaryUrl;
+
+      const clearPlaying = () => {
+        if (element) {
+          const btn = element.querySelector('.audio-btn') || element;
+          btn.classList.remove('playing');
+        }
+      };
+
+      globalAudio.onended = clearPlaying;
+      globalAudio.onerror = () => { playDirectSyncMobileSpeech(cleanText, element); };
+
+      globalAudio.play().catch(() => {
+        playDirectSyncMobileSpeech(cleanText, element);
+      });
     }
 
     function getBestNaturalVoice() {
