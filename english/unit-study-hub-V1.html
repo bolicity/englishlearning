@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>沪教版九年级英语单元智能点读学习 Center V1.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-hover: #CBD5E1;
+      
+      --text-main: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      
+      --primary: #2563EB;
+      --primary-hover: #1D4ED8;
+      --primary-soft: #EFF6FF;
+      --primary-border: #BFDBFE;
+      
+      --accent-green: #16A34A;
+      --accent-green-soft: #F0FDF4;
+      --accent-green-border: #BBF7D0;
+
+      --accent-orange: #EA580C;
+      --accent-orange-soft: #FFF7ED;
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+    }
+
+    /* 顶部导航 Header */
+    header {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #2563EB, #1D4ED8);
+      color: white;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.3px;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* 全局控制面板 Controls */
+    .controls-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .ctrl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .ctrl-btn:hover {
+      background: var(--primary-soft);
+      color: var(--primary);
+      border-color: var(--primary-border);
+    }
+
+    .ctrl-btn.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+    }
+
+    .ctrl-select {
+      padding: 8px 12px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      outline: none;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      width: 220px;
+    }
+
+    .search-input-wrap input {
+      width: 100%;
+      padding: 8px 14px 8px 34px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      color: var(--text-main);
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .search-input-wrap input:focus {
+      background: #FFFFFF;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* 主容器 */
+    main {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px 20px;
+      flex: 1;
+    }
+
+    /* Unit 标签滚动条 */
+    .unit-tabs-container {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 24px;
+      scrollbar-width: none;
+    }
+    .unit-tabs-container::-webkit-scrollbar { display: none; }
+
+    .unit-tab {
+      padding: 10px 20px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-full);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .unit-tab:hover {
+      border-color: var(--primary-border);
+      color: var(--primary);
+    }
+
+    .unit-tab.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    /* 单元 Banner */
+    .unit-banner {
+      background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+      border: 1px solid var(--primary-border);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .unit-banner-info h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #1E40AF;
+      margin-bottom: 4px;
+    }
+
+    .unit-banner-info p {
+      font-size: 14px;
+      color: #3B82F6;
+      font-weight: 600;
+    }
+
+    .unit-stats {
+      display: flex;
+      gap: 12px;
+    }
+
+    .stat-badge {
+      background: #FFFFFF;
+      padding: 6px 14px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-badge span { color: var(--primary); }
+
+    /* 内容分类 Tabs */
+    .section-nav {
+      display: flex;
+      gap: 8px;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 24px;
+    }
+
+    .sec-tab {
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      position: relative;
+      bottom: -2px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .sec-tab:hover { color: var(--text-secondary); }
+
+    .sec-tab.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    /* 面板内容 Section Panel */
+    .section-panel { display: none; }
+    .section-panel.active { display: block; }
+
+    /* 单词 Grid */
+    .words-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .word-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .word-card:hover {
+      border-color: var(--primary-border);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .word-card.playing {
+      border-color: var(--accent-green);
+      background: var(--accent-green-soft);
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4); }
+      100% { box-shadow: 0 0 0 8px rgba(22, 163, 74, 0); }
+    }
+
+    .word-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .word-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .word-speaker {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--primary-soft);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .word-card:hover .word-speaker {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .word-phonetic {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: 'Inter', monospace;
+      margin-bottom: 8px;
+    }
+
+    .word-trans {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: filter 0.3s;
+    }
+
+    body.mask-mode .word-trans,
+    body.mask-mode .phrase-cn,
+    body.mask-mode .sentence-cn {
+      filter: blur(5px);
+      user-select: none;
+    }
+
+    body.mask-mode .word-card:hover .word-trans,
+    body.mask-mode .phrase-item:hover .phrase-cn,
+    body.mask-mode .sentence-card:hover .sentence-cn {
+      filter: blur(0);
+    }
+
+    /* 短语 Phrase List */
+    .phrase-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .phrase-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .phrase-item:hover {
+      border-color: var(--primary-border);
+      background: var(--primary-soft);
+    }
+
+    .phrase-item.playing {
+      border-color: var(--accent-green);
+      background: var(--accent-green-soft);
+    }
+
+    .phrase-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .phrase-num {
+      width: 28px;
+      height: 28px;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .phrase-en {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .phrase-cn {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .phrase-speak-icon {
+      font-size: 16px;
+      color: var(--primary);
+    }
+
+    /* 句型 Sentences */
+    .sentences-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .sentence-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .sentence-card:hover {
+      border-color: var(--primary-border);
+      box-shadow: var(--shadow-md);
+    }
+
+    .sentence-card.playing {
+      border-color: var(--accent-green);
+      background: var(--accent-green-soft);
+    }
+
+    .sentence-en {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .sentence-cn {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .sentence-audio-btn {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary-soft);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+
+    .sentence-card:hover .sentence-audio-btn {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* 语法卡片 Grammar */
+    .grammar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 16px;
+    }
+
+    .grammar-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #1E40AF;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .grammar-content {
+      font-size: 15px;
+      color: var(--text-secondary);
+      white-space: pre-line;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    /* PDF HD 快照排版 Images */
+    .pdf-images-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .pdf-img-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
+    }
+
+    .pdf-img-wrapper:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+
+    .pdf-img-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .pdf-img-caption {
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    /* 手机端响应式 Styles */
+    @media (max-width: 768px) {
+      .header-inner { flex-direction: column; align-items: stretch; gap: 12px; }
+      .controls-group { justify-content: space-between; }
+      .search-input-wrap { width: 100%; }
+      .unit-banner { flex-direction: column; align-items: flex-start; }
+      .words-grid { grid-template-columns: 1fr; }
+      .phrase-item { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .phrase-left { flex-direction: column; align-items: flex-start; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部 Navigation Header -->
+  <header>
+    <div class="header-inner">
+      <a href="doc-viewer-V4.html" class="brand">
+        <div class="brand-icon">📘</div>
+        <div>
+          <div class="brand-title">9年级英语单元智能点读 Center</div>
+          <div class="brand-subtitle">沪教牛津版 · 单元必背默写与语音点读</div>
+        </div>
+      </a>
+
+      <div class="controls-group">
+        <!-- 默写遮罩切换按钮 -->
+        <button class="ctrl-btn" id="maskToggleBtn" onclick="toggleMaskMode()">
+          <span>🙈</span> 默写遮罩: <strong id="maskStatus">关</strong>
+        </button>
+
+        <!-- 语速选择 -->
+        <select class="ctrl-select" id="rateSelect" onchange="changeRate(this.value)">
+          <option value="0.8">语速: 0.8x 慢速</option>
+          <option value="1.0" selected>语速: 1.0x 标准</option>
+          <option value="1.2">语速: 1.2x 快速</option>
+        </select>
+
+        <!-- 口音选择 -->
+        <select class="ctrl-select" id="langSelect" onchange="changeLang(this.value)">
+          <option value="en-US" selected>🇺🇸 美音发音</option>
+          <option value="en-GB">🇬🇧 英音发音</option>
+        </select>
+
+        <!-- 搜索框 -->
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="搜索单词/短语/句子..." oninput="handleSearch(this.value)">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主内容区域 -->
+  <main>
+    <!-- Unit 单元切换按钮 -->
+    <div class="unit-tabs-container" id="unitTabsNav"></div>
+
+    <!-- 单元 Banner 汇总 -->
+    <div class="unit-banner" id="unitBanner">
+      <div class="unit-banner-info">
+        <h1 id="bannerTitle">Unit 1 Teenage Life</h1>
+        <p id="bannerSubtitle">青春期生活与成长心理</p>
+      </div>
+      <div class="unit-stats">
+        <div class="stat-badge">单词: <span id="statWords">0</span></div>
+        <div class="stat-badge">短语: <span id="statPhrases">0</span></div>
+        <div class="stat-badge">句型: <span id="statSentences">0</span></div>
+      </div>
+    </div>
+
+    <!-- 分类 Navigation -->
+    <div class="section-nav">
+      <div class="sec-tab active" onclick="switchSection('words', this)">🔤 重点词汇</div>
+      <div class="sec-tab" onclick="switchSection('phrases', this)">🗣️ 核心短语</div>
+      <div class="sec-tab" onclick="switchSection('sentences', this)">💬 重点句型</div>
+      <div class="sec-tab" onclick="switchSection('grammar', this)">📖 语法要点</div>
+      <div class="sec-tab" onclick="switchSection('pdf', this)">🖼️ 原版高清切片</div>
+    </div>
+
+    <!-- 面板 1: 重点词汇 -->
+    <div class="section-panel active" id="panel-words">
+      <div class="words-grid" id="wordsGrid"></div>
+    </div>
+
+    <!-- 面板 2: 核心短语 -->
+    <div class="section-panel" id="panel-phrases">
+      <div class="phrase-list" id="phrasesList"></div>
+    </div>
+
+    <!-- 面板 3: 重点句型 -->
+    <div class="section-panel" id="panel-sentences">
+      <div class="sentences-list" id="sentencesList"></div>
+    </div>
+
+    <!-- 面板 4: 语法解析 -->
+    <div class="section-panel" id="panel-grammar">
+      <div id="grammarList"></div>
+    </div>
+
+    <!-- 面板 5: PDF 高清原图切片 -->
+    <div class="section-panel" id="panel-pdf">
+      <div class="pdf-images-grid" id="pdfImagesGrid"></div>
+    </div>
+  </main>
+
+  <!-- 加载脚本数据 -->
+  <script src="unit_data_v1.js"></script>
+
+  <script>
+    let currentUnitIndex = 0;
+    let currentRate = 1.0;
+    let currentLang = 'en-US';
+    let isMaskMode = false;
+
+    // 初始化渲染页面
+    window.addEventListener('DOMContentLoaded', () => {
+      if (!window.UNIT_KNOWLEDGE_BASE) {
+        alert('数据加载异常，请刷新页面');
+        return;
+      }
+      renderUnitTabs();
+      loadUnit(0);
+    });
+
+    // 渲染单元 Tab
+    function renderUnitTabs() {
+      const container = document.getElementById('unitTabsNav');
+      container.innerHTML = '';
+      window.UNIT_KNOWLEDGE_BASE.forEach((unit, idx) => {
+        const btn = document.createElement('button');
+        btn.className = `unit-tab ${idx === 0 ? 'active' : ''}`;
+        btn.textContent = unit.title.split(' ')[0] + ' ' + unit.title.split(' ')[1];
+        btn.onclick = () => {
+          document.querySelectorAll('.unit-tab').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          loadUnit(idx);
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    // 加载某个单元的数据
+    function loadUnit(index) {
+      currentUnitIndex = index;
+      const unit = window.UNIT_KNOWLEDGE_BASE[index];
+
+      // 更新 Banner
+      document.getElementById('bannerTitle').textContent = unit.title;
+      document.getElementById('bannerSubtitle').textContent = unit.subtitle;
+      document.getElementById('statWords').textContent = unit.words ? unit.words.length : 0;
+      document.getElementById('statPhrases').textContent = unit.phrases ? unit.phrases.length : 0;
+      document.getElementById('statSentences').textContent = unit.sentences ? unit.sentences.length : 0;
+
+      // 渲染词汇
+      renderWords(unit.words || []);
+
+      // 渲染短语
+      renderPhrases(unit.phrases || []);
+
+      // 渲染句型
+      renderSentences(unit.sentences || []);
+
+      // 渲染语法
+      renderGrammar(unit.grammar || []);
+
+      // 渲染 PDF 图片
+      renderPDFImages(unit.images || []);
+    }
+
+    // 1. 渲染词汇 Grid
+    function renderWords(words) {
+      const container = document.getElementById('wordsGrid');
+      container.innerHTML = '';
+      words.forEach(w => {
+        const card = document.createElement('div');
+        card.className = 'word-card';
+        card.onclick = () => playSpeech(w.word, card);
+        card.innerHTML = `
+          <div>
+            <div class="word-top">
+              <span class="word-title">${w.word}</span>
+              <div class="word-speaker">🔊</div>
+            </div>
+            <div class="word-phonetic">${w.phonetic || ''} <span style="color:var(--primary); font-weight:600;">${w.pos || ''}</span></div>
+          </div>
+          <div class="word-trans">${w.trans}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // 2. 渲染短语 List
+    function renderPhrases(phrases) {
+      const container = document.getElementById('phrasesList');
+      container.innerHTML = '';
+      phrases.forEach(p => {
+        const item = document.createElement('div');
+        item.className = 'phrase-item';
+        item.onclick = () => playSpeech(p.en, item);
+        item.innerHTML = `
+          <div class="phrase-left">
+            <span class="phrase-num">${p.id}</span>
+            <span class="phrase-en">${p.en}</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span class="phrase-cn">${p.cn}</span>
+            <span class="phrase-speak-icon">🔊</span>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    // 3. 渲染句型 List
+    function renderSentences(sentences) {
+      const container = document.getElementById('sentencesList');
+      container.innerHTML = '';
+      sentences.forEach(s => {
+        const card = document.createElement('div');
+        card.className = 'sentence-card';
+        card.onclick = () => playSpeech(s.en, card);
+        card.innerHTML = `
+          <div class="sentence-audio-btn">🔊</div>
+          <div class="sentence-en">${s.en}</div>
+          <div class="sentence-cn">${s.cn}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // 4. 渲染语法 List
+    function renderGrammar(grammarList) {
+      const container = document.getElementById('grammarList');
+      container.innerHTML = '';
+      grammarList.forEach(g => {
+        const card = document.createElement('div');
+        card.className = 'grammar-card';
+        card.innerHTML = `
+          <div class="grammar-title">📌 ${g.title}</div>
+          <div class="grammar-content">${g.content}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // 5. 渲染 PDF 高清原切片图
+    function renderPDFImages(images) {
+      const container = document.getElementById('pdfImagesGrid');
+      container.innerHTML = '';
+      images.forEach((imgSrc, idx) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'pdf-img-wrapper';
+        wrap.innerHTML = `
+          <img src="${imgSrc}" alt="Page ${idx + 1}" loading="lazy">
+          <div class="pdf-img-caption">扫描版原件 - 第 ${idx + 1} 页</div>
+        `;
+        container.appendChild(wrap);
+      });
+    }
+
+    // 分类 Tab 切换
+    function switchSection(secId, tabEl) {
+      document.querySelectorAll('.sec-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+      tabEl.classList.add('active');
+      document.getElementById(`panel-${secId}`).classList.add('active');
+    }
+
+    // 核心语音点读 TTS 引擎
+    function playSpeech(text, element) {
+      if (!('speechSynthesis' in window)) {
+        alert('您的浏览器暂不支持语音点读功能');
+        return;
+      }
+      window.speechSynthesis.cancel(); // 取消正在播放的语音
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = currentLang;
+      utterance.rate = parseFloat(currentRate);
+
+      // 匹配发音人
+      const voices = window.speechSynthesis.getVoices();
+      const matchVoice = voices.find(v => v.lang === currentLang || v.lang.includes(currentLang.split('-')[0]));
+      if (matchVoice) utterance.voice = matchVoice;
+
+      if (element) {
+        element.classList.add('playing');
+        utterance.onend = () => element.classList.remove('playing');
+        utterance.onerror = () => element.classList.remove('playing');
+      }
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // 默写模式切换
+    function toggleMaskMode() {
+      isMaskMode = !isMaskMode;
+      document.body.classList.toggle('mask-mode', isMaskMode);
+      document.getElementById('maskStatus').textContent = isMaskMode ? '开' : '关';
+      const btn = document.getElementById('maskToggleBtn');
+      btn.classList.toggle('active', isMaskMode);
+    }
+
+    // 改变语速
+    function changeRate(val) { currentRate = val; }
+    // 改变口音
+    function changeLang(val) { currentLang = val; }
+
+    // 全局实时搜索功能
+    function handleSearch(query) {
+      const q = query.toLowerCase().trim();
+      if (!q) {
+        loadUnit(currentUnitIndex);
+        return;
+      }
+      const unit = window.UNIT_KNOWLEDGE_BASE[currentUnitIndex];
+      
+      const filteredWords = (unit.words || []).filter(w => w.word.toLowerCase().includes(q) || w.trans.includes(q));
+      const filteredPhrases = (unit.phrases || []).filter(p => p.en.toLowerCase().includes(q) || p.cn.includes(q));
+      const filteredSentences = (unit.sentences || []).filter(s => s.en.toLowerCase().includes(q) || s.cn.includes(q));
+
+      renderWords(filteredWords);
+      renderPhrases(filteredPhrases);
+      renderSentences(filteredSentences);
+    }
+  </script>
+</body>
+</html>
