@@ -356,6 +356,27 @@
       border-color: #FECACA;
     }
 
+    /* 人物故事插图缩略图 */
+    .char-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.45rem;
+    }
+    .char-thumb {
+      width: 100%;
+      max-width: 110px;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      cursor: zoom-in;
+      display: block;
+      transition: transform 0.18s ease;
+    }
+    .char-thumb:hover { transform: scale(1.04); }
+
     .highlight {
       font-weight: 700;
       color: var(--brand-amber);
@@ -408,61 +429,132 @@
       align-items: center;
       justify-content: center;
     }
+
+    /* === 统一顶部导航 === */
+    .unified-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+    .nav-home-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      background: var(--brand-red-bg);
+      color: var(--brand-red);
+      border: 1px solid var(--brand-red-border);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+    }
+    .nav-home-btn:hover { background: var(--brand-red); color: white; }
+    .nav-tabs {
+      display: flex;
+      gap: 0.25rem;
+      align-items: center;
+      flex: 1;
+    }
+    .nav-tab {
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+      transition: all 0.18s ease;
+    }
+    .nav-tab:hover { background: #F1F5F9; color: var(--text-primary); }
+    .nav-tab.active {
+      background: var(--brand-red);
+      color: #FFFFFF;
+      border-color: var(--brand-red);
+    }
+    .nav-back-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      background: white;
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+    .nav-back-btn:hover { background: #F1F5F9; color: var(--text-primary); }
+
+    /* 人物连环画条带 */
+    .comic-strip { padding: 1rem; border: 1px solid var(--border-color, #E2E8F0); border-radius: 10px; background: #F8FAFC; }
+    .comic-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+    .comic-chapter { font-size: 0.75rem; color: var(--text-muted, #64748B); font-weight: 700; }
+    .comic-panels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+    .comic-panels figure { margin: 0; min-width: 0; }
+    .comic-panels img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 8px; border: 1px solid var(--border-color, #E2E8F0); box-shadow: 0 1px 4px rgba(15,23,42,0.07); cursor: zoom-in; display: block; transition: transform 0.18s ease; }
+    .comic-panels img:hover { transform: scale(1.03); }
+    .comic-panels figcaption { font-size: 0.72rem; color: var(--text-secondary, #475569); line-height: 1.5; margin-top: 0.4rem; }
+    .comic-link { font-size: 0.72rem; font-weight: 700; color: #1D4ED8; text-decoration: none; border: 1px solid #DBEAFE; background: #EFF6FF; border-radius: 4px; padding: 0.1rem 0.35rem; white-space: nowrap; margin-left: 0.3rem; }
+    .comic-link:hover { background: #1D4ED8; color: #fff; }
+    @media (max-width: 720px) { .comic-panels { grid-template-columns: repeat(2, 1fr); } }
+
+    /* 原图附件链接（替代左侧大图预览） */
+    .split-layout.single { grid-template-columns: 1fr; }
+    .origin-attach { display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1rem; background: #F8FAFC; border: 1px dashed var(--border-color); border-radius: 8px; font-size: 0.82rem; color: var(--text-muted); flex-wrap: wrap; }
+    .origin-attach a { color: var(--brand-blue, #1D4ED8); font-weight: 700; text-decoration: none; }
+    .origin-attach a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <!-- 顶部状态栏 -->
-    <div class="top-nav">
-      <div class="nav-left">
-        <a href="chinese.html" class="back-btn">← 返回语文主页</a>
-        <a href="rulinwaishi-p1-V1.html" class="back-btn">← 上一分支 (1)</a>
-        <a href="rulinwaishi-V3.html" class="back-btn">📖 原图总览库 (V3)</a>
-        <span class="badge-ver">子页面分支 2 · V1</span>
+    <!-- 统一顶部导航 -->
+    <div class="unified-nav">
+      <a href="rulinwaishi-nav-V1.html" class="nav-home-btn">📋 儒林外史总览</a>
+      <div class="nav-tabs">
+        <a href="rulinwaishi-p1-V1.html" class="nav-tab ">🌟 分支一·文学常识</a>
+        <a href="rulinwaishi-p2-V1.html" class="nav-tab active">🎭 分支二·假名士</a>
+        <a href="rulinwaishi-p3-V1.html" class="nav-tab ">🏆 分支三·真儒明贤</a>
+        <a href="rulinwaishi-p4-V1.html" class="nav-tab ">📊 分支四·人物矩阵</a>
+        <a href="rulinwaishi-cards-V1.html" class="nav-tab ">📇 人物卡片</a>
       </div>
-      <div>
+      <a href="chinese.html" class="nav-back-btn">← 语文主页</a>
+    </div>
+<div>
         <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">高清原图无损呈现 · 逐字精准提取</span>
       </div>
-    </div>
-
-    <!-- 4大分支 + 人物卡片 + 速记与原图 标签导航栏 -->
-    <div class="branch-tabs-bar">
-      <a href="rulinwaishi-p1-V1.html" class="tab-item">🌟 分支一·文学常识</a>
-      <a href="rulinwaishi-p2-V1.html" class="tab-item active">🎭 分支二·假名士</a>
-      <a href="rulinwaishi-p3-V1.html" class="tab-item">🏆 分支三·真儒明贤</a>
-      <a href="rulinwaishi-p4-V1.html" class="tab-item">📊 分支四·人物矩阵</a>
-      <a href="rulinwaishi-cards-V1.html" class="tab-item">📇 人物卡片</a>
-      <a href="rulinwaishi-V2.html" class="tab-item" style="margin-left:auto; background:#FFFBEB; color:#B45309; border-color:#FDE68A;">📝 速记手册</a>
-      <a href="rulinwaishi-V3.html" class="tab-item" style="background:#F1F5F9; color:#475569;">📖 原图</a>
     </div>
 
     <!-- Hero 标题 -->
     <div class="hero">
       <div class="hero-meta">BRANCH 2 · PSEUDO-SCHOLARS & CIVILIANS</div>
       <h1 class="hero-title">《儒林外史》核心考点分支二：假名士群像·普通小人物·社会批判</h1>
-      <p class="hero-desc">对应官方教研第 2 页大图。左侧展示教研原件，右侧逐字提取“马二先生后续行迹、鲁编修、王玉辉、形形色色的假名士（匡超人、牛浦郎、蘧公孙、杜慎卿）、市井小人物（胡屠户、鲍文卿、鲍廷玺）以及作者对八股毒害社会的深刻总括批判”。</p>
+      <p class="hero-desc">对应官方教研第 2 页大图。右侧逐字提取“马二先生后续行迹、鲁编修、王玉辉、形形色色的假名士（匡超人、牛浦郎、蘧公孙、杜慎卿）、市井小人物（胡屠户、鲍文卿、鲍廷玺）以及作者对八股毒害社会的深刻总括批判”。全页 11 位人物均已配水墨淡彩故事插图，点击小图可放大欣赏。</p>
     </div>
 
     <!-- 双栏对照布局 -->
-    <div class="split-layout">
+    <div class="split-layout single">
       
-      <!-- 左侧原图 -->
-      <div class="image-preview-panel">
-        <div class="panel-header">
-          <h3>📷 官方教研原图（第二辑）</h3>
-          <span class="img-click-hint" onclick="openLightbox('《儒林外史》核心考点/9ab3b2a76c8f5a4926589ed653add6c0.jpg')">🔍 点击查看超清大图</span>
-        </div>
-        <div class="img-box" onclick="openLightbox('《儒林外史》核心考点/9ab3b2a76c8f5a4926589ed653add6c0.jpg')">
-          <img src="《儒林外史》核心考点/9ab3b2a76c8f5a4926589ed653add6c0.jpg" alt="儒林外史核心考点第二页">
-        </div>
-        <div class="img-footer-tip">
-          💡 点击图片任意位置即可全屏无损放大、高清研读
-        </div>
-      </div>
-
       <!-- 右侧文字详细提取 -->
       <div class="content-panel">
+
+        <div class="origin-attach">📎 <a href="《儒林外史》核心考点/9ab3b2a76c8f5a4926589ed653add6c0.jpg" target="_blank" rel="noopener">📷 官方教研原图（第二辑） · 点击查看大图</a></div>
 
         <!-- 板块一：科举自害与礼教受害者 -->
         <div class="card-block">
@@ -471,7 +563,7 @@
             <table class="data-table">
               <thead>
                 <tr>
-                  <th style="width: 15%;">人物与回目</th>
+                  <th style="width: 17%;">人物与回目</th>
                   <th style="width: 25%;">性格特点（采分词）</th>
                   <th>核心考点情节（中考得分点）</th>
                 </tr>
@@ -479,8 +571,13 @@
               <tbody>
                 <tr>
                   <td>
-                    <span class="role-badge">马二先生</span><br>
-                    <small style="color:var(--text-muted); font-weight:700;">第 15 回</small>
+                    <div class="char-cell">
+                      <img class="char-thumb" src="images/rulinwaishi-p2-maer.jpg" alt="马二先生故事插图：杭州街头倾囊相助落魄书生" onclick="openLightbox('images/rulinwaishi-p2-maer.jpg')">
+                      <div>
+                        <span class="role-badge">马二先生</span><br>
+                        <small style="color:var(--text-muted); font-weight:700;">第 15 回</small>
+                      </div>
+                    </div>
                   </td>
                   <td>
                     <div class="trait-list">
@@ -496,10 +593,27 @@
                   </td>
                 </tr>
 
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-maer">
+          <div class="comic-head"><span class="role-badge">马二先生</span><span class="comic-chapter">第 13-15 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p2-maer.jpg" alt="马二先生连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer.jpg')"><figcaption>① 杭州街头倾囊资助落魄的匡超人返乡</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-maer-c2.jpg" alt="马二先生连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer-c2.jpg')"><figcaption>② 倾囊相助，替蘧公孙赎回要紧的枕箱</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-maer-c3.jpg" alt="马二先生连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer-c3.jpg')"><figcaption>③ 自出银两，料理假神仙洪憨仙的后事</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-maer-c4.jpg" alt="马二先生连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer-c4.jpg')"><figcaption>④ 一生以批选八股文章为业，逢人劝学举业</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
+
                 <tr>
                   <td>
-                    <span class="role-badge">鲁编修</span><br>
-                    <small style="color:var(--text-muted); font-weight:700;">第 10、11 回</small>
+                    <div class="char-cell">
+                      <img class="char-thumb" src="images/rulinwaishi-p2-lubianxiu.jpg" alt="鲁编修故事插图：督促独女日日研作八股" onclick="openLightbox('images/rulinwaishi-p2-lubianxiu.jpg')">
+                      <div>
+                        <span class="role-badge">鲁编修</span><br>
+                        <small style="color:var(--text-muted); font-weight:700;">第 10、11 回</small>
+                      </div>
+                    </div>
                   </td>
                   <td>
                     <div class="trait-list">
@@ -514,10 +628,27 @@
                   </td>
                 </tr>
 
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-lubianxiu">
+          <div class="comic-head"><span class="role-badge">鲁编修</span><span class="comic-chapter">第 10、11 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p2-lubianxiu.jpg" alt="鲁编修连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-lubianxiu.jpg')"><figcaption>① 把独生女儿当男子教养，亲自督课</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-lubianxiu-c2.jpg" alt="鲁编修连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-lubianxiu-c2.jpg')"><figcaption>② 鲁小姐自幼在窗下苦研八股</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-lubianxiu-c3.jpg" alt="鲁编修连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-lubianxiu-c3.jpg')"><figcaption>③ 怒斥娄氏公子沉迷诗词、耽误举业</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-lubianxiu-c4.jpg" alt="鲁编修连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-lubianxiu-c4.jpg')"><figcaption>④ 科场得意，视八股为世间唯一正途</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
+
                 <tr>
                   <td>
-                    <span class="role-badge">王玉辉</span><br>
-                    <small style="color:var(--text-muted); font-weight:700;">第 48 回</small>
+                    <div class="char-cell">
+                      <img class="char-thumb" src="images/rulinwaishi-p2-wangyuhui.jpg" alt="王玉辉故事插图：山路独行睹物思人悲悼亡女" onclick="openLightbox('images/rulinwaishi-p2-wangyuhui.jpg')">
+                      <div>
+                        <span class="role-badge">王玉辉</span><br>
+                        <small style="color:var(--text-muted); font-weight:700;">第 48 回</small>
+                      </div>
+                    </div>
                   </td>
                   <td>
                     <div class="trait-list">
@@ -533,6 +664,18 @@
                     ④ 远赴邓尉山探望老友，得知老朋友已故，当场热泪纷涌、情真意切。
                   </td>
                 </tr>
+
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-wangyuhui">
+          <div class="comic-head"><span class="role-badge">王玉辉</span><span class="comic-chapter">第 48 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p2-wangyuhui-c1.jpg" alt="王玉辉连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-wangyuhui-c1.jpg')"><figcaption>① 家贫志大，伏案立志著述三部书</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-wangyuhui-c2.jpg" alt="王玉辉连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-wangyuhui-c2.jpg')"><figcaption>② 力劝女儿绝食殉夫，称可名留青史</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-wangyuhui-c3.jpg" alt="王玉辉连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-wangyuhui-c3.jpg')"><figcaption>③ 女儿逝后，仰天大笑走出门去</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-wangyuhui.jpg" alt="王玉辉连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-wangyuhui.jpg')"><figcaption>④ 一路睹物思人，老泪纵横、凄凉惶恐</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
               </tbody>
             </table>
           </div>
@@ -545,7 +688,7 @@
             <table class="data-table">
               <thead>
                 <tr>
-                  <th style="width: 15%;">人物与回目</th>
+                  <th style="width: 17%;">人物与回目</th>
                   <th style="width: 25%;">性格特点（采分词）</th>
                   <th>核心考点情节（中考得分点）</th>
                 </tr>
@@ -553,8 +696,13 @@
               <tbody>
                 <tr>
                   <td>
-                    <span class="role-badge">匡超人</span><br>
-                    <small style="color:var(--text-muted); font-weight:700;">第 16-20 回</small>
+                    <div class="char-cell">
+                      <img class="char-thumb" src="images/rulinwaishi-p2-kuangchaoren.jpg" alt="匡超人故事插图：省城灯下变质堕落伪造文书" onclick="openLightbox('images/rulinwaishi-p2-kuangchaoren.jpg')">
+                      <div>
+                        <span class="role-badge">匡超人</span><br>
+                        <small style="color:var(--text-muted); font-weight:700;">第 16-20 回</small>
+                      </div>
+                    </div>
                   </td>
                   <td>
                     <div class="trait-list">
@@ -574,10 +722,27 @@
                   </td>
                 </tr>
 
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-kuangchaoren">
+          <div class="comic-head"><span class="role-badge">匡超人</span><span class="comic-chapter">第 16-20 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p2-kuangchaoren-c1.jpg" alt="匡超人连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-kuangchaoren-c1.jpg')"><figcaption>① 早年病父床前端汤奉药、苦读至深夜</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-kuangchaoren.jpg" alt="匡超人连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-kuangchaoren.jpg')"><figcaption>② 到省城变质，灯下伪造官府朱签</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-kuangchaoren-c3.jpg" alt="匡超人连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-kuangchaoren-c3.jpg')"><figcaption>③ 收取重金，替金跃冒名代考</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-kuangchaoren-c4.jpg" alt="匡超人连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-kuangchaoren-c4.jpg')"><figcaption>④ 潘三下狱，他翻脸划清界限</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
+
                 <tr>
                   <td>
-                    <span class="role-badge">牛浦郎</span><br>
-                    <small style="color:var(--text-muted); font-weight:700;">第 21-24 回</small>
+                    <div class="char-cell">
+                      <img class="char-thumb" src="images/rulinwaishi-p2-niupulang.jpg" alt="牛浦郎故事插图：庵中冒占牛布衣诗稿" onclick="openLightbox('images/rulinwaishi-p2-niupulang.jpg')">
+                      <div>
+                        <span class="role-badge">牛浦郎</span><br>
+                        <small style="color:var(--text-muted); font-weight:700;">第 21-24 回</small>
+                      </div>
+                    </div>
                   </td>
                   <td>
                     <div class="trait-list">
@@ -595,10 +760,27 @@
                   </td>
                 </tr>
 
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-niupulang">
+          <div class="comic-head"><span class="role-badge">牛浦郎</span><span class="comic-chapter">第 21-24 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p2-niupulang.jpg" alt="牛浦郎连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-niupulang.jpg')"><figcaption>① 甘露庵中偷读牛布衣遗诗，据为己有</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-niupulang-c2.jpg" alt="牛浦郎连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-niupulang-c2.jpg')"><figcaption>② 擅改庵中牌匾，冒名顶替</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-niupulang-c3.jpg" alt="牛浦郎连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-niupulang-c3.jpg')"><figcaption>③ 把来访的卜家兄弟当下人使唤</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-niupulang-c4.jpg" alt="牛浦郎连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-niupulang-c4.jpg')"><figcaption>④ 依附知县权势，怒拒恶霸敲诈</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
+
                 <tr>
                   <td>
-                    <span class="role-badge">蘧公孙</span><br>
-                    <small style="color:var(--text-muted); font-weight:700;">第 8-14 回</small>
+                    <div class="char-cell">
+                      <img class="char-thumb" src="images/rulinwaishi-p2-qugongsun.jpg" alt="蘧公孙故事插图：禁书上擅自署名博取虚名" onclick="openLightbox('images/rulinwaishi-p2-qugongsun.jpg')">
+                      <div>
+                        <span class="role-badge">蘧公孙</span><br>
+                        <small style="color:var(--text-muted); font-weight:700;">第 8-14 回</small>
+                      </div>
+                    </div>
                   </td>
                   <td>
                     <div class="trait-list">
@@ -615,10 +797,27 @@
                   </td>
                 </tr>
 
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-qugongsun">
+          <div class="comic-head"><span class="role-badge">蘧公孙</span><span class="comic-chapter">第 8-14 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p2-qugongsun-c1.jpg" alt="蘧公孙连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-qugongsun-c1.jpg')"><figcaption>① 慷慨赠银，资助避难的罪官王惠</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-qugongsun.jpg" alt="蘧公孙连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-qugongsun.jpg')"><figcaption>② 在禁书扉页署上自己的名字博名</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-qugongsun-c3.jpg" alt="蘧公孙连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-qugongsun-c3.jpg')"><figcaption>③ 依仗权势，深究仆人与丫鬟双红</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-qugongsun-c4.jpg" alt="蘧公孙连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-qugongsun-c4.jpg')"><figcaption>④ 娄府宴客，高谈诗文、沽名钓誉</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
+
                 <tr>
                   <td>
-                    <span class="role-badge">杜慎卿</span><br>
-                    <small style="color:var(--text-muted); font-weight:700;">第 29-31 回</small>
+                    <div class="char-cell">
+                      <img class="char-thumb" src="images/rulinwaishi-p2-dushenqing.jpg" alt="杜慎卿故事插图：莫愁湖湖亭梨园大会" onclick="openLightbox('images/rulinwaishi-p2-dushenqing.jpg')">
+                      <div>
+                        <span class="role-badge">杜慎卿</span><br>
+                        <small style="color:var(--text-muted); font-weight:700;">第 29-31 回</small>
+                      </div>
+                    </div>
                   </td>
                   <td>
                     <div class="trait-list">
@@ -636,6 +835,18 @@
                     ⑤ 豪掷重金在南京莫愁湖举办湖亭梨园大会，大肆赏赐评选优胜小旦。
                   </td>
                 </tr>
+
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-dushenqing">
+          <div class="comic-head"><span class="role-badge">杜慎卿</span><span class="comic-chapter">第 29-31 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p2-dushenqing-c1.jpg" alt="杜慎卿连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushenqing-c1.jpg')"><figcaption>① 受文士奉承，表面谦逊暗自得意</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-dushenqing-c2.jpg" alt="杜慎卿连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushenqing-c2.jpg')"><figcaption>② 口称最厌女人，转身托媒纳妾</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-dushenqing-c3.jpg" alt="杜慎卿连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushenqing-c3.jpg')"><figcaption>③ 一毛不拔，却指点鲍廷玺去坑杜少卿</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-dushenqing.jpg" alt="杜慎卿连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushenqing.jpg')"><figcaption>④ 莫愁湖湖亭梨园大会，豪掷重金赏伶</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
               </tbody>
             </table>
           </div>
@@ -648,7 +859,7 @@
             <table class="data-table">
               <thead>
                 <tr>
-                  <th style="width: 15%;">人物与回目</th>
+                  <th style="width: 17%;">人物与回目</th>
                   <th style="width: 25%;">性格特点（采分词）</th>
                   <th>核心考点情节（中考得分点）</th>
                 </tr>
@@ -656,8 +867,13 @@
               <tbody>
                 <tr>
                   <td>
-                    <span class="role-badge">胡屠户</span><br>
-                    <small style="color:var(--text-muted); font-weight:700;">第 3 回</small>
+                    <div class="char-cell">
+                      <img class="char-thumb" src="images/rulinwaishi-p2-hutuhu.jpg" alt="胡屠户故事插图：肉案前对举人前倨后恭" onclick="openLightbox('images/rulinwaishi-p2-hutuhu.jpg')">
+                      <div>
+                        <span class="role-badge">胡屠户</span><br>
+                        <small style="color:var(--text-muted); font-weight:700;">第 3 回</small>
+                      </div>
+                    </div>
                   </td>
                   <td>
                     <div class="trait-list">
@@ -673,10 +889,27 @@
                   </td>
                 </tr>
 
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-hutuhu">
+          <div class="comic-head"><span class="role-badge">胡屠户</span><span class="comic-chapter">第 3 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p2-hutuhu-c1.jpg" alt="胡屠户连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-hutuhu-c1.jpg')"><figcaption>① 中举前辱骂女婿“现世宝、穷鬼”</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-hutuhu.jpg" alt="胡屠户连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-hutuhu.jpg')"><figcaption>② 中举后极尽巴结“天上文曲星”</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-hutuhu-c3.jpg" alt="胡屠户连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-hutuhu-c3.jpg')"><figcaption>③ 打了疯范进一巴掌，怕菩萨怪罪</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-hutuhu-c4.jpg" alt="胡屠户连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-hutuhu-c4.jpg')"><figcaption>④ 一路弯腰，替女婿扯衣裂数十回</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
+
                 <tr>
                   <td>
-                    <span class="role-badge">鲍文卿</span><br>
-                    <small style="color:var(--text-muted); font-weight:700;">第 24-26 回</small>
+                    <div class="char-cell">
+                      <img class="char-thumb" src="images/rulinwaishi-p2-baowenqing.jpg" alt="鲍文卿故事插图：茶馆训诫戏子恪守本分" onclick="openLightbox('images/rulinwaishi-p2-baowenqing.jpg')">
+                      <div>
+                        <span class="role-badge">鲍文卿</span><br>
+                        <small style="color:var(--text-muted); font-weight:700;">第 24-26 回</small>
+                      </div>
+                    </div>
                   </td>
                   <td>
                     <div class="trait-list">
@@ -695,10 +928,27 @@
                   </td>
                 </tr>
 
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-baowenqing">
+          <div class="comic-head"><span class="role-badge">鲍文卿</span><span class="comic-chapter">第 24-26 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p2-baowenqing-c1.jpg" alt="鲍文卿连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baowenqing-c1.jpg')"><figcaption>① 面对书办重金请托，义正词严拒绝</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-baowenqing.jpg" alt="鲍文卿连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baowenqing.jpg')"><figcaption>② 茶馆训诫戏子恪守本分</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-baowenqing-c3.jpg" alt="鲍文卿连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baowenqing-c3.jpg')"><figcaption>③ 考棚中宽容放过作弊的贫苦童生</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-baowenqing-c4.jpg" alt="鲍文卿连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baowenqing-c4.jpg')"><figcaption>④ 与向知县相交甚笃，仍恪守平民礼数</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
+
                 <tr>
                   <td>
-                    <span class="role-badge">鲍廷玺</span><br>
-                    <small style="color:var(--text-muted); font-weight:700;">第 25-32 回</small>
+                    <div class="char-cell">
+                      <img class="char-thumb" src="images/rulinwaishi-p2-baotingxi.jpg" alt="鲍廷玺故事插图：向杜少卿哭穷乞银重整戏班" onclick="openLightbox('images/rulinwaishi-p2-baotingxi.jpg')">
+                      <div>
+                        <span class="role-badge">鲍廷玺</span><br>
+                        <small style="color:var(--text-muted); font-weight:700;">第 25-32 回</small>
+                      </div>
+                    </div>
                   </td>
                   <td>
                     <div class="trait-list">
@@ -714,6 +964,18 @@
                     ③ 戏班散伙后走投无路，死乞白赖向豪爽慷慨的杜少卿哭穷乞银，最终获得资助重新拉起戏班。
                   </td>
                 </tr>
+
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-baotingxi">
+          <div class="comic-head"><span class="role-badge">鲍廷玺</span><span class="comic-chapter">第 25-32 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p2-baotingxi-c1.jpg" alt="鲍廷玺连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baotingxi-c1.jpg')"><figcaption>① 遵父遗训，婉拒富室联姻</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-baotingxi-c2.jpg" alt="鲍廷玺连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baotingxi-c2.jpg')"><figcaption>② 自称杜慎卿门人，抬高身价</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-baotingxi-c3.jpg" alt="鲍廷玺连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baotingxi-c3.jpg')"><figcaption>③ 戏班散伙，走投无路</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-baotingxi.jpg" alt="鲍廷玺连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baotingxi.jpg')"><figcaption>④ 向杜少卿哭穷乞银，重整戏班</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
               </tbody>
             </table>
           </div>
@@ -729,9 +991,24 @@
               八股取士制度为这些汲汲于功名利禄的读书人提供了一条捷径，诱使他们逐渐抛弃和背离了真正的儒家圣贤思想，人格异化，彻底堕落为社会的渣滓和败类！
             </p>
             <hr style="margin: 0.85rem 0; border: none; border-top: 1px dashed #FDE68A;">
-            <p><strong>🌟 真儒明贤引子 · 杜少卿（第 31-34 回）：</strong></p>
-            <p>淡泊功名、傲视权贵、尊重妇女；不愿主动拜访知县；朝廷征辟特诏时，装病坚决拒绝出仕；携妻大方同游清凉山，坚决反对纳妾，赞许沈琼枝抗婚逃婚的独立精神！（更多真儒行迹见分支三展开）</p>
+            <div style="display:flex; gap:0.9rem; align-items:flex-start; margin-top:0.5rem;">
+              <img class="char-thumb" src="images/rulinwaishi-p2-dushaoqing.jpg" alt="杜少卿故事插图：携妻同游清凉山" onclick="openLightbox('images/rulinwaishi-p2-dushaoqing.jpg')" style="flex-shrink:0; width:120px;">
+              <div>
+                <p><strong>🌟 真儒明贤引子 · 杜少卿（第 31-34 回）：</strong></p>
+                <p>淡泊功名、傲视权贵、尊重妇女；不愿主动拜访知县；朝廷征辟特诏时，装病坚决拒绝出仕；携妻大方同游清凉山，坚决反对纳妾，赞许沈琼枝抗婚逃婚的独立精神！（更多真儒行迹见分支三展开）</p>
+              </div>
+            </div>
           </div>
+
+          <div class="comic-strip" id="comic-dushaoqing">
+          <div class="comic-head"><span class="role-badge">杜少卿</span><span class="comic-chapter">第 31-34 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p2-dushaoqing-c1.jpg" alt="杜少卿连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushaoqing-c1.jpg')"><figcaption>① 朝廷征辟，装病坚辞不出仕</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-dushaoqing.jpg" alt="杜少卿连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushaoqing.jpg')"><figcaption>② 携妻大方同游清凉山</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-dushaoqing-c3.jpg" alt="杜少卿连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushaoqing-c3.jpg')"><figcaption>③ 出资助鲍廷玺重整戏班</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-dushaoqing-c4.jpg" alt="杜少卿连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushaoqing-c4.jpg')"><figcaption>④ 赞许沈琼枝抗婚逃婚的独立精神</figcaption></figure>
+          </div>
+        </div>
         </div>
 
       </div>

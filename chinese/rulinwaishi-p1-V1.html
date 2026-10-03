@@ -552,6 +552,25 @@
       margin-left: auto;
     }
     .nav-back-btn:hover { background: #F1F5F9; color: var(--text-primary); }
+
+    /* 人物连环画条带 */
+    .comic-strip { padding: 1rem; border: 1px solid var(--border-color, #E2E8F0); border-radius: 10px; background: #F8FAFC; }
+    .comic-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+    .comic-chapter { font-size: 0.75rem; color: var(--text-muted, #64748B); font-weight: 700; }
+    .comic-panels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+    .comic-panels figure { margin: 0; min-width: 0; }
+    .comic-panels img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 8px; border: 1px solid var(--border-color, #E2E8F0); box-shadow: 0 1px 4px rgba(15,23,42,0.07); cursor: zoom-in; display: block; transition: transform 0.18s ease; }
+    .comic-panels img:hover { transform: scale(1.03); }
+    .comic-panels figcaption { font-size: 0.72rem; color: var(--text-secondary, #475569); line-height: 1.5; margin-top: 0.4rem; }
+    .comic-link { font-size: 0.72rem; font-weight: 700; color: #1D4ED8; text-decoration: none; border: 1px solid #DBEAFE; background: #EFF6FF; border-radius: 4px; padding: 0.1rem 0.35rem; white-space: nowrap; margin-left: 0.3rem; }
+    .comic-link:hover { background: #1D4ED8; color: #fff; }
+    @media (max-width: 720px) { .comic-panels { grid-template-columns: repeat(2, 1fr); } }
+
+    /* 原图附件链接（替代左侧大图预览） */
+    .split-layout.single { grid-template-columns: 1fr; }
+    .origin-attach { display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1rem; background: #F8FAFC; border: 1px dashed var(--border-color); border-radius: 8px; font-size: 0.82rem; color: var(--text-muted); flex-wrap: wrap; }
+    .origin-attach a { color: var(--brand-blue, #1D4ED8); font-weight: 700; text-decoration: none; }
+    .origin-attach a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -578,28 +597,16 @@
     <div class="hero">
       <div class="hero-meta">BRANCH 1 · ESSENTIAL OVERVIEW</div>
       <h1 class="hero-title">《儒林外史》核心考点分支一：文学常识·全书结构·官吏劣绅</h1>
-      <p class="hero-desc">对应官方教研第 1 页大图。左侧展示教研原件，右侧将图片内包含的“文学常识、全书结构脉络、王冕总纲、科举劣绅（王惠、汤奉、严氏兄弟）、八股自害者马纯上”逐字清晰提取，彻底告别原图字体模糊。</p>
+      <p class="hero-desc">对应官方教研第 1 页大图。右侧将图片内包含的“文学常识、全书结构脉络、王冕总纲、科举劣绅（王惠、汤奉、严氏兄弟）、八股自害者马纯上”逐字清晰提取，彻底告别原图字体模糊。</p>
     </div>
 
     <!-- 双栏对照布局：左图右文 -->
-    <div class="split-layout">
+    <div class="split-layout single">
       
-      <!-- 左侧原图 -->
-      <div class="image-preview-panel">
-        <div class="panel-header">
-          <h3>📷 官方教研原图（第一辑）</h3>
-          <span class="img-click-hint" onclick="openLightbox('《儒林外史》核心考点/064103492b0124b43442216f522d64a5.jpg')">🔍 点击查看超清大图</span>
-        </div>
-        <div class="img-box" onclick="openLightbox('《儒林外史》核心考点/064103492b0124b43442216f522d64a5.jpg')">
-          <img src="《儒林外史》核心考点/064103492b0124b43442216f522d64a5.jpg" alt="儒林外史核心考点第一页">
-        </div>
-        <div class="img-footer-tip">
-          💡 点击图片任意位置即可全屏无损放大、高清研读
-        </div>
-      </div>
-
       <!-- 右侧文字详细提取 -->
       <div class="content-panel">
+
+        <div class="origin-attach">📎 <a href="《儒林外史》核心考点/064103492b0124b43442216f522d64a5.jpg" target="_blank" rel="noopener">📷 官方教研原图（第一辑） · 点击查看大图</a></div>
 
         <!-- 板块一：文学常识 -->
         <div class="card-block">
@@ -705,6 +712,18 @@
                   </td>
                 </tr>
 
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-wangmian">
+          <div class="comic-head"><span class="role-badge">王冕</span><span class="comic-chapter">第 1 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p1-wangmian-c1.jpg" alt="王冕连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wangmian-c1.jpg')"><figcaption>① 湖边放牛，自学画荷名动乡里</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p1-wangmian-c2.jpg" alt="王冕连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wangmian-c2.jpg')"><figcaption>② 卖画得钱，全买好吃的孝敬老母</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p1-wangmian-c3.jpg" alt="王冕连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wangmian-c3.jpg')"><figcaption>③ 闭门苦读，不到二十岁博览群书</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p1-wangmian-c4.jpg" alt="王冕连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wangmian-c4.jpg')"><figcaption>④ 朝廷征聘，避走会稽山隐居终老</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
+
                 <tr>
                   <td>
                     <span class="role-badge">王惠</span><br>
@@ -724,6 +743,18 @@
                   </td>
                 </tr>
 
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-wanghui">
+          <div class="comic-head"><span class="role-badge">王惠</span><span class="comic-chapter">第 7、8 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p1-wanghui-c1.jpg" alt="王惠连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wanghui-c1.jpg')"><figcaption>① 到任南昌故意不接印，逼下属送规费</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p1-wanghui-c2.jpg" alt="王惠连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wanghui-c2.jpg')"><figcaption>② 上任便查办私情、大肆搜刮民脂</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p1-wanghui-c3.jpg" alt="王惠连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wanghui-c3.jpg')"><figcaption>③ 宁王叛乱，开城投降做伪官</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p1-wanghui-c4.jpg" alt="王惠连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wanghui-c4.jpg')"><figcaption>④ 兵败连夜出逃，削发为僧</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
+
                 <tr>
                   <td>
                     <span class="role-badge">汤奉</span><br>
@@ -741,6 +772,18 @@
                     ② 将偷鸡贼头上捆上活鸡示众游街，百般折辱；苛刻严酷、酷吏做派。
                   </td>
                 </tr>
+
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-tangfeng">
+          <div class="comic-head"><span class="role-badge">汤奉</span><span class="comic-chapter">第 4 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p1-tangfeng-c1.jpg" alt="汤奉连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-tangfeng-c1.jpg')"><figcaption>① 五十斤牛肉堆上长枷，活活压毙老师傅</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p1-tangfeng-c2.jpg" alt="汤奉连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-tangfeng-c2.jpg')"><figcaption>② 偷鸡贼头顶捆鸡，游街百般折辱</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p1-tangfeng-c3.jpg" alt="汤奉连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-tangfeng-c3.jpg')"><figcaption>③ 公堂严刑苛断，酷吏做派</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p1-tangfeng-c4.jpg" alt="汤奉连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-tangfeng-c4.jpg')"><figcaption>④ 出巡仪仗森严，百姓跪伏侧目</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
 
                 <tr>
                   <td>
@@ -762,6 +805,18 @@
                   </td>
                 </tr>
 
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-yangongsheng">
+          <div class="comic-head"><span class="role-badge">严贡生</span><span class="comic-chapter">第 5、6 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p1-yangongsheng-c1.jpg" alt="严贡生连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yangongsheng-c1.jpg')"><figcaption>① 强占邻居走失的猪，反咬索要饲料钱</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p1-yangongsheng-c2.jpg" alt="严贡生连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yangongsheng-c2.jpg')"><figcaption>② 几片云片糕讹称名贵药材，赖掉船资</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p1-yangongsheng-c3.jpg" alt="严贡生连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yangongsheng-c3.jpg')"><figcaption>③ 弟死假意吊唁</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p1-yangongsheng-c4.jpg" alt="严贡生连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yangongsheng-c4.jpg')"><figcaption>④ 转头强行霸占胞弟家产</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
+
                 <tr>
                   <td>
                     <span class="role-badge">严监生</span><br>
@@ -781,6 +836,18 @@
                   </td>
                 </tr>
 
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-yanjiansheng">
+          <div class="comic-head"><span class="role-badge">严监生</span><span class="comic-chapter">第 5、6 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p1-yanjiansheng-c1.jpg" alt="严监生连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yanjiansheng-c1.jpg')"><figcaption>① 万贯家财却省吃俭用，拨算盘核账</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p1-yanjiansheng-c2.jpg" alt="严监生连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yanjiansheng-c2.jpg')"><figcaption>② 妻病垂危之际，顺水推舟扶正赵氏</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p1-yanjiansheng-c3.jpg" alt="严监生连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yanjiansheng-c3.jpg')"><figcaption>③ 临终伸着两根指头，不肯瞑目</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p1-yanjiansheng-c4.jpg" alt="严监生连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yanjiansheng-c4.jpg')"><figcaption>④ 挑掉一茎灯草，方才咽气</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
+
                 <tr>
                   <td>
                     <span class="role-badge">马二先生</span><br>
@@ -798,6 +865,18 @@
                     ② 虽然思想迂腐僵化，但为人敦厚朴实，常主动解囊助人（具体事迹见分支二展开）。
                   </td>
                 </tr>
+
+                <tr class="comic-row"><td colspan="4" style="padding-top:0.35rem;">
+                <div class="comic-strip" id="comic-maer">
+          <div class="comic-head"><span class="role-badge">马二先生</span><span class="comic-chapter">第 13-15 回 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p2-maer.jpg" alt="马二先生连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer.jpg')"><figcaption>① 杭州街头倾囊资助落魄的匡超人返乡</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-maer-c2.jpg" alt="马二先生连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer-c2.jpg')"><figcaption>② 倾囊相助，替蘧公孙赎回要紧的枕箱</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-maer-c3.jpg" alt="马二先生连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer-c3.jpg')"><figcaption>③ 自出银两，料理假神仙洪憨仙的后事</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p2-maer-c4.jpg" alt="马二先生连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer-c4.jpg')"><figcaption>④ 一生以批选八股文章为业，逢人劝学举业</figcaption></figure>
+          </div>
+        </div>
+                </td></tr>
 
               </tbody>
             </table>

@@ -366,6 +366,29 @@
       margin-left: auto;
     }
     .nav-back-btn:hover { background: #F1F5F9; color: var(--text-primary); }
+
+    /* 人物连环画条带 */
+    .comic-strip { padding: 1rem; border: 1px solid var(--border-color, #E2E8F0); border-radius: 10px; background: #F8FAFC; }
+    .comic-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+    .comic-chapter { font-size: 0.75rem; color: var(--text-muted, #64748B); font-weight: 700; }
+    .comic-panels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+    .comic-panels figure { margin: 0; min-width: 0; }
+    .comic-panels img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 8px; border: 1px solid var(--border-color, #E2E8F0); box-shadow: 0 1px 4px rgba(15,23,42,0.07); cursor: zoom-in; display: block; transition: transform 0.18s ease; }
+    .comic-panels img:hover { transform: scale(1.03); }
+    .comic-panels figcaption { font-size: 0.72rem; color: var(--text-secondary, #475569); line-height: 1.5; margin-top: 0.4rem; }
+    .comic-link { font-size: 0.72rem; font-weight: 700; color: #1D4ED8; text-decoration: none; border: 1px solid #DBEAFE; background: #EFF6FF; border-radius: 4px; padding: 0.1rem 0.35rem; white-space: nowrap; margin-left: 0.3rem; }
+    .comic-link:hover { background: #1D4ED8; color: #fff; }
+    @media (max-width: 720px) { .comic-panels { grid-template-columns: repeat(2, 1fr); } }
+
+    /* 原图附件链接（替代左侧大图预览） */
+    .split-layout.single { grid-template-columns: 1fr; }
+    .origin-attach { display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1rem; background: #F8FAFC; border: 1px dashed var(--border-color); border-radius: 8px; font-size: 0.82rem; color: var(--text-muted); flex-wrap: wrap; }
+    .origin-attach a { color: var(--brand-blue, #1D4ED8); font-weight: 700; text-decoration: none; }
+    .origin-attach a:hover { text-decoration: underline; }
+
+    .matrix-avatar { width: 52px; height: 52px; object-fit: cover; border-radius: 8px;
+      border: 1px solid var(--border-color); box-shadow: 0 1px 3px rgba(15,23,42,0.08);
+      cursor: zoom-in; display: block; margin-bottom: 0.35rem; }
   </style>
 </head>
 <body>
@@ -391,26 +414,14 @@
     <div class="hero">
       <div class="hero-meta">BRANCH 4 · COMPLETE 30 CHARACTERS MATRIX</div>
       <h1 class="hero-title">《儒林外史》核心考点分支四：30位重点人物形象全解大矩阵</h1>
-      <p class="hero-desc">对应官方教研第 4 页大图。左侧展示教研原件，右侧完整地毯式提取书中 30 位核心人物的【人物形象采分词】与【核心考点情节】，划分为“儒林正统典范、科举悲剧迷者、虚伪贪利丑态、抗争与奇人”四大群体。</p>
+      <p class="hero-desc">对应官方教研第 4 页大图。右侧完整地毯式提取书中 30 位核心人物的【人物形象采分词】与【核心考点情节】，划分为“儒林正统典范、科举悲剧迷者、虚伪贪利丑态、抗争与奇人”四大群体。</p>
     </div>
 
-    <div class="split-layout">
-      <!-- 左侧原图 -->
-      <div class="image-preview-panel">
-        <div class="panel-header">
-          <h3>📷 官方教研原图（第四辑·全书人物谱）</h3>
-          <span class="img-click-hint" onclick="openLightbox('《儒林外史》核心考点/a570140687a01295341bcdad6ed682dc.jpg')">🔍 点击查看超清大图</span>
-        </div>
-        <div class="img-box" onclick="openLightbox('《儒林外史》核心考点/a570140687a01295341bcdad6ed682dc.jpg')">
-          <img src="《儒林外史》核心考点/a570140687a01295341bcdad6ed682dc.jpg" alt="儒林外史30个人物形象图">
-        </div>
-        <div class="img-footer-tip">
-          💡 点击图片任意位置即可全屏无损放大、高清研读
-        </div>
-      </div>
-
+    <div class="split-layout single">
       <!-- 右侧文字提取 -->
       <div class="content-panel">
+
+        <div class="origin-attach">📎 <a href="《儒林外史》核心考点/a570140687a01295341bcdad6ed682dc.jpg" target="_blank" rel="noopener">📷 官方教研原图（第四辑·全书人物谱） · 点击查看大图</a></div>
 
         <div class="card-block">
           <h2 class="block-title"><span class="icon">30</span> 30位重点人物全解群像大矩阵</h2>
@@ -433,11 +444,9 @@
                 </tr>
               </thead>
               <tbody>
-
-                <tr><td colspan="3" style="padding:0.5rem 0 0 0; border:none;"><img src="images/rulinwaishi-g1-scholars.jpg" alt="儒林正统典范" style="width:100%;max-height:180px;object-fit:cover;border-radius:8px;"/></td></tr>
                 <!-- 组一：儒林正统与理想典范 -->
                 <tr data-group="group1">
-                  <td><span class="role-badge">王冕</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-wangmian.jpg" alt="王冕头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-wangmian.jpg')"><span class="role-badge">王冕</span><a class="comic-link" href="rulinwaishi-p1-V1.html#comic-wangmian">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">孤傲清高</span>
@@ -450,7 +459,7 @@
                 </tr>
 
                 <tr data-group="group1">
-                  <td><span class="role-badge">杜少卿</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-dushaoqing.jpg" alt="杜少卿头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-dushaoqing.jpg')"><span class="role-badge">杜少卿</span><a class="comic-link" href="rulinwaishi-p3-V1.html#comic-dushaoqing">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">豪放不羁</span>
@@ -463,7 +472,7 @@
                 </tr>
 
                 <tr data-group="group1">
-                  <td><span class="role-badge">虞育德</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-yuyude.jpg" alt="虞育德头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-yuyude.jpg')"><span class="role-badge">虞育德</span><a class="comic-link" href="rulinwaishi-p3-V1.html#comic-yuyude">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">宽厚仁善</span>
@@ -476,7 +485,7 @@
                 </tr>
 
                 <tr data-group="group1">
-                  <td><span class="role-badge">庄绍光</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-zhuangshaoguang.jpg" alt="庄绍光头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-zhuangshaoguang.jpg')"><span class="role-badge">庄绍光</span><a class="comic-link" href="rulinwaishi-p3-V1.html#comic-zhuangshaoguang">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">淡泊名利</span>
@@ -489,7 +498,7 @@
                 </tr>
 
                 <tr data-group="group1">
-                  <td><span class="role-badge">鲍文卿</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-baowenqing.jpg" alt="鲍文卿头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-baowenqing.jpg')"><span class="role-badge">鲍文卿</span><a class="comic-link" href="rulinwaishi-p2-V1.html#comic-baowenqing">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">正直善良</span>
@@ -500,11 +509,9 @@
                   </td>
                   <td>倾力救助流离的牛浦郎；与向知县结为挚友仍守平民礼；坚决拒绝为权贵作伪证行贿。</td>
                 </tr>
-
-                <tr><td colspan="3" style="padding:1rem 0 0.25rem 0; border:none;"><img src="images/rulinwaishi-g2-keju.jpg" alt="科举悲剧" style="width:100%;max-height:180px;object-fit:cover;border-radius:8px;"/></td></tr>
                 <!-- 组二：科举悲剧与功名迷者 -->
                 <tr data-group="group2">
-                  <td><span class="role-badge">范进</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-fanjin.jpg" alt="范进头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-fanjin.jpg')"><span class="role-badge">范进</span><a class="comic-link" href="#comic-fanjin">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">懦弱迂腐</span>
@@ -517,7 +524,7 @@
                 </tr>
 
                 <tr data-group="group2">
-                  <td><span class="role-badge">周进</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-zhoujin.jpg" alt="周进头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-zhoujin.jpg')"><span class="role-badge">周进</span><a class="comic-link" href="#comic-zhoujin">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">皓首穷经</span>
@@ -530,7 +537,7 @@
                 </tr>
 
                 <tr data-group="group2">
-                  <td><span class="role-badge">鲁编修</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-lubianxiu.jpg" alt="鲁编修头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-lubianxiu.jpg')"><span class="role-badge">鲁编修</span><a class="comic-link" href="rulinwaishi-p2-V1.html#comic-lubianxiu">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">固守教条</span>
@@ -542,7 +549,7 @@
                 </tr>
 
                 <tr data-group="group2">
-                  <td><span class="role-badge">鲁小姐</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-luxiaojie.jpg" alt="鲁小姐头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-luxiaojie.jpg')"><span class="role-badge">鲁小姐</span><a class="comic-link" href="#comic-luxiaojie">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">聪明有才</span>
@@ -554,7 +561,7 @@
                 </tr>
 
                 <tr data-group="group2">
-                  <td><span class="role-badge">马二先生</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-maer.jpg" alt="马二先生头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-maer.jpg')"><span class="role-badge">马二先生</span><a class="comic-link" href="rulinwaishi-p2-V1.html#comic-maer">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">迂腐固执</span>
@@ -567,7 +574,7 @@
                 </tr>
 
                 <tr data-group="group2">
-                  <td><span class="role-badge">瞿景鸾</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-qujingluan.jpg" alt="瞿景鸾头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-qujingluan.jpg')"><span class="role-badge">瞿景鸾</span><a class="comic-link" href="#comic-qujingluan">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">热衷功名</span>
@@ -577,11 +584,9 @@
                   </td>
                   <td>整日奔走于权贵显要之门，图谋博取功名官位；竭力依附严氏豪强兄弟。</td>
                 </tr>
-
-                <tr><td colspan="3" style="padding:1rem 0 0.25rem 0; border:none;"><img src="images/rulinwaishi-g3-corrupt.jpg" alt="虚伪丑态" style="width:100%;max-height:180px;object-fit:cover;border-radius:8px;"/></td></tr>
                 <!-- 组三：虚伪贪利与丑态群像 -->
                 <tr data-group="group3">
-                  <td><span class="role-badge">严贡生</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-yangongsheng.jpg" alt="严贡生头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-yangongsheng.jpg')"><span class="role-badge">严贡生</span><a class="comic-link" href="rulinwaishi-p1-V1.html#comic-yangongsheng">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">横行霸道</span>
@@ -594,7 +599,7 @@
                 </tr>
 
                 <tr data-group="group3">
-                  <td><span class="role-badge">严监生</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-yanjiansheng.jpg" alt="严监生头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-yanjiansheng.jpg')"><span class="role-badge">严监生</span><a class="comic-link" href="rulinwaishi-p1-V1.html#comic-yanjiansheng">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">吝啬守财</span>
@@ -607,7 +612,7 @@
                 </tr>
 
                 <tr data-group="group3">
-                  <td><span class="role-badge">匡超人</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-kuangchaoren.jpg" alt="匡超人头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-kuangchaoren.jpg')"><span class="role-badge">匡超人</span><a class="comic-link" href="rulinwaishi-p2-V1.html#comic-kuangchaoren">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">孝悌变质</span>
@@ -620,7 +625,7 @@
                 </tr>
 
                 <tr data-group="group3">
-                  <td><span class="role-badge">牛浦郎</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-niupulang.jpg" alt="牛浦郎头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-niupulang.jpg')"><span class="role-badge">牛浦郎</span><a class="comic-link" href="rulinwaishi-p2-V1.html#comic-niupulang">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">忘恩负义</span>
@@ -633,7 +638,7 @@
                 </tr>
 
                 <tr data-group="group3">
-                  <td><span class="role-badge">张静斋</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-zhangjingzhai.jpg" alt="张静斋头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-zhangjingzhai.jpg')"><span class="role-badge">张静斋</span><a class="comic-link" href="#comic-zhangjingzhai">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">趋炎附势</span>
@@ -645,7 +650,7 @@
                 </tr>
 
                 <tr data-group="group3">
-                  <td><span class="role-badge">汤奉</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-tangfeng.jpg" alt="汤奉头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-tangfeng.jpg')"><span class="role-badge">汤奉</span><a class="comic-link" href="rulinwaishi-p1-V1.html#comic-tangfeng">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">迂腐虚伪</span>
@@ -657,7 +662,7 @@
                 </tr>
 
                 <tr data-group="group3">
-                  <td><span class="role-badge">王惠</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-wanghui.jpg" alt="王惠头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-wanghui.jpg')"><span class="role-badge">王惠</span><a class="comic-link" href="rulinwaishi-p1-V1.html#comic-wanghui">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">贪婪残暴</span>
@@ -669,7 +674,7 @@
                 </tr>
 
                 <tr data-group="group3">
-                  <td><span class="role-badge">潘三</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-pansan.jpg" alt="潘三头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-pansan.jpg')"><span class="role-badge">潘三</span><a class="comic-link" href="#comic-pansan">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">江湖匪气</span>
@@ -681,7 +686,7 @@
                 </tr>
 
                 <tr data-group="group3">
-                  <td><span class="role-badge">杨执中</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-yangzhizhong.jpg" alt="杨执中头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-yangzhizhong.jpg')"><span class="role-badge">杨执中</span><a class="comic-link" href="#comic-yangzhizhong">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">好高骛远</span>
@@ -691,11 +696,9 @@
                   </td>
                   <td>隐居乡野间好发宏大空洞议论；眼高手低，极易被权勿用等虚伪无赖小人蒙蔽利用。</td>
                 </tr>
-
-                <tr><td colspan="3" style="padding:1rem 0 0.25rem 0; border:none;"><img src="images/rulinwaishi-g4-heroes.jpg" alt="奇人异士" style="width:100%;max-height:180px;object-fit:cover;border-radius:8px;"/></td></tr>
                 <!-- 组四：抗争与奇人异士 -->
                 <tr data-group="group4">
-                  <td><span class="role-badge">胡屠户</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-hutuhu.jpg" alt="胡屠户头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-hutuhu.jpg')"><span class="role-badge">胡屠户</span><a class="comic-link" href="rulinwaishi-p2-V1.html#comic-hutuhu">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">嫌贫爱富</span>
@@ -708,7 +711,7 @@
                 </tr>
 
                 <tr data-group="group4">
-                  <td><span class="role-badge">沈琼枝</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-shenqiongzhi.jpg" alt="沈琼枝头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-shenqiongzhi.jpg')"><span class="role-badge">沈琼枝</span><a class="comic-link" href="rulinwaishi-p3-V1.html#comic-shenqiongzhi">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">独立自强</span>
@@ -721,7 +724,7 @@
                 </tr>
 
                 <tr data-group="group4">
-                  <td><span class="role-badge">赵氏</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-zhaoshi.jpg" alt="赵氏头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-zhaoshi.jpg')"><span class="role-badge">赵氏</span><a class="comic-link" href="#comic-zhaoshi">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">精明能干</span>
@@ -733,7 +736,7 @@
                 </tr>
 
                 <tr data-group="group4">
-                  <td><span class="role-badge">郭孝子 (郭力)</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-guoxiaozi.jpg" alt="郭孝子 (郭力)头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-guoxiaozi.jpg')"><span class="role-badge">郭孝子 (郭力)</span><a class="comic-link" href="rulinwaishi-p3-V1.html#comic-guoxiaozi">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">淳朴善良</span>
@@ -746,7 +749,7 @@
                 </tr>
 
                 <tr data-group="group4">
-                  <td><span class="role-badge">萧云仙</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-xiaoyunxian.jpg" alt="萧云仙头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-xiaoyunxian.jpg')"><span class="role-badge">萧云仙</span><a class="comic-link" href="rulinwaishi-p3-V1.html#comic-xiaoyunxian">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">精忠报国</span>
@@ -759,7 +762,7 @@
                 </tr>
 
                 <tr data-group="group4">
-                  <td><span class="role-badge">凤四老爹</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-fengsilaodie.jpg" alt="凤四老爹头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-fengsilaodie.jpg')"><span class="role-badge">凤四老爹</span><a class="comic-link" href="rulinwaishi-p3-V1.html#comic-fengsilaodie">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">身怀绝技</span>
@@ -772,7 +775,7 @@
                 </tr>
 
                 <tr data-group="group4">
-                  <td><span class="role-badge">卜诚</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-bucheng.jpg" alt="卜诚头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-bucheng.jpg')"><span class="role-badge">卜诚</span><a class="comic-link" href="#comic-bucheng">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">善良正直</span>
@@ -783,7 +786,7 @@
                 </tr>
 
                 <tr data-group="group4">
-                  <td><span class="role-badge">李本瑛</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-libenying.jpg" alt="李本瑛头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-libenying.jpg')"><span class="role-badge">李本瑛</span><a class="comic-link" href="#comic-libenying">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">表面清廉</span>
@@ -795,7 +798,7 @@
                 </tr>
 
                 <tr data-group="group4">
-                  <td><span class="role-badge">蘧公孙</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-qugongsun.jpg" alt="蘧公孙头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-qugongsun.jpg')"><span class="role-badge">蘧公孙</span><a class="comic-link" href="rulinwaishi-p2-V1.html#comic-qugongsun">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">附庸风雅</span>
@@ -807,7 +810,7 @@
                 </tr>
 
                 <tr data-group="group4">
-                  <td><span class="role-badge">张俊民</span></td>
+                  <td><img class="matrix-avatar" src="images/rulinwaishi-av-zhangjunmin.jpg" alt="张俊民头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-zhangjunmin.jpg')"><span class="role-badge">张俊民</span><a class="comic-link" href="#comic-zhangjunmin">连环画→</a></td>
                   <td>
                     <div class="trait-list">
                       <span class="trait-pill">趋炎附势</span>
@@ -821,6 +824,120 @@
               </tbody>
             </table>
           </div>
+        </div>
+
+        <div class="card-block">
+          <h2 class="block-title"><span class="icon">画</span> 11位新增人物 · 故事连环画（其余 19 位点击矩阵中的“连环画→”跳转）</h2>
+
+          <div class="comic-strip" id="comic-fanjin">
+          <div class="comic-head"><span class="role-badge">范进</span><span class="comic-chapter">组二·科举迷者 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p4-fanjin-c1.jpg" alt="范进连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-fanjin-c1.jpg')"><figcaption>① 五十四岁皓首穷经，破屋苦读</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-fanjin-c2.jpg" alt="范进连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-fanjin-c2.jpg')"><figcaption>② 一见捷报，喜极发疯满街奔走</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-fanjin-c3.jpg" alt="范进连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-fanjin-c3.jpg')"><figcaption>③ 被岳丈一掌打醒，恢复清醒</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-fanjin-c4.jpg" alt="范进连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-fanjin-c4.jpg')"><figcaption>④ 中举后攀附张乡绅，渐染官气</figcaption></figure>
+          </div>
+        </div>
+
+          <div class="comic-strip" id="comic-zhoujin">
+          <div class="comic-head"><span class="role-badge">周进</span><span class="comic-chapter">组二·科举迷者 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p4-zhoujin-c1.jpg" alt="周进连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhoujin-c1.jpg')"><figcaption>① 六十余岁仍是老童生，坐馆受嘲弄</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-zhoujin-c2.jpg" alt="周进连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhoujin-c2.jpg')"><figcaption>② 贡院触景生情，撞号板痛哭吐血</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-zhoujin-c3.jpg" alt="周进连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhoujin-c3.jpg')"><figcaption>③ 商人凑银替他捐了监生</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-zhoujin-c4.jpg" alt="周进连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhoujin-c4.jpg')"><figcaption>④ 一朝得中，端坐公案风光显达</figcaption></figure>
+          </div>
+        </div>
+
+          <div class="comic-strip" id="comic-luxiaojie">
+          <div class="comic-head"><span class="role-badge">鲁小姐</span><span class="comic-chapter">组二·科举迷者 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p4-luxiaojie-c1.jpg" alt="鲁小姐连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-luxiaojie-c1.jpg')"><figcaption>① 自幼受父训，精通八股文章</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-luxiaojie-c2.jpg" alt="鲁小姐连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-luxiaojie-c2.jpg')"><figcaption>② 嫁入蘧府，见丈夫无心举业而失望</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-luxiaojie-c3.jpg" alt="鲁小姐连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-luxiaojie-c3.jpg')"><figcaption>③ 以才学督促夫君攻习举业</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-luxiaojie-c4.jpg" alt="鲁小姐连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-luxiaojie-c4.jpg')"><figcaption>④ 严格督责幼子天天功课</figcaption></figure>
+          </div>
+        </div>
+
+          <div class="comic-strip" id="comic-qujingluan">
+          <div class="comic-head"><span class="role-badge">瞿景鸾</span><span class="comic-chapter">组二·科举迷者 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p4-qujingluan-c1.jpg" alt="瞿景鸾连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-qujingluan-c1.jpg')"><figcaption>① 奔走权贵之门，捧帖求见</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-qujingluan-c2.jpg" alt="瞿景鸾连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-qujingluan-c2.jpg')"><figcaption>② 宴席上点头哈腰、一味迎合</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-qujingluan-c3.jpg" alt="瞿景鸾连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-qujingluan-c3.jpg')"><figcaption>③ 竭力依附严氏豪强兄弟</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-qujingluan-c4.jpg" alt="瞿景鸾连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-qujingluan-c4.jpg')"><figcaption>④ 谋得差事，志得意满</figcaption></figure>
+          </div>
+        </div>
+
+          <div class="comic-strip" id="comic-zhangjingzhai">
+          <div class="comic-head"><span class="role-badge">张静斋</span><span class="comic-chapter">组三·虚伪丑态 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p4-zhangjingzhai-c1.jpg" alt="张静斋连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjingzhai-c1.jpg')"><figcaption>① 范进一中举，立刻送银赠房巴结</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-zhangjingzhai-c2.jpg" alt="张静斋连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjingzhai-c2.jpg')"><figcaption>② 把酒言欢，指点攀附门路</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-zhangjingzhai-c3.jpg" alt="张静斋连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjingzhai-c3.jpg')"><figcaption>③ 倚仗官绅之势，强占民田民房</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-zhangjingzhai-c4.jpg" alt="张静斋连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjingzhai-c4.jpg')"><figcaption>④ 公堂构陷无辜良民</figcaption></figure>
+          </div>
+        </div>
+
+          <div class="comic-strip" id="comic-pansan">
+          <div class="comic-head"><span class="role-badge">潘三</span><span class="comic-chapter">组三·虚伪丑态 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p4-pansan-c1.jpg" alt="潘三连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-pansan-c1.jpg')"><figcaption>① 包揽词讼，操纵官府案由</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-pansan-c2.jpg" alt="潘三连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-pansan-c2.jpg')"><figcaption>② 教唆匡超人伪造朱签、代考替试</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-pansan-c3.jpg" alt="潘三连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-pansan-c3.jpg')"><figcaption>③ 拐卖妇女、敲诈勒索</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-pansan-c4.jpg" alt="潘三连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-pansan-c4.jpg')"><figcaption>④ 东窗事发，锒铛入狱</figcaption></figure>
+          </div>
+        </div>
+
+          <div class="comic-strip" id="comic-yangzhizhong">
+          <div class="comic-head"><span class="role-badge">杨执中</span><span class="comic-chapter">组三·虚伪丑态 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p4-yangzhizhong-c1.jpg" alt="杨执中连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-yangzhizhong-c1.jpg')"><figcaption>① 隐居乡野，高谈空洞议论</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-yangzhizhong-c2.jpg" alt="杨执中连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-yangzhizhong-c2.jpg')"><figcaption>② 被娄公子奉为高士，沾沾自喜</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-yangzhizhong-c3.jpg" alt="杨执中连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-yangzhizhong-c3.jpg')"><figcaption>③ 引荐无赖小人入伙</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-yangzhizhong-c4.jpg" alt="杨执中连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-yangzhizhong-c4.jpg')"><figcaption>④ 被小人连累，家中鸡犬不宁</figcaption></figure>
+          </div>
+        </div>
+
+          <div class="comic-strip" id="comic-zhaoshi">
+          <div class="comic-head"><span class="role-badge">赵氏</span><span class="comic-chapter">组四·奇人异士 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p4-zhaoshi-c1.jpg" alt="赵氏连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhaoshi-c1.jpg')"><figcaption>① 妾室出身，低头侍奉、心思细密</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-zhaoshi-c2.jpg" alt="赵氏连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhaoshi-c2.jpg')"><figcaption>② 挑掉一茎灯草，扶正为正室</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-zhaoshi-c3.jpg" alt="赵氏连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhaoshi-c3.jpg')"><figcaption>③ 智斗严氏恶霸族亲</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-zhaoshi-c4.jpg" alt="赵氏连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhaoshi-c4.jpg')"><figcaption>④ 保全孤儿与家产</figcaption></figure>
+          </div>
+        </div>
+
+          <div class="comic-strip" id="comic-bucheng">
+          <div class="comic-head"><span class="role-badge">卜诚</span><span class="comic-chapter">组四·奇人异士 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p4-bucheng-c1.jpg" alt="卜诚连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-bucheng-c1.jpg')"><figcaption>① 匡超人潦倒街头，卖豆腐糊口</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-bucheng-c2.jpg" alt="卜诚连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-bucheng-c2.jpg')"><figcaption>② 卜诚真心收留，给落脚之处</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-bucheng-c3.jpg" alt="卜诚连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-bucheng-c3.jpg')"><figcaption>③ 赠盘缠干粮，送他上路</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-bucheng-c4.jpg" alt="卜诚连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-bucheng-c4.jpg')"><figcaption>④ 故人发达冷眼相待，淡然处之</figcaption></figure>
+          </div>
+        </div>
+
+          <div class="comic-strip" id="comic-libenying">
+          <div class="comic-head"><span class="role-badge">李本瑛</span><span class="comic-chapter">组四·奇人异士 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p4-libenying-c1.jpg" alt="李本瑛连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-libenying-c1.jpg')"><figcaption>① 赏识匡超人文才，收为门生</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-libenying-c2.jpg" alt="李本瑛连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-libenying-c2.jpg')"><figcaption>② 提携举荐，师徒相得</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-libenying-c3.jpg" alt="李本瑛连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-libenying-c3.jpg')"><figcaption>③ 被人参奏弹劾，摘印去职</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-libenying-c4.jpg" alt="李本瑛连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-libenying-c4.jpg')"><figcaption>④ 落难途中遭旧门生划清界限</figcaption></figure>
+          </div>
+        </div>
+
+          <div class="comic-strip" id="comic-zhangjunmin">
+          <div class="comic-head"><span class="role-badge">张俊民</span><span class="comic-chapter">组四·奇人异士 · 故事连环画（点击可放大）</span></div>
+          <div class="comic-panels">
+          <figure><img src="images/rulinwaishi-p4-zhangjunmin-c1.jpg" alt="张俊民连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjunmin-c1.jpg')"><figcaption>① 官宦门前趋奉，递帖求见</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-zhangjunmin-c2.jpg" alt="张俊民连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjunmin-c2.jpg')"><figcaption>② 在官宦与豪绅间两头撮合</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-zhangjunmin-c3.jpg" alt="张俊民连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjunmin-c3.jpg')"><figcaption>③ 借范进之势为亲眷谋差事</figcaption></figure>
+          <figure><img src="images/rulinwaishi-p4-zhangjunmin-c4.jpg" alt="张俊民连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjunmin-c4.jpg')"><figcaption>④ 宴席上周旋名流，志得意满</figcaption></figure>
+          </div>
+        </div>
         </div>
 
       </div>
