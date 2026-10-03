@@ -1,0 +1,4244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>家庭健康打卡与学科补课费用结算中心 V8 · 全年12个月大规模紧凑按月日历版 | 浅色商务版</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-focus: #2563EB;
+      --text-main: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      
+      --brand-blue: #2563EB;
+      --brand-blue-hover: #1D4ED8;
+      --brand-blue-bg: #EFF6FF;
+      --brand-blue-border: #BFDBFE;
+
+      --health-teal: #0284C7;
+      --health-bg: #F0F9FF;
+      --health-border: #BAE6FD;
+
+      --revisit-indigo: #6366F1;
+      --revisit-bg: #EEF2FF;
+      --revisit-border: #C7D2FE;
+
+      --finance-green: #059669;
+      --finance-green-hover: #047857;
+      --finance-bg: #ECFDF5;
+      --finance-border: #A7F3D0;
+
+      --warn-amber: #D97706;
+      --warn-bg: #FFFBEB;
+      --warn-border: #FDE68A;
+
+      --danger-rose: #E11D48;
+      --danger-bg: #FFF1F2;
+      --danger-border: #FECDD3;
+
+      --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+      --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px -1px rgba(15, 23, 42, 0.08);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 顶部商务导航 */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .nav-container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+      color: #FFFFFF;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 4px rgba(37, 99, 235, 0.25);
+    }
+
+    .brand-text h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-text p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .badge-v2 {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.15rem 0.55rem;
+      border-radius: 9999px;
+      border: 1px solid #BFDBFE;
+    }
+
+    /* 模块切换主导航 */
+    .module-tabs {
+      display: flex;
+      background: var(--bg-subtle);
+      padding: 4px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      gap: 4px;
+    }
+
+    .module-tab-btn {
+      padding: 0.55rem 1.15rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.18s ease;
+    }
+
+    .module-tab-btn.active {
+      background: #FFFFFF;
+      color: var(--brand-blue);
+      box-shadow: var(--shadow-xs);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 0.95rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.18s ease;
+      border: 1px solid transparent;
+      outline: none;
+      min-height: 38px;
+    }
+
+    .btn-subtle {
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border-color: var(--border-color);
+    }
+    .btn-subtle:hover { background-color: #E2E8F0; color: var(--text-main); }
+
+    .btn-primary {
+      background-color: var(--brand-blue);
+      color: #FFFFFF;
+      box-shadow: 0 1px 2px rgba(37, 99, 235, 0.2);
+    }
+    .btn-primary:hover { background-color: var(--brand-blue-hover); }
+
+    .btn-finance {
+      background-color: var(--finance-green);
+      color: #FFFFFF;
+      box-shadow: 0 1px 2px rgba(5, 150, 105, 0.2);
+    }
+    .btn-finance:hover { background-color: var(--finance-green-hover); }
+
+    .btn-danger {
+      background-color: var(--danger-rose);
+      color: #FFFFFF;
+      box-shadow: 0 1px 2px rgba(225, 29, 72, 0.2);
+    }
+    .btn-danger:hover { background-color: #BE123C; }
+
+    .btn-outline-primary {
+      background-color: var(--brand-blue-bg);
+      color: var(--brand-blue);
+      border-color: var(--brand-blue-border);
+    }
+    .btn-outline-primary:hover { background-color: #DBEAFE; }
+
+    .btn-outline-finance {
+      background-color: var(--finance-bg);
+      color: var(--finance-green);
+      border-color: var(--finance-border);
+    }
+    .btn-outline-finance:hover { background-color: #D1FAE5; }
+
+    /* 主容器 */
+    .container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 1.75rem 1.5rem 4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    /* 顶部概览指标栏 */
+    .banner {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .banner-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+    }
+
+    .banner-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .banner-stats {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-pill {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      padding: 0.65rem 1.15rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      min-width: 130px;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .stat-value {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* 模块容器展示切换 */
+    .view-section {
+      display: none;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .view-section.active {
+      display: flex;
+    }
+
+    /* 通用卡片容器 */
+    .module-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xs);
+      overflow: hidden;
+    }
+
+    .module-header {
+      padding: 1.15rem 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #FFFFFF;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .module-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .module-icon-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+    }
+
+    .module-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .module-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* 日历控制条 */
+    .calendar-toolbar {
+      padding: 0.85rem 1.5rem;
+      background: #F8FAFC;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .month-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .current-month-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--text-main);
+      min-width: 140px;
+    }
+
+    .calendar-legend {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .legend-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    /* 日历网格 */
+    .calendar-body {
+      padding: 1.25rem 1.5rem;
+    }
+
+    .weekdays-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 0.65rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .days-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+
+    .day-cell {
+      min-height: 98px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.45rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+
+    .day-cell:hover {
+      border-color: var(--brand-blue);
+      box-shadow: var(--shadow-sm);
+      background: #FAFCFF;
+      transform: translateY(-1px);
+    }
+
+    .day-cell.other-month {
+      background: #FAFAFA;
+      opacity: 0.4;
+      cursor: default;
+    }
+
+    .day-cell.other-month:hover {
+      border-color: var(--border-color);
+      box-shadow: none;
+      transform: none;
+    }
+
+    .day-cell.today {
+      border: 2px solid var(--brand-blue);
+      background: #F0F7FF;
+    }
+
+    .day-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .day-total-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      padding: 1px 6px;
+      border-radius: 9999px;
+      line-height: 1.3;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    .day-total-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+      padding: 1px 4px;
+      border-radius: 9999px;
+      transition: all 0.15s ease;
+    }
+    .day-total-wrap:hover {
+      background: rgba(37, 99, 235, 0.1);
+      transform: scale(1.02);
+    }
+
+    .day-select-checkbox {
+      width: 13px;
+      height: 13px;
+      cursor: pointer;
+      accent-color: var(--finance-green);
+    }
+
+    .day-total-unpaid {
+      background: #FFFBEB;
+      color: #B45309;
+      border: 1px solid #FDE68A;
+    }
+
+    .day-total-paid {
+      background: #F0FDF4;
+      color: #15803D;
+      border: 1px solid #BBF7D0;
+    }
+
+    /* ============================================================== */
+    /* 全年12个月按月日历 · 大规模紧凑矩阵 (Year 12-Month Matrix)      */
+    /* ============================================================== */
+    .view-mode-toggle {
+      display: inline-flex;
+      background: #F1F5F9;
+      padding: 3px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      gap: 3px;
+    }
+
+    .view-mode-btn {
+      border: none;
+      background: transparent;
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+
+    .view-mode-btn.active {
+      background: #FFFFFF;
+      color: var(--brand-blue);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+
+    .year-calendar-matrix {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+    }
+
+    @media (max-width: 1280px) {
+      .year-calendar-matrix {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .year-calendar-matrix {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .year-calendar-matrix {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mini-month-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.55rem 0.55rem 0.45rem 0.55rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.15s ease;
+    }
+
+    .mini-month-card:hover {
+      border-color: #94A3B8;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .mini-month-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.35rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid #F1F5F9;
+    }
+
+    .mini-month-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .mini-month-stats {
+      font-size: 0.68rem;
+      display: flex;
+      gap: 0.3rem;
+      color: var(--text-muted);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .mini-weekdays-row {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+      text-align: center;
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: #94A3B8;
+      margin-bottom: 2px;
+    }
+
+    .mini-days-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+    }
+
+    .mini-day-cell {
+      min-height: 25px;
+      max-height: 30px;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.12s ease;
+      background: #F8FAFC;
+      border: 1px solid transparent;
+      user-select: none;
+      padding: 1px;
+    }
+
+    .mini-day-cell:hover {
+      background: #EFF6FF;
+      border-color: var(--brand-blue);
+      color: var(--brand-blue);
+      transform: scale(1.12);
+      z-index: 5;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    }
+
+    .mini-day-cell.empty {
+      background: transparent;
+      cursor: default;
+      border: none;
+      visibility: hidden;
+    }
+
+    .mini-day-cell.today {
+      font-weight: 800;
+      border: 1.5px solid var(--brand-blue) !important;
+      color: var(--brand-blue);
+      background: #FFFFFF;
+    }
+
+    /* 上课打卡标记：微缩紧凑样式 */
+    .mini-day-cell.has-lesson {
+      background: #FEF3C7;
+      color: #92400E;
+      font-weight: 700;
+      border-color: #FDE68A;
+    }
+
+    .mini-day-cell.has-lesson.all-paid {
+      background: #DCFCE7;
+      color: #166534;
+      font-weight: 700;
+      border-color: #BBF7D0;
+    }
+
+    .mini-day-cell.has-lesson::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #D97706;
+    }
+
+    .mini-day-cell.has-lesson.all-paid::after {
+      background: #16A34A;
+    }
+
+    /* 健康打针/复诊标记：微缩紧凑样式（坚决弃用看不清的小圆点，直接展示注射器与小医生图标） */
+    .mini-day-cell.has-injection {
+      background: #ECFDF5;
+      color: #065F46;
+      font-weight: 700;
+      border-color: #34D399;
+      position: relative;
+    }
+
+    .mini-day-cell.has-injection::after {
+      content: '💉';
+      font-size: 8px;
+      line-height: 1;
+      position: absolute;
+      bottom: 1px;
+      right: 1px;
+    }
+
+    .mini-day-cell.has-revisit {
+      background: #EEF2FF;
+      color: #3730A3;
+      font-weight: 700;
+      border-color: #A5B4FC;
+      position: relative;
+    }
+
+    .mini-day-cell.has-revisit::after {
+      content: '👨‍⚕️';
+      font-size: 8px;
+      line-height: 1;
+      position: absolute;
+      bottom: 1px;
+      right: 1px;
+    }
+
+    .mini-day-cell.has-injection.has-revisit::after {
+      content: '💉👨‍⚕️';
+      font-size: 7px;
+      line-height: 1;
+      position: absolute;
+      bottom: 1px;
+      right: 0px;
+    }
+
+    /* 单月大日历徽章样式增强 */
+    .badge-injection {
+      background: #ECFDF5 !important;
+      color: #065F46 !important;
+      border: 1px solid #A7F3D0 !important;
+      font-weight: 600 !important;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      box-shadow: 0 1px 2px rgba(5, 150, 105, 0.08);
+    }
+    .badge-injection:hover {
+      background: #D1FAE5 !important;
+    }
+
+    .badge-revisit {
+      background: #EEF2FF !important;
+      color: #3730A3 !important;
+      border: 1px solid #C7D2FE !important;
+      font-weight: 600 !important;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      box-shadow: 0 1px 2px rgba(79, 70, 229, 0.08);
+    }
+    .badge-revisit:hover {
+      background: #E0E7FF !important;
+    }
+
+    .badge-icon-symbol {
+      font-size: 1rem;
+      line-height: 1;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .btn-weekday-check {
+      background: #F1F5F9;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-weekday-check:hover {
+      background: #E2E8F0;
+    }
+    .btn-weekday-check.active {
+      background: var(--brand-blue);
+      border-color: var(--brand-blue);
+      color: #FFFFFF;
+      box-shadow: 0 1px 3px rgba(37, 99, 235, 0.25);
+    }
+
+    .copy-date-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #EFF6FF;
+      color: var(--brand-blue);
+      border: 1px solid #BFDBFE;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      font-family: 'Outfit', sans-serif;
+    }
+    .copy-date-tag .remove-btn {
+      cursor: pointer;
+      font-weight: bold;
+      color: #60A5FA;
+      margin-left: 2px;
+    }
+    .copy-date-tag .remove-btn:hover {
+      color: var(--danger-rose);
+    }
+
+    /* 表格按天分组行样式 */
+    .date-group-row td {
+      background: #F8FAFC !important;
+      padding: 0.45rem 1rem !important;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .date-group-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .date-group-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      font-size: 0.83rem;
+      color: var(--text-main);
+    }
+
+    .date-group-sub {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      margin-left: 4px;
+    }
+
+    .day-number {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .today .day-number {
+      color: var(--brand-blue);
+    }
+
+    .day-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-top: 4px;
+    }
+
+    /* 增强徽标与删除按钮 */
+    .badge-item {
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 2px 4px 2px 6px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      line-height: 1.25;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+
+    .badge-item:hover {
+      filter: brightness(0.96);
+    }
+
+    .badge-content {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+    }
+
+    .badge-del-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      font-size: 11px;
+      line-height: 1;
+      color: #94A3B8;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .badge-del-btn:hover {
+      background: #FEE2E2;
+      color: #E11D48;
+      font-weight: 800;
+    }
+
+    .badge-injection {
+      background-color: var(--health-bg);
+      color: var(--health-teal);
+      border: 1px solid var(--health-border);
+    }
+
+    .badge-revisit {
+      background-color: var(--revisit-bg);
+      color: var(--revisit-color);
+      border: 1px solid var(--revisit-border);
+    }
+
+    .badge-lesson-unpaid {
+      background-color: var(--warn-bg);
+      color: var(--warn-amber);
+      border: 1px solid var(--warn-border);
+    }
+
+    .badge-lesson-paid {
+      background-color: var(--finance-bg);
+      color: var(--finance-green);
+      border: 1px solid var(--finance-border);
+    }
+
+    /* 补课模块专用样式：上下通栏排版，彻底解决右侧拥挤 */
+    .tutoring-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      width: 100%;
+    }
+
+    /* 科目单价配置列表：紧凑横排网格 */
+    .subjects-config-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 0.65rem;
+      padding: 0.75rem 1.25rem;
+      background: #FAFCFF;
+    }
+
+    .subject-price-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.15s ease;
+      min-width: 0;
+    }
+
+    .subject-price-card:hover {
+      border-color: var(--brand-blue-border);
+      box-shadow: var(--shadow-xs);
+    }
+
+    .sub-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .sub-info h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sub-info p {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0;
+    }
+
+    .sub-price-badge {
+      background: var(--finance-bg);
+      color: var(--finance-green);
+      border: 1px solid var(--finance-border);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      flex-shrink: 0;
+      line-height: 1.2;
+    }
+
+    .subject-price-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.15s ease;
+    }
+
+    .subject-price-card:hover {
+      border-color: var(--brand-blue-border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sub-info h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .sub-info p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .sub-price-badge {
+      background: var(--finance-bg);
+      color: var(--finance-green);
+      border: 1px solid var(--finance-border);
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      padding: 0.35rem 0.7rem;
+      border-radius: var(--radius-sm);
+    }
+
+    /* 勾兑结算专区 */
+    .reconciliation-panel {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .reconciliation-bar {
+      background: #F8FAFC;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .batch-summary {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .summary-item-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .summary-highlight {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--finance-green);
+      margin: 0 0.25rem;
+    }
+
+    .reconciliation-totals-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.82rem;
+      background: #FFFFFF;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-xs);
+    }
+
+    .reconciliation-totals-badge .badge-stat-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .reconciliation-totals-badge .dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .reconciliation-totals-badge .dot.warn {
+      background: var(--warn-amber);
+    }
+
+    .reconciliation-totals-badge .dot.success {
+      background: var(--finance-green);
+    }
+
+    .reconciliation-totals-badge .amount {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    /* 补课记录表格 */
+    .records-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+
+    table.data-table th {
+      background: #F8FAFC;
+      color: var(--text-muted);
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    table.data-table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
+      vertical-align: middle;
+    }
+
+    table.data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    table.data-table tr:hover {
+      background: #F8FAFC;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .status-unpaid {
+      background: var(--warn-bg);
+      color: var(--warn-amber);
+      border: 1px solid var(--warn-border);
+    }
+
+    .status-paid {
+      background: var(--finance-bg);
+      color: var(--finance-green);
+      border: 1px solid var(--finance-border);
+    }
+
+    /* 历史记录筛选 Tabs */
+    .history-tabs {
+      display: flex;
+      gap: 0.5rem;
+      padding: 1rem 1.5rem 0.5rem 1.5rem;
+    }
+
+    .tab-btn {
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--brand-blue-bg);
+      color: var(--brand-blue);
+      border-color: var(--brand-blue-border);
+    }
+
+    /* 弹窗 Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(2px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      width: 100%;
+      max-width: 560px;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      animation: modalFadeIn 0.15s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-header {
+      padding: 1.15rem 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #FFFFFF;
+    }
+
+    .modal-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.3rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px;
+    }
+    .modal-close:hover { color: var(--text-main); }
+
+    .modal-body {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-height: 75vh;
+      overflow-y: auto;
+    }
+
+    /* 当天已有课程卡片列表 */
+    .existing-items-box {
+      background: #F8FAFC;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .existing-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed var(--border-color);
+    }
+    .existing-item-row:last-child {
+      border-bottom: none;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .form-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 0.6rem 0.85rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      color: var(--text-main);
+      background: #FFFFFF;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--brand-blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+    }
+
+    .type-switcher {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .type-switch-btn {
+      padding: 0.65rem;
+      border: 1px solid var(--border-color);
+      background: var(--bg-page);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .type-switch-btn.active.injection {
+      background: var(--health-bg);
+      color: var(--health-teal);
+      border-color: var(--health-border);
+    }
+
+    .type-switch-btn.active.revisit {
+      background: var(--revisit-bg);
+      color: var(--revisit-color);
+      border-color: var(--revisit-border);
+    }
+
+    .modal-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border-color);
+      background: #F8FAFC;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* 轻量 Toast 提示 */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #0F172A;
+      color: #FFFFFF;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      font-weight: 500;
+      box-shadow: var(--shadow-lg);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.25s ease;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* 商务页脚 */
+    footer {
+      background: #FFFFFF;
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部商务导航 -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <div class="brand-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+        </div>
+        <div class="brand-text">
+          <h1>健康打卡与学科补课结算中心 <span class="badge-v2">V8 全年12个月大规模紧凑按月日历版</span></h1>
+          <p>打针与补课双日历全面升级 12 个月大规模紧凑矩阵 · 待付款与已付款费用实时汇总</p>
+        </div>
+      </a>
+
+      <!-- 模块快速切换 -->
+      <div class="module-tabs">
+        <button class="module-tab-btn active" id="tab-btn-tutoring" onclick="switchMainTab('tutoring')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          学科补课费用结算
+        </button>
+        <button class="module-tab-btn" id="tab-btn-health" onclick="switchMainTab('health')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          每月打针与复诊打卡
+        </button>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn btn-subtle" onclick="exportUnifiedData()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          导出对账备份
+        </button>
+        <a href="../index.html" class="btn btn-subtle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          返回规划中心
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- ============================================================== -->
+    <!-- 模块 A：按日历、按科目计算补课费用与批量勾兑结算板块              -->
+    <!-- ============================================================== -->
+    <div class="view-section active" id="view-tutoring">
+      
+      <!-- 补课费用数据统计看板 -->
+      <section class="banner">
+        <div>
+          <h2 class="banner-title">学科补课消课与财务对账结算看板</h2>
+          <p class="banner-subtitle">日历格子支持点击直接删除或修改 · 支持按科目设置单价与批量勾兑结清</p>
+        </div>
+        <div class="banner-stats">
+          <div class="stat-pill">
+            <span class="stat-label">本月补课上课</span>
+            <span class="stat-value" id="stat-tutoring-month-count" style="color: var(--brand-blue);">0 次</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-label">待结算应付</span>
+            <span class="stat-value" id="stat-tutoring-unpaid-amount" style="color: var(--warn-amber);">¥ 0</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-label">累计已结算支出</span>
+            <span class="stat-value" id="stat-tutoring-paid-amount" style="color: var(--finance-green);">¥ 0</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-label">配置中科目</span>
+            <span class="stat-value" id="stat-tutoring-subject-count" style="color: var(--text-main);">5 科</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 科目单价配置卡片 -->
+      <section class="module-card">
+        <div class="module-header">
+          <div class="module-title-wrap">
+            <div class="module-icon-badge" style="background: #EFF6FF; color: #2563EB;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div>
+              <h3 class="module-title">科目与课时单价标准设置</h3>
+              <p class="module-desc">维护每门学科每次上课的标准课时单价与常任老师，打卡时将自动带出</p>
+            </div>
+          </div>
+          <button class="btn btn-outline-primary" style="padding: 0.35rem 0.85rem; font-size: 0.82rem;" onclick="openSubjectModal()">
+            + 新增科目设置
+          </button>
+        </div>
+
+        <div class="subjects-config-grid" id="subjects-container">
+          <!-- 动态渲染科目卡片 -->
+        </div>
+      </section>
+
+      <!-- 补课日历与勾兑结算布局 -->
+      <div class="tutoring-grid">
+        
+        <!-- 左侧：补课消课月历 -->
+        <section class="module-card">
+          <div class="module-header">
+            <div class="module-title-wrap">
+              <div class="module-icon-badge" style="background: #ECFDF5; color: #059669;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div>
+              <div>
+                <h3 class="module-title" id="tutoring-calendar-main-title">学科补课日历 · 全年12个月大规模紧凑视图</h3>
+                <p class="module-desc">12个月全景按月排布 · 紧凑微格点击直接登记/查看 · 支持按天快捷勾选费用</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+              <!-- 视图切换模式：全年12个月紧凑 vs 单月放大 -->
+              <div class="view-mode-toggle" id="tutoring-view-toggle">
+                <button type="button" class="view-mode-btn active" id="btn-tutoring-mode-year" onclick="setTutoringViewMode('year')">
+                  📅 全年12个月紧凑
+                </button>
+                <button type="button" class="view-mode-btn" id="btn-tutoring-mode-month" onclick="setTutoringViewMode('month')">
+                  🔍 单月放大
+                </button>
+              </div>
+              <button class="btn btn-outline-primary" id="btn-open-copy-modal-header" style="padding: 0.35rem 0.85rem; font-size: 0.82rem;" onclick="openCopyScheduleModal()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                一键复制排课
+              </button>
+              <button class="btn btn-finance" style="padding: 0.35rem 0.85rem; font-size: 0.82rem;" onclick="openLessonModal()">
+                + 登记今日补课
+              </button>
+            </div>
+          </div>
+
+          <div class="calendar-toolbar">
+            <div class="month-selector">
+              <button class="btn btn-subtle" style="padding: 0.3rem 0.6rem; min-height: 32px;" onclick="prevTutoringPeriod()">‹</button>
+              <span class="current-month-label" id="tutoring-month-display">2026 年度 (12个月)</span>
+              <button class="btn btn-subtle" style="padding: 0.3rem 0.6rem; min-height: 32px;" onclick="nextTutoringPeriod()">›</button>
+              <button class="btn btn-subtle" style="padding: 0.3rem 0.6rem; min-height: 32px; font-size: 0.78rem;" onclick="goToTodayTutoring()">回到今天</button>
+            </div>
+            <div class="calendar-legend">
+              <div class="legend-item">
+                <span class="legend-dot" style="background: var(--warn-amber);"></span>
+                <span>待付款课程</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot" style="background: var(--finance-green);"></span>
+                <span>已付款结清</span>
+              </div>
+              <div class="legend-item">
+                <span style="display:inline-block; width:10px; height:10px; border-radius:3px; border:1.5px solid var(--brand-blue); background:#fff;"></span>
+                <span>今天</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 12个月全景大规模紧凑矩阵容器 (默认展示) -->
+          <div class="calendar-body" id="tutoring-year-calendar-wrap" style="padding: 0.85rem 1.25rem;">
+            <div class="year-calendar-matrix" id="tutoring-year-matrix">
+              <!-- 动态加载 1~12 月共 12 个紧凑月历卡片 -->
+            </div>
+          </div>
+
+          <!-- 单月放大日历容器 (按需切换) -->
+          <div class="calendar-body" id="tutoring-single-calendar-wrap" style="display: none;">
+            <div class="weekdays-grid">
+              <div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div><div>日</div>
+            </div>
+            <div class="days-grid" id="tutoring-days-grid">
+              <!-- 动态补课日历单月大格子 -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 右侧：批量勾兑与费用结算专区 -->
+        <section class="reconciliation-panel">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 0.45rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--finance-green);"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                补课记录勾兑与批量付费
+              </h3>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">勾选待对账课程，一键核算总额并批量标记付费结清</p>
+            </div>
+            <div class="history-tabs" style="padding: 0; display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;">
+              <button class="tab-btn active" id="tab-filter-unpaid" onclick="filterTutoringList('unpaid', this)">
+                待付款 (<span id="badge-unpaid-count">0</span>节 · <strong id="badge-unpaid-amount" style="color:var(--warn-amber); font-weight:700;">¥0</strong>)
+              </button>
+              <button class="tab-btn" id="tab-filter-paid" onclick="filterTutoringList('paid', this)">
+                已结清 (<span id="badge-paid-count">0</span>节 · <strong id="badge-paid-amount" style="color:var(--finance-green); font-weight:700;">¥0</strong>)
+              </button>
+              <button class="tab-btn" id="tab-filter-all" onclick="filterTutoringList('all', this)">
+                全部 (<span id="badge-all-count">0</span>节 · <span id="badge-all-amount">¥0</span>)
+              </button>
+            </div>
+          </div>
+
+          <!-- 批量操作与核算结算栏 -->
+          <div class="reconciliation-bar">
+            <div class="batch-summary">
+              <label style="display: flex; align-items: center; gap: 0.45rem; font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                <input type="checkbox" id="check-all-lessons" onchange="toggleSelectAllLessons(this)">
+                <span>全选</span>
+              </label>
+              <div class="summary-item-text">
+                已勾选 <span class="summary-highlight" id="selected-count">0</span> 节课
+              </div>
+              <div class="summary-item-text">
+                已选结算合计: <span class="summary-highlight" id="selected-total">¥ 0</span>
+              </div>
+            </div>
+
+            <!-- 常驻总额看板：待付款费用总额 与 已付款费用总额 -->
+            <div class="reconciliation-totals-badge" title="当前所有补课记录的待付与已付总额汇总">
+              <div class="badge-stat-item">
+                <span class="dot warn"></span>
+                <span style="color: var(--text-muted);">待付款总额:</span>
+                <strong class="amount" id="bar-unpaid-amount" style="color: var(--warn-amber);">¥ 0</strong>
+              </div>
+              <span style="color: var(--border-color); font-weight: 300;">|</span>
+              <div class="badge-stat-item">
+                <span class="dot success"></span>
+                <span style="color: var(--text-muted);">已付款总额:</span>
+                <strong class="amount" id="bar-paid-amount" style="color: var(--finance-green);">¥ 0</strong>
+              </div>
+            </div>
+
+            <button class="btn btn-finance" id="btn-batch-settle" onclick="openBatchSettleModal()" disabled style="opacity: 0.5;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              批量结算已选
+            </button>
+          </div>
+
+          <!-- 勾兑列表表格 -->
+          <div class="records-table-wrap">
+            <table class="data-table" id="tutoring-table">
+              <thead>
+                <tr>
+                  <th style="width: 38px; text-align: center;">选</th>
+                  <th>日期 / 时间</th>
+                  <th>科目</th>
+                  <th>老师</th>
+                  <th>单价 / 金额</th>
+                  <th>状态</th>
+                  <th style="text-align: right;">操作</th>
+                </tr>
+              </thead>
+              <tbody id="tutoring-table-body">
+                <!-- 动态渲染勾兑行 -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+
+    <!-- ============================================================== -->
+    <!-- 模块 B：按日历记录每月打针和复诊的打卡板块                        -->
+    <!-- ============================================================== -->
+    <div class="view-section" id="view-health">
+      
+      <!-- 健康医疗指标概览 -->
+      <section class="banner">
+        <div>
+          <h2 class="banner-title">每月打针与门诊复诊打卡看板</h2>
+          <p class="banner-subtitle">日历可视化打卡注射疗程与专科门诊，自动计算连续打卡与依从度</p>
+        </div>
+        <div class="banner-stats">
+          <div class="stat-pill">
+            <span class="stat-label">本月已打针</span>
+            <span class="stat-value" id="stat-injection-count" style="color: var(--health-teal);">0 次</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-label">本月已复诊</span>
+            <span class="stat-value" id="stat-month-revisit-count" style="color: var(--revisit-indigo);">0 次</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-label">全年打卡总数</span>
+            <span class="stat-value" id="stat-year-total-count" style="color: var(--brand-blue);">0 次</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-label">连续打卡</span>
+            <span class="stat-value" id="stat-streak-days" style="color: var(--finance-green);">0 天</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 上下通栏排列：上方按月清晰打卡日历，下方详细历史流水 -->
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <!-- 打针与复诊日历模块 -->
+        <section class="module-card">
+          <div class="module-header">
+            <div class="module-title-wrap">
+              <div class="module-icon-badge" style="background: #EFF6FF; color: #2563EB;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+              </div>
+              <div>
+                <h3 class="module-title" id="health-calendar-main-title">打针与复诊日历 · 单月清晰日历视图</h3>
+                <p class="module-desc">月度按天清晰记录 · 绿色注射器图标表示打针 💉，紫色小医生图标表示门诊复诊 👨‍⚕️，点击日期即可打卡</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+              <!-- 视图切换模式：单月放大 (默认) vs 全年12个月紧凑 (按需选择) -->
+              <div class="view-mode-toggle" id="health-view-toggle">
+                <button type="button" class="view-mode-btn active" id="btn-health-mode-month" onclick="setHealthViewMode('month')">
+                  📅 单月清晰视图
+                </button>
+                <button type="button" class="view-mode-btn" id="btn-health-mode-year" onclick="setHealthViewMode('year')">
+                  🌐 全年12个月全景
+                </button>
+              </div>
+              <button class="btn btn-outline-primary" style="padding: 0.35rem 0.85rem; font-size: 0.82rem;" onclick="openCheckinModal(getTodayString())">
+                + 今日健康打卡
+              </button>
+            </div>
+          </div>
+
+          <div class="calendar-toolbar">
+            <div class="month-selector">
+              <button class="btn btn-subtle" style="padding: 0.3rem 0.6rem; min-height: 32px;" onclick="prevHealthPeriod()">‹</button>
+              <span class="current-month-label" id="health-month-display">2026 年 10 月</span>
+              <button class="btn btn-subtle" style="padding: 0.3rem 0.6rem; min-height: 32px;" onclick="nextHealthPeriod()">›</button>
+              <button class="btn btn-subtle" style="padding: 0.3rem 0.6rem; min-height: 32px; font-size: 0.78rem;" onclick="goToTodayHealth()">回到今天</button>
+            </div>
+            <div class="calendar-legend">
+              <div class="legend-item" style="display: flex; align-items: center; gap: 4px;">
+                <span style="font-size: 1rem; line-height: 1;">💉</span>
+                <span style="font-weight: 600; color: #065F46;">打针打卡</span>
+              </div>
+              <div class="legend-item" style="display: flex; align-items: center; gap: 4px;">
+                <span style="font-size: 1rem; line-height: 1;">👨‍⚕️</span>
+                <span style="font-weight: 600; color: #3730A3;">门诊复诊(小医生)</span>
+              </div>
+              <div class="legend-item">
+                <span style="display:inline-block; width:10px; height:10px; border-radius:3px; border:1.5px solid var(--brand-blue); background:#fff;"></span>
+                <span>今天</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 单月放大日历容器 (默认优先展示) -->
+          <div class="calendar-body" id="health-single-calendar-wrap" style="display: block;">
+            <div class="weekdays-grid">
+              <div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div><div>日</div>
+            </div>
+            <div class="days-grid" id="health-days-grid">
+              <!-- 动态单月健康日历格子 -->
+            </div>
+          </div>
+
+          <!-- 12个月全景大规模紧凑矩阵容器 (按需切换，默认隐藏) -->
+          <div class="calendar-body" id="health-year-calendar-wrap" style="display: none; padding: 0.85rem 1.25rem;">
+            <div class="year-calendar-matrix" id="health-year-matrix">
+              <!-- 动态加载 1~12 月共 12 个紧凑月历卡片 -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 打卡记录列表 (全宽展开) -->
+        <section class="module-card">
+          <div class="module-header">
+            <div class="module-title-wrap">
+              <div class="module-icon-badge" style="background: #F0F9FF; color: #0284C7;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div>
+                <h3 class="module-title">打卡与就诊随访历史流水</h3>
+                <p class="module-desc">记录注射部位轮转与历次医院医嘱结论</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="history-tabs">
+            <button class="tab-btn active" onclick="filterHealthHistory('all', this)">全部 (<span id="health-count-all">0</span>)</button>
+            <button class="tab-btn" onclick="filterHealthHistory('injection', this)">打针 (<span id="health-count-inj">0</span>)</button>
+            <button class="tab-btn" onclick="filterHealthHistory('revisit', this)">复诊 (<span id="health-count-rev">0</span>)</button>
+          </div>
+
+          <div style="padding: 1rem 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; max-height: 480px; overflow-y: auto;" id="health-history-list">
+            <!-- 动态健康打卡记录 -->
+          </div>
+        </section>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- 弹窗合集 (Modals)                                             -->
+  <!-- ============================================================== -->
+
+  <!-- 1. 补课登记与详情弹窗 -->
+  <div class="modal-overlay" id="modal-lesson">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="lesson-modal-title">登记学科补课记录</h3>
+        <button class="modal-close" onclick="closeLessonModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="lesson-edit-id">
+
+        <!-- 当天已有记录卡片展示区 -->
+        <div id="day-existing-lessons-box" style="display: none;" class="existing-items-box">
+          <div id="day-existing-lessons-list"></div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">补课科目</label>
+            <select class="form-select" id="lesson-subject-select" onchange="autoFillSubjectPrice()">
+              <!-- 动态科目选项 -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">上课日期</label>
+            <input type="date" class="form-input" id="lesson-date">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">上课具体时间</label>
+            <input type="time" class="form-input" id="lesson-time" value="18:30">
+          </div>
+          <div class="form-group">
+            <label class="form-label">课时时长 (小时)</label>
+            <input type="number" step="0.5" class="form-input" id="lesson-duration" value="2" oninput="recalcLessonTotal()">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">单次/每课时单价 (元)</label>
+            <input type="number" class="form-input" id="lesson-unit-price" placeholder="500" oninput="recalcLessonTotal()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">本次应付总金额 (元)</label>
+            <input type="number" class="form-input" id="lesson-total-amount" placeholder="500" style="font-weight:700; color:var(--finance-green);">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">授课老师</label>
+            <input type="text" class="form-input" id="lesson-teacher" placeholder="例如：李老师">
+          </div>
+          <div class="form-group">
+            <label class="form-label">付费状态</label>
+            <select class="form-select" id="lesson-pay-status">
+              <option value="unpaid">待结算 (未付款)</option>
+              <option value="paid">已付款结清</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">授课核心专题 / 知识点备忘</label>
+          <input type="text" class="form-input" id="lesson-topic" placeholder="例如：二次函数压轴题综合、圆的辅助线证明">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">课后作业或对账备注</label>
+          <textarea class="form-textarea" id="lesson-notes" rows="2" placeholder="课堂测试表现优异，课后完成专项练习 5 题..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div>
+          <!-- 编辑模式下显示的红色删除按钮 -->
+          <button class="btn btn-danger" id="btn-delete-current-lesson" style="display: none;" onclick="deleteCurrentLessonModal()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/></svg>
+            删除此记录
+          </button>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-subtle" onclick="closeLessonModal()">取消</button>
+          <button class="btn btn-finance" id="btn-save-lesson" onclick="saveLessonRecord()">保存补课记录</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 科目单价配置弹窗 -->
+  <div class="modal-overlay" id="modal-subject">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="subject-modal-title">设置科目与课时单价</h3>
+        <button class="modal-close" onclick="closeSubjectModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="subject-edit-id">
+        <div class="form-group">
+          <label class="form-label">科目名称</label>
+          <input type="text" class="form-input" id="subject-name" placeholder="例如：初中数学">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">标准每次/每课单价 (元)</label>
+            <input type="number" class="form-input" id="subject-price" placeholder="例如：500">
+          </div>
+          <div class="form-group">
+            <label class="form-label">常规时长 (小时)</label>
+            <input type="number" step="0.5" class="form-input" id="subject-hours" value="2">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">常任老师姓名</label>
+            <input type="text" class="form-input" id="subject-teacher" placeholder="例如：张特级教师">
+          </div>
+          <div class="form-group">
+            <label class="form-label">授课形式</label>
+            <select class="form-select" id="subject-mode">
+              <option value="线下1对1上门">线下1对1上门</option>
+              <option value="名师工作室">名师工作室面授</option>
+              <option value="在线直播1对1">在线直播1对1</option>
+              <option value="精品小班">3-5人精品小班</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-subtle" onclick="closeSubjectModal()">取消</button>
+        <button class="btn btn-primary" onclick="saveSubjectConfig()">保存配置</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. 一键复制排课弹窗 (Copy Schedule Modal) -->
+  <div class="modal-overlay" id="modal-copy-schedule">
+    <div class="modal-content" style="max-width: 580px;">
+      <div class="modal-header">
+        <h3 class="modal-title" style="display:flex; align-items:center; gap:0.45rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--brand-blue);"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          一键复制补课排课
+        </h3>
+        <button class="modal-close" onclick="closeCopyScheduleModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- 步骤 1：选择源模板日期与课程明细预览 -->
+        <div class="form-group" style="background:#F8FAFC; padding:0.85rem; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.45rem;">
+            <label class="form-label" style="font-weight:700; color:var(--text-main); margin-bottom:0;">
+              ① 选择复制源（排课模板日期）
+            </label>
+            <span style="font-size:0.75rem; color:var(--text-muted);">从哪天的课程复制</span>
+          </div>
+          <select class="form-select" id="copy-source-date-select" onchange="onCopySourceDateChange()">
+            <!-- 动态填充有排课的日期列表 -->
+          </select>
+          <div id="copy-source-preview-box" style="margin-top:0.5rem; font-size:0.78rem; color:var(--text-secondary); background:#FFFFFF; padding:0.5rem 0.75rem; border-radius:4px; border:1px dashed var(--border-color);">
+            <!-- 课程清单预览 -->
+          </div>
+        </div>
+
+        <!-- 步骤 2：选择目标复制方式 -->
+        <div class="form-group" style="margin-top:1rem;">
+          <label class="form-label" style="font-weight:700; color:var(--text-main); margin-bottom:0.4rem;">
+            ② 选择复制目标日期
+          </label>
+          <div class="history-tabs" style="padding:0; margin-bottom:0.75rem;">
+            <button type="button" class="tab-btn active" id="tab-copy-mode-manual" onclick="setCopyTargetMode('manual')">
+              📅 手动勾选 / 批量添加日期
+            </button>
+            <button type="button" class="tab-btn" id="tab-copy-mode-recurring" onclick="setCopyTargetMode('recurring')">
+              🔄 按周期批量循环 (如未来N周)
+            </button>
+          </div>
+
+          <!-- 模式 A：手动多日期选择 -->
+          <div id="copy-panel-manual">
+            <!-- 快捷按钮 -->
+            <div style="display:flex; gap:0.4rem; margin-bottom:0.6rem; flex-wrap:wrap;">
+              <span style="font-size:0.75rem; color:var(--text-muted); align-self:center;">快捷添加：</span>
+              <button type="button" class="btn btn-subtle" style="padding:2px 8px; font-size:0.75rem;" onclick="addQuickCopyTarget('tomorrow')">+ 明天</button>
+              <button type="button" class="btn btn-subtle" style="padding:2px 8px; font-size:0.75rem;" onclick="addQuickCopyTarget('dayAfterTomorrow')">+ 后天</button>
+              <button type="button" class="btn btn-subtle" style="padding:2px 8px; font-size:0.75rem;" onclick="addQuickCopyTarget('nextWeekSameDay')">+ 下周同日</button>
+              <button type="button" class="btn btn-subtle" style="padding:2px 8px; font-size:0.75rem;" onclick="addQuickCopyTarget('nextWeekend')">+ 本周末 (周六日)</button>
+            </div>
+
+            <!-- 自选日期输入与添加 -->
+            <div style="display:flex; gap:0.5rem; align-items:center;">
+              <input type="date" class="form-input" id="copy-manual-date-input" style="flex:1;">
+              <button type="button" class="btn btn-outline-primary" style="white-space:nowrap; padding:0.4rem 0.85rem;" onclick="addManualCopyTargetDate()">
+                + 添加此日期
+              </button>
+            </div>
+
+            <!-- 已选目标日期列表标签池 -->
+            <div style="margin-top:0.65rem;">
+              <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.35rem; display:flex; justify-content:space-between;">
+                <span>已选择目标日期 (<strong id="copy-target-count" style="color:var(--brand-blue);">0</strong> 个)：</span>
+                <a href="javascript:void(0)" style="color:var(--danger-rose); font-size:0.75rem; text-decoration:none;" onclick="clearAllCopyTargetDates()">清空已选</a>
+              </div>
+              <div id="copy-target-dates-tags" style="display:flex; gap:0.35rem; flex-wrap:wrap; min-height:36px; padding:0.45rem; background:#F8FAFC; border:1px solid var(--border-color); border-radius:var(--radius-sm); max-height:110px; overflow-y:auto;">
+                <span style="color:var(--text-muted); font-size:0.75rem; font-style:italic;">暂未选择目标日期，请从上方快捷添加或选择日期添加</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 模式 B：周期循环排课 -->
+          <div id="copy-panel-recurring" style="display:none; background:#F8FAFC; padding:0.85rem; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+            <div style="margin-bottom:0.65rem;">
+              <label class="form-label" style="font-size:0.78rem;">选择每周固定上课日 (可多选)：</label>
+              <div style="display:flex; gap:0.35rem; flex-wrap:wrap;" id="recurring-weekdays-group">
+                <button type="button" class="btn-weekday-check" data-day="1" onclick="toggleRecurringWeekday(this)">周一</button>
+                <button type="button" class="btn-weekday-check" data-day="2" onclick="toggleRecurringWeekday(this)">周二</button>
+                <button type="button" class="btn-weekday-check" data-day="3" onclick="toggleRecurringWeekday(this)">周三</button>
+                <button type="button" class="btn-weekday-check" data-day="4" onclick="toggleRecurringWeekday(this)">周四</button>
+                <button type="button" class="btn-weekday-check" data-day="5" onclick="toggleRecurringWeekday(this)">周五</button>
+                <button type="button" class="btn-weekday-check active" data-day="6" onclick="toggleRecurringWeekday(this)">周六</button>
+                <button type="button" class="btn-weekday-check active" data-day="0" onclick="toggleRecurringWeekday(this)">周日</button>
+              </div>
+            </div>
+            <div class="form-row" style="margin-bottom:0;">
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" style="font-size:0.78rem;">起始日期：</label>
+                <input type="date" class="form-input" id="recurring-start-date" onchange="previewRecurringDates()">
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label class="form-label" style="font-size:0.78rem;">持续循环周数：</label>
+                <select class="form-select" id="recurring-weeks-count" onchange="previewRecurringDates()">
+                  <option value="2">未来 2 周</option>
+                  <option value="4" selected>未来 4 周 (约1个月)</option>
+                  <option value="8">未来 8 周 (约2个月)</option>
+                  <option value="12">未来 12 周 (一学期/季度)</option>
+                </select>
+              </div>
+            </div>
+            <div id="recurring-preview-hint" style="margin-top:0.6rem; font-size:0.75rem; color:var(--brand-blue); font-weight:600;">
+              <!-- 预计生成日期预览 -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 冲突与费用结算设置 -->
+        <div style="margin-top:0.85rem; padding-top:0.65rem; border-top:1px dashed var(--border-color); display:flex; justify-content:space-between; align-items:center;">
+          <label style="font-size:0.78rem; color:var(--text-secondary); display:flex; align-items:center; gap:0.4rem; cursor:pointer;">
+            <input type="checkbox" id="copy-skip-if-exists" checked>
+            <span>若目标日期已有同科目排课则自动跳过，防止重复排课</span>
+          </label>
+        </div>
+
+      </div>
+      <div class="modal-footer" style="display:flex; justify-content:space-between; align-items:center;">
+        <div id="copy-summary-hint" style="font-size:0.82rem; font-weight:700; color:var(--text-main);">
+          预计将生成: <strong style="color:var(--finance-green);" id="copy-total-lessons-count">0</strong> 节新课程
+        </div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn btn-subtle" onclick="closeCopyScheduleModal()">取消</button>
+          <button class="btn btn-finance" id="btn-execute-copy-schedule" onclick="executeBatchCopySchedule()">
+            🚀 确认一键复制排课
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 批量勾兑付款确认弹窗 -->
+  <div class="modal-overlay" id="modal-batch-settle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">批量勾兑结算确认</h3>
+        <button class="modal-close" onclick="closeBatchSettleModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="background: #ECFDF5; border: 1px solid #A7F3D0; border-radius: var(--radius-sm); padding: 1rem; color: #065F46;">
+          <div style="font-size: 0.85rem; font-weight: 600;">本次勾兑结算汇总：</div>
+          <div style="font-size: 1.4rem; font-weight: 800; font-family: 'Outfit', sans-serif; margin-top: 4px;" id="modal-settle-summary">
+            已选 0 节课 · 合计 ¥ 0 元
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">付款支付方式</label>
+            <select class="form-select" id="settle-pay-method">
+              <option value="微信转账">微信转账</option>
+              <option value="支付宝转账">支付宝转账</option>
+              <option value="银行卡汇款">银行卡转账</option>
+              <option value="现金支付">现金支付</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">结算付款日期</label>
+            <input type="date" class="form-input" id="settle-date">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">对账流水说明 / 凭证批次号</label>
+          <input type="text" class="form-input" id="settle-batch-name" placeholder="例如：2026年9月数学物理补课费结清">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-subtle" onclick="closeBatchSettleModal()">返回修改</button>
+        <button class="btn btn-finance" onclick="executeBatchSettle()">确认结算并标记已付款</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 打针与复诊登记弹窗 -->
+  <div class="modal-overlay" id="modal-checkin">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="checkin-modal-title">添加打针/复诊打卡</h3>
+        <button class="modal-close" onclick="closeCheckinModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="health-edit-id">
+
+        <!-- 当天已有健康打卡展示区 -->
+        <div id="day-existing-health-box" style="display: none;" class="existing-items-box">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 0.35rem;">
+            🩺 当天已有打卡记录：
+          </div>
+          <div id="day-existing-health-list"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">打卡类型</label>
+          <div class="type-switcher">
+            <button type="button" class="type-switch-btn active injection" id="switch-injection" onclick="setHealthCheckinType('injection')">
+              💉 每月打针打卡
+            </button>
+            <button type="button" class="type-switch-btn revisit" id="switch-revisit" onclick="setHealthCheckinType('revisit')">
+              🏥 门诊复诊打卡
+            </button>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">打卡日期</label>
+            <input type="date" class="form-input" id="checkin-date">
+          </div>
+          <div class="form-group">
+            <label class="form-label">打卡时间</label>
+            <input type="time" class="form-input" id="checkin-time" value="20:30">
+          </div>
+        </div>
+
+        <!-- 打针特定项 -->
+        <div id="fields-health-injection">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">注射项目 / 药品</label>
+              <input type="text" class="form-input" id="inj-med-name" value="重组人生长激素注射液 (水剂)">
+            </div>
+            <div class="form-group">
+              <label class="form-label">注射剂量</label>
+              <input type="text" class="form-input" id="inj-dose" value="3.5 IU">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">注射身体部位轮换</label>
+            <select class="form-select" id="inj-site">
+              <option value="左侧腹部 (距脐2cm外)">左侧腹部 (距脐2cm外)</option>
+              <option value="右侧腹部 (距脐2cm外)">右侧腹部 (距脐2cm外)</option>
+              <option value="左大腿前外侧">左大腿前外侧</option>
+              <option value="右大腿前外侧">右大腿前外侧</option>
+              <option value="左上臂外侧">左上臂三角肌下缘</option>
+              <option value="右上臂外侧">右上臂三角肌下缘</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 复诊特定项 -->
+        <div id="fields-health-revisit" style="display: none;">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">复诊医院</label>
+              <input type="text" class="form-input" id="rev-hospital" placeholder="上海儿童医学中心 / 新华医院">
+            </div>
+            <div class="form-group">
+              <label class="form-label">科室与医生</label>
+              <input type="text" class="form-input" id="rev-doctor" placeholder="内分泌科 张主任">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">检查项目与重要医嘱结论</label>
+            <input type="text" class="form-input" id="rev-orders" placeholder="查骨龄、空腹血糖、IGF-1，维持原剂量">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">建议下次复诊日期</label>
+              <input type="date" class="form-input" id="rev-next-date">
+            </div>
+            <div class="form-group">
+              <label class="form-label">门诊检查费用 (元)</label>
+              <input type="number" class="form-input" id="rev-cost" placeholder="0">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">随访备注与身体反应</label>
+          <textarea class="form-textarea" id="health-note" rows="2" placeholder="状态良好，无任何过敏或红肿不适..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div>
+          <button class="btn btn-danger" id="btn-delete-current-health" style="display: none;" onclick="deleteCurrentHealthModal()">
+            删除此记录
+          </button>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-subtle" onclick="closeCheckinModal()">取消</button>
+          <button class="btn btn-primary" onclick="saveHealthCheckin()">保存打卡记录</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 轻量全局 Toast -->
+  <div class="toast" id="toast-message">操作成功</div>
+
+  <footer>
+    <p>© 2026 家庭健康日程与学科补课结算中心 V2 · 浅色商务系架构 · 支持日历一键直接删除与编辑</p>
+  </footer>
+
+  <script>
+    // ==============================================================
+    // 1. 初始化预置数据
+    // ==============================================================
+    const DEFAULT_SUBJECTS = [
+      { id: 'sub-math', name: '数学', price: 500, duration: 2, teacher: '李特级老师', mode: '线下1对1上门' },
+      { id: 'sub-physics', name: '物理', price: 450, duration: 2, teacher: '陈名师工作室', mode: '名师工作室面授' },
+      { id: 'sub-english', name: '英语', price: 400, duration: 1.5, teacher: 'Sarah 外教/高分导师', mode: '在线直播1对1' },
+      { id: 'sub-chemistry', name: '化学', price: 450, duration: 2, teacher: '王骨干教师', mode: '线下1对1上门' },
+      { id: 'sub-chinese', name: '语文', price: 400, duration: 2, teacher: '赵资深语文名师', mode: '线下1对1上门' }
+    ];
+
+    const DEFAULT_LESSONS = [
+      {
+        id: 'ls-101',
+        subject: '数学',
+        date: '2026-10-01',
+        time: '09:30',
+        duration: 2,
+        unitPrice: 500,
+        totalAmount: 500,
+        teacher: '李特级老师',
+        status: 'unpaid',
+        topic: '十一国庆几何圆的综合压轴辅助线专题',
+        notes: '思路推导清晰，当堂完成 3 道名校压轴题',
+        settleBatch: ''
+      },
+      {
+        id: 'ls-102',
+        subject: '物理',
+        date: '2026-10-02',
+        time: '14:00',
+        duration: 2,
+        unitPrice: 450,
+        totalAmount: 450,
+        teacher: '陈名师工作室',
+        status: 'unpaid',
+        topic: '初三压强与浮力综合计算难点突破',
+        notes: '突破了双物块漂浮浸没模型',
+        settleBatch: ''
+      },
+      {
+        id: 'ls-103',
+        subject: '英语',
+        date: '2026-10-02',
+        time: '19:00',
+        duration: 1.5,
+        unitPrice: 400,
+        totalAmount: 400,
+        teacher: 'Sarah 外教/高分导师',
+        status: 'unpaid',
+        topic: '完形填空长难句剖析与写作高分句式',
+        notes: '完成首字母填空专项训练',
+        settleBatch: ''
+      },
+      {
+        id: 'ls-091',
+        subject: '数学',
+        date: '2026-09-20',
+        time: '18:30',
+        duration: 2,
+        unitPrice: 500,
+        totalAmount: 500,
+        teacher: '李特级老师',
+        status: 'paid',
+        topic: '一元二次方程根的判别式与韦达定理应用',
+        notes: '9月下半月已结清',
+        settleBatch: '2026年9月第1批微信结清'
+      },
+      {
+        id: 'ls-092',
+        subject: '物理',
+        date: '2026-09-22',
+        time: '18:30',
+        duration: 2,
+        unitPrice: 450,
+        totalAmount: 450,
+        teacher: '陈名师工作室',
+        status: 'paid',
+        topic: '密度测量特殊方法实验推导',
+        notes: '9月下半月已结清',
+        settleBatch: '2026年9月第1批微信结清'
+      },
+      {
+        id: 'ls-093',
+        subject: '数学',
+        date: '2026-09-27',
+        time: '18:30',
+        duration: 2,
+        unitPrice: 500,
+        totalAmount: 500,
+        teacher: '李特级老师',
+        status: 'paid',
+        topic: '反比例函数 k 的几何意义综合专题',
+        notes: '9月下半月已结清',
+        settleBatch: '2026年9月第1批微信结清'
+      }
+    ];
+
+    const DEFAULT_HEALTH_CHECKINS = [
+      {
+        id: 'chk-1',
+        type: 'injection',
+        date: '2026-10-01',
+        time: '20:45',
+        medName: '重组人生长激素注射液 (水剂)',
+        dose: '3.5 IU',
+        site: '左侧腹部 (距脐2cm外)',
+        note: '按时注射，皮肤无红肿'
+      },
+      {
+        id: 'chk-2',
+        type: 'injection',
+        date: '2026-10-02',
+        time: '20:30',
+        medName: '重组人生长激素注射液 (水剂)',
+        dose: '3.5 IU',
+        site: '右侧腹部 (距脐2cm外)',
+        note: '轮换右侧，孩子状态极佳'
+      },
+      {
+        id: 'chk-3',
+        type: 'revisit',
+        date: '2026-09-26',
+        time: '09:30',
+        hospital: '上海儿童医学中心',
+        doctor: '内分泌代谢科 张主任',
+        orders: '空腹血糖、IGF-1 及甲状腺功能均正常，骨龄与年龄吻合，维持每日 3.5IU，11月下旬复诊',
+        nextDate: '2026-11-28',
+        cost: 480,
+        note: '开具 1 个月生长激素药量，预约下次挂号'
+      },
+      {
+        id: 'chk-4',
+        type: 'injection',
+        date: '2026-09-28',
+        time: '20:40',
+        medName: '重组人生长激素注射液 (水剂)',
+        dose: '3.5 IU',
+        site: '左大腿前外侧',
+        note: '腿部轮转注射，吸收良好'
+      },
+      {
+        id: 'chk-5',
+        type: 'injection',
+        date: '2026-09-29',
+        time: '20:35',
+        medName: '重组人生长激素注射液 (水剂)',
+        dose: '3.5 IU',
+        site: '右大腿前外侧',
+        note: '按医嘱轮换'
+      },
+      {
+        id: 'chk-6',
+        type: 'injection',
+        date: '2026-09-30',
+        time: '20:50',
+        medName: '重组人生长激素注射液 (水剂)',
+        dose: '3.5 IU',
+        site: '左侧腹部 (距脐2cm外)',
+        note: '规律打卡'
+      }
+    ];
+
+    // ==============================================================
+    // 2. 本地存储管理 (兼容并共享同一套数据源)
+    // ==============================================================
+    const KEY_SUBJECTS = 'owen_unified_subjects_v1';
+    const KEY_LESSONS = 'owen_unified_lessons_v1';
+    const KEY_HEALTH = 'owen_unified_health_v1';
+
+    function getSubjects() {
+      const data = localStorage.getItem(KEY_SUBJECTS);
+      if (!data) {
+        localStorage.setItem(KEY_SUBJECTS, JSON.stringify(DEFAULT_SUBJECTS));
+        return DEFAULT_SUBJECTS;
+      }
+      try { return JSON.parse(data); } catch(e) { return DEFAULT_SUBJECTS; }
+    }
+    function saveSubjects(list) { localStorage.setItem(KEY_SUBJECTS, JSON.stringify(list)); }
+
+    function getLessons() {
+      const data = localStorage.getItem(KEY_LESSONS);
+      if (!data) {
+        localStorage.setItem(KEY_LESSONS, JSON.stringify(DEFAULT_LESSONS));
+        return DEFAULT_LESSONS;
+      }
+      try { return JSON.parse(data); } catch(e) { return DEFAULT_LESSONS; }
+    }
+    function saveLessons(list) { localStorage.setItem(KEY_LESSONS, JSON.stringify(list)); }
+
+    function getHealthCheckins() {
+      const data = localStorage.getItem(KEY_HEALTH);
+      if (!data) {
+        localStorage.setItem(KEY_HEALTH, JSON.stringify(DEFAULT_HEALTH_CHECKINS));
+        return DEFAULT_HEALTH_CHECKINS;
+      }
+      try { return JSON.parse(data); } catch(e) { return DEFAULT_HEALTH_CHECKINS; }
+    }
+    function saveHealthCheckins(list) { localStorage.setItem(KEY_HEALTH, JSON.stringify(list)); }
+
+    // ==============================================================
+    // 3. 状态管理
+    // ==============================================================
+    let activeMainTab = 'tutoring';
+    let currentTutoringYear = 2026, currentTutoringMonth = 10;
+    let currentHealthYear = 2026, currentHealthMonth = 10;
+    let tutoringListFilter = 'unpaid';
+    let healthFilterType = 'all';
+    let activeHealthCheckinType = 'injection';
+
+    const selectedLessonIds = new Set();
+
+    function getTodayString() {
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = String(now.getMonth() + 1).padStart(2, '0');
+      const d = String(now.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+
+    function switchMainTab(tab) {
+      activeMainTab = tab;
+      document.querySelectorAll('.module-tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(`tab-btn-${tab}`).classList.add('active');
+
+      document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+      document.getElementById(`view-${tab}`).classList.add('active');
+
+      renderAll();
+    }
+
+    // ==============================================================
+    // 4. 补课费用模块
+    // ==============================================================
+    function renderSubjectsConfig() {
+      const subjects = getSubjects();
+      const container = document.getElementById('subjects-container');
+      const select = document.getElementById('lesson-subject-select');
+
+      document.getElementById('stat-tutoring-subject-count').textContent = `${subjects.length} 科`;
+
+      container.innerHTML = subjects.map(sub => `
+        <div class="subject-price-card">
+          <div class="sub-info">
+            <h4>
+              <span>${escapeHtml(sub.name)}</span>
+              <span style="font-size:0.72rem; color:var(--text-muted); font-weight:normal;">(${escapeHtml(sub.teacher || '教师未填')})</span>
+            </h4>
+            <p>${escapeHtml(sub.mode || '常规')} · ${sub.duration || 2}h/次</p>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.35rem; flex-shrink:0;">
+            <div class="sub-price-badge">¥${sub.price}</div>
+            <button class="btn-subtle" style="padding:2px 7px; font-size:0.75rem; border-radius:4px; min-height:26px;" onclick="editSubjectConfig('${sub.id}')">编辑</button>
+          </div>
+        </div>
+      `).join('');
+
+      select.innerHTML = subjects.map(sub => `
+        <option value="${escapeHtml(sub.name)}" data-price="${sub.price}" data-duration="${sub.duration}" data-teacher="${escapeHtml(sub.teacher)}">
+          ${escapeHtml(sub.name)} (¥${sub.price}/次)
+        </option>
+      `).join('');
+    }
+
+    function autoFillSubjectPrice() {
+      const select = document.getElementById('lesson-subject-select');
+      const opt = select.options[select.selectedIndex];
+      if (opt) {
+        const price = opt.getAttribute('data-price') || 500;
+        const dur = opt.getAttribute('data-duration') || 2;
+        const teacher = opt.getAttribute('data-teacher') || '';
+        document.getElementById('lesson-unit-price').value = price;
+        document.getElementById('lesson-duration').value = dur;
+        document.getElementById('lesson-teacher').value = teacher;
+        document.getElementById('lesson-total-amount').value = price;
+      }
+    }
+
+    function recalcLessonTotal() {
+      const price = parseFloat(document.getElementById('lesson-unit-price').value) || 0;
+      document.getElementById('lesson-total-amount').value = price;
+    }
+
+    let tutoringViewMode = 'year'; // 默认：全年12个月大规模紧凑视图
+
+    function setTutoringViewMode(mode) {
+      tutoringViewMode = mode;
+      const btnYear = document.getElementById('btn-tutoring-mode-year');
+      const btnMonth = document.getElementById('btn-tutoring-mode-month');
+      if (btnYear) btnYear.classList.toggle('active', mode === 'year');
+      if (btnMonth) btnMonth.classList.toggle('active', mode === 'month');
+
+      const yearWrap = document.getElementById('tutoring-year-calendar-wrap');
+      const singleWrap = document.getElementById('tutoring-single-calendar-wrap');
+      const mainTitle = document.getElementById('tutoring-calendar-main-title');
+
+      if (mode === 'year') {
+        if (yearWrap) yearWrap.style.display = 'block';
+        if (singleWrap) singleWrap.style.display = 'none';
+        if (mainTitle) mainTitle.textContent = '学科补课日历 · 全年12个月大规模紧凑视图';
+      } else {
+        if (yearWrap) yearWrap.style.display = 'none';
+        if (singleWrap) singleWrap.style.display = 'block';
+        if (mainTitle) mainTitle.textContent = '学科补课日历 · 单月放大日历视图';
+      }
+      renderTutoringCalendar();
+    }
+
+    function prevTutoringPeriod() {
+      if (tutoringViewMode === 'year') {
+        currentTutoringYear--;
+      } else {
+        if (currentTutoringMonth === 1) { currentTutoringYear--; currentTutoringMonth = 12; }
+        else { currentTutoringMonth--; }
+      }
+      renderTutoringCalendar();
+      updateTutoringStats();
+    }
+
+    function nextTutoringPeriod() {
+      if (tutoringViewMode === 'year') {
+        currentTutoringYear++;
+      } else {
+        if (currentTutoringMonth === 12) { currentTutoringYear++; currentTutoringMonth = 1; }
+        else { currentTutoringMonth++; }
+      }
+      renderTutoringCalendar();
+      updateTutoringStats();
+    }
+
+    function goToTodayTutoring() {
+      const now = new Date();
+      currentTutoringYear = now.getFullYear();
+      currentTutoringMonth = now.getMonth() + 1;
+      renderTutoringCalendar();
+      updateTutoringStats();
+      showToast('已跳转到当前');
+    }
+
+    // 渲染补课日历 (根据模式分流：全年12个月大规模紧凑矩阵 VS 单月大日历)
+    function renderTutoringCalendar() {
+      const displayLabel = document.getElementById('tutoring-month-display');
+      if (displayLabel) {
+        if (tutoringViewMode === 'year') {
+          displayLabel.textContent = `${currentTutoringYear} 年度 (12个月)`;
+        } else {
+          displayLabel.textContent = `${currentTutoringYear} 年 ${currentTutoringMonth} 月`;
+        }
+      }
+
+      if (tutoringViewMode === 'year') {
+        renderTutoringYearMatrix();
+      } else {
+        renderTutoringSingleMonth();
+      }
+    }
+
+    // 全年12个月大规模紧凑年历矩阵渲染
+    function renderTutoringYearMatrix() {
+      const matrix = document.getElementById('tutoring-year-matrix');
+      if (!matrix) return;
+      matrix.innerHTML = '';
+
+      const lessons = getLessons();
+      const todayStr = getTodayString();
+      const monthNames = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+
+      for (let m = 1; m <= 12; m++) {
+        const monthPrefix = `${currentTutoringYear}-${String(m).padStart(2, '0')}`;
+        const monthLessons = lessons.filter(l => l.date.startsWith(monthPrefix));
+        const monthTotalAmount = monthLessons.reduce((sum, item) => sum + (parseFloat(item.totalAmount) || 0), 0);
+        const hasUnpaidInMonth = monthLessons.some(l => l.status === 'unpaid');
+
+        const card = document.createElement('div');
+        card.className = 'mini-month-card';
+
+        // 头部
+        let statsText = '';
+        if (monthLessons.length > 0) {
+          statsText = `<span style="color:${hasUnpaidInMonth ? 'var(--warn-amber)' : 'var(--finance-green)'}; font-weight:700;">${monthLessons.length}节 · ¥${monthTotalAmount.toLocaleString()}</span>`;
+        } else {
+          statsText = `<span style="color:var(--text-muted); opacity:0.6;">0节</span>`;
+        }
+
+        let cardHtml = `
+          <div class="mini-month-header">
+            <span class="mini-month-title">
+              <strong>${monthNames[m - 1]}</strong>
+              <small style="color:var(--text-muted); font-size:0.68rem; font-weight:normal;">${String(m).padStart(2, '0')}</small>
+            </span>
+            <div class="mini-month-stats">
+              ${statsText}
+            </div>
+          </div>
+          <div class="mini-weekdays-row">
+            <div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div><div>日</div>
+          </div>
+          <div class="mini-days-grid">
+        `;
+
+        // 计算日期
+        const firstDay = new Date(currentTutoringYear, m - 1, 1);
+        let firstDayIndex = firstDay.getDay() - 1;
+        if (firstDayIndex === -1) firstDayIndex = 6;
+        const daysInMonth = new Date(currentTutoringYear, m, 0).getDate();
+
+        // 占位空单元格
+        for (let empty = 0; empty < firstDayIndex; empty++) {
+          cardHtml += `<div class="mini-day-cell empty"></div>`;
+        }
+
+        // 当月每天
+        for (let d = 1; d <= daysInMonth; d++) {
+          const dateStr = `${currentTutoringYear}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+          const dayLessons = monthLessons.filter(l => l.date === dateStr);
+          const hasLesson = dayLessons.length > 0;
+          const isAllPaid = hasLesson && dayLessons.every(l => l.status === 'paid');
+          const isToday = (dateStr === todayStr);
+
+          let cellClasses = ['mini-day-cell'];
+          if (isToday) cellClasses.push('today');
+          if (hasLesson) {
+            cellClasses.push('has-lesson');
+            if (isAllPaid) cellClasses.push('all-paid');
+          }
+
+          let tooltip = dateStr;
+          if (hasLesson) {
+            const daySum = dayLessons.reduce((sum, item) => sum + (parseFloat(item.totalAmount) || 0), 0);
+            const subNames = dayLessons.map(l => l.subject).join(', ');
+            tooltip += `：${dayLessons.length}节课 (${subNames}) · 合计 ¥${daySum.toLocaleString()} · 点击查看/登记`;
+          } else {
+            tooltip += ` · 点击登记补课`;
+          }
+
+          cardHtml += `
+            <div class="${cellClasses.join(' ')}" title="${tooltip}" onclick="openLessonModal('${dateStr}')">
+              ${d}
+            </div>
+          `;
+        }
+
+        cardHtml += `</div>`; // mini-days-grid
+        card.innerHTML = cardHtml;
+        matrix.appendChild(card);
+      }
+    }
+
+    // 单月大日历渲染
+    function renderTutoringSingleMonth() {
+      const grid = document.getElementById('tutoring-days-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const firstDayDate = new Date(currentTutoringYear, currentTutoringMonth - 1, 1);
+      let firstDayIndex = firstDayDate.getDay() - 1;
+      if (firstDayIndex === -1) firstDayIndex = 6;
+
+      const daysInMonth = new Date(currentTutoringYear, currentTutoringMonth, 0).getDate();
+      const prevMonthDays = new Date(currentTutoringYear, currentTutoringMonth - 1, 0).getDate();
+
+      const lessons = getLessons();
+      const todayStr = getTodayString();
+
+      // 上月日期
+      for (let i = firstDayIndex - 1; i >= 0; i--) {
+        const d = prevMonthDays - i;
+        const cell = document.createElement('div');
+        cell.className = 'day-cell other-month';
+        cell.innerHTML = `<div class="day-header"><span class="day-number">${d}</span></div>`;
+        grid.appendChild(cell);
+      }
+
+      // 当月日期
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateStr = `${currentTutoringYear}-${String(currentTutoringMonth).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        const dayLessons = lessons.filter(l => l.date === dateStr);
+
+        const cell = document.createElement('div');
+        cell.className = 'day-cell';
+        if (dateStr === todayStr) cell.classList.add('today');
+
+        let dayTotalAmount = 0;
+        let hasUnpaid = false;
+        let isDayAllSelected = false;
+        if (dayLessons.length > 0) {
+          dayTotalAmount = dayLessons.reduce((sum, item) => sum + (parseFloat(item.totalAmount) || 0), 0);
+          hasUnpaid = dayLessons.some(item => item.status === 'unpaid');
+          isDayAllSelected = dayLessons.every(item => selectedLessonIds.has(item.id));
+        }
+
+        const totalBadgeHtml = dayLessons.length > 0 ? `
+          <div class="day-total-wrap" onclick="event.stopPropagation(); toggleSelectDayLessons('${dateStr}')" title="点击一键勾选/取消当天 ${dayLessons.length} 节课 (¥${dayTotalAmount})">
+            <input type="checkbox" class="day-select-checkbox" ${isDayAllSelected ? 'checked' : ''} onclick="event.stopPropagation(); toggleSelectDayLessons('${dateStr}')">
+            <span class="day-total-badge ${hasUnpaid ? 'day-total-unpaid' : 'day-total-paid'}">
+              ¥ ${dayTotalAmount.toLocaleString()}
+            </span>
+          </div>
+        ` : '';
+
+        let badgesHtml = '';
+        dayLessons.forEach(l => {
+          const isPaid = l.status === 'paid';
+          const badgeClass = isPaid ? 'badge-lesson-paid' : 'badge-lesson-unpaid';
+          const symbol = isPaid ? '✓' : '待';
+          badgesHtml += `
+            <div class="badge-item ${badgeClass}" title="${l.subject} · ¥${l.totalAmount} · 点击修改详情" onclick="event.stopPropagation(); editLessonRecord('${l.id}')">
+              <span class="badge-content">${symbol} ${escapeHtml(l.subject)} ¥${l.totalAmount}</span>
+              <span class="badge-del-btn" title="直接删除此节课" onclick="event.stopPropagation(); deleteLessonRecord('${l.id}')">×</span>
+            </div>
+          `;
+        });
+
+        if (dayLessons.length > 1) {
+          badgesHtml += `
+            <div style="font-size: 0.66rem; font-weight: 700; color: var(--text-muted); text-align: right; padding-top: 2px; border-top: 1px dashed var(--border-color); margin-top: 2px;">
+              合计: ¥ ${dayTotalAmount.toLocaleString()}
+            </div>
+          `;
+        }
+
+        cell.innerHTML = `
+          <div class="day-header">
+            <div style="display:flex; align-items:center; gap:4px;">
+              <span class="day-number">${day}</span>
+              ${dateStr === todayStr ? '<span style="font-size:0.65rem; color:var(--brand-blue); font-weight:700;">今天</span>' : ''}
+            </div>
+            ${totalBadgeHtml}
+          </div>
+          <div class="day-badges">
+            ${badgesHtml}
+          </div>
+        `;
+
+        cell.onclick = () => {
+          openLessonModal(dateStr);
+        };
+
+        grid.appendChild(cell);
+      }
+
+      // 下月补齐
+      const totalCells = firstDayIndex + daysInMonth;
+      const nextSlots = (totalCells % 7 === 0) ? 0 : 7 - (totalCells % 7);
+      for (let d = 1; d <= nextSlots; d++) {
+        const cell = document.createElement('div');
+        cell.className = 'day-cell other-month';
+        cell.innerHTML = `<div class="day-header"><span class="day-number">${d}</span></div>`;
+        grid.appendChild(cell);
+      }
+    }
+
+    // 一键勾选/取消某一天全部课程费用
+    function toggleSelectDayLessons(dateStr) {
+      const lessons = getLessons().filter(l => l.date === dateStr);
+      if (lessons.length === 0) return;
+
+      const allSelected = lessons.every(l => selectedLessonIds.has(l.id));
+
+      if (allSelected) {
+        lessons.forEach(l => selectedLessonIds.delete(l.id));
+        showToast(`已取消勾选 ${dateStr} 当天费用`);
+      } else {
+        lessons.forEach(l => selectedLessonIds.add(l.id));
+        const daySum = lessons.reduce((sum, l) => sum + (parseFloat(l.totalAmount) || 0), 0);
+        showToast(`已勾选 ${dateStr} 当天费用 (共 ${lessons.length} 节 · ¥${daySum.toLocaleString()})`);
+      }
+
+      renderTutoringCalendar();
+      renderTutoringTable();
+    }
+
+    function updateTutoringStats() {
+      const lessons = getLessons();
+      const prefix = `${currentTutoringYear}-${String(currentTutoringMonth).padStart(2, '0')}`;
+      const thisMonthLessons = lessons.filter(l => l.date.startsWith(prefix));
+
+      const unpaidLessons = lessons.filter(l => l.status === 'unpaid');
+      const paidLessons = lessons.filter(l => l.status === 'paid');
+
+      const unpaidTotal = unpaidLessons.reduce((sum, item) => sum + (parseFloat(item.totalAmount) || 0), 0);
+      const paidTotal = paidLessons.reduce((sum, item) => sum + (parseFloat(item.totalAmount) || 0), 0);
+      const allTotal = lessons.reduce((sum, item) => sum + (parseFloat(item.totalAmount) || 0), 0);
+
+      // 顶部统计卡片
+      const elMonthCount = document.getElementById('stat-tutoring-month-count');
+      if (elMonthCount) elMonthCount.textContent = `${thisMonthLessons.length} 次`;
+      const elStatUnpaid = document.getElementById('stat-tutoring-unpaid-amount');
+      if (elStatUnpaid) elStatUnpaid.textContent = `¥ ${unpaidTotal.toLocaleString()}`;
+      const elStatPaid = document.getElementById('stat-tutoring-paid-amount');
+      if (elStatPaid) elStatPaid.textContent = `¥ ${paidTotal.toLocaleString()}`;
+
+      // 右上角过滤 Tab (包含数量与金额汇总)
+      const elBadgeUnpaidCount = document.getElementById('badge-unpaid-count');
+      if (elBadgeUnpaidCount) elBadgeUnpaidCount.textContent = unpaidLessons.length;
+      const elBadgeUnpaidAmount = document.getElementById('badge-unpaid-amount');
+      if (elBadgeUnpaidAmount) elBadgeUnpaidAmount.textContent = `¥${unpaidTotal.toLocaleString()}`;
+
+      const elBadgePaidCount = document.getElementById('badge-paid-count');
+      if (elBadgePaidCount) elBadgePaidCount.textContent = paidLessons.length;
+      const elBadgePaidAmount = document.getElementById('badge-paid-amount');
+      if (elBadgePaidAmount) elBadgePaidAmount.textContent = `¥${paidTotal.toLocaleString()}`;
+
+      const elBadgeAllCount = document.getElementById('badge-all-count');
+      if (elBadgeAllCount) elBadgeAllCount.textContent = lessons.length;
+      const elBadgeAllAmount = document.getElementById('badge-all-amount');
+      if (elBadgeAllAmount) elBadgeAllAmount.textContent = `¥${allTotal.toLocaleString()}`;
+
+      // 操作栏常驻总额看板
+      const elBarUnpaid = document.getElementById('bar-unpaid-amount');
+      if (elBarUnpaid) elBarUnpaid.textContent = `¥ ${unpaidTotal.toLocaleString()}`;
+      const elBarPaid = document.getElementById('bar-paid-amount');
+      if (elBarPaid) elBarPaid.textContent = `¥ ${paidTotal.toLocaleString()}`;
+    }
+
+    function filterTutoringList(filter, btn) {
+      tutoringListFilter = filter;
+      document.querySelectorAll('.reconciliation-panel .tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderTutoringTable();
+    }
+
+    // 渲染补课对账表格 (支持按天分组与一键按天勾选)
+    function renderTutoringTable() {
+      const lessons = getLessons();
+      const tbody = document.getElementById('tutoring-table-body');
+
+      let filtered = lessons;
+      if (tutoringListFilter === 'unpaid') {
+        filtered = lessons.filter(l => l.status === 'unpaid');
+      } else if (tutoringListFilter === 'paid') {
+        filtered = lessons.filter(l => l.status === 'paid');
+      }
+
+      filtered.sort((a, b) => b.date > a.date ? 1 : -1);
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+              暂无匹配的补课消课记录
+            </td>
+          </tr>
+        `;
+        updateSelectedSummary();
+        return;
+      }
+
+      let html = '';
+      let lastDate = '';
+
+      filtered.forEach(l => {
+        // 如果是新的一天，插入日期分组汇总栏
+        if (l.date !== lastDate) {
+          lastDate = l.date;
+          const dayGroup = filtered.filter(item => item.date === l.date);
+          const daySum = dayGroup.reduce((sum, item) => sum + (parseFloat(item.totalAmount) || 0), 0);
+          const isDayAllChecked = dayGroup.every(item => selectedLessonIds.has(item.id));
+
+          html += `
+            <tr class="date-group-row">
+              <td colspan="7">
+                <div class="date-group-bar">
+                  <label class="date-group-label" onclick="event.stopPropagation();">
+                    <input type="checkbox" class="day-select-checkbox" ${isDayAllChecked ? 'checked' : ''} onchange="toggleSelectDayLessons('${l.date}')">
+                    <strong>📅 ${l.date}</strong>
+                    <span class="date-group-sub">(${dayGroup.length} 节课 · 当天小计: <strong style="color:var(--finance-green); font-size:0.95rem;">¥${daySum.toLocaleString()}</strong>)</span>
+                  </label>
+                  <div style="display:flex; gap:6px; align-items:center;">
+                    <button type="button" class="btn-subtle" style="padding:2px 8px; font-size:0.75rem; border-radius:4px; min-height:24px; color:var(--brand-blue); border:1px solid #BFDBFE; background:#EFF6FF;" onclick="event.stopPropagation(); openCopyScheduleModal('${l.date}')">
+                      📋 复制当天排课到其他天
+                    </button>
+                    <button type="button" class="btn-subtle" style="padding:2px 8px; font-size:0.75rem; border-radius:4px; min-height:24px;" onclick="toggleSelectDayLessons('${l.date}')">
+                      ${isDayAllChecked ? '取消勾选当天' : '勾选当天全部费用'}
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          `;
+        }
+
+        const isPaid = l.status === 'paid';
+        const isChecked = selectedLessonIds.has(l.id);
+
+        html += `
+          <tr>
+            <td style="text-align: center;">
+              <input type="checkbox" value="${l.id}" ${isChecked ? 'checked' : ''} onchange="toggleSelectLesson('${l.id}', this)">
+            </td>
+            <td>
+              <div style="font-weight:600;">${l.date}</div>
+              <div style="font-size:0.75rem; color:var(--text-muted);">${l.time || '18:30'} (${l.duration || 2}h)</div>
+            </td>
+            <td>
+              <span style="font-weight:700; color:var(--brand-blue);">${escapeHtml(l.subject)}</span>
+              ${l.topic ? `<div style="font-size:0.75rem; color:var(--text-muted); max-width: 260px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${escapeHtml(l.topic)}">${escapeHtml(l.topic)}</div>` : ''}
+            </td>
+            <td>${escapeHtml(l.teacher || '-')}</td>
+            <td>
+              <div style="font-family:'Outfit',sans-serif; font-weight:800; font-size:1.02rem; color:var(--text-main);">¥ ${l.totalAmount}</div>
+            </td>
+            <td>
+              <span class="status-badge ${isPaid ? 'status-paid' : 'status-unpaid'}">
+                ${isPaid ? '✓ 已结清' : '● 待结算'}
+              </span>
+            </td>
+            <td style="text-align: right;">
+              <button class="btn-subtle" style="padding: 2px 7px; font-size: 0.75rem;" onclick="editLessonRecord('${l.id}')">修改</button>
+              <button class="btn-subtle" style="padding: 2px 7px; font-size: 0.75rem; color: var(--danger-rose); font-weight:700;" onclick="deleteLessonRecord('${l.id}')">删除</button>
+            </td>
+          </tr>
+        `;
+      });
+
+      tbody.innerHTML = html;
+      updateSelectedSummary();
+    }
+
+    function toggleSelectLesson(id, checkbox) {
+      if (checkbox.checked) {
+        selectedLessonIds.add(id);
+      } else {
+        selectedLessonIds.delete(id);
+      }
+      updateSelectedSummary();
+    }
+
+    function toggleSelectAllLessons(masterCheck) {
+      const lessons = getLessons();
+      let targets = lessons;
+      if (tutoringListFilter === 'unpaid') targets = lessons.filter(l => l.status === 'unpaid');
+      else if (tutoringListFilter === 'paid') targets = lessons.filter(l => l.status === 'paid');
+
+      if (masterCheck.checked) {
+        targets.forEach(l => selectedLessonIds.add(l.id));
+      } else {
+        targets.forEach(l => selectedLessonIds.delete(l.id));
+      }
+      renderTutoringTable();
+    }
+
+    function updateSelectedSummary() {
+      const lessons = getLessons();
+      const count = selectedLessonIds.size;
+      let total = 0;
+
+      selectedLessonIds.forEach(id => {
+        const item = lessons.find(l => l.id === id);
+        if (item) total += (parseFloat(item.totalAmount) || 0);
+      });
+
+      document.getElementById('selected-count').textContent = count;
+      document.getElementById('selected-total').textContent = `¥ ${total.toLocaleString()}`;
+
+      const settleBtn = document.getElementById('btn-batch-settle');
+      if (count > 0) {
+        settleBtn.disabled = false;
+        settleBtn.style.opacity = '1';
+      } else {
+        settleBtn.disabled = true;
+        settleBtn.style.opacity = '0.5';
+      }
+    }
+
+    function openBatchSettleModal() {
+      if (selectedLessonIds.size === 0) {
+        alert('请先勾选需要结算付费的补课记录！');
+        return;
+      }
+
+      const lessons = getLessons();
+      let total = 0;
+      selectedLessonIds.forEach(id => {
+        const item = lessons.find(l => l.id === id);
+        if (item) total += (parseFloat(item.totalAmount) || 0);
+      });
+
+      document.getElementById('modal-settle-summary').textContent = `已选 ${selectedLessonIds.size} 节课 · 合计应付 ¥ ${total.toLocaleString()} 元`;
+      document.getElementById('settle-date').value = getTodayString();
+      document.getElementById('settle-batch-name').value = `${getTodayString()} 批量对账付费结清`;
+
+      document.getElementById('modal-batch-settle').classList.add('active');
+    }
+
+    function closeBatchSettleModal() {
+      document.getElementById('modal-batch-settle').classList.remove('active');
+    }
+
+    function executeBatchSettle() {
+      const batchName = document.getElementById('settle-batch-name').value.trim() || '批量结算结清';
+      const payMethod = document.getElementById('settle-pay-method').value;
+      const payDate = document.getElementById('settle-date').value;
+
+      let lessons = getLessons();
+      let updatedCount = 0;
+
+      lessons = lessons.map(l => {
+        if (selectedLessonIds.has(l.id)) {
+          updatedCount++;
+          return {
+            ...l,
+            status: 'paid',
+            settleBatch: `${batchName} (${payMethod} · ${payDate})`,
+            settleDate: payDate
+          };
+        }
+        return l;
+      });
+
+      saveLessons(lessons);
+      selectedLessonIds.clear();
+      closeBatchSettleModal();
+      renderAll();
+      showToast(`成功批量结算 ${updatedCount} 节补课费用并标记已付款！`);
+    }
+
+    // 打开补课登记/编辑弹窗 (默认新增模式，支持当天录入多门课及切换编辑)
+    function openLessonModal(dateStr = '', specificLessonId = '') {
+      const targetDate = dateStr || getTodayString();
+      if (specificLessonId) {
+        editLessonRecord(specificLessonId);
+      } else {
+        resetLessonModalToAdd(targetDate);
+        document.getElementById('modal-lesson').classList.add('active');
+      }
+    }
+
+    // 重置弹窗为新增模式
+    function resetLessonModalToAdd(targetDate) {
+      document.getElementById('lesson-edit-id').value = '';
+      document.getElementById('lesson-modal-title').textContent = `登记学科补课记录 (${targetDate})`;
+      document.getElementById('lesson-date').value = targetDate;
+      document.getElementById('lesson-time').value = '18:30';
+      document.getElementById('lesson-pay-status').value = 'unpaid';
+      document.getElementById('lesson-topic').value = '';
+      document.getElementById('lesson-notes').value = '';
+      autoFillSubjectPrice();
+
+      // 隐藏底部单独删除按钮（当前处于新增态）
+      const delBtn = document.getElementById('btn-delete-current-lesson');
+      if (delBtn) delBtn.style.display = 'none';
+
+      // 保存按钮文案提示为“+ 保存新增记录”
+      const saveBtn = document.getElementById('btn-save-lesson');
+      if (saveBtn) saveBtn.textContent = '+ 保存新增记录';
+
+      // 渲染当天已有课程横幅
+      renderExistingLessonsBanner(targetDate, '');
+    }
+
+    // 渲染当天已有课程横幅 (支持在弹窗内直接切换编辑或直接删除)
+    function renderExistingLessonsBanner(targetDate, activeEditId = '') {
+      const dayLessons = getLessons().filter(l => l.date === targetDate);
+      const box = document.getElementById('day-existing-lessons-box');
+      const list = document.getElementById('day-existing-lessons-list');
+
+      if (!box || !list) return;
+
+      if (dayLessons.length > 0) {
+        box.style.display = 'block';
+        const dayTotal = dayLessons.reduce((sum, l) => sum + (parseFloat(l.totalAmount) || 0), 0);
+
+        list.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem; padding-bottom:0.35rem; border-bottom:1px solid #E2E8F0;">
+            <span style="font-size:0.8rem; font-weight:700; color:var(--text-main);">
+              📅 当天已有 ${dayLessons.length} 节课 (小计: <strong style="color:var(--finance-green)">¥${dayTotal.toLocaleString()}</strong>)
+            </span>
+            ${activeEditId ? `
+              <button type="button" class="btn btn-outline-primary" style="padding:2px 8px; font-size:0.75rem;" onclick="resetLessonModalToAdd('${targetDate}')">
+                + 切换为新增下一节课
+              </button>
+            ` : `
+              <span style="font-size:0.75rem; color:var(--finance-green); font-weight:700; background:#ECFDF5; padding:2px 6px; border-radius:4px;">
+                ● 当前处于：新增补课状态
+              </span>
+            `}
+          </div>
+          <div style="display:flex; flex-direction:column; gap:0.35rem;">
+            ${dayLessons.map(l => {
+              const isCurrentEditing = (l.id === activeEditId);
+              return `
+                <div class="existing-item-row" style="${isCurrentEditing ? 'border:1.5px solid var(--brand-blue); background:#F0F7FF;' : ''}">
+                  <div>
+                    <strong>${escapeHtml(l.subject)}</strong> · ${l.time || '18:30'} · <strong style="color:var(--finance-green)">¥${l.totalAmount}</strong>
+                    <span style="font-size:0.72rem; color:${l.status === 'paid' ? 'var(--finance-green)' : 'var(--warn-amber)'}; font-weight:600; margin-left:4px;">
+                      (${l.status === 'paid' ? '已付款' : '待付款'})
+                    </span>
+                  </div>
+                  <div style="display:flex; gap:0.4rem;">
+                    <button type="button" class="btn-subtle" style="padding:2px 8px; font-size:0.75rem; ${isCurrentEditing ? 'color:var(--brand-blue); font-weight:700;' : ''}" onclick="editLessonRecord('${l.id}')">
+                      ${isCurrentEditing ? '正在编辑' : '修改此课'}
+                    </button>
+                    <button type="button" class="btn-subtle" style="padding:2px 8px; font-size:0.75rem; color:var(--danger-rose); font-weight:700;" onclick="deleteLessonRecord('${l.id}')">
+                      删除
+                    </button>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      } else {
+        box.style.display = 'none';
+        list.innerHTML = '';
+      }
+    }
+
+    function closeLessonModal() {
+      document.getElementById('modal-lesson').classList.remove('active');
+    }
+
+    function saveLessonRecord() {
+      const date = document.getElementById('lesson-date').value;
+      if (!date) { alert('请选择上课日期'); return; }
+
+      const id = document.getElementById('lesson-edit-id').value;
+      const subject = document.getElementById('lesson-subject-select').value;
+      const time = document.getElementById('lesson-time').value;
+      const duration = parseFloat(document.getElementById('lesson-duration').value) || 2;
+      const unitPrice = parseFloat(document.getElementById('lesson-unit-price').value) || 0;
+      const totalAmount = parseFloat(document.getElementById('lesson-total-amount').value) || unitPrice;
+      const teacher = document.getElementById('lesson-teacher').value.trim();
+      const status = document.getElementById('lesson-pay-status').value;
+      const topic = document.getElementById('lesson-topic').value.trim();
+      const notes = document.getElementById('lesson-notes').value.trim();
+
+      let lessons = getLessons();
+      if (id) {
+        const idx = lessons.findIndex(l => l.id === id);
+        if (idx !== -1) {
+          lessons[idx] = { ...lessons[idx], date, time, duration, subject, unitPrice, totalAmount, teacher, status, topic, notes };
+        }
+      } else {
+        lessons.push({
+          id: 'ls-' + Date.now(),
+          date, time, duration, subject, unitPrice, totalAmount, teacher, status, topic, notes,
+          settleBatch: status === 'paid' ? '单次已付款' : ''
+        });
+      }
+
+      saveLessons(lessons);
+      closeLessonModal();
+      renderAll();
+      showToast(id ? '补课记录已修改！' : '新补课记录已添加成功！');
+    }
+
+    // 编辑已有课程
+    function editLessonRecord(id) {
+      const lessons = getLessons();
+      const item = lessons.find(l => l.id === id);
+      if (!item) return;
+
+      document.getElementById('lesson-edit-id').value = item.id;
+      document.getElementById('lesson-modal-title').textContent = `修改 / 删除补课记录 (${item.date} ${item.subject})`;
+      document.getElementById('lesson-subject-select').value = item.subject;
+      document.getElementById('lesson-date').value = item.date;
+      document.getElementById('lesson-time').value = item.time || '18:30';
+      document.getElementById('lesson-duration').value = item.duration || 2;
+      document.getElementById('lesson-unit-price').value = item.unitPrice || 500;
+      document.getElementById('lesson-total-amount').value = item.totalAmount || 500;
+      document.getElementById('lesson-teacher').value = item.teacher || '';
+      document.getElementById('lesson-pay-status').value = item.status || 'unpaid';
+      document.getElementById('lesson-topic').value = item.topic || '';
+      document.getElementById('lesson-notes').value = item.notes || '';
+
+      const delBtn = document.getElementById('btn-delete-current-lesson');
+      if (delBtn) {
+        delBtn.style.display = 'inline-flex';
+        delBtn.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/></svg>
+          删除此记录 (${item.subject})
+        `;
+      }
+
+      const saveBtn = document.getElementById('btn-save-lesson');
+      if (saveBtn) saveBtn.textContent = '保存修改';
+
+      // 刷新顶部已有课程横幅并高亮正在编辑的课程
+      renderExistingLessonsBanner(item.date, item.id);
+
+      document.getElementById('modal-lesson').classList.add('active');
+    }
+
+    function deleteCurrentLessonModal() {
+      let id = document.getElementById('lesson-edit-id').value;
+      const date = document.getElementById('lesson-date').value;
+      const subject = document.getElementById('lesson-subject-select').value;
+      const lessons = getLessons();
+
+      if (!id) {
+        const match = lessons.find(l => l.date === date && l.subject === subject) || lessons.find(l => l.date === date);
+        if (match) id = match.id;
+      }
+
+      if (id) {
+        deleteLessonRecord(id);
+        closeLessonModal();
+      } else {
+        alert('未找到可删除的记录');
+      }
+    }
+
+    // 直接删除课程记录
+    function deleteLessonRecord(id) {
+      const lessons = getLessons();
+      const target = lessons.find(l => l.id === id);
+      const name = target ? `${target.date} ${target.subject}` : '该节课程';
+
+      if (!confirm(`确定要彻底删除【${name}】的补课记录吗？`)) {
+        return;
+      }
+
+      const filtered = lessons.filter(l => l.id !== id);
+      selectedLessonIds.delete(id);
+      saveLessons(filtered);
+      renderAll();
+      showToast(`已成功删除【${name}】补课记录！`);
+    }
+
+    // 科目配置
+    function openSubjectModal() {
+      document.getElementById('subject-edit-id').value = '';
+      document.getElementById('subject-modal-title').textContent = '新增科目与单价配置';
+      document.getElementById('subject-name').value = '';
+      document.getElementById('subject-price').value = '500';
+      document.getElementById('subject-hours').value = '2';
+      document.getElementById('subject-teacher').value = '';
+      document.getElementById('subject-mode').value = '线下1对1上门';
+      document.getElementById('modal-subject').classList.add('active');
+    }
+
+    function closeSubjectModal() {
+      document.getElementById('modal-subject').classList.remove('active');
+    }
+
+    function editSubjectConfig(id) {
+      const subjects = getSubjects();
+      const sub = subjects.find(s => s.id === id);
+      if (!sub) return;
+
+      document.getElementById('subject-edit-id').value = sub.id;
+      document.getElementById('subject-modal-title').textContent = '编辑科目单价配置';
+      document.getElementById('subject-name').value = sub.name;
+      document.getElementById('subject-price').value = sub.price;
+      document.getElementById('subject-hours').value = sub.duration || 2;
+      document.getElementById('subject-teacher').value = sub.teacher || '';
+      document.getElementById('subject-mode').value = sub.mode || '线下1对1上门';
+
+      document.getElementById('modal-subject').classList.add('active');
+    }
+
+    function saveSubjectConfig() {
+      const name = document.getElementById('subject-name').value.trim();
+      const price = parseFloat(document.getElementById('subject-price').value) || 0;
+      const duration = parseFloat(document.getElementById('subject-hours').value) || 2;
+      const teacher = document.getElementById('subject-teacher').value.trim();
+      const mode = document.getElementById('subject-mode').value;
+      const id = document.getElementById('subject-edit-id').value;
+
+      if (!name) { alert('请输入科目名称'); return; }
+
+      let subjects = getSubjects();
+      if (id) {
+        const idx = subjects.findIndex(s => s.id === id);
+        if (idx !== -1) subjects[idx] = { ...subjects[idx], name, price, duration, teacher, mode };
+      } else {
+        subjects.push({ id: 'sub-' + Date.now(), name, price, duration, teacher, mode });
+      }
+
+      saveSubjects(subjects);
+      closeSubjectModal();
+      renderAll();
+      showToast('科目配置已更新！');
+    }
+
+    // ==============================================================
+    // 5. 健康打卡模块
+    // ==============================================================
+    // ==============================================================
+    // 5. 健康打卡模块（默认单月清晰日历，强化打针 💉 与小医生 👨‍⚕️ 图标）
+    // ==============================================================
+    let healthViewMode = 'month'; // 默认：单月清晰日历视图，坚决不一次性铺满12个月
+
+    function setHealthViewMode(mode) {
+      healthViewMode = mode;
+      const btnYear = document.getElementById('btn-health-mode-year');
+      const btnMonth = document.getElementById('btn-health-mode-month');
+      if (btnYear) btnYear.classList.toggle('active', mode === 'year');
+      if (btnMonth) btnMonth.classList.toggle('active', mode === 'month');
+
+      const yearWrap = document.getElementById('health-year-calendar-wrap');
+      const singleWrap = document.getElementById('health-single-calendar-wrap');
+      const mainTitle = document.getElementById('health-calendar-main-title');
+
+      if (mode === 'year') {
+        if (yearWrap) yearWrap.style.display = 'block';
+        if (singleWrap) singleWrap.style.display = 'none';
+        if (mainTitle) mainTitle.textContent = '打针与复诊日历 · 全年12个月全景视图';
+      } else {
+        if (yearWrap) yearWrap.style.display = 'none';
+        if (singleWrap) singleWrap.style.display = 'block';
+        if (mainTitle) mainTitle.textContent = '打针与复诊日历 · 单月清晰日历视图';
+      }
+      renderHealthCalendar();
+      updateHealthStats();
+    }
+
+    function prevHealthPeriod() {
+      if (healthViewMode === 'year') {
+        currentHealthYear--;
+      } else {
+        if (currentHealthMonth === 1) { currentHealthYear--; currentHealthMonth = 12; }
+        else { currentHealthMonth--; }
+      }
+      renderHealthCalendar();
+      updateHealthStats();
+    }
+
+    function nextHealthPeriod() {
+      if (healthViewMode === 'year') {
+        currentHealthYear++;
+      } else {
+        if (currentHealthMonth === 12) { currentHealthYear++; currentHealthMonth = 1; }
+        else { currentHealthMonth++; }
+      }
+      renderHealthCalendar();
+      updateHealthStats();
+    }
+
+    function goToTodayHealth() {
+      const now = new Date();
+      currentHealthYear = now.getFullYear();
+      currentHealthMonth = now.getMonth() + 1;
+      renderHealthCalendar();
+      updateHealthStats();
+      showToast('已跳转到当前月份');
+    }
+
+    // 渲染健康打卡日历 (默认优先单月大日历，按需切换12个月全景)
+    function renderHealthCalendar() {
+      const displayLabel = document.getElementById('health-month-display');
+      if (displayLabel) {
+        if (healthViewMode === 'year') {
+          displayLabel.textContent = `${currentHealthYear} 年度 (12个月全景)`;
+        } else {
+          displayLabel.textContent = `${currentHealthYear} 年 ${currentHealthMonth} 月`;
+        }
+      }
+
+      if (healthViewMode === 'year') {
+        renderHealthYearMatrix();
+      } else {
+        renderHealthSingleMonth();
+      }
+    }
+
+    // 全年12个月打针与复诊紧凑矩阵渲染
+    function renderHealthYearMatrix() {
+      const matrix = document.getElementById('health-year-matrix');
+      if (!matrix) return;
+      matrix.innerHTML = '';
+
+      const checkins = getHealthCheckins();
+      const todayStr = getTodayString();
+      const monthNames = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+
+      for (let m = 1; m <= 12; m++) {
+        const monthPrefix = `${currentHealthYear}-${String(m).padStart(2, '0')}`;
+        const monthCheckins = checkins.filter(c => c.date.startsWith(monthPrefix));
+        const monthInj = monthCheckins.filter(c => c.type === 'injection').length;
+        const monthRev = monthCheckins.filter(c => c.type === 'revisit').length;
+
+        const card = document.createElement('div');
+        card.className = 'mini-month-card';
+
+        let statsText = '';
+        if (monthInj > 0 || monthRev > 0) {
+          statsText = `
+            ${monthInj > 0 ? `<span style="color:#065F46; font-weight:700;">💉${monthInj}</span>` : ''}
+            ${monthRev > 0 ? `<span style="color:#3730A3; font-weight:700;">👨‍⚕️${monthRev}</span>` : ''}
+          `;
+        } else {
+          statsText = `<span style="color:var(--text-muted); opacity:0.6;">0次</span>`;
+        }
+
+        let cardHtml = `
+          <div class="mini-month-header">
+            <span class="mini-month-title">
+              <strong>${monthNames[m - 1]}</strong>
+              <small style="color:var(--text-muted); font-size:0.68rem; font-weight:normal;">${String(m).padStart(2, '0')}</small>
+            </span>
+            <div class="mini-month-stats">
+              ${statsText}
+            </div>
+          </div>
+          <div class="mini-weekdays-row">
+            <div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div><div>日</div>
+          </div>
+          <div class="mini-days-grid">
+        `;
+
+        const firstDay = new Date(currentHealthYear, m - 1, 1);
+        let firstDayIndex = firstDay.getDay() - 1;
+        if (firstDayIndex === -1) firstDayIndex = 6;
+        const daysInMonth = new Date(currentHealthYear, m, 0).getDate();
+
+        for (let empty = 0; empty < firstDayIndex; empty++) {
+          cardHtml += `<div class="mini-day-cell empty"></div>`;
+        }
+
+        for (let d = 1; d <= daysInMonth; d++) {
+          const dateStr = `${currentHealthYear}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+          const dayCheckins = monthCheckins.filter(c => c.date === dateStr);
+          const hasInj = dayCheckins.some(c => c.type === 'injection');
+          const hasRev = dayCheckins.some(c => c.type === 'revisit');
+          const isToday = (dateStr === todayStr);
+
+          let cellClasses = ['mini-day-cell'];
+          if (isToday) cellClasses.push('today');
+          if (hasInj) cellClasses.push('has-injection');
+          if (hasRev) cellClasses.push('has-revisit');
+
+          let tooltip = dateStr;
+          if (dayCheckins.length > 0) {
+            const details = dayCheckins.map(c => c.type === 'injection' ? `💉 打针 ${c.dose || ''} (${c.site || ''})` : `👨‍⚕️ 医生复诊 (${c.doctor || ''})`).join(' | ');
+            tooltip += `：${details} · 点击修改/查看`;
+          } else {
+            tooltip += ` · 点击打卡`;
+          }
+
+          cardHtml += `
+            <div class="${cellClasses.join(' ')}" title="${tooltip}" onclick="openCheckinModal('${dateStr}')">
+              ${d}
+            </div>
+          `;
+        }
+
+        cardHtml += `</div>`;
+        card.innerHTML = cardHtml;
+        matrix.appendChild(card);
+      }
+    }
+
+    // 单月大日历渲染（醒目的打针 💉 与小医生 👨‍⚕️ 图标展示）
+    function renderHealthSingleMonth() {
+      const grid = document.getElementById('health-days-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const firstDayDate = new Date(currentHealthYear, currentHealthMonth - 1, 1);
+      let firstDayIndex = firstDayDate.getDay() - 1;
+      if (firstDayIndex === -1) firstDayIndex = 6;
+
+      const daysInMonth = new Date(currentHealthYear, currentHealthMonth, 0).getDate();
+      const prevMonthDays = new Date(currentHealthYear, currentHealthMonth - 1, 0).getDate();
+
+      const checkins = getHealthCheckins();
+      const todayStr = getTodayString();
+
+      for (let i = firstDayIndex - 1; i >= 0; i--) {
+        const d = prevMonthDays - i;
+        const cell = document.createElement('div');
+        cell.className = 'day-cell other-month';
+        cell.innerHTML = `<div class="day-header"><span class="day-number">${d}</span></div>`;
+        grid.appendChild(cell);
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateStr = `${currentHealthYear}-${String(currentHealthMonth).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        const dayCheckins = checkins.filter(c => c.date === dateStr);
+
+        const cell = document.createElement('div');
+        cell.className = 'day-cell';
+        if (dateStr === todayStr) cell.classList.add('today');
+
+        const hasInj = dayCheckins.some(c => c.type === 'injection');
+        const hasRev = dayCheckins.some(c => c.type === 'revisit');
+        let topIcons = '';
+        if (hasInj) topIcons += '<span style="font-size:1.15rem; line-height:1;" title="已打针">💉</span>';
+        if (hasRev) topIcons += '<span style="font-size:1.15rem; line-height:1;" title="已复诊小医生">👨‍⚕️</span>';
+
+        let badgesHtml = '';
+        dayCheckins.forEach(item => {
+          if (item.type === 'injection') {
+            badgesHtml += `
+              <div class="badge-item badge-injection" title="${escapeHtml(item.medName || '已打针')} (${item.dose || ''} ${item.site || ''}) · 点击修改" onclick="event.stopPropagation(); editHealthCheckin('${item.id}')">
+                <span class="badge-icon-symbol">💉</span>
+                <span class="badge-content" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                  <strong>${escapeHtml(item.dose ? item.dose : '已打针')}</strong> ${item.site ? escapeHtml(item.site) : ''}
+                </span>
+                <span class="badge-del-btn" title="删除打卡" onclick="event.stopPropagation(); deleteHealthCheckin('${item.id}')">×</span>
+              </div>
+            `;
+          } else {
+            badgesHtml += `
+              <div class="badge-item badge-revisit" title="${escapeHtml(item.hospital || '')} · ${escapeHtml(item.doctor || '')} · 点击修改" onclick="event.stopPropagation(); editHealthCheckin('${item.id}')">
+                <span class="badge-icon-symbol">👨‍⚕️</span>
+                <span class="badge-content" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                  <strong>复诊</strong> ${escapeHtml((item.doctor || item.hospital || '小医生').substring(0, 5))}
+                </span>
+                <span class="badge-del-btn" title="删除复诊" onclick="event.stopPropagation(); deleteHealthCheckin('${item.id}')">×</span>
+              </div>
+            `;
+          }
+        });
+
+        cell.innerHTML = `
+          <div class="day-header">
+            <span class="day-number">${day}</span>
+            <div style="display:flex; align-items:center; gap:3px;">
+              ${topIcons}
+              ${dateStr === todayStr ? '<span style="font-size:0.65rem; color:var(--brand-blue); font-weight:800; background:#EFF6FF; padding:1px 4px; border-radius:3px;">今天</span>' : ''}
+            </div>
+          </div>
+          <div class="day-badges" style="display:flex; flex-direction:column; gap:3px; margin-top:4px;">
+            ${badgesHtml}
+          </div>
+        `;
+
+        cell.onclick = () => {
+          openCheckinModal(dateStr);
+        };
+
+        grid.appendChild(cell);
+      }
+
+      const totalCells = firstDayIndex + daysInMonth;
+      const nextSlots = (totalCells % 7 === 0) ? 0 : 7 - (totalCells % 7);
+      for (let d = 1; d <= nextSlots; d++) {
+        const cell = document.createElement('div');
+        cell.className = 'day-cell other-month';
+        cell.innerHTML = `<div class="day-header"><span class="day-number">${d}</span></div>`;
+        grid.appendChild(cell);
+      }
+    }
+
+    function updateHealthStats() {
+      const checkins = getHealthCheckins();
+      
+      // 当前月统计
+      const monthPrefix = `${currentHealthYear}-${String(currentHealthMonth).padStart(2, '0')}`;
+      const thisMonthCheckins = checkins.filter(c => c.date.startsWith(monthPrefix));
+      const monthInj = thisMonthCheckins.filter(c => c.type === 'injection').length;
+      const monthRev = thisMonthCheckins.filter(c => c.type === 'revisit').length;
+
+      // 全年统计
+      const yearPrefix = `${currentHealthYear}-`;
+      const thisYearCheckins = checkins.filter(c => c.date.startsWith(yearPrefix));
+      const yearTotal = thisYearCheckins.length;
+
+      const elInj = document.getElementById('stat-injection-count');
+      if (elInj) elInj.textContent = `${monthInj} 次`;
+      
+      const elRev = document.getElementById('stat-month-revisit-count');
+      if (elRev) elRev.textContent = `${monthRev} 次`;
+
+      const elYearTotal = document.getElementById('stat-year-total-count');
+      if (elYearTotal) elYearTotal.textContent = `${yearTotal} 次`;
+
+      // 连续天数计算
+      const dates = Array.from(new Set(checkins.filter(c => c.type === 'injection').map(c => c.date))).sort().reverse();
+      let streak = 0;
+      if (dates.length > 0) {
+        let checkDate = new Date();
+        checkDate.setHours(0,0,0,0);
+        const todayStr = getTodayString();
+        if (!dates.includes(todayStr)) {
+          checkDate.setDate(checkDate.getDate() - 1);
+        }
+        while (true) {
+          const y = checkDate.getFullYear();
+          const m = String(checkDate.getMonth() + 1).padStart(2, '0');
+          const d = String(checkDate.getDate()).padStart(2, '0');
+          const str = `${y}-${m}-${d}`;
+          if (dates.includes(str)) {
+            streak++;
+            checkDate.setDate(checkDate.getDate() - 1);
+          } else {
+            break;
+          }
+        }
+      }
+      const elStreak = document.getElementById('stat-streak-days');
+      if (elStreak) elStreak.textContent = `${streak} 天`;
+    }
+
+    function filterHealthHistory(type, btn) {
+      healthFilterType = type;
+      document.querySelectorAll('#view-health .tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderHealthHistory();
+    }
+
+    function renderHealthHistory() {
+      const checkins = getHealthCheckins();
+      const container = document.getElementById('health-history-list');
+
+      document.getElementById('health-count-all').textContent = checkins.length;
+      document.getElementById('health-count-inj').textContent = checkins.filter(c => c.type === 'injection').length;
+      document.getElementById('health-count-rev').textContent = checkins.filter(c => c.type === 'revisit').length;
+
+      let filtered = checkins;
+      if (healthFilterType !== 'all') {
+        filtered = checkins.filter(c => c.type === healthFilterType);
+      }
+
+      filtered.sort((a, b) => b.date > a.date ? 1 : -1);
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem;">
+            暂无相关打卡记录
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => {
+        const isInj = item.type === 'injection';
+        const title = isInj ? `${item.medName} (${item.dose})` : `${item.hospital} · ${item.doctor}`;
+        const subtitle = isInj 
+          ? `打卡时间: ${item.date} ${item.time || ''} · 部位: ${item.site} ${item.note ? ' · 备注: ' + item.note : ''}`
+          : `复诊时间: ${item.date} · 医嘱: ${item.orders} ${item.nextDate ? ' · 下次复诊: ' + item.nextDate : ''}`;
+
+        return `
+          <div style="background: var(--bg-page); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.75rem 1rem; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <div style="font-size: 1.2rem; width: 34px; height: 34px; border-radius: 6px; display: flex; align-items: center; justify-content: center; background: ${isInj ? 'var(--health-bg)' : 'var(--revisit-bg)'}; color: ${isInj ? 'var(--health-teal)' : 'var(--revisit-indigo)'};">
+                ${isInj ? '💉' : '🏥'}
+              </div>
+              <div>
+                <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-main);">${escapeHtml(title)}</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">${escapeHtml(subtitle)}</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.4rem;">
+              <button class="btn-subtle" style="padding: 3px 6px; font-size: 0.75rem;" onclick="editHealthCheckin('${item.id}')">修改</button>
+              <button class="btn-subtle" style="padding: 3px 6px; font-size: 0.75rem; color: var(--danger-rose); font-weight:700;" onclick="deleteHealthCheckin('${item.id}')">删除</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setHealthCheckinType(type) {
+      activeHealthCheckinType = type;
+      const bInj = document.getElementById('switch-injection');
+      const bRev = document.getElementById('switch-revisit');
+      const fInj = document.getElementById('fields-health-injection');
+      const fRev = document.getElementById('fields-health-revisit');
+
+      if (type === 'injection') {
+        bInj.classList.add('active'); bRev.classList.remove('active');
+        fInj.style.display = 'block'; fRev.style.display = 'none';
+      } else {
+        bInj.classList.remove('active'); bRev.classList.add('active');
+        fInj.style.display = 'none'; fRev.style.display = 'block';
+      }
+    }
+
+    function openCheckinModal(dateStr = '') {
+      const targetDate = dateStr || getTodayString();
+      document.getElementById('health-edit-id').value = '';
+      document.getElementById('checkin-modal-title').textContent = '添加打针/复诊打卡';
+      document.getElementById('checkin-date').value = targetDate;
+      const now = new Date();
+      document.getElementById('checkin-time').value = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+      setHealthCheckinType('injection');
+      document.getElementById('btn-delete-current-health').style.display = 'none';
+
+      // 当天已有记录
+      const dayRecords = getHealthCheckins().filter(c => c.date === targetDate);
+      const box = document.getElementById('day-existing-health-box');
+      const list = document.getElementById('day-existing-health-list');
+      if (dayRecords.length > 0) {
+        box.style.display = 'block';
+        list.innerHTML = dayRecords.map(c => `
+          <div class="existing-item-row">
+            <div>
+              ${c.type === 'injection' ? '💉' : '🏥'} <strong>${escapeHtml(c.medName || c.hospital)}</strong> (${escapeHtml(c.dose || c.doctor || '')})
+            </div>
+            <div style="display:flex; gap:0.4rem;">
+              <button type="button" class="btn-subtle" style="padding:2px 8px; font-size:0.75rem;" onclick="editHealthCheckin('${c.id}')">修改</button>
+              <button type="button" class="btn-subtle" style="padding:2px 8px; font-size:0.75rem; color:var(--danger-rose); font-weight:700;" onclick="deleteHealthCheckin('${c.id}')">删除</button>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        box.style.display = 'none';
+        list.innerHTML = '';
+      }
+
+      document.getElementById('modal-checkin').classList.add('active');
+    }
+
+    function closeCheckinModal() {
+      document.getElementById('modal-checkin').classList.remove('active');
+    }
+
+    function editHealthCheckin(id) {
+      const checkins = getHealthCheckins();
+      const item = checkins.find(c => c.id === id);
+      if (!item) return;
+
+      document.getElementById('health-edit-id').value = item.id;
+      document.getElementById('checkin-modal-title').textContent = '修改/删除健康打卡记录';
+      document.getElementById('checkin-date').value = item.date;
+      document.getElementById('checkin-time').value = item.time || '20:30';
+
+      if (item.type === 'injection') {
+        setHealthCheckinType('injection');
+        document.getElementById('inj-med-name').value = item.medName || '';
+        document.getElementById('inj-dose').value = item.dose || '';
+        document.getElementById('inj-site').value = item.site || '左侧腹部 (距脐2cm外)';
+      } else {
+        setHealthCheckinType('revisit');
+        document.getElementById('rev-hospital').value = item.hospital || '';
+        document.getElementById('rev-doctor').value = item.doctor || '';
+        document.getElementById('rev-orders').value = item.orders || '';
+        document.getElementById('rev-next-date').value = item.nextDate || '';
+        document.getElementById('rev-cost').value = item.cost || 0;
+      }
+      document.getElementById('health-note').value = item.note || '';
+
+      document.getElementById('day-existing-health-box').style.display = 'none';
+      document.getElementById('btn-delete-current-health').style.display = 'inline-flex';
+
+      document.getElementById('modal-checkin').classList.add('active');
+    }
+
+    function deleteCurrentHealthModal() {
+      const id = document.getElementById('health-edit-id').value;
+      if (!id) return;
+      deleteHealthCheckin(id);
+      closeCheckinModal();
+    }
+
+    function saveHealthCheckin() {
+      const date = document.getElementById('checkin-date').value;
+      const time = document.getElementById('checkin-time').value;
+      if (!date) { alert('请选择打卡日期'); return; }
+
+      const id = document.getElementById('health-edit-id').value;
+      let checkins = getHealthCheckins();
+
+      if (id) {
+        const idx = checkins.findIndex(c => c.id === id);
+        if (idx !== -1) {
+          if (activeHealthCheckinType === 'injection') {
+            checkins[idx] = {
+              ...checkins[idx],
+              type: 'injection',
+              date, time,
+              medName: document.getElementById('inj-med-name').value.trim(),
+              dose: document.getElementById('inj-dose').value.trim(),
+              site: document.getElementById('inj-site').value,
+              note: document.getElementById('health-note').value.trim()
+            };
+          } else {
+            checkins[idx] = {
+              ...checkins[idx],
+              type: 'revisit',
+              date, time,
+              hospital: document.getElementById('rev-hospital').value.trim(),
+              doctor: document.getElementById('rev-doctor').value.trim(),
+              orders: document.getElementById('rev-orders').value.trim(),
+              nextDate: document.getElementById('rev-next-date').value,
+              cost: parseFloat(document.getElementById('rev-cost').value) || 0,
+              note: document.getElementById('health-note').value.trim()
+            };
+          }
+        }
+      } else {
+        const newId = 'chk-' + Date.now();
+        if (activeHealthCheckinType === 'injection') {
+          checkins.push({
+            id: newId,
+            type: 'injection',
+            date, time,
+            medName: document.getElementById('inj-med-name').value.trim(),
+            dose: document.getElementById('inj-dose').value.trim(),
+            site: document.getElementById('inj-site').value,
+            note: document.getElementById('health-note').value.trim()
+          });
+        } else {
+          checkins.push({
+            id: newId,
+            type: 'revisit',
+            date, time,
+            hospital: document.getElementById('rev-hospital').value.trim(),
+            doctor: document.getElementById('rev-doctor').value.trim(),
+            orders: document.getElementById('rev-orders').value.trim(),
+            nextDate: document.getElementById('rev-next-date').value,
+            cost: parseFloat(document.getElementById('rev-cost').value) || 0,
+            note: document.getElementById('health-note').value.trim()
+          });
+        }
+      }
+
+      saveHealthCheckins(checkins);
+      closeCheckinModal();
+      renderAll();
+      showToast('健康打卡记录已保存！');
+    }
+
+    function deleteHealthCheckin(id) {
+      if (!confirm('确认删除此条健康打卡记录？')) return;
+      let list = getHealthCheckins().filter(c => c.id !== id);
+      saveHealthCheckins(list);
+      renderAll();
+      showToast('已删除打卡记录');
+    }
+
+    // ==============================================================
+    // 5.5 一键复制排课交互与批量生成逻辑
+    // ==============================================================
+    let copyTargetDatesSet = new Set();
+    let copyCurrentMode = 'manual';
+
+    function setCopyTargetMode(mode) {
+      copyCurrentMode = mode;
+      document.getElementById('tab-copy-mode-manual').classList.toggle('active', mode === 'manual');
+      document.getElementById('tab-copy-mode-recurring').classList.toggle('active', mode === 'recurring');
+
+      document.getElementById('copy-panel-manual').style.display = (mode === 'manual') ? 'block' : 'none';
+      document.getElementById('copy-panel-recurring').style.display = (mode === 'recurring') ? 'block' : 'none';
+    }
+
+    function toggleRecurringWeekday(btnEl) {
+      btnEl.classList.toggle('active');
+      previewRecurringDates();
+    }
+
+    function openCopyScheduleModal(defaultSourceDate) {
+      const modal = document.getElementById('modal-copy-schedule');
+      if (!modal) return;
+
+      const sourceSelect = document.getElementById('copy-source-date-select');
+      const lessons = getLessons();
+
+      // 提取所有有排课的日期并倒序排列
+      const datesWithLessons = Array.from(new Set(lessons.map(l => l.date))).sort().reverse();
+      
+      if (sourceSelect) {
+        if (datesWithLessons.length === 0) {
+          sourceSelect.innerHTML = `<option value="">暂无任何历史排课记录</option>`;
+        } else {
+          sourceSelect.innerHTML = datesWithLessons.map(d => {
+            const count = lessons.filter(l => l.date === d).length;
+            return `<option value="${d}">${d} (共 ${count} 节课)</option>`;
+          }).join('');
+
+          if (defaultSourceDate && datesWithLessons.includes(defaultSourceDate)) {
+            sourceSelect.value = defaultSourceDate;
+          } else {
+            sourceSelect.value = datesWithLessons[0];
+          }
+        }
+      }
+
+      // 重置目标日期集合
+      copyTargetDatesSet.clear();
+      renderCopyTargetDatesTags();
+      loadCopySourceLessons();
+
+      // 默认填充周期排课起始日期为明天
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const recStartInput = document.getElementById('recurring-start-date');
+      if (recStartInput) {
+        recStartInput.value = tomorrow.toISOString().split('T')[0];
+      }
+
+      modal.classList.add('active');
+    }
+
+    function closeCopyScheduleModal() {
+      const modal = document.getElementById('modal-copy-schedule');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function onCopySourceDateChange() {
+      loadCopySourceLessons();
+    }
+
+    function loadCopySourceLessons() {
+      const sourceSelect = document.getElementById('copy-source-date-select');
+      const srcDate = sourceSelect ? sourceSelect.value : '';
+      const container = document.getElementById('copy-source-preview-box');
+      if (!container) return;
+
+      if (!srcDate) {
+        container.innerHTML = `<span style="color:var(--text-muted);">请选择有效的源排课日期</span>`;
+        updateCopySummary();
+        return;
+      }
+
+      const lessons = getLessons().filter(l => l.date === srcDate);
+      if (lessons.length === 0) {
+        container.innerHTML = `
+          <div style="font-size:0.82rem; color:var(--danger-rose); padding:0.5rem; background:#FFF1F2; border-radius:6px;">
+            ⚠️ 该日期（${srcDate}）暂无排课记录。
+          </div>
+        `;
+        updateCopySummary();
+        return;
+      }
+
+      let html = '<div style="display:flex; flex-direction:column; gap:4px;">';
+      lessons.forEach(l => {
+        html += `
+          <label style="display:flex; align-items:center; gap:8px; padding:5px 8px; background:#fff; border:1px solid var(--border-color); border-radius:4px; cursor:pointer;">
+            <input type="checkbox" class="copy-lesson-item-check" data-id="${l.id}" checked onchange="updateCopySummary()">
+            <span style="font-weight:700; color:var(--brand-blue);">${escapeHtml(l.subject)}</span>
+            <span style="font-size:0.78rem; color:var(--text-secondary);">${escapeHtml(l.time || '未设时间')} · ${l.duration || 2}小时</span>
+            <span style="font-size:0.78rem; color:var(--finance-green); font-weight:700;">¥${l.fee || 0}</span>
+            ${l.teacher ? `<span style="font-size:0.72rem; color:var(--text-muted);">(${escapeHtml(l.teacher)})</span>` : ''}
+          </label>
+        `;
+      });
+      html += '</div>';
+      container.innerHTML = html;
+      updateCopySummary();
+    }
+
+    function renderCopyTargetDatesTags() {
+      const container = document.getElementById('copy-target-dates-tags');
+      const countEl = document.getElementById('copy-target-count');
+      if (!container) return;
+
+      const sortedDates = Array.from(copyTargetDatesSet).sort();
+      if (countEl) countEl.textContent = sortedDates.length;
+
+      if (sortedDates.length === 0) {
+        container.innerHTML = `<span style="color:var(--text-muted); font-size:0.75rem; font-style:italic;">暂未选择目标日期，请从上方快捷添加或选择日期添加</span>`;
+        updateCopySummary();
+        return;
+      }
+
+      let tagsHtml = '';
+      sortedDates.forEach(dStr => {
+        const dObj = new Date(dStr + 'T00:00:00');
+        const dayNames = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+        const dayName = dayNames[dObj.getDay()];
+        tagsHtml += `
+          <span class="copy-date-tag">
+            <strong>${dStr}</strong> <small>(${dayName})</small>
+            <span class="copy-date-tag-remove" onclick="removeCopyTargetDate('${dStr}')" title="移除该日期">&times;</span>
+          </span>
+        `;
+      });
+      container.innerHTML = tagsHtml;
+      updateCopySummary();
+    }
+
+    function addManualCopyTargetDate() {
+      const input = document.getElementById('copy-manual-date-input');
+      if (!input || !input.value) {
+        showToast('请先选择一个有效日期');
+        return;
+      }
+      copyTargetDatesSet.add(input.value);
+      renderCopyTargetDatesTags();
+      input.value = '';
+    }
+
+    function removeCopyTargetDate(dStr) {
+      copyTargetDatesSet.delete(dStr);
+      renderCopyTargetDatesTags();
+    }
+
+    function clearAllCopyTargetDates() {
+      copyTargetDatesSet.clear();
+      renderCopyTargetDatesTags();
+    }
+
+    function addQuickCopyTarget(type) {
+      const sourceSelect = document.getElementById('copy-source-date-select');
+      const baseDateStr = (sourceSelect && sourceSelect.value) ? sourceSelect.value : getTodayString();
+      const baseDate = new Date(baseDateStr + 'T00:00:00');
+
+      function formatYMD(d) {
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return `${y}-${m}-${day}`;
+      }
+
+      if (type === 'tomorrow') {
+        const d = new Date(baseDate);
+        d.setDate(d.getDate() + 1);
+        copyTargetDatesSet.add(formatYMD(d));
+      } else if (type === 'dayAfter' || type === 'dayAfterTomorrow') {
+        const d = new Date(baseDate);
+        d.setDate(d.getDate() + 2);
+        copyTargetDatesSet.add(formatYMD(d));
+      } else if (type === 'nextWeek' || type === 'nextWeekSameDay') {
+        const d = new Date(baseDate);
+        d.setDate(d.getDate() + 7);
+        copyTargetDatesSet.add(formatYMD(d));
+      } else if (type === 'thisWeekend' || type === 'nextWeekend') {
+        const d = new Date(baseDate);
+        const dayOfWeek = d.getDay(); // 0 is Sunday, 6 is Sat
+        const diffToSat = (6 - dayOfWeek + 7) % 7 || 7;
+        const sat = new Date(d);
+        sat.setDate(d.getDate() + diffToSat);
+        const sun = new Date(sat);
+        sun.setDate(sat.getDate() + 1);
+        copyTargetDatesSet.add(formatYMD(sat));
+        copyTargetDatesSet.add(formatYMD(sun));
+      }
+      renderCopyTargetDatesTags();
+    }
+
+    function previewRecurringDates() {
+      const startInput = document.getElementById('recurring-start-date');
+      const weeksSelect = document.getElementById('recurring-duration-weeks');
+      if (!startInput || !startInput.value) return;
+
+      const baseDate = new Date(startInput.value + 'T00:00:00');
+      const weeksCount = weeksSelect ? parseInt(weeksSelect.value) || 2 : 2;
+
+      const activeDayButtons = Array.from(document.querySelectorAll('#recurring-weekdays-group .btn-weekday-check.active'));
+      const targetDays = activeDayButtons.map(btn => parseInt(btn.getAttribute('data-day')));
+
+      function formatYMD(d) {
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return `${y}-${m}-${day}`;
+      }
+
+      for (let dayOffset = 0; dayOffset <= weeksCount * 7; dayOffset++) {
+        const checkD = new Date(baseDate);
+        checkD.setDate(baseDate.getDate() + dayOffset);
+        if (targetDays.includes(checkD.getDay())) {
+          copyTargetDatesSet.add(formatYMD(checkD));
+        }
+      }
+      renderCopyTargetDatesTags();
+    }
+
+    function updateCopySummary() {
+      const selectedLessons = Array.from(document.querySelectorAll('.copy-lesson-item-check:checked'));
+      const lessonsPerDay = selectedLessons.length;
+      const targetDaysCount = copyTargetDatesSet.size;
+      const totalNew = lessonsPerDay * targetDaysCount;
+
+      const summaryHint = document.getElementById('copy-total-lessons-count');
+      if (summaryHint) {
+        summaryHint.textContent = totalNew;
+      }
+    }
+
+    function executeBatchCopySchedule() {
+      const sourceSelect = document.getElementById('copy-source-date-select');
+      const srcDate = sourceSelect ? sourceSelect.value : '';
+      if (!srcDate) {
+        alert('请选择源模板日期！');
+        return;
+      }
+
+      const allLessons = getLessons();
+      const srcLessons = allLessons.filter(l => l.date === srcDate);
+      if (srcLessons.length === 0) {
+        alert('该源日期没有可复制的课程！');
+        return;
+      }
+
+      const checkedLessonBoxes = Array.from(document.querySelectorAll('.copy-lesson-item-check:checked'));
+      if (checkedLessonBoxes.length === 0) {
+        alert('请至少勾选一节要复制的课程！');
+        return;
+      }
+      const checkedIds = checkedLessonBoxes.map(cb => cb.getAttribute('data-id'));
+      const lessonsToCopy = srcLessons.filter(l => checkedIds.includes(l.id));
+
+      if (copyTargetDatesSet.size === 0) {
+        alert('请至少添加一个目标日期！');
+        return;
+      }
+
+      const skipCheckEl = document.getElementById('copy-skip-if-exists');
+      const skipIfExists = skipCheckEl ? skipCheckEl.checked : true;
+      let newGeneratedLessons = [];
+      let skippedCount = 0;
+
+      copyTargetDatesSet.forEach(targetDate => {
+        const existingSubjects = allLessons.filter(l => l.date === targetDate).map(l => l.subject);
+
+        lessonsToCopy.forEach(template => {
+          if (skipIfExists && existingSubjects.includes(template.subject)) {
+            skippedCount++;
+            return;
+          }
+
+          const newId = 'les-' + Date.now() + '-' + Math.random().toString(36).substring(2, 7);
+          newGeneratedLessons.push({
+            id: newId,
+            subject: template.subject,
+            date: targetDate,
+            time: template.time || '14:00',
+            duration: template.duration || 2,
+            unitPrice: template.unitPrice || 250,
+            fee: template.fee || (template.duration * template.unitPrice),
+            teacher: template.teacher || '',
+            content: template.content ? `[复制自${srcDate}] ${template.content}` : `[复制自${srcDate}]`,
+            status: 'unpaid',
+            settledDate: null,
+            payMethod: null,
+            settleBatch: null
+          });
+        });
+      });
+
+      if (newGeneratedLessons.length === 0) {
+        alert(`未生成任何新课程（可能目标日期均已有相同科目且开启了防重复跳过）。跳过 ${skippedCount} 门重复课程。`);
+        return;
+      }
+
+      const updatedLessons = allLessons.concat(newGeneratedLessons);
+      saveLessons(updatedLessons);
+
+      closeCopyScheduleModal();
+      renderAll();
+      showToast(`🎉 成功一键复制并生成 ${newGeneratedLessons.length} 节新课程！${skippedCount > 0 ? `(自动跳过 ${skippedCount} 门重复)` : ''}`);
+    }
+    function exportUnifiedData() {
+      const backup = {
+        exportTime: new Date().toISOString(),
+        version: 'V2',
+        subjects: getSubjects(),
+        lessons: getLessons(),
+        healthCheckins: getHealthCheckins()
+      };
+
+      const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `owen_schedule_fee_tracker_backup_v2_${getTodayString()}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('全部对账与打卡数据已导出备份');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-message');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => { toast.classList.remove('show'); }, 2500);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/[&<>"']/g, function(m) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
+      });
+    }
+
+    function renderAll() {
+      renderSubjectsConfig();
+      renderTutoringCalendar();
+      updateTutoringStats();
+      renderTutoringTable();
+      renderHealthCalendar();
+      updateHealthStats();
+      renderHealthHistory();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const now = new Date();
+      currentTutoringYear = now.getFullYear();
+      currentTutoringMonth = now.getMonth() + 1;
+      currentHealthYear = now.getFullYear();
+      currentHealthMonth = now.getMonth() + 1;
+      renderAll();
+    });
+  </script>
+</body>
+</html>

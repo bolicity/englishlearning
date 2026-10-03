@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>小红书热门留学生避坑指南 & 选课干货全景库 V3 | 聚焦英国 A-Level 与新加坡留学深造</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-hover: #CBD5E1;
+      
+      --text-main: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      
+      --brand-red: #FF2442;
+      --brand-red-hover: #E01D38;
+      --brand-red-light: #FFF1F2;
+      --brand-red-border: #FECDD3;
+
+      --uk-blue: #1E40AF;
+      --uk-blue-light: #EFF6FF;
+      --uk-blue-border: #BFDBFE;
+
+      --sg-teal: #0D9488;
+      --sg-teal-light: #F0FDFA;
+      --sg-teal-border: #99F6E4;
+
+      --finance-green: #059669;
+      --finance-green-light: #ECFDF5;
+      --finance-green-border: #A7F3D0;
+
+      --warn-amber: #D97706;
+      --warn-amber-light: #FFFBEB;
+      --warn-amber-border: #FDE68A;
+
+      --danger-rose: #E11D48;
+      --danger-rose-light: #FFF1F2;
+      --danger-rose-border: #FECDD3;
+
+      --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 顶部商务导航 */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-xs);
+    }
+
+    .nav-container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--brand-red) 0%, #FF5A79 100%);
+      color: #FFFFFF;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(255, 36, 66, 0.25);
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--brand-red);
+      letter-spacing: -0.02em;
+    }
+
+    .brand-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-subtle {
+      background: var(--bg-subtle);
+      border-color: var(--border-color);
+      color: var(--text-secondary);
+    }
+    .btn-subtle:hover {
+      background: #E2E8F0;
+      color: var(--text-main);
+    }
+
+    .btn-red {
+      background: var(--brand-red);
+      color: #FFFFFF;
+    }
+    .btn-red:hover {
+      background: var(--brand-red-hover);
+      box-shadow: 0 2px 4px rgba(255, 36, 66, 0.25);
+    }
+
+    /* 页面主要容器 */
+    .container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Hero 大横幅 */
+    .hero-banner {
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFF5F5 45%, #F0F9FF 100%);
+      border: 1px solid #FFE4E6;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-badge-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.85rem;
+      background: var(--brand-red);
+      color: #FFFFFF;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      box-shadow: 0 2px 4px rgba(255, 36, 66, 0.2);
+    }
+
+    .hero-badge-sub {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.75rem;
+      background: #EFF6FF;
+      color: #1E40AF;
+      border: 1px solid #BFDBFE;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #881337;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title { font-size: 2.7rem; }
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 1050px;
+      line-height: 1.7;
+    }
+
+    /* 数据概览指标条 */
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    @media (min-width: 900px) {
+      .metrics-bar { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .metric-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.25rem;
+      box-shadow: var(--shadow-xs);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .metric-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      flex-shrink: 0;
+    }
+
+    .metric-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .metric-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .metric-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* 快捷分类导航筛选栏 (Sticky Subnav) */
+    .filter-subnav {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      overflow-x: auto;
+      box-shadow: var(--shadow-xs);
+      position: sticky;
+      top: 65px;
+      z-index: 40;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .filter-btn:hover {
+      background: #E2E8F0;
+      color: var(--text-main);
+    }
+
+    .filter-btn.active {
+      background: var(--brand-red);
+      color: #FFFFFF;
+      box-shadow: 0 1px 3px rgba(255, 36, 66, 0.2);
+    }
+
+    /* 搜索栏与过滤工具 */
+    .search-filter-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+      background: #FFFFFF;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+
+    .search-input-wrap {
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+    }
+
+    .search-input-wrap input {
+      width: 100%;
+      padding: 0.6rem 1rem 0.6rem 2.4rem;
+      font-size: 0.88rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .search-input-wrap input:focus {
+      border-color: var(--brand-red);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* 大板块外框 (Module Card) */
+    .module-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .module-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .module-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .module-icon-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      flex-shrink: 0;
+    }
+
+    .module-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .module-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* 网格布局 */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 860px) {
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    @media (min-width: 768px) {
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1080px) {
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 640px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    /* 小红书笔记卡片风格 (Red Note Card) */
+    .note-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      box-shadow: var(--shadow-xs);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      position: relative;
+    }
+
+    .note-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--brand-red-border);
+    }
+
+    .note-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .note-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .tag-red { background: #FFF1F2; color: #E11D48; border: 1px solid #FECDD3; }
+    .tag-blue { background: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE; }
+    .tag-purple { background: #F3E8FF; color: #7C3AED; border: 1px solid #DDD6FE; }
+    .tag-teal { background: #F0FDFA; color: #0D9488; border: 1px solid #99F6E4; }
+    .tag-gold { background: #FEF3C7; color: #D97706; border: 1px solid #FDE68A; }
+    .tag-green { background: #ECFDF5; color: #059669; border: 1px solid #A7F3D0; }
+
+    .note-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.45;
+    }
+
+    .note-content {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .note-content strong {
+      color: #0F172A;
+    }
+
+    .note-content p {
+      margin-bottom: 0.5rem;
+    }
+    .note-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .note-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: auto;
+      padding-top: 0.65rem;
+      border-top: 1px dashed var(--border-color);
+    }
+
+    .note-likes {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--brand-red);
+      font-weight: 600;
+    }
+
+    /* 商务数据对照表格 */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: #FFFFFF;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      text-align: left;
+    }
+
+    .data-table th {
+      background: #F8FAFC;
+      color: var(--text-secondary);
+      font-weight: 700;
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    .data-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .data-table tr:hover td {
+      background: #F8FAFC;
+    }
+
+    /* 警示与高压红线 Callout 框 */
+    .alert-callout {
+      display: flex;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius-md);
+      border: 1px solid;
+    }
+
+    .alert-danger {
+      background: #FFF1F2;
+      border-color: #FECDD3;
+      color: #9F1239;
+    }
+
+    .alert-warn {
+      background: #FFFBEB;
+      border-color: #FDE68A;
+      color: #92400E;
+    }
+
+    .alert-info {
+      background: #EFF6FF;
+      border-color: #BFDBFE;
+      color: #1E40AF;
+    }
+
+    .alert-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .alert-body h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .alert-body p {
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    /* 折叠手风琴 FAQ (Accordion) */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: #FFFFFF;
+      overflow: hidden;
+      transition: border-color 0.15s ease;
+    }
+
+    .faq-item:hover {
+      border-color: #CBD5E1;
+    }
+
+    .faq-header {
+      padding: 1.1rem 1.25rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      user-select: none;
+    }
+
+    .faq-header:hover {
+      background: #F8FAFC;
+    }
+
+    .faq-arrow {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      transition: transform 0.2s ease;
+    }
+
+    .faq-item.active .faq-arrow {
+      transform: rotate(180deg);
+      color: var(--brand-red);
+    }
+
+    .faq-content {
+      padding: 0 1.25rem 1.1rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      display: none;
+      border-top: 1px solid #F1F5F9;
+      background: #FAFAFA;
+    }
+
+    .faq-item.active .faq-content {
+      display: block;
+    }
+
+    /* 留学生预算计算卡片 */
+    .budget-calc-box {
+      background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+      border: 1px solid #BFDBFE;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .budget-options {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .budget-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background: #FFFFFF;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .budget-btn.active {
+      background: var(--uk-blue);
+      color: white;
+      border-color: var(--uk-blue);
+    }
+
+    .budget-result-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .budget-result-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .budget-result-item .val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--finance-green);
+      margin-top: 4px;
+    }
+
+    /* 行李清单 Checkbox 列表 */
+    .pack-checklist {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .pack-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 0.65rem 0.85rem;
+      background: #F8FAFC;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    .pack-item input {
+      margin-top: 3px;
+      cursor: pointer;
+    }
+
+    /* 页面 Footer */
+    footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部粘性导航 -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <div class="brand-logo">小红书</div>
+        <div>
+          <div class="brand-title">小红书留学生全景避坑指南 & 选课干货库 V3</div>
+          <div class="brand-subtitle">汇集一线万名留学生笔记 · 英国 A-Level/G5 与新加坡公私立留学全维度拆解</div>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <a href="../alevel/alevel-guide-V2.html" class="btn btn-subtle">
+          📚 A-Level 学科辅导
+        </a>
+        <a href="../tracker/unified-tracker-V10.html" class="btn btn-subtle">
+          📊 课消费用结算中心
+        </a>
+        <a href="../index.html" class="btn btn-red">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          返回学习主中心
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Hero 大横幅 -->
+    <section class="hero-banner">
+      <div class="hero-badge-wrap">
+        <span class="hero-badge">🔥 小红书留学生爆款干货 · V3 豪华全景版</span>
+        <span class="hero-badge-sub">🇬🇧 英国 G5 冲刺</span>
+        <span class="hero-badge-sub">🇸🇬 新加坡公立与私立</span>
+        <span class="hero-badge-sub">⚖️ 移民局出勤红线</span>
+        <span class="hero-badge-sub">💰 开销精算器</span>
+      </div>
+      <h1 class="hero-title">万千学长学姐真实踩坑实录：A-Level 选课心法、新加坡法律红线与生活全景指南</h1>
+      <p class="hero-desc">
+        本库拒绝中介画饼与虚假宣传！系统整理小红书平台上万条留英留新学长学姐的高赞避坑笔记、考试局刷分策略、大学官方 Entry Requirements、移民局出勤率红线、海关违禁禁令与生活租房真实开销，助你在升学与留学路上每一步都走得踏实精准。
+      </p>
+
+      <!-- 核心指标统计卡片 -->
+      <div class="metrics-bar">
+        <div class="metric-card">
+          <div class="metric-icon-box" style="background:#FFF1F2; color:#E11D48;">📕</div>
+          <div class="metric-info">
+            <span class="metric-num" style="color:#E11D48;">32+ 篇</span>
+            <span class="metric-label">小红书高赞避雷笔记精选</span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon-box" style="background:#EFF6FF; color:#1E40AF;">🎯</div>
+          <div class="metric-info">
+            <span class="metric-num" style="color:#1E40AF;">14 个</span>
+            <span class="metric-label">G5 热门专业选课搭配方案</span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon-box" style="background:#F0FDFA; color:#0D9488;">🚨</div>
+          <div class="metric-info">
+            <span class="metric-num" style="color:#0D9488;">10 条</span>
+            <span class="metric-label">新加坡 ICA 法律出勤高压红线</span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon-box" style="background:#ECFDF5; color:#059669;">💷</div>
+          <div class="metric-info">
+            <span class="metric-num" style="color:#059669;">双城对比</span>
+            <span class="metric-label">英新留学生真实开销精算器</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 快捷分类锚点与搜索栏 -->
+    <div class="filter-subnav">
+      <a href="#sec-uk-alevel" class="filter-btn active" onclick="setActiveNav(this)">🇬🇧 英国 A-Level 选课与 G5 避坑</a>
+      <a href="#sec-exam-boards" class="filter-btn" onclick="setActiveNav(this)">📊 爱德思 vs CIE 考试局刷分</a>
+      <a href="#sec-sg-study" class="filter-btn" onclick="setActiveNav(this)">🇸🇬 新加坡公私立升学真相</a>
+      <a href="#sec-legal-warnings" class="filter-btn" onclick="setActiveNav(this)">🚨 移民局 90% 出勤与法律红线</a>
+      <a href="#sec-budget-calc" class="filter-btn" onclick="setActiveNav(this)">💰 英新真实开销账单精算</a>
+      <a href="#sec-luggage-checklist" class="filter-btn" onclick="setActiveNav(this)">🧳 行李打包与海关禁带黑名单</a>
+      <a href="#sec-faq-accordion" class="filter-btn" onclick="setActiveNav(this)">❓ 小红书高频 FAQ</a>
+    </div>
+
+    <!-- 动态搜索与过滤工具 -->
+    <div class="search-filter-box">
+      <div class="search-input-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="live-search-input" placeholder="输入关键词快速检索（如：MAT笔试、软科目、出勤率、租房、爱德思刷分、违禁品）..." onkeyup="filterNotesBySearch()">
+      </div>
+      <div style="font-size:0.85rem; color:var(--text-muted);">
+        提示：输入关键词可即时高亮与过滤全站避坑笔记
+      </div>
+    </div>
+
+
+    <!-- ============================================================== -->
+    <!-- 模块一：🇬🇧 英国 A-Level 选课心法与 G5 冲刺爆款笔记               -->
+    <!-- ============================================================== -->
+    <section class="module-card" id="sec-uk-alevel">
+      <div class="module-header">
+        <div class="module-title-group">
+          <div class="module-icon-badge" style="background:#EFF6FF; color:#1E40AF;">🇬🇧</div>
+          <div>
+            <h2 class="module-title">英国留学 & A-Level 选课与 G5 冲刺全景避坑</h2>
+            <p class="module-desc">罗素集团名校选课黑白名单 · 热门专业选课搭配矩阵 · 拒绝“容易拿高分的软科目”陷阱</p>
+          </div>
+        </div>
+        <span class="note-tag tag-blue">牛津 · 剑桥 · 帝国理工 · LSE · UCL 官方认可指南</span>
+      </div>
+
+      <!-- 选课硬核白名单与软科目黑名单对照表 -->
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 18%;">专业方向</th>
+              <th style="width: 32%;">推荐黄金搭配 (核心硬科目 Facilitating Subjects)</th>
+              <th style="width: 25%;">绝对避坑/不予认可科目</th>
+              <th style="width: 25%;">小红书学长核心忠告</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>计算机科学 (CS)</strong></td>
+              <td><span class="note-tag tag-green">数学 + 进阶数学 (必选)</span> + 物理 / 化学</td>
+              <td>计算机科学单科不可替代进阶数学；媒体研究、商务</td>
+              <td>牛剑与 IC 招生官明示：<strong>进阶数学 (Further Maths)</strong> 重要性甚至超过 A-Level CS 本身！没学进阶数学基本首轮被筛。</td>
+            </tr>
+            <tr>
+              <td><strong>经济与金融 (Econ/Finance)</strong></td>
+              <td><span class="note-tag tag-green">数学 + 进阶数学</span> + 经济 + 历史/物理/哲学</td>
+              <td>商科 (Business Studies 与 Economics 不能同时选，被视作重叠)</td>
+              <td>申请 LSE 纯经济专业，数学必须是 A*，且必须体现深度逻辑写作能力（如经济+历史），单选商务等于慢性自杀。</td>
+            </tr>
+            <tr>
+              <td><strong>工程与自然科学 (Engineering)</strong></td>
+              <td><span class="note-tag tag-green">数学 + 物理</span> + 进阶数学 / 化学</td>
+              <td>摄影、设计与技术、心理学作为前三门核心</td>
+              <td>剑桥与帝国理工工程系必考 <strong>ESAT/PAT 笔试</strong>，高一就必须夯实牛顿力学与微积分运算。</td>
+            </tr>
+            <tr>
+              <td><strong>医学与生物科学 (Medicine)</strong></td>
+              <td><span class="note-tag tag-green">化学 (绝对核心) + 生物</span> + 数学 / 物理</td>
+              <td>任何软文科科目</td>
+              <td>英国医学申请对化学的要求高于一切，哪怕生物再好，没有 A-Level 化学直接一票否决！外加 UCAT 高分与志愿者时长。</td>
+            </tr>
+            <tr>
+              <td><strong>人文与社科/法律 (Law/PPE)</strong></td>
+              <td><span class="note-tag tag-green">英国文学 + 历史</span> + 数学 / 哲学 / 政治</td>
+              <td>通识教育 (General Studies)、批判性思维 (Critical Thinking)</td>
+              <td>法律本科不要求高中学过法律，但极度看重<strong>长篇批判性学术写作</strong>（Essay-writing）能力。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 爆款小红书笔记卡片 6 篇 -->
+      <div class="grid-3" id="uk-notes-grid">
+        <!-- 笔记 1 -->
+        <div class="note-card" data-keywords="软科目 选课 误区 艺术 媒体研究 LSE 牛津">
+          <div class="note-top-bar">
+            <span class="note-tag tag-red">🔥 选课误区大曝光</span>
+            <span class="note-likes">❤️ 1.4w 赞</span>
+          </div>
+          <div class="note-title">千万别因为“好拿分”盲目选软科目！</div>
+          <div class="note-content">
+            <p><strong>小红书真实痛点</strong>：不少同学听信某些机构宣传选了媒体研究、摄影等所谓“好拿 A*”的科目，结果到高三 UCAS 递交 LSE 和牛津申请时，发现大学官网上白纸黑字注明属于“Non-preferred Subjects”（不偏好软科目）！直接被拒之门外。</p>
+            <p><strong>避坑建议</strong>：罗素集团大学招生办公室首要看重的是 Facilitating Subjects（硬核基础科目：数学、进阶数学、物理、化学、生物、历史、英国文学、经济）。哪怕 4 门里选了 1 门软学科，也必须保证另外 3 门是绝对硬科目！</p>
+          </div>
+          <div class="note-footer">
+            <span>作者：留英四年全奖学姐</span>
+            <span>来源：小红书真实选课复盘</span>
+          </div>
+        </div>
+
+        <!-- 笔记 2 -->
+        <div class="note-card" data-keywords="G5 笔试 附加笔试 STEP MAT PAT TMUA 面试">
+          <div class="note-top-bar">
+            <span class="note-tag tag-purple">🎓 附加笔试淘汰赛</span>
+            <span class="note-likes">❤️ 9,800+ 赞</span>
+          </div>
+          <div class="note-title">单靠 A-Level 4个A* 已经根本进不了牛剑 G5！</div>
+          <div class="note-content">
+            <p><strong>残酷真相</strong>：近几年申牛剑和帝国理工的中国学生，几乎人手 3-4 个 A* 预估分，预估分已经通货膨胀到失去区分度！真正淘汰 70% 申请者的是 <strong>秋季附加笔试</strong>（MAT、PAT、TMUA、ESAT、STEP）。</p>
+            <p><strong>备考节奏</strong>：高二升高三的暑假必须停止纯刷课本题，全面转向大学附加笔试历年真题集训。MAT/PAT 侧重思维的非常规跳跃，绝不是套公式就能解出的！</p>
+          </div>
+          <div class="note-footer">
+            <span>作者：剑桥数学系在读学长</span>
+            <span>来源：G5笔试实战复盘</span>
+          </div>
+        </div>
+
+        <!-- 笔记 3 -->
+        <div class="note-card" data-keywords="PS 个人陈述 文书 学术活动 超学科阅读 竞赛">
+          <div class="note-top-bar">
+            <span class="note-tag tag-blue">📝 文书 PS 避雷</span>
+            <span class="note-likes">❤️ 8,200+ 赞</span>
+          </div>
+          <div class="note-title">文书千万别写“我从小热爱”与初中奖项！</div>
+          <div class="note-content">
+            <p><strong>中介最爱写的废话文书</strong>：“我自幼对计算机充满好奇”、“初中曾担任学生会主席”……在英国教授眼里全部是 0 分垃圾信息！</p>
+            <p><strong>高分 PS 黄金结构</strong>：80% 篇幅必须是 <strong>Super-curricular（超学科深度学术探索）</strong>！例如：读过哪本前沿学术专著、做过什么 GitHub 开源小项目、对某个定理有何独立思考与验证，用学术证据证明你的热情！</p>
+          </div>
+          <div class="note-footer">
+            <span>作者：IC 计算机录取学姐</span>
+            <span>来源：招生官面对面讲座</span>
+          </div>
+        </div>
+
+        <!-- 笔记 4 -->
+        <div class="note-card" data-keywords="英国租房 押金 骗局 二房东 Council Tax">
+          <div class="note-top-bar">
+            <span class="note-tag tag-gold">🏠 英国租房防骗</span>
+            <span class="note-likes">❤️ 1.8w 赞</span>
+          </div>
+          <div class="note-title">英国租房押金骗局：5周房租上限与官方托管 TDS</div>
+          <div class="note-content">
+            <p><strong>高频被坑</strong>：很多新生被无良二房东忽悠直接微信转账押金，退房时房东以“地毯脏了”、“墙面有划痕”扣光 2,000 镑押金！</p>
+            <p><strong>法律维权武器</strong>：英国法律明确规定，租房押金上限为 5 周房租，且房东必须在 30 天内存入英国政府官方认可的 <strong>TDS/DPS 押金保护机构</strong>！入住前必须录像做超详细 Inventory Check，退租时房东恶意克扣直接在 TDS 发起仲裁必胜！</p>
+          </div>
+          <div class="note-footer">
+            <span>作者：伦敦学联生活部长</span>
+            <span>来源：留英维权实录</span>
+          </div>
+        </div>
+
+        <!-- 笔记 5 -->
+        <div class="note-card" data-keywords="NHS 看病 医疗 GP 注册 预约 生病 救急">
+          <div class="note-top-bar">
+            <span class="note-tag tag-green">🩺 医疗健康指南</span>
+            <span class="note-likes">❤️ 7,500+ 赞</span>
+          </div>
+          <div class="note-title">英国 NHS 免费医疗虽好，但生病自救药单必须备好！</div>
+          <div class="note-content">
+            <p><strong>现实骨感</strong>：到了英国第一件事必须注册社区诊所 GP！但 GP 看病慢众所周知，发烧预约可能排到下周，去急诊 A&E 往往要坐板凳等 6-8 小时。</p>
+            <p><strong>行前自救药箱</strong>：务必随身携带抗生素（医生处方）、退烧布洛芬/扑热息痛、肠胃药、蒙脱石散、抗过敏药。遇到紧急情况拨打 111 咨询医疗热线，生命垂危才打 999！</p>
+          </div>
+          <div class="note-footer">
+            <span>作者：曼大生物医学在读</span>
+            <span>来源：留学生医疗常识</span>
+          </div>
+        </div>
+
+        <!-- 笔记 6 -->
+        <div class="note-card" data-keywords="交通 火车票 Railcard 薅羊毛 伦敦地铁 Oyster">
+          <div class="note-top-bar">
+            <span class="note-tag tag-teal">🚅 出行省钱神技</span>
+            <span class="note-likes">❤️ 1.1w 赞</span>
+          </div>
+          <div class="note-title">每年省下上千镑！16-25 Railcard 绑定 Oyster 地铁卡</div>
+          <div class="note-content">
+            <p><strong>神仙操作</strong>：落地英国立马花 30 镑办一张 <strong>16-25 Young Person Railcard</strong>（全英火车票立减 1/3）！更关键的是：去伦敦任意地铁站人工窗口，将你的 Railcard 与蓝色实体 <strong>Oyster 地铁卡绑定</strong>！</p>
+            <p>绑定后伦敦非高峰期地铁票价直接打 66 折！一趟就能省 1-2 镑，一年省出回国单程机票钱！</p>
+          </div>
+          <div class="note-footer">
+            <span>作者：UCL 资深穷游学长</span>
+            <span>来源：英国省钱羊毛攻略</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================== -->
+    <!-- 模块二：📊 考试局横向对比与刷分策略 (Edexcel vs CIE vs AQA)     -->
+    <!-- ============================================================== -->
+    <section class="module-card" id="sec-exam-boards">
+      <div class="module-header">
+        <div class="module-title-group">
+          <div class="module-icon-badge" style="background:#F3E8FF; color:#7C3AED;">📊</div>
+          <div>
+            <h2 class="module-title">三大主流考试局横向对比与小红书刷分绝活</h2>
+            <p class="module-desc">爱德思 (Edexcel) 模块化单单元补考 vs 剑桥 CIE 线性一卷定乾坤 · 理科考生救命指南</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 15%;">考试局</th>
+              <th style="width: 20%;">考试形式与模块机制</th>
+              <th style="width: 25%;">出题风格与难度特点</th>
+              <th style="width: 20%;">考试季与补考机会</th>
+              <th style="width: 20%;">小红书高赞建议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:#2563EB;">爱德思 (Edexcel IAL)</strong></td>
+              <td><strong>模块化考试 (Modular)</strong>：将整门课拆分为 6 个 Unit。每个单元单独出分，按 UMS 标分汇总。</td>
+              <td>理科重基础步骤，大题逻辑环环相扣，步骤分给得规范细致；文字量相对友好。</td>
+              <td>一年 <strong>3 次考试季</strong>（1月、5/6月、10/11月）！</td>
+              <td><strong>理科冲 A* 神器！</strong>哪一个单元考砸了，下个考试季单补这一个 Unit 即可，前面拿高分的单元成绩永久有效保留！安全感拉满。</td>
+            </tr>
+            <tr>
+              <td><strong style="color:#7C3AED;">剑桥 CIE (Cambridge)</strong></td>
+              <td><strong>线性或分阶段考试 (Linear/Staged)</strong>：AS 卷与 A2 卷综合计分，不可以单独重考某个小题型。</td>
+              <td>题型灵活深奥，理科思维跨度大，生僻词汇量多；实验题（Paper 3）要求真实动手操作或详尽设计。</td>
+              <td>一年 <strong>2 次考试季</strong>（5/6月、10/11月）。</td>
+              <td>传统公立国际部最常见。学术认可度极高，但容错率较低，单次考场失误可能导致整科由 A* 滑落至 B，心理压力较大。</td>
+            </tr>
+            <tr>
+              <td><strong style="color:#059669;">牛津 AQA (OxfordAQA)</strong></td>
+              <td>模块化考试。题目设计强调对母语非英语考生的语言公平性（Language fair）。</td>
+              <td>题干阅读障碍小，图表与实验分析结合紧密，难度适中。</td>
+              <td>一年 <strong>2 次考试季</strong>（1月、5/6月）。</td>
+              <td>近年国内考点快速增加，非常适合英语非母语、物理化学数学功底扎实的学生突击冲刺。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="alert-callout alert-info">
+        <div class="alert-icon">💡</div>
+        <div class="alert-body">
+          <h4>小红书学长“混考刷分”救命操作：</h4>
+          <p>
+            如果学校统一考的是 CIE，但你高二 10 月模考中某门物理/数学失误未达到预估 A*，可以以<strong>社会考生身份报名 Edexcel 相应科目的 IAL 考试</strong>！英国大学在 UCAS 系统中接受不同考试局成绩并存，只要成绩单合规认证即可化解单局失误危机。
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================== -->
+    <!-- 模块三：🇸🇬 新加坡留学升学与公私立全真避坑指南                   -->
+    <!-- ============================================================== -->
+    <section class="module-card" id="sec-sg-study">
+      <div class="module-header">
+        <div class="module-title-group">
+          <div class="module-icon-badge" style="background:#F0FDFA; color:#0D9488;">🇸🇬</div>
+          <div>
+            <h2 class="module-title">新加坡留学全流程避坑指南 · 公立名校与优质私立真相</h2>
+            <p class="module-desc">NUS/NTU/SMU 申请门槛 · 私立大学 EduTrust 认证与回国留服双重核验 · 跳板欧美名校路径</p>
+          </div>
+        </div>
+        <span class="note-tag tag-teal">教育部涉外监管网白名单 · 亚洲留学首选安全港</span>
+      </div>
+
+      <!-- 公立与顶尖私立全景阶梯对比 -->
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 18%;">院校梯队</th>
+              <th style="width: 25%;">代表名校 / 合作海外大学</th>
+              <th style="width: 32%;">真实学术门槛 (A-Level / 高考)</th>
+              <th style="width: 25%;">留学生避坑核心点</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>公立第一梯队 (顶尖名校)</strong></td>
+              <td><strong>新加坡国立大学 (NUS)</strong><br><strong>南洋理工大学 (NTU)</strong></td>
+              <td>A-Level: 至少 <strong>3A*~4A*</strong>；高考: 超过一本线 80-100 分以上 + 雅思 7.0 (各小分6.5)；通常附带面试。</td>
+              <td>学霸神仙打架，竞争激烈程度不亚于清北或英国 G5。若签约 <strong>Tuition Grant (TG)</strong> 享学费补贴，毕业后<strong>必须留新工作 3 年</strong>履行服务期。</td>
+            </tr>
+            <tr>
+              <td><strong>公立第二梯队 (特色强校)</strong></td>
+              <td><strong>新加坡管理大学 (SMU)</strong><br><strong>新加坡科技设计大学 (SUTD)</strong></td>
+              <td>A-Level: AAA~A*AA；高考超一本线 50-80 分；注重全英文即兴商业案例面试或设计作品集。</td>
+              <td>SMU 采用美式沃顿商学院研讨班模式，互动与 Presentation 极其高压，性格内向不爱发言的同学需慎重适应。</td>
+            </tr>
+            <tr>
+              <td><strong>顶尖私立 (海外名校直属学位)</strong></td>
+              <td>
+                <strong>新加坡管理学院 (SIM)</strong> 合作：英国伯明翰大学、伦敦大学 (UOL/LSE指导)、澳洲 RMIT；<br>
+                <strong>Kaplan 新加坡</strong> 合作：爱尔兰都柏林大学 (UCD)
+              </td>
+              <td>高二结业或高中毕业；高考达本科线或会考全及格；雅思 5.5~6.0（可配语言班）。</td>
+              <td><strong>必须认准 EduTrust 4年期认证</strong>！所颁发学位证书与英国/澳洲本校完全一模一样，且<strong>中国教育部留服中心 100% 给予认证</strong>。宽进严出，挂科率不低！</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 新加坡爆款小红书笔记卡片 6 篇 -->
+      <div class="grid-3" id="sg-notes-grid">
+        <!-- 笔记 1 -->
+        <div class="note-card" data-keywords="EduTrust 野鸡大学 留服认证 新加坡私立 认证资质">
+          <div class="note-top-bar">
+            <span class="note-tag tag-red">⚠️ 防野鸡大学陷阱</span>
+            <span class="note-likes">❤️ 2.1w 赞</span>
+          </div>
+          <div class="note-title">去新加坡读私立大学，这两张底牌必须查死！</div>
+          <div class="note-content">
+            <p><strong>避坑核心</strong>：新加坡曾关闭过不少小型私立机构。挑选私立大学有且仅看两点：</p>
+            <p>1. 新加坡私立教育理事会官方颁发的 <strong>EduTrust 4年期优质认证</strong>（若只有临时 provisional 1年期的一概不选）；</p>
+            <p>2. 登录<strong>中国教育部涉外监管网与中留服官网</strong>，查询该机构合作的海外文凭是否在“中留服认证白名单”中！只有在名单内，回国考公考编、进国企才能做学历认证！</p>
+          </div>
+          <div class="note-footer">
+            <span>作者：狮城留学早知道</span>
+            <span>来源：留服认证防雷干货</span>
+          </div>
+        </div>
+
+        <!-- 笔记 2 -->
+        <div class="note-card" data-keywords="新加坡租房 HDB 组屋 公寓 Condo 二房东 印花税">
+          <div class="note-top-bar">
+            <span class="note-tag tag-gold">🏡 新加坡租房避雷</span>
+            <span class="note-likes">❤️ 1.6w 赞</span>
+          </div>
+          <div class="note-title">组屋 HDB vs 公寓 Condo：新加坡租房的六大陷阱！</div>
+          <div class="note-content">
+            <p><strong>陷阱一：非法二房东</strong>。新加坡法律严禁私自将整套组屋违规转租给超过上限的人数（HDB 通常限 6 人）。租房必须要求屋主出示新加坡建屋局 (HDB) 批准信，否则一旦被查直接被扫地出门！</p>
+            <p><strong>陷阱二：印花税 Stamp Duty</strong>。正规租房合同签署后，必须在 IRAS 税务局官网缴纳印花税（通常几十新币），没有印花税的合同在新加坡法律上无效，押金被吞无法立案维权！</p>
+          </div>
+          <div class="note-footer">
+            <span>作者：坡岛十年租房老手</span>
+            <span>来源：租房血泪实录</span>
+          </div>
+        </div>
+
+        <!-- 笔记 3 -->
+        <div class="note-card" data-keywords="新加坡兼职 打工 违法 遣返 签证取消 移民局">
+          <div class="note-top-bar">
+            <span class="note-tag tag-red">🚨 绝不可碰红线</span>
+            <span class="note-likes">❤️ 2.8w 赞</span>
+          </div>
+          <div class="note-title">千万别在私立大学读书期间偷偷做奶茶店兼职！</div>
+          <div class="note-content">
+            <p><strong>高危警报</strong>：很多人以为去餐馆端盘子、做中介代购赚生活费很励志，但在新加坡，<strong>私立大学国际学生严禁校外打工</strong>！这是绝对高压红线！</p>
+            <p>人力部 (MOM) 和移民局 (ICA) 会定期便衣突击检查餐饮店和商铺。一旦查出非法打工，直接吊销学生准证、立即遣返出境，并永久进入新加坡黑名单！公立大学每周打工也严格限制在 16 小时以内并需学校审批。</p>
+          </div>
+          <div class="note-footer">
+            <span>作者：新加坡法学硕士学长</span>
+            <span>来源：MOM法规警示</span>
+          </div>
+        </div>
+
+        <!-- 笔记 4 -->
+        <div class="note-card" data-keywords="生活常识 EZ-Link 电话卡 银行开户 DBS OCBC">
+          <div class="note-top-bar">
+            <span class="note-tag tag-blue">💳 落地必备三件套</span>
+            <span class="note-likes">❤️ 9,200+ 赞</span>
+          </div>
+          <div class="note-title">落地新加坡 24 小时内必须办妥的三件事！</div>
+          <div class="note-content">
+            <p>1. <strong>办电话卡</strong>：下飞机在樟宜机场便利店凭护照买 Singtel 或 StarHub SIM 卡，下载官方 App 实名登记；</p>
+            <p>2. <strong>交通卡绑定</strong>：可以用支持海外支付的 Visa/Mastercard 直接刷地铁公交，或买一张 SimplyGo EZ-Link 交通卡；</p>
+            <p>3. <strong>银行开户</strong>：拿 IPA 批文和学校学生卡预约 DBS/POSB 或 OCBC，手机开通 PayNow，出门吃饭无论巴刹还是商场全靠 PayNow 扫码！</p>
+          </div>
+          <div class="note-footer">
+            <span>作者：南大新生导师</span>
+            <span>来源：狮城新手村通关</span>
+          </div>
+        </div>
+
+        <!-- 笔记 5 -->
+        <div class="note-card" data-keywords="Tuition Grant 学费津贴 SO 工作 绑定 新加坡国籍">
+          <div class="note-top-bar">
+            <span class="note-tag tag-teal">💼 学费减免政策 SO</span>
+            <span class="note-likes">❤️ 1.3w 赞</span>
+          </div>
+          <div class="note-title">新加坡政府学费减免 TG 政策：到底该不该签？</div>
+          <div class="note-content">
+            <p><strong>福利与责任</strong>：公立大学录取后可申请 MOE Tuition Grant（学费直接减免近 50%）。但代价是必须签署 <strong>Service Obligation (SO)</strong> 协议，承诺毕业后必须在新加坡注册的公司合法工作满 3 年！</p>
+            <p><strong>避坑思考</strong>：如果打算本科毕业直接去美英读研，或者想立即回国继承家业，违约将面临巨额违约金追偿！若有志于拿新加坡绿卡 PR 和留坡工作，则是天赐良机。</p>
+          </div>
+          <div class="note-footer">
+            <span>作者：国大毕业生</span>
+            <span>来源：MOE政策详解</span>
+          </div>
+        </div>
+
+        <!-- 笔记 6 -->
+        <div class="note-card" data-keywords="饮食 小贩中心 食阁 Hawker 消费税 GST 生活费">
+          <div class="note-top-bar">
+            <span class="note-tag tag-green">🍜 狮城美食与物价</span>
+            <span class="note-likes">❤️ 8,700+ 赞</span>
+          </div>
+          <div class="note-title">在新加坡怎么吃最省？小贩中心 (Hawker) 穷鬼吃法</div>
+          <div class="note-content">
+            <p><strong>省钱秘籍</strong>：千万别天天去商场餐厅（有 10% 服务费 + 9% 消费税 GST）！新加坡真正的平民食堂是遍布组屋楼下和学校的小贩中心与食阁。</p>
+            <p>海南鸡饭、肉胬面、杂菜饭（两荤一素）通常只需 4~6 新币（约合人民币 22~32 元），干净卫生由政府食品安全局统一评级 A/B 级，每天 15 新币就能吃得健康丰盛！</p>
+          </div>
+          <div class="note-footer">
+            <span>作者：吃遍狮城的美食博主</span>
+            <span>来源：小红书美食精算</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================== -->
+    <!-- 模块四：🚨 新加坡移民局出勤率 90% 红线与法律高压线               -->
+    <!-- ============================================================== -->
+    <section class="module-card" id="sec-legal-warnings" style="border-color: #FECDD3;">
+      <div class="module-header">
+        <div class="module-title-group">
+          <div class="module-icon-badge" style="background:#FFF1F2; color:#E11D48;">🚨</div>
+          <div>
+            <h2 class="module-title" style="color:#9F1239;">新加坡高压法律红线与移民局 (ICA) 出勤生死线</h2>
+            <p class="module-desc">出勤率低于 90% 立即撤销签证遣返 · MC 医疗病假条正规开具流程 · 严禁携带电子烟与口香糖</p>
+          </div>
+        </div>
+        <span class="note-tag tag-red">新加坡移民与关卡局 (ICA) & 卫生部 (MOH) 官方严管条例</span>
+      </div>
+
+      <!-- 出勤率与 MC 核心警示 Callout -->
+      <div class="alert-callout alert-danger">
+        <div class="alert-icon">⚠️</div>
+        <div class="alert-body">
+          <h4>出勤率 90% 是留学生的生命线！任何理由缺席必须有正规合法 MC！</h4>
+          <p>
+            新加坡移民厅 (ICA) 对持学生准证 (STP) 的国际学生执行近乎冷酷的制度考核：<strong>月出勤率必须达到 90% 以上（语言班及部分私校要求 95%）！</strong>
+            一旦出勤率连续亮红灯，系统将自动向 ICA 上报，学校没有任何权限包庇，后果是<strong>学生签证直接被注销并限期遣返离境，且终身极难再次获批新加坡签证</strong>！
+          </p>
+        </div>
+      </div>
+
+      <!-- 法律高压线列表 -->
+      <div class="grid-2">
+        <div style="background:#FFFFFF; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.25rem; display:flex; flex-direction:column; gap:0.75rem;">
+          <h3 style="font-size:1.05rem; font-weight:700; color:#E11D48; display:flex; align-items:center; gap:6px;">
+            <span>📋</span> 正规病假单 (MC) 请假保命铁律
+          </h3>
+          <ul style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75; padding-left:1.2rem;">
+            <li><strong>必须去正规注册西医诊所</strong>：必须是由新加坡卫生部 (MOH) 注册的正式诊所或综合医院开出的纸质/电子附带二维码可验证的 MC。</li>
+            <li><strong>国内远程假条无效</strong>：通过国内网购假条或非新加坡本地注册中医开具的非标证明，一律不被学校及 ICA 认可！甚至涉嫌使用虚假文书伪造罪。</li>
+            <li><strong>生病必须当天就诊</strong>：新加坡医生绝不补开“昨天的假条”！感到身体不适必须在缺席课程当天前往诊所就诊开具当日 MC。</li>
+            <li><strong>48小时内上传系统</strong>：拿到的 MC 必须在规定时限内上传学校教务系统，由教务专员核销考勤。</li>
+          </ul>
+        </div>
+
+        <div style="background:#FFFFFF; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.25rem; display:flex; flex-direction:column; gap:0.75rem;">
+          <h3 style="font-size:1.05rem; font-weight:700; color:#D97706; display:flex; align-items:center; gap:6px;">
+            <span>⚖️</span> 绝不可碰的狮城日常严酷刑罚与高额罚款
+          </h3>
+          <ul style="font-size:0.88rem; color:var(--text-secondary); line-height:1.75; padding-left:1.2rem;">
+            <li><strong>电子烟绝对违法</strong>：不仅严禁售卖，<strong>持有或吸食电子烟面临最高 2,000 新币罚款；走私携带入境面临最高 10,000 新币罚款与 6 个月监禁！</strong>千万别抱侥幸心理带入海关。</li>
+            <li><strong>口香糖严禁入境</strong>：除正规戒烟用尼古丁咀嚼胶外，任何商业口香糖严禁携带入境，被查处罚款甚至留案底。</li>
+            <li><strong>乱扔垃圾与吐痰</strong>：初犯罚款 1,000 新币，累犯将被判处<strong>劳改令 (CWO)</strong>，身穿荧光背心在公共海滩扫街示众！</li>
+            <li><strong>蹭别人未加密的 WiFi</strong>：在新加坡蹭网被定性为黑客行为，触犯《计算机滥用与网络安全法》，最高可判 3 年监禁！</li>
+            <li><strong>在地铁/公交内喝水进食</strong>：哪怕喝一口白开水，被巡查员抓到一律开具 500 新币（约合人民币 2,700 元）罚单！</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================== -->
+    <!-- 模块五：💰 英新留学生一年真实开销精算器与对比表                 -->
+    <!-- ============================================================== -->
+    <section class="module-card" id="sec-budget-calc">
+      <div class="module-header">
+        <div class="module-title-group">
+          <div class="module-icon-badge" style="background:#ECFDF5; color:#059669;">💰</div>
+          <div>
+            <h2 class="module-title">留学生一年真实开销账单精算器（英国 vs 新加坡）</h2>
+            <p class="module-desc">拒绝营销忽悠！学费、住宿、饮食、机票与保险逐项拆解 · 动态点击切换测算不同预算档次</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 动态测算交互器 -->
+      <div class="budget-calc-box">
+        <div style="font-weight:700; font-size:1rem; color:var(--text-main);">
+          选择你想测算的留学场景：
+        </div>
+        <div class="budget-options">
+          <button type="button" class="budget-btn active" onclick="switchBudgetScene('uk-london', this)">🇬🇧 英国伦敦地区名校 (UCL/IC/KCL)</button>
+          <button type="button" class="budget-btn" onclick="switchBudgetScene('uk-non-london', this)">🇬🇧 英国非伦敦地区 (曼大/爱丁堡/伯明翰)</button>
+          <button type="button" class="budget-btn" onclick="switchBudgetScene('sg-public', this)">🇸🇬 新加坡公立名校 (NUS/NTU - 有津贴TG)</button>
+          <button type="button" class="budget-btn" onclick="switchBudgetScene('sg-private', this)">🇸🇬 新加坡优质私立 (SIM/Kaplan 本科)</button>
+        </div>
+
+        <div class="budget-result-row">
+          <div class="budget-result-item">
+            <div style="font-size:0.8rem; color:var(--text-muted);">年化学费支出 (折合人民币)</div>
+            <div class="val" id="budget-tuition">¥ 280,000</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;" id="budget-tuition-sub">约 £30,000 /年</div>
+          </div>
+          <div class="budget-result-item">
+            <div style="font-size:0.8rem; color:var(--text-muted);">年住宿租房支出 (En-suite/公寓)</div>
+            <div class="val" id="budget-rent">¥ 160,000</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;" id="budget-rent-sub">约 £350/周 · 48周 (Zone 1-2)</div>
+          </div>
+          <div class="budget-result-item">
+            <div style="font-size:0.8rem; color:var(--text-muted);">年生活饮食交通支出</div>
+            <div class="val" id="budget-living">¥ 85,000</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;" id="budget-living-sub">餐饮+交通+日常开销</div>
+          </div>
+          <div class="budget-result-item" style="background:#FFF1F2; border-color:#FECDD3;">
+            <div style="font-size:0.8rem; color:#9F1239; font-weight:700;">总开销年度预算区间</div>
+            <div class="val" style="color:#E11D48;" id="budget-total">¥ 52 ~ 62 万</div>
+            <div style="font-size:0.75rem; color:#9F1239; margin-top:2px;">丰俭由人基准线</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 详细对比总览表 -->
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>开销类别</th>
+              <th>🇬🇧 英国伦敦地区</th>
+              <th>🇬🇧 英国非伦敦地区</th>
+              <th>🇸🇬 新加坡公立大学 (有津贴)</th>
+              <th>🇸🇬 新加坡私立大学本科</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>学费 (Tuition)</strong></td>
+              <td>£25,000 ~ £38,000/年<br><small>(约 23~35 万 RMB)</small></td>
+              <td>£20,000 ~ £30,000/年<br><small>(约 18~28 万 RMB)</small></td>
+              <td>1.8万~2.5万新币/年<br><small>(约 9.5~13 万 RMB)</small></td>
+              <td>2.0万~2.8万新币/年<br><small>(约 11~15 万 RMB)</small></td>
+            </tr>
+            <tr>
+              <td><strong>住宿 (Accommodation)</strong></td>
+              <td>£280 ~ £450/周<br><small>(约 12~18 万 RMB/年)</small></td>
+              <td>£150 ~ £240/周<br><small>(约 7~10 万 RMB/年)</small></td>
+              <td>校内宿舍 600~900新币/月<br>外租 HDB 900~1,400新币/月</td>
+              <td>外租公寓 Condo/HDB<br>1,200~1,800新币/月 (约 7~10 万 RMB)</td>
+            </tr>
+            <tr>
+              <td><strong>饮食与日常消费</strong></td>
+              <td>£400 ~ £700/月<br><small>(自己做饭可压缩至 £350)</small></td>
+              <td>£300 ~ £500/月<br><small>(物价相对亲民)</small></td>
+              <td>小贩中心 500~800新币/月<br><small>(约 2,700~4,200 RMB/月)</small></td>
+              <td>600~900新币/月<br><small>(餐饮丰富方便)</small></td>
+            </tr>
+            <tr>
+              <td><strong>医保与签证费用</strong></td>
+              <td>IHS 医疗附加费 £776/年 + 签证费</td>
+              <td>IHS 医疗附加费 £776/年 + 签证费</td>
+              <td>学校统一购买基本学生医保 (约100新币)</td>
+              <td>学校统一基本医疗保险 (约80~120新币)</td>
+            </tr>
+            <tr>
+              <td><strong>一年真实总预算</strong></td>
+              <td><strong style="color:#E11D48;">48 万 ~ 60 万 RMB</strong></td>
+              <td><strong style="color:#2563EB;">35 万 ~ 45 万 RMB</strong></td>
+              <td><strong style="color:#059669;">18 万 ~ 25 万 RMB</strong></td>
+              <td><strong style="color:#D97706;">24 万 ~ 32 万 RMB</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <!-- ============================================================== -->
+    <!-- 模块六：🧳 留学生行前行李打包清单与海关禁带黑名单               -->
+    <!-- ============================================================== -->
+    <section class="module-card" id="sec-luggage-checklist">
+      <div class="module-header">
+        <div class="module-title-group">
+          <div class="module-icon-badge" style="background:#FFFBEB; color:#D97706;">🧳</div>
+          <div>
+            <h2 class="module-title">行前行李终极打包清单与海关禁带黑名单</h2>
+            <p class="module-desc">随身必带文件原件 · 随身急救药包 · 海关违禁品黑名单（肉类、中药成分、电子烟）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <!-- 随身证件与必备物品 -->
+        <div style="background:#FFFFFF; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.25rem; display:flex; flex-direction:column; gap:0.75rem;">
+          <h3 style="font-size:1.05rem; font-weight:700; color:#1E40AF; display:flex; align-items:center; gap:6px;">
+            <span>📁</span> 随身公文包（千万不能托运！必须随身携带）
+          </h3>
+          <div class="pack-checklist">
+            <label class="pack-item"><input type="checkbox"> <span>护照原件（有效期大于6个月）</span></label>
+            <label class="pack-item"><input type="checkbox"> <span>签证页 / 英国 BRP 领取信 / 新加坡 IPA Letter</span></label>
+            <label class="pack-item"><input type="checkbox"> <span>大学无条件/条件录取通知书 Offer & CAS 打印件</span></label>
+            <label class="pack-item"><input type="checkbox"> <span>前置高中毕业证 & 成绩单原件及官方英译盖章件</span></label>
+            <label class="pack-item"><input type="checkbox"> <span>雅思/托福官方成绩单原件</span></label>
+            <label class="pack-item"><input type="checkbox"> <span>肺结核体检证明 (TB Test Certificate) / 疫苗证明</span></label>
+            <label class="pack-item"><input type="checkbox"> <span>租房合同打印件 & 宿舍入住确认信</span></label>
+            <label class="pack-item"><input type="checkbox"> <span>英镑/新币现金少量 (建议 500~1,000 用于应急)</span></label>
+            <label class="pack-item"><input type="checkbox"> <span>双币信用卡 (Visa/Mastercard)</span></label>
+            <label class="pack-item"><input type="checkbox"> <span>充电宝 (不可托运，额定能量 &lt;100Wh)</span></label>
+          </div>
+        </div>
+
+        <!-- 严禁携带黑名单 -->
+        <div style="background:#FFF1F2; border:1px solid #FECDD3; border-radius:var(--radius-md); padding:1.25rem; display:flex; flex-direction:column; gap:0.75rem;">
+          <h3 style="font-size:1.05rem; font-weight:700; color:#E11D48; display:flex; align-items:center; gap:6px;">
+            <span>🚫</span> 海关严查与严禁携带物品（被查即销毁或巨额罚款）
+          </h3>
+          <ul style="font-size:0.88rem; color:#9F1239; line-height:1.75; padding-left:1.2rem;">
+            <li><strong>任何肉类及奶制品</strong>：无论真空包装的牛肉干、火腿肠、鸭脖还是肉粽、蛋黄酥，英新海关缉毒犬一闻即出！全部没收并处高额罚款。</li>
+            <li><strong>含麻黄碱/复方甘草成分中药</strong>：复方甘草片、新康泰克、白加黑、鼻炎康等含有违禁镇静/麻黄素成分的中成药，涉嫌走私受管制药物，严重者被立案起诉！</li>
+            <li><strong>电子烟及其配件</strong>：新加坡绝对严禁携带！入境只要包里有电子烟，直接送进警局罚款数千新币，绝无通融余地。</li>
+            <li><strong>假冒伪劣名牌奢侈品</strong>：携带高仿包包或盗版书籍软件，在欧洲海关面临高额侵犯知识产权赔偿金。</li>
+            <li><strong>新鲜水果与植物种子</strong>：未经检验检疫植物严禁入境。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================== -->
+    <!-- 模块七：❓ 小红书留学生最关心的高频十问十答 (FAQ)              -->
+    <!-- ============================================================== -->
+    <section class="module-card" id="sec-faq-accordion">
+      <div class="module-header">
+        <div class="module-title-group">
+          <div class="module-icon-badge" style="background:#EFF6FF; color:#2563EB;">❓</div>
+          <div>
+            <h2 class="module-title">小红书学长学姐高频问答精选 (FAQ)</h2>
+            <p class="module-desc">点击问题展开详细官方解答 · 涵盖英语学术写作、语言班配读、挂科补考与回国留服认证</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-list">
+        <!-- FAQ 1 -->
+        <div class="faq-item active">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span>Q1：英语底子一般，直接出国全英文上课听不懂、Essay 挂科怎么办？</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-content">
+            <p><strong>实战建议</strong>：出国前 3 个月开始，必须针对性训练“学术英语 Academic English”！</p>
+            <p>1. 熟悉本专业的核心词汇和图表描述；</p>
+            <p>2. 上课带上录音笔或使用 Otter.ai / 飞书妙记实时将教授全英录音转写为文字；</p>
+            <p>3. 论文写作必须严格遵守 Harvard / APA 引用格式，坚决避免学术不端抄袭（Plagiarism）。学校图书馆都设有免费的 <strong>Academic Writing Centre</strong>，写完 Essay 可以免费预约老师一对一润色逻辑！</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span>Q2：A-Level 成绩单出来后，如果没达到预估分 Firm Choice 怎么办？</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-content">
+            <p><strong>应急通道 Clearing（补录系统）</strong>：若 8 月出分未达标被第一志愿（Firm）和保底志愿（Insurance）拒绝，UCAS 官方会立即开启 Clearing 系统！</p>
+            <p>此时各大学尚未招满的名额全部公开，你可以直接拨打目标大学招生办热线（Clearing Hotline）报出成绩，很多罗素集团名校（如谢菲尔德、利兹、南安普顿等）依然有机会当场电话下发录取！同时可以立即报名下一个考试季（10月或次年1月）补考翻盘。</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span>Q3：英国读完本科或硕士，怎么留在当地找工作？工签政策如何？</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-content">
+            <p><strong>Graduate Route（PSW 毕业生签证）</strong>：英国政府目前给予正规大学本科及硕士毕业生 <strong>2 年（博士 3 年）的毕业生签证</strong>！在此期间你可以在英国自由全职工作、实习或创业，没有任何行业和最低薪资限制。</p>
+            <p>若在 2 年内找到能提供 Skilled Worker Visa（技术工签）担保资质的英国企业，即可转换为 5 年工签并最终申请英国永居（PR）。</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span>Q4：新加坡私立大学读完后，文凭回国考公、考事业编认不认？</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-content">
+            <p><strong>绝对认可，但前提是必须做中留服认证</strong>！</p>
+            <p>只要你就读的是中国教育部涉外监管网白名单内的高校（如 SIM 合作的伯明翰大学、伦敦大学；Kaplan 合作的爱尔兰都柏林大学），毕业回国均可在<strong>中国教育部留学服务中心 (CSCSE)</strong> 办理国外学历学位认证书！</p>
+            <p>认证书上与国内全日制本科同等效力，完全具备考公务员、考编、进国企央企与一线城市落户资格。</p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span>Q5：留学期间突然遇到心理焦虑或压力过大怎么办？</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-content">
+            <p><strong>学校免费心理支持网络</strong>：英新所有大学都设立了极其完善的 <strong>Wellbeing & Counselling Centre</strong>！</p>
+            <p>你可以完全免费预约持证心理咨询师进行面对面或线上疏导，所有咨询内容严格保密（不会记录在成绩单上）。若因心理原因或身体不适影响考试，心理中心出具的证明可以申请<strong>缓考（Extenuating Circumstances, EC）</strong>，不会被记为挂科！</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- 页面 Footer -->
+  <footer>
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem;">
+      <p style="font-weight: 700; color: var(--text-main);">
+        © 2026 小红书留学生全景避坑指南 & 选课干货库 V3 · 赋能 Owen 升学与国际教育长远规划
+      </p>
+      <p style="font-size: 0.8rem; color: var(--text-muted);">
+        信息来源：英国 UCAS 官方、罗素集团大学招生指引、爱德思与剑桥考试局、新加坡教育部 (MOE) 及移民局 (ICA) 法规、小红书万名留英留新一线留学生真实经验汇编。
+      </p>
+    </div>
+  </footer>
+
+  <!-- 交互脚本 -->
+  <script>
+    // 1. 折叠手风琴 FAQ 切换
+    function toggleFaq(headerEl) {
+      const item = headerEl.parentElement;
+      item.classList.toggle('active');
+    }
+
+    // 2. 导航栏活跃态切换
+    function setActiveNav(navEl) {
+      document.querySelectorAll('.filter-subnav .filter-btn').forEach(btn => btn.classList.remove('active'));
+      navEl.classList.add('active');
+    }
+
+    // 3. 动态预算计算器场景切换
+    const budgetScenes = {
+      'uk-london': {
+        tuition: '¥ 280,000',
+        tuitionSub: '约 £30,000 /年',
+        rent: '¥ 160,000',
+        rentSub: '约 £350/周 · 48周 (Zone 1-2)',
+        living: '¥ 85,000',
+        livingSub: '餐饮+交通+日常开销',
+        total: '¥ 52 ~ 62 万'
+      },
+      'uk-non-london': {
+        tuition: '¥ 230,000',
+        tuitionSub: '约 £25,000 /年',
+        rent: '¥ 95,000',
+        rentSub: '约 £200/周 · 48周',
+        living: '¥ 60,000',
+        livingSub: '餐饮生活较伦敦亲民',
+        total: '¥ 38 ~ 46 万'
+      },
+      'sg-public': {
+        tuition: '¥ 110,000',
+        tuitionSub: '约 2.0万新币/年 (享TG学费津贴)',
+        rent: '¥ 60,000',
+        rentSub: '校内宿舍或HDB合租约 900新币/月',
+        living: '¥ 50,000',
+        livingSub: '小贩中心平民食堂很省',
+        total: '¥ 22 ~ 28 万'
+      },
+      'sg-private': {
+        tuition: '¥ 140,000',
+        tuitionSub: '约 2.5万新币/年 (名校直属学士)',
+        rent: '¥ 90,000',
+        rentSub: '外租公寓或优质组屋约 1,400新币/月',
+        living: '¥ 55,000',
+        livingSub: '餐饮出行非常便利',
+        total: '¥ 28 ~ 35 万'
+      }
+    };
+
+    function switchBudgetScene(sceneKey, btnEl) {
+      document.querySelectorAll('.budget-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+
+      const data = budgetScenes[sceneKey];
+      if (!data) return;
+
+      document.getElementById('budget-tuition').textContent = data.tuition;
+      document.getElementById('budget-tuition-sub').textContent = data.tuitionSub;
+      document.getElementById('budget-rent').textContent = data.rent;
+      document.getElementById('budget-rent-sub').textContent = data.rentSub;
+      document.getElementById('budget-living').textContent = data.living;
+      document.getElementById('budget-living-sub').textContent = data.livingSub;
+      document.getElementById('budget-total').textContent = data.total;
+    }
+
+    // 4. 实时搜索过滤笔记卡片
+    function filterNotesBySearch() {
+      const query = document.getElementById('live-search-input').value.trim().toLowerCase();
+      const allCards = document.querySelectorAll('.note-card');
+
+      allCards.forEach(card => {
+        const text = (card.innerText || '').toLowerCase();
+        const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+        
+        if (!query || text.includes(query) || keywords.includes(query)) {
+          card.style.display = 'flex';
+          if (query) {
+            card.style.borderColor = 'var(--brand-red)';
+            card.style.boxShadow = '0 4px 12px rgba(255, 36, 66, 0.15)';
+          } else {
+            card.style.borderColor = 'var(--border-color)';
+            card.style.boxShadow = 'var(--shadow-xs)';
+          }
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

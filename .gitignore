@@ -12,6 +12,7 @@ Thumbs.db
 *.tmp
 *.log
 .vercel
+.workbuddy/
 
 # Large PDF files exceeding GitHub 50MB/100MB limit
 /daofa/2026.7    八下道法知识梳理.pdf
