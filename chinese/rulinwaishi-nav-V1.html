@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>《儒林外史》核心考点多分支导航中心 (V1)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --border-color: #E2E8F0;
+      --text-primary: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      
+      --brand-red: #B91C1C;
+      --brand-red-bg: #FEF2F2;
+      --brand-red-border: #FEE2E2;
+
+      --brand-blue: #1D4ED8;
+      --brand-blue-bg: #EFF6FF;
+      --brand-blue-border: #DBEAFE;
+
+      --brand-amber: #B45309;
+      --brand-amber-bg: #FFFBEB;
+      --brand-amber-border: #FEF3C7;
+
+      --brand-emerald: #047857;
+      --brand-emerald-bg: #ECFDF5;
+      --brand-emerald-border: #A7F3D0;
+
+      --brand-purple: #7C3AED;
+      --brand-purple-bg: #F5F3FF;
+      --brand-purple-border: #DDD6FE;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.1);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem 1.25rem;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .nav-left { display: flex; align-items: center; gap: 0.75rem; }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: white;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover { background: #F1F5F9; color: var(--text-primary); }
+
+    .badge-ver {
+      background: var(--brand-red-bg);
+      color: var(--brand-red);
+      border: 1px solid var(--brand-red-border);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Hero */
+    .hero {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      margin-bottom: 2.25rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; right: 0;
+      width: 280px; height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(185, 28, 28, 0.03) 100%);
+      pointer-events: none;
+    }
+
+    .hero-meta {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--brand-red);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 980px;
+      line-height: 1.65;
+    }
+
+    /* 快捷分支矩阵网格 */
+    .branches-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .branches-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1100px) {
+      .branches-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .branch-card {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .branch-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: #CBD5E1;
+    }
+
+    .card-top-banner {
+      height: 140px;
+      background: #F1F5F9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-thumb {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      opacity: 0.92;
+      transition: transform 0.3s ease;
+    }
+
+    .branch-card:hover .card-thumb {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 10px; left: 10px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      backdrop-filter: blur(6px);
+    }
+
+    .badge-b1 { background: rgba(254, 242, 242, 0.95); color: var(--brand-red); border: 1px solid var(--brand-red-border); }
+    .badge-b2 { background: rgba(255, 251, 235, 0.95); color: var(--brand-amber); border: 1px solid var(--brand-amber-border); }
+    .badge-b3 { background: rgba(236, 253, 245, 0.95); color: var(--brand-emerald); border: 1px solid var(--brand-emerald-border); }
+    .badge-b4 { background: rgba(245, 243, 255, 0.95); color: var(--brand-purple); border: 1px solid var(--brand-purple-border); }
+    .badge-cards { background: rgba(239, 246, 255, 0.95); color: var(--brand-blue); border: 1px solid var(--brand-blue-border); }
+    .badge-v2 { background: rgba(254, 243, 199, 0.95); color: #78350F; border: 1px solid #FDE68A; }
+
+    .card-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex: 1;
+    }
+
+    .card-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .card-features {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .tag-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.25rem;
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: #F1F5F9;
+      color: var(--text-secondary);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .card-footer {
+      padding: 1rem 1.5rem;
+      background: #F8FAFC;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .footer-action {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: gap 0.2s ease;
+    }
+
+    .branch-card:hover .footer-action {
+      gap: 0.55rem;
+    }
+
+    /* 底部统计栏 */
+    .summary-strip {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 2rem;
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: var(--brand-red);
+    }
+    .stat-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- 顶部状态栏 -->
+    <div class="top-nav">
+      <div class="nav-left">
+        <a href="chinese.html" class="back-btn">← 返回语文主页</a>
+        <a href="../index.html" class="back-btn">🏠 返回学习总中心</a>
+        <span class="badge-ver">中考名著导航枢纽 · V1</span>
+      </div>
+      <div>
+        <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">拒绝模糊大图 · 独立子页面 · 逐字精准提取</span>
+      </div>
+    </div>
+
+    <!-- Hero 标题 -->
+    <div class="hero">
+      <div class="hero-meta">RULINWAISHI BRANCHES DIRECTORY</div>
+      <h1 class="hero-title">《儒林外史》核心考点多分支导航中心</h1>
+      <p class="hero-desc">针对此前教研大图字迹细小不易辨识的问题，本导航中心将教研大图精细拆解为 4 大核心考点子页面、1 个独立人物卡片图景专区以及中考踩分速记手册，每页均提供超清原图对照与 100% 逐字提取考点。点击下方任一分支即刻开始精读：</p>
+    </div>
+
+    <!-- 6 大分支导航卡片网格 -->
+    <div class="branches-grid">
+
+      <!-- 分支 1 -->
+      <a href="rulinwaishi-p1-V1.html" class="branch-card">
+        <div>
+          <div class="card-top-banner">
+            <img src="《儒林外史》核心考点/064103492b0124b43442216f522d64a5.jpg" alt="分支一缩略图" class="card-thumb">
+            <span class="card-badge badge-b1">分支一 · 考点总纲</span>
+          </div>
+          <div class="card-content">
+            <div class="card-title-row">
+              <h3 class="card-title">文学常识·全书结构·官吏劣绅</h3>
+            </div>
+            <p class="card-features">长篇章回讽刺小说体裁考点；作者吴敬梓生平；全书56回结构脉络；王冕总纲；王惠、汤奉、严贡生、严监生、马纯上考点。</p>
+            <div class="tag-chips">
+              <span class="chip">文学常识</span>
+              <span class="chip">全书56回</span>
+              <span class="chip">王冕总纲</span>
+              <span class="chip">严监生两茎灯草</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer" style="color: var(--brand-red);">
+          <span>基于第 1 页教研原件</span>
+          <span class="footer-action">进入分支一 <span>→</span></span>
+        </div>
+      </a>
+
+      <!-- 分支 2 -->
+      <a href="rulinwaishi-p2-V1.html" class="branch-card">
+        <div>
+          <div class="card-top-banner">
+            <img src="《儒林外史》核心考点/9ab3b2a76c8f5a4926589ed653add6c0.jpg" alt="分支二缩略图" class="card-thumb">
+            <span class="card-badge badge-b2">分支二 · 名士剖析</span>
+          </div>
+          <div class="card-content">
+            <div class="card-title-row">
+              <h3 class="card-title">假名士群像·普通小人物·社会批判</h3>
+            </div>
+            <p class="card-features">马二先生后续行迹、鲁编修、王玉辉；形形色色假名士（匡超人、牛浦郎、蘧公孙、杜慎卿）；小人物（胡屠户、鲍文卿父子）；八股制度深度批判。</p>
+            <div class="tag-chips">
+              <span class="chip">匡超人堕落</span>
+              <span class="chip">牛浦郎冒名</span>
+              <span class="chip">胡屠户前倨后恭</span>
+              <span class="chip">2-30回深层主旨</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer" style="color: var(--brand-amber);">
+          <span>基于第 2 页教研原件</span>
+          <span class="footer-action">进入分支二 <span>→</span></span>
+        </div>
+      </a>
+
+      <!-- 分支 3 -->
+      <a href="rulinwaishi-p3-V1.html" class="branch-card">
+        <div>
+          <div class="card-top-banner">
+            <img src="《儒林外史》核心考点/41522f8508f681a82bcbbbdaa7562e56.jpg" alt="分支三缩略图" class="card-thumb">
+            <span class="card-badge badge-b3">分支三 · 理想典范</span>
+          </div>
+          <div class="card-content">
+            <div class="card-title-row">
+              <h3 class="card-title">真儒明贤·市井奇人·社会理想</h3>
+            </div>
+            <p class="card-features">杜少卿、迟衡山、庄绍光、虞育德真儒行迹；侠士郭孝子寻父、萧云仙平叛治水、凤四老爹、抗婚奇女子沈琼枝；第55回市井四大奇人。</p>
+            <div class="tag-chips">
+              <span class="chip">杜少卿抗诏同游</span>
+              <span class="chip">沈琼枝自立</span>
+              <span class="chip">郭孝子至孝</span>
+              <span class="chip">市井四大奇人</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer" style="color: var(--brand-emerald);">
+          <span>基于第 3 页教研原件</span>
+          <span class="footer-action">进入分支三 <span>→</span></span>
+        </div>
+      </a>
+
+      <!-- 分支 4 -->
+      <a href="rulinwaishi-p4-V1.html" class="branch-card">
+        <div>
+          <div class="card-top-banner">
+            <img src="《儒林外史》核心考点/a570140687a01295341bcdad6ed682dc.jpg" alt="分支四缩略图" class="card-thumb">
+            <span class="card-badge badge-b4">分支四 · 全书人物谱</span>
+          </div>
+          <div class="card-content">
+            <div class="card-title-row">
+              <h3 class="card-title">30位重点人物形象全解大矩阵</h3>
+            </div>
+            <p class="card-features">四大群体地毯式覆盖：儒林正统典范(5人)、科举悲剧迷者(6人)、虚伪丑态群像(9人)、抗争与奇人异士(10人)，支持按群体实时筛选。</p>
+            <div class="tag-chips">
+              <span class="chip">30人无遗漏</span>
+              <span class="chip">采分词精炼</span>
+              <span class="chip">核心情节对照</span>
+              <span class="chip">一键分类筛选</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer" style="color: var(--brand-purple);">
+          <span>基于第 4 页教研原件</span>
+          <span class="footer-action">进入分支四 <span>→</span></span>
+        </div>
+      </a>
+
+      <!-- 人物卡片专区 -->
+      <a href="rulinwaishi-cards-V1.html" class="branch-card" style="border-color: #BFDBFE;">
+        <div>
+          <div class="card-top-banner" style="background: #EFF6FF;">
+            <img src="《儒林外史》核心考点/033cc39df34a20f7c454d1e07a78d8bd.jpg" alt="人物卡片缩略图" class="card-thumb">
+            <span class="card-badge badge-cards">人物卡片专区 · 重点推荐</span>
+          </div>
+          <div class="card-content">
+            <div class="card-title-row">
+              <h3 class="card-title">名著人物卡片图景专区 (全套卡片)</h3>
+            </div>
+            <p class="card-features">5组经典双人对照大图（周进/范进、严贡生/严监生、王惠/汤奉、马静/鲁编修、王冕/杜少卿），整合9位核心人物独立高清切图，全屏无损放大。</p>
+            <div class="tag-chips">
+              <span class="chip">5组双人对照</span>
+              <span class="chip">9大独立切图</span>
+              <span class="chip">中考名场面对照</span>
+              <span class="chip">全屏灯箱放大</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer" style="color: var(--brand-blue); background: #EFF6FF;">
+          <span>双人对照 + 九宫格切图</span>
+          <span class="footer-action">进入卡片专区 <span>→</span></span>
+        </div>
+      </a>
+
+      <!-- 中考速记考点 V2 -->
+      <a href="rulinwaishi-V2.html" class="branch-card">
+        <div>
+          <div class="card-top-banner" style="background: #FFFBEB;">
+            <div style="font-size: 2.5rem;">📝</div>
+            <span class="card-badge badge-v2">考点精要 · V2</span>
+          </div>
+          <div class="card-content">
+            <div class="card-title-row">
+              <h3 class="card-title">中考真题踩分点与考场速记手册</h3>
+            </div>
+            <p class="card-features">初三冲刺专属极简提分模式：考场大题核心得分词、反讽艺术答题脚手架、四大人格对比模型与中考真题模拟必背金句。</p>
+            <div class="tag-chips">
+              <span class="chip">大题采分词</span>
+              <span class="chip">答题脚手架</span>
+              <span class="chip">极简速记</span>
+              <span class="chip">冲刺背诵</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer" style="color: #B45309;">
+          <span>初三中考极简提分</span>
+          <span class="footer-action">进入速记手册 <span>→</span></span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- 底部数据盘点 -->
+    <div class="summary-strip">
+      <div class="stat-item">
+        <div class="stat-number">4</div>
+        <div class="stat-label">独立考点分支子页面</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5</div>
+        <div class="stat-label">双人经典对照卡片</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">9</div>
+        <div class="stat-label">核心人物高清独立切图</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">30</div>
+        <div class="stat-label">全书人物中考踩分矩阵</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">原图文字精准提取呈现</div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

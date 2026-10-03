@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>《儒林外史》核心考点分支二：假名士群像·普通小人物·社会批判 (V1)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --border-color: #E2E8F0;
+      --text-primary: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      
+      --brand-red: #B91C1C;
+      --brand-red-bg: #FEF2F2;
+      --brand-red-border: #FEE2E2;
+
+      --brand-blue: #1D4ED8;
+      --brand-blue-bg: #EFF6FF;
+      --brand-blue-border: #DBEAFE;
+
+      --brand-amber: #B45309;
+      --brand-amber-bg: #FFFBEB;
+      --brand-amber-border: #FEF3C7;
+
+      --brand-emerald: #047857;
+      --brand-emerald-bg: #ECFDF5;
+      --brand-emerald-border: #A7F3D0;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+      
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem 1.25rem;
+    }
+
+    /* 顶部导航 */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .nav-left { display: flex; align-items: center; gap: 0.75rem; }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: white;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover { background: #F1F5F9; color: var(--text-primary); }
+
+    .badge-ver {
+      background: var(--brand-amber-bg);
+      color: var(--brand-amber);
+      border: 1px solid var(--brand-amber-border);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* 4大分支 + 人物卡片 标签导航栏 */
+    .branch-tabs-bar {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 0.6rem 0.75rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      align-items: center;
+    }
+
+    .tab-item {
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+    }
+
+    .tab-item:hover { background: #F1F5F9; color: var(--text-primary); }
+
+    .tab-item.active {
+      background: var(--brand-amber);
+      color: #FFFFFF;
+      border-color: var(--brand-amber);
+      box-shadow: 0 2px 6px rgba(180, 83, 9, 0.25);
+    }
+
+    .tab-item.card-tab {
+      background: var(--brand-blue-bg);
+      color: var(--brand-blue);
+      border-color: var(--brand-blue-border);
+      margin-left: auto;
+    }
+    .tab-item.card-tab:hover { background: var(--brand-blue); color: white; }
+
+    /* Hero */
+    .hero {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-meta {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--brand-amber);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* 双栏布局 */
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (min-width: 1024px) {
+      .split-layout {
+        grid-template-columns: 460px 1fr;
+      }
+    }
+
+    .image-preview-panel {
+      position: sticky;
+      top: 1.5rem;
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .panel-header {
+      padding: 0.9rem 1.25rem;
+      background: #F8FAFC;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .panel-header h3 {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .img-click-hint {
+      font-size: 0.75rem;
+      color: var(--brand-blue);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .img-box {
+      width: 100%;
+      height: 600px;
+      background: #F1F5F9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-in;
+      overflow: hidden;
+    }
+
+    .img-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    .img-box:hover img { transform: scale(1.02); }
+
+    .img-footer-tip {
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-color);
+      background: #FFFFFF;
+      text-align: center;
+    }
+
+    /* 右侧提取文字详细内容区 */
+    .content-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .card-block {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .block-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0.6rem;
+    }
+
+    .block-title .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--brand-amber-bg);
+      color: var(--brand-amber);
+      font-size: 0.9rem;
+    }
+
+    /* 人物采分表格 */
+    .table-responsive {
+      overflow-x: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    table.data-table th {
+      background: #F1F5F9;
+      color: var(--text-primary);
+      font-weight: 700;
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    table.data-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    table.data-table tr:last-child td { border-bottom: none; }
+    table.data-table tr:hover td { background: #F8FAFC; }
+
+    .role-badge {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--brand-amber);
+      background: var(--brand-amber-bg);
+      border: 1px solid var(--brand-amber-border);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .trait-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.25rem;
+    }
+
+    .trait-pill {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #78350F;
+      background: #FEF3C7;
+      border: 1px solid #FDE68A;
+      padding: 0.15rem 0.45rem;
+      border-radius: 9999px;
+    }
+
+    .trait-pill.bad {
+      color: #991B1B;
+      background: #FEE2E2;
+      border-color: #FECACA;
+    }
+
+    .highlight {
+      font-weight: 700;
+      color: var(--brand-amber);
+      background: #FEF3C7;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+    }
+
+    .summary-box {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      font-size: 0.95rem;
+      color: #92400E;
+      line-height: 1.7;
+    }
+
+    /* Lightbox */
+    .lightbox-modal {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(15, 23, 42, 0.92);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+      padding: 1.5rem;
+    }
+    .lightbox-modal.active { display: flex; }
+    .lightbox-img {
+      max-width: 95vw;
+      max-height: 92vh;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem; right: 2rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- 顶部状态栏 -->
+    <div class="top-nav">
+      <div class="nav-left">
+        <a href="chinese.html" class="back-btn">← 返回语文主页</a>
+        <a href="rulinwaishi-p1-V1.html" class="back-btn">← 上一分支 (1)</a>
+        <a href="rulinwaishi-V3.html" class="back-btn">📖 原图总览库 (V3)</a>
+        <span class="badge-ver">子页面分支 2 · V1</span>
+      </div>
+      <div>
+        <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">高清原图无损呈现 · 逐字精准提取</span>
+      </div>
+    </div>
+
+    <!-- 4大分支 + 人物卡片 + 速记与原图 标签导航栏 -->
+    <div class="branch-tabs-bar">
+      <a href="rulinwaishi-p1-V1.html" class="tab-item">🌟 分支一：文学常识·全书结构·官吏劣绅</a>
+      <a href="rulinwaishi-p2-V1.html" class="tab-item active">🎭 分支二：假名士群像·普通小人物</a>
+      <a href="rulinwaishi-p3-V1.html" class="tab-item">🏆 分支三：真儒明贤·市井奇人</a>
+      <a href="rulinwaishi-p4-V1.html" class="tab-item">📊 分支四：30位人物全解大矩阵</a>
+      <a href="rulinwaishi-cards-V1.html" class="tab-item">📇 人物卡片图景专区</a>
+      <a href="rulinwaishi-V2.html" class="tab-item" style="margin-left:auto; background:#FFFBEB; color:#B45309; border-color:#FDE68A;">📝 考点精要 V2</a>
+      <a href="rulinwaishi-V3.html" class="tab-item" style="background:#F1F5F9; color:#475569;">📖 原图总览 V3</a>
+    </div>
+
+    <!-- Hero 标题 -->
+    <div class="hero">
+      <div class="hero-meta">BRANCH 2 · PSEUDO-SCHOLARS & CIVILIANS</div>
+      <h1 class="hero-title">《儒林外史》核心考点分支二：假名士群像·普通小人物·社会批判</h1>
+      <p class="hero-desc">对应官方教研第 2 页大图。左侧展示教研原件，右侧逐字提取“马二先生后续行迹、鲁编修、王玉辉、形形色色的假名士（匡超人、牛浦郎、蘧公孙、杜慎卿）、市井小人物（胡屠户、鲍文卿、鲍廷玺）以及作者对八股毒害社会的深刻总括批判”。</p>
+    </div>
+
+    <!-- 双栏对照布局 -->
+    <div class="split-layout">
+      
+      <!-- 左侧原图 -->
+      <div class="image-preview-panel">
+        <div class="panel-header">
+          <h3>📷 官方教研原图（第二辑）</h3>
+          <span class="img-click-hint" onclick="openLightbox('《儒林外史》核心考点/9ab3b2a76c8f5a4926589ed653add6c0.jpg')">🔍 点击查看超清大图</span>
+        </div>
+        <div class="img-box" onclick="openLightbox('《儒林外史》核心考点/9ab3b2a76c8f5a4926589ed653add6c0.jpg')">
+          <img src="《儒林外史》核心考点/9ab3b2a76c8f5a4926589ed653add6c0.jpg" alt="儒林外史核心考点第二页">
+        </div>
+        <div class="img-footer-tip">
+          💡 点击图片任意位置即可全屏无损放大、高清研读
+        </div>
+      </div>
+
+      <!-- 右侧文字详细提取 -->
+      <div class="content-panel">
+
+        <!-- 板块一：科举自害与礼教受害者 -->
+        <div class="card-block">
+          <h2 class="block-title"><span class="icon">01</span> 一、礼教维护者与科举受害者</h2>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 15%;">人物与回目</th>
+                  <th style="width: 25%;">性格特点（采分词）</th>
+                  <th>核心考点情节（中考得分点）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="role-badge">马二先生</span><br>
+                    <small style="color:var(--text-muted); font-weight:700;">第 15 回</small>
+                  </td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">古道热肠</span>
+                      <span class="trait-pill">乐于助人</span>
+                      <span class="trait-pill">热心正直</span>
+                    </div>
+                  </td>
+                  <td>
+                    ② 倾囊相助帮蘧公孙赎回至关重要的枕箱；<br>
+                    ③ 在杭州慷慨资助落魄潦倒的匡超人返乡；<br>
+                    ④ 拿出十两白银，料理假神仙洪憨仙的后事善后。
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <span class="role-badge">鲁编修</span><br>
+                    <small style="color:var(--text-muted); font-weight:700;">第 10、11 回</small>
+                  </td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">科场成功者</span>
+                      <span class="trait-pill">科举维护者</span>
+                      <span class="trait-pill">僵化迂腐</span>
+                    </div>
+                  </td>
+                  <td>
+                    ① 把唯一的女儿（鲁小姐）当作男子来抚养，硬要她从小天天研作八股文；<br>
+                    ② 极度鄙薄诗词名士，斥责娄公子们“只该闭户做些举业，以继家声”。
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <span class="role-badge">王玉辉</span><br>
+                    <small style="color:var(--text-muted); font-weight:700;">第 48 回</small>
+                  </td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">志向远大</span>
+                      <span class="trait-pill bad">迂腐封建</span>
+                      <span class="trait-pill">念旧有情义</span>
+                    </div>
+                  </td>
+                  <td>
+                    ① 一生立志要著述三部传世奇书，现实中却穷困潦倒；<br>
+                    ② <span class="highlight">经典中考反讽情节：</span>极力支持三女绝食殉夫，宣称此举可以“名留青史”；女儿绝食八天凄惨离世后，他仰天大笑着出门；<br>
+                    ③ 随后外出游玩，一路上睹物思人悲悼亡女，满心凄凉惶恐；<br>
+                    ④ 远赴邓尉山探望老友，得知老朋友已故，当场热泪纷涌、情真意切。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 板块二：形形色色的假名士 -->
+        <div class="card-block">
+          <h2 class="block-title"><span class="icon">02</span> 二、形形色色的假名士（中考高频对比）</h2>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 15%;">人物与回目</th>
+                  <th style="width: 25%;">性格特点（采分词）</th>
+                  <th>核心考点情节（中考得分点）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="role-badge">匡超人</span><br>
+                    <small style="color:var(--text-muted); font-weight:700;">第 16-20 回</small>
+                  </td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">事亲孝顺</span>
+                      <span class="trait-pill">勤敏好学</span>
+                      <span class="trait-pill bad">唯利是图</span>
+                      <span class="trait-pill bad">薄情寡义</span>
+                      <span class="trait-pill bad">虚伪狡诈</span>
+                    </div>
+                  </td>
+                  <td>
+                    ① 早期悉心侍奉重病卧床的父亲，一边照料一边苦读至深夜；<br>
+                    ② 到省城后变质堕落，协助潘三伪造朱签，暗中参与拐卖使女荷花；<br>
+                    ③ 收取重金替金跃代考，让金跃冒名中了秀才；<br>
+                    ④ 原配发妻郑氏病危不救逼其致死，转头骗婚攀附高官辛家；潘三获罪下狱，他翻脸无情与之划清界限；<br>
+                    ⑤ 肚无真才，竟不知何谓“先儒”，当众强词夺理诡辩称“先儒”就是“先生”。
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <span class="role-badge">牛浦郎</span><br>
+                    <small style="color:var(--text-muted); font-weight:700;">第 21-24 回</small>
+                  </td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill bad">欺世盗名</span>
+                      <span class="trait-pill bad">装腔作势</span>
+                      <span class="trait-pill bad">虚伪狡诈</span>
+                      <span class="trait-pill bad">仗势欺人</span>
+                    </div>
+                  </td>
+                  <td>
+                    ① 偶然捡得真诗人牛布衣的遗留诗稿，直接冒名顶替，将甘露庵牌匾擅改为“牛布衣寓内”；<br>
+                    ② 虚荣自大，把前来探望的卜家兄弟视同下人使唤；<br>
+                    ③ 心术不正，阴谋设计让牛玉圃当众揭穿万雪斋最忌讳的微贱出身；<br>
+                    ④ 依附新任知县权势作威作福，怒拒恶霸石老鼠的敲诈，出面摆平牛奶奶诉讼一案。
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <span class="role-badge">蘧公孙</span><br>
+                    <small style="color:var(--text-muted); font-weight:700;">第 8-14 回</small>
+                  </td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">心地善良</span>
+                      <span class="trait-pill bad">爱慕虚荣</span>
+                      <span class="trait-pill bad">沽名钓誉</span>
+                      <span class="trait-pill">无心举业</span>
+                    </div>
+                  </td>
+                  <td>
+                    ① 慷慨赠银资助逃难的罪官王惠；<br>
+                    ② 贪图虚名，在他人著述的朝廷禁书上擅自署上自己的名字以博取声誉；<br>
+                    ③ 娄家仆人宦成与丫鬟双红两情相悦，宦成想替双红赎身成婚，蘧公孙却依仗权势不依不饶、定要深究严办。
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <span class="role-badge">杜慎卿</span><br>
+                    <small style="color:var(--text-muted); font-weight:700;">第 29-31 回</small>
+                  </td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">追求高雅</span>
+                      <span class="trait-pill bad">矫情傲慢</span>
+                      <span class="trait-pill bad">虚伪做作</span>
+                      <span class="trait-pill">颇有才气</span>
+                    </div>
+                  </td>
+                  <td>
+                    ① 自命不凡，觉得宗先生给自己戴高帽太假，郭铁笔夸奖自己是在拍马屁；<br>
+                    ② 表面清高声称平生最嫌弃女人，一到繁华南京立刻托媒人纳美妾；<br>
+                    ③ 鲍廷玺求助借钱时自己一毛不拔，却指点鲍廷玺去坑族兄杜少卿的银两；<br>
+                    ④ 曾考取二十七州县诗赋首卷，孤芳自赏；<br>
+                    ⑤ 豪掷重金在南京莫愁湖举办湖亭梨园大会，大肆赏赐评选优胜小旦。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 板块三：普通小人物 -->
+        <div class="card-block">
+          <h2 class="block-title"><span class="icon">03</span> 三、普通小人物群像</h2>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 15%;">人物与回目</th>
+                  <th style="width: 25%;">性格特点（采分词）</th>
+                  <th>核心考点情节（中考得分点）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="role-badge">胡屠户</span><br>
+                    <small style="color:var(--text-muted); font-weight:700;">第 3 回</small>
+                  </td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill bad">粗暴鄙陋</span>
+                      <span class="trait-pill bad">庸俗势利</span>
+                      <span class="trait-pill bad">嫌贫爱富</span>
+                      <span class="trait-pill bad">迷信无知</span>
+                    </div>
+                  </td>
+                  <td>
+                    ① <span class="highlight">经典前倨后恭对比：</span>范进中举前肆意辱骂为“现世宝、穷鬼”，中举后极尽巴结赞为“天上的文曲星、贤婿老爷”；范进中举发疯清醒后，胡屠户一路低头弯腰，为女婿把滚皱了的衣裳后襟扯了足足几十回；<br>
+                    ② 迷信无知，打了发疯的范进一巴掌后，手掌发疼，心里懊恼害怕被菩萨发落进十八层地狱。
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <span class="role-badge">鲍文卿</span><br>
+                    <small style="color:var(--text-muted); font-weight:700;">第 24-26 回</small>
+                  </td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">恪守尊卑</span>
+                      <span class="trait-pill">尊礼守法</span>
+                      <span class="trait-pill">敬重斯文</span>
+                      <span class="trait-pill">乐于助人</span>
+                      <span class="trait-pill">忠厚正直</span>
+                    </div>
+                  </td>
+                  <td>
+                    ① 虽与向知县私交甚好，但相见时始终恪守平民礼法，毕恭毕敬；<br>
+                    ② 茶馆见戏子钱麻子身穿官绅衣物招摇，严厉告诫其应恪守本分；<br>
+                    ③ <span class="highlight">名言金句：</span>“须是骨头里挣出来的钱才做得肉。”面对县衙书办重金求托关照，义正词严予以拒绝；<br>
+                    ④ 协助巡考时，耐心规劝并宽容放过了作弊的贫苦年轻童生。
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <span class="role-badge">鲍廷玺</span><br>
+                    <small style="color:var(--text-muted); font-weight:700;">第 25-32 回</small>
+                  </td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">忠厚老实</span>
+                      <span class="trait-pill bad">懦弱无能</span>
+                      <span class="trait-pill bad">奴颜媚骨</span>
+                      <span class="trait-pill bad">自轻自贱</span>
+                    </div>
+                  </td>
+                  <td>
+                    ① 遵父遗训，以“咱家是贫贱之家”为由推辞迎娶富室小姐；<br>
+                    ② 攀附虚荣，在季恬逸面前自称杜慎卿门人，拼命抬高身价；<br>
+                    ③ 戏班散伙后走投无路，死乞白赖向豪爽慷慨的杜少卿哭穷乞银，最终获得资助重新拉起戏班。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 板块四：批判总括与杜少卿引言 -->
+        <div class="card-block">
+          <h2 class="block-title"><span class="icon">04</span> 四、第 2-30 回思想核心总结</h2>
+          <div class="summary-box">
+            <p><strong>📖 教研核心考论：</strong></p>
+            <p>2-30 回作者塑造的人物既有形形色色的假名士，也有贪污暴虐的官员、作恶多端的劣绅、坐馆谋生的酸秀才等。他们形形色色的丑恶表现，无不印证了第一回中<strong>王冕的预言</strong>：</p>
+            <p style="margin-top: 0.5rem; font-weight: 700;">
+              八股取士制度为这些汲汲于功名利禄的读书人提供了一条捷径，诱使他们逐渐抛弃和背离了真正的儒家圣贤思想，人格异化，彻底堕落为社会的渣滓和败类！
+            </p>
+            <hr style="margin: 0.85rem 0; border: none; border-top: 1px dashed #FDE68A;">
+            <p><strong>🌟 真儒明贤引子 · 杜少卿（第 31-34 回）：</strong></p>
+            <p>淡泊功名、傲视权贵、尊重妇女；不愿主动拜访知县；朝廷征辟特诏时，装病坚决拒绝出仕；携妻大方同游清凉山，坚决反对纳妾，赞许沈琼枝抗婚逃婚的独立精神！（更多真儒行迹见分支三展开）</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <img src="" alt="放大图件" class="lightbox-img" id="lightboxImg" onclick="event.stopPropagation()">
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxModal').classList.add('active');
+    }
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.remove('active');
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>

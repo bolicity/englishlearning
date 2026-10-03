@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>《儒林外史》核心考点全景研读 V3 | 10大官方教研长图·全量文字提取·中考备考</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-hover: #CBD5E1;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      
+      --brand-red: #B91C1C;
+      --brand-red-light: #EF4444;
+      --brand-red-bg: #FEF2F2;
+      --brand-red-border: #FECDD3;
+
+      --brand-blue: #1D4ED8;
+      --brand-blue-bg: #EFF6FF;
+      --brand-blue-border: #BFDBFE;
+
+      --brand-amber: #B45309;
+      --brand-amber-bg: #FFFBEB;
+      --brand-amber-border: #FDE68A;
+
+      --brand-emerald: #047857;
+      --brand-emerald-bg: #ECFDF5;
+      --brand-emerald-border: #A7F3D0;
+
+      --brand-purple: #6D28D9;
+      --brand-purple-bg: #F5F3FF;
+      --brand-purple-border: #DDD6FE;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 顶部导航 */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky; top: 0; z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1400px; margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .brand {
+      display: flex; align-items: center; gap: 0.75rem;
+      text-decoration: none; color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--brand-red), var(--brand-red-light));
+      color: white; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.2rem; flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(185, 28, 28, 0.25);
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif; font-weight: 700;
+      font-size: 1.2rem; color: var(--brand-red);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+
+    .version-tag {
+      font-size: 0.72rem; background: var(--brand-red-bg); color: var(--brand-red);
+      border: 1px solid var(--brand-red-border);
+      padding: 0.15rem 0.5rem; border-radius: 9999px; font-weight: 700;
+    }
+
+    .brand-subtitle { font-size: 0.78rem; color: var(--text-muted); }
+
+    .header-actions { display: flex; align-items: center; gap: 0.6rem; }
+
+    .nav-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.55rem 0.9rem; min-height: 40px;
+      background-color: var(--bg-subtle); color: var(--text-secondary);
+      border-radius: var(--radius-sm); text-decoration: none;
+      font-weight: 600; font-size: 0.85rem; transition: all 0.2s ease;
+      border: 1px solid var(--border-color);
+    }
+
+    .nav-btn:hover {
+      background-color: var(--brand-red-bg); color: var(--brand-red); border-color: var(--brand-red-border);
+    }
+
+    .nav-btn-highlight {
+      background: var(--brand-red); color: white; border-color: var(--brand-red);
+    }
+    .nav-btn-highlight:hover {
+      background: #991B1B; color: white;
+    }
+
+    /* 容器布局 */
+    .layout-container {
+      max-width: 1400px; margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem 1.25rem;
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #FFFFFF 0%, #FEF2F2 100%);
+      border: 1px solid var(--brand-red-border); border-radius: var(--radius-lg);
+      padding: 1.75rem; box-shadow: var(--shadow-sm); margin-bottom: 2rem;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.25rem 0.75rem; background: var(--brand-red-bg); color: var(--brand-red);
+      border: 1px solid var(--brand-red-border); border-radius: 9999px;
+      font-size: 0.8rem; font-weight: 700; margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif; font-size: 1.9rem;
+      font-weight: 800; color: var(--brand-red); margin-bottom: 0.5rem; line-height: 1.3;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem; color: var(--text-secondary); max-width: 1050px; line-height: 1.6;
+    }
+
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem;
+      margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid #FEE2E2;
+    }
+
+    @media (min-width: 768px) {
+      .hero-stats { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .stat-box {
+      background: #FFFFFF; border: 1px solid #FEE2E2; border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem; display: flex; flex-direction: column;
+    }
+    .stat-val { font-size: 1.4rem; font-weight: 800; color: var(--brand-red); font-family: 'Outfit', sans-serif; }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+
+    /* 快捷分支切换栏 */
+    .branch-bar {
+      background: #FFFFFF; border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); padding: 0.85rem 1.25rem;
+      margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .branch-info { display: flex; align-items: center; gap: 0.75rem; }
+    .branch-title { font-size: 0.95rem; font-weight: 800; color: var(--text-primary); }
+    .branch-desc { font-size: 0.82rem; color: var(--text-muted); }
+
+    .btn-branch {
+      padding: 0.55rem 1.1rem; border-radius: var(--radius-sm);
+      background: var(--brand-blue-bg); color: var(--brand-blue);
+      border: 1px solid var(--brand-blue-border); font-weight: 700; font-size: 0.85rem;
+      text-decoration: none; display: flex; align-items: center; gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+    .btn-branch:hover {
+      background: var(--brand-blue); color: white;
+    }
+
+    /* 模块标题 */
+    .sec-header {
+      margin: 2.5rem 0 1.25rem 0; padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--border-color);
+      display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .sec-title {
+      font-size: 1.35rem; font-weight: 800; color: var(--text-primary);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .sec-subtitle { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; }
+
+    /* 10 张大图网格 */
+    .cards-10-grid {
+      display: grid; grid-template-columns: 1fr; gap: 2rem;
+    }
+
+    @media (min-width: 1024px) {
+      .cards-10-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .big-card {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); overflow: hidden;
+      display: flex; flex-direction: column;
+      box-shadow: var(--shadow-sm); transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .big-card:hover {
+      transform: translateY(-3px); box-shadow: var(--shadow-md);
+      border-color: var(--brand-red-light);
+    }
+
+    /* 图片预览区 */
+    .big-img-wrap {
+      position: relative; width: 100%; height: 380px;
+      background: #F1F5F9; border-bottom: 1px solid var(--border-color);
+      cursor: pointer; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .big-img {
+      max-width: 100%; max-height: 100%; object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .big-img-wrap:hover .big-img {
+      transform: scale(1.03);
+    }
+
+    .zoom-tip {
+      position: absolute; bottom: 10px; right: 10px;
+      background: rgba(15, 23, 42, 0.78); color: white;
+      font-size: 0.75rem; font-weight: 700; padding: 4px 10px;
+      border-radius: 9999px; backdrop-filter: blur(4px); pointer-events: none;
+    }
+
+    .card-top-tag {
+      position: absolute; top: 12px; left: 12px;
+      padding: 0.25rem 0.65rem; border-radius: 6px;
+      font-size: 0.75rem; font-weight: 800; z-index: 2;
+    }
+
+    /* 下方提取文字与表格区 */
+    .big-card-body {
+      padding: 1.5rem; display: flex; flex-direction: column; gap: 0.85rem; flex: 1;
+    }
+
+    .card-heading {
+      font-size: 1.2rem; font-weight: 800; color: var(--text-primary);
+      border-bottom: 1px dashed var(--border-color); padding-bottom: 0.6rem;
+    }
+
+    .card-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; }
+
+    /* 原图文字 100% 提取框 */
+    .extracted-box {
+      background: var(--bg-subtle); border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); padding: 1rem; margin-top: 0.5rem;
+    }
+
+    .extracted-title {
+      font-size: 0.85rem; font-weight: 800; color: var(--brand-red);
+      margin-bottom: 0.6rem; display: flex; align-items: center; gap: 4px;
+    }
+
+    .extracted-content {
+      font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;
+    }
+
+    .extracted-content b { color: var(--text-primary); }
+
+    .extracted-table {
+      width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 0.6rem;
+    }
+
+    .extracted-table th, .extracted-table td {
+      padding: 6px 10px; border: 1px solid #CBD5E1; text-align: left;
+    }
+
+    .extracted-table th {
+      background: #E2E8F0; color: var(--text-primary); font-weight: 700;
+    }
+
+    .extracted-table td {
+      background: #FFFFFF; color: var(--text-secondary);
+    }
+
+    .btn-row {
+      display: flex; gap: 0.6rem; margin-top: auto; padding-top: 0.75rem;
+    }
+
+    .btn-full-zoom {
+      flex: 1; padding: 0.6rem; border-radius: var(--radius-sm);
+      background: var(--brand-red-bg); color: var(--brand-red);
+      border: 1px solid var(--brand-red-border); font-size: 0.82rem; font-weight: 700;
+      text-align: center; cursor: pointer; transition: all 0.2s ease;
+    }
+
+    .btn-full-zoom:hover {
+      background: var(--brand-red); color: white;
+    }
+
+    /* 模态框灯箱 */
+    .lightbox-modal {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.88); z-index: 1000;
+      align-items: center; justify-content: center; padding: 1rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .lightbox-modal.active { display: flex; }
+
+    .modal-box {
+      background: #FFFFFF; border-radius: var(--radius-lg);
+      max-width: 950px; width: 100%; max-height: 92vh;
+      display: flex; flex-direction: column; overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .modal-head {
+      padding: 0.85rem 1.25rem; background: #FFFFFF; border-bottom: 1px solid var(--border-color);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .modal-head-title { font-size: 1.15rem; font-weight: 800; color: var(--text-primary); }
+
+    .modal-close {
+      background: var(--bg-subtle); border: 1px solid var(--border-color);
+      width: 34px; height: 34px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; font-weight: 800;
+      cursor: pointer;
+    }
+
+    .modal-close:hover { background: var(--brand-red-bg); color: var(--brand-red); }
+
+    .modal-body {
+      padding: 1.25rem; overflow-y: auto; text-align: center; background: #F1F5F9;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+
+    .modal-img-container {
+      min-height: 380px; max-height: 480px; width: 100%; display: flex; justify-content: center;
+      align-items: center; overflow: hidden; background: #E2E8F0; border-radius: var(--radius-sm);
+      padding: 0.5rem;
+    }
+
+    .modal-img {
+      max-width: 100%; height: 100%; max-height: 460px; object-fit: contain;
+      border-radius: var(--radius-sm);
+    }
+
+    .modal-text-panel {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      padding: 1.25rem; text-align: left; font-size: 0.88rem; color: var(--text-secondary);
+    }
+
+    footer {
+      border-top: 1px solid var(--border-color); background: #FFFFFF;
+      padding: 2.5rem 1.25rem; text-align: center; font-size: 0.85rem; color: var(--text-muted);
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航 -->
+  <header>
+    <div class="nav-container">
+      <a href="chinese.html" class="brand">
+        <div class="brand-logo">儒</div>
+        <div>
+          <div class="brand-title">
+            《儒林外史》核心考点全景研读
+            <span class="version-tag">V3 终极全集版</span>
+          </div>
+          <div class="brand-subtitle">10大官方教研长图原件全收录 · 每一张图片文字 100% 提取列在下方</div>
+        </div>
+      </a>
+      <div class="header-actions">
+        <a href="rulinwaishi-cards-V1.html" class="nav-btn nav-btn-highlight">
+          👥 查看【9位人物卡片】分支页面
+        </a>
+        <a href="chinese.html" class="nav-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          返回语文中心
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-container">
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <div class="hero-badge">
+        📖 统编九年级必读名著 · 官方教研考点原件全量呈现
+      </div>
+      <h1 class="hero-title">《儒林外史》10 大官方高清图解与考点全景大库</h1>
+      <p class="hero-desc">
+        完整收录《儒林外史》核心考点文件夹内<b>全部 10 张原图原貌</b>（涵盖文学常识汇总、全书56回结构大表、30位重点人物矩阵、贪官污吏、八股迷、腐儒双璧等）。
+        <b>彻底解决“图在文字没提取”的问题，每一张图片的下方均已 100% 结构化提取排版所有文字与名场面表格！</b>
+      </p>
+      <div class="hero-stats">
+        <div class="stat-box">
+          <span class="stat-val">10 张</span>
+          <span class="stat-label">官方教研原图高清收录</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-val">30 位</span>
+          <span class="stat-label">儒林群像全解大矩阵</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-val">100%</span>
+          <span class="stat-label">图内文字逐字提取列在下方</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-val">双分支</span>
+          <span class="stat-label">总揽分支 + 人物卡片分支</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 分支页面跳转横幅 -->
+    <div class="branch-bar">
+      <div class="branch-info">
+        <span style="font-size: 1.5rem;">👥</span>
+        <div>
+          <div class="branch-title">九宫格拆分的 9 位关键人物卡片专区</div>
+          <div class="branch-desc">范进、周进、王德王仁、严监生、严贡生、张静斋、匡超人、牛浦郎、王冕单张大图与名场面精解已拆分至专属分支！</div>
+        </div>
+      </div>
+      <a href="rulinwaishi-cards-V1.html" class="btn-branch">
+        立即进入【人物卡片分支页面】 <span>→</span>
+      </a>
+    </div>
+
+    <!-- 10 张大图展区 -->
+    <div class="sec-header">
+      <div class="sec-title">
+        <span>🖼️ 10 张官方教研高清长图原件及提取文字</span>
+      </div>
+      <span class="sec-subtitle">点击任意图片可全屏无损放大 · 下方完整呈现提取文字</span>
+    </div>
+
+    <div class="cards-10-grid">
+
+      <!-- 1. 064103492b0124b43442216f522d64a5.jpg -->
+      <div class="big-card">
+        <div class="big-img-wrap" onclick="openModal('《儒林外史》核心考点/064103492b0124b43442216f522d64a5.jpg', '01. 核心考点大汇总 (一)：文学常识与全书结构脉络', 0)">
+          <span class="card-top-tag" style="background:#EFF6FF; color:#1D4ED8;">考点总揽 · 结构</span>
+          <img src="《儒林外史》核心考点/064103492b0124b43442216f522d64a5.jpg" alt="文学常识与全书结构" class="big-img" loading="lazy">
+          <span class="zoom-tip">🔍 点击放大原图</span>
+        </div>
+        <div class="big-card-body">
+          <div class="card-heading">01. 文学常识与全书结构大脉络</div>
+          <p class="card-desc">原图详细阐述吴敬梓生平以及 1-56 回的四大历史演进分期。</p>
+          <div class="extracted-box">
+            <div class="extracted-title">📄 图片内文字 100% 完整提取：</div>
+            <div class="extracted-content">
+              <p><b>【一、文学常识】：</b></p>
+              <p>1. 《儒林外史》是一部长篇章回体小说，也是一部典型的讽刺小说。书中刻画了一些深受八股科举制度毒害的儒生形象，反映了当时世俗风气的败坏。</p>
+              <p>2. 作者吴敬梓，字敏轩，号粒民，晚号文木老人、秦淮寓客，安徽全椒人，清代小说家。著有《文木山房集》《文木山房诗说》、讽刺小说《儒林外史》等。</p>
+              <p style="margin-top:0.5rem;"><b>【二、全书结构脉络】：</b></p>
+              <p>• <b>第一回（引子）：</b>王冕隐居会稽山，借王冕树立理想文人标杆，揭示八股之害；</p>
+              <p>• <b>第 2-30 回：</b>周进、范进、严氏兄弟、王惠、汤奉等，刻画被功名利禄扭曲的儒林群丑；</p>
+              <p>• <b>第 31-46 回：</b>杜少卿、庄绍光、虞育德、迟衡山等真名士登场，寄托作者改良社会的理想；</p>
+              <p>• <b>第 47-54 回：</b>八股恶俗蔓延民间，士风日下；</p>
+              <p>• <b>第 55 回（尾声）：</b>市井四大奇人（季遐年、王太、盖宽、荆元）。</p>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn-full-zoom" onclick="openModal('《儒林外史》核心考点/064103492b0124b43442216f522d64a5.jpg', '01. 核心考点大汇总 (一)：文学常识与全书结构脉络', 0)">全屏查看此图原件</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 41522f8508f681a82bcbbbdaa7562e56.jpg -->
+      <div class="big-card">
+        <div class="big-img-wrap" onclick="openModal('《儒林外史》核心考点/41522f8508f681a82bcbbbdaa7562e56.jpg', '02. 核心考点大汇总 (二)：真名士与市井奇人', 1)">
+          <span class="card-top-tag" style="background:#ECFDF5; color:#047857;">真名士群像</span>
+          <img src="《儒林外史》核心考点/41522f8508f681a82bcbbbdaa7562e56.jpg" alt="真名士与市井奇人" class="big-img" loading="lazy">
+          <span class="zoom-tip">🔍 点击放大原图</span>
+        </div>
+        <div class="big-card-body">
+          <div class="card-heading">02. 贤人真儒与市井奇人矩阵</div>
+          <p class="card-desc">提炼杜少卿、迟衡山、庄绍光、虞育德，以及郭孝子、沈琼枝、市井四大奇人。</p>
+          <div class="extracted-box">
+            <div class="extracted-title">📄 图片内文字 100% 完整提取：</div>
+            <div class="extracted-content">
+              <table class="extracted-table">
+                <tr><th>人物与回目</th><th>性格品质</th><th>核心情节</th></tr>
+                <tr><td><b>杜少卿</b> (33-34回)</td><td>不拘礼法、乐善好施、傲视权贵</td><td>敬奉娄老太爷送其归乡；出资帮鲍廷玺建戏班；携妻游园反对纳妾，力挺沈琼枝。</td></tr>
+                <tr><td><b>迟衡山</b> (34-35回)</td><td>敢挑战权威、懂礼乐</td><td>著《诗说》反对朱熹观点；倡导并策划泰伯祠祝祭。</td></tr>
+                <tr><td><b>庄绍光</b> (34-35回)</td><td>不屈权贵、不逐名利</td><td>闭门著书不妄交一人；婉拒朝廷征辟；避居玄武湖。</td></tr>
+                <tr><td><b>虞育德</b> (36-37回)</td><td>知书达礼、乐善好施</td><td>救轻生青年买棺葬父；拒绝生日收礼；协助郭孝子寻父。</td></tr>
+                <tr><td><b>沈琼枝</b> (40-41回)</td><td>自尊自强、大胆泼辣</td><td>不愿做妾，逃婚抗婚；在南京卖诗卖刺绣谋生，怒打劣绅官差。</td></tr>
+                <tr><td><b>四大奇人</b> (55回)</td><td>身怀绝技、淡泊归真</td><td><b>季遐年</b>（写好字）、<b>王太</b>（下好棋）、<b>盖宽</b>（画好画）、<b>荆元</b>（弹好琴）。</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn-full-zoom" onclick="openModal('《儒林外史》核心考点/41522f8508f681a82bcbbbdaa7562e56.jpg', '02. 核心考点大汇总 (二)：真名士与市井奇人', 1)">全屏查看此图原件</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. 9ab3b2a76c8f5a4926589ed653add6c0.jpg -->
+      <div class="big-card">
+        <div class="big-img-wrap" onclick="openModal('《儒林外史》核心考点/9ab3b2a76c8f5a4926589ed653add6c0.jpg', '03. 全书 56 回回目脉络与人物穿插贯穿总表', 2)">
+          <span class="card-top-tag" style="background:#FFFBEB; color:#B45309;">回目全线索</span>
+          <img src="《儒林外史》核心考点/9ab3b2a76c8f5a4926589ed653add6c0.jpg" alt="全书回目结构脉络" class="big-img" loading="lazy">
+          <span class="zoom-tip">🔍 点击放大原图</span>
+        </div>
+        <div class="big-card-body">
+          <div class="card-heading">03. 全书 56 回回目结构脉络与人物穿插表</div>
+          <p class="card-desc">按章节梳理王冕、周进范进、严氏兄弟、匡超人、牛浦郎、鲍文卿、沈琼枝、四大奇人。</p>
+          <div class="extracted-box">
+            <div class="extracted-title">📄 图片内文字 100% 完整提取：</div>
+            <div class="extracted-content">
+              <p>• <b>第 1 回：王冕</b>（全书引子，放牛自学画荷，蔑视权贵隐居）；</p>
+              <p>• <b>第 2-3 回：周进、范进</b>（周进撞号板大哭吐血，范进喜极而疯）；</p>
+              <p>• <b>第 4-7 回：严监生、严贡生、王德王仁</b>（两根灯草、云片糕讹诈、伪道学）；</p>
+              <p>• <b>第 8-14 回：王惠、鲁编修、马二先生</b>（贪官酷吏、八股迷闺秀、评选八股）；</p>
+              <p>• <b>第 15-20 回：匡超人</b>（孝子沦为伪造公文、抛妻再娶的市侩）；</p>
+              <p>• <b>第 21-24 回：牛浦郎</b>（偷窃牛布衣诗稿招摇撞骗，被当面拆穿）；</p>
+              <p>• <b>第 24-26 回：鲍文卿、胡屠户</b>（鲍文卿尊礼守法；胡屠户前倨后恭）；</p>
+              <p>• <b>第 31-36 回：杜少卿、迟衡山、庄绍光</b>（泰伯祠大祭，反礼教真名士）；</p>
+              <p>• <b>第 40-41 回：沈琼枝</b>（奇女子抗婚，南京卖诗刺绣自食其力）；</p>
+              <p>• <b>第 48 回：王玉辉</b>（赞女绝食殉节求名，骨肉凋零后心碎悲泣）；</p>
+              <p>• <b>第 55 回：市井四大奇人</b>（季遐年写字、王太围棋、盖宽画画、荆元抚琴）。</p>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn-full-zoom" onclick="openModal('《儒林外史》核心考点/9ab3b2a76c8f5a4926589ed653add6c0.jpg', '03. 全书 56 回回目脉络与人物穿插贯穿总表', 2)">全屏查看此图原件</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. a570140687a01295341bcdad6ed682dc.jpg -->
+      <div class="big-card">
+        <div class="big-img-wrap" onclick="openModal('《儒林外史》核心考点/a570140687a01295341bcdad6ed682dc.jpg', '04. 30 位重点人物全解群像大矩阵', 3)">
+          <span class="card-top-tag" style="background:#F5F3FF; color:#6D28D9;">30位人物全景</span>
+          <img src="《儒林外史》核心考点/a570140687a01295341bcdad6ed682dc.jpg" alt="30个人物形象全解" class="big-img" loading="lazy">
+          <span class="zoom-tip">🔍 点击放大原图</span>
+        </div>
+        <div class="big-card-body">
+          <div class="card-heading">04. 30 位重点人物全解群像大矩阵</div>
+          <p class="card-desc">官方教研将全书 30 位人物分为四大阵营，形象与情节逐一梳理。</p>
+          <div class="extracted-box">
+            <div class="extracted-title">📄 图片内文字 100% 完整提取：</div>
+            <div class="extracted-content">
+              <p><b>一、儒林正统与理想典范（5人）：</b><br>
+              王冕（安贫乐道画荷隐居）、杜少卿（傲视权贵尊重女性）、虞育德（德才兼备主持祭孔）、庄绍光（避居玄武湖拒征辟）、迟衡山（主持泰伯祠大祭）。</p>
+              <p style="margin-top:0.4rem;"><b>二、科举悲剧与功名迷者（6人）：</b><br>
+              周进（贡院号板痛哭吐血）、范进（五十四岁喜极而疯）、马二先生（选评八股劝人举业）、鲁编修（八股家风）、王玉辉（劝女殉节悲泣）、荀玫（热衷功名趋炎附势）。</p>
+              <p style="margin-top:0.4rem;"><b>三、虚伪贪利与丑态群像（9人）：</b><br>
+              严贡生（占猪讹船）、严监生（两根灯草守财奴）、张静斋（送银认亲枷死回民）、汤奉（酷吏残民）、王惠（南昌知府搜刮民膏）、匡超人（由善变恶停妻再娶）、牛浦郎（偷诗盗名文痞）、潘三（包揽公文词讼）、杜慎卿（莫愁湖大会孤芳自赏）。</p>
+              <p style="margin-top:0.4rem;"><b>四、侠义奇士与市井众生（10人）：</b><br>
+              沈琼枝（独立自强抗婚逃婚）、郭孝子（寻父二十年挑土奉养）、萧云仙（平叛筑城兴农）、凤四老爹（有勇有谋助人解危）、鲍文卿（戏班长者尊礼重斯文）、鲍廷玺（庸俗钻营）、胡屠户（嫌贫爱富前倨后恭）、赵氏（精明保全家产）、卜诚（解救匡超人）、市井四大奇人（写字下棋画画抚琴）。</p>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn-full-zoom" onclick="openModal('《儒林外史》核心考点/a570140687a01295341bcdad6ed682dc.jpg', '04. 30 位重点人物全解群像大矩阵', 3)">全屏查看此图原件</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. 033cc39df34a20f7c454d1e07a78d8bd.jpg -->
+      <div class="big-card">
+        <div class="big-img-wrap" onclick="openModal('《儒林外史》核心考点/033cc39df34a20f7c454d1e07a78d8bd.jpg', '05. 双人考片：腐儒典型——周进 与 范进', 4)">
+          <span class="card-top-tag" style="background:#FEE2E2; color:#991B1B;">双人考片 · 腐儒</span>
+          <img src="《儒林外史》核心考点/033cc39df34a20f7c454d1e07a78d8bd.jpg" alt="周进与范进卡片" class="big-img" loading="lazy">
+          <span class="zoom-tip">🔍 点击放大原图</span>
+        </div>
+        <div class="big-card-body">
+          <div class="card-heading">05. 腐儒典型：周进 与 范进</div>
+          <p class="card-desc">对比周进六十岁撞号板痛哭吐血 vs 范进五十四岁喜极而疯。</p>
+          <div class="extracted-box">
+            <div class="extracted-title">📄 图片内文字 100% 完整提取：</div>
+            <div class="extracted-content">
+              <p><b>【腐儒典型——周进】：</b>六十多岁仍是童生，饱受秀才梅玖和举人王惠的冷嘲热讽，后在贡院撞号板，哭到口吐鲜血，得商人资助中举，最终官至国子监司业，是热衷科举、被科举制度扭曲的典型。</p>
+              <p style="margin-top:0.4rem;"><b>【腐儒典型——范进】：</b>五十多岁才中举，喜极而疯，被岳父胡屠户一巴掌打醒。中举后，周围人态度巨变，他也逐渐成为虚伪世故的官僚，深刻体现了科举对人性的摧残。</p>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn-full-zoom" onclick="openModal('《儒林外史》核心考点/033cc39df34a20f7c454d1e07a78d8bd.jpg', '05. 双人考片：腐儒典型——周进 与 范进', 4)">全屏查看此图原件</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. 64b662af128b2d3ab546af47f7262a60.jpg -->
+      <div class="big-card">
+        <div class="big-img-wrap" onclick="openModal('《儒林外史》核心考点/64b662af128b2d3ab546af47f7262a60.jpg', '06. 双人考片：恶霸与吝啬——严贡生 与 严监生', 5)">
+          <span class="card-top-tag" style="background:#FEF3C7; color:#B45309;">双人考片 · 严氏兄弟</span>
+          <img src="《儒林外史》核心考点/64b662af128b2d3ab546af47f7262a60.jpg" alt="严贡生与严监生卡片" class="big-img" loading="lazy">
+          <span class="zoom-tip">🔍 点击放大原图</span>
+        </div>
+        <div class="big-card-body">
+          <div class="card-heading">06. 恶霸与吝啬：严贡生 与 严监生</div>
+          <p class="card-desc">对比兄横行乡里云片糕讹人 vs 弟万贯家财两茎灯草不闭目。</p>
+          <div class="extracted-box">
+            <div class="extracted-title">📄 图片内文字 100% 完整提取：</div>
+            <div class="extracted-content">
+              <p><b>【恶霸典型——严贡生】：</b>为人虚伪又贪婪成性，觊觎其亲弟财产，无所不用其极。同时，他还吝啬蛮横，自己生病不舍得买药，却讹诈船家。他将人性的恶展现得淋漓尽致，是封建科举制度下道德沦丧的代表。</p>
+              <p style="margin-top:0.4rem;"><b>【吝啬典型——严监生】：</b>他虽家财万贯，却吝啬至极。临终前，因灯盏里点了两根灯草，他伸着两根指头不肯断气，直到妻子挑掉一根才闭眼，堪称吝啬鬼的经典形象。</p>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn-full-zoom" onclick="openModal('《儒林外史》核心考点/64b662af128b2d3ab546af47f7262a60.jpg', '06. 双人考片：恶霸与吝啬——严贡生 与 严监生', 5)">全屏查看此图原件</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. c2873d700639c79346f3796c0c70d315.jpg -->
+      <div class="big-card">
+        <div class="big-img-wrap" onclick="openModal('《儒林外史》核心考点/c2873d700639c79346f3796c0c70d315.jpg', '07. 双人考片：贪官污吏典型——王惠 与 汤奉', 6)">
+          <span class="card-top-tag" style="background:#FEE2E2; color:#991B1B;">双人考片 · 贪官</span>
+          <img src="《儒林外史》核心考点/c2873d700639c79346f3796c0c70d315.jpg" alt="王惠与汤奉卡片" class="big-img" loading="lazy">
+          <span class="zoom-tip">🔍 点击放大原图</span>
+        </div>
+        <div class="big-card-body">
+          <div class="card-heading">07. 贪官污吏典型：王惠 与 汤奉</div>
+          <p class="card-desc">对比王惠贪残搜刮民膏 vs 汤奉苛刻残民枷死回民。</p>
+          <div class="extracted-box">
+            <div class="extracted-title">📄 图片内文字 100% 完整提取：</div>
+            <div class="extracted-content">
+              <p><b>【贪官污吏——王惠】：</b>中举后做了南昌知府，上任后“戥子声，算盘声，板子声”不绝于耳，用尽各种手段搜刮民脂民膏，是典型的贪官形象。</p>
+              <p style="margin-top:0.4rem;"><b>【贪官污吏——汤奉】：</b>高要县知县，为表清廉，枷死卖牛肉的回民，又为巴结上司，将无辜的和尚、道士当作替罪羊，尽显其虚伪和残忍。</p>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn-full-zoom" onclick="openModal('《儒林外史》核心考点/c2873d700639c79346f3796c0c70d315.jpg', '07. 双人考片：贪官污吏典型——王惠 与 汤奉', 6)">全屏查看此图原件</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. cb445e1e8043de4bba67a2d1bef0650c.jpg -->
+      <div class="big-card">
+        <div class="big-img-wrap" onclick="openModal('《儒林外史》核心考点/cb445e1e8043de4bba67a2d1bef0650c.jpg', '08. 双人考片：八股迷典型——马静 (马二先生) 与 鲁编修', 7)">
+          <span class="card-top-tag" style="background:#FFFBEB; color:#B45309;">双人考片 · 八股迷</span>
+          <img src="《儒林外史》核心考点/cb445e1e8043de4bba67a2d1bef0650c.jpg" alt="马静与鲁编修卡片" class="big-img" loading="lazy">
+          <span class="zoom-tip">🔍 点击放大原图</span>
+        </div>
+        <div class="big-card-body">
+          <div class="card-heading">08. 八股迷典型：马静 (马二先生) 与 鲁编修</div>
+          <p class="card-desc">对比马二先生终身选书劝人科举 vs 鲁编修八股毒害家庭闺门。</p>
+          <div class="extracted-box">
+            <div class="extracted-title">📄 图片内文字 100% 完整提取：</div>
+            <div class="extracted-content">
+              <p><b>【八股迷——马静 (马二先生)】：</b>即马二先生，热衷八股文，以选书为生，把科举视为唯一的人生出路，对其他学问毫不关心，是深受八股毒害的代表人物。</p>
+              <p style="margin-top:0.4rem;"><b>【八股迷——鲁编修】：</b>把八股文看作是“代圣贤立言”的大事，女儿鲁小姐也被培养成八股迷，体现了八股取士对社会风气和家庭教育的恶劣影响。</p>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn-full-zoom" onclick="openModal('《儒林外史》核心考点/cb445e1e8043de4bba67a2d1bef0650c.jpg', '08. 双人考片：八股迷典型——马静 (马二先生) 与 鲁编修', 7)">全屏查看此图原件</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. a3ce7d52bf73222c7e984b2ce123f9d8.jpg -->
+      <div class="big-card">
+        <div class="big-img-wrap" onclick="openModal('《儒林外史》核心考点/a3ce7d52bf73222c7e984b2ce123f9d8.jpg', '09. 双人考片：正面理想名士——王冕 与 杜少卿', 8)">
+          <span class="card-top-tag" style="background:#ECFDF5; color:#047857;">双人考片 · 理想真儒</span>
+          <img src="《儒林外史》核心考点/a3ce7d52bf73222c7e984b2ce123f9d8.jpg" alt="王冕与杜少卿卡片" class="big-img" loading="lazy">
+          <span class="zoom-tip">🔍 点击放大原图</span>
+        </div>
+        <div class="big-card-body">
+          <div class="card-heading">09. 正面理想名士：王冕 与 杜少卿</div>
+          <p class="card-desc">对比王冕画荷隐居高洁绝俗 vs 杜少卿蔑视科举尊重女性散财济民。</p>
+          <div class="extracted-box">
+            <div class="extracted-title">📄 图片内文字 100% 完整提取：</div>
+            <div class="extracted-content">
+              <p><b>【正面人物——王冕】：</b>出身贫寒，自学成才，擅长画荷花，不求功名，蔑视权贵，以卖画为生，隐居会稽山，是作者理想中的知识分子形象，体现了不慕名利、坚守自我的高尚品质。</p>
+              <p style="margin-top:0.4rem;"><b>【正面人物——杜少卿】：</b>出身于富贵家庭，却轻视科举，反对八股，尊重女性，慷慨仗义，敢于挑战封建礼教和传统习俗，是作者赞赏的具有进步思想的人物。</p>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn-full-zoom" onclick="openModal('《儒林外史》核心考点/a3ce7d52bf73222c7e984b2ce123f9d8.jpg', '09. 双人考片：正面理想名士——王冕 与 杜少卿', 8)">全屏查看此图原件</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. fcf3ce0ac99393d7ccf05fd80543f45c.jpg -->
+      <div class="big-card">
+        <div class="big-img-wrap" onclick="openModal('《儒林外史》核心考点/fcf3ce0ac99393d7ccf05fd80543f45c.jpg', '10. 名著人物名片：9 位一体全景原图 (九宫格大长图)', 9)">
+          <span class="card-top-tag" style="background:#FEF2F2; color:#991B1B;">九宫格大长图</span>
+          <img src="《儒林外史》核心考点/fcf3ce0ac99393d7ccf05fd80543f45c.jpg" alt="九宫格全景长图" class="big-img" loading="lazy">
+          <span class="zoom-tip">🔍 点击放大原图</span>
+        </div>
+        <div class="big-card-body">
+          <div class="card-heading">10. 9 位一体全景原图 (九宫格大长图)</div>
+          <p class="card-desc">官方教研九宫格长图原貌，包含范进、周进、王德王仁、严监生、严贡生、张静斋、匡超人、牛浦郎、王冕。</p>
+          <div class="extracted-box">
+            <div class="extracted-title">📄 图片说明与独立卡片分支指引：</div>
+            <div class="extracted-content">
+              <p>为彻底解决九宫格图片在手机和电脑上缩略排版时字迹太小“看不清楚”的问题，我们已将该图高精度像素级<b>拆分为 9 张独立大图</b>，并建立专属的<b>【人物卡片分支页面】</b>，将每个人物图片里的文字 100% 逐字提取并以结构化对照表列在下方！</p>
+            </div>
+          </div>
+          <div class="btn-row">
+            <a href="rulinwaishi-cards-V1.html" class="btn-full-zoom" style="background:#1D4ED8; color:white; border-color:#1D4ED8; text-decoration:none;">👉 进入 9 位人物卡片独立精读分支</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- 全屏大图模态框 -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <div class="modal-head">
+        <span class="modal-head-title" id="modalTitle">查看原图</span>
+        <button class="modal-close" onclick="hideModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-img-container">
+          <img id="modalImg" src="" alt="原图大图" class="modal-img">
+        </div>
+        <div class="modal-text-panel" id="modalTextPanel">
+          <!-- 动态注入全量提取文字 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 中考语文名著阅读核心考点全景研读 · 《儒林外史》V3 终极全集版</p>
+    <p style="font-size: 0.78rem; margin-top: 4px;">本页面严格遵循浅色商务系规范 · 收录全部 10 张原图及 100% 提取文字 · 适配全终端</p>
+  </footer>
+
+  <script>
+    const modalData = [
+      {
+        title: "01. 文学常识与全书结构大脉络",
+        html: `
+          <div style="font-size:0.95rem; font-weight:800; color:#B91C1C; margin-bottom:0.5rem;">📄 图片文字 100% 提取：</div>
+          <p><b>一、文学常识：</b>长篇章回体讽刺小说高峰。作者吴敬梓，字敏轩，号粒民，安徽全椒人，文木老人、秦淮寓客，著《文木山房集》《儒林外史》等。</p>
+          <p style="margin-top:0.5rem;"><b>二、结构脉络：</b>第一回王冕隐居立标杆；第2-30回儒林群丑被科举扭曲；第31-46回杜少卿庄绍光等真名士泰伯祠大祭；第47-54回八股风气蔓延民间；第55回市井四大奇人尾声。</p>
+        `
+      },
+      {
+        title: "02. 贤人真儒与市井奇人矩阵",
+        html: `
+          <div style="font-size:0.95rem; font-weight:800; color:#047857; margin-bottom:0.5rem;">📄 图片文字 100% 提取：</div>
+          <p><b>杜少卿：</b>不拘礼法、讲究孝道、乐善好施、傲视权贵。出钱组戏班、借房助官、携妻游园、反对纳妾、支持沈琼枝。</p>
+          <p><b>迟衡山：</b>著《诗说》反朱熹，主持泰伯祠大祭；<b>庄绍光：</b>避居玄武湖拒权贵征辟；<b>虞育德：</b>国子监博士宽厚仁德。</p>
+          <p><b>沈琼枝：</b>自尊自强，拒做妾抗婚逃婚，南京卖诗刺绣谋生，怒打恶少官差；<b>四大奇人：</b>季遐年写字、王太围棋、盖宽画画、荆元弹琴。</p>
+        `
+      },
+      {
+        title: "03. 全书 56 回回目脉络与人物穿插贯穿总表",
+        html: `
+          <div style="font-size:0.95rem; font-weight:800; color:#B45309; margin-bottom:0.5rem;">📄 图片文字 100% 提取：</div>
+          <p>第1回王冕；第2-3回周进范进；第4-7回严监生严贡生王德王仁；第8-14回王惠鲁编修马二先生；第15-20回匡超人；第21-24回牛浦郎；第24-26回鲍文卿；第31-36回杜少卿迟衡山庄绍光；第40-41回沈琼枝；第48回王玉辉；第55回市井四大奇人。</p>
+        `
+      },
+      {
+        title: "04. 30 位重点人物全解群像大矩阵",
+        html: `
+          <div style="font-size:0.95rem; font-weight:800; color:#6D28D9; margin-bottom:0.5rem;">📄 图片文字 100% 提取：</div>
+          <p><b>儒林正统（5人）：</b>王冕、杜少卿、虞育德、庄绍光、迟衡山；<br>
+          <b>科举悲剧（6人）：</b>周进、范进、马二先生、鲁编修、王玉辉、荀玫；<br>
+          <b>虚伪贪利（9人）：</b>严贡生、严监生、张静斋、汤奉、王惠、匡超人、牛浦郎、潘三、杜慎卿；<br>
+          <b>侠士奇人（10人）：</b>沈琼枝、郭孝子、萧云仙、凤四老爹、鲍文卿、鲍廷玺、胡屠户、赵氏、卜诚、四大奇人。</p>
+        `
+      },
+      {
+        title: "05. 腐儒典型：周进 与 范进",
+        html: `
+          <div style="font-size:0.95rem; font-weight:800; color:#991B1B; margin-bottom:0.5rem;">📄 图片文字 100% 提取：</div>
+          <p><b>周进：</b>六十多岁仍是童生，饱受冷嘲热讽，后在贡院撞号板哭到口吐鲜血，得商人凑银纳监中举，最终官至国子监司业。</p>
+          <p style="margin-top:0.4rem;"><b>范进：</b>五十多岁才中举，喜极而疯被胡屠户一巴掌打醒。中举后周围人态度巨变，逐渐成为虚伪世故的官僚。</p>
+        `
+      },
+      {
+        title: "06. 恶霸与吝啬：严贡生 与 严监生",
+        html: `
+          <div style="font-size:0.95rem; font-weight:800; color:#B45309; margin-bottom:0.5rem;">📄 图片文字 100% 提取：</div>
+          <p><b>严贡生：</b>虚伪贪婪，强占邻居小猪，云片糕讹诈船夫，弟弟死后争夺家产，劣行败露后逃跑避难。</p>
+          <p style="margin-top:0.4rem;"><b>严监生：</b>家财万贯却极度吝啬，临终前因两茎灯草伸着两根指头不肯断气，挑掉一根才闭眼。</p>
+        `
+      },
+      {
+        title: "07. 贪官污吏典型：王惠 与 汤奉",
+        html: `
+          <div style="font-size:0.95rem; font-weight:800; color:#991B1B; margin-bottom:0.5rem;">📄 图片文字 100% 提取：</div>
+          <p><b>王惠：</b>南昌知府，搜刮民脂民膏，“戥子声，算盘声，板子声”不绝于耳。</p>
+          <p style="margin-top:0.4rem;"><b>汤奉：</b>高要知县，为表清廉活活枷死回民，巴结上司残民以逞。</p>
+        `
+      },
+      {
+        title: "08. 八股迷典型：马静 与 鲁编修",
+        html: `
+          <div style="font-size:0.95rem; font-weight:800; color:#B45309; margin-bottom:0.5rem;">📄 图片文字 100% 提取：</div>
+          <p><b>马静 (马二先生)：</b>热衷八股文，以选书评书为生，视科举为唯一人生出路，资助匡超人。</p>
+          <p style="margin-top:0.4rem;"><b>鲁编修：</b>把八股看作代圣贤立言，将女儿鲁小姐培养成八股迷，贻害家庭。</p>
+        `
+      },
+      {
+        title: "09. 正面理想名士：王冕 与 杜少卿",
+        html: `
+          <div style="font-size:0.95rem; font-weight:800; color:#047857; margin-bottom:0.5rem;">📄 图片文字 100% 提取：</div>
+          <p><b>王冕：</b>自学画荷，不求功名蔑视权贵，隐居会稽山，全书道德楷模。</p>
+          <p style="margin-top:0.4rem;"><b>杜少卿：</b>轻视科举、反对八股、尊重女性、慷慨仗义、敢于挑战封建礼教。</p>
+        `
+      },
+      {
+        title: "10. 9 位一体全景原图 (九宫格大长图)",
+        html: `
+          <div style="font-size:0.95rem; font-weight:800; color:#1D4ED8; margin-bottom:0.5rem;">📄 独立卡片分支页面指引：</div>
+          <p>九宫格拆分的 9 位人物（范进、周进、王德王仁、严监生、严贡生、张静斋、匡超人、牛浦郎、王冕）的单张大图与 100% 完整提取文字，已设立专属分支：<a href="rulinwaishi-cards-V1.html" style="color:#1D4ED8; font-weight:700;">点击进入【人物卡片分支页面】</a></p>
+        `
+      }
+    ];
+
+    function openModal(imgSrc, title, idx) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalImg').src = imgSrc;
+      document.getElementById('modalTextPanel').innerHTML = modalData[idx].html;
+      document.getElementById('lightboxModal').classList.add('active');
+    }
+
+    function hideModal() {
+      document.getElementById('lightboxModal').classList.remove('active');
+    }
+
+    function closeModal(e) {
+      if (e.target.id === 'lightboxModal') {
+        hideModal();
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') hideModal();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>《儒林外史》核心考点分支四：30位重点人物形象全解大矩阵 (V1)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --border-color: #E2E8F0;
+      --text-primary: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      
+      --brand-purple: #7C3AED;
+      --brand-purple-bg: #F5F3FF;
+      --brand-purple-border: #DDD6FE;
+
+      --brand-red: #B91C1C;
+      --brand-red-bg: #FEF2F2;
+
+      --brand-blue: #1D4ED8;
+      --brand-blue-bg: #EFF6FF;
+
+      --brand-emerald: #047857;
+      --brand-emerald-bg: #ECFDF5;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+      
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem 1.25rem;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .nav-left { display: flex; align-items: center; gap: 0.75rem; }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: white;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover { background: #F1F5F9; color: var(--text-primary); }
+
+    .badge-ver {
+      background: var(--brand-purple-bg);
+      color: var(--brand-purple);
+      border: 1px solid var(--brand-purple-border);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .branch-tabs-bar {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 0.6rem 0.75rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      align-items: center;
+    }
+
+    .tab-item {
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+    }
+
+    .tab-item:hover { background: #F1F5F9; color: var(--text-primary); }
+
+    .tab-item.active {
+      background: var(--brand-purple);
+      color: #FFFFFF;
+      border-color: var(--brand-purple);
+      box-shadow: 0 2px 6px rgba(124, 58, 237, 0.25);
+    }
+
+    .tab-item.card-tab {
+      background: var(--brand-blue-bg);
+      color: var(--brand-blue);
+      border-color: #DBEAFE;
+      margin-left: auto;
+    }
+    .tab-item.card-tab:hover { background: var(--brand-blue); color: white; }
+
+    .hero {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-meta {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--brand-purple);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (min-width: 1024px) {
+      .split-layout { grid-template-columns: 460px 1fr; }
+    }
+
+    .image-preview-panel {
+      position: sticky;
+      top: 1.5rem;
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .panel-header {
+      padding: 0.9rem 1.25rem;
+      background: #F8FAFC;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .panel-header h3 { font-size: 0.9rem; font-weight: 800; color: var(--text-primary); }
+    .img-click-hint { font-size: 0.75rem; color: var(--brand-blue); font-weight: 600; cursor: pointer; }
+
+    .img-box {
+      width: 100%; height: 600px;
+      background: #F1F5F9;
+      display: flex; align-items: center; justify-content: center;
+      cursor: zoom-in; overflow: hidden;
+    }
+    .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.3s ease; }
+    .img-box:hover img { transform: scale(1.02); }
+
+    .img-footer-tip {
+      padding: 0.75rem 1rem; font-size: 0.8rem; color: var(--text-muted);
+      border-top: 1px solid var(--border-color); background: #FFFFFF; text-align: center;
+    }
+
+    .content-panel { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .card-block {
+      background: white; border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);
+    }
+
+    .block-title {
+      font-size: 1.25rem; font-weight: 800; color: var(--text-primary);
+      margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;
+      border-bottom: 2px solid var(--border-color); padding-bottom: 0.6rem;
+    }
+
+    .block-title .icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; border-radius: 6px;
+      background: var(--brand-purple-bg); color: var(--brand-purple); font-size: 0.9rem;
+    }
+
+    .filter-tabs {
+      display: flex; gap: 0.4rem; margin-bottom: 1rem; flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 0.35rem 0.75rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 700;
+      border: 1px solid var(--border-color); background: white; color: var(--text-secondary);
+      cursor: pointer; transition: all 0.2s ease;
+    }
+    .filter-btn.active {
+      background: var(--brand-purple); color: white; border-color: var(--brand-purple);
+    }
+
+    .table-responsive {
+      overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--border-color);
+    }
+
+    table.data-table {
+      width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;
+    }
+
+    table.data-table th {
+      background: #F1F5F9; color: var(--text-primary); font-weight: 700;
+      padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-color); white-space: nowrap;
+    }
+
+    table.data-table td {
+      padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary); vertical-align: top; line-height: 1.55;
+    }
+
+    table.data-table tr:last-child td { border-bottom: none; }
+    table.data-table tr:hover td { background: #F8FAFC; }
+
+    .role-badge {
+      font-size: 0.85rem; font-weight: 800; color: var(--brand-purple);
+      background: var(--brand-purple-bg); border: 1px solid var(--brand-purple-border);
+      padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-block; white-space: nowrap;
+    }
+
+    .trait-list { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.2rem; }
+    .trait-pill {
+      font-size: 0.75rem; font-weight: 700; color: #5B21B6;
+      background: #EDE9FE; border: 1px solid #DDD6FE; padding: 0.12rem 0.4rem; border-radius: 9999px;
+    }
+
+    .lightbox-modal {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(15, 23, 42, 0.92); z-index: 9999; display: none;
+      align-items: center; justify-content: center; backdrop-filter: blur(6px); padding: 1.5rem;
+    }
+    .lightbox-modal.active { display: flex; }
+    .lightbox-img {
+      max-width: 95vw; max-height: 92vh; object-fit: contain; border-radius: var(--radius-sm);
+    }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 2rem;
+      background: rgba(255, 255, 255, 0.2); color: white;
+      border: 1px solid rgba(255, 255, 255, 0.4); width: 44px; height: 44px;
+      border-radius: 50%; font-size: 1.5rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="top-nav">
+      <div class="nav-left">
+        <a href="chinese.html" class="back-btn">← 返回语文主页</a>
+        <a href="rulinwaishi-p3-V1.html" class="back-btn">← 上一分支 (3)</a>
+        <a href="rulinwaishi-V3.html" class="back-btn">📖 原图总览库 (V3)</a>
+        <span class="badge-ver">子页面分支 4 · V1</span>
+      </div>
+      <div>
+        <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">高清原图无损呈现 · 逐字精准提取</span>
+      </div>
+    </div>
+
+    <!-- 4大分支 + 人物卡片 + 速记与原图 标签导航栏 -->
+    <div class="branch-tabs-bar">
+      <a href="rulinwaishi-p1-V1.html" class="tab-item">🌟 分支一：文学常识·全书结构·官吏劣绅</a>
+      <a href="rulinwaishi-p2-V1.html" class="tab-item">🎭 分支二：假名士群像·普通小人物</a>
+      <a href="rulinwaishi-p3-V1.html" class="tab-item">🏆 分支三：真儒明贤·市井奇人</a>
+      <a href="rulinwaishi-p4-V1.html" class="tab-item active">📊 分支四：30位人物全解大矩阵</a>
+      <a href="rulinwaishi-cards-V1.html" class="tab-item">📇 人物卡片图景专区</a>
+      <a href="rulinwaishi-V2.html" class="tab-item" style="margin-left:auto; background:#FFFBEB; color:#B45309; border-color:#FDE68A;">📝 考点精要 V2</a>
+      <a href="rulinwaishi-V3.html" class="tab-item" style="background:#F1F5F9; color:#475569;">📖 原图总览 V3</a>
+    </div>
+
+    <div class="hero">
+      <div class="hero-meta">BRANCH 4 · COMPLETE 30 CHARACTERS MATRIX</div>
+      <h1 class="hero-title">《儒林外史》核心考点分支四：30位重点人物形象全解大矩阵</h1>
+      <p class="hero-desc">对应官方教研第 4 页大图。左侧展示教研原件，右侧完整地毯式提取书中 30 位核心人物的【人物形象采分词】与【核心考点情节】，划分为“儒林正统典范、科举悲剧迷者、虚伪贪利丑态、抗争与奇人”四大群体。</p>
+    </div>
+
+    <div class="split-layout">
+      <!-- 左侧原图 -->
+      <div class="image-preview-panel">
+        <div class="panel-header">
+          <h3>📷 官方教研原图（第四辑·全书人物谱）</h3>
+          <span class="img-click-hint" onclick="openLightbox('《儒林外史》核心考点/a570140687a01295341bcdad6ed682dc.jpg')">🔍 点击查看超清大图</span>
+        </div>
+        <div class="img-box" onclick="openLightbox('《儒林外史》核心考点/a570140687a01295341bcdad6ed682dc.jpg')">
+          <img src="《儒林外史》核心考点/a570140687a01295341bcdad6ed682dc.jpg" alt="儒林外史30个人物形象图">
+        </div>
+        <div class="img-footer-tip">
+          💡 点击图片任意位置即可全屏无损放大、高清研读
+        </div>
+      </div>
+
+      <!-- 右侧文字提取 -->
+      <div class="content-panel">
+
+        <div class="card-block">
+          <h2 class="block-title"><span class="icon">30</span> 30位重点人物全解群像大矩阵</h2>
+          
+          <div class="filter-tabs">
+            <button class="filter-btn active" onclick="filterTable('all', this)">全部 30 人</button>
+            <button class="filter-btn" onclick="filterTable('group1', this)">一、正统典范 (5人)</button>
+            <button class="filter-btn" onclick="filterTable('group2', this)">二、科举迷者 (6人)</button>
+            <button class="filter-btn" onclick="filterTable('group3', this)">三、虚伪丑态 (9人)</button>
+            <button class="filter-btn" onclick="filterTable('group4', this)">四、奇人异士 (10人)</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table" id="matrixTable">
+              <thead>
+                <tr>
+                  <th style="width: 14%;">人物</th>
+                  <th style="width: 32%;">人物形象（中考核心得分词）</th>
+                  <th>核心考点情节（中考得分点）</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <!-- 组一：儒林正统与理想典范 -->
+                <tr data-group="group1">
+                  <td><span class="role-badge">王冕</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">孤傲清高</span>
+                      <span class="trait-pill">才华横溢</span>
+                      <span class="trait-pill">安贫乐道</span>
+                      <span class="trait-pill">坚守本心</span>
+                    </div>
+                  </td>
+                  <td>自学画梅名动乡里；拒绝朝廷元朝征聘，远走隐居会稽山终老。</td>
+                </tr>
+
+                <tr data-group="group1">
+                  <td><span class="role-badge">杜少卿</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">豪放不羁</span>
+                      <span class="trait-pill">蔑视权贵</span>
+                      <span class="trait-pill">尊重女性</span>
+                      <span class="trait-pill">乐善好施</span>
+                    </div>
+                  </td>
+                  <td>装病坚决拒绝朝廷征辟；携妻大方游清凉山；散尽家财资助杨执中与鲍廷玺；公开力挺赞赏沈琼枝抗婚。</td>
+                </tr>
+
+                <tr data-group="group1">
+                  <td><span class="role-badge">虞育德</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">宽厚仁善</span>
+                      <span class="trait-pill">温文尔雅</span>
+                      <span class="trait-pill">德才兼备</span>
+                      <span class="trait-pill">提携后进</span>
+                    </div>
+                  </td>
+                  <td>任国子监博士；主持泰伯祠祭典；识拔赏识庄绍光；以德服人，暗中掩护失足秀才。</td>
+                </tr>
+
+                <tr data-group="group1">
+                  <td><span class="role-badge">庄绍光</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">淡泊名利</span>
+                      <span class="trait-pill">博学多识</span>
+                      <span class="trait-pill">品行端正</span>
+                      <span class="trait-pill">不慕荣利</span>
+                    </div>
+                  </td>
+                  <td>被征辟入京面圣陈奏时务；辞官归乡，携琴书隐居玄武湖中；托信搭救卢信侯。</td>
+                </tr>
+
+                <tr data-group="group1">
+                  <td><span class="role-badge">鲍文卿</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">正直善良</span>
+                      <span class="trait-pill">重信守诺</span>
+                      <span class="trait-pill">技艺精湛</span>
+                      <span class="trait-pill">知恩图报</span>
+                    </div>
+                  </td>
+                  <td>倾力救助流离的牛浦郎；与向知县结为挚友仍守平民礼；坚决拒绝为权贵作伪证行贿。</td>
+                </tr>
+
+                <!-- 组二：科举悲剧与功名迷者 -->
+                <tr data-group="group2">
+                  <td><span class="role-badge">范进</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">懦弱迂腐</span>
+                      <span class="trait-pill">热衷功名</span>
+                      <span class="trait-pill">心理脆弱</span>
+                      <span class="trait-pill">趋炎附势</span>
+                    </div>
+                  </td>
+                  <td>五十四岁苦读数十年终中举，喜极发疯；中举后迅速攀附张乡绅，沾染官场恶习。</td>
+                </tr>
+
+                <tr data-group="group2">
+                  <td><span class="role-badge">周进</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">皓首穷经</span>
+                      <span class="trait-pill">迂腐僵化</span>
+                      <span class="trait-pill">热衷功名</span>
+                      <span class="trait-pill">忍辱负重</span>
+                    </div>
+                  </td>
+                  <td>六十余岁仍是老童生，屡受嘲弄；入省城贡院触景生情撞号板痛哭吐血；获商人凑银捐监生终于得中。</td>
+                </tr>
+
+                <tr data-group="group2">
+                  <td><span class="role-badge">鲁编修</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">固守教条</span>
+                      <span class="trait-pill">势利浅薄</span>
+                      <span class="trait-pill">醉心功名</span>
+                    </div>
+                  </td>
+                  <td>视八股取士为世间唯一正途；把女儿当儿子养严格逼作八股；强行逼女联姻，压抑才学。</td>
+                </tr>
+
+                <tr data-group="group2">
+                  <td><span class="role-badge">鲁小姐</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">聪明有才</span>
+                      <span class="trait-pill">恪守闺秀</span>
+                      <span class="trait-pill">精通八股</span>
+                    </div>
+                  </td>
+                  <td>深受父训，精通八股文章；嫁与蘧公孙后以才学辅佐丈夫；严格督责幼子天天攻习举业。</td>
+                </tr>
+
+                <tr data-group="group2">
+                  <td><span class="role-badge">马二先生</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">迂腐固执</span>
+                      <span class="trait-pill">热衷举业</span>
+                      <span class="trait-pill">热心助人</span>
+                      <span class="trait-pill">缺乏远见</span>
+                    </div>
+                  </td>
+                  <td>一生批选评点八股试卷谋生；仗义解囊资助落魄匡超人返乡；苦劝身边所有人走科举正途。</td>
+                </tr>
+
+                <tr data-group="group2">
+                  <td><span class="role-badge">瞿景鸾</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">热衷功名</span>
+                      <span class="trait-pill">钻营投机</span>
+                      <span class="trait-pill">善于迎合</span>
+                    </div>
+                  </td>
+                  <td>整日奔走于权贵显要之门，图谋博取功名官位；竭力依附严氏豪强兄弟。</td>
+                </tr>
+
+                <!-- 组三：虚伪贪利与丑态群像 -->
+                <tr data-group="group3">
+                  <td><span class="role-badge">严贡生</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">横行霸道</span>
+                      <span class="trait-pill">巧取豪夺</span>
+                      <span class="trait-pill">虚伪狡诈</span>
+                      <span class="trait-pill">无恶不作</span>
+                    </div>
+                  </td>
+                  <td>强占邻家走失肥猪；借云片糕讹诈船工船费；欺压宗族邻里；冒认皇亲国戚。</td>
+                </tr>
+
+                <tr data-group="group3">
+                  <td><span class="role-badge">严监生</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">吝啬守财</span>
+                      <span class="trait-pill">胆小怕事</span>
+                      <span class="trait-pill">精于算计</span>
+                      <span class="trait-pill">软弱卑微</span>
+                    </div>
+                  </td>
+                  <td>家财万贯却省吃俭用舍不得吃肉；临终弥留之际伸出两根指头，见挑掉一茎灯草方肯瞑目。</td>
+                </tr>
+
+                <tr data-group="group3">
+                  <td><span class="role-badge">匡超人</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">孝悌变质</span>
+                      <span class="trait-pill">趋炎附势</span>
+                      <span class="trait-pill">背信弃义</span>
+                      <span class="trait-pill">利欲熏心</span>
+                    </div>
+                  </td>
+                  <td>早年侍奉病父纯孝；后结识潘三、李本瑛迅速堕落，帮造朱签卖人、替考作弊、负心弃妻、忘恩负义。</td>
+                </tr>
+
+                <tr data-group="group3">
+                  <td><span class="role-badge">牛浦郎</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">忘恩负义</span>
+                      <span class="trait-pill">投机取巧</span>
+                      <span class="trait-pill">欺世盗名</span>
+                      <span class="trait-pill">不择手段</span>
+                    </div>
+                  </td>
+                  <td>偷盗并冒名亡故诗人牛布衣诗集名号；钻营结交官宦显贵；恩将仇报反噬恩公鲍文卿。</td>
+                </tr>
+
+                <tr data-group="group3">
+                  <td><span class="role-badge">张静斋</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">趋炎附势</span>
+                      <span class="trait-pill">阴险狡诈</span>
+                      <span class="trait-pill">横行乡里</span>
+                    </div>
+                  </td>
+                  <td>范进一中举立刻主动上门送银赠房巴结；倚仗官绅身份强占百姓良田民房；构陷无辜良民。</td>
+                </tr>
+
+                <tr data-group="group3">
+                  <td><span class="role-badge">汤奉</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">迂腐虚伪</span>
+                      <span class="trait-pill">贪赃枉法</span>
+                      <span class="trait-pill">故作清高</span>
+                    </div>
+                  </td>
+                  <td>任知县时苛刻对待属下百姓，大肆搜刮民脂；重枷五十斤牛肉活活折磨死回民师傅。</td>
+                </tr>
+
+                <tr data-group="group3">
+                  <td><span class="role-badge">王惠</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">贪婪残暴</span>
+                      <span class="trait-pill">酷吏本色</span>
+                      <span class="trait-pill">热衷权势</span>
+                    </div>
+                  </td>
+                  <td>任南昌知府，大堂充斥算盘戥子板子声；横征暴敛，宁王叛乱吓得降敌充当伪官，兵败削发出逃。</td>
+                </tr>
+
+                <tr data-group="group3">
+                  <td><span class="role-badge">潘三</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">江湖匪气</span>
+                      <span class="trait-pill">唯利是图</span>
+                      <span class="trait-pill">教唆犯罪</span>
+                    </div>
+                  </td>
+                  <td>包揽词讼，操纵官府案由；教唆引诱匡超人伪造朱签代考替试；拐卖妇女，敲诈勒索。</td>
+                </tr>
+
+                <tr data-group="group3">
+                  <td><span class="role-badge">杨执中</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">好高骛远</span>
+                      <span class="trait-pill">迂腐清高</span>
+                      <span class="trait-pill">自命不凡</span>
+                    </div>
+                  </td>
+                  <td>隐居乡野间好发宏大空洞议论；眼高手低，极易被权勿用等虚伪无赖小人蒙蔽利用。</td>
+                </tr>
+
+                <!-- 组四：抗争与奇人异士 -->
+                <tr data-group="group4">
+                  <td><span class="role-badge">胡屠户</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">嫌贫爱富</span>
+                      <span class="trait-pill">粗鄙势利</span>
+                      <span class="trait-pill">前倨后恭</span>
+                      <span class="trait-pill">蛮横无理</span>
+                    </div>
+                  </td>
+                  <td>范进未中举时肆意吐唾沫臭骂；中举后百般谄媚吹捧为文曲星老爷；扯平褶皱后襟数十回。</td>
+                </tr>
+
+                <tr data-group="group4">
+                  <td><span class="role-badge">沈琼枝</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">独立自强</span>
+                      <span class="trait-pill">智勇双全</span>
+                      <span class="trait-pill">反抗礼教</span>
+                      <span class="trait-pill">追求自由</span>
+                    </div>
+                  </td>
+                  <td>机敏识破恶商宋为富骗婚为妾阴谋；果断连夜逃婚奔赴南京，独立卖诗卖刺绣自食其力。</td>
+                </tr>
+
+                <tr data-group="group4">
+                  <td><span class="role-badge">赵氏</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">精明能干</span>
+                      <span class="trait-pill">忍辱负重</span>
+                      <span class="trait-pill">善于谋划</span>
+                    </div>
+                  </td>
+                  <td>由妾扶正为正室夫人；在严监生病危后巧妙智斗严氏恶霸族亲，坚强保全孤儿与家产。</td>
+                </tr>
+
+                <tr data-group="group4">
+                  <td><span class="role-badge">郭孝子 (郭力)</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">淳朴善良</span>
+                      <span class="trait-pill">知恩图报</span>
+                      <span class="trait-pill">正直老实</span>
+                      <span class="trait-pill">至孝纯善</span>
+                    </div>
+                  </td>
+                  <td>二十年万里跋涉寻亲，挑土打柴孝敬弃家绝情的父亲；不慕荣名，笃行孝道。</td>
+                </tr>
+
+                <tr data-group="group4">
+                  <td><span class="role-badge">萧云仙</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">精忠报国</span>
+                      <span class="trait-pill">仗义行侠</span>
+                      <span class="trait-pill">扶危助困</span>
+                      <span class="trait-pill">至纯孝心</span>
+                    </div>
+                  </td>
+                  <td>峨眉山上打瞎赵大救高僧；军中立功平定叛乱；青石番四年修城、筑水利利民、兴办教育。</td>
+                </tr>
+
+                <tr data-group="group4">
+                  <td><span class="role-badge">凤四老爹</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">身怀绝技</span>
+                      <span class="trait-pill">有勇有谋</span>
+                      <span class="trait-pill">仗义疏财</span>
+                      <span class="trait-pill">豪侠正气</span>
+                    </div>
+                  </td>
+                  <td>武艺绝伦，巧妙让万中书由假变成真官；法庭勇试官刑；路见不平追回被骗千两银。</td>
+                </tr>
+
+                <tr data-group="group4">
+                  <td><span class="role-badge">卜诚</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">善良正直</span>
+                      <span class="trait-pill">重情重义</span>
+                    </div>
+                  </td>
+                  <td>在匡超人困顿潦倒卖豆腐时真心以待，主动提供落脚之处与盘缠相助。</td>
+                </tr>
+
+                <tr data-group="group4">
+                  <td><span class="role-badge">李本瑛</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">表面清廉</span>
+                      <span class="trait-pill">实则昏庸</span>
+                      <span class="trait-pill">偏听偏信</span>
+                    </div>
+                  </td>
+                  <td>赏识匡超人并收为门生；后因涉事被朝廷参奏弹劾，反被匡超人无情划清界限。</td>
+                </tr>
+
+                <tr data-group="group4">
+                  <td><span class="role-badge">蘧公孙</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">附庸风雅</span>
+                      <span class="trait-pill">名过其实</span>
+                      <span class="trait-pill">虚慕浮名</span>
+                    </div>
+                  </td>
+                  <td>爱慕名士虚名，在枕箱禁书上冒名题刻；娶才女鲁小姐；经历磨难官司后幡然醒悟。</td>
+                </tr>
+
+                <tr data-group="group4">
+                  <td><span class="role-badge">张俊民</span></td>
+                  <td>
+                    <div class="trait-list">
+                      <span class="trait-pill">趋炎附势</span>
+                      <span class="trait-pill">见风使舵</span>
+                      <span class="trait-pill">谋取私利</span>
+                    </div>
+                  </td>
+                  <td>依附巴结范进，在官宦名流与地方豪绅间暗中撮合说项，极力为自身谋取好处。</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <img src="" alt="放大图件" class="lightbox-img" id="lightboxImg" onclick="event.stopPropagation()">
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxModal').classList.add('active');
+    }
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.remove('active');
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    function filterTable(group, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const rows = document.querySelectorAll('#matrixTable tbody tr');
+      rows.forEach(r => {
+        if (group === 'all' || r.getAttribute('data-group') === group) {
+          r.style.display = '';
+        } else {
+          r.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
