@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>初中道德与法治 (道法) 中考全景通关工作台 V5 | 4维罗盘体系·解题脚手架·全册考点精萃</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-focus: #3B82F6;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --brand-blue: #1E3A8A;
+      --brand-blue-light: #2563EB;
+      --brand-blue-bg: #EFF6FF;
+      
+      --accent-gold: #D97706;
+      --accent-gold-bg: #FEF3C7;
+      
+      --accent-green: #059669;
+      --accent-green-bg: #ECFDF5;
+
+      --accent-purple: #7C3AED;
+      --accent-purple-bg: #F3E8FF;
+
+      --accent-red: #DC2626;
+      --accent-red-bg: #FEF2F2;
+
+      --accent-teal: #0D9488;
+      --accent-teal-bg: #CCFBF1;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 顶部导航 Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0.65rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      font-family: 'Outfit', sans-serif;
+      box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+    }
+
+    .brand-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .version-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border: 1px solid #BFDBFE;
+      padding: 0.12rem 0.45rem;
+      border-radius: 4px;
+    }
+
+    .brand-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--brand-blue-light);
+      text-decoration: none;
+      padding: 0.38rem 0.75rem;
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      transition: all 0.2s;
+    }
+    .back-btn:hover {
+      background: #E2E8F0;
+      border-color: #CBD5E1;
+    }
+
+    /* 左右两栏布局 */
+    .layout-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      padding: 1.25rem;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    /* 左侧 Sticky 导航栏 */
+    aside.sidebar {
+      width: 250px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 65px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      box-shadow: var(--shadow-sm);
+      max-height: calc(100vh - 85px);
+      overflow-y: auto;
+    }
+
+    .sidebar-title {
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.65rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.5rem 0.65rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.15s ease;
+    }
+    .sidebar-link:hover, .sidebar-link.active {
+      background: var(--brand-blue-bg);
+      color: var(--brand-blue-light);
+    }
+    .sidebar-badge {
+      font-size: 0.65rem;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+      background: #FEE2E2;
+      color: #B91C1C;
+      font-weight: 700;
+    }
+
+    /* 右侧主视窗 */
+    main.main-content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #1D4ED8;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      max-width: 1000px;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .stat-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+    }
+    .stat-num {
+      display: block;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--brand-blue-light);
+      font-family: 'Outfit', sans-serif;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* 模块通用样式 */
+    .content-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-title-left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* 罗盘控制 Tab */
+    .compass-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .compass-tab-btn {
+      padding: 0.55rem 1.1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s;
+    }
+    .compass-tab-btn:hover {
+      background: #E2E8F0;
+      color: var(--text-primary);
+    }
+    .compass-tab-btn.active {
+      background: #1E3A8A;
+      border-color: #1E3A8A;
+      color: white;
+      box-shadow: 0 2px 4px rgba(30, 58, 138, 0.25);
+    }
+
+    /* 搜索栏 */
+    .search-box-wrap {
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.65rem 1rem 0.65rem 2.5rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      font-size: 0.88rem;
+      background: #FFFFFF;
+      transition: all 0.2s;
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+    .search-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    /* 考点网格布局 */
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1rem;
+    }
+
+    .topic-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      position: relative;
+      border-top: 4px solid #CBD5E1;
+    }
+    .topic-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: #94A3B8;
+    }
+    .topic-card[data-dimension="g9"] { border-top-color: #2563EB; }
+    .topic-card[data-dimension="g8"] { border-top-color: #D97706; }
+    .topic-card[data-dimension="g7"] { border-top-color: #059669; }
+    .topic-card[data-dimension="g6"] { border-top-color: #7C3AED; }
+
+    .topic-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+
+    .topic-badges {
+      display: flex;
+      gap: 0.35rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .topic-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.12rem 0.45rem;
+      border-radius: 4px;
+    }
+    .badge-g9 { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+    .badge-g8 { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
+    .badge-g7 { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+    .badge-g6 { background: #F3E8FF; color: #6B21A8; border: 1px solid #E9D5FF; }
+
+    .topic-title {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.45rem;
+    }
+
+    .topic-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+
+    .golden-phrases {
+      background: var(--bg-main);
+      border-left: 3px solid #2563EB;
+      padding: 0.65rem 0.8rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-bottom: 0.85rem;
+    }
+    .golden-phrases-title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #1E3A8A;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .golden-phrase-item {
+      font-size: 0.78rem;
+      color: #1E293B;
+      line-height: 1.45;
+      margin-bottom: 0.3rem;
+    }
+    .golden-phrase-item b {
+      color: #B91C1C;
+    }
+
+    .topic-pitfall {
+      font-size: 0.76rem;
+      color: #B45309;
+      background: #FFFBEB;
+      padding: 0.45rem 0.65rem;
+      border-radius: 4px;
+      border: 1px solid #FEF3C7;
+      margin-bottom: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .topic-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.65rem;
+      border-top: 1px solid #F1F5F9;
+      margin-top: auto;
+    }
+
+    .btn-anchor {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--brand-blue-light);
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      padding: 0.25rem 0.55rem;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.15s;
+      cursor: pointer;
+    }
+    .btn-anchor:hover {
+      background: #DBEAFE;
+      color: #1D4ED8;
+    }
+
+    /* 解题脚手架看板 */
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .framework-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .framework-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.85rem;
+    }
+
+    .framework-tag {
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+    }
+
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .flow-step-item {
+      display: flex;
+      gap: 0.75rem;
+      background: var(--bg-main);
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid #E2E8F0;
+    }
+
+    .step-idx {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #1E3A8A;
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .step-body-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.15rem;
+    }
+
+    .step-body-text {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* 抽认卡 Flashcards */
+    .flashcard-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .flashcard {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      background: #FFFFFF;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    .flashcard-header {
+      padding: 0.85rem 1.1rem;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+    }
+    .flashcard-header:hover {
+      background: #F8FAFC;
+    }
+    .flashcard-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .flashcard-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+    }
+    .flashcard-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .flashcard-toggle-icon {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      transition: transform 0.2s;
+    }
+    .flashcard.open .flashcard-toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .flashcard-content {
+      display: none;
+      padding: 1.1rem 1.25rem;
+      background: var(--bg-main);
+      border-top: 1px solid var(--border-color);
+    }
+    .flashcard.open .flashcard-content {
+      display: block;
+    }
+
+    /* 跨册对齐表格 */
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+    }
+
+    table.align-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      text-align: left;
+    }
+
+    table.align-table th {
+      background: #F1F5F9;
+      color: var(--text-primary);
+      padding: 0.75rem 1rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    table.align-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #E2E8F0;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    table.align-table tr:hover {
+      background: #F8FAFC;
+    }
+
+    /* 原件下载卡片 */
+    .downloads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.85rem;
+    }
+
+    .download-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+
+    .download-card.highlight {
+      border-color: #BFDBFE;
+      background: #F8FAFC;
+    }
+
+    .file-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.7rem;
+      color: white;
+      flex-shrink: 0;
+    }
+    .file-icon-pdf { background: #DC2626; }
+    .file-icon-pptx { background: #EA580C; }
+
+    .file-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.35;
+      margin-bottom: 0.15rem;
+    }
+    .file-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .btn-action {
+      flex: 1;
+      text-align: center;
+      padding: 0.35rem 0.5rem;
+      font-size: 0.76rem;
+      font-weight: 600;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      border: 1px solid var(--border-color);
+      background: white;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-action:hover {
+      background: var(--bg-subtle);
+    }
+    .btn-download {
+      background: #1E3A8A;
+      color: white;
+      border-color: #1E3A8A;
+    }
+    .btn-download:hover {
+      background: #1D4ED8;
+      color: white;
+    }
+
+    /* 全局 PDF 弹窗预览器 */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      backdrop-filter: blur(4px);
+    }
+    .modal-content {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 1100px;
+      height: 90vh;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .modal-header {
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #F8FAFC;
+    }
+    .modal-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--brand-blue);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+    .modal-close-btn:hover {
+      background: #E2E8F0;
+      color: var(--text-primary);
+    }
+    .modal-iframe-wrap {
+      flex: 1;
+      width: 100%;
+      background: #525659;
+    }
+    .modal-iframe-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* 响应式 */
+    @media (max-width: 900px) {
+      .layout-container { flex-direction: column; }
+      aside.sidebar { width: 100%; position: static; max-height: none; }
+      .topics-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <div class="brand-logo">道法</div>
+        <div>
+          <div class="brand-title">
+            初中道德与法治 (道法) 中考全景通关工作台
+            <span class="version-tag">V5 体系化全萃取版</span>
+          </div>
+          <div class="brand-subtitle">打破册次孤岛 · 4维核心罗盘 · 4大解题脚手架 · 跨册考点穿透</div>
+        </div>
+      </a>
+      <div class="header-actions">
+        <a href="daofa-V4.html" class="back-btn" style="color: var(--text-muted);">
+          历史 V4 (PDF直读)
+        </a>
+        <a href="../index.html" class="back-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          返回学习中心
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    <!-- 左侧 Sticky 导航 -->
+    <aside class="sidebar">
+      <div class="sidebar-title">全景通关工作台索引</div>
+      <ul class="sidebar-menu">
+        <li>
+          <a href="#sec-compass" class="sidebar-link active" style="color: var(--brand-blue-light); font-weight: 700;">
+            🧭 1. 中考道法 4 维核心罗盘
+            <span class="sidebar-badge">核心</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sec-scaffolds" class="sidebar-link">
+            🎯 2. 大题 4 个万能答题公式
+          </a>
+        </li>
+        <li>
+          <a href="#sec-cross-grade" class="sidebar-link">
+            🔗 3. 跨年级综合连线表
+          </a>
+        </li>
+        <li>
+          <a href="#sec-flashcards" class="sidebar-link">
+            🗂️ 4. 9.30 新大题抽背卡
+          </a>
+        </li>
+        <li>
+          <a href="#sec-materials" class="sidebar-link">
+            📥 5. 官方课本与讲评原件
+          </a>
+        </li>
+      </ul>
+
+      <div style="margin-top: 1.5rem; padding: 0.85rem; background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: var(--radius-sm);">
+        <div style="font-size: 0.74rem; font-weight: 700; color: #1D4ED8; margin-bottom: 0.35rem;">💡 答大题拿分技巧</div>
+        <div style="font-size: 0.72rem; color: #1E3A8A; line-height: 1.45;">
+          大题先写<b>“党和国家”</b>，再写<b>“民生富裕”</b>，最后写<b>“科学立法”</b>。按这三层答，老师必给满分！
+        </div>
+      </div>
+    </aside>
+
+    <!-- 右侧主内容区 -->
+    <main class="main-content">
+      <!-- 极简学生向 Hero -->
+      <section class="hero-card" style="padding: 1.1rem 1.25rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+          <h1 style="font-size: 1.35rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 0.5rem;">
+            <span>📖 初中道法 · 中考高分背诵与大题速查</span>
+            <span style="font-size: 0.72rem; font-weight: 700; color: #1D4ED8; background: #EFF6FF; border: 1px solid #BFDBFE; padding: 0.15rem 0.5rem; border-radius: 100px;">中考提分版</span>
+          </h1>
+          <span style="font-size: 0.76rem; color: #059669; font-weight: 600;">✨ 别死背整本书，大题只采关键分！</span>
+        </div>
+        
+        <p style="font-size: 0.84rem; color: #475569; line-height: 1.5; margin-bottom: 0.85rem;">
+          七八九年级几百页书，中考大题<b>只考高频答题套路和必背金句</b>。下面已经把考点全整理好了：<b>左边按年级查金句，右边直接套答题公式</b>，遇到不会写的大题直接对号入座：
+        </p>
+
+        <!-- 4 个给学生直接用的快速捷径 -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem;">
+          <a href="#sec-scaffolds" style="display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem; background: #FFFFFF; border: 1px solid #BFDBFE; border-radius: 6px; text-decoration: none; color: #1E3A8A;">
+            <span style="font-size: 1.2rem;">🎯</span>
+            <div>
+              <div style="font-size: 0.82rem; font-weight: 700;">大题万能套路</div>
+              <div style="font-size: 0.7rem; color: #64748B;">“为什么/怎么做/观点题”模板</div>
+            </div>
+          </a>
+          <a href="#sec-compass" style="display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem; background: #FFFFFF; border: 1px solid #FDE68A; border-radius: 6px; text-decoration: none; color: #92400E;">
+            <span style="font-size: 1.2rem;">⚡</span>
+            <div>
+              <div style="font-size: 0.82rem; font-weight: 700;">必背踩分金句</div>
+              <div style="font-size: 0.7rem; color: #64748B;">判卷老师只认这些政治术语</div>
+            </div>
+          </a>
+          <a href="#sec-flashcards" style="display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem; background: #FFFFFF; border: 1px solid #FECDD3; border-radius: 6px; text-decoration: none; color: #9F1239;">
+            <span style="font-size: 1.2rem;">🗂️</span>
+            <div>
+              <div style="font-size: 0.82rem; font-weight: 700;">9.30 新考题抽背</div>
+              <div style="font-size: 0.7rem; color: #64748B;">遮住答案自己背，点击看解析</div>
+            </div>
+          </a>
+          <a href="#sec-cross-grade" style="display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem; background: #FFFFFF; border: 1px solid #DDD6FE; border-radius: 6px; text-decoration: none; color: #6D28D9;">
+            <span style="font-size: 1.2rem;">🔗</span>
+            <div>
+              <div style="font-size: 0.82rem; font-weight: 700;">跨年级连线表</div>
+              <div style="font-size: 0.7rem; color: #64748B;">一题连考七八九年级防丢分</div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- 板块 1: 4维核心罗盘与通关考点网格 -->
+      <section class="content-card" id="sec-compass">
+        <div class="card-title">
+          <div class="card-title-left">
+            <span style="font-size: 1.4rem;">🧭</span>
+            <span>1. 核心考点速查（考啥查啥，背标红的关键术语）</span>
+          </div>
+          <span style="font-size: 0.78rem; color: var(--text-muted);">涵盖七八九年级 12 个常考主题</span>
+        </div>
+
+        <!-- 罗盘维度切换按钮 -->
+        <div class="compass-tabs">
+          <button class="compass-tab-btn active" onclick="switchDimension('all', this)">
+            🌐 全部考点 (12个)
+          </button>
+          <button class="compass-tab-btn" onclick="switchDimension('g9', this)">
+            🏛️ 九年级（党领导·科技创新·民主法治）
+          </button>
+          <button class="compass-tab-btn" onclick="switchDimension('g8', this)">
+            ⚖️ 八下宪法大题（宪法地位·国家机构分工）
+          </button>
+          <button class="compass-tab-btn" onclick="switchDimension('g7', this)">
+            🛡️ 七下八上（规则与自由·国家安全）
+          </button>
+          <button class="compass-tab-btn" onclick="switchDimension('g6', this)">
+            🌱 六七年级（学习观·友谊竞争·情绪生命）
+          </button>
+        </div>
+
+        <!-- 实时检索框 -->
+        <div class="search-box-wrap">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="topicSearch" class="search-input" placeholder="输入关键词即时过滤（如：乡村振兴、建党精神、宪法监督、情绪管理、新质生产力、文化遗产保护...）" oninput="filterTopics()">
+        </div>
+
+        <!-- 考点卡片容器 -->
+        <div class="topics-grid" id="topicsContainer">
+          
+          <!-- 0.1 9.4笔记核心：1.1 书写恢弘史诗 · 四个历史时期与复兴意义 -->
+          <div class="topic-card" data-dimension="g9" data-keywords="书写恢弘史诗 四个历史时期 伟大成就 复兴意义 精神标识 站起来 富起来 强起来 新民主主义革命 社会主义革命 改革开放 新时代">
+            <div>
+              <div class="topic-header">
+                <div class="topic-badges">
+                  <span class="topic-badge badge-g9">9.4 笔记 1.1</span>
+                  <span class="topic-badge" style="background: #FEF2F2; color: #DC2626;">中考填空/连线必考</span>
+                </div>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">9.4板书 P.1-3</span>
+              </div>
+              <h3 class="topic-title">四个历史时期伟大成就与复兴意义 ABCD 矩阵</h3>
+              <p class="topic-desc">100 多年来党带领人民奋斗的一个主题：实现中华民族伟大复兴。4 个阶段对应 4 大成就与 4 大意义：</p>
+              
+              <div class="golden-phrases">
+                <div class="golden-phrases-title">📌 核心考点对应链 (ABCD 满分口诀)</div>
+                <div class="golden-phrase-item">① <b>新民主主义革命时期：</b>浴血奋战、百折不挠 → <b>创造了根本社会条件</b>（宣告站起来了，开启新纪元）。</div>
+                <div class="golden-phrase-item">② <b>社会主义革命和建设时期：</b>自力更生、发愤图强 → <b>奠定了根本政治前提和制度基础</b>（只有社会主义才能救中国、发展中国）。</div>
+                <div class="golden-phrase-item">③ <b>改革开放和社会主义现代化建设新时期：</b>解放思想、锐意进取 → <b>提供了充满新活力的体制保证和快速发展的物质条件</b>（大踏步赶上时代，关键一招）。</div>
+                <div class="golden-phrase-item">④ <b>中国特色社会主义新时代：</b>自信自强、守正创新 → <b>提供了更完善的制度保证、更坚实的物质基础、更主动的精神力量</b>（迎来从站起来、富起来到强起来的伟大飞跃）。</div>
+              </div>
+
+              <div class="topic-pitfall">
+                ⚠️ <b>防坑提醒：</b>“创造了根本社会条件”对应新民主主义革命；“奠定根本政治前提和制度基础”对应社会主义革命和建设；切勿张冠李戴！
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span style="font-size: 0.72rem; color: var(--text-muted);">9.4 笔记 P.2-3</span>
+              <button class="btn-anchor" onclick="openPdfModal('2026.9.4道法笔记（1.1+6.1）.pdf', 2)">
+                📄 调阅 9.4 笔记原件 P.2
+              </button>
+            </div>
+          </div>
+
+          <!-- 0.2 9.4笔记核心：6.1 经济实力大幅跃升 · 六大成就与三大战略 -->
+          <div class="topic-card" data-dimension="g9" data-keywords="经济实力大幅跃升 发展是第一要务 制造业第一 货物贸易第一 基本经济制度 创新驱动 乡村振兴 区域协调 四大板块">
+            <div>
+              <div class="topic-header">
+                <div class="topic-badges">
+                  <span class="topic-badge badge-g9">9.4 笔记 6.1</span>
+                  <span class="topic-badge" style="background: #FEF3C7; color: #B45309;">综合大题论据</span>
+                </div>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">9.4板书 P.4-7</span>
+              </div>
+              <h3 class="topic-title">经济实力大幅跃升的六大成就与三大战略举措</h3>
+              <p class="topic-desc">发展是党执政兴国的第一要务，是解决我国一切问题的基础和关键。掌握 6 大世界之最与 3 大战略支撑：</p>
+              
+              <div class="golden-phrases">
+                <div class="golden-phrases-title">📌 必背踩分金句</div>
+                <div class="golden-phrase-item">① <b>六大标志性成就：</b>经济总量稳居世界<b>第二</b>；<b>制造业增加值连续多年居世界首位</b>；全球<b>货物贸易第一大国</b>、服务贸易第二、商品消费第二、外汇储备第一。</div>
+                <div class="golden-phrase-item">② <b>举措 1 制度支柱：</b>完善社会主义基本经济制度（公有制为主体多种所有制共同发展、按劳分配为主体、社会主义市场经济体制）。</div>
+                <div class="golden-phrase-item">③ <b>举措 2 创新驱动：</b>深入实施创新驱动发展战略，全社会研发经费居世界第二、研发人员世界第一，进入创新型国家行列。</div>
+                <div class="golden-phrase-item">④ <b>举措 3 结构优化：</b>制造强国、新型城镇化与乡村振兴战略，东中西部和东北“四大板块”区域协调发展。</div>
+              </div>
+
+              <div class="topic-pitfall">
+                ⚠️ <b>防坑提醒：</b>制造业是立国之本、强国之基，我国是<b>制造业增加值连续多年位居世界首位</b>，不是第三或第二！
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span style="font-size: 0.72rem; color: var(--text-muted);">9.4 笔记 P.5-7</span>
+              <button class="btn-anchor" onclick="openPdfModal('2026.9.4道法笔记（1.1+6.1）.pdf', 5)">
+                📄 调阅 9.4 笔记原件 P.5
+              </button>
+            </div>
+          </div>
+
+          <!-- 1. 九年级：党的领导与人民立场 -->
+          <div class="topic-card" data-dimension="g9" data-keywords="党的领导 以人民为中心 初心使命 共同富裕 伟大建党精神 民生福祉">
+            <div>
+              <div class="topic-header">
+                <div class="topic-badges">
+                  <span class="topic-badge badge-g9">九年级核心</span>
+                  <span class="topic-badge" style="background: #FEE2E2; color: #DC2626;">高频大题第一主体</span>
+                </div>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">9.30综合卷重点</span>
+              </div>
+              <h3 class="topic-title">中国共产党的领导与以人民为中心</h3>
+              <p class="topic-desc">中国特色社会主义最本质特征与根本立场。贯穿所有中考综合大题的主体一作答。</p>
+              
+              <div class="golden-phrases">
+                <div class="golden-phrases-title">📌 必背踩分金句</div>
+                <div class="golden-phrase-item">① <b>中国共产党领导</b>是中国特色社会主义最本质的特征，是中国特色社会主义制度的最大优势。</div>
+                <div class="golden-phrase-item">② 党的根本宗旨是<b>全心全意为人民服务</b>，始终坚持<b>以人民为中心</b>的发展思想。</div>
+                <div class="golden-phrase-item">③ 人民对美好生活的向往，就是党的<b>奋斗目标</b>；发展的根本目的就是<b>增进民生福祉</b>。</div>
+              </div>
+
+              <div class="topic-pitfall">
+                ⚠️ <b>防坑提醒：</b>不能写成“政府是中国特色社会主义最本质特征”，只有“中国共产党”才是领导核心与最本质特征。
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span style="font-size: 0.72rem; color: var(--text-muted);">资料1 讲评 P.2</span>
+              <button class="btn-anchor" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 2)">
+                📄 直达原件 P.2
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. 九年级：伟大建党精神与精神谱系 -->
+          <div class="topic-card" data-dimension="g9" data-keywords="伟大建党精神 精神谱系 延安精神 探月精神 文化自信 赓续红色血脉 红色研学">
+            <div>
+              <div class="topic-header">
+                <div class="topic-badges">
+                  <span class="topic-badge badge-g9">九年级核心</span>
+                  <span class="topic-badge" style="background: #FEF2F2; color: #B91C1C;">精神动力</span>
+                </div>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">课后练资料1 P.21</span>
+              </div>
+              <h3 class="topic-title">伟大建党精神与中国共产党人精神谱系</h3>
+              <p class="topic-desc">精神力量与文化底蕴。从井冈山、长征、延安精神到新时代探月、载人航天、脱贫攻坚精神。</p>
+              
+              <div class="golden-phrases">
+                <div class="golden-phrases-title">📌 必背踩分金句</div>
+                <div class="golden-phrase-item">① <b>伟大建党精神</b>是中国共产党的精神之源，构建起中国共产党人的<b>精神谱系</b>。</div>
+                <div class="golden-phrase-item">② 伟大精神跨越时空、历久弥新，凝聚着中国共产党人的伟大品格，提供强大<b>精神动力</b>。</div>
+                <div class="golden-phrase-item">③ 青少年要<b>赓续红色血脉</b>，传承革命传统，坚定<b>文化自信</b>，以实际行动担当复兴大任。</div>
+              </div>
+
+              <div class="topic-pitfall">
+                ⚠️ <b>防坑提醒：</b>答实践研学活动时，必写“赓续红色血脉、传承伟大建党精神”，切勿写口语“学习好思想”。
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span style="font-size: 0.72rem; color: var(--text-muted);">资料1 讲评 P.21</span>
+              <button class="btn-anchor" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 21)">
+                📄 直达原件 P.21
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. 九年级：创新驱动与新质生产力 -->
+          <div class="topic-card" data-dimension="g9" data-keywords="创新驱动 高质量发展 核心技术 卡脖子 知识产权 教育 人才 新质生产力 自主创新">
+            <div>
+              <div class="topic-header">
+                <div class="topic-badges">
+                  <span class="topic-badge badge-g9">九年级核心</span>
+                  <span class="topic-badge" style="background: #FEF3C7; color: #D97706;">时代前沿</span>
+                </div>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">课后练资料3</span>
+              </div>
+              <h3 class="topic-title">创新驱动发展战略与科技自立自强</h3>
+              <p class="topic-desc">应对大国博弈与现代化建设核心动力。结合芯片自主研发、人工智能与新质生产力设问。</p>
+              
+              <div class="golden-phrases">
+                <div class="golden-phrases-title">📌 必背踩分金句</div>
+                <div class="golden-phrase-item">① <b>创新是引领发展的第一动力</b>，是推动人类社会向前发展的重要力量。</div>
+                <div class="golden-phrase-item">② 科技创新能力已经成为综合国力竞争的<b>决定性因素</b>。</div>
+                <div class="golden-phrase-item">③ 坚持<b>自主创新、重点跨越、支撑发展、引领未来</b>，攻克关键核心技术卡脖子难关。</div>
+              </div>
+
+              <div class="topic-pitfall">
+                ⚠️ <b>防坑提醒：</b>教育是民族振兴、社会进步的基石；创新是引领发展的第一动力；两者切勿混淆。
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span style="font-size: 0.72rem; color: var(--text-muted);">资料3 讲评 P.11</span>
+              <button class="btn-anchor" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 11)">
+                📄 直达原件 P.11
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. 九年级：全过程人民民主与法治政府 -->
+          <div class="topic-card" data-dimension="g9" data-keywords="全过程人民民主 协商民主 依法治国 科学立法 严格执法 公正司法 全民守法 法治政府 依法行政 良法善治">
+            <div>
+              <div class="topic-header">
+                <div class="topic-badges">
+                  <span class="topic-badge badge-g9">九年级核心</span>
+                  <span class="topic-badge" style="background: #EFF6FF; color: #1D4ED8;">制度基石</span>
+                </div>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">课后练资料4、5</span>
+              </div>
+              <h3 class="topic-title">全过程人民民主与法治国家/政府建设</h3>
+              <p class="topic-desc">社会主义民主政治本质属性。立法听证会、基层民主评议、政府法定职责必须为法无授权不可为。</p>
+              
+              <div class="golden-phrases">
+                <div class="golden-phrases-title">📌 必背踩分金句</div>
+                <div class="golden-phrase-item">① 全过程人民民主是社会主义民主政治的本质属性，是<b>最广泛、最真实、最管用</b>的民主。</div>
+                <div class="golden-phrase-item">② <b>法治兴则国兴，法治强则国强</b>。科学立法、严格执法、公正司法、全民守法良性互动。</div>
+                <div class="golden-phrase-item">③ 建设法治政府必须坚持<b>依法行政</b>，防范行政权力滥用，全面推进政务公开。</div>
+              </div>
+
+              <div class="topic-pitfall">
+                ⚠️ <b>防坑提醒：</b>社会主义民主有<b>选举民主</b>与<b>协商民主</b>两种形式，<b>协商民主是我国特有形式和独特优势</b>。
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span style="font-size: 0.72rem; color: var(--text-muted);">资料4-5 讲评 P.18</span>
+              <button class="btn-anchor" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 18)">
+                📄 直达原件 P.18
+              </button>
+            </div>
+          </div>
+
+          <!-- 5. 九年级：文化遗产保护与法治德治结合 -->
+          <div class="topic-card" data-dimension="g9" data-keywords="文化遗产保护 西夏陵 科学立法 严格执法 全民守法 法治与德治 申遗 中华文化">
+            <div>
+              <div class="topic-header">
+                <div class="topic-badges">
+                  <span class="topic-badge badge-g9">九年级前沿</span>
+                  <span class="topic-badge" style="background: #CCFBF1; color: #0D9488;">热点综合</span>
+                </div>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">课后练资料6 P.30</span>
+              </div>
+              <h3 class="topic-title">中华文化保护传承与法治三位一体践行</h3>
+              <p class="topic-desc">以申遗成功（如西夏陵）为背景的综合大题。考察国家立法、执法监管、公民守法三维合力。</p>
+              
+              <div class="golden-phrases">
+                <div class="golden-phrases-title">📌 必背踩分金句</div>
+                <div class="golden-phrase-item">① <b>国家层面：</b>制定和完善遗产保护法规政策，通过<b>科学立法</b>保障中华优秀传统文化传承。</div>
+                <div class="golden-phrase-item">② <b>执法层面：</b>执法机关加大监督与处罚力度，做到<b>严格执法</b>，打击破坏文物违法行为。</div>
+                <div class="golden-phrase-item">③ <b>公民层面：</b>增强守法意识，履行保护文化遗产法定义务，做到<b>全民守法</b>并主动监督举报。</div>
+              </div>
+
+              <div class="topic-pitfall">
+                ⚠️ <b>防坑提醒：</b>凡是回答“文化保护措施”大题，绝不能只答“热爱祖国”，必须写出<b>立法+执法+守法</b>三层！
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span style="font-size: 0.72rem; color: var(--text-muted);">资料6 讲评 P.30</span>
+              <button class="btn-anchor" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 30)">
+                📄 直达原件 P.30
+              </button>
+            </div>
+          </div>
+
+          <!-- 6. 八年级下册：宪法是根本法与规范权力 -->
+          <div class="topic-card" data-dimension="g8" data-keywords="宪法 根本法 规范权力 国家权力 监督 权力属于人民 依宪治国 依宪执政 母法">
+            <div>
+              <div class="topic-header">
+                <div class="topic-badges">
+                  <span class="topic-badge badge-g8">八下宪法专题</span>
+                  <span class="topic-badge" style="background: #FEE2E2; color: #DC2626;">中考必考</span>
+                </div>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">八下梳理(104MB)第一单元</span>
+              </div>
+              <h3 class="topic-title">宪法的最高地位与规范国家权力运行</h3>
+              <p class="topic-desc">八下 104MB 扫描件灵魂考点。宪法至上地位、一切权力属于人民、把权力关进制度的笼子里。</p>
+              
+              <div class="golden-phrases">
+                <div class="golden-phrases-title">📌 必背踩分金句</div>
+                <div class="golden-phrase-item">① 宪法是国家的<b>根本法</b>，具有<b>最高的法律地位、法律权威和法律效力</b>。</div>
+                <div class="golden-phrase-item">② <b>规范国家权力运行以保障公民权利</b>，是宪法的核心价值追求。</div>
+                <div class="golden-phrase-item">③ 坚持依法治国首先要坚持<b>依宪治国</b>，国家权力必须在宪法和法律限定范围内行使。</div>
+              </div>
+
+              <div class="topic-pitfall">
+                ⚠️ <b>防坑提醒：</b>普通法律是依据宪法制定的（宪法是母法），普通法律不得同宪法相抵触，否则无效。
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span style="font-size: 0.72rem; color: var(--text-muted);">八下知识梳理 P.1</span>
+              <button class="btn-anchor" onclick="openPdfModal('2026.7    八下道法知识梳理.pdf', 1)">
+                📄 调阅原件目录 P.1
+              </button>
+            </div>
+          </div>
+
+          <!-- 7. 八年级下册：国家机构产生与职能分工 -->
+          <div class="topic-card" data-dimension="g8" data-keywords="国家机构 全国人民代表大会 国务院 监察委员会 人民法院 人民检察院 权力机关 行政机关 司法机关 审判权 检察权">
+            <div>
+              <div class="topic-header">
+                <div class="topic-badges">
+                  <span class="topic-badge badge-g8">八下国家机构</span>
+                  <span class="topic-badge" style="background: #FEF3C7; color: #B45309;">必背结构</span>
+                </div>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">八下梳理第三单元</span>
+              </div>
+              <h3 class="topic-title">我国国家机构的产生与职权划分</h3>
+              <p class="topic-desc">权力机关（人大）、行政机关（政府）、监察机关（监委）、司法机关（法院/检察院）关系矩阵。</p>
+              
+              <div class="golden-phrases">
+                <div class="golden-phrases-title">📌 必背踩分金句</div>
+                <div class="golden-phrase-item">① 全国人民代表大会是<b>最高国家权力机关</b>，行使最高立法权、决定权、任免权、监督权。</div>
+                <div class="golden-phrase-item">② 行政机关、监察机关、审判机关、检察机关都由<b>人大产生，对它负责，受它监督</b>。</div>
+                <div class="golden-phrase-item">③ 人民法院独立行使<b>审判权</b>，人民检察院是国家的<b>法律监督机关</b>，独立行使检察权。</div>
+              </div>
+
+              <div class="topic-pitfall">
+                ⚠️ <b>防坑提醒：</b>国务院是最高国家权力机关的<b>执行机关</b>，是最高国家<b>行政机关</b>，绝不能写成国家权力机关！
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span style="font-size: 0.72rem; color: var(--text-muted);">八下知识梳理 P.38</span>
+              <button class="btn-anchor" onclick="openPdfModal('2026.7    八下道法知识梳理.pdf', 38)">
+                📄 调阅原件 P.38
+              </button>
+            </div>
+          </div>
+
+          <!-- 8. 八年级下册：公民基本权利与义务的统一 -->
+          <div class="topic-card" data-dimension="g8" data-keywords="公民基本权利 基本义务 权利义务相统一 人身自由 财产权 受教育 依法纳税 服兵役 维权">
+            <div>
+              <div class="topic-header">
+                <div class="topic-badges">
+                  <span class="topic-badge badge-g8">八下法治生活</span>
+                  <span class="topic-badge" style="background: #EEF2FF; color: #4F46E5;">权利义务观</span>
+                </div>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">八下梳理第二单元</span>
+              </div>
+              <h3 class="topic-title">公民权利与义务的统一与合法维权</h3>
+              <p class="topic-desc">人身自由权、人格尊严权、受教育与劳动（既是权利又是义务）、行使权利不得损害国家集体利益。</p>
+              
+              <div class="golden-phrases">
+                <div class="golden-phrases-title">📌 必背踩分金句</div>
+                <div class="golden-phrase-item">① 公民的权利与义务是<b>相互依存、相互促进</b>的。公民既是合法权利的享有者，又是法定义务的承担者。</div>
+                <div class="golden-phrase-item">② 公民行使自由和权利，<b>不得损害国家的、社会的、集体的利益</b>和其他公民的合法的自由和权利。</div>
+                <div class="golden-phrase-item">③ 维权必须遵循法定程序，通过<b>协商、调解、仲裁、诉讼</b>等合法方式解决。</div>
+              </div>
+
+              <div class="topic-pitfall">
+                ⚠️ <b>防坑提醒：</b><b>劳动和受教育</b>既是公民的基本权利，又是公民的基本义务，中考选择题极高频考查！
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span style="font-size: 0.72rem; color: var(--text-muted);">八下知识梳理 P.20</span>
+              <button class="btn-anchor" onclick="openPdfModal('2026.7    八下道法知识梳理.pdf', 20)">
+                📄 调阅原件 P.20
+              </button>
+            </div>
+          </div>
+
+          <!-- 9. 八年级上册：遵守社会规则与维护国家安全 -->
+          <div class="topic-card" data-dimension="g7" data-keywords="社会规则 自由与规则 诚信 遵守法律 犯罪 总体国家安全观 政治安全 经济安全 承担责任">
+            <div>
+              <div class="topic-header">
+                <div class="topic-badges">
+                  <span class="topic-badge badge-g7">八上核心</span>
+                  <span class="topic-badge" style="background: #ECFDF5; color: #047857;">公德与安全</span>
+                </div>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">八上梳理重点</span>
+              </div>
+              <h3 class="topic-title">社会规则、犯罪特征与总体国家安全观</h3>
+              <p class="topic-desc">自由与规则辩证关系、诚信价值、行政/民事/刑事违法界限、总体国家安全观以人民安全为宗旨。</p>
+              
+              <div class="golden-phrases">
+                <div class="golden-phrases-title">📌 必背踩分金句</div>
+                <div class="golden-phrase-item">① <b>社会规则划定了自由的边界</b>。自由不是随心所欲，它受道德、纪律、法律等社会规则约束。</div>
+                <div class="golden-phrase-item">② 严重社会危害性（最本质特征）、刑事违法性、应受刑罚处罚性是<b>犯罪的三大基本特征</b>。</div>
+                <div class="golden-phrase-item">③ 坚持<b>总体国家安全观</b>，以人民安全为宗旨，以政治安全为根本，国家利益高于一切。</div>
+              </div>
+
+              <div class="topic-pitfall">
+                ⚠️ <b>防坑提醒：</b>严重社会危害性是犯罪的<b>最本质特征</b>，刑罚当罚性是犯罪的<b>必然法律后果</b>。
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span style="font-size: 0.72rem; color: var(--text-muted);">八上知识梳理 P.5</span>
+              <button class="btn-anchor" onclick="openPdfModal('2026.7   八上道法知识梳理.pdf', 5)">
+                📄 直达原件 P.5
+              </button>
+            </div>
+          </div>
+
+          <!-- 10. 七年级：集体生活与未成年人六大保护 -->
+          <div class="topic-card" data-dimension="g7" data-keywords="集体生活 个人与集体 青春萌动 法律特殊保护 家庭保护 学校保护 社会保护 网络保护 政府保护 司法保护">
+            <div>
+              <div class="topic-header">
+                <div class="topic-badges">
+                  <span class="topic-badge badge-g7">七年级核心</span>
+                  <span class="topic-badge" style="background: #F1F5F9; color: #475569;">保护体系</span>
+                </div>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">七年级课本笔记</span>
+              </div>
+              <h3 class="topic-title">在集体中成长与未成年人“六大保护”</h3>
+              <p class="topic-desc">个人利益与集体利益和谐统一、未成年人身心特点、家庭/学校/社会/网络/政府/司法六位一体防线。</p>
+              
+              <div class="golden-phrases">
+                <div class="golden-phrases-title">📌 必背踩分金句</div>
+                <div class="golden-phrase-item">① 在集体中，个人利益与集体利益根本一致。当冲突时，<b>坚持集体利益高于个人利益</b>。</div>
+                <div class="golden-phrase-item">② 法律给予未成年人特殊保护，构建起<b>家庭、学校、社会、网络、政府、司法</b>保护防线。</div>
+                <div class="golden-phrase-item">③ 既要珍惜法定权利，又要树立法治观念，学会运用法律武器维护合法权益。</div>
+              </div>
+
+              <div class="topic-pitfall">
+                ⚠️ <b>防坑提醒：</b>公安机关/民政局属于<b>政府保护</b>；法院/检察院属于<b>司法保护</b>；短视频平台属于<b>网络保护</b>。
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span style="font-size: 0.72rem; color: var(--text-muted);">七年级笔记 P.24</span>
+              <button class="btn-anchor" onclick="openPdfModal('2026.8道法七年级课本笔记.pdf', 24)">
+                📄 直达原件 P.24
+              </button>
+            </div>
+          </div>
+
+          <!-- 11. 六年级：广义学习观与友谊竞争 -->
+          <div class="topic-card" data-dimension="g6" data-keywords="学习观 实践 课外实践 友谊 竞争 情绪调节 挫折 敬畏生命 知行合一">
+            <div>
+              <div class="topic-header">
+                <div class="topic-badges">
+                  <span class="topic-badge badge-g6">六年级基石</span>
+                  <span class="topic-badge" style="background: #FEE2E2; color: #DC2626;">综合大题必借理论</span>
+                </div>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">9.30综合评析题源头</span>
+              </div>
+              <h3 class="topic-title">广义学习观、友谊竞争观与情绪管理</h3>
+              <p class="topic-desc">“所见所闻皆学习”、竞争不伤害友谊、做情绪的主人。中考观点评析题底层道德支点。</p>
+              
+              <div class="golden-phrases">
+                <div class="golden-phrases-title">📌 必背踩分金句</div>
+                <div class="golden-phrase-item">① <b>学习不仅局限在学校课堂</b>，所看、所听、所尝、所触、所做都是学习；在实践中学习能点亮生命潜能。</div>
+                <div class="golden-phrase-item">② <b>竞争并不必然伤害友谊</b>，关键在于对待竞争的态度。在竞争中坦然欣赏对手、共同进步。</div>
+                <div class="golden-phrase-item">③ 运用<b>认知重评、注意力转移、合理宣泄</b>等方法，做自己情绪的主人。</div>
+              </div>
+
+              <div class="topic-pitfall">
+                ⚠️ <b>防坑提醒：</b>面对“只要在学校学好语数英就行，课外实践无用”的设问，必须调取六年级广义学习观！
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span style="font-size: 0.72rem; color: var(--text-muted);">六年级梳理 P.12</span>
+              <button class="btn-anchor" onclick="openPdfModal('2026.7   六年级道法知识梳理.pdf', 12)">
+                📄 直达原件 P.12
+              </button>
+            </div>
+          </div>
+
+          <!-- 12. 六年级：敬畏生命与守护生命健康 -->
+          <div class="topic-card" data-dimension="g6" data-keywords="敬畏生命 守护生命 身体健康 精神滋养 应对挫折 珍爱生命">
+            <div>
+              <div class="topic-header">
+                <div class="topic-badges">
+                  <span class="topic-badge badge-g6">六年级生命</span>
+                  <span class="topic-badge" style="background: #F3E8FF; color: #6B21A8;">生命素养</span>
+                </div>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">六年级梳理第四单元</span>
+              </div>
+              <h3 class="topic-title">珍爱与敬畏生命、涵养精神家园</h3>
+              <p class="topic-desc">生命来之不易且不可逆。守护身体健康与精神滋养、在逆境与挫折中发掘生命韧性。</p>
+              
+              <div class="golden-phrases">
+                <div class="golden-phrases-title">📌 必背踩分金句</div>
+                <div class="golden-phrase-item">① 生命是<b>独特、不可逆且短暂</b>的。敬畏生命，既要珍爱自己的生命，也要关怀他人生命。</div>
+                <div class="golden-phrase-item">② 守护生命既要<b>爱护身体</b>（养成健康生活方式），也要<b>养护精神</b>，传承优秀文化精神滋养。</div>
+                <div class="golden-phrase-item">③ 正确对待挫折，增强生命的<b>韧性</b>，在平凡中创造伟大，活出生命的精彩。</div>
+              </div>
+
+              <div class="topic-pitfall">
+                ⚠️ <b>防坑提醒：</b>涉及青少年沉迷网络、熬夜伤身题目时，从“守护身体+养护精神”双角度作答方能拿满分。
+              </div>
+            </div>
+
+            <div class="topic-footer">
+              <span style="font-size: 0.72rem; color: var(--text-muted);">六年级梳理 P.28</span>
+              <button class="btn-anchor" onclick="openPdfModal('2026.7   六年级道法知识梳理.pdf', 28)">
+                📄 直达原件 P.28
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 板块 2: 中考大题 4 个万能答题公式 -->
+      <section class="content-card" id="sec-scaffolds">
+        <div class="card-title">
+          <div class="card-title-left">
+            <span style="font-size: 1.4rem;">🎯</span>
+            <span>2. 中考大题 4 个万能答题公式（直接套用不丢分）</span>
+          </div>
+          <span style="font-size: 0.8rem; background: #FEF3C7; color: #92400E; padding: 0.2rem 0.6rem; border-radius: 6px; font-weight: 700;">背会这4个模板，不会写的题也能踩中要点</span>
+        </div>
+
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+          做大题千万别自己编大白话，判卷老师只按政治术语给分。不管考乡村振兴、芯片研发还是社区议事，只要分清题型，直接套下面的模板：
+        </p>
+
+        <div class="framework-grid">
+          <!-- 脚手架 1: 为什么 / 意义类 -->
+          <div class="framework-card" style="border-top: 4px solid #2563EB;">
+            <div class="framework-header">
+              <h3 style="font-size: 0.96rem; font-weight: 800; color: #1E3A8A;">题型 1 · 为什么 / 意义 / 必要性题</h3>
+              <span class="framework-tag" style="background: #EFF6FF; color: #1D4ED8;">三层穿透模型</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+              常见设问：“分析国家为什么推进 XX 发展？”、“说明 XX 举措的重要现实意义？”
+            </p>
+            <div class="flow-steps">
+              <div class="flow-step-item">
+                <span class="step-idx">1</span>
+                <div>
+                  <div class="step-body-title">主体一：党和国家政治层面</div>
+                  <div class="step-body-text">
+                    坚持<b>中国共产党的领导</b>（最本质特征）；推进国家治理体系和治理能力现代化；贯彻新发展理念。
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step-item">
+                <span class="step-idx">2</span>
+                <div>
+                  <div class="step-body-title">主体二：经济发展与人民民生层面</div>
+                  <div class="step-body-text">
+                    践行<b>以人民为中心的发展思想</b>；满足人民美好生活需要；缩小差距，实现<b>共同富裕</b>。
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step-item">
+                <span class="step-idx">3</span>
+                <div>
+                  <div class="step-body-title">主体三：制度保障与法治支撑层面</div>
+                  <div class="step-body-text">
+                    坚持<b>全面依法治国</b>；通过科学立法提供坚强法治保障；促进公平正义与长治久安。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 脚手架 2: 怎么做 / 启示类 -->
+          <div class="framework-card" style="border-top: 4px solid #059669;">
+            <div class="framework-header">
+              <h3 style="font-size: 0.96rem; font-weight: 800; color: #065F46;">题型 2 · 怎么做 / 启示 / 措施建议题</h3>
+              <span class="framework-tag" style="background: #ECFDF5; color: #047857;">四位一体行动矩阵</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+              常见设问：“面对上述问题，应如何采取行动？”、“给当地政府/青少年提出合理建议？”
+            </p>
+            <div class="flow-steps">
+              <div class="flow-step-item">
+                <span class="step-idx" style="background: #059669;">1</span>
+                <div>
+                  <div class="step-body-title">国家与政府：顶层设计与法治保障</div>
+                  <div class="step-body-text">
+                    完善政策法规（科学立法），严格规范公正文明执法（依法行政），加大财政资金与科技支持。
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step-item">
+                <span class="step-idx" style="background: #059669;">2</span>
+                <div>
+                  <div class="step-body-title">社会与企业：自主创新与协同共治</div>
+                  <div class="step-body-text">
+                    企业要提升自主创新能力，攻克核心技术；诚信守法经营；社会弘扬公序良俗与正能量。
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step-item">
+                <span class="step-idx" style="background: #059669;">3</span>
+                <div>
+                  <div class="step-body-title">青少年/个人：观念与知行合一 (必考)</div>
+                  <div class="step-body-text">
+                    树立坚定理想信念，增强法治意识；努力学习科学文化知识，勇于创新；<b>积极投身社会实践</b>。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 脚手架 3: 观点评析 / 辨析类 -->
+          <div class="framework-card" style="border-top: 4px solid #7C3AED;">
+            <div class="framework-header">
+              <h3 style="font-size: 0.96rem; font-weight: 800; color: #5B21B6;">题型 3 · 观点评析 / 价值辨析题</h3>
+              <span class="framework-tag" style="background: #F3E8FF; color: #6B21A8;">四步定案法</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+              常见设问：“有人认为‘只需XX即可，无需YY’，对此你怎么看？”（9.30综合卷一第2题原题模型）
+            </p>
+            <div class="flow-steps">
+              <div class="flow-step-item">
+                <span class="step-idx" style="background: #7C3AED;">1</span>
+                <div>
+                  <div class="step-body-title">第 1 步：明确判断立论</div>
+                  <div class="step-body-text">
+                    这种观点是<b>片面的 / 错误的</b>。（开门见山，切勿模棱两可）
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step-item">
+                <span class="step-idx" style="background: #7C3AED;">2</span>
+                <div>
+                  <div class="step-body-title">第 2 步：调取基础理论 A（六/七年级）</div>
+                  <div class="step-body-text">
+                    纠偏错误认知。例如调取<b>六年级广义学习观</b>（所见所闻皆学习，实践出真知）。
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step-item">
+                <span class="step-idx" style="background: #7C3AED;">3</span>
+                <div>
+                  <div class="step-body-title">第 3 步：调取国家高度理论 B（九年级）</div>
+                  <div class="step-body-text">
+                    将问题上升到国家与精神高度。例如调取<b>九年级伟大建党精神、文化自信、报国担当</b>。
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step-item">
+                <span class="step-idx" style="background: #7C3AED;">4</span>
+                <div>
+                  <div class="step-body-title">第 4 步：提出正确行动主张</div>
+                  <div class="step-body-text">
+                    新时代青少年既要珍惜课堂学好文化知识，又要走进社会躬行实践，做到知行合一。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 脚手架 4: 图表数据分析题 (9.30课后练资料2 P.6 标准) -->
+          <div class="framework-card" style="border-top: 4px solid #D97706;">
+            <div class="framework-header">
+              <h3 style="font-size: 0.96rem; font-weight: 800; color: #B45309;">题型 4 · 图表信息与数据推断题</h3>
+              <span class="framework-tag" style="background: #FEF3C7; color: #B45309;">结论+依据双要素</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+              常见设问：“根据图1和图2的数据，你能得出什么结论？并写出你的判断依据。”
+            </p>
+            <div class="flow-steps">
+              <div class="flow-step-item">
+                <span class="step-idx" style="background: #D97706;">1</span>
+                <div>
+                  <div class="step-body-title">要素一：提炼时代核心结论</div>
+                  <div class="step-body-text">
+                    “新时代以来，我国经济持续健康发展，综合实力大幅提升”或“我国深入实施创新驱动战略”。
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step-item">
+                <span class="step-idx" style="background: #D97706;">2</span>
+                <div>
+                  <div class="step-body-title">要素二：精准对照图表数据依据</div>
+                  <div class="step-body-text">
+                    “依据是 2022-2024 年我国国内生产总值（GDP）持续上升 / 研发经费（R&D）支出逐年攀升”。
+                  </div>
+                </div>
+              </div>
+              <div class="flow-step-item">
+                <span class="step-idx" style="background: #D97706;">3</span>
+                <div>
+                  <div class="step-body-title">避坑警示：结论绝不能只抄数字</div>
+                  <div class="step-body-text">
+                    阅卷老师给分点在<b>“学科术语结论”</b>而非数字罗列。必须由数字抽象上升为政治理论术语。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 板块 3: 跨册知识穿透对齐表 -->
+      <section class="content-card" id="sec-cross-grade">
+        <div class="card-title">
+          <div class="card-title-left">
+            <span style="font-size: 1.4rem;">🔗</span>
+            <span>3. 跨册知识穿透对齐表（中考综合命题的本质抓手）</span>
+          </div>
+          <span style="font-size: 0.78rem; color: var(--text-muted);">消除各学期知识孤岛</span>
+        </div>
+
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          中考大题往往“一题牵多册”。以下表格将初中 4 个学段最易割裂的同源考点串连成纵向逻辑链：
+        </p>
+
+        <div class="table-container">
+          <table class="align-table">
+            <thead>
+              <tr>
+                <th style="width: 15%;">核心主题</th>
+                <th style="width: 25%;">六/七年级：启蒙与奠基</th>
+                <th style="width: 30%;">八年级：社会深化与宪法核心</th>
+                <th style="width: 30%;">九年级：国家治理与中考大题</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>法治与规则</b></td>
+                <td>
+                  • 生活需要法律规则（七下）<br>
+                  • 未成年人六大特殊保护防线
+                </td>
+                <td>
+                  • 社会规则划定自由边界（八上）<br>
+                  • 宪法是最高根本法（八下）<br>
+                  • 规范权力运行，法无授权不可为
+                </td>
+                <td>
+                  • 科学立法、严格执法、公正司法、全民守法（九上）<br>
+                  • 建设法治政府与依法行政<br>
+                  • 依宪治国与良法善治
+                </td>
+              </tr>
+              <tr>
+                <td><b>社会担当与精神</b></td>
+                <td>
+                  • 集体利益高于个人利益（七下）<br>
+                  • 探寻生命的意义与敬畏
+                </td>
+                <td>
+                  • 服务社会与承担社会责任（八上）<br>
+                  • 维护国家利益与总体国家安全观
+                </td>
+                <td>
+                  • 伟大建党精神是中国共产党的精神之源（九上）<br>
+                  • 中华民族精神与坚定文化自信<br>
+                  • 担当民族复兴大任的时代新人
+                </td>
+              </tr>
+              <tr>
+                <td><b>民生与发展</b></td>
+                <td>
+                  • 认识劳动成果与生活体验（六上）<br>
+                  • 少年有梦，知行合一
+                </td>
+                <td>
+                  • 维护公平正义制度保障（八下）<br>
+                  • 基本经济制度（公有制为主体多种所有制）
+                </td>
+                <td>
+                  • 坚持以人民为中心的发展思想（九上）<br>
+                  • 解决发展不平衡不充分问题<br>
+                  • 乡村振兴与扎实推进共同富裕
+                </td>
+              </tr>
+              <tr>
+                <td><b>民主与政治</b></td>
+                <td>
+                  • 集体民主生活与协商讨论（七下）
+                </td>
+                <td>
+                  • 人民代表大会制度根本政治制度（八下）<br>
+                  • 国家机构的职能与监督体系
+                </td>
+                <td>
+                  • 全过程人民民主（最广泛、真实、管用）（九上）<br>
+                  • 选举民主与协商民主相互补充<br>
+                  • 基层群众自治与全过程参与
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 板块 4: 9.30 新讲评与课后练交互抽认卡 (Flashcards) -->
+      <section class="content-card" id="sec-flashcards">
+        <div class="card-title">
+          <div class="card-title-left">
+            <span style="font-size: 1.4rem;">🗂️</span>
+            <span>4. 9.30 综合卷大题与新课课后练「交互背诵抽认卡」</span>
+          </div>
+          <span style="font-size: 0.78rem; color: #C2410C; font-weight: 700;">点击题目即可展开/收起采分逻辑</span>
+        </div>
+
+        <div class="flashcard-grid">
+          <!-- 卡片 1 -->
+          <div class="flashcard open" id="fc-1">
+            <div class="flashcard-header" onclick="toggleFlashcard('fc-1')">
+              <div class="flashcard-title-group">
+                <span class="flashcard-badge" style="background: #FEE2E2; color: #DC2626;">9.30 综合大题 1</span>
+                <span class="flashcard-title">某地“通过农文旅融合与科学立法促进乡村振兴”的启示分析</span>
+              </div>
+              <span class="flashcard-toggle-icon">▼</span>
+            </div>
+            <div class="flashcard-content">
+              <div style="font-size: 0.85rem; font-weight: 700; color: #1E3A8A; margin-bottom: 0.5rem;">
+                【官方设问与采分点拆解】
+              </div>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.82rem; color: var(--text-secondary);">
+                <li>
+                  <b>① 党的领导是根本保障：</b>中国共产党领导是中国特色社会主义最本质特征，发挥党统揽全局、协调各方的领导核心作用。
+                </li>
+                <li>
+                  <b>② 发展思想与奋斗目标：</b>党坚持<b>以人民为中心的发展思想</b>，扎实推进共同富裕，缩小城乡差距，使人民共享发展成果。
+                </li>
+                <li>
+                  <b>③ 科学立法与法治保障：</b>国家坚持科学立法，出台乡村振兴促进法，为农业农村高质量发展提供坚强法治保障。
+                </li>
+                <li>
+                  <b>④ 创新与新质生产力赋能：</b>依托互联网、农文旅数字化新业态拓展增收渠道，不断提高农民生活质量。
+                </li>
+              </ul>
+              <div style="margin-top: 0.75rem; text-align: right;">
+                <button class="btn-anchor" onclick="openPdfModal('2026.9.30道法综合卷一讲评思路.pdf', 3)">
+                  📄 调阅综合卷一讲评思路原件 P.3
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 卡片 2 -->
+          <div class="flashcard" id="fc-2">
+            <div class="flashcard-header" onclick="toggleFlashcard('fc-2')">
+              <div class="flashcard-title-group">
+                <span class="flashcard-badge" style="background: #F3E8FF; color: #6B21A8;">9.30 综合大题 2</span>
+                <span class="flashcard-title">评析“中学生只需抓牢文化考试，课外研学与实践无足轻重”</span>
+              </div>
+              <span class="flashcard-toggle-icon">▼</span>
+            </div>
+            <div class="flashcard-content">
+              <div style="font-size: 0.85rem; font-weight: 700; color: #1E3A8A; margin-bottom: 0.5rem;">
+                【四步判案踩分链】
+              </div>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.82rem; color: var(--text-secondary);">
+                <li><b>第1步 判断：</b>观点错误/片面。</li>
+                <li><b>第2步 学习观理论（六下）：</b>学习不局限在学校课堂，所见所闻皆学习，社会实践是拓展眼界、培养动手能力的重要途径。</li>
+                <li><b>第3步 建党精神与精神谱系（九上）：</b>社会实践与红色研学是弘扬伟大建党精神、传承红色基因、坚定文化自信的生动课堂。</li>
+                <li><b>第4步 青年行动：</b>既要勤奋学习书本科学文化知识，又要积极投身社会志愿与调查实践，做到知行合一。</li>
+              </ul>
+              <div style="margin-top: 0.75rem; text-align: right;">
+                <button class="btn-anchor" onclick="openPdfModal('2026.9.30道法综合卷一讲评思路.pdf', 7)">
+                  📄 调阅综合卷一讲评思路原件 P.7
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 卡片 3 -->
+          <div class="flashcard" id="fc-3">
+            <div class="flashcard-header" onclick="toggleFlashcard('fc-3')">
+              <div class="flashcard-title-group">
+                <span class="flashcard-badge" style="background: #ECFDF5; color: #047857;">九上课后练资料3</span>
+                <span class="flashcard-title">自主研发“中国芯”与攻克关键核心技术考法</span>
+              </div>
+              <span class="flashcard-toggle-icon">▼</span>
+            </div>
+            <div class="flashcard-content">
+              <div style="font-size: 0.85rem; font-weight: 700; color: #1E3A8A; margin-bottom: 0.5rem;">
+                【核心采分点与答题规范】
+              </div>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.82rem; color: var(--text-secondary);">
+                <li><b>① 核心动力：</b>创新是引领发展的第一动力。科技创新能力是综合国力竞争的决定性因素。</li>
+                <li><b>② 现实差距：</b>我国在某些关键核心技术领域受制于人，必须走自主创新道路，把科技命脉牢牢掌握在自己手中。</li>
+                <li><b>③ 战略支撑：</b>必须深入实施科教兴国战略、人才强国战略、创新驱动发展战略，完善知识产权保护。</li>
+              </ul>
+              <div style="margin-top: 0.75rem; text-align: right;">
+                <button class="btn-anchor" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 12)">
+                  📄 调阅课后练习讲评资料3 P.12
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 板块 5: 官方 7 大原件库与精准直达 -->
+      <!-- 板块 5: 官方 8 大原件库与精准直达 -->
+      <section class="content-card" id="sec-materials">
+        <div class="card-title">
+          <div class="card-title-left">
+            <span style="font-size: 1.4rem;">📥</span>
+            <span>5. 全册 8 大官方资料原件库 (支持轻量弹窗按需调阅)</span>
+          </div>
+          <span style="font-size: 0.78rem; color: var(--text-muted);">全部支持下载与离线打印</span>
+        </div>
+
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          已为所有资料注入<b>页面轻量化弹窗调阅</b>机制，无需全量预加载阻塞带宽，按需开启指定页：
+        </p>
+
+        <div class="downloads-grid">
+          <!-- 0. 9.4 笔记 1.1+6.1 (NEW) -->
+          <div class="download-card highlight" style="border-left: 4px solid #2563EB;">
+            <div class="card-top" style="display: flex; gap: 0.65rem;">
+              <div class="file-icon file-icon-pdf" style="background: #2563EB;">笔记</div>
+              <div>
+                <div class="file-title">2026.9.4道法笔记（1.1+6.1）.pdf</div>
+                <div class="file-desc">四个历史时期成就/复兴意义 + 经济跃升三大战略 (7 页手绘板书)</div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="btn-action" onclick="openPdfModal('2026.9.4道法笔记（1.1+6.1）.pdf', 1)">👁️ 弹窗速览</button>
+              <a href="2026.9.4道法笔记（1.1+6.1）.pdf" class="btn-action btn-download" download>📥 下载原件</a>
+            </div>
+          </div>
+          <!-- 1. 综合卷一 PDF (已转制) -->
+          <div class="download-card highlight">
+            <div class="card-top" style="display: flex; gap: 0.65rem;">
+              <div class="file-icon file-icon-pdf">PDF</div>
+              <div>
+                <div class="file-title">2026.9.30道法综合卷一讲评思路.pdf</div>
+                <div class="file-desc">10 页官方高清讲评思路原件 (2.6 MB)</div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="btn-action" onclick="openPdfModal('2026.9.30道法综合卷一讲评思路.pdf', 1)">👁️ 弹窗速览</button>
+              <a href="2026.9.30道法综合卷一讲评思路.pdf" class="btn-action btn-download" download>📥 下载原件</a>
+            </div>
+          </div>
+
+          <!-- 2. 九上课后练讲评汇总 -->
+          <div class="download-card highlight">
+            <div class="card-top" style="display: flex; gap: 0.65rem;">
+              <div class="file-icon file-icon-pdf">PDF</div>
+              <div>
+                <div class="file-title">2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf</div>
+                <div class="file-desc">30 页新课重点单元讲评合辑 (3.8 MB)</div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="btn-action" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 1)">👁️ 弹窗速览</button>
+              <a href="2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf" class="btn-action btn-download" download>📥 下载原件</a>
+            </div>
+          </div>
+
+          <!-- 3. 九年级练习册答案 -->
+          <div class="download-card">
+            <div class="card-top" style="display: flex; gap: 0.65rem;">
+              <div class="file-icon file-icon-pdf">PDF</div>
+              <div>
+                <div class="file-title">26秋上海九年级道法练习册答案_扫描版.pdf</div>
+                <div class="file-desc">上海统编九上练习册章节完整解析 (8.0 MB)</div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="btn-action" onclick="openPdfModal('26秋上海九年级道法练习册答案_扫描版.pdf', 1)">👁️ 弹窗速览</button>
+              <a href="26秋上海九年级道法练习册答案_扫描版.pdf" class="btn-action btn-download" download>📥 下载原件</a>
+            </div>
+          </div>
+
+          <!-- 4. 八上知识梳理 -->
+          <div class="download-card">
+            <div class="card-top" style="display: flex; gap: 0.65rem;">
+              <div class="file-icon file-icon-pdf">PDF</div>
+              <div>
+                <div class="file-title">2026.7 八上道法知识梳理.pdf</div>
+                <div class="file-desc">八年级社会生活、规则与国家安全 (8.4 MB)</div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="btn-action" onclick="openPdfModal('2026.7   八上道法知识梳理.pdf', 1)">👁️ 弹窗速览</button>
+              <a href="2026.7   八上道法知识梳理.pdf" class="btn-action btn-download" download>📥 下载原件</a>
+            </div>
+          </div>
+
+          <!-- 5. 七年级课本笔记 -->
+          <div class="download-card">
+            <div class="card-top" style="display: flex; gap: 0.65rem;">
+              <div class="file-icon file-icon-pdf">PDF</div>
+              <div>
+                <div class="file-title">2026.8 道法七年级课本笔记.pdf</div>
+                <div class="file-desc">七年级全册课本精细化批注 (12.4 MB)</div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="btn-action" onclick="openPdfModal('2026.8道法七年级课本笔记.pdf', 1)">👁️ 弹窗速览</button>
+              <a href="2026.8道法七年级课本笔记.pdf" class="btn-action btn-download" download>📥 下载原件</a>
+            </div>
+          </div>
+
+          <!-- 6. 六年级知识梳理 -->
+          <div class="download-card">
+            <div class="card-top" style="display: flex; gap: 0.65rem;">
+              <div class="file-icon file-icon-pdf">PDF</div>
+              <div>
+                <div class="file-title">2026.7 六年级道法知识梳理.pdf</div>
+                <div class="file-desc">六年级初中道法启蒙与道德基础 (10.2 MB)</div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="btn-action" onclick="openPdfModal('2026.7   六年级道法知识梳理.pdf', 1)">👁️ 弹窗速览</button>
+              <a href="2026.7   六年级道法知识梳理.pdf" class="btn-action btn-download" download>📥 下载原件</a>
+            </div>
+          </div>
+
+          <!-- 7. 八下宪法大专题 (104.2MB) -->
+          <div class="download-card" style="background: #FFFBEB; border-color: #FDE68A;">
+            <div class="card-top" style="display: flex; gap: 0.65rem;">
+              <div class="file-icon" style="background: #D97706;">104M</div>
+              <div>
+                <div class="file-title" style="color: #92400E;">2026.7 八下道法知识梳理.pdf</div>
+                <div class="file-desc">八下宪法与国家机构专区 <b style="color: #DC2626;">(104.2 MB)</b></div>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button class="btn-action" style="background: #FEF3C7; color: #92400E;" onclick="openPdfModal('2026.7    八下道法知识梳理.pdf', 1)">👁️ 轻量按需加载</button>
+              <a href="2026.7    八下道法知识梳理.pdf" target="_blank" class="btn-action btn-download">🚀 独立新标签直读</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- 轻量化 PDF 弹窗预览器 -->
+  <div id="pdfModal" class="modal-overlay" onclick="closePdfModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>📄</span>
+          <span id="modalDocTitle">官方资料调阅窗口</span>
+        </div>
+        <button class="modal-close-btn" onclick="closePdfModal()">✕</button>
+      </div>
+      <div class="modal-iframe-wrap">
+        <iframe id="modalPdfFrame" src=""></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript 交互驱动 -->
+  <script>
+    // 1. 维度切换过滤
+    function switchDimension(dim, btn) {
+      document.querySelectorAll('.compass-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.topic-card');
+      cards.forEach(card => {
+        if (dim === 'all' || card.getAttribute('data-dimension') === dim) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      // 清空搜索框
+      document.getElementById('topicSearch').value = '';
+    }
+
+    // 2. 搜索即时过滤
+    function filterTopics() {
+      const q = document.getElementById('topicSearch').value.trim().toLowerCase();
+      const cards = document.querySelectorAll('.topic-card');
+      
+      cards.forEach(card => {
+        const text = (card.innerText + ' ' + (card.getAttribute('data-keywords') || '')).toLowerCase();
+        if (!q || text.includes(q)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 3. 抽认卡折叠
+    function toggleFlashcard(id) {
+      const card = document.getElementById(id);
+      if (card) {
+        card.classList.toggle('open');
+      }
+    }
+
+    // 4. 轻量化 PDF 弹窗加载（带页码锚点）
+    function openPdfModal(fileName, pageNum) {
+      const modal = document.getElementById('pdfModal');
+      const frame = document.getElementById('modalPdfFrame');
+      const title = document.getElementById('modalDocTitle');
+      
+      title.innerText = `${fileName} · 调阅定位 P.${pageNum || 1}`;
+      // 添加 #page=x 锚点参数
+      frame.src = encodeURI(fileName) + (pageNum ? `#page=${pageNum}` : '');
+      modal.style.display = 'flex';
+    }
+
+    function closePdfModal() {
+      const modal = document.getElementById('pdfModal');
+      const frame = document.getElementById('modalPdfFrame');
+      frame.src = '';
+      modal.style.display = 'none';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closePdfModal();
+    });
+  </script>
+</body>
+</html>

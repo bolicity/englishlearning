@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>初中跨学科案例分析全景通关工作台 V2 | 22真题黄芪与青浦薰衣草核心拆解</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-focus: #8B5CF6;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --purple-main: #7C3AED;
+      --purple-light: #F3E8FF;
+      --purple-dark: #6D28D9;
+      
+      --blue-main: #2563EB;
+      --blue-light: #EFF6FF;
+
+      --emerald-main: #059669;
+      --emerald-light: #ECFDF5;
+      
+      --amber-main: #D97706;
+      --amber-light: #FEF3C7;
+
+      --rose-main: #E11D48;
+      --rose-light: #FFE4E6;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 顶部导航 Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0.65rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, #7C3AED 0%, #2563EB 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      font-family: 'Outfit', sans-serif;
+      box-shadow: 0 2px 4px rgba(124, 58, 237, 0.2);
+    }
+
+    .brand-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .version-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: #F3E8FF;
+      color: #6D28D9;
+      border: 1px solid #DDD6FE;
+      padding: 0.12rem 0.45rem;
+      border-radius: 4px;
+    }
+
+    .brand-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--purple-main);
+      text-decoration: none;
+      padding: 0.38rem 0.75rem;
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      transition: all 0.2s;
+    }
+    .back-btn:hover {
+      background: var(--purple-light);
+      border-color: #DDD6FE;
+    }
+
+    /* 左右两栏布局 */
+    .layout-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      padding: 1.25rem;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    /* 左侧 Sticky 导航栏 */
+    aside.sidebar {
+      width: 250px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 65px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      box-shadow: var(--shadow-sm);
+      max-height: calc(100vh - 85px);
+      overflow-y: auto;
+    }
+
+    .sidebar-title {
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.65rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.5rem 0.65rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.15s ease;
+    }
+    .sidebar-link:hover, .sidebar-link.active {
+      background: var(--purple-light);
+      color: var(--purple-main);
+    }
+
+    /* 右侧主视窗 */
+    main.main-content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(180deg, #FFFFFF 0%, #FAF5FF 100%);
+      border: 1px solid #E9D5FF;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #6D28D9;
+      background: #F3E8FF;
+      border: 1px solid #DDD6FE;
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      max-width: 1000px;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+      padding-top: 1rem;
+      border-top: 1px solid #E9D5FF;
+    }
+
+    .stat-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+    }
+    .stat-num {
+      display: block;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--purple-main);
+      font-family: 'Outfit', sans-serif;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* 模块通用样式 */
+    .content-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-title-left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* 试题互动容器 */
+    .question-box {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 1.15rem;
+      margin-bottom: 1rem;
+      background: #FFFFFF;
+      transition: all 0.2s;
+    }
+    .question-box:hover {
+      box-shadow: var(--shadow-md);
+      border-color: #CBD5E1;
+    }
+
+    .question-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+
+    .question-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .q-text {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.55;
+      margin-bottom: 0.8rem;
+    }
+
+    .q-answer-box {
+      background: var(--bg-main);
+      border-left: 3px solid var(--purple-main);
+      padding: 0.75rem 0.9rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .q-answer-title {
+      font-weight: 800;
+      color: var(--purple-dark);
+      font-size: 0.76rem;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .pitfall-box {
+      background: #FFFBEB;
+      border: 1px solid #FEF3C7;
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.85rem;
+      font-size: 0.78rem;
+      color: #92400E;
+      margin-top: 0.65rem;
+      line-height: 1.45;
+    }
+
+    /* 对比表格 */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 0.75rem;
+    }
+    .compare-table th {
+      background: #F1F5F9;
+      color: var(--text-primary);
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border-color);
+      font-weight: 700;
+    }
+    .compare-table td {
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+    .compare-table tr:hover {
+      background: #F8FAFC;
+    }
+
+    /* 原件弹窗 */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      backdrop-filter: blur(4px);
+    }
+    .modal-content {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 1100px;
+      height: 90vh;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .modal-header {
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #F8FAFC;
+    }
+    .modal-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--purple-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+    .modal-close-btn:hover {
+      background: #E2E8F0;
+      color: var(--text-primary);
+    }
+    .modal-iframe-wrap {
+      flex: 1;
+      width: 100%;
+      background: #525659;
+    }
+    .modal-iframe-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .btn-anchor {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--purple-main);
+      background: #F3E8FF;
+      border: 1px solid #DDD6FE;
+      padding: 0.25rem 0.55rem;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-anchor:hover {
+      background: #E9D5FF;
+      color: var(--purple-dark);
+    }
+
+    /* 响应式 */
+    @media (max-width: 900px) {
+      .layout-container { flex-direction: column; }
+      aside.sidebar { width: 100%; position: static; max-height: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <div class="brand-logo">跨</div>
+        <div>
+          <div class="brand-title">
+            初中跨学科案例分析全景通关工作台
+            <span class="version-tag">V2 去PDF结构化版</span>
+          </div>
+          <div class="brand-subtitle">打破PDF限制 · 22中考真题黄芪 · 青浦薰衣草全景精萃</div>
+        </div>
+      </a>
+      <div class="header-actions">
+        <a href="interdisciplinary-V1.html" class="back-btn" style="color: var(--text-muted);">
+          历史 V1
+        </a>
+        <a href="../index.html" class="back-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          返回学习中心
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    <!-- 左侧 Sticky 导航 -->
+    <aside class="sidebar">
+      <div class="sidebar-title">跨学科通关索引</div>
+      <ul class="sidebar-menu">
+        <li>
+          <a href="#sec-model" class="sidebar-link active" style="color: var(--purple-main); font-weight: 700;">
+            📐 1. 跨学科交叉答题模型
+          </a>
+        </li>
+        <li>
+          <a href="#sec-case-huangqi" class="sidebar-link">
+            🌿 2. 22中考真题【黄芪】拆解
+          </a>
+        </li>
+        <li>
+          <a href="#sec-case-lavender" class="sidebar-link">
+            🪻 3. 青浦薰衣草生态与经济
+          </a>
+        </li>
+        <li>
+          <a href="#sec-biology-compare" class="sidebar-link">
+            🌸 4. 传粉媒介与花结构对比
+          </a>
+        </li>
+        <li>
+          <a href="#sec-downloads" class="sidebar-link">
+            📥 5. 官方资料轻量调阅与下载
+          </a>
+        </li>
+      </ul>
+
+      <div style="margin-top: 1.5rem; padding: 0.85rem; background: #FAF5FF; border: 1px solid #E9D5FF; border-radius: var(--radius-sm);">
+        <div style="font-size: 0.74rem; font-weight: 700; color: #6D28D9; margin-bottom: 0.35rem;">💡 跨学科得分法则</div>
+        <div style="font-size: 0.72rem; color: var(--text-muted); line-height: 1.45;">
+          中考跨学科 15 分，核心是建立“地理非生物环境因素（地形/气候）与生命科学（器官/适应性）的因果逻辑链”！
+        </div>
+      </div>
+    </aside>
+
+    <!-- 右侧主内容区 -->
+    <main class="main-content">
+      <!-- 极简学生向 Hero -->
+      <section class="hero-card" style="padding: 1.1rem 1.25rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+          <h1 style="font-size: 1.35rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 0.5rem;">
+            <span>🌿 初中跨学科 · 中考 15 分真实大题拆解</span>
+            <span style="font-size: 0.72rem; font-weight: 700; color: #6D28D9; background: #F3E8FF; border: 1px solid #DDD6FE; padding: 0.15rem 0.5rem; border-radius: 100px;">真题提分版</span>
+          </h1>
+          <span style="font-size: 0.76rem; color: #7C3AED; font-weight: 600;">✨ 地理气候 + 生物特性 = 满分公式</span>
+        </div>
+        
+        <p style="font-size: 0.84rem; color: #475569; line-height: 1.5; margin-bottom: 0.85rem;">
+          跨学科不考死记硬背，核心是把<b>“地理环境（海拔/气温/降水）”</b>和<b>“生物结构（器官/生理/越冬）”</b>连起来答。下面把 2022 真题黄芪和青浦薰衣草全部拆成<b>原题、答案、老师扣分点</b>，直接看懂怎么拿分：
+        </p>
+
+        <!-- 4 个快速入口 -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem;">
+          <a href="#sec-case-huangqi" style="display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem; background: #FFFFFF; border: 1px solid #BFDBFE; border-radius: 6px; text-decoration: none; color: #1E3A8A;">
+            <span style="font-size: 1.2rem;">🌿</span>
+            <div>
+              <div style="font-size: 0.82rem; font-weight: 700;">22真题【中药黄芪】</div>
+              <div style="font-size: 0.7rem; color: #64748B;">6道中考真题带答案解析</div>
+            </div>
+          </a>
+          <a href="#sec-case-lavender" style="display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem; background: #FFFFFF; border: 1px solid #DDD6FE; border-radius: 6px; text-decoration: none; color: #6D28D9;">
+            <span style="font-size: 1.2rem;">🪻</span>
+            <div>
+              <div style="font-size: 0.82rem; font-weight: 700;">上海案例【青浦薰衣草】</div>
+              <div style="font-size: 0.7rem; color: #64748B;">越冬温差对比与美丽经济</div>
+            </div>
+          </a>
+          <a href="#sec-biology-compare" style="display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem; background: #FFFFFF; border: 1px solid #FBCFE8; border-radius: 6px; text-decoration: none; color: #9D174D;">
+            <span style="font-size: 1.2rem;">🌸</span>
+            <div>
+              <div style="font-size: 0.82rem; font-weight: 700;">传粉媒介速查表</div>
+              <div style="font-size: 0.7rem; color: #64748B;">虫媒花/风媒花特征一览</div>
+            </div>
+          </a>
+          <a href="#sec-model" style="display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem; background: #FFFFFF; border: 1px solid #FDE68A; border-radius: 6px; text-decoration: none; color: #92400E;">
+            <span style="font-size: 1.2rem;">📐</span>
+            <div>
+              <div style="font-size: 0.82rem; font-weight: 700;">答大题三层写答法</div>
+              <div style="font-size: 0.7rem; color: #64748B;">图表数据 → 环境 → 生物</div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- 板块 1: 跨学科交叉答题模型 -->
+      <section class="content-card" id="sec-model">
+        <div class="card-title">
+          <div class="card-title-left">
+            <span style="font-size: 1.4rem;">📐</span>
+            <span>1. 跨学科中考「交叉答题模型」工具箱</span>
+          </div>
+          <span style="font-size: 0.78rem; color: var(--purple-main); font-weight: 700;">解题底层心法</span>
+        </div>
+
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          中考跨学科不是考死记硬背，而是考察<b>“从材料提取证据，用地理/生物学科原理建立因果联系”</b>：
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+          <div style="background: #FAF5FF; border: 1px solid #E9D5FF; border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="font-size: 0.88rem; font-weight: 800; color: #6D28D9; margin-bottom: 0.35rem;">
+              ① 材料审读三步法
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">
+              • <b>文字材料：</b>圈划温度阈值、降水范围、器官结构等核心名词；<br>
+              • <b>图表数据：</b>提取自变量与因变量，对比最高最低与变化趋势；<br>
+              • <b>设问对应：</b>按需调取信息，不抄无关废话。
+            </div>
+          </div>
+
+          <div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: var(--radius-sm); padding: 1rem;">
+            <div style="font-size: 0.88rem; font-weight: 800; color: #1D4ED8; margin-bottom: 0.35rem;">
+              ② 双学科交叉三层推导链 (大题核心)
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">
+              • <b>第 1 层 (2分)：</b>图表信息对比（如：丙地降水比乙地多、海拔比乙地低）；<br>
+              • <b>第 2 层 (1分)：</b>推导非生物环境（丙地更湿润、气温高、热量足）；<br>
+              • <b>第 3 层 (1分)：</b>建立生物机制（利于吸收水分与光合作用，积累药效成分）。
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 板块 2: 22中考真题【黄芪】全真拆解 -->
+      <section class="content-card" id="sec-case-huangqi">
+        <div class="card-title">
+          <div class="card-title-left">
+            <span style="font-size: 1.4rem;">🌿</span>
+            <span>2. 2022 年上海中考真题【中药黄芪】全真深度拆解</span>
+          </div>
+          <button class="btn-anchor" onclick="openPdfModal('22中考 黄芪.pdf', 2)">
+            📄 调阅中考原卷 P.2
+          </button>
+        </div>
+
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; padding: 0.85rem 1rem; border-radius: var(--radius-sm); font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.55;">
+          <b>【真题背景】</b>黄芪（qí），多年生草本植物，传统名贵中药材。根部富含多糖、皂苷等有效药用成分，用于中成药远销海外。科研小组前往甲、乙、丙三个野生黄芪产地调查并汇总信息。
+        </div>
+
+        <!-- 题 1 -->
+        <div class="question-box">
+          <div class="question-meta">
+            <span class="question-tag" style="background: #EFF6FF; color: #1D4ED8;">第 1 题 · 信息提取与处理 (2分)</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">地理地形流域</span>
+          </div>
+          <div class="q-text">
+            1. 甲、乙、丙三地位于_______流域，该流域是中华文明的发祥地。三地所在省份主要分布的地形类型为________（选填“高原”或“平原”）。（2分）
+          </div>
+          <div class="q-answer-box">
+            <div class="q-answer-title">✅ 标准采分答案</div>
+            <div>空 1：<b>黄河</b>（1分） ｜ 空 2：<b>高原</b>（1分）</div>
+            <div style="font-size: 0.76rem; color: var(--text-muted); margin-top: 0.25rem;">
+              【推导逻辑】结合中国地形三级阶梯图，三地海拔均在 1000m 以上，位于黄土高原/内蒙古高原区域，河流为黄河流域。
+            </div>
+          </div>
+        </div>
+
+        <!-- 题 2 -->
+        <div class="question-box">
+          <div class="question-meta">
+            <span class="question-tag" style="background: #ECFDF5; color: #047857;">第 2 题 · 器官分工与被子植物 (2分)</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">生命科学器官</span>
+          </div>
+          <div class="q-text">
+            2. 黄芪植株各器官（图 1 中①花 ②叶 ③果实 ④茎）具有不同的功能：光合作用的场所是______（填写编号）；合成的有机物转化为有效药用成分，成熟的种子贮藏于______（填写编号）。（2分）
+          </div>
+          <div class="q-answer-box">
+            <div class="q-answer-title">✅ 标准采分答案</div>
+            <div>空 1：<b>②</b>（叶，制造有机物）（1分） ｜ 空 2：<b>③</b>（果实，包被种子）（1分）</div>
+            <div style="font-size: 0.76rem; color: var(--text-muted); margin-top: 0.25rem;">
+              【知识对齐】被子植物六大器官：营养器官（根、茎、叶）+ 生殖器官（花、果实、种子）。
+            </div>
+          </div>
+        </div>
+
+        <!-- 题 3 -->
+        <div class="question-box">
+          <div class="question-meta">
+            <span class="question-tag" style="background: #FEF3C7; color: #B45309;">第 3 题 · 生理机制辨析 (2分)</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">人体免疫与排泄</span>
+          </div>
+          <div class="q-text">
+            3. 黄芪根中的多糖能够促进________（选填“免疫细胞”或“神经细胞”）杀灭病菌，增强机体抗病能力；皂苷对多种肾脏疾病有治疗作用，增强肾脏的________（选填“排泄”或“消化”）功能。（2分）
+          </div>
+          <div class="q-answer-box">
+            <div class="q-answer-title">✅ 标准采分答案</div>
+            <div>空 1：<b>免疫细胞</b>（1分） ｜ 空 2：<b>排泄</b>（1分）</div>
+            <div style="font-size: 0.76rem; color: var(--text-muted); margin-top: 0.25rem;">
+              【防坑警示】肾脏属于泌尿系统，核心功能是滤过血液排出尿素、水和无机盐，属于“排泄”，绝不是“消化”！
+            </div>
+          </div>
+        </div>
+
+        <!-- 题 4 -->
+        <div class="question-box">
+          <div class="question-meta">
+            <span class="question-tag" style="background: #F3E8FF; color: #6B21A8;">第 4 题 · 交通运输方式决策 (1分)</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">地理交通经济</span>
+          </div>
+          <div class="q-text">
+            4. 若从甲地向中亚地区出口大量黄芪，可采用的主要交通方式是_________（选填“铁路运输”或“水路运输”）。（1分）
+          </div>
+          <div class="q-answer-box">
+            <div class="q-answer-title">✅ 标准采分答案</div>
+            <div>答案：<b>铁路运输</b>（1分）</div>
+            <div style="font-size: 0.76rem; color: var(--text-muted); margin-top: 0.25rem;">
+              【推导逻辑】中亚深居亚欧大陆内陆，无出海口；铁路运输（中欧班列）运输量大、连续性强、受天气影响小、运费较低。
+            </div>
+          </div>
+        </div>
+
+        <!-- 题 5 (高难大题) -->
+        <div class="question-box" style="border: 2px solid #BFDBFE;">
+          <div class="question-meta">
+            <span class="question-tag" style="background: #DBEAFE; color: #1E40AF;">第 5 题 · 药效差异归因 4 分大题</span>
+            <span style="font-size: 0.72rem; color: #DC2626; font-weight: 700;">区分度关键题</span>
+          </div>
+          <div class="q-text">
+            5. 乙、丙两地黄芪根的主要药效成分含量存在差异，请结合图表信息分析原因。（4分）
+          </div>
+          <div class="q-answer-box">
+            <div class="q-answer-title">✅ 官方标准满分采分链 (三层三点)</div>
+            <div style="margin-bottom: 0.4rem;">
+              • <b>第一层 提取信息 (2分)：</b>由表可得，丙地的年降水量比乙地大（1分），丙地的海拔比乙地更低（1分）；
+            </div>
+            <div style="margin-bottom: 0.4rem;">
+              • <b>第二层 推断环境 (1分)：</b>所以丙地水分条件更好更湿润，且海拔低气温相对更高，热量更充足（1分）；
+            </div>
+            <div>
+              • <b>第三层 生物机制 (1分)：</b>充足的水热有利于黄芪根部吸收水分，促进叶片光合作用生长，进而积累更多有效药用成分（1分）。
+            </div>
+          </div>
+          <div class="pitfall-box">
+            🚨 <b>阅卷避坑黑名单（出现直接扣光）：</b><br>
+            ① <b>审题粗心：</b>题目要求比乙和丙，考生盲目比较甲和乙；<br>
+            ② <b>科学常识错误：</b>写出“海拔越高气温越高”或“气温干燥”（气温只有高低，空气才有干湿）；<br>
+            ③ <b>绝对化表述：</b>写出“乙地不适合植物生长”，言辞绝对无法给分。
+          </div>
+        </div>
+
+        <!-- 题 6 (创新大题) -->
+        <div class="question-box" style="border: 2px solid #E9D5FF;">
+          <div class="question-meta">
+            <span class="question-tag" style="background: #F3E8FF; color: #6D28D9;">第 6 题 · 轮种选种探究 4 分大题</span>
+            <span style="font-size: 0.72rem; color: #7C3AED; font-weight: 700;">创新阐释类</span>
+          </div>
+          <div class="q-text">
+            6. 黄芪易受土壤镰刀菌感染，连年种植影响产量。科研人员探索出四年轮种模式：“黄芪—植物1—植物2—黄芪”。若在丙地实施该模式，选择植物1、植物2需优先考虑什么因素（写出两点即可），并说明理由。（4分）
+          </div>
+          <div class="q-answer-box">
+            <div class="q-answer-title">✅ 官方标准考量维度（写出任意 2 点给满分 4 分）</div>
+            <div style="margin-bottom: 0.35rem;">
+              • <b>考量点一（生物抗病）：</b>考虑所选植物与镰刀菌的关系，需具备抑菌/抗病特性，减少土壤中镰刀菌存活量，降低黄芪感染几率（2分）；
+            </div>
+            <div style="margin-bottom: 0.35rem;">
+              • <b>考量点二（地理适应性）：</b>考虑所选植物是否适应当地自然环境，丙地海拔较高降水相对有限，植物需具备抗寒耐旱性（2分）；
+            </div>
+            <div>
+              • <b>考量点三（经济效益）：</b>考虑所选植物具备较高经济价值，保证轮种期间农民收益，助力乡村增收（2分）。
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 板块 3: 青浦薰衣草生态与美丽经济 -->
+      <section class="content-card" id="sec-case-lavender">
+        <div class="card-title">
+          <div class="card-title-left">
+            <span style="font-size: 1.4rem;">🪻</span>
+            <span>3. 上海真实案例【青浦薰衣草生态与美丽经济】全真拆解</span>
+          </div>
+          <button class="btn-anchor" onclick="openPdfModal('青浦薰衣草.pdf', 1)">
+            📄 调阅薰衣草讲义 P.1
+          </button>
+        </div>
+
+        <!-- 薰衣草生长特性 -->
+        <div style="background: #FDF4FF; border: 1px solid #F5D0FE; padding: 0.9rem; border-radius: var(--radius-sm); margin-bottom: 1.25rem;">
+          <div style="font-size: 0.88rem; font-weight: 800; color: #86198F; margin-bottom: 0.35rem;">
+            🌱 薰衣草生态与生理特性数据表（核心审题线索）
+          </div>
+          <div style="font-size: 0.82rem; color: #701A75; line-height: 1.5;">
+            • <b>生存环境：</b>年降水量 600mm~800mm 为宜，喜干燥，喜光照，喜疏松透气排水良好的土壤；<br>
+            • <b>温度耐受性：</b>生存极限温度为 <b>-21℃ ~ 40℃</b>（极其耐寒且耐热），适宜生长温度 <b>12℃ ~ 30℃</b>；<br>
+            • <b>植株表型：</b>株高 60~80cm（适度低于人体身高），穗状花序聚集枝顶，紫色花海观赏性极强。
+          </div>
+        </div>
+
+        <!-- 综合大题 1 -->
+        <div class="question-box" style="border: 2px solid #DDD6FE;">
+          <div class="question-meta">
+            <span class="question-tag" style="background: #F3E8FF; color: #6D28D9;">高频大题 · 为什么种植薰衣草而非迷迭香？ (4分)</span>
+            <span style="font-size: 0.72rem; color: var(--purple-main); font-weight: 700;">地理气候 + 生物特性交叉</span>
+          </div>
+          <div class="q-text">
+            【典型设问】青浦区“寻梦源”生态农庄在规划时，通过对比薰衣草与迷迭香，最终决定大面积种植薰衣草。请从地理环境与生物学特性两方面分析原因。（4分）
+          </div>
+          <div class="q-answer-box">
+            <div class="q-answer-title">✅ 跨学科交叉答题规范</div>
+            <div style="margin-bottom: 0.45rem;">
+              • <b>视角一：地理气候越冬适应性 (2分)：</b><br>
+              薰衣草生存温度在 -21~40℃，青浦冬季极端低温在 0℃ 左右，<b>在青浦全年均可露天生存越冬</b>；而迷迭香生存温度为 8~30℃，不耐寒，<b>在青浦冬季难以越冬</b>；且薰衣草适宜生长时间（4月-10月）远长于迷迭香。
+            </div>
+            <div>
+              • <b>视角二：生物表型与人文旅游结合 (2分)：</b><br>
+              从花与株高特点看，薰衣草穗状花序丛生形成紫色花海，观赏性极佳；<b>株高 60-80cm 低于人体身高，便于游客打卡合影</b>，能极大吸引客流带动生态文旅；而迷迭香花小稀疏且植株过高，观赏旅游价值低。
+            </div>
+          </div>
+        </div>
+
+        <!-- 综合大题 2: 美丽经济 -->
+        <div class="question-box">
+          <div class="question-meta">
+            <span class="question-tag" style="background: #ECFDF5; color: #047857;">产业延伸题 · “美丽经济”产业链优势分析</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">一二三产融合</span>
+          </div>
+          <div class="q-text">
+            【典型设问】农庄探索出“薰衣草种植 → 精油深加工提取 → 生态旅游研学”的美丽经济产业链，体现出哪些优势？（写出两组“优势+理由”）
+          </div>
+          <div class="q-answer-box">
+            <div class="q-answer-title">✅ 标准答题模式（优势 + 理由）</div>
+            <div>
+              • <b>优势 1 + 理由 1（经济增收）：</b>延长农业产业链，增加产品附加值。通过蒸馏萃取高纯精油与纯露，将原料初级农产品转化为高附加值日化保健品。<br>
+              • <b>优势 2 + 理由 2（产业融合）：</b>促进一二三产业融合发展。花海景观吸引旅游客流，带动餐饮、研学及周边就业，实现生态效益向经济效益的转化。
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 板块 4: 传粉媒介与花结构对比图谱 -->
+      <section class="content-card" id="sec-biology-compare">
+        <div class="card-title">
+          <div class="card-title-left">
+            <span style="font-size: 1.4rem;">🌸</span>
+            <span>4. 核心生物学图谱：传粉方式与花器官形态结构对应表</span>
+          </div>
+          <span style="font-size: 0.78rem; color: var(--text-muted);">跨学科选择与连线速查</span>
+        </div>
+
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+          材料往往以“花的形态结构”设题，推导其传粉媒介与生态习性：
+        </p>
+
+        <div style="overflow-x: auto;">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th style="width: 15%;">传粉类型</th>
+                <th style="width: 20%;">传粉媒介</th>
+                <th style="width: 45%;">花器官形态结构特征</th>
+                <th style="width: 20%;">典型代表植物</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>虫媒花</b></td>
+                <td>蜜蜂、蝴蝶、蛾类、蝇类</td>
+                <td>
+                  • 花冠大或密集成簇花序，<b>花瓣颜色鲜艳</b>；<br>
+                  • <b>有香气或特殊气味，具蜜腺</b>产生花蜜；<br>
+                  • 花粉粒较大、外壁粗糙有粘质，易附着在昆虫体表；柱头多分泌粘液。
+                </td>
+                <td><b>薰衣草</b>、油菜、桃花、玫瑰</td>
+              </tr>
+              <tr>
+                <td><b>风媒花</b></td>
+                <td>风力吹动</td>
+                <td>
+                  • 花多密集成穗状花序；花被退化不鲜艳；<br>
+                  • <b>花粉量极大、极细小、表面光滑、干燥且轻</b>，易随风飘扬；<br>
+                  • <b>雌蕊柱头长且往往膨大成羽状</b>，具粘液，便于捕获空中花粉。
+                </td>
+                <td>玉米、水稻、小麦、杨树</td>
+              </tr>
+              <tr>
+                <td><b>鸟媒花</b></td>
+                <td>蜂鸟、太阳鸟等鸟类</td>
+                <td>
+                  • 花通常以<b>红色</b>为主，气味不明显；<br>
+                  • <b>花蜜量特别大</b>（在清晨或傍晚大量分泌）；<br>
+                  • 常分布于低温高海拔地区（传粉昆虫不活跃环境）。
+                </td>
+                <td>木棉、金叶树、芦荟</td>
+              </tr>
+              <tr>
+                <td><b>水媒花</b></td>
+                <td>水流</td>
+                <td>
+                  • 叶茎柔软避免水流冲击破坏；<br>
+                  • 具<b>庞大通气系统</b>满足呼吸与保持漂浮稳定性。
+                </td>
+                <td>金鱼藻、黑藻、水鳖</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;">
+          <div style="background: #F8FAFC; border: 1px solid var(--border-color); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.8rem;">
+            <b>两性花 vs 单性花：</b><br>
+            • 两性花：同一朵花中既有雄蕊又有雌蕊（如薰衣草、桃）；<br>
+            • 单性花：一朵花中只有雄蕊或只有雌蕊（如黄瓜、杨树）。
+          </div>
+          <div style="background: #F8FAFC; border: 1px solid var(--border-color); padding: 0.75rem; border-radius: var(--radius-sm); font-size: 0.8rem;">
+            <b>自花传粉 vs 异花传粉：</b><br>
+            • 自花传粉：雄蕊花粉落到同一朵花的雌蕊柱头上（小麦、豌豆）；<br>
+            • 异花传粉：花粉落到另一朵花的柱头上（大多数被子植物）。
+          </div>
+        </div>
+      </section>
+
+      <!-- 板块 5: 官方原件轻量调阅与下载 -->
+      <section class="content-card" id="sec-downloads">
+        <div class="card-title">
+          <div class="card-title-left">
+            <span style="font-size: 1.4rem;">📥</span>
+            <span>5. 跨学科官方原件资料库 (支持弹窗调阅与下载)</span>
+          </div>
+          <span style="font-size: 0.78rem; color: var(--text-muted);">随时核对官方真题排版</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem;">
+          <!-- 黄芪原件 -->
+          <div style="background: #FFFFFF; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.5rem;">
+                <div style="width: 36px; height: 36px; background: #DC2626; color: white; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.75rem;">PDF</div>
+                <div>
+                  <div style="font-size: 0.9rem; font-weight: 700; color: var(--text-primary);">22中考 黄芪.pdf</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">2022上海中考跨学科案例分析官方讲评 (21页)</div>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+              <button class="btn-anchor" style="flex: 1; justify-content: center;" onclick="openPdfModal('22中考 黄芪.pdf', 1)">
+                👁️ 弹窗直读
+              </button>
+              <a href="22中考 黄芪.pdf" class="btn-anchor" style="flex: 1; justify-content: center; background: #7C3AED; color: white; border: none;" download>
+                📥 下载原件
+              </a>
+            </div>
+          </div>
+
+          <!-- 薰衣草原件 -->
+          <div style="background: #FFFFFF; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.5rem;">
+                <div style="width: 36px; height: 36px; background: #7C3AED; color: white; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.75rem;">PDF</div>
+                <div>
+                  <div style="font-size: 0.9rem; font-weight: 700; color: var(--text-primary);">青浦薰衣草.pdf</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">青浦薰衣草生态与美丽经济暑期答疑讲义 (17页)</div>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+              <button class="btn-anchor" style="flex: 1; justify-content: center;" onclick="openPdfModal('青浦薰衣草.pdf', 1)">
+                👁️ 弹窗直读
+              </button>
+              <a href="青浦薰衣草.pdf" class="btn-anchor" style="flex: 1; justify-content: center; background: #7C3AED; color: white; border: none;" download>
+                📥 下载原件
+              </a>
+            </div>
+          </div>
+
+          <!-- 地衣答案解析原件 (NEW) -->
+          <div style="background: #FFFFFF; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.5rem;">
+                <div style="width: 36px; height: 36px; background: #059669; color: white; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.75rem;">PDF</div>
+                <div>
+                  <div style="font-size: 0.9rem; font-weight: 700; color: var(--text-primary);">练习三地衣答案解析.pdf</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">西延安/青浦凤溪中学 跨学科案例练习三 (16页)</div>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+              <button class="btn-anchor" style="flex: 1; justify-content: center;" onclick="openPdfModal('练习三地衣答案解析.pdf', 1)">
+                👁️ 弹窗直读
+              </button>
+              <a href="练习三地衣答案解析.pdf" class="btn-anchor" style="flex: 1; justify-content: center; background: #059669; color: white; border: none;" download>
+                📥 下载原件
+              </a>
+            </div>
+          </div>
+
+          <!-- 清明菜参考答案 (NEW) -->
+          <div style="background: #FFFFFF; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.5rem;">
+                <div style="width: 36px; height: 36px; background: #2563EB; color: white; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.75rem;">DOC</div>
+                <div>
+                  <div style="font-size: 0.9rem; font-weight: 700; color: var(--text-primary);">副本清明菜，毒过蛇-参考答案.docx</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">清明菜与毒蛇草药辨识跨学科题答案</div>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">
+              <a href="副本清明菜，毒过蛇-参考答案.docx" class="btn-anchor" style="flex: 1; justify-content: center; background: #2563EB; color: white; border: none;" download>
+                📥 下载 Word 原卷
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- 轻量化 PDF 弹窗预览器 -->
+  <div id="pdfModal" class="modal-overlay" onclick="closePdfModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>📄</span>
+          <span id="modalDocTitle">跨学科原件资料调阅窗口</span>
+        </div>
+        <button class="modal-close-btn" onclick="closePdfModal()">✕</button>
+      </div>
+      <div class="modal-iframe-wrap">
+        <iframe id="modalPdfFrame" src=""></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openPdfModal(fileName, pageNum) {
+      const modal = document.getElementById('pdfModal');
+      const frame = document.getElementById('modalPdfFrame');
+      const title = document.getElementById('modalDocTitle');
+      
+      title.innerText = `${fileName} · 调阅定位 P.${pageNum || 1}`;
+      frame.src = encodeURI(fileName) + (pageNum ? `#page=${pageNum}` : '');
+      modal.style.display = 'flex';
+    }
+
+    function closePdfModal() {
+      const modal = document.getElementById('pdfModal');
+      const frame = document.getElementById('modalPdfFrame');
+      frame.src = '';
+      modal.style.display = 'none';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closePdfModal();
+    });
+  </script>
+</body>
+</html>
