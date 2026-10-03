@@ -295,32 +295,97 @@
       border-radius: 50%; font-size: 1.5rem; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
     }
+
+    /* === 统一顶部导航 === */
+    .unified-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+    .nav-home-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      background: var(--brand-red-bg);
+      color: var(--brand-red);
+      border: 1px solid var(--brand-red-border);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+    }
+    .nav-home-btn:hover { background: var(--brand-red); color: white; }
+    .nav-tabs {
+      display: flex;
+      gap: 0.25rem;
+      align-items: center;
+      flex: 1;
+    }
+    .nav-tab {
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+      transition: all 0.18s ease;
+    }
+    .nav-tab:hover { background: #F1F5F9; color: var(--text-primary); }
+    .nav-tab.active {
+      background: var(--brand-red);
+      color: #FFFFFF;
+      border-color: var(--brand-red);
+    }
+    .nav-back-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      background: white;
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+    .nav-back-btn:hover { background: #F1F5F9; color: var(--text-primary); }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <div class="top-nav">
-      <div class="nav-left">
-        <a href="chinese.html" class="back-btn">← 返回语文主页</a>
-        <a href="rulinwaishi-p3-V1.html" class="back-btn">← 上一分支 (3)</a>
-        <a href="rulinwaishi-V3.html" class="back-btn">📖 原图总览库 (V3)</a>
-        <span class="badge-ver">子页面分支 4 · V1</span>
+    <!-- 统一顶部导航 -->
+    <div class="unified-nav">
+      <a href="rulinwaishi-nav-V1.html" class="nav-home-btn">📋 儒林外史总览</a>
+      <div class="nav-tabs">
+        <a href="rulinwaishi-p1-V1.html" class="nav-tab ">🌟 分支一·文学常识</a>
+        <a href="rulinwaishi-p2-V1.html" class="nav-tab ">🎭 分支二·假名士</a>
+        <a href="rulinwaishi-p3-V1.html" class="nav-tab ">🏆 分支三·真儒明贤</a>
+        <a href="rulinwaishi-p4-V1.html" class="nav-tab active">📊 分支四·人物矩阵</a>
+        <a href="rulinwaishi-cards-V1.html" class="nav-tab ">📇 人物卡片</a>
       </div>
+      <a href="chinese.html" class="nav-back-btn">← 语文主页</a>
+    </div>
       <div>
         <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">高清原图无损呈现 · 逐字精准提取</span>
       </div>
-    </div>
-
-    <!-- 4大分支 + 人物卡片 + 速记与原图 标签导航栏 -->
-    <div class="branch-tabs-bar">
-      <a href="rulinwaishi-p1-V1.html" class="tab-item">🌟 分支一·文学常识</a>
-      <a href="rulinwaishi-p2-V1.html" class="tab-item">🎭 分支二·假名士</a>
-      <a href="rulinwaishi-p3-V1.html" class="tab-item">🏆 分支三·真儒明贤</a>
-      <a href="rulinwaishi-p4-V1.html" class="tab-item active">📊 分支四·人物矩阵</a>
-      <a href="rulinwaishi-cards-V1.html" class="tab-item">📇 人物卡片</a>
-      <a href="rulinwaishi-V2.html" class="tab-item" style="margin-left:auto; background:#FFFBEB; color:#B45309; border-color:#FDE68A;">📝 速记手册</a>
-      <a href="rulinwaishi-V3.html" class="tab-item" style="background:#F1F5F9; color:#475569;">📖 原图</a>
     </div>
 
     <div class="hero">
@@ -369,6 +434,7 @@
               </thead>
               <tbody>
 
+                <tr><td colspan="3" style="padding:0.5rem 0 0 0; border:none;"><img src="images/rulinwaishi-scholars.jpg" alt="儒林正统典范" style="width:100%;max-height:180px;object-fit:cover;border-radius:8px;"/></td></tr>
                 <!-- 组一：儒林正统与理想典范 -->
                 <tr data-group="group1">
                   <td><span class="role-badge">王冕</span></td>
@@ -435,6 +501,7 @@
                   <td>倾力救助流离的牛浦郎；与向知县结为挚友仍守平民礼；坚决拒绝为权贵作伪证行贿。</td>
                 </tr>
 
+                <tr><td colspan="3" style="padding:1rem 0 0.25rem 0; border:none;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Imperial_Examinations%2C_Qing_dynasty.jpg/600px-Imperial_Examinations%2C_Qing_dynasty.jpg" alt="科举悲剧" style="width:100%;max-height:180px;object-fit:cover;border-radius:8px;"/></td></tr>
                 <!-- 组二：科举悲剧与功名迷者 -->
                 <tr data-group="group2">
                   <td><span class="role-badge">范进</span></td>
@@ -511,6 +578,7 @@
                   <td>整日奔走于权贵显要之门，图谋博取功名官位；竭力依附严氏豪强兄弟。</td>
                 </tr>
 
+                <tr><td colspan="3" style="padding:1rem 0 0.25rem 0; border:none;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ch%27ing-dynasty_Chinese_Opera_Character_by_Pu_Qua%2C_1800.jpg/600px-Ch%27ing-dynasty_Chinese_Opera_Character_by_Pu_Qua%2C_1800.jpg" alt="虚伪丑态" style="width:100%;max-height:180px;object-fit:cover;border-radius:8px;"/></td></tr>
                 <!-- 组三：虚伪贪利与丑态群像 -->
                 <tr data-group="group3">
                   <td><span class="role-badge">严贡生</span></td>
@@ -624,6 +692,7 @@
                   <td>隐居乡野间好发宏大空洞议论；眼高手低，极易被权勿用等虚伪无赖小人蒙蔽利用。</td>
                 </tr>
 
+                <tr><td colspan="3" style="padding:1rem 0 0.25rem 0; border:none;"><img src="images/rulinwaishi-cover.jpg" alt="奇人异士" style="width:100%;max-height:180px;object-fit:cover;border-radius:8px;"/></td></tr>
                 <!-- 组四：抗争与奇人异士 -->
                 <tr data-group="group4">
                   <td><span class="role-badge">胡屠户</span></td>

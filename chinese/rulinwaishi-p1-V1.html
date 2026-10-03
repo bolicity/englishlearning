@@ -481,32 +481,97 @@
       transition: all 0.2s ease;
     }
     .lightbox-close:hover { background: rgba(255, 255, 255, 0.4); }
+
+    /* === 统一顶部导航 === */
+    .unified-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+    .nav-home-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      background: var(--brand-red-bg);
+      color: var(--brand-red);
+      border: 1px solid var(--brand-red-border);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+    }
+    .nav-home-btn:hover { background: var(--brand-red); color: white; }
+    .nav-tabs {
+      display: flex;
+      gap: 0.25rem;
+      align-items: center;
+      flex: 1;
+    }
+    .nav-tab {
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+      transition: all 0.18s ease;
+    }
+    .nav-tab:hover { background: #F1F5F9; color: var(--text-primary); }
+    .nav-tab.active {
+      background: var(--brand-red);
+      color: #FFFFFF;
+      border-color: var(--brand-red);
+    }
+    .nav-back-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      background: white;
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+    .nav-back-btn:hover { background: #F1F5F9; color: var(--text-primary); }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <!-- 顶部状态栏 -->
-    <div class="top-nav">
-      <div class="nav-left">
-        <a href="chinese.html" class="back-btn">← 返回语文主页</a>
-        <a href="rulinwaishi-V3.html" class="back-btn">📖 原图总览库 (V3)</a>
-        <span class="badge-ver">子页面分支 1 · V1</span>
+    <!-- 统一顶部导航 -->
+    <div class="unified-nav">
+      <a href="rulinwaishi-nav-V1.html" class="nav-home-btn">📋 儒林外史总览</a>
+      <div class="nav-tabs">
+        <a href="rulinwaishi-p1-V1.html" class="nav-tab active">🌟 分支一·文学常识</a>
+        <a href="rulinwaishi-p2-V1.html" class="nav-tab ">🎭 分支二·假名士</a>
+        <a href="rulinwaishi-p3-V1.html" class="nav-tab ">🏆 分支三·真儒明贤</a>
+        <a href="rulinwaishi-p4-V1.html" class="nav-tab ">📊 分支四·人物矩阵</a>
+        <a href="rulinwaishi-cards-V1.html" class="nav-tab ">📇 人物卡片</a>
       </div>
-      <div>
+      <a href="chinese.html" class="nav-back-btn">← 语文主页</a>
+    </div>
+<div>
         <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">高清原图无损呈现 · 逐字精准提取</span>
       </div>
-    </div>
-
-    <!-- 4大分支 + 人物卡片 + 速记与原图 标签导航栏 -->
-    <div class="branch-tabs-bar">
-      <a href="rulinwaishi-p1-V1.html" class="tab-item active">🌟 分支一·文学常识</a>
-      <a href="rulinwaishi-p2-V1.html" class="tab-item">🎭 分支二·假名士</a>
-      <a href="rulinwaishi-p3-V1.html" class="tab-item">🏆 分支三·真儒明贤</a>
-      <a href="rulinwaishi-p4-V1.html" class="tab-item">📊 分支四·人物矩阵</a>
-      <a href="rulinwaishi-cards-V1.html" class="tab-item">📇 人物卡片</a>
-      <a href="rulinwaishi-V2.html" class="tab-item" style="margin-left:auto; background:#FFFBEB; color:#B45309; border-color:#FDE68A;">📝 速记手册</a>
-      <a href="rulinwaishi-V3.html" class="tab-item" style="background:#F1F5F9; color:#475569;">📖 原图</a>
     </div>
 
     <!-- Hero 标题 -->
@@ -551,7 +616,8 @@
 
         <!-- 板块二：全书结构脉络 -->
         <div class="card-block">
-          <h2 class="block-title"><span class="icon">02</span> 二、全书56回结构脉络</h2>
+          <div style="margin-bottom:1.25rem;"><img src="images/rulinwaishi-cover.jpg" alt="王冕牧牛画梅" style="width:100%;border-radius:10px;box-shadow:0 2px 12px rgba(15,23,42,0.08);display:block;max-height:220px;object-fit:cover;"></div>
+        <h2 class="block-title"><span class="icon">02</span> 二、全书56回结构脉络</h2>
           <div class="struct-timeline">
             
             <div class="timeline-node">
@@ -608,6 +674,7 @@
         <!-- 板块三：人物形象梳理第一辑 -->
         <div class="card-block">
           <h2 class="block-title"><span class="icon">03</span> 三、重点人物形象与情节梳理（第一辑）</h2>
+          <div style="margin-bottom:1.25rem;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Imperial_Examinations%2C_Qing_dynasty.jpg/600px-Imperial_Examinations%2C_Qing_dynasty.jpg" alt="贪官污吏" style="width:100%;border-radius:10px;box-shadow:0 2px 12px rgba(15,23,42,0.08);display:block;max-height:220px;object-fit:cover;"></div>
           <div class="table-responsive">
             <table class="data-table">
               <thead>
