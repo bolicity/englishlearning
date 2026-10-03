@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>《儒林外史》初三中考核心考点精要 V2 | 9大人物图解·真题踩分点·极简速记</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-hover: #CBD5E1;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      
+      --brand-red: #B91C1C;
+      --brand-red-light: #EF4444;
+      --brand-red-bg: #FEF2F2;
+      --brand-red-border: #FECDD3;
+
+      --brand-blue: #1D4ED8;
+      --brand-blue-bg: #EFF6FF;
+      --brand-blue-border: #BFDBFE;
+
+      --brand-amber: #B45309;
+      --brand-amber-bg: #FFFBEB;
+      --brand-amber-border: #FDE68A;
+
+      --brand-emerald: #047857;
+      --brand-emerald-bg: #ECFDF5;
+      --brand-emerald-border: #A7F3D0;
+
+      --brand-purple: #6D28D9;
+      --brand-purple-bg: #F5F3FF;
+      --brand-purple-border: #DDD6FE;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 10px 20px -3px rgba(15, 23, 42, 0.1);
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 顶部导航 */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky; top: 0; z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1360px; margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .brand {
+      display: flex; align-items: center; gap: 0.75rem;
+      text-decoration: none; color: var(--text-primary);
+    }
+
+    .brand-logo {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--brand-red), var(--brand-red-light));
+      color: white; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.2rem; flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(185, 28, 28, 0.25);
+    }
+
+    .brand-title {
+      font-family: 'Outfit', sans-serif; font-weight: 700;
+      font-size: 1.2rem; color: var(--brand-red);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+
+    .version-tag {
+      font-size: 0.72rem; background: var(--brand-red-bg); color: var(--brand-red);
+      border: 1px solid var(--brand-red-border);
+      padding: 0.15rem 0.5rem; border-radius: 9999px; font-weight: 700;
+    }
+
+    .brand-subtitle { font-size: 0.78rem; color: var(--text-muted); }
+
+    .header-actions { display: flex; align-items: center; gap: 0.75rem; }
+
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.55rem 0.95rem; min-height: 40px;
+      background-color: var(--bg-subtle); color: var(--text-secondary);
+      border-radius: var(--radius-sm); text-decoration: none;
+      font-weight: 600; font-size: 0.85rem; transition: all 0.2s ease;
+      border: 1px solid var(--border-color);
+    }
+
+    .back-btn:hover {
+      background-color: var(--brand-red-bg); color: var(--brand-red); border-color: var(--brand-red-border);
+    }
+
+    /* 容器布局 */
+    .layout-container {
+      max-width: 1360px; margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem 1.25rem;
+    }
+
+    /* Hero Banner: 零废话，直击痛点 */
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #FEF2F2 100%);
+      border: 1px solid var(--brand-red-border); border-radius: var(--radius-lg);
+      padding: 1.75rem; box-shadow: var(--shadow-sm); margin-bottom: 2rem;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.25rem 0.75rem; background: var(--brand-red-bg); color: var(--brand-red);
+      border: 1px solid var(--brand-red-border); border-radius: 9999px;
+      font-size: 0.8rem; font-weight: 700; margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif; font-size: 1.9rem;
+      font-weight: 800; color: var(--brand-red); margin-bottom: 0.5rem; line-height: 1.3;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem; color: var(--text-secondary); max-width: 950px; line-height: 1.6;
+    }
+
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem;
+      margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid #FEE2E2;
+    }
+
+    @media (min-width: 768px) {
+      .hero-stats { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .stat-item {
+      background: #FFFFFF; border: 1px solid #FEE2E2; border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem; display: flex; flex-direction: column;
+    }
+    .stat-num { font-size: 1.35rem; font-weight: 800; color: var(--brand-red); font-family: 'Outfit', sans-serif; }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+
+    /* 快捷分类导航筛选栏 */
+    .filter-bar {
+      display: flex; align-items: center; gap: 0.6rem; overflow-x: auto;
+      padding-bottom: 0.75rem; margin-bottom: 1.5rem;
+    }
+
+    .filter-btn {
+      padding: 0.55rem 1.1rem; border-radius: 9999px;
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);
+      cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--brand-red); color: white; border-color: var(--brand-red);
+      box-shadow: 0 2px 6px rgba(185, 28, 28, 0.2);
+    }
+
+    /* 9大人物卡片网格 */
+    .cards-grid {
+      display: grid; grid-template-columns: 1fr; gap: 1.75rem; margin-bottom: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1200px) {
+      .cards-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .person-card {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); overflow: hidden;
+      display: flex; flex-direction: column;
+      box-shadow: var(--shadow-sm); transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      position: relative;
+    }
+
+    .person-card:hover {
+      transform: translateY(-4px); box-shadow: var(--shadow-md);
+      border-color: var(--brand-red-light);
+    }
+
+    /* 卡片顶部的图片区域：支持点击放大 */
+    .card-img-container {
+      position: relative; width: 100%; height: 320px;
+      background: #F8FAFC; border-bottom: 1px solid var(--border-color);
+      cursor: pointer; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .card-img {
+      max-width: 100%; max-height: 100%; object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .card-img-container:hover .card-img {
+      transform: scale(1.04);
+    }
+
+    .zoom-badge {
+      position: absolute; bottom: 10px; right: 10px;
+      background: rgba(15, 23, 42, 0.78); color: white;
+      font-size: 0.75rem; font-weight: 700; padding: 4px 10px;
+      border-radius: 9999px; backdrop-filter: blur(4px);
+      display: flex; align-items: center; gap: 4px; pointer-events: none;
+    }
+
+    .card-type-tag {
+      position: absolute; top: 12px; left: 12px;
+      padding: 0.25rem 0.65rem; border-radius: 6px;
+      font-size: 0.75rem; font-weight: 800; z-index: 2;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* 卡片内容区域：中考踩分点与大题拿分套路 */
+    .card-body {
+      padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; flex: 1;
+    }
+
+    .person-header {
+      display: flex; justify-content: space-between; align-items: baseline;
+      border-bottom: 1px dashed var(--border-color); padding-bottom: 0.6rem;
+    }
+
+    .person-name {
+      font-size: 1.25rem; font-weight: 800; color: var(--text-primary);
+    }
+
+    .person-chapter {
+      font-size: 0.78rem; font-weight: 700; color: var(--text-muted);
+      background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px;
+    }
+
+    /* 关键事实与踩分点 */
+    .score-box {
+      background: var(--bg-subtle); border-radius: var(--radius-sm);
+      padding: 0.75rem; font-size: 0.86rem; border-left: 3px solid var(--brand-red);
+    }
+
+    .score-title {
+      font-weight: 800; color: var(--brand-red); font-size: 0.8rem;
+      margin-bottom: 0.25rem; display: flex; align-items: center; gap: 4px;
+    }
+
+    .detail-list {
+      list-style: none; display: flex; flex-direction: column; gap: 0.45rem;
+      font-size: 0.84rem; color: var(--text-secondary);
+    }
+
+    .detail-item {
+      display: flex; align-items: flex-start; gap: 0.4rem;
+    }
+
+    .detail-item b {
+      color: var(--text-primary); flex-shrink: 0;
+    }
+
+    .btn-action-row {
+      display: flex; gap: 0.5rem; margin-top: auto; padding-top: 0.75rem;
+    }
+
+    .btn-card-zoom {
+      flex: 1; padding: 0.55rem; border-radius: var(--radius-sm);
+      background: var(--brand-red-bg); color: var(--brand-red);
+      border: 1px solid var(--brand-red-border); font-size: 0.82rem; font-weight: 700;
+      text-align: center; cursor: pointer; transition: all 0.2s ease;
+    }
+
+    .btn-card-zoom:hover {
+      background: var(--brand-red); color: white;
+    }
+
+    /* 中考核心高频对比专区 */
+    .comparison-section {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);
+      margin-bottom: 2.5rem;
+    }
+
+    .section-heading {
+      font-size: 1.35rem; font-weight: 800; color: var(--text-primary);
+      display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color);
+    }
+
+    .comp-grid {
+      display: grid; grid-template-columns: 1fr; gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .comp-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .comp-card {
+      background: var(--bg-main); border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); padding: 1.15rem;
+      border-top: 3px solid var(--brand-blue);
+    }
+
+    .comp-card h3 {
+      font-size: 1.05rem; font-weight: 800; color: var(--brand-blue);
+      margin-bottom: 0.6rem; display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .comp-tag {
+      font-size: 0.72rem; padding: 2px 6px; border-radius: 4px;
+      background: var(--brand-blue-bg); color: var(--brand-blue); font-weight: 700;
+    }
+
+    .comp-table {
+      width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 0.5rem;
+    }
+
+    .comp-table th, .comp-table td {
+      padding: 0.5rem 0.6rem; border: 1px solid #CBD5E1; text-align: left;
+    }
+
+    .comp-table th {
+      background: #E2E8F0; color: var(--text-primary); font-weight: 700;
+    }
+
+    .comp-table td {
+      background: #FFFFFF; color: var(--text-secondary);
+    }
+
+    /* 大题解题模板专区 */
+    .template-box {
+      background: var(--brand-amber-bg); border: 1px solid var(--brand-amber-border);
+      border-radius: var(--radius-md); padding: 1.25rem; margin-top: 1.5rem;
+    }
+
+    .template-title {
+      font-weight: 800; font-size: 1rem; color: var(--brand-amber);
+      display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;
+    }
+
+    .formula-badge {
+      display: inline-block; background: #FFFFFF; border: 1px solid var(--brand-amber-border);
+      padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 800;
+      color: var(--brand-amber); font-size: 0.85rem; margin-bottom: 0.5rem;
+    }
+
+    /* 弹窗模态框 (全屏超清晰放大 + 缩放 + 左右切换) */
+    .lightbox-modal {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.88); z-index: 1000;
+      align-items: center; justify-content: center; padding: 1.25rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .modal-shell {
+      background: #FFFFFF; border-radius: var(--radius-lg);
+      max-width: 900px; width: 100%; max-height: 92vh;
+      display: flex; flex-direction: column; overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      position: relative;
+    }
+
+    .modal-bar {
+      padding: 0.85rem 1.25rem; background: #FFFFFF; border-bottom: 1px solid var(--border-color);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .modal-title-wrap {
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+
+    .modal-person-title {
+      font-size: 1.15rem; font-weight: 800; color: var(--text-primary);
+    }
+
+    .modal-close-btn {
+      background: var(--bg-subtle); border: 1px solid var(--border-color);
+      width: 34px; height: 34px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; font-weight: 800;
+      cursor: pointer; transition: all 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: var(--brand-red-bg); color: var(--brand-red);
+    }
+
+    .modal-content-area {
+      padding: 1.25rem; overflow-y: auto; text-align: center;
+      background: #F1F5F9; display: flex; flex-direction: column; align-items: center;
+      gap: 1rem;
+    }
+
+    .modal-img-wrap {
+      max-height: 60vh; width: 100%; display: flex; justify-content: center;
+      overflow: auto;
+    }
+
+    .modal-img-full {
+      max-width: 100%; max-height: 58vh; object-fit: contain;
+      border-radius: var(--radius-sm); box-shadow: var(--shadow-md);
+      transition: transform 0.2s ease;
+    }
+
+    .modal-nav-row {
+      display: flex; justify-content: space-between; width: 100%; max-width: 600px;
+      gap: 1rem;
+    }
+
+    .modal-nav-btn {
+      flex: 1; padding: 0.55rem; border-radius: var(--radius-sm);
+      background: #FFFFFF; border: 1px solid var(--border-color);
+      font-weight: 700; font-size: 0.85rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+    }
+
+    .modal-nav-btn:hover {
+      background: var(--bg-subtle); border-color: var(--border-hover);
+    }
+
+    .modal-summary-card {
+      background: #FFFFFF; border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); padding: 1rem; text-align: left; width: 100%;
+      font-size: 0.88rem; color: var(--text-secondary);
+    }
+
+    footer {
+      border-top: 1px solid var(--border-color); background: #FFFFFF;
+      padding: 2rem 1.25rem; text-align: center; font-size: 0.85rem; color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航 -->
+  <header>
+    <div class="nav-container">
+      <a href="chinese.html" class="brand">
+        <div class="brand-logo">儒</div>
+        <div>
+          <div class="brand-title">
+            《儒林外史》核心考点精要
+            <span class="version-tag">V2 中考提分版</span>
+          </div>
+          <div class="brand-subtitle">9张人物图卡独立拆解 · 拒绝冗长废话 · 直击中考大题踩分点</div>
+        </div>
+      </a>
+      <div class="header-actions">
+        <a href="rulinwaishi-V1.html" class="back-btn" style="margin-right: 0.25rem;">
+          查看 V1 原版
+        </a>
+        <a href="chinese.html" class="back-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          返回语文中心
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    <!-- Hero Banner -->
+    <section class="hero-card">
+      <div class="hero-badge">
+        🎯 统编初三必读名著 · 中考拿分必备
+      </div>
+      <h1 class="hero-title">《儒林外史》9 位关键人物拆解与极简提分卡</h1>
+      <p class="hero-desc">
+        中学生复习时间宝贵，拒绝长篇大论的学术套话！已将九宫格长图<b>拆分为 9 张独立高清卡片</b>，彻底解决“点击看不清”的问题。
+        考前只需盯紧三件事：<b>①考什么名场面、②人物有什么典型性格、③老师阅卷按哪几个词给分！</b>
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">9 张图</span>
+          <span class="stat-label">独立高清放大无死角</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">4 组对比</span>
+          <span class="stat-label">中考高频对比大题模型</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">0 废话</span>
+          <span class="stat-label">直给答题踩分词与句子</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">100% 满分</span>
+          <span class="stat-label">覆盖主观题与选择题考点</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 筛选工具条 -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCards('all', this)">全部 9 位核心人物</button>
+      <button class="filter-btn" onclick="filterCards('corrupt', this)">🔥 腐儒痴迷典型 (周进/范进)</button>
+      <button class="filter-btn" onclick="filterCards('miser', this)">💰 贪吝恶霸典型 (严监生/严贡生/张静斋)</button>
+      <button class="filter-btn" onclick="filterCards('fallen', this)">📉 堕落骗子文人 (匡超人/牛浦郎/王德王仁)</button>
+      <button class="filter-btn" onclick="filterCards('ideal', this)">✨ 理想正派典范 (王冕)</button>
+    </div>
+
+    <!-- 9 张人物独立卡片网格 -->
+    <div class="cards-grid" id="cardsGrid">
+
+      <!-- 1. 范进 -->
+      <div class="person-card" data-category="corrupt">
+        <div class="card-img-container" onclick="openLightbox(0)">
+          <span class="card-type-tag" style="background:#FEE2E2; color:#991B1B;">腐儒典型 · 必考重点</span>
+          <img src="images/rulin_cards/01_fanjin.png" alt="范进" class="card-img" loading="lazy">
+          <span class="zoom-badge">🔍 点击放大高清大图</span>
+        </div>
+        <div class="card-body">
+          <div class="person-header">
+            <span class="person-name">01. 范进</span>
+            <span class="person-chapter">第 3 回</span>
+          </div>
+          <div class="score-box">
+            <div class="score-title">⚡ 中考必背踩分金句</div>
+            <ul class="detail-list">
+              <li class="detail-item"><b>典型名场面：</b>五十四岁中举喜极而疯，拍手大笑“噫！好！我中了！”，被岳父胡屠户一巴掌打醒。</li>
+              <li class="detail-item"><b>性格双面性：</b>中举前逆来顺受、卑微怯懦、受尽侮辱；中举后世故圆滑、打官腔、巴结张静斋。</li>
+              <li class="detail-item"><b>阅卷得分点：</b>揭露科举对文人精神的毒害，与胡屠户的“前倨后恭”形成强烈讽刺对比。</li>
+            </ul>
+          </div>
+          <div class="btn-action-row">
+            <button class="btn-card-zoom" onclick="openLightbox(0)">查看范进高清大图与解析</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 周进 -->
+      <div class="person-card" data-category="corrupt">
+        <div class="card-img-container" onclick="openLightbox(1)">
+          <span class="card-type-tag" style="background:#FEE2E2; color:#991B1B;">腐儒典型 · 命途多舛</span>
+          <img src="images/rulin_cards/02_zhoujin.png" alt="周进" class="card-img" loading="lazy">
+          <span class="zoom-badge">🔍 点击放大高清大图</span>
+        </div>
+        <div class="card-body">
+          <div class="person-header">
+            <span class="person-name">02. 周进</span>
+            <span class="person-chapter">第 2-3 回</span>
+          </div>
+          <div class="score-box">
+            <div class="score-title">⚡ 中考必背踩分金句</div>
+            <ul class="detail-list">
+              <li class="detail-item"><b>典型名场面：</b>六十多岁仍是老童生，参观贡院时触景生情，一头撞向号板放声痛哭，直哭到口吐鲜血！</li>
+              <li class="detail-item"><b>中举转折：</b>商人们同情凑了 200 两银子替他纳监，方才考中举人、进士，后来提携同样贫困的范进。</li>
+              <li class="detail-item"><b>阅卷得分点：</b>写尽底层知识分子受尽科举折磨的酸楚与病态执念；其哭是半生绝望的大爆发。</li>
+            </ul>
+          </div>
+          <div class="btn-action-row">
+            <button class="btn-card-zoom" onclick="openLightbox(1)">查看周进高清大图与解析</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. 王德、王仁 -->
+      <div class="person-card" data-category="fallen">
+        <div class="card-img-container" onclick="openLightbox(2)">
+          <span class="card-type-tag" style="background:#F3E8FF; color:#6D28D9;">伪儒典型 · 见利忘义</span>
+          <img src="images/rulin_cards/03_wangde_wangren.png" alt="王德王仁" class="card-img" loading="lazy">
+          <span class="zoom-badge">🔍 点击放大高清大图</span>
+        </div>
+        <div class="card-body">
+          <div class="person-header">
+            <span class="person-name">03. 王德、王仁</span>
+            <span class="person-chapter">第 5-6 回</span>
+          </div>
+          <div class="score-box">
+            <div class="score-title">⚡ 中考必背踩分金句</div>
+            <ul class="detail-list">
+              <li class="detail-item"><b>名字反讽：</b>名字取“德”与“仁”，骨子里全无道德仁义，是典型的满嘴之乎者也的伪君子。</li>
+              <li class="detail-item"><b>典型劣迹：</b>严监生欲扶妾赵氏为正妻，二人起初摆道学架子反对，一收银子立即抢着张罗婚礼；妹妹死后又纵容妻子搬空房内金银。</li>
+              <li class="detail-item"><b>阅卷得分点：</b>作者使用“名实反差”的反讽笔法，无情戳穿假道学士人的虚伪嘴脸。</li>
+            </ul>
+          </div>
+          <div class="btn-action-row">
+            <button class="btn-card-zoom" onclick="openLightbox(2)">查看王德王仁高清大图与解析</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. 严监生 -->
+      <div class="person-card" data-category="miser">
+        <div class="card-img-container" onclick="openLightbox(3)">
+          <span class="card-type-tag" style="background:#FEF3C7; color:#B45309;">吝啬鬼典型 · 课本重难点</span>
+          <img src="images/rulin_cards/04_yanjiansheng.png" alt="严监生" class="card-img" loading="lazy">
+          <span class="zoom-badge">🔍 点击放大高清大图</span>
+        </div>
+        <div class="card-body">
+          <div class="person-header">
+            <span class="person-name">04. 严监生 (严致和)</span>
+            <span class="person-chapter">第 5-6 回</span>
+          </div>
+          <div class="score-box">
+            <div class="score-title">⚡ 中考必背踩分金句</div>
+            <ul class="detail-list">
+              <li class="detail-item"><b>标志性细节：</b>临死咽气前伸着两个指头，众人猜了银子、亲戚都不对，直到赵氏挑掉一茎灯草才点头断气！</li>
+              <li class="detail-item"><b>性格复杂性：</b>守财至死，但对结发妻子王氏病逝舍得花四五千两银子大办后事；胆小怕事，怕哥哥惹官司。</li>
+              <li class="detail-item"><b>阅卷得分点：</b>世界四大吝啬鬼之一；作者通过生动的动作细节白描，将爱财胜命刻画得入木三分。</li>
+            </ul>
+          </div>
+          <div class="btn-action-row">
+            <button class="btn-card-zoom" onclick="openLightbox(3)">查看严监生高清大图与解析</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. 严贡生 -->
+      <div class="person-card" data-category="miser">
+        <div class="card-img-container" onclick="openLightbox(4)">
+          <span class="card-type-tag" style="background:#FEF3C7; color:#B45309;">恶霸劣绅 · 恃强凌弱</span>
+          <img src="images/rulin_cards/05_yangongsheng.png" alt="严贡生" class="card-img" loading="lazy">
+          <span class="zoom-badge">🔍 点击放大高清大图</span>
+        </div>
+        <div class="card-body">
+          <div class="person-header">
+            <span class="person-name">05. 严贡生 (严致中)</span>
+            <span class="person-chapter">第 5-6 回</span>
+          </div>
+          <div class="score-box">
+            <div class="score-title">⚡ 中考必背踩分金句</div>
+            <ul class="detail-list">
+              <li class="detail-item"><b>霸道敲诈：</b>扣留邻居走失的小猪霸为己有；坐船时用几片普通的云片糕讹诈船夫，声称是“昂贵人参贵药”。</li>
+              <li class="detail-item"><b>薄情寡义：</b>弟弟病死多日不露面，直到办丧事才假哭几声，目的是侵占弟弟留下的家产和田产。</li>
+              <li class="detail-item"><b>阅卷得分点：</b>与严监生形成对比（弟懦弱抠门，兄横行乡里）；鞭笞仗着功名欺压百姓的封建劣绅。</li>
+            </ul>
+          </div>
+          <div class="btn-action-row">
+            <button class="btn-card-zoom" onclick="openLightbox(4)">查看严贡生高清大图与解析</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. 张静斋 -->
+      <div class="person-card" data-category="miser">
+        <div class="card-img-container" onclick="openLightbox(5)">
+          <span class="card-type-tag" style="background:#FEF3C7; color:#B45309;">腐化官僚 · 投机钻营</span>
+          <img src="images/rulin_cards/06_dushaoqing.png" alt="张静斋" class="card-img" loading="lazy">
+          <span class="zoom-badge">🔍 点击放大高清大图</span>
+        </div>
+        <div class="card-body">
+          <div class="person-header">
+            <span class="person-name">06. 张静斋</span>
+            <span class="person-chapter">第 3-4 回</span>
+          </div>
+          <div class="score-box">
+            <div class="score-title">⚡ 中考必背踩分金句</div>
+            <ul class="detail-list">
+              <li class="detail-item"><b>攀附嘴脸：</b>范进中举前从未登门，刚中举立刻备齐 50 两纹银和三进大宅送上门认亲，口称“世弟”。</li>
+              <li class="detail-item"><b>手段狠毒：</b>拉范进到知县处打秋风；出馊主意唆使汤知县将求情的回民老叟用大枷折磨致死。</li>
+              <li class="detail-item"><b>阅卷得分点：</b>揭露官场寄生虫、结党营私的腐化乡绅本质，是官僚阶层堕落的典型缩影。</li>
+            </ul>
+          </div>
+          <div class="btn-action-row">
+            <button class="btn-card-zoom" onclick="openLightbox(5)">查看张静斋高清大图与解析</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. 匡超人 -->
+      <div class="person-card" data-category="fallen">
+        <div class="card-img-container" onclick="openLightbox(6)">
+          <span class="card-type-tag" style="background:#F3E8FF; color:#6D28D9;">堕落文人 · 蜕变轨迹</span>
+          <img src="images/rulin_cards/07_kuangchaoren.png" alt="匡超人" class="card-img" loading="lazy">
+          <span class="zoom-badge">🔍 点击放大高清大图</span>
+        </div>
+        <div class="card-body">
+          <div class="person-header">
+            <span class="person-name">07. 匡超人 (匡迥)</span>
+            <span class="person-chapter">第 15-20 回</span>
+          </div>
+          <div class="score-box">
+            <div class="score-title">⚡ 中考必背踩分金句</div>
+            <ul class="detail-list">
+              <li class="detail-item"><b>蜕变三部曲：</b>【前期】卖豆腐侍奉重病老父的纯朴孝子 -> 【中期】结识潘三伪造公文、替考作弊 -> 【后期】抛弃发妻另娶贵女、与恩人划清界限。</li>
+              <li class="detail-item"><b>典型劣行：</b>潘三被捕入狱，他怕受牵连不仅不去探视，反而借故逃跑；吹嘘自己文章天下第一。</li>
+              <li class="detail-item"><b>阅卷得分点：</b>“好人变坏”的悲剧轨迹，深刻反映科举名利场对纯真年轻人的腐蚀与毁灭。</li>
+            </ul>
+          </div>
+          <div class="btn-action-row">
+            <button class="btn-card-zoom" onclick="openLightbox(6)">查看匡超人高清大图与解析</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. 牛浦郎 -->
+      <div class="person-card" data-category="fallen">
+        <div class="card-img-container" onclick="openLightbox(7)">
+          <span class="card-type-tag" style="background:#F3E8FF; color:#6D28D9;">市井骗子 · 附庸风雅</span>
+          <img src="images/rulin_cards/08_niupulang.png" alt="牛浦郎" class="card-img" loading="lazy">
+          <span class="zoom-badge">🔍 点击放大高清大图</span>
+        </div>
+        <div class="card-body">
+          <div class="person-header">
+            <span class="person-name">08. 牛浦郎</span>
+            <span class="person-chapter">第 21-24 回</span>
+          </div>
+          <div class="score-box">
+            <div class="score-title">⚡ 中考必背踩分金句</div>
+            <ul class="detail-list">
+              <li class="detail-item"><b>招摇撞骗：</b>香蜡店伙计出身，偶然偷得已故诗人牛布衣的诗集，便冒用“牛布衣”大名四处招摇撞骗。</li>
+              <li class="detail-item"><b>可耻下场：</b>攀附权贵、卖弄假才华，最终被牛布衣真正的妻子寻上门来，当众被街坊邻里拆穿狼狈逃窜。</li>
+              <li class="detail-item"><b>阅卷得分点：</b>讽刺当时社会上不学无术、一心想靠欺世盗名钻入士林阶层的低俗文痞。</li>
+            </ul>
+          </div>
+          <div class="btn-action-row">
+            <button class="btn-card-zoom" onclick="openLightbox(7)">查看牛浦郎高清大图与解析</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. 王冕 -->
+      <div class="person-card" data-category="ideal">
+        <div class="card-img-container" onclick="openLightbox(8)">
+          <span class="card-type-tag" style="background:#ECFDF5; color:#047857;">理想名士 · 道德楷模</span>
+          <img src="images/rulin_cards/09_wangmian.png" alt="王冕" class="card-img" loading="lazy">
+          <span class="zoom-badge">🔍 点击放大高清大图</span>
+        </div>
+        <div class="card-body">
+          <div class="person-header">
+            <span class="person-name">09. 王冕</span>
+            <span class="person-chapter">第 1 回 (全书楔子)</span>
+          </div>
+          <div class="score-box">
+            <div class="score-title">⚡ 中考必背踩分金句</div>
+            <ul class="detail-list">
+              <li class="detail-item"><b>名士风骨：</b>幼时放牛自学画荷，卖画孝敬母亲；不慕荣华富贵，坚决不见贪官危素与知县。</li>
+              <li class="detail-item"><b>远见卓识：</b>预见到朱元璋推行八股取士会贻害文人（“一代文人有厄”），毅然隐居会稽山避世。</li>
+              <li class="detail-item"><b>阅卷得分点：</b>全书的“道德标杆”，以真名士反衬后文群丑的堕落虚伪，寄托作者的最高文人理想。</li>
+            </ul>
+          </div>
+          <div class="btn-action-row">
+            <button class="btn-card-zoom" onclick="openLightbox(8)">查看王冕高清大图与解析</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 中考核心高频对比专区 (大题最容易考的4大模型) -->
+    <section class="comparison-section">
+      <div class="section-heading">
+        <span>⚔️ 初三中考 4 大核心人物对比模型 (考场满分模板)</span>
+      </div>
+      <div class="comp-grid">
+
+        <!-- 对比 1 -->
+        <div class="comp-card">
+          <h3>
+            <span>模型 1：范进 VS 周进 (科举悲喜剧)</span>
+            <span class="comp-tag">高频考点</span>
+          </h3>
+          <table class="comp-table">
+            <thead>
+              <tr><th>比较维度</th><th>范进 (54岁中举)</th><th>周进 (60多岁中举)</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>中举前</b></td>
+                <td>家境极贫、受岳父辱骂、逆来顺受</td>
+                <td>老童生教书受尽白眼、自尊被践踏</td>
+              </tr>
+              <tr>
+                <td><b>名场面</b></td>
+                <td><b>喜极而疯</b>（大叫中了我中了，巴掌打醒）</td>
+                <td><b>撞号板痛哭吐血</b>（半生悲苦绝望大爆发）</td>
+              </tr>
+              <tr>
+                <td><b>中举后</b></td>
+                <td>趋炎附势、打官腔、变得虚伪圆滑</td>
+                <td>感激商人资助，提携贫困生员（仍有良知）</td>
+              </tr>
+              <tr>
+                <td><b>讽刺主题</b></td>
+                <td colspan="2"><b>八股科举取士对读书人身心摧残至深，扭曲人性灵魂！</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 对比 2 -->
+        <div class="comp-card">
+          <h3>
+            <span>模型 2：严监生 VS 严贡生 (同胞兄弟反差)</span>
+            <span class="comp-tag">人物对比</span>
+          </h3>
+          <table class="comp-table">
+            <thead>
+              <tr><th>比较维度</th><th>弟弟：严监生 (吝啬守财)</th><th>哥哥：严贡生 (恶霸敲诈)</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>核心性格</b></td>
+                <td>胆小怯懦、视财如命、息事宁人</td>
+                <td>横行乡里、蛮横贪婪、恃强凌弱</td>
+              </tr>
+              <tr>
+                <td><b>经典情节</b></td>
+                <td>临死伸<b>两个手指</b>，挑掉一茎灯草方咽气</td>
+                <td><b>云片糕讹诈船夫</b>；霸占邻居小猪</td>
+              </tr>
+              <tr>
+                <td><b>家庭关系</b></td>
+                <td>尊重结发妻子，病重时花大钱操办</td>
+                <td>弟弟尸骨未寒就跑来争夺财产和田产</td>
+              </tr>
+              <tr>
+                <td><b>讽刺艺术</b></td>
+                <td colspan="2"><b>细致白描刻画守财奴 vs 夸张对比揭批劣绅地痞！</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 对比 3 -->
+        <div class="comp-card">
+          <h3>
+            <span>模型 3：匡超人 (好人变坏的蜕变轨迹)</span>
+            <span class="comp-tag">主观题常客</span>
+          </h3>
+          <table class="comp-table">
+            <thead>
+              <tr><th>人生阶段</th><th>具体行为表现</th><th>性格与思想特点</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>第一阶段 (纯朴)</b></td>
+                <td>流落杭州卖豆腐，日夜悉心伺候病父</td>
+                <td>孝顺父母、淳朴善良、勤奋好学</td>
+              </tr>
+              <tr>
+                <td><b>第二阶段 (转折)</b></td>
+                <td>结识马二先生知科举，后结交潘三做假证替考</td>
+                <td>受名利诱惑，开始弄虚作假、投机钻营</td>
+              </tr>
+              <tr>
+                <td><b>第三阶段 (堕落)</b></td>
+                <td>潘三入狱坚决断交；抛弃发妻另攀高门；吹牛成瘾</td>
+                <td>忘恩负义、自私虚伪、利欲熏心彻底变质</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 对比 4 -->
+        <div class="comp-card">
+          <h3>
+            <span>模型 4：王冕作为“第一回引子”的作用</span>
+            <span class="comp-tag">结构题必考</span>
+          </h3>
+          <div style="font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary); margin-top: 0.5rem;">
+            <p><b>① 奠定全书基调：</b>王冕“自学成才、淡泊名利、蔑视权贵、孝敬母亲”，是作者心中的<b>“理想真儒”</b>与全书道德制高点。</p>
+            <p style="margin-top: 0.4rem;"><b>② 形成强烈反差：</b>第一回的王冕如出水清莲，与后文第二回到五十五回登场的腐儒、恶霸、假道学群丑形成极具冲击力的反衬。</p>
+            <p style="margin-top: 0.4rem;"><b>③ 揭示悲剧根源：</b>借王冕之口指出“八股取士，一代文人有厄”，从开篇就揭示了整部小说悲剧的制度根源。</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 快速答题公式 -->
+      <div class="template-box">
+        <div class="template-title">
+          <span>📝 中考简答题【讽刺手法】拿满分的三步套路</span>
+        </div>
+        <div class="formula-badge">作答公式：明手法 + 析情节 + 揭本质</div>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55;">
+          <b>第一步【点手法】：</b>小说运用了<b>客观白描 / 夸张 / 对比 / 反讽</b>的讽刺手法；<br>
+          <b>第二步【扣情节】：</b>生动刻画了（如范进中举发疯/严监生伸出两个手指/胡屠户前倨后恭）的经典细节；<br>
+          <b>第三步【扣主题】：</b>深刻揭露了封建科举制度对知识分子的毒害与人性被金钱扭曲的病态，表达了作者辛辣的讽刺与批判。
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- 全屏灯箱模态框 (点击任意卡片查看无损大图) -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox(event)">
+    <div class="modal-shell" onclick="event.stopPropagation()">
+      <div class="modal-bar">
+        <div class="modal-title-wrap">
+          <span style="font-size: 1.2rem;">🖼️</span>
+          <span class="modal-person-title" id="modalTitle">人物卡片</span>
+        </div>
+        <button class="modal-close-btn" onclick="hideLightbox()">✕</button>
+      </div>
+      <div class="modal-content-area">
+        <div class="modal-img-wrap">
+          <img id="modalImg" src="" alt="高清人物原图" class="modal-img-full">
+        </div>
+        <div class="modal-nav-row">
+          <button class="modal-nav-btn" onclick="prevCard()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            上一位人物
+          </button>
+          <button class="modal-nav-btn" onclick="nextCard()">
+            下一位人物
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        <div class="modal-summary-card" id="modalSummary">
+          <!-- 动态注入速记要点 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 中考语文名著核心考点直通车 · 《儒林外史》V2 深度拆解版</p>
+    <p style="font-size: 0.78rem; margin-top: 4px;">本页面遵循浅色商务系规范 · 无冗余废话 · 适配电脑与手机阅读</p>
+  </footer>
+
+  <script>
+    // 9张拆分后的独立高清卡片数据
+    const cardsData = [
+      {
+        title: "01. 范进 (腐儒典型 · 喜极而疯)",
+        img: "images/rulin_cards/01_fanjin.png",
+        points: "<b>【中考重点】</b>五十四岁才考中举人，喜极而疯被胡屠户打醒。中举前受尽屈辱，中举后势利圆滑、巴结权贵。深刻反映科举毒害文人灵魂，胡屠户对其前倨后恭构成经典讽刺对比。"
+      },
+      {
+        title: "02. 周进 (腐儒典型 · 贡院号泣)",
+        img: "images/rulin_cards/02_zhoujin.png",
+        points: "<b>【中考重点】</b>六十多岁仍是老童生，被梅玖王惠嘲弄。在贡院撞号板号啕痛哭直至吐血，商人们凑银帮他纳监中举。写尽底层士人穷极一生的科举病态与屈辱，后提携范进。"
+      },
+      {
+        title: "03. 王德、王仁 (伪儒典型 · 名实相背)",
+        img: "images/rulin_cards/03_wangde_wangren.png",
+        points: "<b>【中考重点】</b>名字取'德'与'仁'，实则全无道德仁义。严监生欲立妾，二人收银前摆道学架子反对，收银后抢着操办婚礼；妹妹死后唆使妻子搜刮首饰。反讽伪善嘴脸。"
+      },
+      {
+        title: "04. 严监生 (守财奴典型 · 两根灯草)",
+        img: "images/rulin_cards/04_yanjiansheng.png",
+        points: "<b>【中考重点】</b>家财万贯却吝啬至极，临死咽气前伸着两个指头，挑掉一茎灯草才肯合眼。但对正妻王氏发丧却舍得花费四五千两银子，刻画出封建家族脸面与金钱本性的撕裂。"
+      },
+      {
+        title: "05. 严贡生 (恶霸劣绅 · 敲诈勒索)",
+        img: "images/rulin_cards/05_yangongsheng.png",
+        points: "<b>【中考重点】</b>严监生胞兄，借贡生身份欺压乡邻。扣留邻家小猪，坐船用几片云片糕诬陷船夫吃了名贵人参药敲诈数十两。弟死后争夺家产，是横行乡里的无赖典型。"
+      },
+      {
+        title: "06. 张静斋 (腐化官僚 · 结党钻营)",
+        img: "images/rulin_cards/06_dushaoqing.png",
+        points: "<b>【中考重点】</b>做过知县的举人，范进刚中举立即送银送房结纳，勾结知县打秋风。献毒计将求情的回民老汉活活枷死。揭露封建劣绅作为官场蛀虫、地方剥削者的残暴本质。"
+      },
+      {
+        title: "07. 匡超人 (堕落文人 · 由善变恶)",
+        img: "images/rulin_cards/07_kuangchaoren.png",
+        points: "<b>【中考重点】</b>前期是事父至孝的纯朴孝子；受名利熏心后替考作弊、伪造公文；发迹后抛弃发妻另娶贵女、与患难恩人潘三绝交，成为忘恩负义的市侩伪君子。"
+      },
+      {
+        title: "08. 牛浦郎 (市井文痞 · 冒名欺世)",
+        img: "images/rulin_cards/08_niupulang.png",
+        points: "<b>【中考重点】</b>香蜡店小厮，窃取已故诗人牛布衣诗稿，假冒牛布衣四处招摇撞骗、附庸风雅。最终被真牛布衣之妻当众拆穿。讽刺不学无术、一心钻营士林的市井文痞。"
+      },
+      {
+        title: "09. 王冕 (理想名士 · 全书道德标杆)",
+        img: "images/rulin_cards/09_wangmian.png",
+        points: "<b>【中考重点】</b>第一回楔子人物。放牛自学画荷，卖画奉母；蔑视权贵不慕名利，拒见知县；预见八股取士将贻害文人而隐居。是作者树立的'真名士'道德楷模，反衬后文群丑。"
+      }
+    ];
+
+    let currentCardIndex = 0;
+
+    function openLightbox(index) {
+      currentCardIndex = index;
+      const data = cardsData[index];
+      document.getElementById('modalTitle').textContent = data.title;
+      document.getElementById('modalImg').src = data.img;
+      document.getElementById('modalSummary').innerHTML = data.points;
+      document.getElementById('lightboxModal').classList.add('active');
+    }
+
+    function hideLightbox() {
+      document.getElementById('lightboxModal').classList.remove('active');
+    }
+
+    function closeLightbox(e) {
+      if (e.target.id === 'lightboxModal') {
+        hideLightbox();
+      }
+    }
+
+    function prevCard() {
+      currentCardIndex = (currentCardIndex - 1 + cardsData.length) % cardsData.length;
+      openLightbox(currentCardIndex);
+    }
+
+    function nextCard() {
+      currentCardIndex = (currentCardIndex + 1) % cardsData.length;
+      openLightbox(currentCardIndex);
+    }
+
+    // 键盘支持左右切换与 ESC 退出
+    document.addEventListener('keydown', function(e) {
+      const modal = document.getElementById('lightboxModal');
+      if (modal.classList.contains('active')) {
+        if (e.key === 'Escape') hideLightbox();
+        if (e.key === 'ArrowLeft') prevCard();
+        if (e.key === 'ArrowRight') nextCard();
+      }
+    });
+
+    // 快速分类过滤
+    function filterCards(type, btn) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.person-card');
+      cards.forEach(card => {
+        if (type === 'all') {
+          card.style.display = 'flex';
+        } else {
+          if (card.getAttribute('data-category') === type) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
