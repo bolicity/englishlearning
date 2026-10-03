@@ -238,6 +238,37 @@
       box-shadow: var(--shadow-sm);
     }
 
+
+    /* 原图文字提取样式 */
+    .ocr-text-box {
+      background: #FFFFFF; border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm); padding: 0.75rem; margin-top: 0.5rem;
+    }
+    .ocr-title {
+      font-size: 0.8rem; font-weight: 800; color: var(--brand-red);
+      margin-bottom: 0.4rem; display: flex; align-items: center; gap: 4px;
+    }
+    .ocr-row {
+      font-size: 0.82rem; color: var(--text-secondary); line-height: 1.45;
+      margin-bottom: 0.35rem;
+    }
+    .ocr-row b { color: var(--text-primary); }
+    .ocr-table {
+      width: 100%; border-collapse: collapse; font-size: 0.8rem; margin: 0.5rem 0;
+    }
+    .ocr-table th, .ocr-table td {
+      padding: 5px 8px; border: 1px solid var(--border-color); text-align: left;
+    }
+    .ocr-table th {
+      background: var(--bg-subtle); color: var(--text-primary); font-weight: 700;
+    }
+    .ocr-table td {
+      background: #FFFFFF; color: var(--text-secondary);
+    }
+    .ocr-table td:nth-child(2) {
+      color: var(--brand-red); font-weight: 700;
+    }
+
     /* 卡片内容区域：中考踩分点与大题拿分套路 */
     .card-body {
       padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; flex: 1;
@@ -417,13 +448,14 @@
     }
 
     .modal-img-wrap {
-      max-height: 60vh; width: 100%; display: flex; justify-content: center;
-      overflow: auto;
+      min-height: 360px; max-height: 440px; width: 100%; display: flex; justify-content: center;
+      align-items: center; overflow: hidden; background: #E2E8F0; border-radius: var(--radius-sm);
+      padding: 0.5rem;
     }
 
     .modal-img-full {
-      max-width: 100%; max-height: 58vh; object-fit: contain;
-      border-radius: var(--radius-sm); box-shadow: var(--shadow-md);
+      max-width: 100%; height: 100%; max-height: 420px; object-fit: contain;
+      border-radius: var(--radius-sm); box-shadow: var(--shadow-sm);
       transition: transform 0.2s ease;
     }
 
@@ -545,6 +577,20 @@
               <li class="detail-item"><b>阅卷得分点：</b>揭露科举对文人精神的毒害，与胡屠户的“前倨后恭”形成强烈讽刺对比。</li>
             </ul>
           </div>
+          <div class="ocr-text-box">
+            <div class="ocr-title">📄 图片文字 100% 提取与情节对照</div>
+            <div class="ocr-row"><b>【出身背景】</b>自二十岁起屡试不第，长期靠教书糊口，家境贫寒受胡屠户辱骂。</div>
+            <div class="ocr-row"><b>【外貌特征】</b>面黄肌瘦，花白胡须，戴破毡帽穿麻布直裰，冻得乞乞缩缩。</div>
+            <table class="ocr-table">
+              <tr><th>图片内情节</th><th>对应形象得分词</th></tr>
+              <tr><td>中举前被胡屠户当众辱骂，唯唯诺诺应答</td><td>卑微自卑、地位低下</td></tr>
+              <tr><td>断粮卖鸡换米，依然痴迷中举</td><td>呆头呆脑、穷困潦倒</td></tr>
+              <tr><td>中举喜极而疯，大笑“我中了”</td><td>科举毒害、精神扭曲</td></tr>
+              <tr><td>挨耳光治好疯病，对岳父毕恭毕敬</td><td>奴性十足、卑微怯懦</td></tr>
+              <tr><td>母亲大喜去世，仍坚持赶考会试</td><td>功名至上、冷酷无情</td></tr>
+              <tr><td>巴结张静斋，口称“世兄老先生”</td><td>圆滑世故、同流合污</td></tr>
+            </table>
+          </div>
           <div class="btn-action-row">
             <button class="btn-card-zoom" onclick="openLightbox(0)">查看范进高清大图与解析</button>
           </div>
@@ -570,6 +616,18 @@
               <li class="detail-item"><b>中举转折：</b>商人们同情凑了 200 两银子替他纳监，方才考中举人、进士，后来提携同样贫困的范进。</li>
               <li class="detail-item"><b>阅卷得分点：</b>写尽底层知识分子受尽科举折磨的酸楚与病态执念；其哭是半生绝望的大爆发。</li>
             </ul>
+          </div>
+          <div class="ocr-text-box">
+            <div class="ocr-title">📄 图片文字 100% 提取与情节对照</div>
+            <div class="ocr-row"><b>【出身背景】</b>六十多岁仍是贫困潦倒老童生，教书糊口，随姐夫经商记账。</div>
+            <div class="ocr-row"><b>【外貌特征】</b>戴旧毡帽穿破元色绸直裰，旧大红绸鞋，黑瘦面皮花白胡子。</div>
+            <table class="ocr-table">
+              <tr><th>图片内情节</th><th>对应形象得分词</th></tr>
+              <tr><td>衣衫褴褛生活困顿，屡试不第受尽嘲弄</td><td>穷困潦倒、科举屡受挫</td></tr>
+              <tr><td>参观贡院撞号板号啕大哭至口吐鲜血</td><td>醉心功名、绝望悲怆</td></tr>
+              <tr><td>众商人凑银纳监，转悲为喜磕头谢恩</td><td>科举至上、功利现实</td></tr>
+              <tr><td>主考见范进衣衫褴褛取为第一名</td><td>秉性忠厚、迂而不恶</td></tr>
+            </table>
           </div>
           <div class="btn-action-row">
             <button class="btn-card-zoom" onclick="openLightbox(1)">查看周进高清大图与解析</button>
@@ -597,6 +655,17 @@
               <li class="detail-item"><b>阅卷得分点：</b>作者使用“名实反差”的反讽笔法，无情戳穿假道学士人的虚伪嘴脸。</li>
             </ul>
           </div>
+          <div class="ocr-text-box">
+            <div class="ocr-title">📄 图片文字 100% 提取与情节对照</div>
+            <div class="ocr-row"><b>【出身背景】</b>王德王仁为府学、县学廪膳生员，优等秀才，表面道貌岸然。</div>
+            <table class="ocr-table">
+              <tr><th>图片内情节</th><th>对应形象得分词</th></tr>
+              <tr><td>立妾起初依礼反对，收银后抢着张罗</td><td>虚伪贪婪、金钱至上</td></tr>
+              <tr><td>妹死妻子趁机将房内首饰席卷一空</td><td>顺手牵羊、见利忘义</td></tr>
+              <tr><td>赵氏得势时极力奉承讨好</td><td>阿谀奉承、毫无真心</td></tr>
+              <tr><td>赵氏失势被严贡生欺凌时借故回避</td><td>忘恩负义、怯懦自私</td></tr>
+            </table>
+          </div>
           <div class="btn-action-row">
             <button class="btn-card-zoom" onclick="openLightbox(2)">查看王德王仁高清大图与解析</button>
           </div>
@@ -622,6 +691,17 @@
               <li class="detail-item"><b>性格复杂性：</b>守财至死，但对结发妻子王氏病逝舍得花四五千两银子大办后事；胆小怕事，怕哥哥惹官司。</li>
               <li class="detail-item"><b>阅卷得分点：</b>世界四大吝啬鬼之一；作者通过生动的动作细节白描，将爱财胜命刻画得入木三分。</li>
             </ul>
+          </div>
+          <div class="ocr-text-box">
+            <div class="ocr-title">📄 图片文字 100% 提取与情节对照</div>
+            <div class="ocr-row"><b>【出身背景】</b>广东高要县监生，家有十多万两银子，富有地主。</div>
+            <table class="ocr-table">
+              <tr><th>图片内情节</th><th>对应形象得分词</th></tr>
+              <tr><td>平时生活极节俭，吃肉不舍买一斤</td><td>极度小气、守财成癖</td></tr>
+              <tr><td>差人寻严贡生，慌忙出银打点摆平</td><td>胆小怯懦、息事宁人</td></tr>
+              <tr><td>两茎灯草费油，临终伸指挑草方咽气</td><td>吝啬至极、死不悔改</td></tr>
+              <tr><td>为发妻治病发丧花费四五千两不吝惜</td><td>讲究体面、性格复杂</td></tr>
+            </table>
           </div>
           <div class="btn-action-row">
             <button class="btn-card-zoom" onclick="openLightbox(3)">查看严监生高清大图与解析</button>
@@ -649,6 +729,18 @@
               <li class="detail-item"><b>阅卷得分点：</b>与严监生形成对比（弟懦弱抠门，兄横行乡里）；鞭笞仗着功名欺压百姓的封建劣绅。</li>
             </ul>
           </div>
+          <div class="ocr-text-box">
+            <div class="ocr-title">📄 图片文字 100% 提取与情节对照</div>
+            <div class="ocr-row"><b>【出身背景】</b>广东高要县贡生，大地主乡绅，倚仗功名作威作福。</div>
+            <table class="ocr-table">
+              <tr><th>图片内情节</th><th>对应形象得分词</th></tr>
+              <tr><td>邻居走失小猪强占不还，反将人打残</td><td>横行乡里、蛮横无理</td></tr>
+              <tr><td>弟死多日才回，见灵柩拿手帕干号几声</td><td>薄情寡义、虚伪至极</td></tr>
+              <tr><td>儿子办婚事，吹鼓手赶走只给两钱银子</td><td>吝啬刻薄、贪占小便宜</td></tr>
+              <tr><td>船上借云片糕讹诈船夫名贵药材</td><td>厚颜无耻、阴险讹诈</td></tr>
+              <tr><td>被告官府第一反应溜走，丢下家人逃跑</td><td>自私冷酷、胆小鼠窜</td></tr>
+            </table>
+          </div>
           <div class="btn-action-row">
             <button class="btn-card-zoom" onclick="openLightbox(4)">查看严贡生高清大图与解析</button>
           </div>
@@ -674,6 +766,17 @@
               <li class="detail-item"><b>手段狠毒：</b>拉范进到知县处打秋风；出馊主意唆使汤知县将求情的回民老叟用大枷折磨致死。</li>
               <li class="detail-item"><b>阅卷得分点：</b>揭露官场寄生虫、结党营私的腐化乡绅本质，是官僚阶层堕落的典型缩影。</li>
             </ul>
+          </div>
+          <div class="ocr-text-box">
+            <div class="ocr-title">📄 图片文字 100% 提取与情节对照</div>
+            <div class="ocr-row"><b>【出身背景】</b>广东南海县举人，曾任知县，勾结官府的乡绅蛀虫。</div>
+            <table class="ocr-table">
+              <tr><th>图片内情节</th><th>对应形象得分词</th></tr>
+              <tr><td>范进中举送银送大宅认“世弟”</td><td>善于投机、攀附拉拢</td></tr>
+              <tr><td>霸占田产指使佃户诬告强抓女子</td><td>欺压良善、巧取豪夺</td></tr>
+              <tr><td>出馊主意将求情回民老叟大枷折磨致死</td><td>心狠手辣、残民以逞</td></tr>
+              <tr><td>拉名士去知县处打秋风赖着不走</td><td>厚颜无耻、工于算计</td></tr>
+            </table>
           </div>
           <div class="btn-action-row">
             <button class="btn-card-zoom" onclick="openLightbox(5)">查看张静斋高清大图与解析</button>
@@ -701,6 +804,17 @@
               <li class="detail-item"><b>阅卷得分点：</b>“好人变坏”的悲剧轨迹，深刻反映科举名利场对纯真年轻人的腐蚀与毁灭。</li>
             </ul>
           </div>
+          <div class="ocr-text-box">
+            <div class="ocr-title">📄 图片文字 100% 提取与情节对照</div>
+            <div class="ocr-row"><b>【出身背景】</b>温州乐清贫寒农家，少时拆字卖卜，后得马二资助。</div>
+            <table class="ocr-table">
+              <tr><th>图片内情节</th><th>对应形象得分词</th></tr>
+              <tr><td>白天卖豆花伺候病父，夜读陪到四更</td><td>至孝勤勉、质朴好学</td></tr>
+              <tr><td>结交恶少潘三伪造公文、替考作弊</td><td>弄虚作假、投机钻营</td></tr>
+              <tr><td>潘三入狱坚决划清界限逃往京城</td><td>自私冷漠、忘恩负义</td></tr>
+              <tr><td>隐瞒婚史抛弃发妻，攀娶贵女吹嘘名士</td><td>虚伪无耻、停妻再娶</td></tr>
+            </table>
+          </div>
           <div class="btn-action-row">
             <button class="btn-card-zoom" onclick="openLightbox(6)">查看匡超人高清大图与解析</button>
           </div>
@@ -727,6 +841,17 @@
               <li class="detail-item"><b>阅卷得分点：</b>讽刺当时社会上不学无术、一心想靠欺世盗名钻入士林阶层的低俗文痞。</li>
             </ul>
           </div>
+          <div class="ocr-text-box">
+            <div class="ocr-title">📄 图片文字 100% 提取与情节对照</div>
+            <div class="ocr-row"><b>【出身背景】</b>芜湖甘露庵旁小香蜡店小厮，清贫市井青年。</div>
+            <table class="ocr-table">
+              <tr><th>图片内情节</th><th>对应形象得分词</th></tr>
+              <tr><td>偷盗牛布衣遗留诗稿冒名顶替混文人圈</td><td>窃取名号、招摇撞骗</td></tr>
+              <tr><td>假冒名士结交董瑛，撑场面装腔作势</td><td>附庸风雅、得意忘形</td></tr>
+              <tr><td>妻劝回头反而殴打陷害致其受辱</td><td>忘恩负义、心狠手辣</td></tr>
+              <tr><td>真牛布衣之妻上门质问，当场被邻里拆穿</td><td>声名狼藉、现世现报</td></tr>
+            </table>
+          </div>
           <div class="btn-action-row">
             <button class="btn-card-zoom" onclick="openLightbox(7)">查看牛浦郎高清大图与解析</button>
           </div>
@@ -752,6 +877,17 @@
               <li class="detail-item"><b>远见卓识：</b>预见到朱元璋推行八股取士会贻害文人（“一代文人有厄”），毅然隐居会稽山避世。</li>
               <li class="detail-item"><b>阅卷得分点：</b>全书的“道德标杆”，以真名士反衬后文群丑的堕落虚伪，寄托作者的最高文人理想。</li>
             </ul>
+          </div>
+          <div class="ocr-text-box">
+            <div class="ocr-title">📄 图片文字 100% 提取与情节对照</div>
+            <div class="ocr-row"><b>【出身背景】</b>出身农家幼年丧父，辍学牧牛自学画荷，侍奉老母。</div>
+            <table class="ocr-table">
+              <tr><th>图片内情节</th><th>对应形象得分词</th></tr>
+              <tr><td>十岁放牛于湖边自学画荷，栩栩如生</td><td>天赋卓绝、刻苦自学</td></tr>
+              <tr><td>知县危素欲见其画托人邀约，坚决拒绝</td><td>不慕权贵、洁身自好</td></tr>
+              <tr><td>隐居会稽山卖画供养老母至终老</td><td>孤高清介、恪守孝道</td></tr>
+              <tr><td>劝朱元璋以仁义服人，预见八股之害避世</td><td>心怀天下、淡泊归真</td></tr>
+            </table>
           </div>
           <div class="btn-action-row">
             <button class="btn-card-zoom" onclick="openLightbox(8)">查看王冕高清大图与解析</button>
@@ -934,63 +1070,239 @@
   </footer>
 
   <script>
-    // 9张拆分后的独立高清卡片数据
+    // 9张拆分后的独立高清卡片 100% 完整文字与表格数据
     const cardsData = [
       {
+        id: "01",
         title: "01. 范进 (腐儒典型 · 喜极而疯)",
+        roleTag: "腐儒典型",
+        tagColor: "background:#FEE2E2; color:#991B1B;",
         img: "images/rulin_cards/01_fanjin.png",
-        points: "<b>【中考重点】</b>五十四岁才考中举人，喜极而疯被胡屠户打醒。中举前受尽屈辱，中举后势利圆滑、巴结权贵。深刻反映科举毒害文人灵魂，胡屠户对其前倨后恭构成经典讽刺对比。"
+        oneLine: "五十四岁才考中举人，喜极而疯；中举后由乞丐般穷秀才一跃成为受人巴结的“老爷”。",
+        origin: "自二十岁起屡试不第，长期靠教书、帮工糊口，家境贫寒，被丈人胡屠户辱骂奚落。",
+        appearance: "面黄肌瘦，花白胡须，头戴破毡帽，穿着麻布直裰，冻得乞乞缩缩。",
+        personality: "忠厚老实却迂腐卑怯，几十年如一日沉迷功名；中举前逆来顺受、自卑自贱；中举后世故圆滑、知恩图报，颇显虚荣势利。",
+        tableRows: [
+          { plot: "中举前被岳父胡屠户当众辱骂，只唯唯诺诺应答", trait: "卑微自卑、地位低下" },
+          { plot: "母亲因断粮在严寒中着急，想将母鸡卖掉换米，依然痴迷中举", trait: "呆头呆脑、穷困潦倒" },
+          { plot: "看到中举喜报后喜极而疯，拍手大笑“噫！好！我中了！”", trait: "科举毒害、精神扭曲" },
+          { plot: "胡屠户一个耳光治好了他的疯病，他却对岳父毕恭毕敬", trait: "奴性十足、卑微怯懦" },
+          { plot: "母亲因过于欢喜去世，但他仍坚持参加会试", trait: "功名至上、冷酷无情" },
+          { plot: "见了张静斋后，便极力奉承巴结，口称“世兄”“老先生”之类客套话", trait: "圆滑世故、同流合污" }
+        ],
+        authorEmotion: "对范进既寄予深切同情——被科举制度折磨至此；又予以辛辣讽刺——其痴迷与翻身后的势利，进一步揭露功名富贵对人性的扭曲。"
       },
       {
+        id: "02",
         title: "02. 周进 (腐儒典型 · 贡院号泣)",
+        roleTag: "腐儒典型",
+        tagColor: "background:#FEE2E2; color:#991B1B;",
         img: "images/rulin_cards/02_zhoujin.png",
-        points: "<b>【中考重点】</b>六十多岁仍是老童生，被梅玖王惠嘲弄。在贡院撞号板号啕痛哭直至吐血，商人们凑银帮他纳监中举。写尽底层士人穷极一生的科举病态与屈辱，后提携范进。"
+        oneLine: "六十多岁的老童生，因多年科举不中在贡院撞号板痛哭，后意外中举入仕。",
+        origin: "六十多岁仍是个贫困潦倒的老童生，靠教书糊口，后随姐夫经商记账。",
+        appearance: "头戴一顶旧毡帽，身穿元色绸旧直裰，那右边袖子同后边坐处都破了，脚下一双旧大红绸鞋，黑瘦面皮，花白胡子。",
+        personality: "秉性忠厚、醉心功名、迂腐卑怯、逆来顺受、执念科举、知恩图报。",
+        tableRows: [
+          { plot: "衣衫褴褛，生活困顿，虽是个老童生，沉迷科举却一直不中，饱受别人的嘲弄和冷遇", trait: "穷困潦倒、科举屡屡受挫" },
+          { plot: "参观贡院时触景生情，撞号板痛哭直至口吐鲜血", trait: "醉心功名、绝望悲怆、求而不得的可怜" },
+          { plot: "众商人出资为他纳捐监生资格，他立即转悲为喜，磕头谢恩", trait: "科举至上、功利现实" },
+          { plot: "当考官主考时见范进衣衫褴褛，想到自己过去，取他为第一名", trait: "秉性忠厚、迂而不恶" }
+        ],
+        authorEmotion: "既同情其被科举制度戕害的悲惨遭遇，又批判其迂腐可笑的思想行为，深刻揭露科举制度的危害。"
       },
       {
-        title: "03. 王德、王仁 (伪儒典型 · 名实相背)",
+        id: "03",
+        title: "03. 王德、王仁 (无德无仁伪儒典型)",
+        roleTag: "伪儒典型",
+        tagColor: "background:#F3E8FF; color:#6D28D9;",
         img: "images/rulin_cards/03_wangde_wangren.png",
-        points: "<b>【中考重点】</b>名字取'德'与'仁'，实则全无道德仁义。严监生欲立妾，二人收银前摆道学架子反对，收银后抢着操办婚礼；妹妹死后唆使妻子搜刮首饰。反讽伪善嘴脸。"
+        oneLine: "名为“德”“仁”的秀才兄弟，实为见利忘义、满口仁义道德的伪君子。",
+        origin: "王德是“府学廪膳生员”，王仁是“县学廪膳生员”，均是享受朝廷补助的优等秀才，在县里教书，颇有声名。",
+        appearance: "满口之乎者也，表面道貌岸然、知书达礼。",
+        personality: "表里不一、见利忘义、虚伪圆滑、怯懦无能。",
+        tableRows: [
+          { plot: "严监生欲立妾赵氏为正妻，他们起初借“宗法礼教”反对，收受银两后立刻转为积极支持，并牵头张罗婚礼", trait: "虚伪贪婪、金钱至上" },
+          { plot: "妹妹王氏去世，他们的妻子就趁机将房内金银首饰“席卷一空”", trait: "顺手牵羊、见利忘义" },
+          { plot: "在赵氏得势时，他们阻止原配亲属闹事，极力讨好赵氏", trait: "阿谀奉承、毫无真心" },
+          { plot: "当赵氏失势被严贡生欺凌时，他们却借故回避，一言不发", trait: "忘恩负义、怯懦自私" }
+        ],
+        authorEmotion: "通过这对兄弟的“名”（德、仁）与“实”（无德无仁）的强烈反差，给予了最辛辣、最彻底的讽刺。他们代表了科举制度下培养出的那一类道貌岸然、灵魂腐朽的“伪儒”，作者借他们深刻批判了当时士林阶层道德沦丧的普遍现象。"
       },
       {
-        title: "04. 严监生 (守财奴典型 · 两根灯草)",
+        id: "04",
+        title: "04. 严监生 (土豪劣绅-吝啬鬼典型)",
+        roleTag: "吝啬鬼典型",
+        tagColor: "background:#FEF3C7; color:#B45309;",
         img: "images/rulin_cards/04_yanjiansheng.png",
-        points: "<b>【中考重点】</b>家财万贯却吝啬至极，临死咽气前伸着两个指头，挑掉一茎灯草才肯合眼。但对正妻王氏发丧却舍得花费四五千两银子，刻画出封建家族脸面与金钱本性的撕裂。"
+        oneLine: "严致和，严贡生弟弟，家财万贯的监生，临终前因灯盏里点着两根灯草而迟迟不肯断气。",
+        origin: "广东高要县的监生，家有十多万两银子，是个富有的地主。",
+        appearance: "病卧在床，骨瘦如柴，临终时伸着两个指头。",
+        personality: "吝啬成性、胆小怕事、精于算计、重视亲情却又惜财如命。",
+        tableRows: [
+          { plot: "平时生活极其节俭，连吃肉也舍不得买一斤", trait: "极度小气、守财成癖" },
+          { plot: "他虽富有但生性胆小，官府因官司找不到严贡生时，吓得赶紧给差人银子打点替哥哥摆平", trait: "胆小怯懦、息事宁人、顾及脸面" },
+          { plot: "因为灯盏点着两茎灯草太费油，临终之际一直伸着两个指头不肯断气，挑掉一茎才合眼", trait: "吝啬至极、死不悔改的守财奴" },
+          { plot: "为发妻王氏治病发丧花费四五千两银子，毫不吝啬", trait: "讲究体面、顾及名声、性格具有复杂性" }
+        ],
+        authorEmotion: "通过夸张与细节白描的手法，入木三分地刻画了一个守财奴形象，既批判其吝啬可鄙，又暗含对其懦弱性格的讽刺，深刻揭露了金钱对人性的扭曲。"
       },
       {
-        title: "05. 严贡生 (恶霸劣绅 · 敲诈勒索)",
+        id: "05",
+        title: "05. 严贡生 (土豪劣绅-恶霸典型)",
+        roleTag: "恶霸劣绅",
+        tagColor: "background:#FEF3C7; color:#B45309;",
         img: "images/rulin_cards/05_yangongsheng.png",
-        points: "<b>【中考重点】</b>严监生胞兄，借贡生身份欺压乡邻。扣留邻家小猪，坐船用几片云片糕诬陷船夫吃了名贵人参药敲诈数十两。弟死后争夺家产，是横行乡里的无赖典型。"
+        oneLine: "严监生之兄，严致中，凭借贡生身份欺压乡里、贪婪吝啬，后因劣行暴露而身败名裂。",
+        origin: "广东高要县的贡生，大地主乡绅，凭借功名身份和与官府的联系在地方上作威作福。",
+        appearance: "道貌岸然，自命不凡，满口官场做派。",
+        personality: "横行霸道、吝啬苛刻、虚伪奸诈、贪婪无耻、恃强凌弱、精于算计、道貌岸然。",
+        tableRows: [
+          { plot: "邻居走失的小猪跑到严家，强占不还，猪咬伤邻居反将对方打伤打残", trait: "横行乡里、蛮横无理" },
+          { plot: "弟弟严监生死后过了多日才从省城回来，直到看见灵柩才拿手帕干号几声", trait: "薄情寡义、虚伪至极" },
+          { plot: "在给儿子办喜事时，把吹鼓手用完赶走，只给两钱银子", trait: "吝啬刻薄、贪占小便宜" },
+          { plot: "坐船故意拿出云片糕装晕车，船夫吃了剩下的几片，借机诬陷是人参名贵药敲诈几十两", trait: "厚颜无耻、阴险讹诈" },
+          { plot: "被告到官府时，第一反应是三十六计走为上计，丢下家人独自逃往省城避难", trait: "自私冷酷、胆小鼠窜" }
+        ],
+        authorEmotion: "通过层层对照，作者将严贡生刻画成“忝列衣冠”的劣绅典型，既揭露科举功名对人的扭曲，也鞭挞封建伦理中“乡绅”阶层的道德败坏。"
       },
       {
-        title: "06. 张静斋 (腐化官僚 · 结党钻营)",
+        id: "06",
+        title: "06. 张静斋 (土豪劣绅-腐化官僚典型)",
+        roleTag: "腐化官僚",
+        tagColor: "background:#FEF3C7; color:#B45309;",
         img: "images/rulin_cards/06_dushaoqing.png",
-        points: "<b>【中考重点】</b>做过知县的举人，范进刚中举立即送银送房结纳，勾结知县打秋风。献毒计将求情的回民老汉活活枷死。揭露封建劣绅作为官场蛀虫、地方剥削者的残暴本质。"
+        oneLine: "曾为知县的举人乡绅，实为趋炎附势、工于心计、手段歹毒的官场蛀虫。",
+        origin: "广东南海县人，举人出身，曾做过一任知县，后以“乡绅”身份活跃于地方，是连接官场与乡里的权势人物。",
+        appearance: "冠冕堂皇，满口官话，老于世故。",
+        personality: "趋炎附势、老谋深算、虚伪贪婪、心狠手辣。",
+        tableRows: [
+          { plot: "范进中举后，立刻备全礼物登门，口称“世弟”，主动奉上五十两纹银和一所三进大宅", trait: "善于投机、攀附拉拢" },
+          { plot: "为霸占他人田产，指使佃户诬告陷害无辜女子通奸，强行抓人", trait: "欺压良善、巧取豪夺" },
+          { plot: "为汤知县出馊主意：将求情的回民老汉当堂打几十板，用大枷活活折磨致死", trait: "心狠手辣、残民以逞" },
+          { plot: "拉名士一同去知县处“打秋风”，即便明知自己不受欢迎依然赖着不走", trait: "厚颜无耻、工于算计" }
+        ],
+        authorEmotion: "通过张静斋这一形象，作者撕破了这一阶层作为“道德楷模”的虚伪外衣，揭露了其作为“官场寄生虫”和“地方剥削者”的残暴本质。"
       },
       {
-        title: "07. 匡超人 (堕落文人 · 由善变恶)",
+        id: "07",
+        title: "07. 匡超人 (堕落文人典型 · 轨迹悲剧)",
+        roleTag: "堕落文人",
+        tagColor: "background:#F3E8FF; color:#6D28D9;",
         img: "images/rulin_cards/07_kuangchaoren.png",
-        points: "<b>【中考重点】</b>前期是事父至孝的纯朴孝子；受名利熏心后替考作弊、伪造公文；发迹后抛弃发妻另娶贵女、与患难恩人潘三绝交，成为忘恩负义的市侩伪君子。"
+        oneLine: "一个从淳朴孝顺的农村少年，在科举制度和名利社会的腐蚀下，一步步堕落为忘恩负义、虚伪无耻的官场市侩。",
+        origin: "温州府乐清人，出身贫寒的农家子弟，少时以拆字卖卜为生，后得人资助走上科举之路。",
+        appearance: "少年时淳朴秀气，发迹后袍服光鲜、趾高气扬。",
+        personality: "前期：孝顺勤勉、质朴好学；后期：虚伪自私、忘恩负义、吹牛成性、汲汲于富贵。",
+        tableRows: [
+          { plot: "在马二先生资助下回乡读书，病父卧床时白天卖豆花、晚上服侍父亲，夜里读书陪到四更天", trait: "至孝勤勉、质朴好学" },
+          { plot: "与街头恶少潘三勾结，参与伪造假公文、替考作弊等不法勾当", trait: "弄虚作假、投机钻营" },
+          { plot: "潘三入狱后，他为免受牵连，坚决与其划清界限，不仅不探视反而逃往京城避难", trait: "自私冷漠、忘恩负义" },
+          { plot: "发迹后隐瞒已婚事实，抛弃乡下发妻，另娶高官辛公孙的侄女；用虚妄头衔搪塞家人", trait: "虚伪无耻、停妻再娶、贪慕虚名" }
+        ],
+        authorEmotion: "通过匡超人这个“好人变坏”的悲剧，吴敬梓深刻揭露了科举制度和社会名利场对普通人性的摧残与异化，既对其最初的淳朴抱有同情，更对其后的坠落投以无比辛辣的讽刺与批判。"
       },
       {
-        title: "08. 牛浦郎 (市井文痞 · 冒名欺世)",
+        id: "08",
+        title: "08. 牛浦郎 (堕落文人典型 / 市井文痞)",
+        roleTag: "市井文痞",
+        tagColor: "background:#F3E8FF; color:#6D28D9;",
         img: "images/rulin_cards/08_niupulang.png",
-        points: "<b>【中考重点】</b>香蜡店小厮，窃取已故诗人牛布衣诗稿，假冒牛布衣四处招摇撞骗、附庸风雅。最终被真牛布衣之妻当众拆穿。讽刺不学无术、一心钻营士林的市井文痞。"
+        oneLine: "一个由市井青年堕落为无耻文痞的人物，通过冒名顶替、招摇撞骗的手段混迹于文人圈，是书中品德卑下的反面典型。",
+        origin: "安徽芜湖甘露庵旁小香蜡店人家，家境清贫。",
+        appearance: "衣着寒酸却喜穿长衫，装模作样，油头滑脑。",
+        personality: "寡廉鲜耻、虚伪狡诈、忘恩负义、脸皮极厚、投机钻营。",
+        tableRows: [
+          { plot: "偷看并盗窃已故名士牛布衣遗留的诗稿，因贪慕虚名决定冒名顶替混迹文人圈", trait: "窃取名号、招摇撞骗" },
+          { plot: "冒充牛布衣与董瑛结交，为了撑场面、装气势，故意装腔作势", trait: "附庸风雅、得意忘形" },
+          { plot: "妻子劝他回头，他反而殴打发妻并设圈套陷害，导致妻子受尽屈辱反目成仇", trait: "忘恩负义、心狠手辣" },
+          { plot: "四处自称“牛布衣”，被真牛布衣之妻寻上门当面质问，抵赖不过被街坊邻里当场拆穿赶走", trait: "声名狼藉、现世现报" }
+        ],
+        authorEmotion: "通过牛浦郎这一形象，深刻揭露和讽刺了当时社会上一些不学无术、欺世盗名的底层文人的丑恶嘴脸，批判了追求虚名而不修品行的恶劣世风。"
       },
       {
-        title: "09. 王冕 (理想名士 · 全书道德标杆)",
+        id: "09",
+        title: "09. 王冕 (理想文人典范 · 全书道德楷模)",
+        roleTag: "理想名士",
+        tagColor: "background:#ECFDF5; color:#047857;",
         img: "images/rulin_cards/09_wangmian.png",
-        points: "<b>【中考重点】</b>第一回楔子人物。放牛自学画荷，卖画奉母；蔑视权贵不慕名利，拒见知县；预见八股取士将贻害文人而隐居。是作者树立的'真名士'道德楷模，反衬后文群丑。"
+        oneLine: "元末明初的学者画家，出身贫寒却才华横溢，不慕荣利、蔑视权贵，是作者在书中树立的人格楷模。",
+        origin: "出身农家，幼年丧父，幼时家贫辍学牧牛，常潜入村塾听课，归家忘牛致农田遭践踏受责。",
+        appearance: "头戴荷叶帽，身穿宽大布衣，神清骨秀，超逸绝俗。",
+        personality: "聪慧好学、淡泊名利、孝顺母亲、洒脱超然、心怀仁义、品格高洁。",
+        tableRows: [
+          { plot: "十岁时辍学放牛，于湖边自学画荷花，所画荷花栩栩如生，名动一方", trait: "天赋卓绝、刻苦自学" },
+          { plot: "知县危素欲见其画，知县托人邀约，王冕蔑视官场权贵坚决拒绝", trait: "不慕权贵、洁身自好" },
+          { plot: "隐居会稽山，卖画供养老母，悉心侍奉至终老", trait: "孤高清介、恪守孝道" },
+          { plot: "与吴王朱元璋促膝长谈，劝其“以仁义服人”；后预见八股取士将贻害文人，归隐避世", trait: "心怀天下、高瞻远瞩、淡泊归真" }
+        ],
+        authorEmotion: "将王冕置于全书第一回，意在将其塑造为“品格最高一层”的理想人格象征。通过他抨击科举制度，倡导文人应重“文行出处”，表达了对高尚人格的礼赞与对功名富贵的批判。"
       }
     ];
 
     let currentCardIndex = 0;
+
+    function renderModalFullDetails(data) {
+      let tableHtml = `
+        <table style="width:100%; border-collapse:collapse; font-size:0.84rem; margin-top:0.6rem;">
+          <thead>
+            <tr style="background:#E2E8F0; color:#0F172A;">
+              <th style="padding:6px 10px; border:1px solid #CBD5E1; text-align:left; width:65%;">人物相关情节 (名场面)</th>
+              <th style="padding:6px 10px; border:1px solid #CBD5E1; text-align:left; width:35%;">人物形象特点 (得分词)</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+      data.tableRows.forEach(row => {
+        tableHtml += `
+          <tr style="background:#FFFFFF;">
+            <td style="padding:6px 10px; border:1px solid #E2E8F0; color:#334155; line-height:1.5;">${row.plot}</td>
+            <td style="padding:6px 10px; border:1px solid #E2E8F0; color:#B91C1C; font-weight:700;">${row.trait}</td>
+          </tr>
+        `;
+      });
+      tableHtml += `</tbody></table>`;
+
+      return `
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #E2E8F0; padding-bottom:0.5rem; margin-bottom:0.75rem;">
+          <span style="font-size:1.15rem; font-weight:800; color:#0F172A;">${data.title}</span>
+          <span style="padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:800; ${data.tagColor}">${data.roleTag}</span>
+        </div>
+
+        <div style="background:#FEF2F2; border-left:3px solid #DC2626; padding:0.6rem 0.85rem; border-radius:4px; margin-bottom:0.75rem; font-size:0.88rem; color:#991B1B; font-weight:700;">
+          💡 一句话核心概括：${data.oneLine}
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr; gap:0.5rem; margin-bottom:0.75rem;">
+          <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px; padding:0.6rem 0.8rem; font-size:0.84rem;">
+            <span style="color:#0F172A; font-weight:800;">【人物出身】</span> <span style="color:#475569;">${data.origin}</span>
+          </div>
+          <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px; padding:0.6rem 0.8rem; font-size:0.84rem;">
+            <span style="color:#0F172A; font-weight:800;">【外貌特征】</span> <span style="color:#475569;">${data.appearance}</span>
+          </div>
+          <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:6px; padding:0.6rem 0.8rem; font-size:0.84rem;">
+            <span style="color:#0F172A; font-weight:800;">【典型性格】</span> <span style="color:#1D4ED8; font-weight:700;">${data.personality}</span>
+          </div>
+        </div>
+
+        <div style="margin-top:0.75rem;">
+          <div style="font-size:0.9rem; font-weight:800; color:#0F172A; display:flex; align-items:center; gap:4px;">
+            <span>📋 图片中【关键情节与形象特点】完整对照表：</span>
+          </div>
+          ${tableHtml}
+        </div>
+
+        <div style="background:#EFF6FF; border-left:3px solid #2563EB; border-radius:4px; padding:0.6rem 0.85rem; margin-top:0.85rem; font-size:0.84rem; color:#1E40AF;">
+          <b>【作者情感与讽刺艺术】：</b>${data.authorEmotion}
+        </div>
+      `;
+    }
 
     function openLightbox(index) {
       currentCardIndex = index;
       const data = cardsData[index];
       document.getElementById('modalTitle').textContent = data.title;
       document.getElementById('modalImg').src = data.img;
-      document.getElementById('modalSummary').innerHTML = data.points;
+      document.getElementById('modalSummary').innerHTML = renderModalFullDetails(data);
       document.getElementById('lightboxModal').classList.add('active');
     }
 
