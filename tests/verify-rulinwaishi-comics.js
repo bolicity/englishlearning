@@ -10,7 +10,13 @@ const path = require('path');
   let fail = 0;
   for (const f of pages) {
     await page.goto('file://' + path.join(base, f), { waitUntil: 'load', timeout: 30000 });
-    // 逐屏滚动触发 loading=lazy
+    // 折叠式条带：先全部展开，再逐屏滚动触发 loading=lazy
+    await page.evaluate(() => {
+      const ex = document.getElementById('expandAllComics');
+      if (ex) ex.click();
+      document.querySelectorAll('details.comic-strip').forEach(d => { d.open = true; });
+    });
+    await page.waitForTimeout(200);
     await page.evaluate(async () => {
       const h = document.body.scrollHeight;
       for (let y = 0; y < h; y += 700) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 60)); }
