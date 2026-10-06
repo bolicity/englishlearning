@@ -418,6 +418,11 @@
     .back-to-matrix.show { display: block; }
     .comic-panels { gap: 0.65rem; }
     .comic-panels figcaption { font-size: 0.76rem; line-height: 1.55; }
+
+    /* 连环画并入矩阵行（上下板块合并） */
+    tr.comic-row > td { padding: 0.5rem 0.75rem 0.65rem; background: #F8FAFC; }
+    tr.comic-row details.comic-strip { background: #FFFFFF; }
+    tr.comic-row summary.comic-head { font-size: 0.84rem; }
   </style>
 </head>
 <body>
@@ -453,7 +458,7 @@
         <div class="origin-attach">📎 <a href="《儒林外史》核心考点/a570140687a01295341bcdad6ed682dc.jpg" target="_blank" rel="noopener">📷 官方教研原图（第四辑·全书人物谱） · 点击查看大图</a></div>
 
         <div class="card-block">
-          <h2 class="block-title"><span class="icon">30</span> 30位重点人物全解群像大矩阵</h2>
+          <h2 class="block-title"><span class="icon">30</span> 30位重点人物全解群像大矩阵（每人行下即其故事连环画）</h2>
           
           <div class="filter-tabs">
             <button class="filter-btn active" onclick="filterTable('all', this)">全部 30 人</button>
@@ -461,6 +466,11 @@
             <button class="filter-btn" onclick="filterTable('group2', this)">二、科举迷者 (6人)</button>
             <button class="filter-btn" onclick="filterTable('group3', this)">三、虚伪丑态 (9人)</button>
             <button class="filter-btn" onclick="filterTable('group4', this)">四、奇人异士 (10人)</button>
+          </div>
+          <div class="comic-toolbar">
+            <button type="button" id="expandAllComics">展开全部 30 条</button>
+            <button type="button" id="collapseAllComics">收起全部</button>
+            <span class="comic-toolbar-hint">默认收起；点人物名或矩阵里的「连环画→」即可展开该人四格</span>
           </div>
 
           <div class="table-responsive">
@@ -486,6 +496,19 @@
                   </td>
                   <td>自学画梅名动乡里；拒绝朝廷元朝征聘，远走隐居会稽山终老。</td>
                 </tr>
+                <tr class="comic-row" data-group="group1" id="comic-wangmian">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">王冕</span><span class="comic-chapter">第 1 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p1-wangmian-c1.jpg" alt="王冕连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wangmian-c1.jpg')"><figcaption>① 湖边放牛，自学画荷名动乡里</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p1-wangmian-c2.jpg" alt="王冕连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wangmian-c2.jpg')"><figcaption>② 卖画得钱，全买好吃的孝敬老母</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p1-wangmian-c3.jpg" alt="王冕连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wangmian-c3.jpg')"><figcaption>③ 闭门苦读，不到二十岁博览群书</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p1-wangmian-c4.jpg" alt="王冕连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wangmian-c4.jpg')"><figcaption>④ 朝廷征聘，避走会稽山隐居终老</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
                 <tr data-group="group1">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-dushaoqing.jpg" alt="杜少卿头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-dushaoqing.jpg')"><span class="role-badge">杜少卿</span><a class="comic-link" href="#comic-dushaoqing">连环画→</a></td>
@@ -498,6 +521,19 @@
                     </div>
                   </td>
                   <td>装病坚决拒绝朝廷征辟；携妻大方游清凉山；散尽家财资助杨执中与鲍廷玺；公开力挺赞赏沈琼枝抗婚。</td>
+                </tr>
+                <tr class="comic-row" data-group="group1" id="comic-dushaoqing">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">杜少卿</span><span class="comic-chapter">第 31-34 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p2-dushaoqing-c1.jpg" alt="杜少卿连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushaoqing-c1.jpg')"><figcaption>① 朝廷征辟，装病坚辞不出仕</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-dushaoqing.jpg" alt="杜少卿连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushaoqing.jpg')"><figcaption>② 携妻大方同游清凉山</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-dushaoqing-c3.jpg" alt="杜少卿连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushaoqing-c3.jpg')"><figcaption>③ 出资助鲍廷玺重整戏班</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-dushaoqing-c4.jpg" alt="杜少卿连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushaoqing-c4.jpg')"><figcaption>④ 赞许沈琼枝抗婚逃婚的独立精神</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
                 </tr>
 
                 <tr data-group="group1">
@@ -512,6 +548,19 @@
                   </td>
                   <td>任国子监博士；主持泰伯祠祭典；识拔赏识庄绍光；以德服人，暗中掩护失足秀才。</td>
                 </tr>
+                <tr class="comic-row" data-group="group1" id="comic-yuyude">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">虞育德</span><span class="comic-chapter">第 36、37 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p3-yuyude-c1.jpg" alt="虞育德连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-yuyude-c1.jpg')"><figcaption>① 救起轻生青年，赠银助其葬父</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-yuyude-c2.jpg" alt="虞育德连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-yuyude-c2.jpg')"><figcaption>② 考核如实禀报年岁，得闲职而怡然</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-yuyude-c3.jpg" alt="虞育德连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-yuyude-c3.jpg')"><figcaption>③ 门生张罗寿宴厚礼，严词谢绝</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-yuyude-c4.jpg" alt="虞育德连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-yuyude-c4.jpg')"><figcaption>④ 暗中为作弊秀才掩饰，绝口不提</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
                 <tr data-group="group1">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-zhuangshaoguang.jpg" alt="庄绍光头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-zhuangshaoguang.jpg')"><span class="role-badge">庄绍光</span><a class="comic-link" href="#comic-zhuangshaoguang">连环画→</a></td>
@@ -524,6 +573,19 @@
                     </div>
                   </td>
                   <td>被征辟入京面圣陈奏时务；辞官归乡，携琴书隐居玄武湖中；托信搭救卢信侯。</td>
+                </tr>
+                <tr class="comic-row" data-group="group1" id="comic-zhuangshaoguang">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">庄绍光</span><span class="comic-chapter">第 34、35 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p3-zhuangshaoguang-c1.jpg" alt="庄绍光连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-zhuangshaoguang-c1.jpg')"><figcaption>① 柴门紧闭著书立说，不妄交一人</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-zhuangshaoguang-c2.jpg" alt="庄绍光连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-zhuangshaoguang-c2.jpg')"><figcaption>② 婉言谢绝朝廷征辟</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-zhuangshaoguang-c3.jpg" alt="庄绍光连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-zhuangshaoguang-c3.jpg')"><figcaption>③ 自掏银两安葬街头贫苦老夫妇</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-zhuangshaoguang-c4.jpg" alt="庄绍光连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-zhuangshaoguang-c4.jpg')"><figcaption>④ 举家迁往玄武湖幽居避扰</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
                 </tr>
 
                 <tr data-group="group1">
@@ -538,6 +600,19 @@
                   </td>
                   <td>倾力救助流离的牛浦郎；与向知县结为挚友仍守平民礼；坚决拒绝为权贵作伪证行贿。</td>
                 </tr>
+                <tr class="comic-row" data-group="group1" id="comic-baowenqing">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">鲍文卿</span><span class="comic-chapter">第 24-26 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p2-baowenqing-c1.jpg" alt="鲍文卿连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baowenqing-c1.jpg')"><figcaption>① 面对书办重金请托，义正词严拒绝</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-baowenqing.jpg" alt="鲍文卿连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baowenqing.jpg')"><figcaption>② 茶馆训诫戏子恪守本分</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-baowenqing-c3.jpg" alt="鲍文卿连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baowenqing-c3.jpg')"><figcaption>③ 考棚中宽容放过作弊的贫苦童生</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-baowenqing-c4.jpg" alt="鲍文卿连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baowenqing-c4.jpg')"><figcaption>④ 与向知县相交甚笃，仍恪守平民礼数</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
                 <!-- 组二：科举悲剧与功名迷者 -->
                 <tr data-group="group2">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-fanjin.jpg" alt="范进头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-fanjin.jpg')"><span class="role-badge">范进</span><a class="comic-link" href="#comic-fanjin">连环画→</a></td>
@@ -550,6 +625,19 @@
                     </div>
                   </td>
                   <td>五十四岁苦读数十年终中举，喜极发疯；中举后迅速攀附张乡绅，沾染官场恶习。</td>
+                </tr>
+                <tr class="comic-row" data-group="group2" id="comic-fanjin">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">范进</span><span class="comic-chapter">组二·科举迷者 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p4-fanjin-c1.jpg" alt="范进连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-fanjin-c1.jpg')"><figcaption>① 五十四岁皓首穷经，破屋苦读</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-fanjin-c2.jpg" alt="范进连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-fanjin-c2.jpg')"><figcaption>② 一见捷报，喜极发疯满街奔走</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-fanjin-c3.jpg" alt="范进连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-fanjin-c3.jpg')"><figcaption>③ 被岳丈一掌打醒，恢复清醒</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-fanjin-c4.jpg" alt="范进连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-fanjin-c4.jpg')"><figcaption>④ 中举后攀附张乡绅，渐染官气</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
                 </tr>
 
                 <tr data-group="group2">
@@ -564,6 +652,19 @@
                   </td>
                   <td>六十余岁仍是老童生，屡受嘲弄；入省城贡院触景生情撞号板痛哭吐血；获商人凑银捐监生终于得中。</td>
                 </tr>
+                <tr class="comic-row" data-group="group2" id="comic-zhoujin">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">周进</span><span class="comic-chapter">组二·科举迷者 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p4-zhoujin-c1.jpg" alt="周进连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhoujin-c1.jpg')"><figcaption>① 六十余岁仍是老童生，坐馆受嘲弄</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-zhoujin-c2.jpg" alt="周进连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhoujin-c2.jpg')"><figcaption>② 贡院触景生情，撞号板痛哭吐血</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-zhoujin-c3.jpg" alt="周进连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhoujin-c3.jpg')"><figcaption>③ 商人凑银替他捐了监生</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-zhoujin-c4.jpg" alt="周进连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhoujin-c4.jpg')"><figcaption>④ 一朝得中，端坐公案风光显达</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
                 <tr data-group="group2">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-lubianxiu.jpg" alt="鲁编修头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-lubianxiu.jpg')"><span class="role-badge">鲁编修</span><a class="comic-link" href="#comic-lubianxiu">连环画→</a></td>
@@ -576,6 +677,19 @@
                   </td>
                   <td>视八股取士为世间唯一正途；把女儿当儿子养严格逼作八股；强行逼女联姻，压抑才学。</td>
                 </tr>
+                <tr class="comic-row" data-group="group2" id="comic-lubianxiu">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">鲁编修</span><span class="comic-chapter">第 10、11 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p2-lubianxiu.jpg" alt="鲁编修连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-lubianxiu.jpg')"><figcaption>① 把独生女儿当男子教养，亲自督课</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-lubianxiu-c2.jpg" alt="鲁编修连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-lubianxiu-c2.jpg')"><figcaption>② 鲁小姐自幼在窗下苦研八股</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-lubianxiu-c3.jpg" alt="鲁编修连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-lubianxiu-c3.jpg')"><figcaption>③ 怒斥娄氏公子沉迷诗词、耽误举业</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-lubianxiu-c4.jpg" alt="鲁编修连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-lubianxiu-c4.jpg')"><figcaption>④ 科场得意，视八股为世间唯一正途</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
                 <tr data-group="group2">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-luxiaojie.jpg" alt="鲁小姐头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-luxiaojie.jpg')"><span class="role-badge">鲁小姐</span><a class="comic-link" href="#comic-luxiaojie">连环画→</a></td>
@@ -587,6 +701,19 @@
                     </div>
                   </td>
                   <td>深受父训，精通八股文章；嫁与蘧公孙后以才学辅佐丈夫；严格督责幼子天天攻习举业。</td>
+                </tr>
+                <tr class="comic-row" data-group="group2" id="comic-luxiaojie">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">鲁小姐</span><span class="comic-chapter">组二·科举迷者 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p4-luxiaojie-c1.jpg" alt="鲁小姐连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-luxiaojie-c1.jpg')"><figcaption>① 自幼受父训，精通八股文章</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-luxiaojie-c2.jpg" alt="鲁小姐连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-luxiaojie-c2.jpg')"><figcaption>② 嫁入蘧府，见丈夫无心举业而失望</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-luxiaojie-c3.jpg" alt="鲁小姐连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-luxiaojie-c3.jpg')"><figcaption>③ 以才学督促夫君攻习举业</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-luxiaojie-c4.jpg" alt="鲁小姐连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-luxiaojie-c4.jpg')"><figcaption>④ 严格督责幼子天天功课</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
                 </tr>
 
                 <tr data-group="group2">
@@ -601,6 +728,19 @@
                   </td>
                   <td>一生批选评点八股试卷谋生；仗义解囊资助落魄匡超人返乡；苦劝身边所有人走科举正途。</td>
                 </tr>
+                <tr class="comic-row" data-group="group2" id="comic-maer">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">马二先生</span><span class="comic-chapter">第 13-15 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p2-maer.jpg" alt="马二先生连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer.jpg')"><figcaption>① 杭州街头倾囊资助落魄的匡超人返乡</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-maer-c2.jpg" alt="马二先生连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer-c2.jpg')"><figcaption>② 倾囊相助，替蘧公孙赎回要紧的枕箱</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-maer-c3.jpg" alt="马二先生连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer-c3.jpg')"><figcaption>③ 自出银两，料理假神仙洪憨仙的后事</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-maer-c4.jpg" alt="马二先生连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer-c4.jpg')"><figcaption>④ 一生以批选八股文章为业，逢人劝学举业</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
                 <tr data-group="group2">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-qujingluan.jpg" alt="瞿景鸾头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-qujingluan.jpg')"><span class="role-badge">瞿景鸾</span><a class="comic-link" href="#comic-qujingluan">连环画→</a></td>
@@ -612,6 +752,19 @@
                     </div>
                   </td>
                   <td>整日奔走于权贵显要之门，图谋博取功名官位；竭力依附严氏豪强兄弟。</td>
+                </tr>
+                <tr class="comic-row" data-group="group2" id="comic-qujingluan">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">瞿景鸾</span><span class="comic-chapter">组二·科举迷者 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p4-qujingluan-c1.jpg" alt="瞿景鸾连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-qujingluan-c1.jpg')"><figcaption>① 奔走权贵之门，捧帖求见</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-qujingluan-c2.jpg" alt="瞿景鸾连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-qujingluan-c2.jpg')"><figcaption>② 宴席上点头哈腰、一味迎合</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-qujingluan-c3.jpg" alt="瞿景鸾连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-qujingluan-c3.jpg')"><figcaption>③ 竭力依附严氏豪强兄弟</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-qujingluan-c4.jpg" alt="瞿景鸾连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-qujingluan-c4.jpg')"><figcaption>④ 谋得差事，志得意满</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
                 </tr>
                 <!-- 组三：虚伪贪利与丑态群像 -->
                 <tr data-group="group3">
@@ -626,6 +779,19 @@
                   </td>
                   <td>强占邻家走失肥猪；借云片糕讹诈船工船费；欺压宗族邻里；冒认皇亲国戚。</td>
                 </tr>
+                <tr class="comic-row" data-group="group3" id="comic-yangongsheng">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">严贡生</span><span class="comic-chapter">第 5、6 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p1-yangongsheng-c1.jpg" alt="严贡生连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yangongsheng-c1.jpg')"><figcaption>① 强占邻居走失的猪，反咬索要饲料钱</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p1-yangongsheng-c2.jpg" alt="严贡生连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yangongsheng-c2.jpg')"><figcaption>② 几片云片糕讹称名贵药材，赖掉船资</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p1-yangongsheng-c3.jpg" alt="严贡生连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yangongsheng-c3.jpg')"><figcaption>③ 弟死假意吊唁</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p1-yangongsheng-c4.jpg" alt="严贡生连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yangongsheng-c4.jpg')"><figcaption>④ 转头强行霸占胞弟家产</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
                 <tr data-group="group3">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-yanjiansheng.jpg" alt="严监生头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-yanjiansheng.jpg')"><span class="role-badge">严监生</span><a class="comic-link" href="#comic-yanjiansheng">连环画→</a></td>
@@ -638,6 +804,19 @@
                     </div>
                   </td>
                   <td>家财万贯却省吃俭用舍不得吃肉；临终弥留之际伸出两根指头，见挑掉一茎灯草方肯瞑目。</td>
+                </tr>
+                <tr class="comic-row" data-group="group3" id="comic-yanjiansheng">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">严监生</span><span class="comic-chapter">第 5、6 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p1-yanjiansheng-c1.jpg" alt="严监生连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yanjiansheng-c1.jpg')"><figcaption>① 万贯家财却省吃俭用，拨算盘核账</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p1-yanjiansheng-c2.jpg" alt="严监生连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yanjiansheng-c2.jpg')"><figcaption>② 妻病垂危之际，顺水推舟扶正赵氏</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p1-yanjiansheng-c3.jpg" alt="严监生连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yanjiansheng-c3.jpg')"><figcaption>③ 临终伸着两根指头，不肯瞑目</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p1-yanjiansheng-c4.jpg" alt="严监生连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yanjiansheng-c4.jpg')"><figcaption>④ 挑掉一茎灯草，方才咽气</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
                 </tr>
 
                 <tr data-group="group3">
@@ -652,6 +831,19 @@
                   </td>
                   <td>早年侍奉病父纯孝；后结识潘三、李本瑛迅速堕落，帮造朱签卖人、替考作弊、负心弃妻、忘恩负义。</td>
                 </tr>
+                <tr class="comic-row" data-group="group3" id="comic-kuangchaoren">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">匡超人</span><span class="comic-chapter">第 16-20 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p2-kuangchaoren-c1.jpg" alt="匡超人连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-kuangchaoren-c1.jpg')"><figcaption>① 早年病父床前端汤奉药、苦读至深夜</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-kuangchaoren.jpg" alt="匡超人连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-kuangchaoren.jpg')"><figcaption>② 到省城变质，灯下伪造官府朱签</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-kuangchaoren-c3.jpg" alt="匡超人连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-kuangchaoren-c3.jpg')"><figcaption>③ 收取重金，替金跃冒名代考</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-kuangchaoren-c4.jpg" alt="匡超人连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-kuangchaoren-c4.jpg')"><figcaption>④ 潘三下狱，他翻脸划清界限</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
                 <tr data-group="group3">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-niupulang.jpg" alt="牛浦郎头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-niupulang.jpg')"><span class="role-badge">牛浦郎</span><a class="comic-link" href="#comic-niupulang">连环画→</a></td>
@@ -665,6 +857,19 @@
                   </td>
                   <td>偷盗并冒名亡故诗人牛布衣诗集名号；钻营结交官宦显贵；恩将仇报反噬恩公鲍文卿。</td>
                 </tr>
+                <tr class="comic-row" data-group="group3" id="comic-niupulang">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">牛浦郎</span><span class="comic-chapter">第 21-24 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p2-niupulang.jpg" alt="牛浦郎连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-niupulang.jpg')"><figcaption>① 甘露庵中偷读牛布衣遗诗，据为己有</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-niupulang-c2.jpg" alt="牛浦郎连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-niupulang-c2.jpg')"><figcaption>② 擅改庵中牌匾，冒名顶替</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-niupulang-c3.jpg" alt="牛浦郎连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-niupulang-c3.jpg')"><figcaption>③ 把来访的卜家兄弟当下人使唤</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-niupulang-c4.jpg" alt="牛浦郎连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-niupulang-c4.jpg')"><figcaption>④ 依附知县权势，怒拒恶霸敲诈</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
                 <tr data-group="group3">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-zhangjingzhai.jpg" alt="张静斋头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-zhangjingzhai.jpg')"><span class="role-badge">张静斋</span><a class="comic-link" href="#comic-zhangjingzhai">连环画→</a></td>
@@ -676,6 +881,19 @@
                     </div>
                   </td>
                   <td>范进一中举立刻主动上门送银赠房巴结；倚仗官绅身份强占百姓良田民房；构陷无辜良民。</td>
+                </tr>
+                <tr class="comic-row" data-group="group3" id="comic-zhangjingzhai">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">张静斋</span><span class="comic-chapter">组三·虚伪丑态 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p4-zhangjingzhai-c1.jpg" alt="张静斋连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjingzhai-c1.jpg')"><figcaption>① 范进一中举，立刻送银赠房巴结</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-zhangjingzhai-c2.jpg" alt="张静斋连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjingzhai-c2.jpg')"><figcaption>② 把酒言欢，指点攀附门路</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-zhangjingzhai-c3.jpg" alt="张静斋连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjingzhai-c3.jpg')"><figcaption>③ 倚仗官绅之势，强占民田民房</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-zhangjingzhai-c4.jpg" alt="张静斋连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjingzhai-c4.jpg')"><figcaption>④ 公堂构陷无辜良民</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
                 </tr>
 
                 <tr data-group="group3">
@@ -689,6 +907,19 @@
                   </td>
                   <td>任知县时苛刻对待属下百姓，大肆搜刮民脂；重枷五十斤牛肉活活折磨死回民师傅。</td>
                 </tr>
+                <tr class="comic-row" data-group="group3" id="comic-tangfeng">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">汤奉</span><span class="comic-chapter">第 4 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p1-tangfeng-c1.jpg" alt="汤奉连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-tangfeng-c1.jpg')"><figcaption>① 五十斤牛肉堆上长枷，活活压毙老师傅</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p1-tangfeng-c2.jpg" alt="汤奉连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-tangfeng-c2.jpg')"><figcaption>② 偷鸡贼头顶捆鸡，游街百般折辱</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p1-tangfeng-c3.jpg" alt="汤奉连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-tangfeng-c3.jpg')"><figcaption>③ 公堂严刑苛断，酷吏做派</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p1-tangfeng-c4.jpg" alt="汤奉连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-tangfeng-c4.jpg')"><figcaption>④ 出巡仪仗森严，百姓跪伏侧目</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
                 <tr data-group="group3">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-wanghui.jpg" alt="王惠头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-wanghui.jpg')"><span class="role-badge">王惠</span><a class="comic-link" href="#comic-wanghui">连环画→</a></td>
@@ -700,6 +931,19 @@
                     </div>
                   </td>
                   <td>任南昌知府，大堂充斥算盘戥子板子声；横征暴敛，宁王叛乱吓得降敌充当伪官，兵败削发出逃。</td>
+                </tr>
+                <tr class="comic-row" data-group="group3" id="comic-wanghui">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">王惠</span><span class="comic-chapter">第 7、8 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p1-wanghui-c1.jpg" alt="王惠连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wanghui-c1.jpg')"><figcaption>① 到任南昌故意不接印，逼下属送规费</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p1-wanghui-c2.jpg" alt="王惠连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wanghui-c2.jpg')"><figcaption>② 上任便查办私情、大肆搜刮民脂</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p1-wanghui-c3.jpg" alt="王惠连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wanghui-c3.jpg')"><figcaption>③ 宁王叛乱，开城投降做伪官</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p1-wanghui-c4.jpg" alt="王惠连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wanghui-c4.jpg')"><figcaption>④ 兵败连夜出逃，削发为僧</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
                 </tr>
 
                 <tr data-group="group3">
@@ -713,6 +957,19 @@
                   </td>
                   <td>包揽词讼，操纵官府案由；教唆引诱匡超人伪造朱签代考替试；拐卖妇女，敲诈勒索。</td>
                 </tr>
+                <tr class="comic-row" data-group="group3" id="comic-pansan">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">潘三</span><span class="comic-chapter">组三·虚伪丑态 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p4-pansan-c1.jpg" alt="潘三连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-pansan-c1.jpg')"><figcaption>① 包揽词讼，操纵官府案由</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-pansan-c2.jpg" alt="潘三连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-pansan-c2.jpg')"><figcaption>② 教唆匡超人伪造朱签、代考替试</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-pansan-c3.jpg" alt="潘三连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-pansan-c3.jpg')"><figcaption>③ 拐卖妇女、敲诈勒索</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-pansan-c4.jpg" alt="潘三连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-pansan-c4.jpg')"><figcaption>④ 东窗事发，锒铛入狱</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
                 <tr data-group="group3">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-yangzhizhong.jpg" alt="杨执中头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-yangzhizhong.jpg')"><span class="role-badge">杨执中</span><a class="comic-link" href="#comic-yangzhizhong">连环画→</a></td>
@@ -724,6 +981,19 @@
                     </div>
                   </td>
                   <td>隐居乡野间好发宏大空洞议论；眼高手低，极易被权勿用等虚伪无赖小人蒙蔽利用。</td>
+                </tr>
+                <tr class="comic-row" data-group="group3" id="comic-yangzhizhong">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">杨执中</span><span class="comic-chapter">组三·虚伪丑态 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p4-yangzhizhong-c1.jpg" alt="杨执中连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-yangzhizhong-c1.jpg')"><figcaption>① 隐居乡野，高谈空洞议论</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-yangzhizhong-c2.jpg" alt="杨执中连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-yangzhizhong-c2.jpg')"><figcaption>② 被娄公子奉为高士，沾沾自喜</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-yangzhizhong-c3.jpg" alt="杨执中连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-yangzhizhong-c3.jpg')"><figcaption>③ 引荐无赖小人入伙</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-yangzhizhong-c4.jpg" alt="杨执中连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-yangzhizhong-c4.jpg')"><figcaption>④ 被小人连累，家中鸡犬不宁</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
                 </tr>
                 <!-- 组四：抗争与奇人异士 -->
                 <tr data-group="group4">
@@ -738,6 +1008,19 @@
                   </td>
                   <td>范进未中举时肆意吐唾沫臭骂；中举后百般谄媚吹捧为文曲星老爷；扯平褶皱后襟数十回。</td>
                 </tr>
+                <tr class="comic-row" data-group="group4" id="comic-hutuhu">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">胡屠户</span><span class="comic-chapter">第 3 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p2-hutuhu-c1.jpg" alt="胡屠户连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-hutuhu-c1.jpg')"><figcaption>① 中举前辱骂女婿“现世宝、穷鬼”</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-hutuhu.jpg" alt="胡屠户连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-hutuhu.jpg')"><figcaption>② 中举后极尽巴结“天上文曲星”</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-hutuhu-c3.jpg" alt="胡屠户连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-hutuhu-c3.jpg')"><figcaption>③ 打了疯范进一巴掌，怕菩萨怪罪</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-hutuhu-c4.jpg" alt="胡屠户连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-hutuhu-c4.jpg')"><figcaption>④ 一路弯腰，替女婿扯衣裂数十回</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
                 <tr data-group="group4">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-shenqiongzhi.jpg" alt="沈琼枝头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-shenqiongzhi.jpg')"><span class="role-badge">沈琼枝</span><a class="comic-link" href="#comic-shenqiongzhi">连环画→</a></td>
@@ -751,6 +1034,19 @@
                   </td>
                   <td>机敏识破恶商宋为富骗婚为妾阴谋；果断连夜逃婚奔赴南京，独立卖诗卖刺绣自食其力。</td>
                 </tr>
+                <tr class="comic-row" data-group="group4" id="comic-shenqiongzhi">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">沈琼枝</span><span class="comic-chapter">第 40、41 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p3-shenqiongzhi-c1.jpg" alt="沈琼枝连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-shenqiongzhi-c1.jpg')"><figcaption>① 识破盐商骗婚，决然抗婚逃婚</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-shenqiongzhi-c2.jpg" alt="沈琼枝连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-shenqiongzhi-c2.jpg')"><figcaption>② 南京钞库街悬牌卖诗卖刺绣</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-shenqiongzhi-c3.jpg" alt="沈琼枝连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-shenqiongzhi-c3.jpg')"><figcaption>③ 痛斥恶少、怒打索钱官差</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-shenqiongzhi-c4.jpg" alt="沈琼枝连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-shenqiongzhi-c4.jpg')"><figcaption>④ 当窗刺绣作诗，名动金陵</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
                 <tr data-group="group4">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-zhaoshi.jpg" alt="赵氏头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-zhaoshi.jpg')"><span class="role-badge">赵氏</span><a class="comic-link" href="#comic-zhaoshi">连环画→</a></td>
@@ -762,6 +1058,19 @@
                     </div>
                   </td>
                   <td>由妾扶正为正室夫人；在严监生病危后巧妙智斗严氏恶霸族亲，坚强保全孤儿与家产。</td>
+                </tr>
+                <tr class="comic-row" data-group="group4" id="comic-zhaoshi">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">赵氏</span><span class="comic-chapter">组四·奇人异士 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p4-zhaoshi-c1.jpg" alt="赵氏连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhaoshi-c1.jpg')"><figcaption>① 妾室出身，低头侍奉、心思细密</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-zhaoshi-c2.jpg" alt="赵氏连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhaoshi-c2.jpg')"><figcaption>② 挑掉一茎灯草，扶正为正室</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-zhaoshi-c3.jpg" alt="赵氏连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhaoshi-c3.jpg')"><figcaption>③ 智斗严氏恶霸族亲</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-zhaoshi-c4.jpg" alt="赵氏连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhaoshi-c4.jpg')"><figcaption>④ 保全孤儿与家产</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
                 </tr>
 
                 <tr data-group="group4">
@@ -776,6 +1085,19 @@
                   </td>
                   <td>二十年万里跋涉寻亲，挑土打柴孝敬弃家绝情的父亲；不慕荣名，笃行孝道。</td>
                 </tr>
+                <tr class="comic-row" data-group="group4" id="comic-guoxiaozi">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">郭孝子 (郭力)</span><span class="comic-chapter">第 37、38 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p3-guoxiaozi-c1.jpg" alt="郭孝子 (郭力)连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-guoxiaozi-c1.jpg')"><figcaption>① 万里寻父，途中遇虎历险不改初心</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-guoxiaozi-c2.jpg" alt="郭孝子 (郭力)连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-guoxiaozi-c2.jpg')"><figcaption>② 识破假吊死鬼骗子，反授武艺</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-guoxiaozi-c3.jpg" alt="郭孝子 (郭力)连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-guoxiaozi-c3.jpg')"><figcaption>③ 竹山庵寻父，被拒之门外</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-guoxiaozi-c4.jpg" alt="郭孝子 (郭力)连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-guoxiaozi-c4.jpg')"><figcaption>④ 庵旁挑土打柴，苦力供养生父</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
                 <tr data-group="group4">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-xiaoyunxian.jpg" alt="萧云仙头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-xiaoyunxian.jpg')"><span class="role-badge">萧云仙</span><a class="comic-link" href="#comic-xiaoyunxian">连环画→</a></td>
@@ -788,6 +1110,19 @@
                     </div>
                   </td>
                   <td>峨眉山上打瞎赵大救高僧；军中立功平定叛乱；青石番四年修城、筑水利利民、兴办教育。</td>
+                </tr>
+                <tr class="comic-row" data-group="group4" id="comic-xiaoyunxian">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">萧云仙</span><span class="comic-chapter">第 39、40 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p3-xiaoyunxian-c1.jpg" alt="萧云仙连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-xiaoyunxian-c1.jpg')"><figcaption>① 峨眉山打瞎恶霸赵大，救下老僧</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-xiaoyunxian-c2.jpg" alt="萧云仙连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-xiaoyunxian-c2.jpg')"><figcaption>② 投军平叛，智勇双全</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-xiaoyunxian-c3.jpg" alt="萧云仙连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-xiaoyunxian-c3.jpg')"><figcaption>③ 修城防、兴水利、办义学</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-xiaoyunxian-c4.jpg" alt="萧云仙连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-xiaoyunxian-c4.jpg')"><figcaption>④ 革职还乡，跪父痛哭悔歉</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
                 </tr>
 
                 <tr data-group="group4">
@@ -802,6 +1137,19 @@
                   </td>
                   <td>武艺绝伦，巧妙让万中书由假变成真官；法庭勇试官刑；路见不平追回被骗千两银。</td>
                 </tr>
+                <tr class="comic-row" data-group="group4" id="comic-fengsilaodie">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">凤四老爹</span><span class="comic-chapter">第 50-52 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p3-fengsilaodie-c1.jpg" alt="凤四老爹连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-fengsilaodie-c1.jpg')"><figcaption>① 公堂之上，挺身代友亲试官刑</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-fengsilaodie-c2.jpg" alt="凤四老爹连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-fengsilaodie-c2.jpg')"><figcaption>② 船头飞身跃起，追回被盗盘缠</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-fengsilaodie-c3.jpg" alt="凤四老爹连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-fengsilaodie-c3.jpg')"><figcaption>③ 揪住骗子，追回上千两被骗巨银</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p3-fengsilaodie-c4.jpg" alt="凤四老爹连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-fengsilaodie-c4.jpg')"><figcaption>④ 晨起操练拳棒，武风凛然</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
                 <tr data-group="group4">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-bucheng.jpg" alt="卜诚头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-bucheng.jpg')"><span class="role-badge">卜诚</span><a class="comic-link" href="#comic-bucheng">连环画→</a></td>
@@ -812,6 +1160,19 @@
                     </div>
                   </td>
                   <td>在匡超人困顿潦倒卖豆腐时真心以待，主动提供落脚之处与盘缠相助。</td>
+                </tr>
+                <tr class="comic-row" data-group="group4" id="comic-bucheng">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">卜诚</span><span class="comic-chapter">组四·奇人异士 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p4-bucheng-c1.jpg" alt="卜诚连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-bucheng-c1.jpg')"><figcaption>① 匡超人潦倒街头，卖豆腐糊口</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-bucheng-c2.jpg" alt="卜诚连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-bucheng-c2.jpg')"><figcaption>② 卜诚真心收留，给落脚之处</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-bucheng-c3.jpg" alt="卜诚连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-bucheng-c3.jpg')"><figcaption>③ 赠盘缠干粮，送他上路</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-bucheng-c4.jpg" alt="卜诚连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-bucheng-c4.jpg')"><figcaption>④ 故人发达冷眼相待，淡然处之</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
                 </tr>
 
                 <tr data-group="group4">
@@ -825,6 +1186,19 @@
                   </td>
                   <td>赏识匡超人并收为门生；后因涉事被朝廷参奏弹劾，反被匡超人无情划清界限。</td>
                 </tr>
+                <tr class="comic-row" data-group="group4" id="comic-libenying">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">李本瑛</span><span class="comic-chapter">组四·奇人异士 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p4-libenying-c1.jpg" alt="李本瑛连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-libenying-c1.jpg')"><figcaption>① 赏识匡超人文才，收为门生</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-libenying-c2.jpg" alt="李本瑛连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-libenying-c2.jpg')"><figcaption>② 提携举荐，师徒相得</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-libenying-c3.jpg" alt="李本瑛连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-libenying-c3.jpg')"><figcaption>③ 被人参奏弹劾，摘印去职</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-libenying-c4.jpg" alt="李本瑛连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-libenying-c4.jpg')"><figcaption>④ 落难途中遭旧门生划清界限</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
                 <tr data-group="group4">
                   <td><img class="matrix-avatar" src="images/rulinwaishi-av-qugongsun.jpg" alt="蘧公孙头像" loading="lazy" onclick="openLightbox('images/rulinwaishi-av-qugongsun.jpg')"><span class="role-badge">蘧公孙</span><a class="comic-link" href="#comic-qugongsun">连环画→</a></td>
@@ -836,6 +1210,19 @@
                     </div>
                   </td>
                   <td>爱慕名士虚名，在枕箱禁书上冒名题刻；娶才女鲁小姐；经历磨难官司后幡然醒悟。</td>
+                </tr>
+                <tr class="comic-row" data-group="group4" id="comic-qugongsun">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">蘧公孙</span><span class="comic-chapter">第 8-14 回 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p2-qugongsun-c1.jpg" alt="蘧公孙连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-qugongsun-c1.jpg')"><figcaption>① 慷慨赠银，资助避难的罪官王惠</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-qugongsun.jpg" alt="蘧公孙连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-qugongsun.jpg')"><figcaption>② 在禁书扉页署上自己的名字博名</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-qugongsun-c3.jpg" alt="蘧公孙连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-qugongsun-c3.jpg')"><figcaption>③ 依仗权势，深究仆人与丫鬟双红</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p2-qugongsun-c4.jpg" alt="蘧公孙连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-qugongsun-c4.jpg')"><figcaption>④ 娄府宴客，高谈诗文、沽名钓誉</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
                 </tr>
 
                 <tr data-group="group4">
@@ -849,322 +1236,24 @@
                   </td>
                   <td>依附巴结范进，在官宦名流与地方豪绅间暗中撮合说项，极力为自身谋取好处。</td>
                 </tr>
+                <tr class="comic-row" data-group="group4" id="comic-zhangjunmin">
+                  <td colspan="3">
+                      <details class="comic-strip">
+                      <summary class="comic-head"><span class="role-badge">张俊民</span><span class="comic-chapter">组四·奇人异士 · 故事连环画 · 点此展开四格</span></summary>
+                      <div class="comic-panels">
+                      <figure><img src="images/rulinwaishi-p4-zhangjunmin-c1.jpg" alt="张俊民连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjunmin-c1.jpg')"><figcaption>① 官宦门前趋奉，递帖求见</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-zhangjunmin-c2.jpg" alt="张俊民连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjunmin-c2.jpg')"><figcaption>② 在官宦与豪绅间两头撮合</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-zhangjunmin-c3.jpg" alt="张俊民连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjunmin-c3.jpg')"><figcaption>③ 借范进之势为亲眷谋差事</figcaption></figure>
+                      <figure><img src="images/rulinwaishi-p4-zhangjunmin-c4.jpg" alt="张俊民连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjunmin-c4.jpg')"><figcaption>④ 宴席上周旋名流，志得意满</figcaption></figure>
+                      </div>
+                      </details>
+                  </td>
+                </tr>
 
               </tbody>
             </table>
           </div>
         </div>
-
-        <div class="card-block">
-          <h2 class="block-title"><span class="icon">画</span> 30位重点人物 · 故事连环画（按矩阵分组排序）</h2>
-
-          <div class="comic-toolbar">
-            <button type="button" id="expandAllComics">展开全部 30 条</button>
-            <button type="button" id="collapseAllComics">收起全部</button>
-            <span class="comic-toolbar-hint">默认收起；点人物名或矩阵里的「连环画→」即可展开该人四格</span>
-          </div>
-
-          <details class="comic-strip" id="comic-wangmian">
-          <summary class="comic-head"><span class="role-badge">王冕</span><span class="comic-chapter">第 1 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p1-wangmian-c1.jpg" alt="王冕连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wangmian-c1.jpg')"><figcaption>① 湖边放牛，自学画荷名动乡里</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p1-wangmian-c2.jpg" alt="王冕连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wangmian-c2.jpg')"><figcaption>② 卖画得钱，全买好吃的孝敬老母</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p1-wangmian-c3.jpg" alt="王冕连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wangmian-c3.jpg')"><figcaption>③ 闭门苦读，不到二十岁博览群书</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p1-wangmian-c4.jpg" alt="王冕连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wangmian-c4.jpg')"><figcaption>④ 朝廷征聘，避走会稽山隐居终老</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-dushaoqing">
-          <summary class="comic-head"><span class="role-badge">杜少卿</span><span class="comic-chapter">第 31-34 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p2-dushaoqing-c1.jpg" alt="杜少卿连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushaoqing-c1.jpg')"><figcaption>① 朝廷征辟，装病坚辞不出仕</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-dushaoqing.jpg" alt="杜少卿连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushaoqing.jpg')"><figcaption>② 携妻大方同游清凉山</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-dushaoqing-c3.jpg" alt="杜少卿连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushaoqing-c3.jpg')"><figcaption>③ 出资助鲍廷玺重整戏班</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-dushaoqing-c4.jpg" alt="杜少卿连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-dushaoqing-c4.jpg')"><figcaption>④ 赞许沈琼枝抗婚逃婚的独立精神</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-yuyude">
-          <summary class="comic-head"><span class="role-badge">虞育德</span><span class="comic-chapter">第 36、37 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p3-yuyude-c1.jpg" alt="虞育德连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-yuyude-c1.jpg')"><figcaption>① 救起轻生青年，赠银助其葬父</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-yuyude-c2.jpg" alt="虞育德连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-yuyude-c2.jpg')"><figcaption>② 考核如实禀报年岁，得闲职而怡然</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-yuyude-c3.jpg" alt="虞育德连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-yuyude-c3.jpg')"><figcaption>③ 门生张罗寿宴厚礼，严词谢绝</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-yuyude-c4.jpg" alt="虞育德连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-yuyude-c4.jpg')"><figcaption>④ 暗中为作弊秀才掩饰，绝口不提</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-zhuangshaoguang">
-          <summary class="comic-head"><span class="role-badge">庄绍光</span><span class="comic-chapter">第 34、35 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p3-zhuangshaoguang-c1.jpg" alt="庄绍光连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-zhuangshaoguang-c1.jpg')"><figcaption>① 柴门紧闭著书立说，不妄交一人</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-zhuangshaoguang-c2.jpg" alt="庄绍光连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-zhuangshaoguang-c2.jpg')"><figcaption>② 婉言谢绝朝廷征辟</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-zhuangshaoguang-c3.jpg" alt="庄绍光连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-zhuangshaoguang-c3.jpg')"><figcaption>③ 自掏银两安葬街头贫苦老夫妇</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-zhuangshaoguang-c4.jpg" alt="庄绍光连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-zhuangshaoguang-c4.jpg')"><figcaption>④ 举家迁往玄武湖幽居避扰</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-baowenqing">
-          <summary class="comic-head"><span class="role-badge">鲍文卿</span><span class="comic-chapter">第 24-26 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p2-baowenqing-c1.jpg" alt="鲍文卿连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baowenqing-c1.jpg')"><figcaption>① 面对书办重金请托，义正词严拒绝</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-baowenqing.jpg" alt="鲍文卿连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baowenqing.jpg')"><figcaption>② 茶馆训诫戏子恪守本分</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-baowenqing-c3.jpg" alt="鲍文卿连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baowenqing-c3.jpg')"><figcaption>③ 考棚中宽容放过作弊的贫苦童生</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-baowenqing-c4.jpg" alt="鲍文卿连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-baowenqing-c4.jpg')"><figcaption>④ 与向知县相交甚笃，仍恪守平民礼数</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-fanjin">
-          <summary class="comic-head"><span class="role-badge">范进</span><span class="comic-chapter">组二·科举迷者 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p4-fanjin-c1.jpg" alt="范进连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-fanjin-c1.jpg')"><figcaption>① 五十四岁皓首穷经，破屋苦读</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-fanjin-c2.jpg" alt="范进连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-fanjin-c2.jpg')"><figcaption>② 一见捷报，喜极发疯满街奔走</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-fanjin-c3.jpg" alt="范进连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-fanjin-c3.jpg')"><figcaption>③ 被岳丈一掌打醒，恢复清醒</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-fanjin-c4.jpg" alt="范进连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-fanjin-c4.jpg')"><figcaption>④ 中举后攀附张乡绅，渐染官气</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-zhoujin">
-          <summary class="comic-head"><span class="role-badge">周进</span><span class="comic-chapter">组二·科举迷者 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p4-zhoujin-c1.jpg" alt="周进连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhoujin-c1.jpg')"><figcaption>① 六十余岁仍是老童生，坐馆受嘲弄</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-zhoujin-c2.jpg" alt="周进连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhoujin-c2.jpg')"><figcaption>② 贡院触景生情，撞号板痛哭吐血</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-zhoujin-c3.jpg" alt="周进连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhoujin-c3.jpg')"><figcaption>③ 商人凑银替他捐了监生</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-zhoujin-c4.jpg" alt="周进连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhoujin-c4.jpg')"><figcaption>④ 一朝得中，端坐公案风光显达</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-lubianxiu">
-          <summary class="comic-head"><span class="role-badge">鲁编修</span><span class="comic-chapter">第 10、11 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p2-lubianxiu.jpg" alt="鲁编修连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-lubianxiu.jpg')"><figcaption>① 把独生女儿当男子教养，亲自督课</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-lubianxiu-c2.jpg" alt="鲁编修连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-lubianxiu-c2.jpg')"><figcaption>② 鲁小姐自幼在窗下苦研八股</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-lubianxiu-c3.jpg" alt="鲁编修连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-lubianxiu-c3.jpg')"><figcaption>③ 怒斥娄氏公子沉迷诗词、耽误举业</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-lubianxiu-c4.jpg" alt="鲁编修连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-lubianxiu-c4.jpg')"><figcaption>④ 科场得意，视八股为世间唯一正途</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-luxiaojie">
-          <summary class="comic-head"><span class="role-badge">鲁小姐</span><span class="comic-chapter">组二·科举迷者 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p4-luxiaojie-c1.jpg" alt="鲁小姐连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-luxiaojie-c1.jpg')"><figcaption>① 自幼受父训，精通八股文章</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-luxiaojie-c2.jpg" alt="鲁小姐连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-luxiaojie-c2.jpg')"><figcaption>② 嫁入蘧府，见丈夫无心举业而失望</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-luxiaojie-c3.jpg" alt="鲁小姐连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-luxiaojie-c3.jpg')"><figcaption>③ 以才学督促夫君攻习举业</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-luxiaojie-c4.jpg" alt="鲁小姐连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-luxiaojie-c4.jpg')"><figcaption>④ 严格督责幼子天天功课</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-maer">
-          <summary class="comic-head"><span class="role-badge">马二先生</span><span class="comic-chapter">第 13-15 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p2-maer.jpg" alt="马二先生连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer.jpg')"><figcaption>① 杭州街头倾囊资助落魄的匡超人返乡</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-maer-c2.jpg" alt="马二先生连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer-c2.jpg')"><figcaption>② 倾囊相助，替蘧公孙赎回要紧的枕箱</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-maer-c3.jpg" alt="马二先生连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer-c3.jpg')"><figcaption>③ 自出银两，料理假神仙洪憨仙的后事</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-maer-c4.jpg" alt="马二先生连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-maer-c4.jpg')"><figcaption>④ 一生以批选八股文章为业，逢人劝学举业</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-qujingluan">
-          <summary class="comic-head"><span class="role-badge">瞿景鸾</span><span class="comic-chapter">组二·科举迷者 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p4-qujingluan-c1.jpg" alt="瞿景鸾连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-qujingluan-c1.jpg')"><figcaption>① 奔走权贵之门，捧帖求见</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-qujingluan-c2.jpg" alt="瞿景鸾连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-qujingluan-c2.jpg')"><figcaption>② 宴席上点头哈腰、一味迎合</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-qujingluan-c3.jpg" alt="瞿景鸾连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-qujingluan-c3.jpg')"><figcaption>③ 竭力依附严氏豪强兄弟</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-qujingluan-c4.jpg" alt="瞿景鸾连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-qujingluan-c4.jpg')"><figcaption>④ 谋得差事，志得意满</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-yangongsheng">
-          <summary class="comic-head"><span class="role-badge">严贡生</span><span class="comic-chapter">第 5、6 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p1-yangongsheng-c1.jpg" alt="严贡生连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yangongsheng-c1.jpg')"><figcaption>① 强占邻居走失的猪，反咬索要饲料钱</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p1-yangongsheng-c2.jpg" alt="严贡生连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yangongsheng-c2.jpg')"><figcaption>② 几片云片糕讹称名贵药材，赖掉船资</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p1-yangongsheng-c3.jpg" alt="严贡生连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yangongsheng-c3.jpg')"><figcaption>③ 弟死假意吊唁</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p1-yangongsheng-c4.jpg" alt="严贡生连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yangongsheng-c4.jpg')"><figcaption>④ 转头强行霸占胞弟家产</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-yanjiansheng">
-          <summary class="comic-head"><span class="role-badge">严监生</span><span class="comic-chapter">第 5、6 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p1-yanjiansheng-c1.jpg" alt="严监生连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yanjiansheng-c1.jpg')"><figcaption>① 万贯家财却省吃俭用，拨算盘核账</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p1-yanjiansheng-c2.jpg" alt="严监生连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yanjiansheng-c2.jpg')"><figcaption>② 妻病垂危之际，顺水推舟扶正赵氏</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p1-yanjiansheng-c3.jpg" alt="严监生连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yanjiansheng-c3.jpg')"><figcaption>③ 临终伸着两根指头，不肯瞑目</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p1-yanjiansheng-c4.jpg" alt="严监生连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-yanjiansheng-c4.jpg')"><figcaption>④ 挑掉一茎灯草，方才咽气</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-kuangchaoren">
-          <summary class="comic-head"><span class="role-badge">匡超人</span><span class="comic-chapter">第 16-20 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p2-kuangchaoren-c1.jpg" alt="匡超人连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-kuangchaoren-c1.jpg')"><figcaption>① 早年病父床前端汤奉药、苦读至深夜</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-kuangchaoren.jpg" alt="匡超人连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-kuangchaoren.jpg')"><figcaption>② 到省城变质，灯下伪造官府朱签</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-kuangchaoren-c3.jpg" alt="匡超人连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-kuangchaoren-c3.jpg')"><figcaption>③ 收取重金，替金跃冒名代考</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-kuangchaoren-c4.jpg" alt="匡超人连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-kuangchaoren-c4.jpg')"><figcaption>④ 潘三下狱，他翻脸划清界限</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-niupulang">
-          <summary class="comic-head"><span class="role-badge">牛浦郎</span><span class="comic-chapter">第 21-24 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p2-niupulang.jpg" alt="牛浦郎连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-niupulang.jpg')"><figcaption>① 甘露庵中偷读牛布衣遗诗，据为己有</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-niupulang-c2.jpg" alt="牛浦郎连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-niupulang-c2.jpg')"><figcaption>② 擅改庵中牌匾，冒名顶替</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-niupulang-c3.jpg" alt="牛浦郎连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-niupulang-c3.jpg')"><figcaption>③ 把来访的卜家兄弟当下人使唤</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-niupulang-c4.jpg" alt="牛浦郎连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-niupulang-c4.jpg')"><figcaption>④ 依附知县权势，怒拒恶霸敲诈</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-zhangjingzhai">
-          <summary class="comic-head"><span class="role-badge">张静斋</span><span class="comic-chapter">组三·虚伪丑态 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p4-zhangjingzhai-c1.jpg" alt="张静斋连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjingzhai-c1.jpg')"><figcaption>① 范进一中举，立刻送银赠房巴结</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-zhangjingzhai-c2.jpg" alt="张静斋连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjingzhai-c2.jpg')"><figcaption>② 把酒言欢，指点攀附门路</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-zhangjingzhai-c3.jpg" alt="张静斋连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjingzhai-c3.jpg')"><figcaption>③ 倚仗官绅之势，强占民田民房</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-zhangjingzhai-c4.jpg" alt="张静斋连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjingzhai-c4.jpg')"><figcaption>④ 公堂构陷无辜良民</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-tangfeng">
-          <summary class="comic-head"><span class="role-badge">汤奉</span><span class="comic-chapter">第 4 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p1-tangfeng-c1.jpg" alt="汤奉连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-tangfeng-c1.jpg')"><figcaption>① 五十斤牛肉堆上长枷，活活压毙老师傅</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p1-tangfeng-c2.jpg" alt="汤奉连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-tangfeng-c2.jpg')"><figcaption>② 偷鸡贼头顶捆鸡，游街百般折辱</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p1-tangfeng-c3.jpg" alt="汤奉连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-tangfeng-c3.jpg')"><figcaption>③ 公堂严刑苛断，酷吏做派</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p1-tangfeng-c4.jpg" alt="汤奉连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-tangfeng-c4.jpg')"><figcaption>④ 出巡仪仗森严，百姓跪伏侧目</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-wanghui">
-          <summary class="comic-head"><span class="role-badge">王惠</span><span class="comic-chapter">第 7、8 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p1-wanghui-c1.jpg" alt="王惠连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wanghui-c1.jpg')"><figcaption>① 到任南昌故意不接印，逼下属送规费</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p1-wanghui-c2.jpg" alt="王惠连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wanghui-c2.jpg')"><figcaption>② 上任便查办私情、大肆搜刮民脂</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p1-wanghui-c3.jpg" alt="王惠连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wanghui-c3.jpg')"><figcaption>③ 宁王叛乱，开城投降做伪官</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p1-wanghui-c4.jpg" alt="王惠连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p1-wanghui-c4.jpg')"><figcaption>④ 兵败连夜出逃，削发为僧</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-pansan">
-          <summary class="comic-head"><span class="role-badge">潘三</span><span class="comic-chapter">组三·虚伪丑态 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p4-pansan-c1.jpg" alt="潘三连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-pansan-c1.jpg')"><figcaption>① 包揽词讼，操纵官府案由</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-pansan-c2.jpg" alt="潘三连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-pansan-c2.jpg')"><figcaption>② 教唆匡超人伪造朱签、代考替试</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-pansan-c3.jpg" alt="潘三连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-pansan-c3.jpg')"><figcaption>③ 拐卖妇女、敲诈勒索</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-pansan-c4.jpg" alt="潘三连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-pansan-c4.jpg')"><figcaption>④ 东窗事发，锒铛入狱</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-yangzhizhong">
-          <summary class="comic-head"><span class="role-badge">杨执中</span><span class="comic-chapter">组三·虚伪丑态 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p4-yangzhizhong-c1.jpg" alt="杨执中连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-yangzhizhong-c1.jpg')"><figcaption>① 隐居乡野，高谈空洞议论</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-yangzhizhong-c2.jpg" alt="杨执中连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-yangzhizhong-c2.jpg')"><figcaption>② 被娄公子奉为高士，沾沾自喜</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-yangzhizhong-c3.jpg" alt="杨执中连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-yangzhizhong-c3.jpg')"><figcaption>③ 引荐无赖小人入伙</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-yangzhizhong-c4.jpg" alt="杨执中连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-yangzhizhong-c4.jpg')"><figcaption>④ 被小人连累，家中鸡犬不宁</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-hutuhu">
-          <summary class="comic-head"><span class="role-badge">胡屠户</span><span class="comic-chapter">第 3 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p2-hutuhu-c1.jpg" alt="胡屠户连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-hutuhu-c1.jpg')"><figcaption>① 中举前辱骂女婿“现世宝、穷鬼”</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-hutuhu.jpg" alt="胡屠户连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-hutuhu.jpg')"><figcaption>② 中举后极尽巴结“天上文曲星”</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-hutuhu-c3.jpg" alt="胡屠户连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-hutuhu-c3.jpg')"><figcaption>③ 打了疯范进一巴掌，怕菩萨怪罪</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-hutuhu-c4.jpg" alt="胡屠户连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-hutuhu-c4.jpg')"><figcaption>④ 一路弯腰，替女婿扯衣裂数十回</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-shenqiongzhi">
-          <summary class="comic-head"><span class="role-badge">沈琼枝</span><span class="comic-chapter">第 40、41 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p3-shenqiongzhi-c1.jpg" alt="沈琼枝连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-shenqiongzhi-c1.jpg')"><figcaption>① 识破盐商骗婚，决然抗婚逃婚</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-shenqiongzhi-c2.jpg" alt="沈琼枝连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-shenqiongzhi-c2.jpg')"><figcaption>② 南京钞库街悬牌卖诗卖刺绣</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-shenqiongzhi-c3.jpg" alt="沈琼枝连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-shenqiongzhi-c3.jpg')"><figcaption>③ 痛斥恶少、怒打索钱官差</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-shenqiongzhi-c4.jpg" alt="沈琼枝连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-shenqiongzhi-c4.jpg')"><figcaption>④ 当窗刺绣作诗，名动金陵</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-zhaoshi">
-          <summary class="comic-head"><span class="role-badge">赵氏</span><span class="comic-chapter">组四·奇人异士 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p4-zhaoshi-c1.jpg" alt="赵氏连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhaoshi-c1.jpg')"><figcaption>① 妾室出身，低头侍奉、心思细密</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-zhaoshi-c2.jpg" alt="赵氏连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhaoshi-c2.jpg')"><figcaption>② 挑掉一茎灯草，扶正为正室</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-zhaoshi-c3.jpg" alt="赵氏连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhaoshi-c3.jpg')"><figcaption>③ 智斗严氏恶霸族亲</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-zhaoshi-c4.jpg" alt="赵氏连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhaoshi-c4.jpg')"><figcaption>④ 保全孤儿与家产</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-guoxiaozi">
-          <summary class="comic-head"><span class="role-badge">郭孝子 (郭力)</span><span class="comic-chapter">第 37、38 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p3-guoxiaozi-c1.jpg" alt="郭孝子 (郭力)连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-guoxiaozi-c1.jpg')"><figcaption>① 万里寻父，途中遇虎历险不改初心</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-guoxiaozi-c2.jpg" alt="郭孝子 (郭力)连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-guoxiaozi-c2.jpg')"><figcaption>② 识破假吊死鬼骗子，反授武艺</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-guoxiaozi-c3.jpg" alt="郭孝子 (郭力)连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-guoxiaozi-c3.jpg')"><figcaption>③ 竹山庵寻父，被拒之门外</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-guoxiaozi-c4.jpg" alt="郭孝子 (郭力)连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-guoxiaozi-c4.jpg')"><figcaption>④ 庵旁挑土打柴，苦力供养生父</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-xiaoyunxian">
-          <summary class="comic-head"><span class="role-badge">萧云仙</span><span class="comic-chapter">第 39、40 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p3-xiaoyunxian-c1.jpg" alt="萧云仙连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-xiaoyunxian-c1.jpg')"><figcaption>① 峨眉山打瞎恶霸赵大，救下老僧</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-xiaoyunxian-c2.jpg" alt="萧云仙连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-xiaoyunxian-c2.jpg')"><figcaption>② 投军平叛，智勇双全</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-xiaoyunxian-c3.jpg" alt="萧云仙连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-xiaoyunxian-c3.jpg')"><figcaption>③ 修城防、兴水利、办义学</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-xiaoyunxian-c4.jpg" alt="萧云仙连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-xiaoyunxian-c4.jpg')"><figcaption>④ 革职还乡，跪父痛哭悔歉</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-fengsilaodie">
-          <summary class="comic-head"><span class="role-badge">凤四老爹</span><span class="comic-chapter">第 50-52 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p3-fengsilaodie-c1.jpg" alt="凤四老爹连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-fengsilaodie-c1.jpg')"><figcaption>① 公堂之上，挺身代友亲试官刑</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-fengsilaodie-c2.jpg" alt="凤四老爹连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-fengsilaodie-c2.jpg')"><figcaption>② 船头飞身跃起，追回被盗盘缠</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-fengsilaodie-c3.jpg" alt="凤四老爹连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-fengsilaodie-c3.jpg')"><figcaption>③ 揪住骗子，追回上千两被骗巨银</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p3-fengsilaodie-c4.jpg" alt="凤四老爹连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p3-fengsilaodie-c4.jpg')"><figcaption>④ 晨起操练拳棒，武风凛然</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-bucheng">
-          <summary class="comic-head"><span class="role-badge">卜诚</span><span class="comic-chapter">组四·奇人异士 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p4-bucheng-c1.jpg" alt="卜诚连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-bucheng-c1.jpg')"><figcaption>① 匡超人潦倒街头，卖豆腐糊口</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-bucheng-c2.jpg" alt="卜诚连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-bucheng-c2.jpg')"><figcaption>② 卜诚真心收留，给落脚之处</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-bucheng-c3.jpg" alt="卜诚连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-bucheng-c3.jpg')"><figcaption>③ 赠盘缠干粮，送他上路</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-bucheng-c4.jpg" alt="卜诚连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-bucheng-c4.jpg')"><figcaption>④ 故人发达冷眼相待，淡然处之</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-libenying">
-          <summary class="comic-head"><span class="role-badge">李本瑛</span><span class="comic-chapter">组四·奇人异士 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p4-libenying-c1.jpg" alt="李本瑛连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-libenying-c1.jpg')"><figcaption>① 赏识匡超人文才，收为门生</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-libenying-c2.jpg" alt="李本瑛连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-libenying-c2.jpg')"><figcaption>② 提携举荐，师徒相得</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-libenying-c3.jpg" alt="李本瑛连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-libenying-c3.jpg')"><figcaption>③ 被人参奏弹劾，摘印去职</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-libenying-c4.jpg" alt="李本瑛连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-libenying-c4.jpg')"><figcaption>④ 落难途中遭旧门生划清界限</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-qugongsun">
-          <summary class="comic-head"><span class="role-badge">蘧公孙</span><span class="comic-chapter">第 8-14 回 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p2-qugongsun-c1.jpg" alt="蘧公孙连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-qugongsun-c1.jpg')"><figcaption>① 慷慨赠银，资助避难的罪官王惠</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-qugongsun.jpg" alt="蘧公孙连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-qugongsun.jpg')"><figcaption>② 在禁书扉页署上自己的名字博名</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-qugongsun-c3.jpg" alt="蘧公孙连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-qugongsun-c3.jpg')"><figcaption>③ 依仗权势，深究仆人与丫鬟双红</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p2-qugongsun-c4.jpg" alt="蘧公孙连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p2-qugongsun-c4.jpg')"><figcaption>④ 娄府宴客，高谈诗文、沽名钓誉</figcaption></figure>
-          </div>
-          </details>
-
-          <details class="comic-strip" id="comic-zhangjunmin">
-          <summary class="comic-head"><span class="role-badge">张俊民</span><span class="comic-chapter">组四·奇人异士 · 故事连环画 · 点此展开四格</span></summary>
-          <div class="comic-panels">
-          <figure><img src="images/rulinwaishi-p4-zhangjunmin-c1.jpg" alt="张俊民连环画第1格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjunmin-c1.jpg')"><figcaption>① 官宦门前趋奉，递帖求见</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-zhangjunmin-c2.jpg" alt="张俊民连环画第2格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjunmin-c2.jpg')"><figcaption>② 在官宦与豪绅间两头撮合</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-zhangjunmin-c3.jpg" alt="张俊民连环画第3格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjunmin-c3.jpg')"><figcaption>③ 借范进之势为亲眷谋差事</figcaption></figure>
-          <figure><img src="images/rulinwaishi-p4-zhangjunmin-c4.jpg" alt="张俊民连环画第4格" loading="lazy" onclick="openLightbox('images/rulinwaishi-p4-zhangjunmin-c4.jpg')"><figcaption>④ 宴席上周旋名流，志得意满</figcaption></figure>
-          </div>
-          </details>
-        </div>
-
       </div>
     </div>
   </div>
@@ -1212,7 +1301,10 @@
       function fromHash() {
         if (!location.hash) return;
         var el = document.querySelector(location.hash);
-        if (el && el.tagName === 'DETAILS') el.open = true;
+        if (!el) return;
+        if (el.tagName === 'DETAILS') { el.open = true; return; }
+        var d = el.querySelector ? el.querySelector('details.comic-strip') : null;
+        if (d) d.open = true;
       }
       window.addEventListener('hashchange', fromHash);
       fromHash();
