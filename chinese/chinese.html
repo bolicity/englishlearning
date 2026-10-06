@@ -77,6 +77,20 @@
       text-align: center; color: var(--text-muted); padding: 3rem 1.5rem;
     }
 
+    .tile-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 0.7rem;
+    }
+    .tile {
+      background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px;
+      padding: 0.85rem 0.75rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.3rem;
+      transition: all 0.18s ease;
+    }
+    .tile:hover { box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+    .tile-icon { font-size: 1.25rem; line-height: 1; }
+    .tile-title { font-size: 0.88rem; font-weight: 800; color: var(--text-primary); line-height: 1.3; }
+    .tile-sub { font-size: 0.7rem; color: var(--text-muted); line-height: 1.35; }
+    .tile-bar { height: 3px; border-radius: 2px; margin-top: auto; }
+
     footer {
       background-color: var(--bg-card); border-top: 1px solid var(--border-color);
       padding: 2rem 1.25rem; text-align: center; color: var(--text-muted); font-size: 0.85rem;
@@ -101,65 +115,25 @@
   </header>
 
   <div class="container">
-    <section class="hero-card">
-      <h1 class="hero-title">初中语文核心复习模块</h1>
-      <p class="hero-desc">涵盖文言文实词虚词、古诗文默写、名著阅读导读与中考作文写作范式。</p>
-    </section>
-
-    <section class="grid-section" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-      <!-- 九上古诗文背诵卡 -->
-      <a href="chinese-recitation-V14.html" style="text-decoration: none; color: inherit;">
-        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm); transition: all 0.2s ease; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-              <div style="width: 44px; height: 44px; background: var(--brand-red-bg); color: var(--brand-red); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 700;">⚡</div>
-              <span style="font-size: 0.75rem; font-weight: 700; background: #DCFCE7; color: #15803D; padding: 4px 10px; border-radius: 20px;">V14 经典图文同框版</span>
-            </div>
-            <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">九上古诗文形象背诵卡 V14</h3>
-            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">九上 12 篇古诗词分镜图与课文原句左图右文同框并靠展示，支持拼音显隐与记忆宫殿整合。</p>
-          </div>
-          <div style="margin-top: 1.5rem; font-size: 0.88rem; font-weight: 700; color: var(--brand-red); display: flex; align-items: center; gap: 0.4rem;">
-            进入 V14 图文背诵卡 <span>→</span>
-          </div>
-        </div>
+    <section class="tile-grid">
+      <a class="tile" href="chinese-recitation-V14.html">
+        <span class="tile-icon">⚡</span>
+        <span class="tile-title">九上古诗文背诵卡</span>
+        <span class="tile-sub">V14 图文同框 · 拼音显隐</span>
+        <span class="tile-bar" style="background: var(--brand-red);"></span>
       </a>
-
-      <!-- 《儒林外史》经典卡片：指向各个分支导航中心 -->
-      <a href="rulinwaishi-nav-V1.html" style="text-decoration: none; color: inherit; grid-column: 1 / -1;" id="card-rulinwaishi-nav">
-        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm); transition: all 0.2s ease; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-              <div style="width: 44px; height: 44px; background: var(--brand-red-bg); color: var(--brand-red); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 700;">📖</div>
-              <span style="font-size: 0.75rem; font-weight: 700; background: #FEE2E2; color: #DC2626; padding: 4px 10px; border-radius: 20px;">多分支导航枢纽 · 4大考点子页面 + 人物卡片</span>
-            </div>
-            <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem;">《儒林外史》核心考点多分支导航中心</h3>
-            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6;">涵盖 4 大核心考点独立子页面（文学常识/假名士/真儒明贤/30位人物全解）、5 组双人对照与 9 张独立人物卡片图景，原图无损放大，文字 100% 逐字提取。</p>
-          </div>
-          <div style="margin-top: 1.5rem; font-size: 0.95rem; font-weight: 800; color: var(--brand-red); display: flex; align-items: center; gap: 0.5rem;">
-            进入儒林外史各个分支导航 <span>→</span>
-          </div>
-        </div>
+      <a class="tile" href="rulinwaishi-nav-V1.html">
+        <span class="tile-icon">📖</span>
+        <span class="tile-title">儒林外史总览</span>
+        <span class="tile-sub">4 分支导航枢纽</span>
+        <span class="tile-bar" style="background: var(--brand-red);"></span>
       </a>
-
-      <!-- 儒林外史四分支速达 · 紧凑单行 -->
-      <div style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.55rem;">
-        <a href="rulinwaishi-p1-V1.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem; background: var(--bg-card); border: 1px solid var(--border-color); border-left: 3px solid #B91C1C; border-radius: 8px; padding: 0.55rem 0.7rem; transition: box-shadow 0.18s ease;">
-          <span style="font-size: 0.7rem; font-weight: 800; color: #B91C1C; background: #FEF2F2; padding: 0.1rem 0.45rem; border-radius: 4px; white-space: nowrap;">分支一</span>
-          <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">文学常识·全书结构</span>
-        </a>
-        <a href="rulinwaishi-p2-V1.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem; background: var(--bg-card); border: 1px solid var(--border-color); border-left: 3px solid #B45309; border-radius: 8px; padding: 0.55rem 0.7rem; transition: box-shadow 0.18s ease;">
-          <span style="font-size: 0.7rem; font-weight: 800; color: #B45309; background: #FFFBEB; padding: 0.1rem 0.45rem; border-radius: 4px; white-space: nowrap;">分支二</span>
-          <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">假名士群像</span>
-        </a>
-        <a href="rulinwaishi-p3-V1.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem; background: var(--bg-card); border: 1px solid var(--border-color); border-left: 3px solid #047857; border-radius: 8px; padding: 0.55rem 0.7rem; transition: box-shadow 0.18s ease;">
-          <span style="font-size: 0.7rem; font-weight: 800; color: #047857; background: #ECFDF5; padding: 0.1rem 0.45rem; border-radius: 4px; white-space: nowrap;">分支三</span>
-          <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">真儒明贤·四大奇人</span>
-        </a>
-        <a href="rulinwaishi-p4-V1.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem; background: var(--bg-card); border: 1px solid var(--border-color); border-left: 3px solid #7C3AED; border-radius: 8px; padding: 0.55rem 0.7rem; transition: box-shadow 0.18s ease;">
-          <span style="font-size: 0.7rem; font-weight: 800; color: #7C3AED; background: #F5F3FF; padding: 0.1rem 0.45rem; border-radius: 4px; white-space: nowrap;">分支四</span>
-          <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">30位人物大矩阵</span>
-        </a>
-      </div>
+      <a class="tile" href="doc-viewer-V1.html">
+        <span class="tile-icon">📚</span>
+        <span class="tile-title">教辅资料库</span>
+        <span class="tile-sub">7 份试卷预览下载</span>
+        <span class="tile-bar" style="background: #2563EB;"></span>
+      </a>
     </section>
   </div>
 
