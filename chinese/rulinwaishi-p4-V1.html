@@ -298,6 +298,9 @@
 
     /* === 统一顶部导航 === */
     .unified-nav {
+      position: sticky;
+      top: 0.75rem;
+      z-index: 500;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -308,7 +311,6 @@
       margin-bottom: 1.5rem;
       box-shadow: var(--shadow-sm);
       flex-wrap: nowrap;
-      overflow-x: auto;
     }
     .nav-home-btn {
       display: inline-flex;
@@ -409,7 +411,7 @@
       <div>
         <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">高清原图无损呈现 · 逐字精准提取</span>
       </div>
-    </div>
+    
 
     <div class="hero">
       <div class="hero-meta">BRANCH 4 · COMPLETE 30 CHARACTERS MATRIX</div>
