@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上海国际高中全景图鉴 V1 | 21所 · 外籍子女学校 · 民办双语</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="description" content="上海国际高中/国际课程班全景整理：官方21所、外籍人员子女学校、民办双语国际高中按区分布、课程体系与学费参考。">
+<style>
+:root{
+  --primary:#2563EB; --primary-light:#EFF6FF; --primary-dark:#1D4ED8;
+  --bg:#F8FAFC; --bg-card:#FFFFFF;
+  --text-main:#0F172A; --text-muted:#475569; --text-light:#94A3B8;
+  --border-light:#E2E8F0; --border-hover:#CBD5E1;
+  --red:#DC2626; --green:#059669; --amber:#D97706; --purple:#7C3AED;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.04);
+  --shadow-md:0 3px 8px -2px rgba(15,23,42,.06);
+  --shadow-hover:0 6px 14px -3px rgba(15,23,42,.09);
+  --radius-lg:10px; --radius-md:8px; --radius-sm:5px;
+  --transition:all .18s cubic-bezier(.4,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  background:var(--bg); color:var(--text-main); line-height:1.5; overflow-x:hidden;
+}
+.bg-decoration{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bg-blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.20}
+.bg-blob:nth-child(1){width:420px;height:420px;background:#DBEAFE;top:-140px;right:-80px}
+.bg-blob:nth-child(2){width:360px;height:360px;background:#F3E8FF;bottom:-60px;left:-100px}
+.container{max-width:1180px;width:96%;margin:0 auto;padding:16px 8px 48px;position:relative;z-index:1}
+
+/* topbar */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:600;color:var(--text-muted);text-decoration:none;padding:6px 12px;border-radius:100px;background:#fff;border:1px solid var(--border-light);transition:var(--transition)}
+.back-link:hover{color:var(--primary);border-color:#BFDBFE}
+.version-pill{font-size:.7rem;font-weight:700;color:var(--primary-dark);background:var(--primary-light);border:1px solid #BFDBFE;padding:3px 10px;border-radius:100px}
+
+/* hero */
+header.hero{text-align:center;margin-bottom:22px}
+.hero h1{font-size:1.9rem;font-weight:800;letter-spacing:-.02em;background:linear-gradient(135deg,#0F172A 0%,#2563EB 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.hero p{font-size:.9rem;color:var(--text-muted);max-width:720px;margin:0 auto}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:18px 0 8px}
+.stat-card{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:12px 14px;box-shadow:var(--shadow-sm)}
+.stat-num{font-size:1.55rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.stat-num small{font-size:.72rem;font-weight:600;color:var(--text-light);margin-left:2px}
+.stat-label{font-size:.74rem;color:var(--text-muted);font-weight:600;margin-top:3px}
+
+/* anchors */
+.anchors{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:18px 0 24px}
+.anchors a{font-size:.76rem;font-weight:600;color:var(--text-muted);text-decoration:none;padding:5px 12px;border-radius:100px;background:#fff;border:1px solid var(--border-light);transition:var(--transition)}
+.anchors a:hover{color:var(--primary);border-color:#BFDBFE;background:var(--primary-light)}
+
+/* section */
+section.block{margin-bottom:30px;scroll-margin-top:14px}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--border-light)}
+.sec-icon{width:32px;height:32px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sec-icon svg{width:17px;height:17px}
+.sec-title{font-size:1.12rem;font-weight:800;letter-spacing:-.01em}
+.sec-sub{font-size:.76rem;color:var(--text-muted);margin-left:auto;text-align:right;font-weight:500}
+
+/* notes */
+.note{background:#FFFBEB;border:1px solid #FDE68A;border-left:4px solid #F59E0B;border-radius:var(--radius-sm);padding:10px 14px;font-size:.79rem;color:#78350F;margin-bottom:14px}
+.note.blue{background:var(--primary-light);border-color:#BFDBFE;border-left-color:var(--primary);color:#1E40AF}
+.note strong{font-weight:700}
+
+/* tables */
+.table-wrap{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:14px}
+.tbl-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.79rem;min-width:640px}
+thead th{background:#F1F5F9;color:#334155;font-weight:700;text-align:left;padding:9px 12px;white-space:nowrap;font-size:.75rem;letter-spacing:.01em;border-bottom:1px solid var(--border-light);position:sticky;top:0}
+tbody td{padding:9px 12px;border-bottom:1px solid #F1F5F9;vertical-align:top;color:var(--text-muted)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#F8FAFC}
+td.name{font-weight:700;color:var(--text-main);white-space:nowrap}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600;color:var(--text-main)}
+.tag{display:inline-block;font-size:.66rem;font-weight:700;padding:1px 7px;border-radius:100px;white-space:nowrap;margin-left:5px;vertical-align:middle}
+.t-gov{background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE}
+.t-pri{background:#F0FDF4;color:#15803D;border:1px solid #BBF7D0}
+.t-for{background:#FEF3C7;color:#B45309;border:1px solid #FDE68A}
+.t-coop{background:#F3E8FF;color:#7C3AED;border:1px solid #E9D5FF}
+.t-new{background:#FFF1F2;color:#E11D48;border:1px solid #FECDD3}
+
+.curr{display:inline-flex;flex-wrap:wrap;gap:3px}
+.chip{font-size:.65rem;font-weight:600;padding:1px 6px;border-radius:4px;background:#F1F5F9;color:#475569;white-space:nowrap}
+
+/* rank list */
+.rank-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
+.rank-item{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:10px 12px;display:flex;gap:10px;align-items:flex-start;box-shadow:var(--shadow-sm);transition:var(--transition)}
+.rank-item:hover{border-color:var(--border-hover);box-shadow:var(--shadow-hover)}
+.rank-no{font-size:.95rem;font-weight:800;color:var(--primary);min-width:30px;font-variant-numeric:tabular-nums;line-height:1.3}
+.rank-item.top3 .rank-no{color:var(--red)}
+.rank-body{min-width:0;flex:1}
+.rank-name{font-size:.83rem;font-weight:700;color:var(--text-main);line-height:1.25}
+.rank-meta{font-size:.7rem;color:var(--text-muted);margin-top:2px}
+
+/* filter */
+.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+.filter-bar input,.filter-bar select{font-family:inherit;font-size:.8rem;padding:7px 11px;border:1px solid var(--border-light);border-radius:var(--radius-sm);background:#fff;color:var(--text-main);outline:none;transition:var(--transition)}
+.filter-bar input{flex:1;min-width:180px}
+.filter-bar input:focus,.filter-bar select:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.filter-count{font-size:.74rem;color:var(--text-muted);font-weight:600;margin-left:auto;white-space:nowrap}
+
+/* course cards */
+.course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:10px}
+.course-card{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:12px 14px;box-shadow:var(--shadow-sm);transition:var(--transition)}
+.course-card:hover{box-shadow:var(--shadow-hover);border-color:var(--border-hover)}
+.course-card h4{font-size:.85rem;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.course-card .flag{font-size:.62rem;font-weight:700;padding:1px 7px;border-radius:100px}
+.course-card p{font-size:.74rem;color:var(--text-muted);line-height:1.5}
+
+/* tips */
+.tips{display:grid;gap:10px}
+.tip{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:12px 14px;box-shadow:var(--shadow-sm);display:flex;gap:11px}
+.tip-ico{width:26px;height:26px;border-radius:var(--radius-sm);background:var(--primary-light);color:var(--primary-dark);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.78rem;flex-shrink:0;margin-top:1px}
+.tip h4{font-size:.83rem;font-weight:700;margin-bottom:3px}
+.tip p{font-size:.76rem;color:var(--text-muted);line-height:1.55}
+
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--border-light);font-size:.72rem;color:var(--text-light);text-align:center;line-height:1.7}
+footer a{color:var(--text-muted);text-decoration:none}
+.hidden{display:none !important}
+@media(max-width:640px){
+  .hero h1{font-size:1.4rem}
+  .sec-sub{display:none}
+  .stat-num{font-size:1.3rem}
+}
+</style>
+</head>
+<body>
+<div class="bg-decoration"><div class="bg-blob"></div><div class="bg-blob"></div></div>
+
+<div class="container">
+
+  <div class="topbar">
+    <a href="../index.html" class="back-link">← 返回全景看板</a>
+    <span class="version-pill">升学规划 · V1</span>
+  </div>
+
+  <header class="hero">
+    <h1>上海国际高中全景图鉴</h1>
+    <p>覆盖官方「21所」国际课程班 · 39 所外籍人员子女学校 · 六大区民办双语与国际高中，含课程体系、招生规模与学费参考。数据截至 2025 学年。</p>
+  </header>
+
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num" style="color:#2563EB">21<small>所</small></div><div class="stat-label">市教委批准的国际课程班试点</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#7C3AED">39<small>所</small></div><div class="stat-label">外籍人员子女学校</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#059669">100<small>+</small></div><div class="stat-label">民办双语 / 国际高中</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#D97706">40<small>所</small></div><div class="stat-label">2025 胡润榜上海上榜（全国第 1）</div></div>
+  </div>
+
+  <nav class="anchors">
+    <a href="#overview">全局格局</a>
+    <a href="#official21">官方「21所」</a>
+    <a href="#alevel21">21所 A-Level 优质校</a>
+    <a href="#foreign">外籍子女学校</a>
+    <a href="#private">民办双语·国际高中</a>
+    <a href="#courses">课程体系</a>
+    <a href="#tuition">学费参考</a>
+    <a href="#tips">择校要点</a>
+  </nav>
+
+  <!-- 一、全局格局 -->
+  <section class="block" id="overview">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#EFF6FF;color:#2563EB">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+      </div>
+      <div class="sec-title">一、上海国际高中格局总览</div>
+      <div class="sec-sub">三类办学性质 · 沪上国际化教育生态</div>
+    </div>
+
+    <div class="note blue">
+      <strong>先分清三条赛道。</strong>上海做国际课程的高中大致分三类：<strong>① 公办高中国际课程班</strong>（10 所，仅招上海生源、凭中考录取）；<strong>② 民办普通高中国际课程班</strong>（10 所，可招本地＋外地生源）；<strong>③ 中外合作办学</strong>（仅七宝德怀特 1 所）。前两类加上中外合作，就是家长口中的官方 <strong>「21 所」</strong>——最大价值是<strong>可保留国内高中学籍</strong>，理论上「两条腿走路」。此外还有大量<strong>民办双语 / 国际高中</strong>（100 所以上）与<strong>外籍人员子女学校</strong>（39 所），均不在此名单内。
+    </div>
+
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>类别</th><th>数量</th><th>招生对象</th><th>学籍 / 学历</th><th>代表校</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="name">公办高中国际课程班 <span class="tag t-gov">公办</span></td>
+              <td class="num">10 所</td>
+              <td>仅上海生源（须中考达线）</td>
+              <td>国内普高学籍，可参加高考</td>
+              <td>交大附中、复旦附中、华二附中、格致、大同、市西、建平</td>
+            </tr>
+            <tr>
+              <td class="name">民办高中国际课程班 <span class="tag t-pri">民办</span></td>
+              <td class="num">10 所</td>
+              <td>上海生源 ＋ 部分非本市生源</td>
+              <td>国内普高学籍 ＋ 国际课程</td>
+              <td>世外、平和、星河湾、文来、包玉刚、枫叶、西外</td>
+            </tr>
+            <tr>
+              <td class="name">中外合作办学 <span class="tag t-coop">中外合办</span></td>
+              <td class="num">1 所</td>
+              <td>上海 ＋ 非上海生源</td>
+              <td>上海普高学籍，中美双文凭</td>
+              <td>上海七宝德怀特高级中学</td>
+            </tr>
+            <tr>
+              <td class="name">民办双语 / 国际高中 <span class="tag t-pri">民办</span></td>
+              <td class="num">100+ 所</td>
+              <td>不限户籍国籍（各校自定）</td>
+              <td>国际课程学籍（如 Cognia / CAIE）</td>
+              <td>光华剑桥、领科、赫贤、WLSA、圣华紫竹、诺美</td>
+            </tr>
+            <tr>
+              <td class="name">外籍人员子女学校 <span class="tag t-for">外籍</span></td>
+              <td class="num">39 所</td>
+              <td>仅外籍 / 港澳台籍学生</td>
+              <td>原版海外课程体系</td>
+              <td>上中国际、上海美国学校、惠灵顿、德威、耀中、协和国际</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>区域分布不均衡。</strong>浦东新区国际学校最集中（30 所以上），闵行次之（13 所左右），青浦、松江、宝山为新兴增长区；黄浦、虹口、静安、崇明等区各仅 1–3 所。核心城区优质集聚，郊区靠分校扩张与特色课程吸引生源。
+    </div>
+  </section>
+
+  <!-- 二、官方21所 -->
+  <section class="block" id="official21">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#ECFDF5;color:#059669">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </div>
+      <div class="sec-title">二、官方「21 所」国际课程班</div>
+      <div class="sec-sub">2014 年市教委批准 · 2025 学年招生计划</div>
+    </div>
+
+    <div class="note blue">
+      2025 学年「21 所」<strong>总计 2455 个招生名额</strong>：面向本市学生 1922 人（较去年 ＋12），面向外地学生 533 人（较去年 －27，降幅约 4.8%）。
+    </div>
+
+    <h3 style="font-size:.9rem;font-weight:800;margin:14px 0 8px;color:#1D4ED8">2.1 公办高中国际课程班（10 所）<span class="tag t-gov">仅上海生源</span></h3>
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>学校</th><th>2025 本市招生</th><th>课程方向</th></tr></thead>
+          <tbody>
+            <tr><td class="name">上海市曹杨第二中学</td><td class="num">118 人</td><td>德国 DSG / 国际课程</td></tr>
+            <tr><td class="name">上海市市西中学</td><td class="num">60 人</td><td>IB / 国际课程</td></tr>
+            <tr><td class="name">华东师范大学第二附属中学</td><td class="num">40 人</td><td>国际课程班</td></tr>
+            <tr><td class="name">上海市格致中学（奉贤校区）</td><td class="num">40 人</td><td>国际课程班</td></tr>
+            <tr><td class="name">上海市大同中学</td><td class="num">40 人</td><td>国际课程班</td></tr>
+            <tr><td class="name">上海市卢湾高级中学</td><td class="num">40 人</td><td>国际课程班</td></tr>
+            <tr><td class="name">上海市建平中学</td><td class="num">40 人</td><td>国际课程班</td></tr>
+            <tr><td class="name">复旦大学附属中学</td><td class="num">32 人</td><td>IB / 国际课程</td></tr>
+            <tr><td class="name">上海交通大学附属中学</td><td class="num">30 人</td><td>IB / 国际课程</td></tr>
+            <tr><td class="name">上海外国语大学附属浦东外国语学校</td><td class="num">25 人</td><td>国际课程班</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 style="font-size:.9rem;font-weight:800;margin:14px 0 8px;color:#15803D">2.2 民办高中国际课程班（10 所）<span class="tag t-pri">上海＋外地生源</span></h3>
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>学校</th><th>区</th><th>2025 总计划</th><th>本市 / 外地</th><th>课程方向</th></tr></thead>
+          <tbody>
+            <tr><td class="name">上海市民办平和学校</td><td>浦东</td><td class="num">300</td><td>260 / 40</td><td>IBDP · 美高 AP</td></tr>
+            <tr><td class="name">上海金山区枫叶学校</td><td>金山</td><td class="num">300</td><td>150 / 150</td><td>枫叶世界课程 · 加拿大 BC</td></tr>
+            <tr><td class="name">上海星河湾双语学校</td><td>闵行</td><td class="num">220</td><td>202 / 18</td><td>美高 AP</td></tr>
+            <tr><td class="name">上海市文来中学</td><td>闵行</td><td class="num">200</td><td>170 / 30</td><td>美高 AP · A-Level · 日本 · 加拿大</td></tr>
+            <tr><td class="name">上海民办包玉刚实验高中</td><td>松江</td><td class="num">165</td><td>135 / 30</td><td>IBDP</td></tr>
+            <tr><td class="name">上海市民办尚德实验学校</td><td>浦东</td><td class="num">160</td><td>80 / 80</td><td>IBDP · A-Level · 美高 AP · 日本</td></tr>
+            <tr><td class="name">上海市西外外国语学校</td><td>松江</td><td class="num">160</td><td>80 / 80</td><td>美高 AP · A-Level</td></tr>
+            <tr><td class="name">上海市世界外国语中学</td><td>徐汇</td><td class="num">130</td><td>120 / 10</td><td>IBDP · A-Level</td></tr>
+            <tr><td class="name">上海市西南位育中学</td><td>徐汇</td><td class="num">100</td><td>60 / 40</td><td>美高 AP · A-Level（2026 起）· 加拿大 · 日本</td></tr>
+            <tr><td class="name">上海协和双语高级中学（古北）</td><td>闵行</td><td class="num">80</td><td>75 / 5</td><td>IBDP · A-Level</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 style="font-size:.9rem;font-weight:800;margin:14px 0 8px;color:#7C3AED">2.3 中外合作办学（1 所）</h3>
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>学校</th><th>区</th><th>2025 计划</th><th>本市 / 外地</th><th>课程与文凭</th><th>学费</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="name">上海七宝德怀特高级中学 <span class="tag t-new">全市唯一</span></td>
+              <td>闵行</td>
+              <td class="num">175</td>
+              <td>125 / 50</td>
+              <td>IBDP · A-Level（另获上海＋德怀特纽约双文凭）</td>
+              <td class="num">9 万 / 学期</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note">
+      <strong>七宝德怀特要点：</strong>由上海市七宝中学与美国纽约德怀特学校合办，2014 年开学，中国教育部备案（许可证号 PPDE31USA04INR20140730N）。课程保留语文、历史、地理、政治四门国家课程，中外教比约 6:4。2025 年学费经闵行区发改委核准调整为 <strong>9 万元 / 学期</strong>（即 18 万 / 年，新生新办法）。2026 届毕业生已获 11 个国家和地区 1086 封录取，60% 获全球前 30 大学录取。
+    </div>
+
+    <h3 id="alevel21" style="font-size:.9rem;font-weight:800;margin:20px 0 8px;color:#B45309;scroll-margin-top:14px">2.4 「21 所」里的 A-Level 学校（共 8 所）</h3>
+    <div class="note blue">
+      <strong>先说结论：21 所开 A-Level 的只有 8 所，且全部在民办（10 所）与中外合作（1 所）；10 所公办国际课程班无一开设 A-Level</strong>——公办走的是 IBDP / AP / BC / PGA / VCE / DSD 德语等方向。A-Level 是纯英国体系课程，与「21 所」的英联邦升学定位天然契合。
+    </div>
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>学校</th><th>性质</th><th>区</th><th>A-Level 开设情况</th><th>学费参考</th><th>一句话定位</th></tr></thead>
+          <tbody>
+            <tr><td class="name">上海市世外中学 <span class="tag t-pri">民办</span></td><td>民办</td><td>徐汇</td><td>2020 年起开设 A-Level，IB 双轨</td><td class="num">18 万 / 年</td><td>「浦西世外」一梯队，牛剑稳定输出</td></tr>
+            <tr><td class="name">上海市民办平和学校 <span class="tag t-pri">民办</span></td><td>民办</td><td>浦东</td><td>2023 年起开设 A-Level</td><td class="num">20 万 / 年</td><td>「浦东平和」IB 双子星，美本藤校强</td></tr>
+            <tr><td class="name">上海七宝德怀特高级中学 <span class="tag t-coop">中外合办</span></td><td>中外合作</td><td>闵行</td><td>2018 年获 CAIE 授权开设 A-Level</td><td class="num">9 万 / 学期</td><td>唯一中外合作高中，IB/A-Level 双文凭</td></tr>
+            <tr><td class="name">上海市民办尚德实验学校 <span class="tag t-pri">民办</span></td><td>民办</td><td>浦东</td><td>2022 年建 IGCSE & A-Level 中心</td><td class="num">17.2 万 / 年</td><td>剑桥＋牛津 AQA 双授权，IB 三项目一贯制</td></tr>
+            <tr><td class="name">上海市文来中学 <span class="tag t-pri">民办</span></td><td>民办</td><td>闵行</td><td>英国考试局授权 A-Level 考试中心</td><td class="num">12.6–14.4 万 / 年</td><td>Cognia 认证；A-Level 1 个班，日高为特色</td></tr>
+            <tr><td class="name">上海协和双语高级中学（古北） <span class="tag t-pri">民办</span></td><td>民办</td><td>闵行</td><td>2027 学年起开设两年制 A-Level</td><td class="num">约 16 万 / 年</td><td>聚焦数学 / 进阶数学 / 物理 / 经济（STEM）</td></tr>
+            <tr><td class="name">上海市西南位育中学 <span class="tag t-pri">民办</span></td><td>民办</td><td>徐汇</td><td>2026 年 9 月起新增 A-Level</td><td class="num">14.5 万 / 年</td><td>与美高 AP 组成「双 A 体系」，英美双申</td></tr>
+            <tr><td class="name">上海市西外外国语学校 <span class="tag t-pri">民办</span></td><td>民办</td><td>松江</td><td>美高 AP ＋ A-Level ＋ 日高三线</td><td class="num">11 万 / 年</td><td>21 所中性价比之选，转轨友好</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h4 style="font-size:.86rem;font-weight:800;margin:16px 0 8px;color:var(--text-main)">A-Level 优质校分层推荐</h4>
+    <div class="tips">
+      <div class="tip" style="border-left:4px solid #DC2626">
+        <div class="tip-ico" style="background:#FEF2F2;color:#DC2626">Ⅰ</div>
+        <div><h4>第一梯队 · 牛剑 / G5 稳定输出（IB＋A-Level 双强）</h4>
+        <p><strong>上海市世外中学</strong>：2025 届 IB / A-Level 共斩获 12 枚牛剑（牛津 4 ＋ 剑桥 8），G5 录取 81 枚，英本方向 72% 至少一份 G5。&nbsp;<strong>上海市民办平和学校</strong>：2023 年开设 A-Level，2025 届 11 枚藤校 ＋ 6 枚剑桥，约 99% 获美本前 60。两校为「21 所」A-Level 的天花板，入学门槛与竞争强度也最高。</p></div>
+      </div>
+      <div class="tip" style="border-left:4px solid #D97706">
+        <div class="tip-ico" style="background:#FEF3C7;color:#B45309">Ⅱ</div>
+        <div><h4>第二梯队 · 课程成熟、升学亮眼</h4>
+        <p><strong>七宝德怀特</strong>：唯一中外合作，IBDP ＋ A-Level 可获中美双文凭，2026 届 11 国 1086 封录取、60% 全球前 30。&nbsp;<strong>尚德实验</strong>：2025 年首届 A-Level 全球统考 40% 拿下 AS 全 A，物理 / 生物 / 进阶数学 70% 达 A–A*。&nbsp;<strong>文来中学</strong>：英国考试局授权 A-Level 考试中心 ＋ Cognia 认证 ＋ 五星雅思示范校，A-Level 小班精细。</p></div>
+      </div>
+      <div class="tip" style="border-left:4px solid #2563EB">
+        <div class="tip-ico" style="background:#EFF6FF;color:#1D4ED8">Ⅲ</div>
+        <div><h4>第三梯队 · 新开通道，方向明确时值得考虑</h4>
+        <p><strong>协和双语高中（古北）</strong>：2027 学年起两年制 A-Level，只开数学 / 进阶数学 / 物理 / 经济，适合理工科特长突出、目标极明确的学生。&nbsp;<strong>西南位育</strong>：2026 年 9 月起新增 A-Level，与美高 AP 构成「双 A 体系」，留学方向未定时弹性最大。&nbsp;<strong>西外外国语</strong>：A-Level ＋ 美高 AP ＋ 日高，约 11 万 / 年，是 21 所中门槛与费用最低的 A-Level 路径。</p></div>
+      </div>
+    </div>
+    <div class="note">
+      <strong>提醒：</strong>「21 所」入读需<strong>双达标</strong>——先通过学校自主选拔拿到预录取，再参加上海中考并达到该校录取分数线，缺一不可。选择 A-Level 通道还要留意：<strong>协和、西南位育的 A-Level 均为 2026/2027 学年新设</strong>，尚无毕业生数据，首几届的师资与出分稳定性需重点考察。
+    </div>
+  </section>
+
+  <!-- 三、外籍人员子女学校 -->
+  <section class="block" id="foreign">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#FEF3C7;color:#B45309">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20"/></svg>
+      </div>
+      <div class="sec-title">三、外籍人员子女学校（39 所）</div>
+      <div class="sec-sub">仅招外籍 / 港澳台籍 · 原版国际课程</div>
+    </div>
+
+    <div class="note">
+      <strong>不是给普通中国籍学生的选项。</strong>此类学校只招收持外籍护照或港澳台身份的学生，采用海外原版课程与学制，是「纯国际社区」。以下按《2025 胡润百学·中国外籍人员子女学校 30 强》中上海学校排序。
+    </div>
+
+    <div class="rank-list">
+      <div class="rank-item top3"><div class="rank-no">4</div><div class="rank-body"><div class="rank-name">上海美国外籍人员子女学校</div><div class="rank-meta">SAS · 浦东 / 浦西 · 美式 AP</div></div></div>
+      <div class="rank-item top3"><div class="rank-no">5</div><div class="rank-body"><div class="rank-name">上海中学国际部</div><div class="rank-meta">上中国际 · 徐汇 · IB / AP，大陆首家 IB 授权校</div></div></div>
+      <div class="rank-item top3"><div class="rank-no">6</div><div class="rank-body"><div class="rank-name">上海惠灵顿外籍人员子女学校</div><div class="rank-meta">Wellington · 浦东 · 英式 IGCSE / A-Level</div></div></div>
+      <div class="rank-item"><div class="rank-no">7</div><div class="rank-body"><div class="rank-name">上海德威外籍人员子女学校（浦东）</div><div class="rank-meta">Dulwich Pudong · 英式 IGCSE / IB</div></div></div>
+      <div class="rank-item"><div class="rank-no">8</div><div class="rank-body"><div class="rank-name">上海耀中外籍人员子女学校</div><div class="rank-meta">YCIS · 浦西 / 浦东 / 临港 · IB · HKDSE</div></div></div>
+      <div class="rank-item"><div class="rank-no">9</div><div class="rank-body"><div class="rank-name">上海协和国际外籍人员子女学校</div><div class="rank-meta">Concordia · 浦东 · 美式 AP</div></div></div>
+      <div class="rank-item"><div class="rank-no">14</div><div class="rank-body"><div class="rank-name">上海德威外籍人员子女学校（浦西）</div><div class="rank-meta">Dulwich Puxi · 英式 IGCSE / IB</div></div></div>
+      <div class="rank-item"><div class="rank-no">19</div><div class="rank-body"><div class="rank-name">上海新加坡外籍人员子女学校</div><div class="rank-meta">SSIS · 闵行 · IB / IGCSE</div></div></div>
+      <div class="rank-item"><div class="rank-no">—</div><div class="rank-body"><div class="rank-name">上海哈罗外籍人员子女学校</div><div class="rank-meta">Harrow · 浦东 · IGCSE / A-Level / IB</div></div></div>
+      <div class="rank-item"><div class="rank-no">—</div><div class="rank-body"><div class="rank-name">上海英国外籍人员子女学校（浦东 / 浦西）</div><div class="rank-meta">BISS · 英式课程</div></div></div>
+      <div class="rank-item"><div class="rank-no">—</div><div class="rank-body"><div class="rank-name">上海市民办中芯学校国际部</div><div class="rank-meta">浦东 · 美式 AP</div></div></div>
+      <div class="rank-item"><div class="rank-no">—</div><div class="rank-body"><div class="rank-name">上海西华外籍人员子女学校</div><div class="rank-meta">WISS · 青浦 · IB</div></div></div>
+      <div class="rank-item"><div class="rank-no">—</div><div class="rank-body"><div class="rank-name">上海长宁国际外籍人员子女学校</div><div class="rank-meta">SCIS · 长宁 / 浦东 · IB</div></div></div>
+      <div class="rank-item"><div class="rank-no">—</div><div class="rank-body"><div class="rank-name">上海法国外籍人员子女学校</div><div class="rank-meta">Lycée Français · 法式课程 · 法国高中文凭</div></div></div>
+      <div class="rank-item"><div class="rank-no">—</div><div class="rank-body"><div class="rank-name">上海德国外籍人员子女学校</div><div class="rank-meta">Deutsche Schule · 德式课程 · Abitur</div></div></div>
+      <div class="rank-item"><div class="rank-no">—</div><div class="rank-body"><div class="rank-name">上海不列颠英国外籍人员子女学校</div><div class="rank-meta">Britannica · 英式课程</div></div></div>
+      <div class="rank-item"><div class="rank-no">—</div><div class="rank-body"><div class="rank-name">上海虹桥国际外籍人员子女学校</div><div class="rank-meta">HQIS · 闵行 · IB / 美式</div></div></div>
+      <div class="rank-item"><div class="rank-no">—</div><div class="rank-body"><div class="rank-name">上海日本人学校</div><div class="rank-meta">虹桥 / 浦东校区 · 日式课程</div></div></div>
+    </div>
+    <div class="note" style="margin-top:12px">
+      京领 2025 创新竞争力榜中，上海 10 所外籍学校上榜，其中 6 所获 5A 评级；协和国际、上海美国学校稳居全国前 3。外籍校学费普遍在 <strong>20 万–40 万元 / 年</strong>区间。
+    </div>
+  </section>
+
+  <!-- 四、民办双语/国际高中 -->
+  <section class="block" id="private">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#F3E8FF;color:#7C3AED">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      </div>
+      <div class="sec-title">四、民办双语 / 国际高中（按区）</div>
+      <div class="sec-sub">上海国际教育的主力 · 100 所以上</div>
+    </div>
+
+    <div class="filter-bar">
+      <input id="q" type="text" placeholder="搜索学校名称…（如 平和、领科、A-Level）">
+      <select id="fDist">
+        <option value="">全部区域</option>
+        <option>浦东新区</option><option>闵行区</option><option>徐汇区</option><option>松江区</option>
+        <option>青浦区</option><option>宝山区</option><option>长宁区</option><option>杨浦区</option>
+        <option>静安区</option><option>虹口区</option><option>普陀区</option><option>黄浦区</option>
+        <option>嘉定区</option><option>金山区</option><option>奉贤区</option><option>崇明区</option>
+      </select>
+      <select id="fCurr">
+        <option value="">全部课程</option>
+        <option>A-Level</option><option>IB</option><option>AP</option>
+        <option>日本</option><option>加拿大</option><option>澳洲</option><option>DSE</option>
+      </select>
+      <span class="filter-count" id="count"></span>
+    </div>
+
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table id="schoolTable">
+          <thead><tr><th>学校</th><th>区</th><th>课程体系</th><th>参考学费（万元 / 年）</th><th>备注</th></tr></thead>
+          <tbody>
+            <!-- 浦东新区 -->
+            <tr data-dist="浦东新区" data-curr="IB AP A-Level"><td class="name">上海市民办平和学校</td><td>浦东</td><td><span class="curr"><span class="chip">IBDP</span><span class="chip">A-Level</span><span class="chip">美高AP</span></span></td><td class="num">21 所</td><td>胡润全国第 3；2023 年起开 A-Level</td></tr>
+            <tr data-dist="浦东新区" data-curr="A-Level AP"><td class="name">上海光华学院剑桥国际中心（光华剑桥）</td><td>浦东</td><td><span class="curr"><span class="chip">A-Level</span><span class="chip">AP</span></span></td><td class="num">21</td><td>牛剑录取强校，京领 5A</td></tr>
+            <tr data-dist="浦东新区" data-curr="IB AP"><td class="name">上海浦东新区民办万科学校</td><td>浦东</td><td><span class="curr"><span class="chip">IBDP</span><span class="chip">美高AP</span></span></td><td class="num">16.6–22</td><td>IB 授权；师生比约 1:3</td></tr>
+            <tr data-dist="浦东新区" data-curr="IB A-Level AP 日本"><td class="name">上海市民办尚德实验学校</td><td>浦东</td><td><span class="curr"><span class="chip">IBDP</span><span class="chip">A-Level</span><span class="chip">美高AP</span><span class="chip">日本</span></span></td><td class="num">17.2</td><td>21 所；IB 三项目一贯制</td></tr>
+            <tr data-dist="浦东新区" data-curr="A-Level"><td class="name">上海浦东新区民办协和双语学校</td><td>浦东</td><td><span class="curr"><span class="chip">A-Level</span></span></td><td class="num">18.6–20.6</td><td>协和教育集团</td></tr>
+            <tr data-dist="浦东新区" data-curr="A-Level IB 澳洲"><td class="name">上海浦东新区民办宏文学校</td><td>浦东</td><td><span class="curr"><span class="chip">A-Level</span><span class="chip">IB</span><span class="chip">澳洲预科</span></span></td><td class="num">21</td><td>川大路 318 号</td></tr>
+            <tr data-dist="浦东新区" data-curr="AP A-Level 日本 DSE"><td class="name">上海浦东新区民办常青藤学校</td><td>浦东</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">A-Level</span><span class="chip">DSE</span><span class="chip">EJU</span></span></td><td class="num">14.8</td><td>首批美高 AP 国际课程校</td></tr>
+            <tr data-dist="浦东新区" data-curr="AP A-Level 日本"><td class="name">上海金苹果学校国际部</td><td>浦东</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">A-Level</span><span class="chip">日本</span><span class="chip">新加坡</span></span></td><td class="num">12.8</td><td>课程方向多元</td></tr>
+            <tr data-dist="浦东新区" data-curr="A-Level AP 日本"><td class="name">上海浦东新区民办东鼎外国语学校</td><td>浦东</td><td><span class="curr"><span class="chip">A-Level</span><span class="chip">美高AP</span><span class="chip">日本</span></span></td><td class="num">17.6</td><td>惠南镇观海路</td></tr>
+            <tr data-dist="浦东新区" data-curr="A-Level"><td class="name">上海浦东新区民办康德学校</td><td>浦东</td><td><span class="curr"><span class="chip">A-Level</span></span></td><td class="num">19.8</td><td>康德品牌浦东校</td></tr>
+            <tr data-dist="浦东新区" data-curr="A-Level"><td class="name">上海浦东新区民办惠立学校</td><td>浦东</td><td><span class="curr"><span class="chip">IB</span><span class="chip">双语</span></span></td><td class="num">—</td><td>惠灵顿中国姊妹校</td></tr>
+            <tr data-dist="浦东新区" data-curr="A-Level AP"><td class="name">耀华国际教育学校上海临港校区</td><td>浦东</td><td><span class="curr"><span class="chip">IGCSE</span><span class="chip">A-Level</span></span></td><td class="num">—</td><td>耀中耀华成员；福布斯上榜</td></tr>
+            <tr data-dist="浦东新区" data-curr="AP A-Level"><td class="name">上海高藤致远创新学校</td><td>浦东</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">A-Level</span><span class="chip">德国</span></span></td><td class="num">19.8–24.6</td><td>环庆南路</td></tr>
+            <tr data-dist="浦东新区" data-curr="A-Level"><td class="name">上海UEC / 科桥教育 / 浦华曜 ONE / 籽奥</td><td>浦东</td><td><span class="curr"><span class="chip">A-Level</span></span></td><td class="num">18.8–23</td><td>小型精品 A-Level 校群</td></tr>
+
+            <!-- 闵行区 -->
+            <tr data-dist="闵行区" data-curr="AP"><td class="name">上海星河湾双语学校</td><td>闵行</td><td><span class="curr"><span class="chip">美高AP</span></span></td><td class="num">18</td><td>21 所；福布斯全国第 10</td></tr>
+            <tr data-dist="闵行区" data-curr="IB A-Level"><td class="name">上海七宝德怀特高级中学</td><td>闵行</td><td><span class="curr"><span class="chip">IBDP</span><span class="chip">A-Level</span></span></td><td class="num">18</td><td>21 所；唯一中外合作高中</td></tr>
+            <tr data-dist="闵行区" data-curr="AP A-Level 日本 加拿大"><td class="name">上海市文来中学（国际部）</td><td>闵行</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">A-Level</span><span class="chip">日本</span><span class="chip">加拿大</span></span></td><td class="num">14.4–18</td><td>21 所；日高部口碑佳</td></tr>
+            <tr data-dist="闵行区" data-curr="A-Level IB"><td class="name">上海闵行区万科双语学校</td><td>闵行</td><td><span class="curr"><span class="chip">A-Level</span><span class="chip">IB</span></span></td><td class="num">17.8–20.8</td><td>剑桥 / AQA 双认证</td></tr>
+            <tr data-dist="闵行区" data-curr="A-Level IB"><td class="name">上海协和双语高级中学（古北校区）</td><td>闵行</td><td><span class="curr"><span class="chip">IBDP</span><span class="chip">A-Level</span></span></td><td class="num">—</td><td>21 所；协和旗舰</td></tr>
+            <tr data-dist="闵行区" data-curr="A-Level IB"><td class="name">上海闵行区协和双语教科学校</td><td>闵行</td><td><span class="curr"><span class="chip">A-Level</span><span class="chip">IB</span></span></td><td class="num">—</td><td>协和教育集团</td></tr>
+            <tr data-dist="闵行区" data-curr="IB A-Level AP 日本"><td class="name">上海圣华紫竹高级中学（原华二紫竹）</td><td>闵行</td><td><span class="curr"><span class="chip">IBDP</span><span class="chip">A-Level</span><span class="chip">美高AP</span><span class="chip">日本</span></span></td><td class="num">15.8–22.8</td><td>京领 3A；紫竹高新区</td></tr>
+            <tr data-dist="闵行区" data-curr="IB"><td class="name">上海闵行区诺达双语学校（NACIS）</td><td>闵行</td><td><span class="curr"><span class="chip">IB</span></span></td><td class="num">—</td><td>诺德安达教育集团</td></tr>
+            <tr data-dist="闵行区" data-curr="IB A-Level"><td class="name">上海德闳学校</td><td>闵行</td><td><span class="curr"><span class="chip">IB</span><span class="chip">A-Level</span></span></td><td class="num">—</td><td>德威国际教育集团</td></tr>
+            <tr data-dist="闵行区" data-curr="AP A-Level"><td class="name">上海美高学校</td><td>闵行</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">A-Level</span></span></td><td class="num">17.8</td><td>福布斯上榜</td></tr>
+            <tr data-dist="闵行区" data-curr="AP A-Level"><td class="name">上海诺美高级中学</td><td>闵行</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">A-Level</span></span></td><td class="num">17.8</td><td>2025 届美 TOP50 录取约 85%</td></tr>
+            <tr data-dist="闵行区" data-curr="A-Level AP 加拿大"><td class="name">上海市燎原双语学校</td><td>闵行</td><td><span class="curr"><span class="chip">A-Level</span><span class="chip">美高AP</span><span class="chip">OSSD</span></span></td><td class="num">8–21</td><td>IB 认证 K12，30 年办学</td></tr>
+            <tr data-dist="闵行区" data-curr="AP 日本"><td class="name">上海闵行汇点高中</td><td>闵行</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">日本</span></span></td><td class="num">12–15.8</td><td>加州汇点学校合作</td></tr>
+
+            <!-- 徐汇区 -->
+            <tr data-dist="徐汇区" data-curr="IB A-Level"><td class="name">上海市世界外国语中学</td><td>徐汇</td><td><span class="curr"><span class="chip">IBDP</span><span class="chip">A-Level</span></span></td><td class="num">—</td><td>21 所；胡润全国前列</td></tr>
+            <tr data-dist="徐汇区" data-curr="IB A-Level 加拿大"><td class="name">上海民办位育中学</td><td>徐汇</td><td><span class="curr"><span class="chip">IBDP</span><span class="chip">A-Level</span><span class="chip">加拿大</span></span></td><td class="num">—</td><td>HKPEP 榜上榜</td></tr>
+            <tr data-dist="徐汇区" data-curr="AP 加拿大 日本"><td class="name">上海市西南位育中学</td><td>徐汇</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">加拿大</span><span class="chip">日本</span></span></td><td class="num">—</td><td>21 所</td></tr>
+            <tr data-dist="徐汇区" data-curr="日本"><td class="name">上海 IEC 中日融合课程</td><td>徐汇</td><td><span class="curr"><span class="chip">日本</span></span></td><td class="num">11.8</td><td>中日融合方向</td></tr>
+
+            <!-- 松江区 -->
+            <tr data-dist="松江区" data-curr="IB"><td class="name">上海民办包玉刚实验学校（高中部）</td><td>松江</td><td><span class="curr"><span class="chip">IBDP</span></span></td><td class="num">21</td><td>21 所；胡润 7 年蝉联全国第 1</td></tr>
+            <tr data-dist="松江区" data-curr="A-Level IB"><td class="name">领科教育上海校区</td><td>松江</td><td><span class="curr"><span class="chip">A-Level</span><span class="chip">IB</span></span></td><td class="num">—</td><td>2005 年引入 A-Level 的先行者</td></tr>
+            <tr data-dist="松江区" data-curr="A-Level IB"><td class="name">上海赫贤学校</td><td>松江</td><td><span class="curr"><span class="chip">A-Level</span><span class="chip">IBDP</span></span></td><td class="num">23</td><td>「个人学校」模式；京领 3A</td></tr>
+            <tr data-dist="松江区" data-curr="AP A-Level"><td class="name">上海市西外外国语学校</td><td>松江</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">A-Level</span></span></td><td class="num">11</td><td>21 所；性价比高</td></tr>
+            <tr data-dist="松江区" data-curr="A-Level"><td class="name">上海阿德科特学校</td><td>松江</td><td><span class="curr"><span class="chip">IGCSE</span><span class="chip">A-Level</span></span></td><td class="num">18–22</td><td>连续三年 12 位牛剑学子</td></tr>
+            <tr data-dist="松江区" data-curr="AP"><td class="name">上海励滕伯克曼学校</td><td>松江</td><td><span class="curr"><span class="chip">美高AP</span></span></td><td class="num">19.7</td><td>福布斯上榜</td></tr>
+
+            <!-- 青浦区 -->
+            <tr data-dist="青浦区" data-curr="IB"><td class="name">上海青浦区平和双语学校</td><td>青浦</td><td><span class="curr"><span class="chip">IB</span></span></td><td class="num">—</td><td>平和教育集团</td></tr>
+            <tr data-dist="青浦区" data-curr="IB A-Level"><td class="name">上海青浦区协和双语学校</td><td>青浦</td><td><span class="curr"><span class="chip">A-Level</span><span class="chip">IB</span></span></td><td class="num">17–22.8</td><td>胡润 2025 新上榜</td></tr>
+            <tr data-dist="青浦区" data-curr="IB"><td class="name">上海青浦区世外学校</td><td>青浦</td><td><span class="curr"><span class="chip">IB</span><span class="chip">双语</span></span></td><td class="num">—</td><td>世外教育集团</td></tr>
+            <tr data-dist="青浦区" data-curr="A-Level"><td class="name">上海光华启迪个人学校</td><td>青浦</td><td><span class="curr"><span class="chip">A-Level</span></span></td><td class="num">—</td><td>京领 4A；定制化教学</td></tr>
+            <tr data-dist="青浦区" data-curr="IB"><td class="name">上海宋庆龄学校</td><td>青浦</td><td><span class="curr"><span class="chip">IB</span></span></td><td class="num">—</td><td>宋庆龄基金会创办</td></tr>
+            <tr data-dist="青浦区" data-curr="AP A-Level"><td class="name">上海宏润博源学校</td><td>青浦</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">A-Level</span></span></td><td class="num">19.5</td><td>小班化，师生比约 1:4</td></tr>
+            <tr data-dist="青浦区" data-curr="日本"><td class="name">上海朝阳义塾日语特色高中</td><td>青浦</td><td><span class="curr"><span class="chip">日本</span></span></td><td class="num">11.8–13.8</td><td>日语美术 / 文理方向</td></tr>
+
+            <!-- 宝山区 -->
+            <tr data-dist="宝山区" data-curr="AP A-Level"><td class="name">WLSA 上海学校</td><td>宝山 / 杨浦</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">A-Level</span></span></td><td class="num">17.2–20.6</td><td>胡润全国第 6；哈耶普斯强项</td></tr>
+            <tr data-dist="宝山区" data-curr="IB"><td class="name">上海交通大学附属中学 IB 课程中心</td><td>宝山</td><td><span class="curr"><span class="chip">IBDP</span></span></td><td class="num">—</td><td>公办名校国际课程</td></tr>
+            <tr data-dist="宝山区" data-curr="IB"><td class="name">上海宝山区世外学校</td><td>宝山</td><td><span class="curr"><span class="chip">IB</span><span class="chip">双语</span></span></td><td class="num">—</td><td>世外教育集团</td></tr>
+            <tr data-dist="宝山区" data-curr="A-Level"><td class="name">上海金瑞学校</td><td>宝山</td><td><span class="curr"><span class="chip">IGCSE</span><span class="chip">A-Level</span></span></td><td class="num">—</td><td>十二年一贯制，今年首招高中</td></tr>
+
+            <!-- 长宁区 -->
+            <tr data-dist="长宁区" data-curr="日本 澳洲"><td class="name">耀华国际教育学校上海古北校区</td><td>长宁</td><td><span class="curr"><span class="chip">日本</span><span class="chip">新加坡艺术</span><span class="chip">A-Level艺术</span></span></td><td class="num">16.8–24.6</td><td>耀中耀华成员</td></tr>
+            <tr data-dist="长宁区" data-curr="AP 日本"><td class="name">上海新虹桥中学</td><td>长宁</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">日本</span></span></td><td class="num">—</td><td>长宁区民办</td></tr>
+
+            <!-- 杨浦区 -->
+            <tr data-dist="杨浦区" data-curr="A-Level"><td class="name">上实剑桥国际高中部</td><td>杨浦</td><td><span class="curr"><span class="chip">A-Level</span></span></td><td class="num">—</td><td>HKPEP 榜上榜</td></tr>
+            <tr data-dist="杨浦区" data-curr="IB 双语"><td class="name">上海杨浦双语学校</td><td>杨浦</td><td><span class="curr"><span class="chip">双语</span></span></td><td class="num">—</td><td>杨浦区民办</td></tr>
+
+            <!-- 静安区 -->
+            <tr data-dist="静安区" data-curr="A-Level AP 艺术"><td class="name">上海诺科学校</td><td>静安</td><td><span class="curr"><span class="chip">A-Level</span><span class="chip">美高AP</span><span class="chip">艺术</span></span></td><td class="num">17.9–21.9</td><td>课程多元</td></tr>
+            <tr data-dist="静安区" data-curr="AP"><td class="name">上海田家炳中学（国际部）</td><td>静安</td><td><span class="curr"><span class="chip">美高AP</span></span></td><td class="num">—</td><td>静安区民办</td></tr>
+            <tr data-dist="静安区" data-curr="双语"><td class="name">上海协和培明双语学校</td><td>静安</td><td><span class="curr"><span class="chip">双语</span></span></td><td class="num">—</td><td>协和教育集团</td></tr>
+
+            <!-- 虹口区 -->
+            <tr data-dist="虹口区" data-curr="日本"><td class="name">上外贤达贤德国际课程中心</td><td>虹口</td><td><span class="curr"><span class="chip">日本</span></span></td><td class="num">9.8</td><td>虹口区民办</td></tr>
+            <tr data-dist="虹口区" data-curr="A-Level"><td class="name">上外立泰剑桥</td><td>虹口</td><td><span class="curr"><span class="chip">A-Level</span></span></td><td class="num">—</td><td>虹口区民办</td></tr>
+
+            <!-- 普陀区 -->
+            <tr data-dist="普陀区" data-curr="A-Level 日本 艺术"><td class="name">上海安生学校</td><td>普陀</td><td><span class="curr"><span class="chip">A-Level</span><span class="chip">日本</span><span class="chip">艺术</span></span></td><td class="num">13.8–16</td><td>小初高一贯制，新开日高部</td></tr>
+
+            <!-- 黄浦区 -->
+            <tr data-dist="黄浦区" data-curr="IB A-Level"><td class="name">上海康德双语实验学校</td><td>黄浦</td><td><span class="curr"><span class="chip">IB</span><span class="chip">A-Level</span></span></td><td class="num">16–18</td><td>黄浦区唯一；小初高一贯制</td></tr>
+
+            <!-- 嘉定区 -->
+            <tr data-dist="嘉定区" data-curr="IB A-Level 日本"><td class="name">上海华旭双语学校</td><td>嘉定</td><td><span class="curr"><span class="chip">IB</span><span class="chip">A-Level</span><span class="chip">日本</span></span></td><td class="num">16</td><td>嘉定区民办</td></tr>
+            <tr data-dist="嘉定区" data-curr="A-Level"><td class="name">上海行中中学国际部（BANZ）</td><td>嘉定</td><td><span class="curr"><span class="chip">A-Level</span></span></td><td class="num">15.8</td><td>原天华英澳美</td></tr>
+            <tr data-dist="嘉定区" data-curr="AP A-Level 澳洲"><td class="name">上海天华英澳美国际学校</td><td>嘉定</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">A-Level</span><span class="chip">澳洲VCE</span></span></td><td class="num">13.8</td><td>英美双申</td></tr>
+            <tr data-dist="嘉定区" data-curr="IB"><td class="name">上海嘉定区世外学校</td><td>嘉定</td><td><span class="curr"><span class="chip">IB</span><span class="chip">双语</span></span></td><td class="num">—</td><td>世外教育集团</td></tr>
+
+            <!-- 金山区 -->
+            <tr data-dist="金山区" data-curr="AP A-Level 加拿大"><td class="name">上海金山区枫叶学校</td><td>金山</td><td><span class="curr"><span class="chip">枫叶世界课程</span><span class="chip">加拿大BC</span></span></td><td class="num">11.5</td><td>21 所；枫叶教育集团</td></tr>
+            <tr data-dist="金山区" data-curr="IB"><td class="name">上海金山区世外学校</td><td>金山</td><td><span class="curr"><span class="chip">IB</span><span class="chip">双语</span></span></td><td class="num">—</td><td>世外教育集团</td></tr>
+            <tr data-dist="金山区" data-curr="IB"><td class="name">上海杭州湾双语学校</td><td>金山</td><td><span class="curr"><span class="chip">IB</span><span class="chip">双语</span></span></td><td class="num">—</td><td>金山区民办</td></tr>
+
+            <!-- 奉贤区 -->
+            <tr data-dist="奉贤区" data-curr="AP A-Level 加拿大"><td class="name">上海美达菲双语高级中学</td><td>奉贤</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">A-Level</span><span class="chip">OSSD</span></span></td><td class="num">11.8–15.8</td><td>福布斯上榜</td></tr>
+            <tr data-dist="奉贤区" data-curr="双语"><td class="name">上海世外教育附属临港外国语学校</td><td>奉贤</td><td><span class="curr"><span class="chip">双语</span></span></td><td class="num">—</td><td>世外教育集团</td></tr>
+
+            <!-- 崇明区 -->
+            <tr data-dist="崇明区" data-curr="AP A-Level 日本"><td class="name">上海新纪元双语学校</td><td>崇明</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">A-Level</span><span class="chip">日本</span></span></td><td class="num">15.6</td><td>崇明区唯一；小初高 15 年一贯制</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note">
+      <strong>说明：</strong>以上为各区代表性民办双语 / 国际高中的汇总，非穷尽名单；标「—」表示学费未收录或需向校方核实。日高（日本方向）类学校近年增长迅速，学费多在 <strong>10 万–18 万元 / 年</strong>，门槛相对较低，适合日本留学路线家庭。
+    </div>
+  </section>
+
+  <!-- 五、课程体系 -->
+  <section class="block" id="courses">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#FFF1F2;color:#E11D48">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>
+      </div>
+      <div class="sec-title">五、主流课程体系对照</div>
+      <div class="sec-sub">出口方向决定课程选择</div>
+    </div>
+
+    <div class="course-grid">
+      <div class="course-card">
+        <h4>A-Level <span class="flag" style="background:#EFF6FF;color:#1D4ED8">英联邦</span></h4>
+        <p>英国普通中等教育高级水平课程，学术深度高、可自由选 3–4 门，适合偏科、目标英国 G5（牛剑）的学生。上海体系成熟，代表校：领科、光华剑桥、赫贤、阿德科特。</p>
+      </div>
+      <div class="course-card">
+        <h4>IBDP <span class="flag" style="background:#F0FDF4;color:#15803D">全球</span></h4>
+        <p>国际文凭大学预科项目，六大学科组＋三大核心（认识论 / 专题论文 / CAS），全人教育、文理兼修，认可度最广但课业最重。上海约 30 所学校开设。代表校：包玉刚、平和、世外。</p>
+      </div>
+      <div class="course-card">
+        <h4>美高＋AP <span class="flag" style="background:#F3E8FF;color:#7C3AED">美国</span></h4>
+        <p>美国高中课程＋大学先修课程，可换算大学学分，灵活度高，适合目标美国名校的学生。代表校：星河湾、WLSA、诺美、西外。</p>
+      </div>
+      <div class="course-card">
+        <h4>加拿大 BC / OSSD <span class="flag" style="background:#FEF3C7;color:#B45309">加拿大</span></h4>
+        <p>加拿大 BC 省或安大略省体系，过程性评价为主、考试压力小，可直升加拿大及英澳高校。代表校：枫叶、燎原。</p>
+      </div>
+      <div class="course-card">
+        <h4>澳洲 WACE / VCE <span class="flag" style="background:#FEF3C7;color:#B45309">澳洲</span></h4>
+        <p>西澳 / 维州高中证书课程，可直申澳洲八大，也可作英美申请的补充成绩。代表校：天华英澳美等。</p>
+      </div>
+      <div class="course-card">
+        <h4>日本 EJU 课程 <span class="flag" style="background:#FFF1F2;color:#E11D48">日本</span></h4>
+        <p>面向日本留学，含日语＋留考（EJU）＋校内考辅导。学费门槛低、文化适应快，近年快速扩张。代表校：文来日高部、朝阳义塾、尚德。</p>
+      </div>
+      <div class="course-card">
+        <h4>香港 DSE / 新加坡 <span class="flag" style="background:#FFF1F2;color:#E11D48">中国香港 / 新加坡</span></h4>
+        <p>香港中学文凭考试，可申请中国香港高校及海外；新加坡方向亦有专门课程。代表校：耀中（外籍）、常青藤等。</p>
+      </div>
+      <div class="course-card">
+        <h4>德国 / 法国 / 欧洲 <span class="flag" style="background:#F1F5F9;color:#475569">欧洲</span></h4>
+        <p>DSD（德语）、Abitur、法国高中文凭等，多语种小语种路线，适合有明确欧洲留学规划的家庭。代表校：曹杨二中、法国外籍学校、德国外籍学校。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 六、学费参考 -->
+  <section class="block" id="tuition">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#ECFDF5;color:#059669">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div class="sec-title">六、学费档位参考</div>
+      <div class="sec-sub">2025 学年 · 人民币 / 年</div>
+    </div>
+
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>类型</th><th>学费区间</th><th>典型学校</th></tr></thead>
+          <tbody>
+            <tr><td class="name">公办高中国际课程班</td><td class="num">约 0.3–0.8 万 / 学期</td><td>交大附中、复旦附中、华二附中、格致、建平</td></tr>
+            <tr><td class="name">民办双语 / 国际高中（主流）</td><td class="num">12–23 万 / 年</td><td>星河湾、尚德、诺美、圣华紫竹、赫贤</td></tr>
+            <tr><td class="name">民办国际高中（高端）</td><td class="num">23–26 万 / 年</td><td>包玉刚、平和、世外、光华剑桥、宏文</td></tr>
+            <tr><td class="name">日高 / 小语种方向</td><td class="num">9.8–18 万 / 年</td><td>文来日高部、朝阳义塾、贤德、东鼎</td></tr>
+            <tr><td class="name">外籍人员子女学校</td><td class="num">20–40 万 / 年</td><td>上海美国学校、惠灵顿、德威、耀中、哈罗</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note">
+      <strong>别只看学费。</strong>校服、校车、住宿、餐费、国际考务费、研学与交换、升学指导（部分外包）等杂费，往往再增加 10%–25% 的年支出；日高与小语种方向还需单独核算语言考试与海外报考费用。
+    </div>
+  </section>
+
+  <!-- 七、择校要点 -->
+  <section class="block" id="tips">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#EFF6FF;color:#2563EB">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+      </div>
+      <div class="sec-title">七、择校七个关键点</div>
+      <div class="sec-sub">先定出口，再定课程，最后定学校</div>
+    </div>
+
+    <div class="tips">
+      <div class="tip"><div class="tip-ico">1</div><div><h4>先确认「要学籍还是要国际课程」</h4><p>想要国内高中学籍、保留高考兜底，只能在官方「21 所」及少数具普高资质的民办里选；纯国际课程校通常只有国际课程学籍（如 Cognia / CAIE 认证），不影响海外申请，但无法参加国内高考。</p></div></div>
+      <div class="tip"><div class="tip-ico">2</div><div><h4>户籍 / 国籍是第一道硬门槛</h4><p>公办国际课程班仅招上海生源；外籍人员子女学校仅招外籍 / 港澳台；民办双语与国际高中一般不限户籍，但名额与要求各校自定。</p></div></div>
+      <div class="tip"><div class="tip-ico">3</div><div><h4>用留学方向倒推课程体系</h4><p>冲英国 → A-Level；美国名校且全科均衡 → IB 或美高 AP；加拿大 / 澳洲 → BC / OSSD / VCE；日本 → 日高 EJU；中国香港 → DSE。课程错配比学校普通更致命。</p></div></div>
+      <div class="tip"><div class="tip-ico">4</div><div><h4>看升学数据，更要看「分母」</h4><p>绝大多数学校宣传的都是「TOP30 录取率」，务必问清年级总人数、实际申请人数与录取分布，避免用少数牛剑 / 藤校案例代表全校水平。</p></div></div>
+      <div class="tip"><div class="tip-ico">5</div><div><h4>师资稳定性与中外教比</h4><p>重点关注学科教师是否为全职、外教流动率、是否有 IB 考官 / 剑桥培训资质。频繁换老师对 A-Level / IB 两年制课程伤害极大。</p></div></div>
+      <div class="tip"><div class="tip-ico">6</div><div><h4>「双轨制」实操上很难</h4><p>即便在「21 所」拿到双学籍，国际课程的大考（托福 / 雅思 / AP / A-Level）与国内会考同时压上，学生基本忙不过来。想走国际路线，就别指望真正两全。</p></div></div>
+      <div class="tip"><div class="tip-ico">7</div><div><h4>实地看校＋问在校家庭</h4><p>榜单（胡润 / 福布斯 / 京领 / HKPEP）只作参考，各榜口径不同。真正的信息在开放日的课堂氛围、宿舍与餐厅，以及在校家长的长期反馈。</p></div></div>
+    </div>
+  </section>
+
+  <footer>
+    数据来源：上海市教委招生计划、2025 胡润百学中国国际化学校排行榜、2025 福布斯中国国际化学校评选、京领 2025 创新竞争力榜、各校官网及公开招生简章（截至 2025 学年）。<br>
+    学费与招生计划会逐年调整，本页仅供个人学习与择校参考，最终以学校及教育主管部门官方公布为准。<br>
+    <a href="../index.html">← 返回初中全学科与升学规划中心</a> · 整理版本 V1 · 2026-10
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var q = document.getElementById('q');
+  var fDist = document.getElementById('fDist');
+  var fCurr = document.getElementById('fCurr');
+  var countEl = document.getElementById('count');
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#schoolTable tbody tr'));
+
+  function apply(){
+    var kw = q.value.trim().toLowerCase();
+    var dist = fDist.value;
+    var curr = fCurr.value;
+    var visible = 0;
+    rows.forEach(function(tr){
+      var text = tr.textContent.toLowerCase();
+      var d = tr.getAttribute('data-dist') || '';
+      var c = tr.getAttribute('data-curr') || '';
+      var ok = true;
+      if (kw && text.indexOf(kw) === -1) ok = false;
+      if (dist && d.indexOf(dist) === -1) ok = false;
+      if (curr && c.indexOf(curr) === -1) ok = false;
+      tr.classList.toggle('hidden', !ok);
+      if (ok) visible++;
+    });
+    countEl.textContent = '显示 ' + visible + ' / ' + rows.length + ' 所';
+  }
+
+  [q, fDist, fCurr].forEach(function(el){
+    el.addEventListener('input', apply);
+    el.addEventListener('change', apply);
+  });
+  apply();
+})();
+</script>
+</body>
+</html>

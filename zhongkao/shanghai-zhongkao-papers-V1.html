@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>上海中考真题资源索引 V1 | 2022–2026 五年真题获取地图与可信度分级</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+
+      --brand-blue: #1E3A8A;
+      --brand-blue-light: #2563EB;
+      --brand-blue-bg: #EFF6FF;
+
+      --accent-gold: #D97706;
+      --accent-gold-bg: #FEF3C7;
+
+      --accent-green: #059669;
+      --accent-green-bg: #ECFDF5;
+
+      --accent-purple: #7C3AED;
+      --accent-purple-bg: #F3E8FF;
+
+      --accent-red: #DC2626;
+      --accent-red-bg: #FEF2F2;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); }
+
+    .brand-logo {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-light));
+      color: #fff;
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.15rem; flex-shrink: 0;
+    }
+
+    .brand-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--brand-blue); }
+    .brand-subtitle { font-size: 0.78rem; color: var(--text-muted); }
+
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 1rem; min-height: 44px;
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      text-decoration: none; font-weight: 600; font-size: 0.88rem;
+      transition: all 0.2s ease; white-space: nowrap;
+    }
+    .back-btn:hover { background-color: var(--brand-blue-bg); color: var(--brand-blue); }
+
+    .wrap { max-width: 1350px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+    .hero {
+      background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+      color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shadow-md);
+    }
+    .hero h1 { font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 700; line-height: 1.25; }
+    .hero p { margin-top: 0.75rem; font-size: 0.95rem; opacity: 0.92; max-width: 62rem; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.28);
+      padding: 0.3rem 0.7rem; border-radius: 999px;
+      font-size: 0.78rem; font-weight: 600;
+    }
+
+    .alert {
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.35rem;
+      margin-bottom: 1.75rem;
+      border: 1px solid;
+      background: var(--accent-red-bg);
+      border-color: #FECACA;
+    }
+    .alert-head {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-weight: 700; color: var(--accent-red); font-size: 0.98rem; margin-bottom: 0.5rem;
+    }
+    .alert ul { margin: 0; padding-left: 1.1rem; color: var(--text-secondary); font-size: 0.9rem; }
+    .alert li { margin-bottom: 0.3rem; }
+    .alert li:last-child { margin-bottom: 0; }
+
+    .section-block { margin-bottom: 2.25rem; }
+
+    .section-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 1rem; flex-wrap: wrap;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+    .section-title-wrap { display: flex; align-items: center; gap: 0.6rem; }
+    .section-icon-badge {
+      width: 26px; height: 26px; border-radius: 7px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .section-title { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--text-primary); }
+    .section-desc { font-size: 0.82rem; color: var(--text-muted); }
+
+    .table-scroll { overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-card); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 720px; }
+    thead th {
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em;
+      text-align: left; padding: 0.7rem 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+    tbody td { padding: 0.7rem 0.85rem; border-bottom: 1px solid #EEF2F6; color: var(--text-secondary); vertical-align: top; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: #FBFDFF; }
+    td.year-cell { font-weight: 700; color: var(--text-primary); white-space: nowrap; }
+    .center { text-align: center; }
+
+    .mark { display: inline-block; font-size: 0.8rem; font-weight: 700; line-height: 1.1; }
+    .m-full { color: var(--accent-green); }
+    .m-mid  { color: var(--accent-gold); }
+    .m-none { color: var(--text-muted); }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.25rem;
+      box-shadow: var(--shadow-sm);
+      display: flex; flex-direction: column; gap: 0.55rem;
+    }
+    .card.blue   { border-top: 3px solid var(--brand-blue-light); }
+    .card.green  { border-top: 3px solid var(--accent-green); }
+    .card.gold   { border-top: 3px solid var(--accent-gold); }
+    .card.purple { border-top: 3px solid var(--accent-purple); }
+    .card.red    { border-top: 3px solid var(--accent-red); }
+
+    .card h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); }
+    .card .tagline { font-size: 0.8rem; color: var(--text-muted); }
+    .card p { font-size: 0.86rem; color: var(--text-secondary); }
+
+    .src-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-top: 0.15rem; }
+    .src-list li { font-size: 0.85rem; color: var(--text-secondary); padding-left: 0.9rem; position: relative; }
+    .src-list li::before {
+      content: ""; position: absolute; left: 0; top: 0.55em;
+      width: 5px; height: 5px; border-radius: 50%; background: var(--brand-blue-light);
+    }
+    .src-list a { color: var(--brand-blue-light); text-decoration: none; word-break: break-all; font-weight: 600; }
+    .src-list a:hover { text-decoration: underline; }
+    .note { color: var(--text-muted); font-size: 0.8rem; }
+
+    .badge {
+      display: inline-block; padding: 0.14rem 0.5rem; border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700; margin-left: 0.35rem; vertical-align: 1px;
+    }
+    .b-free { background: var(--accent-green-bg); color: var(--accent-green); }
+    .b-paid { background: var(--accent-gold-bg); color: var(--accent-gold); }
+    .b-unk  { background: var(--bg-subtle); color: var(--text-muted); }
+
+    .legend { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.7rem; }
+    .legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+
+    .checklist { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .checklist li {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-left: 3px solid var(--accent-green);
+      border-radius: var(--radius-sm); padding: 0.75rem 0.95rem;
+      font-size: 0.87rem; color: var(--text-secondary);
+    }
+    .checklist li strong { color: var(--text-primary); }
+    .checklist li.warn { border-left-color: var(--accent-red); }
+
+    footer { text-align: center; color: var(--text-muted); font-size: 0.78rem; padding: 2rem 1rem 0; }
+
+    @media (max-width: 640px) {
+      .hero { padding: 1.5rem; }
+      .hero h1 { font-size: 1.4rem; }
+      .brand-subtitle { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <a href="../index.html" class="brand">
+      <span class="brand-logo">真</span>
+      <span>
+        <span class="brand-title">上海中考真题资源索引</span><br>
+        <span class="brand-subtitle">2022–2026 · 获取地图与可信度分级</span>
+      </span>
+    </a>
+    <a href="zhongkao-guide-V14.html" class="back-btn">← 返回全轨升学指南</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <h1>上海中考近五年真题（2022–2026）获取索引</h1>
+    <p>把"哪里有真题、哪年哪科能拿到、拿到的是什么成色"一次说清。核心结论前置：<strong>上海官方从不公开原卷</strong>，市面上流通的一切"真题"都是考生回忆版或机构还原版，因此本页按可信度分级标注，而不是简单堆链接。</p>
+    <div class="hero-meta">
+      <span class="chip">检索日期 2026-10-06</span>
+      <span class="chip">覆盖 2022 / 2023 / 2024 / 2025 / 2026</span>
+      <span class="chip">总分 750 分</span>
+      <span class="chip">2026 政策与 2025 保持一致</span>
+    </div>
+  </section>
+
+  <div class="alert">
+    <div class="alert-head">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      用之前必读的三条硬约束
+    </div>
+    <ul>
+      <li><strong>回忆版≠原卷。</strong>题干措辞、选项顺序、图示、听力音频、作图题常缺失或失真。不要用它做精确分值的模拟卷。</li>
+      <li><strong>官方只出评析，不出试卷。</strong>上海市教育考试院仅发布《试卷评析》（专家点评），内容是命题意图，不含任何题目原文。</li>
+      <li><strong>网盘合集来源不可验证。</strong>夸克／百度网盘上的"十年真题打包"多为二次转载，可能夹带无关文件；只取文档，不运行任何可执行文件。</li>
+    </ul>
+  </div>
+
+  <!-- 1. 科目与分值 -->
+  <section class="section-block" id="structure">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-icon-badge" style="background: #EFF6FF; color: #2563EB;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+        </div>
+        <h2 class="section-title">先对齐口径：2022–2026 的考试结构</h2>
+      </div>
+      <span class="section-desc">依据：沪教委基〔2026〕2 号 · 六年未改</span>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>科目</th><th>满分</th><th>形式与时长</th><th>真题形态说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="year-cell">语文</td>
+            <td>150</td>
+            <td>闭卷笔试 · 100 分钟</td>
+            <td>还原度最高，古诗文与作文题几乎可逐字还原</td>
+          </tr>
+          <tr>
+            <td class="year-cell">数学</td>
+            <td>150</td>
+            <td>闭卷笔试 · 100 分钟</td>
+            <td>选择题/填空题还原度高，几何解答题图形常缺失</td>
+          </tr>
+          <tr>
+            <td class="year-cell">外语</td>
+            <td>150</td>
+            <td>笔试 140（含听力 25）90 分钟 + 听说测试 10 分（人机对话）</td>
+            <td>笔试题面可得；<strong>听力音频与原文基本拿不到</strong></td>
+          </tr>
+          <tr>
+            <td class="year-cell">综合测试</td>
+            <td>150</td>
+            <td>物理 70 + 化学 50 + 跨学科案例分析 15，闭卷 120 分钟；实验操作另计 15 分</td>
+            <td>物理/化学笔试题面可得；实验操作题为过程性考核，无真题卷</td>
+          </tr>
+          <tr>
+            <td class="year-cell">道德与法治</td>
+            <td>60</td>
+            <td>统一考试 30 分（开卷 40 分钟）+ 日常考核 30 分</td>
+            <td>开卷题面可得，日常考核部分无卷</td>
+          </tr>
+          <tr>
+            <td class="year-cell">历史</td>
+            <td>60</td>
+            <td>统一考试 30 分（开卷 40 分钟）+ 日常考核 30 分</td>
+            <td>以网络回忆版为主</td>
+          </tr>
+          <tr>
+            <td class="year-cell">体育与健身</td>
+            <td>30</td>
+            <td>统一测试 15 + 日常考核 15（4–5 月）</td>
+            <td>无笔试真题</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend">
+      <span>笔试统一时间：<strong>6 月 20–21 日</strong></span>
+      <span>听说测试与实验操作：<strong>5 月 16–17 日</strong></span>
+      <span>实验操作可考 2 次取高分</span>
+    </div>
+  </section>
+
+  <!-- 2. 可得性矩阵 -->
+  <section class="section-block" id="matrix">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-icon-badge" style="background: #ECFDF5; color: #059669;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+        </div>
+        <h2 class="section-title">五年 × 科目 可得性矩阵</h2>
+      </div>
+      <span class="section-desc">按 2026-10 实际检索到的最优版本标注</span>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>年份</th><th class="center">语文</th><th class="center">数学</th><th class="center">外语</th><th class="center">物理</th><th class="center">化学</th><th class="center">道法</th><th class="center">历史</th><th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="year-cell">2026</td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-mid">回忆版</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td>2026 为最新一届；外语仅回忆版且无听力音频，解析为机构整理</td>
+          </tr>
+          <tr>
+            <td class="year-cell">2025</td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-mid">回忆版</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-mid">回忆版</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td>数学/物理以回忆版为主，同题源有解析版可交叉比对</td>
+          </tr>
+          <tr>
+            <td class="year-cell">2024</td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-mid">需另找</span></td>
+            <td class="center"><span class="mark m-mid">回忆版</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-mid">回忆版</span></td>
+            <td>2024 外语在主流资源站多以模拟卷替代，原卷需到学科网专辑内找</td>
+          </tr>
+          <tr>
+            <td class="year-cell">2023</td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-mid">部分</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td>学科网有「2023 上海市中考真题」专辑，另含生命科学、科学</td>
+          </tr>
+          <tr>
+            <td class="year-cell">2022</td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-full">完整</span></td>
+            <td class="center"><span class="mark m-mid">部分</span></td>
+            <td class="center"><span class="mark m-mid">部分</span></td>
+            <td>2022 各科卷最齐；跨学科案例（黄芪与青浦薰衣草）站内已有拆解</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend">
+      <span><span class="mark m-full">完整</span> = 有文字版题面 + 答案</span>
+      <span><span class="mark m-mid">回忆版 / 部分</span> = 仅回忆版、图片版或题面有缺失</span>
+      <span><span class="mark m-none">需另找</span> = 主流入口未直接命中</span>
+    </div>
+  </section>
+
+  <!-- 3. 渠道 A 官方 -->
+  <section class="section-block" id="official">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-icon-badge" style="background: #EFF6FF; color: #1E3A8A;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+        </div>
+        <h2 class="section-title">渠道 A · 官方口径（无原卷，但有命题意图）</h2>
+      </div>
+      <span class="section-desc">权威性最高，用于校准方向</span>
+    </div>
+
+    <div class="cards">
+      <div class="card blue">
+        <h3>上海市教育考试院 · 上海招考热线<span class="badge b-free">免费</span></h3>
+        <span class="tagline">shmeea.edu.cn</span>
+        <p>每年中考后一周内发布各科《试卷评析》。这是唯一官方对试卷的公开说明，含选文、情境、命题导向，可用来判断"今年考了什么、为什么这么考"。</p>
+        <ul class="src-list">
+          <li>试卷评析栏目：<a href="https://www.shmeea.edu.cn/page/03500/" target="_blank" rel="noopener">shmeea.edu.cn/page/03500/</a></li>
+          <li>2025 语文评析（示例页）：<a href="https://www.shmeea.edu.cn/page/03500/20250615/19510.html" target="_blank" rel="noopener">…/20250615/19510.html</a></li>
+          <li>招考信息总栏：<a href="https://www.shmeea.edu.cn/page/03600/" target="_blank" rel="noopener">shmeea.edu.cn/page/03600/</a></li>
+        </ul>
+      </div>
+
+      <div class="card blue">
+        <h3>上海教育新闻网 · 招考频道<span class="badge b-free">免费</span></h3>
+        <span class="tagline">shedunews.sh.cn</span>
+        <p>把每年的专家点评按科目聚合成列表，是找历年评析最快的一站。含 2026 语文／数学／英语／历史／综合测试全套点评。</p>
+        <ul class="src-list">
+          <li><a href="https://www.shedunews.sh.cn/zhaokao_4.html" target="_blank" rel="noopener">shedunews.sh.cn/zhaokao_4.html</a></li>
+        </ul>
+      </div>
+
+      <div class="card blue">
+        <h3>上海市教委 · 中招年度文件<span class="badge b-free">免费</span></h3>
+        <span class="tagline">edu.sh.gov.cn</span>
+        <p>科目、分值、时长、录取批次的唯一权威出处。《2026 年上海市高中阶段学校招生工作的若干意见》（沪教委基〔2026〕2 号）：与 2025 年相比政策保持稳定。</p>
+        <ul class="src-list">
+          <li><a href="https://edu.sh.gov.cn/mbjy_xwzx/20260312/5a524384d54c4c9d9547d8b7123575bb.html" target="_blank" rel="noopener">2026 中招政策与问答（原文）</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 渠道 B 资源站 -->
+  <section class="section-block" id="portals">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-icon-badge" style="background: #FEF3C7; color: #D97706;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <h2 class="section-title">渠道 B · 真题资源站（题面在这里，多数要积分/储值）</h2>
+      </div>
+      <span class="section-desc">按检索命中质量排序</span>
+    </div>
+
+    <div class="cards">
+      <div class="card gold">
+        <h3>学科网（zxxk.com）<span class="badge b-paid">储值</span></h3>
+        <span class="tagline">最成体系的五年真题入口</span>
+        <p>两个现成专辑可直接下手，含解析、Word 版，覆盖语文/数学/英语/物理/化学/历史/科学/生命科学。</p>
+        <ul class="src-list">
+          <li>「2023–2025 上海中考真题汇总」13 份：<a href="https://www.zxxk.com/docpack/3646143.html" target="_blank" rel="noopener">zxxk.com/docpack/3646143.html</a></li>
+          <li>「2023 年上海市中考真题」专辑：<a href="https://www.zxxk.com/docpack/3204259.html" target="_blank" rel="noopener">zxxk.com/docpack/3204259.html</a></li>
+        </ul>
+        <p class="note">2024 语文为免费件，其余多为 3–5 储值。</p>
+      </div>
+
+      <div class="card gold">
+        <h3>教习网（51jiaoxi.com）<span class="badge b-paid">积分</span></h3>
+        <span class="tagline">按年份 + 科目双维度分页，检索最快</span>
+        <p>有"近五年"聚合页，每科又单独成页，标了文字版/图片版、有无解析。适合按科目逐年补齐。</p>
+        <ul class="src-list">
+          <li>上海真题总入口：<a href="https://m.51jiaoxi.com/zhongkao/shanghai/zhenti/" target="_blank" rel="noopener">m.51jiaoxi.com/zhongkao/shanghai/zhenti/</a></li>
+          <li>数学分页：<a href="https://m.51jiaoxi.com/zhongkao/shanghai/zhenti_sx/" target="_blank" rel="noopener">…/zhenti_sx/</a></li>
+          <li>英语分页：<a href="https://m.51jiaoxi.com/zhongkao/shanghai/zhenti_yy" target="_blank" rel="noopener">…/zhenti_yy</a></li>
+        </ul>
+      </div>
+
+      <div class="card gold">
+        <h3>21 世纪教育网（21cnjy.com）<span class="badge b-paid">积分</span></h3>
+        <span class="tagline">原卷版 + 解析版成对出现</span>
+        <p>部分卷可直接读到全文展开内容（如 2024、2026 语文），适合先看再决定要不要下载。</p>
+        <ul class="src-list">
+          <li>2024 语文（原卷+解析）：<a href="https://zy.21cnjy.com/20863790" target="_blank" rel="noopener">zy.21cnjy.com/20863790</a></li>
+          <li>2026 英语（回忆版，含答案）：<a href="https://zy.21cnjy.com/26530792" target="_blank" rel="noopener">zy.21cnjy.com/26530792</a></li>
+        </ul>
+      </div>
+
+      <div class="card gold">
+        <h3>人人文库 / 原创力文档<span class="badge b-paid">积分</span></h3>
+        <span class="tagline">2026 各科最早上架的一批</span>
+        <p>renrendoc.com 与 book118.com 上 2026 语文/数学/化学等已有解析版，页数 15–21 页不等。适合补 2026 这一届。</p>
+        <ul class="src-list">
+          <li>2026 数学（解析版）：<a href="https://m.renrendoc.com/paper/535641420.html" target="_blank" rel="noopener">renrendoc.com/paper/535641420.html</a></li>
+          <li>2026 语文（含答案）：<a href="https://m.renrendoc.com/paper/534101558.html" target="_blank" rel="noopener">renrendoc.com/paper/534101558.html</a></li>
+          <li>2025 数学原卷+答案（PDF 11 页）：<a href="https://max.book118.com/html/2025/0617/6155241152011144.shtm" target="_blank" rel="noopener">book118.com/html/2025/0617/…</a></li>
+        </ul>
+      </div>
+
+      <div class="card gold">
+        <h3>中考网 · 上海站<span class="badge b-free">免费</span></h3>
+        <span class="tagline">早年卷的免费图片版</span>
+        <p>2020–2022 各科的免费图片版/下载版在这一站最集中，更新到 2022 年后基本停更。适合补 2022 及更早。</p>
+        <ul class="src-list">
+          <li><a href="https://m.zhongkao.com/sh/stpd/zkzt/" target="_blank" rel="noopener">m.zhongkao.com/sh/stpd/zkzt/</a></li>
+        </ul>
+      </div>
+
+      <div class="card gold">
+        <h3>组卷网 · 按考点拆卷<span class="badge b-free">免费预览</span></h3>
+        <span class="tagline">把真题按题型/知识点重组</span>
+        <p>不做整卷，而是把五年真题按"记叙文阅读""文言文阅读"等题型切片。复习到某个考点时最好用。</p>
+        <ul class="src-list">
+          <li>2025 语文·记叙文阅读切片：<a href="https://zujuan.xkw.com/thematiclist/1pt4963ct20053n651866.html" target="_blank" rel="noopener">zujuan.xkw.com/thematiclist/…</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 渠道 C 网盘 -->
+  <section class="section-block" id="netdisk">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-icon-badge" style="background: #F1F5F9; color: #64748B;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+        </div>
+        <h2 class="section-title">渠道 C · 免费网盘合集（能用，但别当权威）</h2>
+      </div>
+      <span class="section-desc">来源不可验证 · 仅作备份渠道</span>
+    </div>
+
+    <div class="cards">
+      <div class="card red">
+        <h3>夸克 / 百度网盘 打包合集<span class="badge b-unk">来源未验证</span></h3>
+        <span class="tagline">2013–2025 十三年打包，一次拿全</span>
+        <p>论坛与自媒体整理的网盘链接，按科目分 zip（数学/语文/英语/物理/化学/道法/历史/地理/生物），单科可追溯到 2013 年。优点是省事，缺点是文件被重命名过、部分年份缺失、无来源说明。</p>
+        <ul class="src-list">
+          <li>QQ 学生网汇总帖（含夸克与百度链接）：<a href="http://www.qqstudent.com/thread-26240-1-1.html" target="_blank" rel="noopener">qqstudent.com/thread-26240-1-1.html</a></li>
+          <li>自媒体整理的按科目夸克链接清单：<a href="https://m.toutiao.com/article/7623052055133635115" target="_blank" rel="noopener">今日头条 · 上海中考真题链接汇总</a></li>
+        </ul>
+        <p class="note">只下载文档类文件。网盘分享夹带 .exe/.dmg 一律不打开。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5.5 三平台实测 -->
+  <section class="section-block" id="fieldtest">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-icon-badge" style="background: #FEF3C7; color: #D97706;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h2 class="section-title">实测：小红书 / 夸克网盘 / 百度网盘</h2>
+      </div>
+      <span class="section-desc">2026-10-06 逐条打开验证，标注实际内容</span>
+    </div>
+
+    <!-- 小红书 -->
+    <div class="cards" style="margin-bottom: 1.25rem;">
+      <div class="card red">
+        <h3>小红书 —— 搜不了，但它是源头<span class="badge b-unk">Web 端被拦</span></h3>
+        <span class="tagline">直连结果：error_code 300012「IP 存在风险，请切换可靠网络环境后重试」</span>
+        <p>用真实浏览器打开搜索页被风控拦截，需登录态 + 可信网络。网页端无法检索。但小红书恰恰是<strong>所有回忆版真题的原始产地</strong>——两条已确认的账号线索：</p>
+        <ul class="src-list">
+          <li><strong>anniver16</strong> —— 2025 上海中考数学、语文回忆版的整理者。经「未教星」合作后，由头条号「魔都升学通」转载，是 2025 卷最上游的来源。</li>
+          <li><strong>Li氏炼金术</strong> —— 上海中考化学回忆版来源。2025、2026 两年化学卷面都印着这个水印，可在组卷网、人人文库、原创力文档三处交叉验证。</li>
+        </ul>
+        <p class="note">正确用法：在<strong>小红书 App 内</strong>搜索「上海中考真题」「上海中考回忆版」「上海中考化学 回忆」「anniver16」「Li氏炼金术」，或直接私信这两个账号要 PDF。</p>
+      </div>
+    </div>
+
+    <!-- 夸克 -->
+    <h3 style="font-size:0.95rem; margin: 1.25rem 0 0.6rem;">夸克网盘 · 已逐条打开验证</h3>
+    <div class="table-scroll" style="margin-bottom: 0.9rem;">
+      <table>
+        <thead>
+          <tr><th>覆盖范围</th><th>链接</th><th>打开后看到</th><th class="center">状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="year-cell">2026 全科</td><td><a href="https://pan.quark.cn/s/0d611138d7c5" target="_blank" rel="noopener">pan.quark.cn/s/0d611138d7c5</a></td><td>目录「中考真题」4 项</td><td class="center"><span class="mark m-full">有效</span></td></tr>
+          <tr><td class="year-cell">2026 语文</td><td><a href="https://pan.quark.cn/s/fe9adae10c8e" target="_blank" rel="noopener">pan.quark.cn/s/fe9adae10c8e</a></td><td>5 个文件 393 KB，永久有效</td><td class="center"><span class="mark m-full">有效</span></td></tr>
+          <tr><td class="year-cell">2025 全科</td><td><a href="https://pan.quark.cn/s/fcdc7540cc50" target="_blank" rel="noopener">pan.quark.cn/s/fcdc7540cc50</a></td><td>「中考真题试卷汇总（更新至2026版备考）」2 项</td><td class="center"><span class="mark m-full">有效</span></td></tr>
+          <tr><td class="year-cell">2025 各科</td><td><a href="https://pan.quark.cn/s/ea4a0bac36b9" target="_blank" rel="noopener">pan.quark.cn/s/ea4a0bac36b9</a></td><td>目录「上海市」10 项</td><td class="center"><span class="mark m-full">有效</span></td></tr>
+          <tr><td class="year-cell">2025 语文</td><td><a href="https://pan.quark.cn/s/93b1f9bb0195" target="_blank" rel="noopener">pan.quark.cn/s/93b1f9bb0195</a></td><td>2025上海中考语文…完整版含答案.doc（101 KB）</td><td class="center"><span class="mark m-full">有效</span></td></tr>
+          <tr><td class="year-cell">2022–2024 上海卷</td><td><a href="https://pan.quark.cn/s/bf880f80be3a" target="_blank" rel="noopener">pan.quark.cn/s/bf880f80be3a</a></td><td>目录「03上海卷」9 项</td><td class="center"><span class="mark m-full">有效</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note" style="margin-bottom:1.25rem;">未逐一验证（同批来源，大概率同批有效）：2025 数学 <a href="https://pan.quark.cn/s/9f8bb11e2721" target="_blank" rel="noopener" style="color:var(--brand-blue-light)">9f8bb11e2721</a> / <a href="https://pan.quark.cn/s/a0d39b203d46" target="_blank" rel="noopener" style="color:var(--brand-blue-light)">a0d39b203d46</a>；2025 综合 <a href="https://pan.quark.cn/s/eb67b15ab4f8" target="_blank" rel="noopener" style="color:var(--brand-blue-light)">eb67b15ab4f8</a>；2025 道法 <a href="https://pan.quark.cn/s/343250c8e686" target="_blank" rel="noopener" style="color:var(--brand-blue-light)">343250c8e686</a>；2025 英语部分 <a href="https://pan.quark.cn/s/c2c1b1fb884a" target="_blank" rel="noopener" style="color:var(--brand-blue-light)">c2c1b1fb884a</a>；2024 数学 <a href="https://pan.quark.cn/s/0693caa47699" target="_blank" rel="noopener" style="color:var(--brand-blue-light)">0693caa47699</a>；2024 物理 <a href="https://pan.quark.cn/s/34bdd86c92b5" target="_blank" rel="noopener" style="color:var(--brand-blue-light)">34bdd86c92b5</a>；近十年数学卷 <a href="https://pan.quark.cn/s/1edebae34d94" target="_blank" rel="noopener" style="color:var(--brand-blue-light)">1edebae34d94</a>；2021–2025 数学分类汇编 <a href="https://pan.quark.cn/s/49a2fbf7e50e" target="_blank" rel="noopener" style="color:var(--brand-blue-light)">49a2fbf7e50e</a>；2012–2019 压轴题汇编 <a href="https://pan.quark.cn/s/47fafd9a0854" target="_blank" rel="noopener" style="color:var(--brand-blue-light)">47fafd9a0854</a>；语文专库（2009–2023 全卷 + 16 区一模二模）<a href="https://pan.quark.cn/s/26364c07c6de" target="_blank" rel="noopener" style="color:var(--brand-blue-light)">26364c07c6de</a>。</p>
+
+    <!-- 百度 -->
+    <h3 style="font-size:0.95rem; margin: 1.25rem 0 0.6rem;">百度网盘 · 已验证的四个可用入口</h3>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>覆盖范围</th><th>链接 + 提取码</th><th>打开后看到</th><th class="center">状态</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="year-cell">2013–2025 上海各科十年真题</td><td><a href="https://pan.baidu.com/s/1mLQou50WzxcGZ9mTz334Hg?pwd=7vxg" target="_blank" rel="noopener">pan.baidu.com/s/1mLQou50WzxcGZ9mTz334Hg</a>　码 <strong>7vxg</strong></td><td>文件夹「初中各科《十年中考真题》2013-2025」，永久有效</td><td class="center"><span class="mark m-full">有效</span></td></tr>
+          <tr><td class="year-cell">2026 中考真题</td><td><a href="https://pan.baidu.com/s/15abi_6Vm3M_4I9bTh6BNQQ?pwd=sxpc" target="_blank" rel="noopener">pan.baidu.com/s/15abi_6Vm3M_4I9bTh6BNQQ</a>　码 <strong>sxpc</strong></td><td>文件夹「中考真题」，永久有效</td><td class="center"><span class="mark m-full">有效</span></td></tr>
+          <tr><td class="year-cell">2025 上海中考语文</td><td><a href="https://pan.baidu.com/s/1uCF3JvsLfXiYt9AC7oe5jw?pwd=6hj5" target="_blank" rel="noopener">pan.baidu.com/s/1uCF3JvsLfXiYt9AC7oe5jw</a>　码 <strong>6hj5</strong></td><td>单文档，永久有效</td><td class="center"><span class="mark m-full">有效</span></td></tr>
+          <tr><td class="year-cell">2015–2024 全国全科（9 科 zip，约 13 GB）</td><td><a href="https://pan.baidu.com/s/1-FHpw4vG3jgF00IWFvsvxw?pwd=xbuf" target="_blank" rel="noopener">pan.baidu.com/s/1-FHpw4vG3jgF00IWFvsvxw</a>　码 <strong>xbuf</strong></td><td>未逐一验证</td><td class="center"><span class="mark m-mid">待验</span></td></tr>
+          <tr><td class="year-cell">上海中考语文专库（2001–2023 全卷 + 阅卷细则 + 16 区一模二模）</td><td><a href="https://pan.baidu.com/s/1RXbZjphKqjz_KgqT0ptxFw?pwd=0000" target="_blank" rel="noopener">pan.baidu.com/s/1RXbZjphKqjz_KgqT0ptxFw</a>　码 <strong>0000</strong></td><td>未逐一验证</td><td class="center"><span class="mark m-mid">待验</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert" style="margin-top: 1.25rem; margin-bottom: 0;">
+      <div class="alert-head">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        网盘渠道的四条操作纪律
+      </div>
+      <ul>
+        <li><strong>先转存，再下载。</strong>这些都是个人分享，随时可能被删。转存到自己网盘才真正拿到手。</li>
+        <li><strong>同一份卷会有多个版本，且都不全。</strong>2026 语文至少 3 个版本流通，三个版本的"现代文一"都缺内容——多取几个版本交叉比对。</li>
+        <li><strong>优先夸克。</strong>夸克下载不限速，百度非会员限速严重。百度只留作补充。</li>
+        <li><strong>压缩包里的东西先看清单再解压。</strong>只取文档；夹带 .exe / .dmg / .apk 一律不打开。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6. 怎么用 -->
+  <section class="section-block" id="howto">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-icon-badge" style="background: #ECFDF5; color: #059669;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h2 class="section-title">五年真题怎么用才不浪费</h2>
+      </div>
+      <span class="section-desc">基于 2026 命题特点的五条建议</span>
+    </div>
+
+    <ul class="checklist">
+      <li><strong>用它摸"题型分布"，不用它测分数。</strong>2026 各科专家评析反复强调命题"紧扣教材""减少机械记忆题""创设真实情境"——真题的价值在于看清情境题怎么裁、跨学科怎么扣，而不是刷完对答案算分。</li>
+      <li><strong>语文优先读近三年。</strong>2022 至今作文题与综合运用板块变化最明显（2025「相互成全」→ 2026「如愿以偿之后」；2026 综合运用考《红星照耀中国》名著策展）。三年就够看出趋势。</li>
+      <li><strong>数学/物理/化学要配图，否则白做。</strong>回忆版最常丢的就是几何图形、电路图、实验装置图。宁可去资源站买带原卷图的解析版，也别对着文字题干硬做。</li>
+      <li><strong>外语真题只取笔试题面，听力另配材料。</strong>近五年听力音频与原文基本无法获得，用真题练听力是伪需求；改用教材配套听力或同难度仿真音频。</li>
+      <li class="warn"><strong>跨学科案例分析单独建库。</strong>每年 15 分、情境独立、无固定教材对应。站内已有 2022 案例（黄芪与青浦薰衣草）拆解，建议按"地理特征 × 生物特性"的对应逻辑逐年累积，而不是按年份刷卷。</li>
+    </ul>
+  </section>
+
+  <footer>
+    上海中考真题资源索引 V1 · 建立于 2026-10-06 · 数据来源为公开网络检索，可得性以实际检索当日为准
+  </footer>
+
+</div>
+
+</body>
+</html>
