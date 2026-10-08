@@ -14,9 +14,10 @@ Thumbs.db
 .vercel
 .workbuddy/
 
-# 资料索引中的开发缓存
-/资料索引/8shang_yuwen_jichu/node_modules/
-/资料索引/8shang_yuwen_jichu/.next/
+# 资料索引：仅跟踪 导出 与 public 静态资源
+/资料索引/8shang_yuwen_jichu/*
+!/资料索引/8shang_yuwen_jichu/导出
+!/资料索引/8shang_yuwen_jichu/public
 /test-results/
 
 # Large PDF files exceeding GitHub 50MB/100MB limit
