@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上海市文来中学（国际部）| 三通道 · 双学籍 · 日高王牌</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="description" content="上海市文来中学国际部（文来高中国际部）信息汇总：美高+AP / A-Level / 日本高中课程三大通道、双语联申班、学制、招生规模、考试与免考条件、费用、升学成果与海外合作资源。">
+<style>
+:root{
+  --primary:#2563EB; --primary-light:#EFF6FF; --primary-dark:#1D4ED8;
+  --bg:#F8FAFC; --bg-card:#FFFFFF;
+  --text-main:#0F172A; --text-muted:#475569; --text-light:#94A3B8;
+  --border-light:#E2E8F0; --border-hover:#CBD5E1;
+  --red:#DC2626; --green:#059669; --amber:#D97706; --purple:#7C3AED;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.04);
+  --shadow-md:0 3px 8px -2px rgba(15,23,42,.06);
+  --shadow-hover:0 6px 14px -3px rgba(15,23,42,.09);
+  --radius-lg:10px; --radius-md:8px; --radius-sm:5px;
+  --transition:all .18s cubic-bezier(.4,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  background:var(--bg); color:var(--text-main); line-height:1.5; overflow-x:hidden;
+}
+.bg-decoration{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bg-blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.20}
+.bg-blob:nth-child(1){width:420px;height:420px;background:#DBEAFE;top:-140px;right:-80px}
+.bg-blob:nth-child(2){width:360px;height:360px;background:#FEF3C7;bottom:-60px;left:-100px}
+.container{max-width:1180px;width:96%;margin:0 auto;padding:16px 8px 48px;position:relative;z-index:1}
+
+/* topbar */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:600;color:var(--text-muted);text-decoration:none;padding:6px 12px;border-radius:100px;background:#fff;border:1px solid var(--border-light);transition:var(--transition)}
+.back-link:hover{color:var(--primary);border-color:#BFDBFE}
+.version-pill{font-size:.7rem;font-weight:700;color:var(--primary-dark);background:var(--primary-light);border:1px solid #BFDBFE;padding:3px 10px;border-radius:100px}
+
+/* hero */
+header.hero{text-align:center;margin-bottom:22px}
+.hero .eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;color:var(--primary);text-transform:uppercase;margin-bottom:8px}
+.hero h1{font-size:1.9rem;font-weight:800;letter-spacing:-.02em;background:linear-gradient(135deg,#0F172A 0%,#2563EB 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.hero p{font-size:.9rem;color:var(--text-muted);max-width:740px;margin:0 auto}
+.hero .en{font-size:.74rem;color:var(--text-light);margin-top:6px;font-weight:600;letter-spacing:.02em}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:18px 0 8px}
+.stat-card{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:12px 14px;box-shadow:var(--shadow-sm)}
+.stat-num{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.stat-num small{font-size:.72rem;font-weight:600;color:var(--text-light);margin-left:2px}
+.stat-label{font-size:.74rem;color:var(--text-muted);font-weight:600;margin-top:3px}
+
+/* anchors */
+.anchors{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:18px 0 24px}
+.anchors a{font-size:.76rem;font-weight:600;color:var(--text-muted);text-decoration:none;padding:5px 12px;border-radius:100px;background:#fff;border:1px solid var(--border-light);transition:var(--transition)}
+.anchors a:hover{color:var(--primary);border-color:#BFDBFE;background:var(--primary-light)}
+
+/* section */
+section.block{margin-bottom:30px;scroll-margin-top:14px}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--border-light)}
+.sec-icon{width:32px;height:32px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sec-icon svg{width:17px;height:17px}
+.sec-title{font-size:1.12rem;font-weight:800;letter-spacing:-.01em}
+.sec-sub{font-size:.76rem;color:var(--text-muted);margin-left:auto;text-align:right;font-weight:500}
+
+/* notes */
+.note{background:#FFFBEB;border:1px solid #FDE68A;border-left:4px solid #F59E0B;border-radius:var(--radius-sm);padding:10px 14px;font-size:.79rem;color:#78350F;margin-bottom:14px}
+.note.blue{background:var(--primary-light);border-color:#BFDBFE;border-left-color:var(--primary);color:#1E40AF}
+.note.green{background:#F0FDF4;border-color:#BBF7D0;border-left-color:#059669;color:#14532D}
+.note.red{background:#FFF1F2;border-color:#FECDD3;border-left-color:#E11D48;color:#9F1239}
+.note strong{font-weight:700}
+
+/* tables */
+.table-wrap{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:14px}
+.tbl-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.79rem;min-width:600px}
+thead th{background:#F1F5F9;color:#334155;font-weight:700;text-align:left;padding:9px 12px;white-space:nowrap;font-size:.75rem;letter-spacing:.01em;border-bottom:1px solid var(--border-light)}
+tbody td{padding:9px 12px;border-bottom:1px solid #F1F5F9;vertical-align:top;color:var(--text-muted)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#F8FAFC}
+td.name{font-weight:700;color:var(--text-main);white-space:nowrap}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600;color:var(--text-main)}
+td.k{font-weight:700;color:var(--text-main);white-space:nowrap;background:#F8FAFC;width:130px}
+.tag{display:inline-block;font-size:.66rem;font-weight:700;padding:1px 7px;border-radius:100px;white-space:nowrap;margin-left:5px;vertical-align:middle}
+.t-gov{background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE}
+.t-pri{background:#F0FDF4;color:#15803D;border:1px solid #BBF7D0}
+.t-amber{background:#FEF3C7;color:#B45309;border:1px solid #FDE68A}
+.t-purple{background:#F3E8FF;color:#7C3AED;border:1px solid #E9D5FF}
+.t-red{background:#FFF1F2;color:#E11D48;border:1px solid #FECDD3}
+
+.curr{display:inline-flex;flex-wrap:wrap;gap:3px}
+.chip{font-size:.65rem;font-weight:600;padding:1px 6px;border-radius:4px;background:#F1F5F9;color:#475569;white-space:nowrap}
+
+/* timeline */
+.timeline{position:relative;margin:6px 0 16px;padding-left:8px}
+.timeline::before{content:'';position:absolute;left:60px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,#BFDBFE,#E2E8F0)}
+.tl-item{display:flex;gap:14px;padding:7px 0;position:relative}
+.tl-year{width:52px;flex-shrink:0;text-align:right;font-size:.8rem;font-weight:800;color:var(--primary);font-variant-numeric:tabular-nums;line-height:1.5}
+.tl-dot{position:absolute;left:56px;top:14px;width:10px;height:10px;border-radius:50%;background:#fff;border:2.5px solid var(--primary);z-index:1}
+.tl-item.key .tl-dot{background:var(--primary)}
+.tl-body{flex:1;font-size:.8rem;color:var(--text-muted)}
+.tl-body b{color:var(--text-main);font-weight:700}
+
+/* pathway cards */
+.path-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-bottom:14px}
+.path-card{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:14px 15px;box-shadow:var(--shadow-sm);transition:var(--transition);position:relative;overflow:hidden}
+.path-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.path-card.p1::before{background:#2563EB}
+.path-card.p2::before{background:#7C3AED}
+.path-card.p3::before{background:#DC2626}
+.path-card.p4::before{background:#059669}
+.path-card:hover{box-shadow:var(--shadow-hover);border-color:var(--border-hover);transform:translateY(-1px)}
+.path-card h4{font-size:.92rem;font-weight:800;margin-bottom:3px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.path-card .route{font-size:.68rem;font-weight:700;padding:1px 8px;border-radius:100px;background:#F1F5F9;color:#475569}
+.path-card .lead{font-size:.74rem;color:var(--text-primary);color:var(--text-main);font-weight:600;margin:6px 0 8px;line-height:1.45}
+.path-card ul{list-style:none;display:grid;gap:4px}
+.path-card li{font-size:.74rem;color:var(--text-muted);line-height:1.5;padding-left:13px;position:relative}
+.path-card li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:#CBD5E1}
+
+/* rank list */
+.rank-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
+.rank-item{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:10px 12px;display:flex;gap:10px;align-items:flex-start;box-shadow:var(--shadow-sm);transition:var(--transition)}
+.rank-item:hover{border-color:var(--border-hover);box-shadow:var(--shadow-hover)}
+.rank-no{font-size:.95rem;font-weight:800;color:var(--primary);min-width:30px;font-variant-numeric:tabular-nums;line-height:1.3}
+.rank-item.top .rank-no{color:var(--red)}
+.rank-body{min-width:0;flex:1}
+.rank-name{font-size:.83rem;font-weight:700;color:var(--text-main);line-height:1.25}
+.rank-meta{font-size:.7rem;color:var(--text-muted);margin-top:2px}
+
+/* achievement bars */
+.bars{display:grid;gap:10px;margin-bottom:14px}
+.bar-row{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:11px 14px;box-shadow:var(--shadow-sm)}
+.bar-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:7px}
+.bar-top .lbl{font-size:.8rem;font-weight:700;color:var(--text-main)}
+.bar-top .val{font-size:.82rem;font-weight:800;color:var(--primary);font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar-track{height:8px;background:#F1F5F9;border-radius:100px;overflow:hidden}
+.bar-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,#60A5FA,#2563EB)}
+.bar-fill.amber{background:linear-gradient(90deg,#FBBF24,#D97706)}
+.bar-fill.green{background:linear-gradient(90deg,#34D399,#059669)}
+.bar-note{font-size:.7rem;color:var(--text-light);margin-top:5px}
+
+/* tips */
+.tips{display:grid;gap:10px}
+.tip{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:12px 14px;box-shadow:var(--shadow-sm);display:flex;gap:11px}
+.tip-ico{width:26px;height:26px;border-radius:var(--radius-sm);background:var(--primary-light);color:var(--primary-dark);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.78rem;flex-shrink:0;margin-top:1px}
+.tip h4{font-size:.83rem;font-weight:700;margin-bottom:3px}
+.tip p{font-size:.76rem;color:var(--text-muted);line-height:1.55}
+
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--border-light);font-size:.72rem;color:var(--text-light);text-align:center;line-height:1.7}
+footer a{color:var(--text-muted);text-decoration:none;font-weight:600}
+footer a:hover{color:var(--primary)}
+@media(max-width:640px){
+  .hero h1{font-size:1.4rem}
+  .sec-sub{display:none}
+  .stat-num{font-size:1.25rem}
+  .tl-year{width:42px;font-size:.72rem}
+  .timeline::before{left:50px}
+  .tl-dot{left:46px}
+}
+</style>
+</head>
+<body>
+<div class="bg-decoration"><div class="bg-blob"></div><div class="bg-blob"></div></div>
+
+<div class="container">
+
+  <div class="topbar">
+    <a href="../index.html" class="back-link">← 返回全景看板</a>
+    <span class="version-pill">升学规划 · V1</span>
+  </div>
+
+  <header class="hero">
+    <div class="eyebrow">21所 · 首批国际课程试点校</div>
+    <h1>上海市文来中学 · 国际部</h1>
+    <p>七宝中学教育集团核心校，一校三通道（美高+AP / A-Level / 日本高中），双学籍双文凭；日高部为沪上第一梯队标杆。数据截至 2025–2026 招生季。</p>
+    <div class="en">Shanghai Wenlai Middle School · International Division (SWIS)</div>
+  </header>
+
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num" style="color:#2563EB">1994<small>年</small></div><div class="stat-label">建校（七宝中学创办）</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#7C3AED">2009<small>年</small></div><div class="stat-label">国际部成立</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#DC2626">3<small>通道</small></div><div class="stat-label">美高AP / A-Level / 日高</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#059669">12.6<small>万/年</small></div><div class="stat-label">学费（2025 官方口径）</div></div>
+  </div>
+
+  <nav class="anchors">
+    <a href="#profile">学校档案</a>
+    <a href="#history">办学脉络</a>
+    <a href="#paths">三大通道</a>
+    <a href="#system">学制路径</a>
+    <a href="#japan">日高部</a>
+    <a href="#results">录取情况</a>
+    <a href="#admission">招生与考试</a>
+    <a href="#cost">费用明细</a>
+    <a href="#faculty">师资与管理</a>
+    <a href="#resources">海外资源</a>
+    <a href="#judge">择校判断</a>
+  </nav>
+
+  <!-- 一、学校档案 -->
+  <section class="block" id="profile">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#EFF6FF;color:#2563EB">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+      </div>
+      <div class="sec-title">一、学校档案</div>
+      <div class="sec-sub">一所学校的三个身份：七宝系 · 21所 · 双学籍</div>
+    </div>
+
+    <div class="note blue">
+      <strong>先厘清校名。</strong>法定校名是<strong>「上海市文来中学」</strong>——七宝中学 1994 年创办的民办完全中学，七宝中学教育集团核心校。家长口中的<strong>「七宝文来」是俗称</strong>（七宝系简称），校名里并没有「七宝」二字；也要注意是<strong>「文来」</strong>不是「文莱」（Brunei）。初中部与七宝中学一墙之隔，高中部/国际部另址。
+    </div>
+
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <tbody>
+            <tr><td class="k">学校全称</td><td>上海市文来中学（Shanghai Wenlai Middle School）</td></tr>
+            <tr><td class="k">国际部名称</td><td>文来高中国际部（SWIS · Wenlai International）</td></tr>
+            <tr><td class="k">办学性质</td><td>民办完全中学 <span class="tag t-pri">民办</span> · 七宝中学教育集团核心校</td></tr>
+            <tr><td class="k">创办 / 举办方</td><td>1994 年 6 月由上海市七宝中学创办；理事长 仇忠海（上海市教育功臣、特级教师）</td></tr>
+            <tr><td class="k">高中部 / 国际部地址</td><td>闵行区虹莘路 2166 号（古美社区），邮编 201101；地铁 12 号线虹莘路站；公交 753 / 803 / 764 / 732</td></tr>
+            <tr><td class="k">初中部地址</td><td>闵行区农南路 66 号（与七宝中学一墙之隔）</td></tr>
+            <tr><td class="k">校长 / 管理团队</td><td>校长 黄健；副校长 施力争、夏雪梅；校长助理 张健；招生主管 周璐</td></tr>
+            <tr><td class="k">招生电话</td><td>国际招生 021-34174739 ／ 国内招生 021-34174741（周一至周五 8:00–16:00）</td></tr>
+            <tr><td class="k">官网</td><td>wlhs.mhedu.sh.cn ／ 微信公众号「文来高中国际部」</td></tr>
+            <tr><td class="k">校训 / 育人目标</td><td>博文约礼，鉴往知来 ／ 平民本色，精英气质（理念：学校教育要为学生的一生发展奠基）</td></tr>
+            <tr><td class="k">办学评估</td><td>上海市教委首批批准的「21 所」国际课程试点校；2010 年闵行区首批实验性示范性高中；全国 5A 级社会组织；上海市文明校园</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 二、办学脉络 -->
+  <section class="block" id="history">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#F3E8FF;color:#7C3AED">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      </div>
+      <div class="sec-title">二、办学脉络与资质（19 年国际课程经验）</div>
+      <div class="sec-sub">2006 → 2020 关键节点</div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item key"><div class="tl-year">1994</div><div class="tl-dot"></div><div class="tl-body"><b>建校</b>——七宝中学创办文来中学（民办完全中学），七宝中学教育集团核心校。</div></div>
+      <div class="tl-item"><div class="tl-year">2006</div><div class="tl-dot"></div><div class="tl-body"><b>引进国际课程</b>——开启国际化办学探索。</div></div>
+      <div class="tl-item key"><div class="tl-year">2009</div><div class="tl-dot"></div><div class="tl-body"><b>成立国际部 / 美高部</b>——美高+AP 课程同步创办。</div></div>
+      <div class="tl-item key"><div class="tl-year">2010</div><div class="tl-dot"></div><div class="tl-body"><b>开设日本高中课程</b>——国内首个高中留日项目，日高部由此起家。</div></div>
+      <div class="tl-item"><div class="tl-year">2014</div><div class="tl-dot"></div><div class="tl-body"><b>入选首批「21 所」</b>——上海市教委批准的国际课程试点校，注册上海高中学籍。</div></div>
+      <div class="tl-item"><div class="tl-year">2016</div><div class="tl-dot"></div><div class="tl-body"><b>AP 注册校</b>——成为美国大学理事会 AP 注册学校（College Board）。</div></div>
+      <div class="tl-item"><div class="tl-year">2018</div><div class="tl-dot"></div><div class="tl-body"><b>日高升级</b>——与日本早稻田大学附属高中、文化学园大学等合作开设日本国际课程班。</div></div>
+      <div class="tl-item key"><div class="tl-year">2020</div><div class="tl-dot"></div><div class="tl-body"><b>A-Level 考试中心</b>——成为英国培生爱德思（Edexcel）授权 A-Level 考试中心，学生可在本校学、本校考。</div></div>
+    </div>
+
+    <div class="note">
+      <strong>三重认证身份：</strong>美国大学理事会 AP 注册校 · 英国爱德思 A-Level 考试中心 · 日语 J.TEST 官方考点；美高课程获 <strong>Cognia 认证</strong>（原 AdvancED），文凭效力等同美国本土高中。
+    </div>
+  </section>
+
+  <!-- 三、三大通道 -->
+  <section class="block" id="paths">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#FFF1F2;color:#E11D48">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12"/><path d="M18 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+      </div>
+      <div class="sec-title">三、三大课程通道 + 双语联申</div>
+      <div class="sec-sub">一个国际部 · 按目标国自由选路</div>
+    </div>
+
+    <div class="note green">
+      <strong>文来最大的特色是「多路径」。</strong>同一所国际部里同时开三条方向完全不同的升学线，还用「双语联申班」给尚未定方向（英国 or 日本）的家庭留了一个可进可退的缓冲。这是沪上少见的组合。
+    </div>
+
+    <div class="path-grid">
+      <div class="path-card p1">
+        <h4>美高 + AP 课程 <span class="route">美国 / 英澳加</span></h4>
+        <div class="lead">2009 年随国际部同步创办，按美国共同核心课程（Common Core）融合中美课程。</div>
+        <ul>
+          <li>美国大学理事会 AP 注册校，提供 <strong>30+ 门 AP 选修课</strong></li>
+          <li>100% 外教具外专局外教聘用资格</li>
+          <li>卡耐基学分制 + GPA 加权平均评分体系</li>
+          <li>小班个性化分层（AP / 荣誉 / 普通课程）</li>
+          <li>双语英语衔接授课；可注册美国蓝带高中（格林威尔）学籍</li>
+        </ul>
+      </div>
+      <div class="path-card p2">
+        <h4>A-Level 课程 <span class="route">英联邦 / 多国</span></h4>
+        <div class="lead">培生爱德思授权考试中心——在校内完成学习与考试，凭成绩申请英、美、澳、加、欧、亚多国大学。</div>
+        <ul>
+          <li>前两年完成至少 <strong>3 门学科 AS + A2</strong></li>
+          <li>第三年开设<strong>高阶数学 + MAT / PAT</strong>（牛剑笔试）冲刺课</li>
+          <li>证书受全球英语国家大学认可</li>
+          <li>2026 年起西南位育等新校加入，文来属 21 所里较早一批 A-Level 考点</li>
+        </ul>
+      </div>
+      <div class="path-card p3">
+        <h4>日本高中课程 <span class="route">日本（王牌）</span></h4>
+        <div class="lead">2010 年开设的<strong>国内首个高中留日项目</strong>，课程同步日本本土高中，日籍教师授课。</div>
+        <ul>
+          <li>浸润式日语 + 日本文化环境</li>
+          <li>12 名日籍教师（多来自京都大学、立教大学等）</li>
+          <li><strong>22 所</strong>日本姐妹高中可选，70% 为独家合作</li>
+          <li>EJU 留考 + 姐妹校推荐 + AO + 艺术类四路升学</li>
+          <li>设理科实验班，对标 EJU 数理化</li>
+        </ul>
+      </div>
+      <div class="path-card p4">
+        <h4>双语联申实验班 <span class="route">英 / 日 两可</span></h4>
+        <div class="lead">融合 A-Level 与日高课程，为尚未确定留学方向的家庭提供选择空间。</div>
+        <ul>
+          <li>同时学 A-Level 与日高课程，后续可集中主攻其一</li>
+          <li>语言端：英语 ESL + 日语 + 托福 / 雅思课程</li>
+          <li>可衔接日本 SGU 英文授课项目</li>
+          <li>A-Level 需在两年内完成考试</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、学制 -->
+  <section class="block" id="system">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#ECFDF5;color:#059669">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="m5 8 7-5 7 5"/><path d="M5 8v8l7 5 7-5V8"/></svg>
+      </div>
+      <div class="sec-title">四、弹性学制与升学路径</div>
+      <div class="sec-sub">3+0 / 2+1.5 / 2+1 三种模式</div>
+    </div>
+
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>学制</th><th>就读安排</th><th>适用方向</th><th>升学方式</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="name">3+0</td>
+              <td>三年全部在国内完成</td>
+              <td>英美澳加日等国</td>
+              <td>国内直考（日高方向冲 EJU 留考；英美方向申请制）</td>
+            </tr>
+            <tr>
+              <td class="name">2+1.5</td>
+              <td>国内读 2 年 → 赴日本姐妹高中读 1.5 年</td>
+              <td>日本方向</td>
+              <td>姐妹校推荐制 / EJU / AO / 艺术类</td>
+            </tr>
+            <tr>
+              <td class="name">2+1</td>
+              <td>国内读 2 年 → 第 3 年赴美（合作校）</td>
+              <td>美国方向</td>
+              <td>美高学籍申请制</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note blue">
+      <strong>双保险文凭：</strong>学生入学注册<strong>上海市高中学籍</strong>，通过语文、政治、历史、地理四门学业水平考试可获<strong>上海市高中毕业证书（全日制普通高中）</strong>；部分方向同时拿海外合作校学籍（如美国蓝带高中学籍）→ 国内文凭 + 国际课程双保障，进退有路。升学指导老师<strong>一对一</strong>全程跟进。
+    </div>
+  </section>
+
+  <!-- 五、日高部 -->
+  <section class="block" id="japan">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#FEF2F2;color:#DC2626">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2" fill="currentColor" stroke="none"/></svg>
+      </div>
+      <div class="sec-title">五、日高部——沪上第一梯队的王牌赛道</div>
+      <div class="sec-sub">国内首个高中留日项目 · 22 所姐妹校</div>
+    </div>
+
+    <div class="note red">
+      <strong>如果目标是日本方向，文来几乎是沪上最难替代的选项。</strong>国内首个高中留学日本项目，办学历史、姐妹校规模、日籍师资与升学数据在本市日本方向国际高中里处第一梯队。全国可报考。
+    </div>
+
+    <div class="rank-list" style="margin-bottom:14px">
+      <div class="rank-item top"><div class="rank-no">70%+</div><div class="rank-body"><div class="rank-name">日高部升入日本一流大学</div><div class="rank-meta">历年统计，含东大 / 京大 / 早稻田 / 庆应 / 上智等</div></div></div>
+      <div class="rank-item"><div class="rank-no">22 所</div><div class="rank-body"><div class="rank-name">日本姐妹高中</div><div class="rank-meta">其中 70% 为独家合作关系，覆盖日本各主要地区</div></div></div>
+      <div class="rank-item"><div class="rank-no">12 名</div><div class="rank-body"><div class="rank-name">日籍教师</div><div class="rank-meta">多来自京都大学、立教大学等，具日本本土高中教学经验</div></div></div>
+      <div class="rank-item"><div class="rank-no">N1</div><div class="rank-body"><div class="rank-name">日语能力考通过率领先</div><div class="rank-meta">日语 N1 全员通过率持续领跑上海</div></div></div>
+    </div>
+
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>届别</th><th>关键录取</th></tr></thead>
+          <tbody>
+            <tr><td class="name">2024 届</td><td>东京大学 1 人、京都大学 1 人、早稻田大学 10 人；获 2024 年 <strong>EJU 留考文理科双状元</strong></td></tr>
+            <tr><td class="name">2024–25 年度</td><td>帝国大学共 5 枚（东大 1、名古屋 1、北海道 3）；东京工业大学 1、筑波大学 3；私立 60+ 枚（早稻田 6、庆应 3）；美术类 20+ 枚（武藏野 1、多摩 3）</td></tr>
+            <tr><td class="name">2025 届</td><td>名古屋大学等帝国大学 offer；东京工业、筑波等理工强校；早稻田·庆应·上智私立三强；武藏野美术大学等艺术校</td></tr>
+            <tr><td class="name">2026 届</td><td>早稻田大学 <strong>13 枚（历史新高）</strong>、庆应义塾 6 枚、立命馆 4 枚；一桥 / 东京电机 / 同志社 / 学习院各 2 枚、京都大学 1 枚；澳洲墨尔本 7 枚、英国曼彻斯特 2 枚</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note">
+      日高部四条升学路：<strong>① 姐妹校推荐制</strong>（合作大学专属名额，如早稻田、立教）· <strong>② EJU 留考</strong>（3+0 学制主攻）· <strong>③ AO 入学</strong>（综合评估）· <strong>④ 艺术类院校</strong>（多摩美术、武藏野美术等）。
+    </div>
+  </section>
+
+  <!-- 六、录取情况 -->
+  <section class="block" id="results">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#EFF6FF;color:#2563EB">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+      </div>
+      <div class="sec-title">六、录取情况（分届明细）</div>
+      <div class="sec-sub">2024 / 2025 / 2026 届 + 历年稳定战绩</div>
+    </div>
+
+    <div class="note blue">
+      <strong>先看整体盘子。</strong>文来国际部近三年毕业生 <strong>100% 被海外大学录取</strong>，升学覆盖全球 15+ 个国家和地区。分方向看强弱分明：<strong>日本方向是绝对王牌</strong>（东大 / 京大 / 一桥 / 早稻田 / 庆应均有真实斩获）；<strong>美英方向处在「前 50–100 档」</strong>（美高部 55% 进 US News 前 50、93% 进前 100）。
+    </div>
+
+    <div class="bars">
+      <div class="bar-row">
+        <div class="bar-top"><span class="lbl">日高部 · 考入日本一流大学（Top30）比例</span><span class="val">70%+</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:70%"></div></div>
+        <div class="bar-note">历年统计；日语 N1 考试全员通过率持续领跑上海</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-top"><span class="lbl">美高部 · 2025 届 US News 全美前 50 录取占比</span><span class="val">55%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:55%"></div></div>
+        <div class="bar-note">2024 届口径为 36%；美高部口径 100% 进入全美前 100</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-top"><span class="lbl">美高部 · 2025 届世界前 100 录取占比</span><span class="val">93%</span></div>
+        <div class="bar-track"><div class="bar-fill green" style="width:93%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-top"><span class="lbl">近三年全体毕业生 · 海外大学录取率</span><span class="val">100%</span></div>
+        <div class="bar-track"><div class="bar-fill amber" style="width:100%"></div></div>
+        <div class="bar-note">英国方向有帝国理工、UCL、爱丁堡等 G5 突破</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:.95rem;font-weight:800;margin:20px 0 8px;color:#1D4ED8">6.1　2026 届 · 逐份喜报明细（含学生与学部）</h3>
+    <div class="note green">
+      2026 届目前（截至 2026-03-11）已收获 <strong>40+ 枚 offer</strong>，覆盖日本、澳大利亚、英国。其中<strong>日本方向实现历史性突破</strong>：首次斩获东京大学、京都大学、一桥大学等国立天花板院校，早稻田录取从上一届 6 份跃升至 <strong>13 份</strong>。
+    </div>
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>发布时间</th><th>喜报</th><th>录取详情</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="num">2025-09-26</td><td class="name">喜报一</td>
+              <td>早稻田大学 3 份 —— 叶同学（文学部）、骆同学（文学部）、沈同学（法学部 / 文化构想学部）</td>
+            </tr>
+            <tr>
+              <td class="num">2025-10-14</td><td class="name">喜报二·三</td>
+              <td>上智大学 3 份（均理工学部，日本私立三大名门之一）；早稻田新增 3 份（骆—政治经济学部、王—商学部、李—商学部），累计 6 份</td>
+            </tr>
+            <tr>
+              <td class="num">2025-10-28</td><td class="name">喜报四·五</td>
+              <td>早稻田新增 1 份（葛—人间科学学部），含 SGU 项目累计 10 份；东京理科大学 2 份（均经营学部）；日本院校合计 13 份 —— 早稻田（先进理工学部、教育学部）、立命馆 4（经营 / 映像 / 体育健康科学 / 情报理工）、同志社 2（全球交流 / 经济）、学习院 2（文学 / 国际文化交流）、东京电机 2（未来科学 / 机械工学）</td>
+            </tr>
+            <tr>
+              <td class="num">2026-01-26</td><td class="name">喜报六</td>
+              <td>庆应义塾大学 <strong>6 份</strong>（日本私学双雄之一）—— 王（法学部、经济学部）、骆（文学部、经济学部）、李（商学部、综合政策学部）、杜（环境情报学部）、张（GIGA Program）</td>
+            </tr>
+            <tr>
+              <td class="num">2026-03-01</td><td class="name">喜报七</td>
+              <td>顶尖国立 3 份 —— 骆同学 <strong>一桥大学</strong> 社会学部（日本社会科学最高学府）、沈同学 <strong>京都大学</strong> 工学部</td>
+            </tr>
+            <tr>
+              <td class="num">2026-03-11</td><td class="name">喜报八</td>
+              <td>骆同学 <strong>东京大学</strong> 文科三类（2025 年 EJU 校内考合格仅 22 人，录取难度极高）</td>
+            </tr>
+            <tr>
+              <td class="num">非日方向</td><td class="name">同期</td>
+              <td>澳大利亚 墨尔本大学 7 枚；英国 曼彻斯特大学 2 枚</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 style="font-size:.95rem;font-weight:800;margin:20px 0 8px;color:#1D4ED8">6.2　2025 届 · 录取结果</h3>
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>方向</th><th>录取情况</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="name">日本方向</td>
+              <td>帝国大学 <strong>5 枚</strong>（东京大学 1、名古屋大学 1、北海道大学 3）；理工强校 —— 筑波大学 3、东京工业大学 1、东京工艺大学 1、千叶工业大学 1；私立名校 <strong>60+ 枚</strong>（早稻田 6、庆应义塾 3）；艺术类 <strong>20+ 枚</strong>（武藏野美术、多摩美术、女子美术）。有学生获瑞士洛桑酒店管理学院<strong>全额奖学金</strong></td>
+            </tr>
+            <tr>
+              <td class="name">美高部</td>
+              <td>截至 2025-03-18：美国录取占 39%、澳大利亚 32%、英国 18%、加拿大 10%；美国本科 <strong>TOP50 录取占 55%</strong>、<strong>TOP100 占 93%</strong></td>
+            </tr>
+            <tr>
+              <td class="name">英国方向</td>
+              <td>G5 突破：伦敦大学学院（UCL）；罗素集团 —— 爱丁堡、曼彻斯特、布里斯托、伯明翰、南安普顿</td>
+            </tr>
+            <tr>
+              <td class="name">其他方向</td>
+              <td>澳大利亚 悉尼大学；荷兰 阿姆斯特丹大学等；升学覆盖全球 15+ 国家和地区</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 style="font-size:.95rem;font-weight:800;margin:20px 0 8px;color:#1D4ED8">6.3　2024 届 · 录取结果</h3>
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>方向</th><th>录取情况</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="name">日本方向</td>
+              <td>日高部 <strong>70%+</strong> 学生考入日本一流大学；斩获 <strong>东京大学 1 人、京都大学 1 人</strong>；早稻田大学 4 份（另有渠道口径为 10 人）、立命馆大学、京都精华大学、拓殖大学 2 份</td>
+            </tr>
+            <tr>
+              <td class="name">重大突破</td>
+              <td>获 <strong>2024 年第二回 EJU 留学生考试文理科双状元</strong></td>
+            </tr>
+            <tr>
+              <td class="name">英国方向</td>
+              <td>帝国理工学院 1 份、伦敦大学学院 3 份、爱丁堡大学、华威大学、利兹大学</td>
+            </tr>
+            <tr>
+              <td class="name">美国方向</td>
+              <td>加州大学戴维斯分校 3 份、加州大学尔湾分校 3 份、伊利诺伊大学香槟分校、华盛顿大学；美高部 <strong>36%</strong> 获 US News 前 50、<strong>100%</strong> 获前 100</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 style="font-size:.95rem;font-weight:800;margin:20px 0 8px;color:#1D4ED8">6.4　历年稳定战绩（跨届）</h3>
+    <div class="rank-list" style="margin-bottom:14px">
+      <div class="rank-item top"><div class="rank-no">东大</div><div class="rank-body"><div class="rank-name">东京大学（日本最高学府）</div><div class="rank-meta">2024 届 1 人、2026 届 1 人（文科三类）</div></div></div>
+      <div class="rank-item top"><div class="rank-no">京大</div><div class="rank-body"><div class="rank-name">京都大学</div><div class="rank-meta">2024 届 1 人、2026 届 1 人（工学部）</div></div></div>
+      <div class="rank-item"><div class="rank-no">一桥</div><div class="rank-body"><div class="rank-name">一桥大学</div><div class="rank-meta">2026 届 1 人（社会学部，日本社科最高学府）</div></div></div>
+      <div class="rank-item"><div class="rank-no">13</div><div class="rank-body"><div class="rank-name">早稻田大学（2026 届）</div><div class="rank-meta">历史新高，覆盖文学 / 法学 / 商学 / 政治经济 / 先进理工 / 教育 / 人间科学等学部</div></div></div>
+      <div class="rank-item"><div class="rank-no">6</div><div class="rank-body"><div class="rank-name">庆应义塾大学（2026 届）</div><div class="rank-meta">日本私学双雄之一</div></div></div>
+      <div class="rank-item"><div class="rank-no">N1</div><div class="rank-body"><div class="rank-name">日语 N1 全员通过率</div><div class="rank-meta">持续领跑上海</div></div></div>
+      <div class="rank-item"><div class="rank-no">60+</div><div class="rank-body"><div class="rank-name">私立名校录取（2025 届）</div><div class="rank-meta">早稻田、庆应等</div></div></div>
+      <div class="rank-item"><div class="rank-no">15+</div><div class="rank-body"><div class="rank-name">升学覆盖国家和地区</div><div class="rank-meta">日、英、美、澳、加、荷、瑞士等</div></div></div>
+    </div>
+
+    <div class="note blue">
+      <strong>看数据要注意分母与口径。</strong>「100% 被海外大学录取」是全校口径，不等于「人人进名校」；日高部「70% 进日本一流大学」中的「一流」多为学校自定口径（常见为日本 Top30）。美英方向目前最优成绩集中在 <strong>US News 前 50 / QS 前 50 档</strong>，与光华剑桥、领科、世外、平和等头部 A-Level 校相比仍有差距——选它更多是为了<strong>日本方向的专业度、多路径与双学籍</strong>，而非纯牛剑藤校竞争。各届数据来自学校公众号喜报，逐年口径可能不同。
+    </div>
+  </section>
+
+  <!-- 七、招生与考试 -->
+  <section class="block" id="admission">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#FFFBEB;color:#D97706">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+      </div>
+      <div class="sec-title">七、招生规模与入学考试</div>
+      <div class="sec-sub">2025 官方招生录取方案口径</div>
+    </div>
+
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>项目</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><td class="k">招生对象</td><td>国内外初中毕业生（含就读上海初中但不参加上海中考的非沪籍学生、外国籍学生）；入学年级 10 年级；接收插班生</td></tr>
+            <tr><td class="k">招生规模</td><td>美高+AP、A-Level、日高、双语联申合计 <strong>约 200 人</strong>；2025 官方方案：上海生源 <strong>170 人</strong> + 非上海生源 <strong>30 人</strong>（生源本市外地约各半）</td></tr>
+            <tr><td class="k">班级构成</td><td>美高 &amp; A-Level 约 2 个班 · 日高约 5 个班（日高为主体）</td></tr>
+            <tr><td class="k">报名时间</td><td>上海生源 6 月 20 日截止；非上海生源联系招生处</td></tr>
+            <tr><td class="k">报名方式</td><td>官网（wlhs.mhedu.sh.cn）或微信公众号「文来高中国际部」在线申请，审核合格后分批考试及面试</td></tr>
+            <tr><td class="k">考试内容</td><td><strong>笔试</strong>：英语 + 数学（校内命题，约 70 分钟，满分 120 分 = 英 60 + 数 60）；<strong>面试</strong>：德育面试（考察文明行为、道德品质、团队精神、交流合作）</td></tr>
+            <tr><td class="k">英语免考</td><td>提供一年内成绩：<strong>托福 80+ / 雅思 6.0+ / 多邻国 100–110+ / JLPT N2+</strong> 可免英语笔试</td></tr>
+            <tr><td class="k">录取规则</td><td>上海生源：预录取签约后，中考总成绩须达本市普高最低投档控制分数线才正式录取；非上海生源：达校内自主招生录取标准，学校自行组织预录取签约</td></tr>
+            <tr><td class="k">签约提示</td><td>与本校签约后不得与其他招生学校重复签约；被预录取并完成签约的学生不得更改或放弃志愿</td></tr>
+            <tr><td class="k">开放日 / 考试场次</td><td>2025 秋招两场：3 月 22 日、4 月 26 日（各年安排以官方公布为准；2027 春招预计 2026 年 10 月启动）</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>备考提示（据历年考情）：</strong>英语题量偏大（约 45 道选择题，含词汇语法单选、完形 2 篇、阅读 2 篇），<strong>不考作文与听力</strong>，难度约在中考水平，但阅读接近雅思难度；数学卷可选中/英文卷。总分低于 100 分（满分 120）录取希望较小。
+    </div>
+  </section>
+
+  <!-- 八、费用 -->
+  <section class="block" id="cost">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#F0FDF4;color:#059669">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div class="sec-title">八、费用明细</div>
+      <div class="sec-sub">沪上头部国际校中的实惠档 · 免申请费</div>
+    </div>
+
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>费用项目</th><th>标准</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td class="k">学费</td><td class="num">63,000 元 / 学期 ≈ 12.6 万 / 年</td><td>2025 官方招生录取方案口径；部分渠道披露约 12 万 / 年</td></tr>
+            <tr><td class="k">住宿费</td><td class="num">3,840 元 / 学期 ≈ 8,800 元 / 年</td><td>全封闭寄宿制，宿舍配独立卫浴、空调、生活老师</td></tr>
+            <tr><td class="k">校服费</td><td class="num">约 2,800 元 / 年</td><td>—</td></tr>
+            <tr><td class="k">教材资料费</td><td class="num">约 7,500 元 / 年</td><td>含教材与资料</td></tr>
+            <tr><td class="k">餐费</td><td>自理</td><td>中餐、西餐等自行点餐付费</td></tr>
+            <tr><td class="k">申请费</td><td class="num">免</td><td>不收取申请费</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note blue">
+      <strong>性价比位置：</strong>12–12.6 万 / 年在上海民办国际高中里属实惠档（民办主流区间约 12–23 万，外籍校 20–40 万）。费用按学年略有调整，以学校官方最新公布为准。
+    </div>
+  </section>
+
+  <!-- 九、师资与管理 -->
+  <section class="block" id="faculty">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#F3E8FF;color:#7C3AED">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="sec-title">九、师资与管理特色</div>
+      <div class="sec-sub">中外融合 · 小班分层 · 全封闭寄宿</div>
+    </div>
+
+    <div class="path-grid">
+      <div class="path-card p1">
+        <h4>师资构成</h4>
+        <div class="lead">中外融合，外教占比高，教师多具海外名校背景与国际课程教学经验。</div>
+        <ul>
+          <li>中方教师多毕业于哥伦比亚大学、多伦多大学、爱丁堡大学、日本东北大学、北大、港大、复旦、南开、中科院（硕博）</li>
+          <li>日高部 12 名日籍教师，来自京都大学、立教大学等</li>
+          <li>美高部外教 100% 具外专局认证外教聘用资格</li>
+        </ul>
+      </div>
+      <div class="path-card p4">
+        <h4>教学与管理</h4>
+        <div class="lead">小班分层、双语过渡，精细化学业与升学指导。</div>
+        <ul>
+          <li>师生比约 <strong>1:7</strong>；小班化约 25 人 / 班</li>
+          <li>中外教比例约 1:2；ESL 教研组曾获区级荣誉</li>
+          <li>全封闭寄宿制：独立卫浴、空调、生活老师</li>
+          <li>电子设备统一管理（周一至周五禁用手机）+ 晚自习</li>
+          <li>沉浸式日语：日语演讲赛、文化祭、日式料理体验、姐妹校线上交流</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 十、海外资源 -->
+  <section class="block" id="resources">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#ECFEFF;color:#0891B2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg>
+      </div>
+      <div class="sec-title">十、海外合作资源</div>
+      <div class="sec-sub">30+ 全球姐妹校 · 全年百余所海外大学访校</div>
+    </div>
+
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>国家 / 地区</th><th>合作项目</th></tr></thead>
+          <tbody>
+            <tr><td class="name">日本</td><td>国立九州大学指定海外提携高中；22 所日本姐妹高中（70% 独家）；早稻田大学、立教大学等专属推荐名额</td></tr>
+            <tr><td class="name">澳大利亚</td><td>悉尼大学预科优质生源基地</td></tr>
+            <tr><td class="name">英国</td><td>兰卡斯特大学等多所大学预科合作校</td></tr>
+            <tr><td class="name">新西兰</td><td>奥克兰大学预科合作校</td></tr>
+            <tr><td class="name">美国</td><td>加州大学河滨分校签约合作学校；美国公立蓝带格林威尔高中学籍</td></tr>
+            <tr><td class="name">加拿大</td><td>多伦多大学绿色通道项目</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note">
+      与<strong>七宝中学、七宝德怀特高中</strong>同属七宝中学教育集团，教学资源互通；30 余所海外姐妹校遍布全球，全年百余所海外大学到校访校。
+    </div>
+  </section>
+
+  <!-- 十一、择校判断 -->
+  <section class="block" id="judge">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#FFF1F2;color:#E11D48">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <div class="sec-title">十一、择校判断（给 Owen 的参考）</div>
+      <div class="sec-sub">什么情况下值得选它</div>
+    </div>
+
+    <div class="tips">
+      <div class="tip">
+        <div class="tip-ico" style="background:#F0FDF4;color:#059669">✓</div>
+        <div><h4>目标日本 → 强烈推荐</h4><p>国内首个高中留日项目，22 所姐妹校 + 12 名日籍教师 + 历年东大/京大/早稻田真实录取，本市日本方向几乎没有更对口的选项。</p></div>
+      </div>
+      <div class="tip">
+        <div class="tip-ico" style="background:#F0FDF4;color:#059669">✓</div>
+        <div><h4>方向未定、想要「双保险」</h4><p>21 所双学籍（上海高中学籍 + 海外学籍），通过四门学考可拿上海市高中毕业证；双语联申班让英国 / 日本两条线都留着，不用现在就押注。</p></div>
+      </div>
+      <div class="tip">
+        <div class="tip-ico" style="background:#F0FDF4;color:#059669">✓</div>
+        <div><h4>看重性价比与稳妥</h4><p>12.6 万 / 年偏低，免申请费；作为上海市重点中学七宝系名校创办，管理规范、资源与七宝德怀特互通，风险较低。</p></div>
+      </div>
+      <div class="tip">
+        <div class="tip-ico" style="background:#FEF3C7;color:#B45309">!</div>
+        <div><h4>想冲牛剑藤校 → 它不是最优解</h4><p>美英方向目前成绩集中在 US News / QS 前 50 档；若目标是牛剑藤校，头部 A-Level 校（光华剑桥、领科）或世外、平和的 IB/AL 更具竞争力。文来的 A-Level 属第二梯队。</p></div>
+      </div>
+      <div class="tip">
+        <div class="tip-ico" style="background:#FEF3C7;color:#B45309">!</div>
+        <div><h4>注意「双轨制」的现实难度</h4><p>虽然保留国内学籍，但国际课程与国内高考课程体系差异大，「两条腿走路」在实操上很难兼顾；双学籍更多是<strong>退路保障</strong>，不是并行冲刺高考的方案。</p></div>
+      </div>
+      <div class="tip">
+        <div class="tip-ico" style="background:#EFF6FF;color:#2563EB">i</div>
+        <div><h4>给 Owen 的提醒</h4><p>文来初中部就在家附近（闵行七宝），高中部/国际部在虹莘路。若走国际线，先定<strong>出口国</strong>再定课程：日本走日高部，英美看 A-Level / 美高 AP；英语有底子（托福 80+/雅思 6.0+）可直接免英语笔试，把备考精力压到数学与面试上。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>数据来源：上海市教育考试院《2025 年上海市民办普通高中国际课程班招生录取方案》、上海市文来中学官网、校方公开招生简章及公开报道整理。</p>
+    <p style="margin-top:6px">学费、招生计划与升学数据逐年变动，<strong>具体以学校及教育主管部门官方公布为准</strong>。仅供家庭择校参考。</p>
+    <p style="margin-top:8px"><a href="../index.html">← 返回全景看板</a> · <a href="shanghai-international-highschools-V1.html">上海国际高中全景图鉴</a></p>
+  </footer>
+
+</div>
+</body>
+</html>

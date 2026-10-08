@@ -3,6 +3,14 @@
     {
       "source": "/",
       "destination": "/word-planet.html"
+    },
+    {
+      "source": "/:path*背诵版.html",
+      "destination": "/chinese/recitation-bank-V1.html"
+    },
+    {
+      "source": "/:path*%E8%83%8C%E8%AF%B5%E7%89%88.html",
+      "destination": "/chinese/recitation-bank-V1.html"
     }
   ]
 }

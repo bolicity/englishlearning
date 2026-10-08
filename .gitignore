@@ -14,8 +14,9 @@ Thumbs.db
 .vercel
 .workbuddy/
 
-# 第三方资源仓库（体积大 / 无授权，不入库、不参与 Vercel 部署）
-/资料索引/
+# 资料索引中的开发缓存
+/资料索引/8shang_yuwen_jichu/node_modules/
+/资料索引/8shang_yuwen_jichu/.next/
 /test-results/
 
 # Large PDF files exceeding GitHub 50MB/100MB limit
