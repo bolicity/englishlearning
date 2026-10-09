@@ -77,6 +77,18 @@ tbody td{padding:9px 12px;border-bottom:1px solid #F1F5F9;vertical-align:top;col
 tbody tr:last-child td{border-bottom:none}
 tbody tr:hover{background:#F8FAFC}
 td.name{font-weight:700;color:var(--text-main);white-space:nowrap}
+a.sch{color:inherit;text-decoration:none;border-bottom:1.5px dashed #93C5FD;transition:var(--transition)}
+a.sch::after{content:'↗';font-size:.62em;color:var(--primary);margin-left:3px;vertical-align:super;font-weight:800}
+a.sch:hover{color:var(--primary-dark);border-bottom-color:var(--primary);border-bottom-style:solid}
+
+/* school callout */
+.sch-callout{display:flex;align-items:center;gap:11px;background:linear-gradient(135deg,#EFF6FF,#F5F3FF);border:1px solid #BFDBFE;border-radius:var(--radius-md);padding:11px 15px;margin-bottom:12px;text-decoration:none;transition:var(--transition)}
+.sch-callout:hover{border-color:#93C5FD;box-shadow:var(--shadow-hover);transform:translateY(-1px)}
+.sch-callout .ic{width:32px;height:32px;border-radius:var(--radius-sm);background:#fff;display:flex;align-items:center;justify-content:center;color:var(--primary);flex-shrink:0;font-weight:800;font-size:.8rem;border:1px solid #DBEAFE}
+.sch-callout .tx{flex:1;min-width:0}
+.sch-callout .tx b{font-size:.85rem;color:#1E3A8A;display:block;font-weight:800}
+.sch-callout .tx span{font-size:.72rem;color:#3B82F6}
+.sch-callout .go{font-size:.75rem;font-weight:800;color:var(--primary-dark);white-space:nowrap;background:#fff;border:1px solid #BFDBFE;padding:4px 11px;border-radius:100px}
 td.num{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600;color:var(--text-main)}
 .tag{display:inline-block;font-size:.66rem;font-weight:700;padding:1px 7px;border-radius:100px;white-space:nowrap;margin-left:5px;vertical-align:middle}
 .t-gov{background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE}
@@ -202,7 +214,7 @@ footer a{color:var(--text-muted);text-decoration:none}
               <td class="num">1 所</td>
               <td>上海 ＋ 非上海生源</td>
               <td>上海普高学籍，中美双文凭</td>
-              <td>上海七宝德怀特高级中学</td>
+              <td><a class="sch" href="qibao-dwight-V1.html">上海七宝德怀特高级中学</a></td>
             </tr>
             <tr>
               <td class="name">民办双语 / 国际高中 <span class="tag t-pri">民办</span></td>
@@ -272,7 +284,7 @@ footer a{color:var(--text-muted);text-decoration:none}
             <tr><td class="name">上海市民办平和学校</td><td>浦东</td><td class="num">300</td><td>260 / 40</td><td>IBDP · 美高 AP</td></tr>
             <tr><td class="name">上海金山区枫叶学校</td><td>金山</td><td class="num">300</td><td>150 / 150</td><td>枫叶世界课程 · 加拿大 BC</td></tr>
             <tr><td class="name">上海星河湾双语学校</td><td>闵行</td><td class="num">220</td><td>202 / 18</td><td>美高 AP</td></tr>
-            <tr><td class="name">上海市文来中学</td><td>闵行</td><td class="num">200</td><td>170 / 30</td><td>美高 AP · A-Level · 日本 · 加拿大</td></tr>
+            <tr><td class="name"><a class="sch" href="wenlai-international-V1.html">上海市文来中学</a></td><td>闵行</td><td class="num">200</td><td>170 / 30</td><td>美高 AP · A-Level · 日本 · 加拿大</td></tr>
             <tr><td class="name">上海民办包玉刚实验高中</td><td>松江</td><td class="num">165</td><td>135 / 30</td><td>IBDP</td></tr>
             <tr><td class="name">上海市民办尚德实验学校</td><td>浦东</td><td class="num">160</td><td>80 / 80</td><td>IBDP · A-Level · 美高 AP · 日本</td></tr>
             <tr><td class="name">上海市西外外国语学校</td><td>松江</td><td class="num">160</td><td>80 / 80</td><td>美高 AP · A-Level</td></tr>
@@ -291,7 +303,7 @@ footer a{color:var(--text-muted);text-decoration:none}
           <thead><tr><th>学校</th><th>区</th><th>2025 计划</th><th>本市 / 外地</th><th>课程与文凭</th><th>学费</th></tr></thead>
           <tbody>
             <tr>
-              <td class="name">上海七宝德怀特高级中学 <span class="tag t-new">全市唯一</span></td>
+              <td class="name"><a class="sch" href="qibao-dwight-V1.html">上海七宝德怀特高级中学</a> <span class="tag t-new">全市唯一</span></td>
               <td>闵行</td>
               <td class="num">175</td>
               <td>125 / 50</td>
@@ -306,6 +318,12 @@ footer a{color:var(--text-muted);text-decoration:none}
       <strong>七宝德怀特要点：</strong>由上海市七宝中学与美国纽约德怀特学校合办，2014 年开学，中国教育部备案（许可证号 PPDE31USA04INR20140730N）。课程保留语文、历史、地理、政治四门国家课程，中外教比约 6:4。2025 年学费经闵行区发改委核准调整为 <strong>9 万元 / 学期</strong>（即 18 万 / 年，新生新办法）。2026 届毕业生已获 11 个国家和地区 1086 封录取，60% 获全球前 30 大学录取。
     </div>
 
+    <a class="sch-callout" href="qibao-dwight-V1.html">
+      <span class="ic">七德</span>
+      <span class="tx"><b>上海七宝德怀特高级中学 · 专项调研页</b><span>IBDP / A-Level 双轨 · 三张文凭 · 2024–2026 届录取明细 · 招生考试 · 费用 · 择校判断</span></span>
+      <span class="go">查看专题 →</span>
+    </a>
+
     <h3 id="alevel21" style="font-size:.9rem;font-weight:800;margin:20px 0 8px;color:#B45309;scroll-margin-top:14px">2.4 「21 所」里的 A-Level 学校（共 8 所）</h3>
     <div class="note blue">
       <strong>先说结论：21 所开 A-Level 的只有 8 所，且全部在民办（10 所）与中外合作（1 所）；10 所公办国际课程班无一开设 A-Level</strong>——公办走的是 IBDP / AP / BC / PGA / VCE / DSD 德语等方向。A-Level 是纯英国体系课程，与「21 所」的英联邦升学定位天然契合。
@@ -317,9 +335,9 @@ footer a{color:var(--text-muted);text-decoration:none}
           <tbody>
             <tr><td class="name">上海市世外中学 <span class="tag t-pri">民办</span></td><td>民办</td><td>徐汇</td><td>2020 年起开设 A-Level，IB 双轨</td><td class="num">18 万 / 年</td><td>「浦西世外」一梯队，牛剑稳定输出</td></tr>
             <tr><td class="name">上海市民办平和学校 <span class="tag t-pri">民办</span></td><td>民办</td><td>浦东</td><td>2023 年起开设 A-Level</td><td class="num">20 万 / 年</td><td>「浦东平和」IB 双子星，美本藤校强</td></tr>
-            <tr><td class="name">上海七宝德怀特高级中学 <span class="tag t-coop">中外合办</span></td><td>中外合作</td><td>闵行</td><td>2018 年获 CAIE 授权开设 A-Level</td><td class="num">9 万 / 学期</td><td>唯一中外合作高中，IB/A-Level 双文凭</td></tr>
+            <tr><td class="name"><a class="sch" href="qibao-dwight-V1.html">上海七宝德怀特高级中学</a> <span class="tag t-coop">中外合办</span></td><td>中外合作</td><td>闵行</td><td>2018 年获 CAIE 授权开设 A-Level</td><td class="num">9 万 / 学期</td><td>唯一中外合作高中，IB/A-Level 双文凭</td></tr>
             <tr><td class="name">上海市民办尚德实验学校 <span class="tag t-pri">民办</span></td><td>民办</td><td>浦东</td><td>2022 年建 IGCSE & A-Level 中心</td><td class="num">17.2 万 / 年</td><td>剑桥＋牛津 AQA 双授权，IB 三项目一贯制</td></tr>
-            <tr><td class="name">上海市文来中学 <span class="tag t-pri">民办</span></td><td>民办</td><td>闵行</td><td>英国考试局授权 A-Level 考试中心</td><td class="num">12.6–14.4 万 / 年</td><td>Cognia 认证；A-Level 1 个班，日高为特色</td></tr>
+            <tr><td class="name"><a class="sch" href="wenlai-international-V1.html">上海市文来中学</a> <span class="tag t-pri">民办</span></td><td>民办</td><td>闵行</td><td>英国考试局授权 A-Level 考试中心</td><td class="num">12.6–14.4 万 / 年</td><td>Cognia 认证；A-Level 1 个班，日高为特色</td></tr>
             <tr><td class="name">上海协和双语高级中学（古北） <span class="tag t-pri">民办</span></td><td>民办</td><td>闵行</td><td>2027 学年起开设两年制 A-Level</td><td class="num">约 16 万 / 年</td><td>聚焦数学 / 进阶数学 / 物理 / 经济（STEM）</td></tr>
             <tr><td class="name">上海市西南位育中学 <span class="tag t-pri">民办</span></td><td>民办</td><td>徐汇</td><td>2026 年 9 月起新增 A-Level</td><td class="num">14.5 万 / 年</td><td>与美高 AP 组成「双 A 体系」，英美双申</td></tr>
             <tr><td class="name">上海市西外外国语学校 <span class="tag t-pri">民办</span></td><td>民办</td><td>松江</td><td>美高 AP ＋ A-Level ＋ 日高三线</td><td class="num">11 万 / 年</td><td>21 所中性价比之选，转轨友好</td></tr>
@@ -327,6 +345,12 @@ footer a{color:var(--text-muted);text-decoration:none}
         </table>
       </div>
     </div>
+
+    <a class="sch-callout" href="wenlai-international-V1.html">
+      <span class="ic">文来</span>
+      <span class="tx"><b>上海市文来中学（国际部）· 专项调研页</b><span>三大课程通道 · 分届录取明细（2024–2026）· 招生考试 · 费用 · 择校判断</span></span>
+      <span class="go">查看专题 →</span>
+    </a>
 
     <h4 style="font-size:.86rem;font-weight:800;margin:16px 0 8px;color:var(--text-main)">A-Level 优质校分层推荐</h4>
     <div class="tips">
@@ -338,7 +362,7 @@ footer a{color:var(--text-muted);text-decoration:none}
       <div class="tip" style="border-left:4px solid #D97706">
         <div class="tip-ico" style="background:#FEF3C7;color:#B45309">Ⅱ</div>
         <div><h4>第二梯队 · 课程成熟、升学亮眼</h4>
-        <p><strong>七宝德怀特</strong>：唯一中外合作，IBDP ＋ A-Level 可获中美双文凭，2026 届 11 国 1086 封录取、60% 全球前 30。&nbsp;<strong>尚德实验</strong>：2025 年首届 A-Level 全球统考 40% 拿下 AS 全 A，物理 / 生物 / 进阶数学 70% 达 A–A*。&nbsp;<strong>文来中学</strong>：英国考试局授权 A-Level 考试中心 ＋ Cognia 认证 ＋ 五星雅思示范校，A-Level 小班精细。</p></div>
+        <p><a class="sch" href="qibao-dwight-V1.html"><strong>七宝德怀特</strong></a>：唯一中外合作，IBDP ＋ A-Level 可获中美双文凭，2026 届 11 国 1086 封录取、60% 全球前 30。&nbsp;<strong>尚德实验</strong>：2025 年首届 A-Level 全球统考 40% 拿下 AS 全 A，物理 / 生物 / 进阶数学 70% 达 A–A*。&nbsp;<strong>文来中学</strong>：英国考试局授权 A-Level 考试中心 ＋ Cognia 认证 ＋ 五星雅思示范校，A-Level 小班精细（<a class="sch" href="wenlai-international-V1.html">专项页</a>）。</p></div>
       </div>
       <div class="tip" style="border-left:4px solid #2563EB">
         <div class="tip-ico" style="background:#EFF6FF;color:#1D4ED8">Ⅲ</div>
@@ -441,8 +465,8 @@ footer a{color:var(--text-muted);text-decoration:none}
 
             <!-- 闵行区 -->
             <tr data-dist="闵行区" data-curr="AP"><td class="name">上海星河湾双语学校</td><td>闵行</td><td><span class="curr"><span class="chip">美高AP</span></span></td><td class="num">18</td><td>21 所；福布斯全国第 10</td></tr>
-            <tr data-dist="闵行区" data-curr="IB A-Level"><td class="name">上海七宝德怀特高级中学</td><td>闵行</td><td><span class="curr"><span class="chip">IBDP</span><span class="chip">A-Level</span></span></td><td class="num">18</td><td>21 所；唯一中外合作高中</td></tr>
-            <tr data-dist="闵行区" data-curr="AP A-Level 日本 加拿大"><td class="name">上海市文来中学（国际部）</td><td>闵行</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">A-Level</span><span class="chip">日本</span><span class="chip">加拿大</span></span></td><td class="num">14.4–18</td><td>21 所；日高部口碑佳</td></tr>
+            <tr data-dist="闵行区" data-curr="IB A-Level"><td class="name"><a class="sch" href="qibao-dwight-V1.html">上海七宝德怀特高级中学</a></td><td>闵行</td><td><span class="curr"><span class="chip">IBDP</span><span class="chip">A-Level</span></span></td><td class="num">18</td><td>21 所；唯一中外合作高中</td></tr>
+            <tr data-dist="闵行区" data-curr="AP A-Level 日本 加拿大"><td class="name"><a class="sch" href="wenlai-international-V1.html">上海市文来中学（国际部）</a></td><td>闵行</td><td><span class="curr"><span class="chip">美高AP</span><span class="chip">A-Level</span><span class="chip">日本</span><span class="chip">加拿大</span></span></td><td class="num">14.4–18</td><td>21 所；日高部口碑佳</td></tr>
             <tr data-dist="闵行区" data-curr="A-Level IB"><td class="name">上海闵行区万科双语学校</td><td>闵行</td><td><span class="curr"><span class="chip">A-Level</span><span class="chip">IB</span></span></td><td class="num">17.8–20.8</td><td>剑桥 / AQA 双认证</td></tr>
             <tr data-dist="闵行区" data-curr="A-Level IB"><td class="name">上海协和双语高级中学（古北校区）</td><td>闵行</td><td><span class="curr"><span class="chip">IBDP</span><span class="chip">A-Level</span></span></td><td class="num">—</td><td>21 所；协和旗舰</td></tr>
             <tr data-dist="闵行区" data-curr="A-Level IB"><td class="name">上海闵行区协和双语教科学校</td><td>闵行</td><td><span class="curr"><span class="chip">A-Level</span><span class="chip">IB</span></span></td><td class="num">—</td><td>协和教育集团</td></tr>
@@ -565,7 +589,7 @@ footer a{color:var(--text-muted);text-decoration:none}
       </div>
       <div class="course-card">
         <h4>日本 EJU 课程 <span class="flag" style="background:#FFF1F2;color:#E11D48">日本</span></h4>
-        <p>面向日本留学，含日语＋留考（EJU）＋校内考辅导。学费门槛低、文化适应快，近年快速扩张。代表校：文来日高部、朝阳义塾、尚德。</p>
+        <p>面向日本留学，含日语＋留考（EJU）＋校内考辅导。学费门槛低、文化适应快，近年快速扩张。代表校：<a class="sch" href="wenlai-international-V1.html">文来日高部</a>、朝阳义塾、尚德。</p>
       </div>
       <div class="course-card">
         <h4>香港 DSE / 新加坡 <span class="flag" style="background:#FFF1F2;color:#E11D48">中国香港 / 新加坡</span></h4>
@@ -650,9 +674,9 @@ footer a{color:var(--text-muted);text-decoration:none}
           <tbody>
             <tr><td class="name">上海市世外中学</td><td>徐汇</td><td>2020 年</td><td class="num">18 万 / 年</td><td>头部</td></tr>
             <tr><td class="name">上海市民办平和学校</td><td>浦东</td><td>2023 年</td><td class="num">20 万 / 年</td><td>头部</td></tr>
-            <tr><td class="name">上海七宝德怀特高级中学</td><td>闵行</td><td>2018 年</td><td class="num">9 万 / 学期</td><td>成熟</td></tr>
+            <tr><td class="name"><a class="sch" href="qibao-dwight-V1.html">上海七宝德怀特高级中学</a></td><td>闵行</td><td>2018 年</td><td class="num">9 万 / 学期</td><td>成熟</td></tr>
             <tr><td class="name">上海市民办尚德实验学校</td><td>浦东</td><td>2022 年</td><td class="num">17.2 万 / 年</td><td>成熟</td></tr>
-            <tr><td class="name">上海市文来中学</td><td>闵行</td><td>已设考试中心</td><td class="num">12.6–14.4 万 / 年</td><td>成熟</td></tr>
+            <tr><td class="name"><a class="sch" href="wenlai-international-V1.html">上海市文来中学</a></td><td>闵行</td><td>已设考试中心</td><td class="num">12.6–14.4 万 / 年</td><td>成熟</td></tr>
             <tr><td class="name">上海协和双语高级中学（古北）</td><td>闵行</td><td>2027 学年</td><td class="num">约 16 万 / 年</td><td>新设</td></tr>
             <tr><td class="name">上海市西南位育中学</td><td>徐汇</td><td>2026 年 9 月</td><td class="num">14.5 万 / 年</td><td>新设</td></tr>
             <tr><td class="name">上海市西外外国语学校</td><td>松江</td><td>已开设</td><td class="num">11 万 / 年</td><td>特色</td></tr>
@@ -737,7 +761,7 @@ footer a{color:var(--text-muted);text-decoration:none}
       <div class="tip" style="border-left:4px solid #D97706">
         <div class="tip-ico" style="background:#FEF3C7;color:#B45309">稳</div>
         <div><h4>稳步冲 G5 / 王爱曼华（强势梯队）</h4>
-        <p><strong>上实剑桥、圣华紫竹、光华启迪、阿德科特、赫贤、WLSA（AL）</strong>均有稳定的 G5 预录取数据，适合中等偏上学术水平、目标 QS 前 100 的学生；<strong>七德、尚德、文来</strong>适合想同时保留国内学籍的家庭。</p></div>
+        <p><strong>上实剑桥、圣华紫竹、光华启迪、阿德科特、赫贤、WLSA（AL）</strong>均有稳定的 G5 预录取数据，适合中等偏上学术水平、目标 QS 前 100 的学生；<strong><a class="sch" href="qibao-dwight-V1.html">七德</a>、尚德、<a class="sch" href="wenlai-international-V1.html">文来</a></strong>适合想同时保留国内学籍的家庭。</p></div>
       </div>
       <div class="tip" style="border-left:4px solid #2563EB">
         <div class="tip-ico" style="background:#EFF6FF;color:#1D4ED8">保</div>
@@ -753,7 +777,7 @@ footer a{color:var(--text-muted);text-decoration:none}
   <footer>
     数据来源：上海市教委招生计划、2025 胡润百学中国国际化学校排行榜、2025 福布斯中国国际化学校评选、京领 2025 创新竞争力榜、各校官网及公开招生简章（截至 2025 学年）。<br>
     学费与招生计划会逐年调整，本页仅供个人学习与择校参考，最终以学校及教育主管部门官方公布为准。<br>
-    <a href="../index.html">← 返回初中全学科与升学规划中心</a> · <a href="wenlai-international-V1.html" style="color:#2563EB;font-weight:700">文来中学国际部专项页 →</a> · 整理版本 V1 · 2026-10
+    <a href="../index.html">← 返回初中全学科与升学规划中心</a> · <a href="qibao-dwight-V1.html" style="color:#2563EB;font-weight:700">七宝德怀特专项页 →</a> · <a href="wenlai-international-V1.html" style="color:#2563EB;font-weight:700">文来中学国际部专项页 →</a> · 整理版本 V1 · 2026-10
   </footer>
 
 </div>

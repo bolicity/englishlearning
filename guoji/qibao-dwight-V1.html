@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上海七宝德怀特高级中学 | 中国第一所独立设置的中美合作高中</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="description" content="上海七宝德怀特高级中学（七德 / QDHS）信息汇总：中外合作办学背景、IBDP / A-Level 双轨课程、三张文凭、德怀特全球校区、2024–2026 届录取明细、招生计划、学费与择校判断。">
+<style>
+:root{
+  --primary:#2563EB; --primary-light:#EFF6FF; --primary-dark:#1D4ED8;
+  --bg:#F8FAFC; --bg-card:#FFFFFF;
+  --text-main:#0F172A; --text-muted:#475569; --text-light:#94A3B8;
+  --border-light:#E2E8F0; --border-hover:#CBD5E1;
+  --red:#DC2626; --green:#059669; --amber:#D97706; --purple:#7C3AED;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.04);
+  --shadow-md:0 3px 8px -2px rgba(15,23,42,.06);
+  --shadow-hover:0 6px 14px -3px rgba(15,23,42,.09);
+  --radius-lg:10px; --radius-md:8px; --radius-sm:5px;
+  --transition:all .18s cubic-bezier(.4,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;
+  background:var(--bg); color:var(--text-main); line-height:1.5; overflow-x:hidden;
+}
+.bg-decoration{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bg-blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.20}
+.bg-blob:nth-child(1){width:420px;height:420px;background:#DBEAFE;top:-140px;right:-80px}
+.bg-blob:nth-child(2){width:360px;height:360px;background:#FCE7F3;bottom:-60px;left:-100px}
+.container{max-width:1180px;width:96%;margin:0 auto;padding:16px 8px 48px;position:relative;z-index:1}
+
+/* topbar */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:600;color:var(--text-muted);text-decoration:none;padding:6px 12px;border-radius:100px;background:#fff;border:1px solid var(--border-light);transition:var(--transition)}
+.back-link:hover{color:var(--primary);border-color:#BFDBFE}
+.version-pill{font-size:.7rem;font-weight:700;color:var(--primary-dark);background:var(--primary-light);border:1px solid #BFDBFE;padding:3px 10px;border-radius:100px}
+
+/* hero */
+header.hero{text-align:center;margin-bottom:22px}
+.hero .eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;color:var(--primary);text-transform:uppercase;margin-bottom:8px}
+.hero h1{font-size:1.9rem;font-weight:800;letter-spacing:-.02em;background:linear-gradient(135deg,#0F172A 0%,#2563EB 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.hero p{font-size:.9rem;color:var(--text-muted);max-width:760px;margin:0 auto}
+.hero .en{font-size:.74rem;color:var(--text-light);margin-top:6px;font-weight:600;letter-spacing:.02em}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:18px 0 8px}
+.stat-card{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:12px 14px;box-shadow:var(--shadow-sm)}
+.stat-num{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.stat-num small{font-size:.72rem;font-weight:600;color:var(--text-light);margin-left:2px}
+.stat-label{font-size:.74rem;color:var(--text-muted);font-weight:600;margin-top:3px}
+
+/* anchors */
+.anchors{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:18px 0 24px}
+.anchors a{font-size:.76rem;font-weight:600;color:var(--text-muted);text-decoration:none;padding:5px 12px;border-radius:100px;background:#fff;border:1px solid var(--border-light);transition:var(--transition)}
+.anchors a:hover{color:var(--primary);border-color:#BFDBFE;background:var(--primary-light)}
+
+/* section */
+section.block{margin-bottom:30px;scroll-margin-top:14px}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--border-light)}
+.sec-icon{width:32px;height:32px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sec-icon svg{width:17px;height:17px}
+.sec-title{font-size:1.12rem;font-weight:800;letter-spacing:-.01em}
+.sec-sub{font-size:.76rem;color:var(--text-muted);margin-left:auto;text-align:right;font-weight:500}
+
+/* notes */
+.note{background:#FFFBEB;border:1px solid #FDE68A;border-left:4px solid #F59E0B;border-radius:var(--radius-sm);padding:10px 14px;font-size:.79rem;color:#78350F;margin-bottom:14px}
+.note.blue{background:var(--primary-light);border-color:#BFDBFE;border-left-color:var(--primary);color:#1E40AF}
+.note.green{background:#F0FDF4;border-color:#BBF7D0;border-left-color:#059669;color:#14532D}
+.note.red{background:#FFF1F2;border-color:#FECDD3;border-left-color:#E11D48;color:#9F1239}
+.note strong{font-weight:700}
+
+/* tables */
+.table-wrap{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:14px}
+.tbl-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.79rem;min-width:600px}
+thead th{background:#F1F5F9;color:#334155;font-weight:700;text-align:left;padding:9px 12px;white-space:nowrap;font-size:.75rem;letter-spacing:.01em;border-bottom:1px solid var(--border-light)}
+tbody td{padding:9px 12px;border-bottom:1px solid #F1F5F9;vertical-align:top;color:var(--text-muted)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#F8FAFC}
+td.name{font-weight:700;color:var(--text-main);white-space:nowrap}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600;color:var(--text-main)}
+td.k{font-weight:700;color:var(--text-main);white-space:nowrap;background:#F8FAFC;width:132px}
+.tag{display:inline-block;font-size:.66rem;font-weight:700;padding:1px 7px;border-radius:100px;white-space:nowrap;margin-left:5px;vertical-align:middle}
+.t-gov{background:#EFF6FF;color:#1D4ED8;border:1px solid #BFDBFE}
+.t-pri{background:#F0FDF4;color:#15803D;border:1px solid #BBF7D0}
+.t-coop{background:#F3E8FF;color:#7C3AED;border:1px solid #E9D5FF}
+.t-amber{background:#FEF3C7;color:#B45309;border:1px solid #FDE68A}
+.t-red{background:#FFF1F2;color:#E11D48;border:1px solid #FECDD3}
+
+.curr{display:inline-flex;flex-wrap:wrap;gap:3px}
+.chip{font-size:.65rem;font-weight:600;padding:1px 6px;border-radius:4px;background:#F1F5F9;color:#475569;white-space:nowrap}
+
+/* timeline */
+.timeline{position:relative;margin:6px 0 16px;padding-left:8px}
+.timeline::before{content:'';position:absolute;left:60px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,#BFDBFE,#E2E8F0)}
+.tl-item{display:flex;gap:14px;padding:7px 0;position:relative}
+.tl-year{width:52px;flex-shrink:0;text-align:right;font-size:.8rem;font-weight:800;color:var(--primary);font-variant-numeric:tabular-nums;line-height:1.5}
+.tl-dot{position:absolute;left:56px;top:14px;width:10px;height:10px;border-radius:50%;background:#fff;border:2.5px solid var(--primary);z-index:1}
+.tl-item.key .tl-dot{background:var(--primary)}
+.tl-body{flex:1;font-size:.8rem;color:var(--text-muted)}
+.tl-body b{color:var(--text-main);font-weight:700}
+
+/* path cards */
+.path-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-bottom:14px}
+.path-card{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:14px 15px;box-shadow:var(--shadow-sm);transition:var(--transition);position:relative;overflow:hidden}
+.path-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.path-card.p1::before{background:#2563EB}
+.path-card.p2::before{background:#7C3AED}
+.path-card.p3::before{background:#D97706}
+.path-card.p4::before{background:#059669}
+.path-card:hover{box-shadow:var(--shadow-hover);border-color:var(--border-hover);transform:translateY(-1px)}
+.path-card h4{font-size:.92rem;font-weight:800;margin-bottom:3px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.path-card .route{font-size:.68rem;font-weight:700;padding:1px 8px;border-radius:100px;background:#F1F5F9;color:#475569}
+.path-card .lead{font-size:.74rem;color:var(--text-main);font-weight:600;margin:6px 0 8px;line-height:1.45}
+.path-card ul{list-style:none;display:grid;gap:4px}
+.path-card li{font-size:.74rem;color:var(--text-muted);line-height:1.5;padding-left:13px;position:relative}
+.path-card li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:#CBD5E1}
+
+/* rank list */
+.rank-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
+.rank-item{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:10px 12px;display:flex;gap:10px;align-items:flex-start;box-shadow:var(--shadow-sm);transition:var(--transition)}
+.rank-item:hover{border-color:var(--border-hover);box-shadow:var(--shadow-hover)}
+.rank-no{font-size:.95rem;font-weight:800;color:var(--primary);min-width:34px;font-variant-numeric:tabular-nums;line-height:1.3}
+.rank-item.top .rank-no{color:var(--red)}
+.rank-body{min-width:0;flex:1}
+.rank-name{font-size:.83rem;font-weight:700;color:var(--text-main);line-height:1.25}
+.rank-meta{font-size:.7rem;color:var(--text-muted);margin-top:2px}
+
+/* bars */
+.bars{display:grid;gap:10px;margin-bottom:14px}
+.bar-row{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:11px 14px;box-shadow:var(--shadow-sm)}
+.bar-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:7px}
+.bar-top .lbl{font-size:.8rem;font-weight:700;color:var(--text-main)}
+.bar-top .val{font-size:.82rem;font-weight:800;color:var(--primary);font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar-track{height:8px;background:#F1F5F9;border-radius:100px;overflow:hidden}
+.bar-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,#60A5FA,#2563EB)}
+.bar-fill.amber{background:linear-gradient(90deg,#FBBF24,#D97706)}
+.bar-fill.green{background:linear-gradient(90deg,#34D399,#059669)}
+.bar-note{font-size:.7rem;color:var(--text-light);margin-top:5px}
+
+/* tips */
+.tips{display:grid;gap:10px}
+.tip{background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:12px 14px;box-shadow:var(--shadow-sm);display:flex;gap:11px}
+.tip-ico{width:26px;height:26px;border-radius:var(--radius-sm);background:var(--primary-light);color:var(--primary-dark);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.78rem;flex-shrink:0;margin-top:1px}
+.tip h4{font-size:.83rem;font-weight:700;margin-bottom:3px}
+.tip p{font-size:.76rem;color:var(--text-muted);line-height:1.55}
+
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--border-light);font-size:.72rem;color:var(--text-light);text-align:center;line-height:1.7}
+footer a{color:var(--text-muted);text-decoration:none;font-weight:600}
+footer a:hover{color:var(--primary)}
+@media(max-width:640px){
+  .hero h1{font-size:1.4rem}
+  .sec-sub{display:none}
+  .stat-num{font-size:1.25rem}
+  .tl-year{width:42px;font-size:.72rem}
+  .timeline::before{left:50px}
+  .tl-dot{left:46px}
+}
+</style>
+</head>
+<body>
+<div class="bg-decoration"><div class="bg-blob"></div><div class="bg-blob"></div></div>
+
+<div class="container">
+
+  <div class="topbar">
+    <a href="../index.html" class="back-link">← 返回全景看板</a>
+    <span class="version-pill">升学规划 · V1</span>
+  </div>
+
+  <header class="hero">
+    <div class="eyebrow">21 所 · 唯一中外合作办学</div>
+    <h1>上海七宝德怀特高级中学</h1>
+    <p>七宝中学 × 美国纽约德怀特学校合办，中国第一所独立设置的中美合作高中。IBDP ＋ A-Level 双轨，保留中国国家课程，毕业可获中美双文凭。数据截至 2026 届申请季。</p>
+    <div class="en">Shanghai Qibao Dwight High School (QDHS · 七德)</div>
+  </header>
+
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num" style="color:#7C3AED">2014<small>年</small></div><div class="stat-label">建校（首所中美合作高中）</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#2563EB">2<small>轨</small></div><div class="stat-label">IBDP / A-Level</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#D97706">3<small>张文凭</small></div><div class="stat-label">上海 + 纽约德怀特 + IB/AL</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#059669">9<small>万/学期</small></div><div class="stat-label">学费（2025 新学年起）</div></div>
+  </div>
+
+  <nav class="anchors">
+    <a href="#profile">学校档案</a>
+    <a href="#history">办学脉络</a>
+    <a href="#curriculum">课程体系</a>
+    <a href="#diploma">文凭与校区</a>
+    <a href="#results">录取情况</a>
+    <a href="#admission">招生与考试</a>
+    <a href="#cost">费用明细</a>
+    <a href="#faculty">师资与设施</a>
+    <a href="#judge">择校判断</a>
+  </nav>
+
+  <!-- 一、学校档案 -->
+  <section class="block" id="profile">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#F3E8FF;color:#7C3AED">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+      </div>
+      <div class="sec-title">一、学校档案</div>
+      <div class="sec-sub">「21 所」里唯一的这一所</div>
+    </div>
+
+    <div class="note blue">
+      <strong>它的独特性在两句话里：</strong>① 上海<strong>第一所独立设置的中外合作高中</strong>（教育部备案），也是「21 所」国际课程试点校序列里<strong>唯一的中外合作办学机构</strong>；② 不是「把国际课程搬进中国高中」，而是<strong>两所学校共同办学</strong>——七宝中学出本土教学与学籍，纽约德怀特学校出 IB 体系与全球校区资源。<br>
+      <span style="opacity:.85">校名提示：正确写法是「七宝<strong>德</strong>怀特」（Dwight 音译），不是「怀德特」。</span>
+    </div>
+
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <tbody>
+            <tr><td class="k">学校全称</td><td>上海七宝德怀特高级中学（Shanghai Qibao Dwight High School，简称「七德」/ QDHS）</td></tr>
+            <tr><td class="k">办学性质</td><td>中外合作办学 <span class="tag t-coop">中外合作</span> · 民办完全中学（高中段）</td></tr>
+            <tr><td class="k">合作双方</td><td>上海市七宝中学（1947 年创办）× 美国纽约市德怀特学校（The Dwight School，1872 年创办）</td></tr>
+            <tr><td class="k">办学许可</td><td>中外合作办学许可证号 PPDE31USA04INR20140730N；教育部备案，上海市教委批准</td></tr>
+            <tr><td class="k">地址</td><td>上海市闵行区七宝古镇虹莘路 3233 号</td></tr>
+            <tr><td class="k">学制</td><td>三年制（10–12 年级）· 全日制寄宿（可走读）· 列入上海市普通高中招生计划</td></tr>
+            <tr><td class="k">在校规模</td><td>约 600 人；每班约 25 人</td></tr>
+            <tr><td class="k">办学理念</td><td>「为每一位学生的美好人生奠基」；育人目标「全球视野、中西融合、科文并举、精英气质」；采用 House 导师制</td></tr>
+            <tr><td class="k">社会评价</td><td>2025 福布斯中国国际化学校百强·双语高中排名第 31（82.1 分）；2023 年获上海市社会组织评估 4A 等级</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 二、办学脉络 -->
+  <section class="block" id="history">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#EFF6FF;color:#2563EB">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      </div>
+      <div class="sec-title">二、办学脉络与认证</div>
+      <div class="sec-sub">2014 → 2023 关键节点</div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item key"><div class="tl-year">2014</div><div class="tl-dot"></div><div class="tl-body"><b>建校开学</b>——经上海市教委批准、教育部备案，成为上海第一所独立设置的中外合作高中、中国第一所独立设置的中美合作高中。</div></div>
+      <div class="tl-item key"><div class="tl-year">2015</div><div class="tl-dot"></div><div class="tl-body"><b>IB 世界学校</b>——获国际文凭组织（IBO）授权，开设 IBDP 项目。</div></div>
+      <div class="tl-item"><div class="tl-year">2018</div><div class="tl-dot"></div><div class="tl-body"><b>剑桥授权</b>——获剑桥国际考评（Cambridge Assessment International Education）授权，开设 A-Level 课程。</div></div>
+      <div class="tl-item"><div class="tl-year">2019</div><div class="tl-dot"></div><div class="tl-body"><b>双认证</b>——获 WASC 美国西部院校联盟初始认证 + EARCOS 东亚地区国际学校理事会认证。</div></div>
+      <div class="tl-item"><div class="tl-year">2023</div><div class="tl-dot"></div><div class="tl-body"><b>4A 等级</b>——获上海市社会组织评估 4A 等级。</div></div>
+      <div class="tl-item key"><div class="tl-year">2025</div><div class="tl-dot"></div><div class="tl-body"><b>学费调整 + 8 升 9 预科班</b>——学费经闵行区发改委核准调整为 9 万元 / 学期（新生新办法）；首次推出 8 升 9 预科班，为提早转轨家庭提供一年过渡。</div></div>
+    </div>
+  </section>
+
+  <!-- 三、课程体系 -->
+  <section class="block" id="curriculum">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#FFF1F2;color:#E11D48">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+      </div>
+      <div class="sec-title">三、课程体系：双轨 + 中国国家课程</div>
+      <div class="sec-sub">10 年级衔接 → 11 年级分轨</div>
+    </div>
+
+    <div class="note blue">
+      <strong>关键机制：10 年级不分轨。</strong>所有学生先读一年衔接课程（强化语言、学习方法、课程适应），期间由课程部与升学指导给专业建议，<strong>11 年级起正式进入 IBDP 或 A-Level</strong>。这给了「还没想清楚」的家庭一年的缓冲期。
+    </div>
+
+    <div class="path-grid">
+      <div class="path-card p1">
+        <h4>IBDP 国际文凭课程 <span class="route">英美双申</span></h4>
+        <div class="lead">与德怀特学校共同设置，中西融合、优势互补，按 IB 框架完整开设。</div>
+        <ul>
+          <li>六大学科领域：语言与文学研究 / 语言习得 / 个体与社会 / 科学 / 数学 / 艺术</li>
+          <li>每科均设 <strong>HL 高级水平 + SL 标准水平</strong>，适配不同潜质</li>
+          <li>11–12 年级三门核心：<strong>认识论（TOK）、专题论文（EE）、创新行动服务（CAS）</strong></li>
+          <li>37 门以上 IB 课程 + 60 多门选修（商务管理、经济、心理、哲学、戏剧、视觉艺术、设计技术、计算机科学等）</li>
+          <li>适合综合发展、想做英美双申的学生</li>
+        </ul>
+      </div>
+      <div class="path-card p2">
+        <h4>A-Level 课程 <span class="route">英联邦</span></h4>
+        <div class="lead">剑桥国际考评授权，2018 年起开设，学科精简、目标明确。</div>
+        <ul>
+          <li>10 年级衔接：融合 <strong>IGCSE 英语 + IGCSE 数学</strong>，为体制内转轨学生设计</li>
+          <li>11–12 年级提供 <strong>5 门</strong>：数学、高等数学、物理、化学、经济</li>
+          <li>适合目标英联邦、学科优势明显的学生</li>
+        </ul>
+      </div>
+      <div class="path-card p3">
+        <h4>中国国家课程 <span class="route">必修</span></h4>
+        <div class="lead">作为上海唯一独立设置的中外合作高中，响应国家教育政策，保留「中国心」底色。</div>
+        <ul>
+          <li>四门必修：<strong>语文、历史、地理、政治</strong></li>
+          <li>授课语言为汉语；其余课程英语或双语授课</li>
+          <li>国内核心课程 + 优势课程（数学）保留，衔接上海高中学籍要求</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、文凭与校区 -->
+  <section class="block" id="diploma">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#F0FDF4;color:#059669">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg>
+      </div>
+      <div class="sec-title">四、三张文凭与德怀特全球校区</div>
+      <div class="sec-sub">共享纽约 · 伦敦 · 迪拜 · 全球网校资源</div>
+    </div>
+
+    <div class="note green">
+      <strong>毕业可获三张文凭 / 证书：</strong>① 上海七宝德怀特高级中学毕业证书；② <strong>美国德怀特高中（纽约）毕业证书</strong>；③ 按所选课程通过考核后获 <strong>IBDP 文凭或 A-Level 证书</strong>。这是「双文凭 + 国际课程证书」的组合。
+    </div>
+
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>德怀特全球校区</th><th>成立</th><th>可共享资源</th></tr></thead>
+          <tbody>
+            <tr><td class="name">德怀特纽约学校</td><td class="num">1872 年</td><td>总部，IB 教育全球推广领袖；七德学生可申请赴纽约做交换生</td></tr>
+            <tr><td class="name">德怀特伦敦学校</td><td class="num">1972 年</td><td>交换生项目；德怀特伦敦合唱节</td></tr>
+            <tr><td class="name">Dwight Global 德怀特网校</td><td class="num">2017 年</td><td>线上课程与全球项目</td></tr>
+            <tr><td class="name">德怀特迪拜学校</td><td class="num">2018 年</td><td>全球校区互访交流</td></tr>
+            <tr><td class="name">德怀特首尔学校</td><td class="num">—</td><td>亚洲校区网络</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note">
+      特色项目：德怀特纽约 / 伦敦交换生、德怀特全球音乐会、云南乡村服务、南京历史考察、湘西文学行走、贵州科考、德国哥廷根 X-Lab、中科院实习、卢森堡全球问题大会（GIN）、美国机器人挑战赛（FRC）、头脑奥林匹克（OM）、TEDxYouth@QDHS。
+    </div>
+  </section>
+
+  <!-- 五、录取情况 -->
+  <section class="block" id="results">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#EFF6FF;color:#2563EB">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+      </div>
+      <div class="sec-title">五、录取情况（分届明细）</div>
+      <div class="sec-sub">2024 / 2025 / 2026 届</div>
+    </div>
+
+    <div class="note blue">
+      <strong>整体盘子：</strong>七德是典型的「<strong>多国联申、全面开花</strong>」型学校——不押注单一国家，美国为主体，英国、中国香港、加拿大、澳洲多点开花。下图为 2026 届口径。
+    </div>
+
+    <div class="bars">
+      <div class="bar-row">
+        <div class="bar-top"><span class="lbl">2026 届 · 获全球前 30 大学录取的毕业生占比</span><span class="val">约 60%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:60%"></div></div>
+        <div class="bar-note">2024 届口径为 54%（152 枚 Top30）；早申阶段（截至 2026-01-28）31% 已获 Top30</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-top"><span class="lbl">2026 届 · 获全球前 50 大学录取的毕业生占比</span><span class="val">约 90%</span></div>
+        <div class="bar-track"><div class="bar-fill green" style="width:90%"></div></div>
+        <div class="bar-note">2024 届口径为 81%（409 枚 Top50）</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-top"><span class="lbl">2026 届 · 申请季早期获至少一份录取（截至 2026-01-28）</span><span class="val">84%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:84%"></div></div>
+        <div class="bar-note">较上年同期 63% 显著提升</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-top"><span class="lbl">2024 届 · 毕业生总数中的录取总量</span><span class="val">939 份</span></div>
+        <div class="bar-track"><div class="bar-fill amber" style="width:100%"></div></div>
+        <div class="bar-note">170 名毕业生，覆盖 9 个国家与地区</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:.95rem;font-weight:800;margin:20px 0 8px;color:#1D4ED8">5.1　2026 届 · 录取亮点</h3>
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>方向</th><th>录取情况</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="name">美国 · 顶尖</td>
+              <td>布朗大学 2、约翰斯·霍普金斯 1、加州大学伯克利 10、<strong>加州大学洛杉矶 31</strong>、卡内基梅隆 14、圣母大学 8、圣路易斯华盛顿 1、埃默里 3；纽大、佐治亚理工、佛罗里达大学等 Top30 众多</td>
+            </tr>
+            <tr>
+              <td class="name">美国 · 文理 / 艺术</td>
+              <td>顶尖文理：<strong>波莫纳学院</strong>（全美文理第 7）、卡尔顿、汉密尔顿、维思；艺术：伯克利音乐学院、帕森斯设计学院</td>
+            </tr>
+            <tr>
+              <td class="name">中国香港</td>
+              <td>香港大学 <strong>31 枚</strong>、香港中文大学 14、香港理工大学 12、香港城市大学 10、香港科技大学 8；含 2 位港大四年全额奖学金</td>
+            </tr>
+            <tr>
+              <td class="name">英国</td>
+              <td>伦敦政治经济学院（LSE）、伦敦大学学院（UCL）等 G5</td>
+            </tr>
+            <tr>
+              <td class="name">其他</td>
+              <td>新加坡国立大学（亚洲第 1）；日本 庆应义塾、早稻田</td>
+            </tr>
+            <tr>
+              <td class="name">总量</td>
+              <td>11 个国家和地区共 <strong>1086 封</strong>录取：美国 715、英国 114、中国香港 91、加拿大 64、澳大利亚 55</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 style="font-size:.95rem;font-weight:800;margin:20px 0 8px;color:#1D4ED8">5.2　2025 届 · 录取结果</h3>
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>方向</th><th>录取情况</th></tr></thead>
+          <tbody>
+            <tr><td class="name">美国</td><td>康奈尔 3、杜克 1、西北大学 1、UCLA 2、加州大学伯克利 4、南加州大学 7、纽约大学 9</td></tr>
+            <tr><td class="name">英国</td><td>剑桥 1、帝国理工 2、伦敦政经（LSE）1</td></tr>
+            <tr><td class="name">中国香港</td><td>香港大学 28 枚</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 style="font-size:.95rem;font-weight:800;margin:20px 0 8px;color:#1D4ED8">5.3　2024 届 · 录取结果</h3>
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>项目</th><th>数据</th></tr></thead>
+          <tbody>
+            <tr><td class="name">毕业生数</td><td class="num">170 人</td></tr>
+            <tr><td class="name">录取总量</td><td class="num">939 份（9 个国家与地区）</td></tr>
+            <tr><td class="name">分国家</td><td>美国 699、英国 94、加拿大 94、澳大利亚 25、中国香港 21、新加坡 2、荷兰 2、日本 1、比利时 1</td></tr>
+            <tr><td class="name">Top 30</td><td class="num">152 枚（54% 毕业生获录）</td></tr>
+            <tr><td class="name">Top 50</td><td class="num">409 枚（81% 毕业生获录）</td></tr>
+            <tr><td class="name">奖学金</td><td>不少学生获大学奖学金，最高额度 $32,000 / 年</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 style="font-size:.95rem;font-weight:800;margin:20px 0 8px;color:#1D4ED8">5.4　四校八大榜口径（2026 届）</h3>
+    <div class="rank-list">
+      <div class="rank-item top"><div class="rank-no">2</div><div class="rank-body"><div class="rank-name">藤校 + 美本 TOP10</div><div class="rank-meta">2026 届</div></div></div>
+      <div class="rank-item"><div class="rank-no">29</div><div class="rank-body"><div class="rank-name">美本 TOP30</div><div class="rank-meta">2026 届</div></div></div>
+      <div class="rank-item"><div class="rank-no">16</div><div class="rank-body"><div class="rank-name">英国 G5（不含牛剑）</div><div class="rank-meta">2026 届</div></div></div>
+      <div class="rank-item"><div class="rank-no">31</div><div class="rank-body"><div class="rank-name">福布斯 2025 双语高中排名</div><div class="rank-meta">82.1 分</div></div></div>
+    </div>
+
+    <div class="note blue">
+      <strong>看数据要注意口径。</strong>七德藤校数量与星河湾、世外、平和等头部校不在一个量级（2026 届藤校 + TOP10 仅 2 枚），但<strong>「前 30 / 前 50 覆盖面」很宽</strong>——它更像是「上限不极致、下限很稳、国家选择极多」的学校。若目标是顶尖美本，它属于第二梯队；若看重香港方向（港大 31 枚）、多国联申保障与中外合作身份，七德的性价比很高。
+    </div>
+  </section>
+
+  <!-- 六、招生与考试 -->
+  <section class="block" id="admission">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#FFFBEB;color:#D97706">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+      </div>
+      <div class="sec-title">六、招生规模与入学考试</div>
+      <div class="sec-sub">2025 学年招生口径</div>
+    </div>
+
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>项目</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><td class="k">招生计划</td><td>2025 学年计划招收 <strong>10 年级学生 200 人</strong>（拟），上海、外省市及境外生源均可报考</td></tr>
+            <tr><td class="k">生源结构</td><td>上海生源约 <strong>130 人</strong> ／ 非上海生源约 <strong>60 人</strong> ／ 其他类型（港澳台、外籍）约 5%</td></tr>
+            <tr><td class="k">招生类型</td><td>① 上海生源：符合当年中招报名条件的应届初三（外籍除外）；② 非上海生源：未参加本市中招报名的非沪籍应届初三或初中毕业生；③ 其他：港澳台学生、持外籍护照学生</td></tr>
+            <tr><td class="k">报名方式</td><td>官网「招生平台」注册账号、电脑端填报招生申请表（含初中在校成绩、校内外活动与奖项、自荐信）</td></tr>
+            <tr><td class="k">选拔体系</td><td>七德综合评价体系：申请表 + 笔试（数学、英语）+ 中英文面试 + 开放日表现</td></tr>
+            <tr><td class="k">英语免考</td><td>语言标化达 <strong>多邻国 115+ / 托福 80+ / 雅思 6.0+</strong> 者，免于参加入学英语笔试</td></tr>
+            <tr><td class="k">录取流程</td><td>材料审核通过 → 受邀参加校园体验日 → 1–2 周内获知结果 → 沟通会确认意向后预录取签约 → 正式录取</td></tr>
+            <tr><td class="k">上海生源正式录取</td><td>参加上海中考，参与市考试院中招「提前批录取」签约，并达到七德自主招生最低投档控制分数线后正式录取</td></tr>
+            <tr><td class="k">非上海生源</td><td>初中毕业并取得毕业证书后即正式录取</td></tr>
+            <tr><td class="k">参考分数线</td><td>2024 年上海中考自招线 607 / 750；七德上海学籍新生平均分 <strong>670 / 750</strong></td></tr>
+            <tr><td class="k">开放日（参考）</td><td>秋季多场体验日（如 2025-03-22、2026-05-05）；2027 春招家长访校 2026-10-16 / 10-30，首批测试预计 11 月启动</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>考情参考（据历年体验日）：</strong>数学笔试约 60 分钟（12 道填空＋1 道大题，涵盖三角函数、反比例函数、旋转与动点、概率、二次函数综合）；另有 <strong>上课活动</strong>（实验课、微观经济课、英语课、数学课，每节约 15–30 分钟换场）与 <strong>小组活动</strong>（中文演讲＋英文讨论），考察课堂参与度、表达能力与英文沟通。整体难度高于普通国际学校入学考，接近中考难度上限 + 课堂表现评估。
+    </div>
+  </section>
+
+  <!-- 七、费用 -->
+  <section class="block" id="cost">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#F0FDF4;color:#059669">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div class="sec-title">七、费用明细</div>
+      <div class="sec-sub">2025 新学年起执行新标准</div>
+    </div>
+
+    <div class="note red">
+      <strong>学费已上调，注意「新生新办法」。</strong>经上海市闵行区发展和改革委员会核准（闵发改价〔2025〕16 号），学费标准调整为 <strong>每生每学期 90,000 元（18 万 / 年）</strong>，自 <strong>2025 新学年起</strong>执行，实行「新生新办法、老生老办法」。此前口径为 16.4 万 / 年。
+    </div>
+
+    <div class="table-wrap">
+      <div class="tbl-scroll">
+        <table>
+          <thead><tr><th>费用项目</th><th>标准</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td class="k">学费（新标准）</td><td class="num">90,000 元 / 学期 ≈ 18 万 / 年</td><td>2025 新学年起入学新生适用</td></tr>
+            <tr><td class="k">学费（旧标准）</td><td class="num">16.4 万元 / 年</td><td>2025 前入学在校生沿用「老生老办法」</td></tr>
+            <tr><td class="k">住宿费</td><td class="num">5,600 元 / 年</td><td>6 人间，独立卫生间与淋浴间、空调；周末留校住宿不额外收费</td></tr>
+            <tr><td class="k">餐费</td><td>自理</td><td>中西餐结合自助餐：早餐 15 元，午餐、晚餐各 30 元</td></tr>
+            <tr><td class="k">奖学金</td><td>多项</td><td>理事长奖学金 20,000 元 · 优秀新生奖学金 10,000 元 · 七德荣誉奖学金 · 全科优秀奖学金 2,000–10,000 元 · 专项奖学金 500–1,000 元</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 八、师资与设施 -->
+  <section class="block" id="faculty">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#F3E8FF;color:#7C3AED">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="sec-title">八、师资、管理与硬件设施</div>
+      <div class="sec-sub">中外双团队选派 · House 导师制</div>
+    </div>
+
+    <div class="path-grid">
+      <div class="path-card p1">
+        <h4>师资构成</h4>
+        <div class="lead">七宝中学与德怀特学校分别选派管理团队，中外教比例约 6:4。</div>
+        <ul>
+          <li>中教大多拥有硕士、博士学历</li>
+          <li>外教均具 IB / A-Level 教学经验，平均教龄约 12 年</li>
+          <li>学科带头人具 <strong>IB 考官资质</strong>；外教来自美、英、加、澳、印度等</li>
+          <li>每年组织教师参与 IB 培训；每学期德怀特资深 IB 教学主管到校督导</li>
+          <li>全职升学指导老师 6 人</li>
+        </ul>
+      </div>
+      <div class="path-card p4">
+        <h4>管理与设施</h4>
+        <div class="lead">House 导师制管理，寄宿（可走读），硬件配置在国内 IB 校中属上乘。</div>
+        <ul>
+          <li>2 个户外运动场 + 1 个室内多功能体育馆</li>
+          <li>9 个科学实验室、STEAM 教室、FRC 机器人工作室</li>
+          <li>4 个艺术专用教室、黑箱剧场、合唱教室、乐队教室、琴房、舞蹈房</li>
+          <li>图书资源中心、多功能报告厅、2 层学生餐厅、心理咨询室</li>
+          <li>6 人间宿舍（独立卫浴、空调）；多媒体教室配 Smartboard，每人独立电子书包柜</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 九、择校判断 -->
+  <section class="block" id="judge">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#FFF1F2;color:#E11D48">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <div class="sec-title">九、择校判断（给 Owen 的参考）</div>
+      <div class="sec-sub">什么情况下值得选它</div>
+    </div>
+
+    <div class="tips">
+      <div class="tip">
+        <div class="tip-ico" style="background:#F0FDF4;color:#059669">✓</div>
+        <div><h4>想要「中外合作」的稳妥身份</h4><p>「21 所」里唯一的中外合作办学机构，上海高中学籍 + 美国德怀特高中文凭双认证，IB/A-Level 证书再叠一层。对看重学籍保障与双文凭的家庭，身份优势独一无二。</p></div>
+      </div>
+      <div class="tip">
+        <div class="tip-ico" style="background:#F0FDF4;color:#059669">✓</div>
+        <div><h4>方向没定，想留一年缓冲</h4><p>10 年级统一衔接、11 年级才分 IB / A-Level，加上 2025 年新设的 8 升 9 预科班，给转轨家庭留了更长的适应与决策窗口。</p></div>
+      </div>
+      <div class="tip">
+        <div class="tip-ico" style="background:#F0FDF4;color:#059669">✓</div>
+        <div><h4>主攻中国香港 / 多国联申</h4><p>港大 31 枚、港中文 14、港理工 12，香港方向数据在沪上属第一档；覆盖 11 个国家和地区，不押单一出口，风险分散。</p></div>
+      </div>
+      <div class="tip">
+        <div class="tip-ico" style="background:#FEF3C7;color:#B45309">!</div>
+        <div><h4>冲顶尖美本 → 不是最优解</h4><p>2026 届藤校 + 美本 TOP10 仅 2 枚，与星河湾（哈佛/斯坦福/宾大）、世外、平和不在同一量级，属第二梯队。若目标是顶尖美本，头部校更具竞争力。</p></div>
+      </div>
+      <div class="tip">
+        <div class="tip-ico" style="background:#FEF3C7;color:#B45309">!</div>
+        <div><h4>学费已进入高位</h4><p>2025 新学年起 18 万 / 年（原 16.4 万），在民办国际高中里属偏上水平，仅略低于平和、世外等头部校。要按新标准做预算。</p></div>
+      </div>
+      <div class="tip">
+        <div class="tip-ico" style="background:#EFF6FF;color:#2563EB">i</div>
+        <div><h4>给 Owen 的提醒</h4><p>七德的上海学籍新生中考平均分约 670 / 750（自招线 607），门槛不低但也不算顶格。若英语有底（托福 80 / 雅思 6.0 / 多邻国 115 可免英语笔试），把备考精力放在<strong>数学</strong>与<strong>中英文面试、课堂活动表现</strong>上——七德的选拔很看重体验日里的课堂参与与小组表达。离七宝很近，走读可行。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>数据来源：上海市闵行区发展和改革委员会《关于调整上海七宝德怀特高级中学学费标准的通知》（闵发改价〔2025〕16 号）、学校官网及招生简章、2025 福布斯中国国际化学校评选及公开报道整理。</p>
+    <p style="margin-top:6px">学费、招生计划与升学数据逐年变动，<strong>具体以学校及教育主管部门官方公布为准</strong>。仅供家庭择校参考。</p>
+    <p style="margin-top:8px"><a href="../index.html">← 返回全景看板</a> · <a href="shanghai-international-highschools-V1.html">上海国际高中全景图鉴</a> · <a href="wenlai-international-V1.html">文来中学国际部</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
