@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>2026 上海中本贯通 (3+4) 完整指南 V6 | 86 个专业点全量分数线 · 报考规则 · 转段机制 · 各科分数规划</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-main: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-subtle: #F1F5F9;
+    --border-color: #E2E8F0;
+    --border-strong: #CBD5E1;
+
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+
+    --brand-purple: #6D28D9;
+    --brand-purple-light: #7C3AED;
+    --brand-purple-bg: #F3E8FF;
+    --brand-purple-border: #DDD6FE;
+
+    --brand-blue: #1E3A8A;
+    --brand-blue-light: #2563EB;
+    --brand-blue-bg: #EFF6FF;
+
+    --accent-green: #059669;
+    --accent-green-bg: #ECFDF5;
+    --accent-green-border: #A7F3D0;
+
+    --accent-gold: #B45309;
+    --accent-gold-bg: #FEF3C7;
+    --accent-gold-border: #FDE68A;
+
+    --accent-red: #DC2626;
+    --accent-red-bg: #FEF2F2;
+    --accent-red-border: #FCA5A5;
+
+    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ Header ============ */
+  header {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky; top: 0; z-index: 60;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-container {
+    max-width: 1280px; margin: 0 auto; padding: .8rem 1.25rem;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  }
+  .brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: var(--text-primary); }
+  .brand-logo {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--brand-purple), var(--brand-purple-light));
+    color: #fff; border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 1rem;
+  }
+  .brand-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.12rem; color: var(--brand-purple); }
+  .brand-subtitle { font-size: .74rem; color: var(--text-muted); }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: .45rem;
+    padding: .6rem 1rem; min-height: 44px; flex-shrink: 0;
+    background-color: var(--bg-subtle); color: var(--text-secondary);
+    border-radius: var(--radius-sm); text-decoration: none;
+    font-weight: 600; font-size: .86rem; transition: all .2s ease;
+  }
+  .back-btn:hover { background-color: var(--brand-purple-bg); color: var(--brand-purple); }
+
+  /* ============ Anchor nav ============ */
+  .anchor-bar {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky; top: 65px; z-index: 55;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .anchor-bar::-webkit-scrollbar { display: none; }
+  .anchor-inner {
+    max-width: 1280px; margin: 0 auto; padding: .55rem 1.25rem;
+    display: flex; gap: .4rem; white-space: nowrap;
+  }
+  .anchor-inner a {
+    font-size: .8rem; font-weight: 600; color: var(--text-secondary);
+    text-decoration: none; padding: .35rem .7rem; border-radius: 9999px;
+    border: 1px solid transparent; transition: all .15s ease;
+  }
+  .anchor-inner a:hover { background: var(--brand-purple-bg); color: var(--brand-purple); border-color: var(--brand-purple-border); }
+
+  /* ============ Layout ============ */
+  .container {
+    max-width: 1280px; margin: 0 auto;
+    padding: 1.75rem 1.25rem 4rem;
+    display: flex; flex-direction: column; gap: 1.6rem;
+  }
+
+  .hero-card {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F3E8FF 100%);
+    border: 1px solid #E9D5FF; border-radius: var(--radius-lg);
+    padding: 2rem; box-shadow: var(--shadow-sm);
+  }
+  .hero-tag {
+    display: inline-block; padding: .25rem .75rem;
+    background: var(--brand-purple-light); color: #fff;
+    border-radius: 9999px; font-size: .8rem; font-weight: 700; margin-bottom: .75rem;
+  }
+  .hero-title {
+    font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 800;
+    color: #5B21B6; margin-bottom: .75rem; line-height: 1.25;
+  }
+  @media (min-width: 768px) { .hero-title { font-size: 2.2rem; } }
+  .hero-desc { font-size: .96rem; color: var(--text-secondary); max-width: 960px; }
+
+  /* Stat grid */
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: .85rem; margin-top: 1.5rem;
+  }
+  @media (min-width: 640px) { .stat-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1024px) { .stat-grid { grid-template-columns: repeat(6, 1fr); } }
+  .stat {
+    background: #fff; border: 1px solid var(--brand-purple-border);
+    border-radius: var(--radius-md); padding: .85rem .9rem; text-align: center;
+  }
+  .stat-num { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--brand-purple); line-height: 1.15; }
+  .stat-label { font-size: .74rem; color: var(--text-muted); margin-top: .15rem; }
+
+  /* Card */
+  .card {
+    background: var(--bg-card); border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg); padding: 1.6rem; box-shadow: var(--shadow-sm);
+    scroll-margin-top: 120px;
+  }
+  .card-header {
+    display: flex; align-items: flex-start; gap: .75rem;
+    margin-bottom: 1.15rem; padding-bottom: .85rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .card-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border-radius: var(--radius-sm); background: var(--brand-purple-bg);
+    color: var(--brand-purple); display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 700;
+  }
+  .card-h2 { font-size: 1.3rem; font-weight: 700; line-height: 1.35; }
+  .card-sub { font-size: .8rem; color: var(--text-muted); margin-top: .2rem; font-weight: 400; }
+
+  h3.sub-h { font-size: 1rem; font-weight: 800; color: var(--text-primary); margin: 1.5rem 0 .6rem; }
+  h3.sub-h:first-of-type { margin-top: .5rem; }
+  h4.mini-h { font-size: .9rem; font-weight: 800; margin: 1.1rem 0 .5rem; }
+
+  p.body-p { font-size: .9rem; color: var(--text-secondary); margin-bottom: .6rem; }
+  p.body-p:last-child { margin-bottom: 0; }
+  strong { color: var(--text-primary); }
+  a.inline { color: var(--brand-blue-light); font-weight: 600; text-decoration: none; }
+  a.inline:hover { text-decoration: underline; }
+
+  ul.bullets { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+  ul.bullets li { font-size: .88rem; color: var(--text-secondary); padding-left: 1.1rem; position: relative; }
+  ul.bullets li::before {
+    content: ""; position: absolute; left: 0; top: .62em;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--brand-purple-light);
+  }
+
+  /* Notes */
+  .note {
+    border-radius: var(--radius-md); padding: .9rem 1.05rem;
+    font-size: .87rem; line-height: 1.7; margin: .9rem 0;
+    background: var(--accent-gold-bg); border: 1px solid var(--accent-gold-border);
+    color: #78350F;
+  }
+  .note.blue { background: var(--brand-blue-bg); border-color: #BFDBFE; color: #1E3A8A; }
+  .note.green { background: var(--accent-green-bg); border-color: var(--accent-green-border); color: #065F46; }
+  .note.red { background: var(--accent-red-bg); border-color: var(--accent-red-border); color: #7F1D1D; }
+  .note strong { color: inherit; }
+
+  /* Grid helpers */
+  .grid-2 { display: grid; grid-template-columns: 1fr; gap: 1.1rem; }
+  @media (min-width: 820px) { .grid-2 { grid-template-columns: repeat(2, 1fr); } }
+  .grid-3 { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  @media (min-width: 768px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+
+  .feature-box {
+    background: var(--bg-main); border: 1px solid var(--border-color);
+    border-radius: var(--radius-md); padding: 1.1rem; display: flex; flex-direction: column; gap: .4rem;
+  }
+  .feature-title { font-weight: 700; font-size: .95rem; display: flex; align-items: center; gap: .4rem; }
+  .feature-desc { font-size: .85rem; color: var(--text-secondary); line-height: 1.65; }
+
+  /* Table */
+  .table-tools {
+    display: flex; flex-wrap: wrap; gap: .55rem; align-items: center;
+    background: var(--bg-subtle); border: 1px solid var(--border-color);
+    border-radius: var(--radius-md); padding: .8rem 1rem; margin-bottom: .85rem;
+  }
+  .search-input {
+    padding: .55rem .95rem; border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm); font-size: .86rem;
+    width: 100%; max-width: 330px; outline: none; transition: border-color .2s ease;
+    font-family: inherit;
+  }
+  .search-input:focus { border-color: var(--brand-purple-light); box-shadow: 0 0 0 3px var(--brand-purple-bg); }
+  .chips { display: flex; flex-wrap: wrap; gap: .35rem; width: 100%; }
+  .chip-btn {
+    padding: .38rem .8rem; border: 1px solid var(--border-color); background: #fff;
+    border-radius: 9999px; font-size: .79rem; font-weight: 600; color: var(--text-secondary);
+    cursor: pointer; transition: all .15s ease; font-family: inherit;
+  }
+  .chip-btn:hover { border-color: var(--brand-purple-light); color: var(--brand-purple); }
+  .chip-btn.active { background: var(--brand-purple); border-color: var(--brand-purple); color: #fff; }
+  .fit-toggle {
+    display: inline-flex; align-items: center; gap: .45rem;
+    font-size: .82rem; font-weight: 600; color: var(--text-secondary);
+    cursor: pointer; user-select: none; padding: .35rem .7rem;
+    border: 1px solid var(--border-color); background: #fff; border-radius: 9999px;
+  }
+  .fit-toggle input { accent-color: var(--brand-purple); width: 15px; height: 15px; cursor: pointer; }
+  .result-line { font-size: .82rem; color: var(--text-muted); margin-bottom: .6rem; }
+  .result-line b { color: var(--brand-purple); font-size: .95rem; }
+
+  .table-container {
+    overflow-x: auto; border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+  }
+  table.data-table { width: 100%; border-collapse: collapse; font-size: .84rem; min-width: 820px; }
+  table.data-table th {
+    background: var(--brand-purple-bg); color: #5B21B6; font-weight: 700;
+    padding: .7rem .8rem; text-align: left; border-bottom: 1px solid var(--border-color);
+    position: sticky; top: 0; z-index: 2; white-space: nowrap;
+  }
+  table.data-table td { padding: .62rem .8rem; border-bottom: 1px solid var(--border-color); vertical-align: top; }
+  table.data-table tbody tr:hover { background: #FAF5FF; }
+  td.sch { font-weight: 600; white-space: nowrap; }
+  td.sch small { display: block; font-weight: 400; color: var(--text-muted); font-size: .72rem; }
+  td.maj strong { font-weight: 700; }
+  td.maj small { display: block; color: var(--text-muted); font-size: .72rem; margin-top: .1rem; }
+  td.uni { color: var(--text-secondary); }
+  td.num { text-align: right; white-space: nowrap; }
+  .score {
+    display: inline-block; padding: .16rem .5rem; border-radius: 4px;
+    font-weight: 800; font-size: .84rem; font-variant-numeric: tabular-nums;
+  }
+  .s-top { background: var(--accent-red-bg); color: var(--accent-red); border: 1px solid var(--accent-red-border); }
+  .s-high { background: var(--brand-purple-bg); color: var(--brand-purple); border: 1px solid var(--brand-purple-border); }
+  .s-mid { background: var(--brand-blue-bg); color: #1D4ED8; border: 1px solid #BFDBFE; }
+  .s-norm { background: var(--accent-gold-bg); color: var(--accent-gold); border: 1px solid var(--accent-gold-border); }
+
+  .cat-tag {
+    display: inline-block; padding: .12rem .42rem; border-radius: 4px;
+    font-size: .7rem; font-weight: 700; margin-left: .35rem; vertical-align: middle;
+  }
+  .cat-ligong { background: #EDE9FE; color: #6D28D9; }
+  .cat-it { background: #E0F2FE; color: #0369A1; }
+  .cat-yiyao { background: #DCFCE7; color: #15803D; }
+  .cat-caijing { background: #FEF3C7; color: #B45309; }
+  .cat-yishu { background: #FCE7F3; color: #BE185D; }
+  .cat-waiyu { background: #F3E8FF; color: #7E22CE; }
+  .cat-other { background: #F1F5F9; color: #475569; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 1.6rem; }
+  .timeline::before {
+    content: ""; position: absolute; left: 6px; top: .4rem; bottom: .4rem;
+    width: 2px; background: var(--brand-purple-border);
+  }
+  .tl-item { position: relative; padding-bottom: 1.1rem; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before {
+    content: ""; position: absolute; left: -1.6rem; top: .38rem;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: #fff; border: 3px solid var(--brand-purple-light);
+  }
+  .tl-date { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: .86rem; color: var(--brand-purple); }
+  .tl-text { font-size: .86rem; color: var(--text-secondary); }
+
+  /* Compare table (plain) */
+  table.plain { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  table.plain th {
+    background: var(--bg-subtle); color: var(--text-primary); font-weight: 700;
+    padding: .65rem .75rem; text-align: left; border-bottom: 1px solid var(--border-color);
+  }
+  table.plain td { padding: .6rem .75rem; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); vertical-align: top; }
+  table.plain td:first-child { font-weight: 700; color: var(--text-primary); white-space: nowrap; }
+  table.plain tr:last-child td { border-bottom: none; }
+  table.plain.center-cols th, table.plain.center-cols td { text-align: center; }
+  table.plain.center-cols td:first-child, table.plain.center-cols th:first-child { text-align: left; }
+  table.plain.center-cols td:last-child { font-weight: 700; color: var(--text-primary); }
+
+  /* Pick cards */
+  .pick-tier {
+    border: 1px solid var(--border-color); border-radius: var(--radius-md);
+    overflow: hidden; margin-bottom: 1.1rem;
+  }
+  .pick-tier-head {
+    padding: .7rem 1rem; font-weight: 800; font-size: .92rem;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .tier-a .pick-tier-head { background: var(--accent-red-bg); color: #7F1D1D; border-bottom: 1px solid var(--accent-red-border); }
+  .tier-b .pick-tier-head { background: var(--brand-purple-bg); color: #5B21B6; border-bottom: 1px solid var(--brand-purple-border); }
+  .tier-c .pick-tier-head { background: var(--brand-blue-bg); color: #1E3A8A; border-bottom: 1px solid #BFDBFE; }
+  .tier-x .pick-tier-head { background: var(--bg-subtle); color: #334155; border-bottom: 1px solid var(--border-color); }
+  .pick-tier .table-container { border: none; border-radius: 0; }
+
+  .pill {
+    display: inline-block; padding: .18rem .55rem; border-radius: 9999px;
+    font-size: .72rem; font-weight: 700;
+  }
+  .pill-do { background: var(--accent-green-bg); color: #047857; border: 1px solid var(--accent-green-border); }
+  .pill-dont { background: var(--accent-red-bg); color: var(--accent-red); border: 1px solid var(--accent-red-border); }
+
+  /* FAQ */
+  details.faq {
+    border: 1px solid var(--border-color); border-radius: var(--radius-md);
+    padding: .8rem 1rem; margin-bottom: .55rem; background: var(--bg-main);
+  }
+  details.faq[open] { background: #fff; border-color: var(--brand-purple-border); }
+  details.faq summary {
+    font-size: .9rem; font-weight: 700; cursor: pointer; list-style: none;
+    display: flex; align-items: flex-start; gap: .5rem; color: var(--text-primary);
+  }
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq summary::before { content: "Q"; color: var(--brand-purple); font-family: 'Outfit', sans-serif; flex-shrink: 0; }
+  details.faq p { font-size: .86rem; color: var(--text-secondary); margin-top: .55rem; padding-left: 1.35rem; }
+
+  footer {
+    background-color: var(--bg-card); border-top: 1px solid var(--border-color);
+    padding: 1.8rem 1.25rem; text-align: center; color: var(--text-muted); font-size: .82rem;
+  }
+  footer a { color: var(--brand-blue-light); font-weight: 600; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <a href="../index.html" class="brand">
+      <div class="brand-logo">中本</div>
+      <div>
+        <div class="brand-title">2026 上海中本贯通（3+4）完整指南 V6</div>
+        <div class="brand-subtitle">86 个专业点全量分数线 · 报考规则 · 转段机制 · 各科分数规划</div>
+      </div>
+    </a>
+    <a href="../index.html" class="back-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      返回学习中心
+    </a>
+  </div>
+</header>
+
+<div class="anchor-bar">
+  <div class="anchor-inner">
+    <a href="#intro">这是什么</a>
+    <a href="#compare">三条通道对比</a>
+    <a href="#rules">报考条件与规则</a>
+    <a href="#timeline">录取时间线</a>
+    <a href="#lines">分数线怎么读</a>
+    <a href="#table">86 专业点全表</a>
+    <a href="#pick">理科择校推荐</a>
+    <a href="#plan">各科分数规划</a>
+    <a href="#transfer">转段机制</a>
+    <a href="#cost">费用与资助</a>
+    <a href="#outcome">七年之后</a>
+    <a href="#faq">常见问题</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero-card">
+    <span class="hero-tag">上海市教委 / 市教育考试院 2026 年官方数据整理</span>
+    <h1 class="hero-title">中本贯通 3+4：中职进、本科出，七年一贯</h1>
+    <p class="hero-desc">
+      中本贯通是上海自 2014 年起试点的<strong>「中等职业教育—应用本科教育贯通培养」</strong>模式：前 3 年在中职校，通过转段考试后进入对口本科院校读 4 年，毕业发<strong>全日制本科毕业证书与学士学位</strong>。七年只锁一条路，所以本页的重点不是「哪个学校名气大」，而是<strong>把规则、分数线、转段风险摊开，帮你判断这条路适不适合自己家的孩子</strong>。
+    </p>
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-num">38</div><div class="stat-label">所中职院校</div></div>
+      <div class="stat"><div class="stat-num">86</div><div class="stat-label">个专业点</div></div>
+      <div class="stat"><div class="stat-num">2756</div><div class="stat-label">2026 招生计划（人）</div></div>
+      <div class="stat"><div class="stat-num">501</div><div class="stat-label">最低投档控制线</div></div>
+      <div class="stat"><div class="stat-num">691.5</div><div class="stat-label">最高录取分</div></div>
+      <div class="stat"><div class="stat-num">47</div><div class="stat-label">理科友好型专业点</div></div>
+    </div>
+  </section>
+
+  <!-- ============ 一、这是什么 ============ -->
+  <section class="card" id="intro">
+    <div class="card-header">
+      <div class="card-icon">🏛️</div>
+      <div>
+        <h2 class="card-h2">一、中本贯通到底是什么</h2>
+        <div class="card-sub">不是「中职」，也不是「专科」——是「中职入口、本科出口」</div>
+      </div>
+    </div>
+
+    <p class="body-p">
+      上海市教委 2014 年推出的试点改革，学制 <strong>七年（3 年中职 + 4 年本科）</strong>。培养方案由中职校与对口本科高校<strong>共同设计、分阶段实施</strong>：中职阶段打数学、物理、专业基础与实操底子，本科阶段深入理论、设计与创新能力，课程体系按「操作 → 分析 → 设计 → 创新」逐级递进，避免两段重复。
+    </p>
+
+    <div class="grid-3" style="margin-top:1.2rem">
+      <div class="feature-box" style="background:#fff;border-color:var(--brand-purple-border)">
+        <div class="feature-title" style="color:var(--brand-purple)">学历出口</div>
+        <div class="feature-desc">
+          完成七年学业且成绩合格，颁发<strong>全日制本科毕业证书</strong>；符合学位授予条件的授予<strong>学士学位</strong>。与通过秋季高考进入同一高校、同一专业的学生<strong>同证同卷</strong>。
+        </div>
+      </div>
+      <div class="feature-box" style="background:#fff;border-color:#BFDBFE">
+        <div class="feature-title" style="color:var(--brand-blue-light)">升学方式</div>
+        <div class="feature-desc">
+          免高考，但要过<strong>转段考试</strong>：三校生统一文化考试（语数外，满分 300 分，须达 180 分）+ 本科院校组织的技能水平测试。属<strong>达标性考试</strong>，通过率高但并非「必过」。
+        </div>
+      </div>
+      <div class="feature-box" style="background:#fff;border-color:var(--accent-gold-border)">
+        <div class="feature-title" style="color:var(--accent-gold)">关键约束</div>
+        <div class="feature-desc">
+          <strong>七年一贯、入校即锁定专业、不能转专业</strong>。也不参加普通高考，转段只对接口贯通专业，不能改报其他高校。
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-h">规模与热度（2026）</h3>
+    <ul class="bullets">
+      <li><strong>累计盘子：</strong>截至 2026 年，上海累计开设 <strong>91 个</strong>中本贯通专业，累计招收约 <strong>2 万人</strong>，已有 <strong>6 届</strong>本科毕业生。</li>
+      <li><strong>2026 规模：</strong>38 所中职院校、<strong>86 个专业点</strong>、计划招生 <strong>2756 人</strong>；相比 2025 年（76 个专业点、2345 人）新增 16 个、停招 6 个，净增 10 个专业点，总计划<strong>扩招 411 人</strong>。</li>
+      <li><strong>但分数线没降：</strong>扩招的同时，<strong>超八成专业分数线上涨</strong>——大部分专业普涨 10 分以上，超半数涨幅 20–30 分。远郊崇明的园艺类「冷门」专业最低分都摸到了 674 分。</li>
+      <li><strong>试点扩容节奏：</strong>2024 年增设 8 个、2025 年增设 5 个、<strong>2026 年增设 16 个</strong>专业点。2026 年上海海事大学首次加入；上海第二工业大学、上海工程技术大学、上海电机学院三所公办院校加入<strong>职业本科</strong>贯通培养。</li>
+      <li><strong>全国扩散：</strong>上海、江苏起步最早；近三年福建、广东、河南等陆续跟进，目前开展中本贯通的省市已<strong>超过 13 个</strong>。2026 年 6 月国务院《教育发展「十五五」规划》提出「推进中职、高职、职业本科教育衔接培养」。</li>
+    </ul>
+
+    <div class="note blue">
+      <strong>一句话定位：</strong>它是给「理科基础扎实、动手能力强、不想把三年赌在一次高考上」的孩子准备的<strong>确定性通道</strong>——用放弃「市重点高中 + 冲名校」的上限，换一个<strong>提前三年锁定公办本科</strong>的下限。
+    </div>
+  </section>
+
+  <!-- ============ 二、三条通道对比 ============ -->
+  <section class="card" id="compare">
+    <div class="card-header">
+      <div class="card-icon">🔀</div>
+      <div>
+        <h2 class="card-h2">二、中本贯通 / 中高职贯通 / 五年一贯制，三条通道怎么分</h2>
+        <div class="card-sub">都属于中职校自主招生，但学历出口与控制线完全不同</div>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table class="plain" style="min-width:760px">
+        <thead>
+          <tr>
+            <th>对比维度</th>
+            <th>中本贯通（3+4）</th>
+            <th>中高职贯通（3+2）</th>
+            <th>五年一贯制</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>学制</td><td>共 7 年</td><td>共 5 年</td><td>共 5 年（一体化设计）</td></tr>
+          <tr><td>毕业学历</td><td><strong>本科 + 学士学位</strong></td><td>高职（专科）</td><td>高职（专科）</td></tr>
+          <tr><td>对接院校</td><td>应用型本科 / 职业本科</td><td>高等职业院校</td><td>高等职业院校</td></tr>
+          <tr><td>2026 最低投档控制线</td><td><strong>501 分</strong>（与普高线持平）</td><td>400 分</td><td>400 分</td></tr>
+          <tr><td>志愿数</td><td>2 个平行志愿</td><td colspan="2">两者合计 5 个平行志愿（可兼报）</td></tr>
+          <tr><td>户籍要求</td><td><strong>仅上海市户籍</strong>（独立设置艺体类中职校试点专业除外）</td><td colspan="2">不限户籍；用于随迁子女的计划约占总量的 25%</td></tr>
+          <tr><td>是否需二次考核</td><td>需转段考试（文化课 + 技能测试）</td><td>需转段考核（难度较低）</td><td>无需二次升学考试，五年一气呵成</td></tr>
+          <tr><td>适合谁</td><td>成绩较好、方向明确、想要本科学历</td><td>想稳拿专科学历、后续可专升本</td><td>想避开二次分流、课程连贯</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <strong>别混淆两个数字：</strong>中本贯通的控制线是 <strong>501 分</strong>，五年一贯制 / 中高职贯通是 <strong>400 分</strong>。但控制线只是「有资格被投档」，中本贯通热门专业的实际录取线普遍在 <strong>600–691.5 分</strong>区间，两者不是一回事。
+    </div>
+  </section>
+
+  <!-- ============ 三、报考条件与志愿规则 ============ -->
+  <section class="card" id="rules">
+    <div class="card-header">
+      <div class="card-icon">📋</div>
+      <div>
+        <h2 class="card-h2">三、报考条件与志愿规则</h2>
+        <div class="card-sub">依据沪教委职〔2026〕10 号《关于做好 2026 年上海市中等职业学校自主招生工作的通知》</div>
+      </div>
+    </div>
+
+    <h3 class="sub-h">3.1 报名条件（四条同时满足）</h3>
+    <ul class="bullets">
+      <li>具有 2026 年上海市中招报名资格，并<strong>完成报名</strong>；</li>
+      <li>参加上海市初中学业水平考试（中考），并获得<strong>统一考试科目的有效成绩</strong>；</li>
+      <li>中本贯通<strong>只招收符合上海市中招报名条件的上海市户籍学生</strong>（独立设置的艺体类中职校试点专业除外）；</li>
+      <li>持外国护照以外籍身份报名并参加学业考试的学生，<strong>不参加</strong>中职校自主招生录取。</li>
+    </ul>
+
+    <h3 class="sub-h">3.2 志愿填报（2026 年新规）</h3>
+    <div class="grid-2">
+      <div class="feature-box" style="background:#fff;border-color:var(--brand-purple-border)">
+        <div class="feature-title" style="color:var(--brand-purple)">时间与平台</div>
+        <div class="feature-desc">
+          统一在<strong>学业考试后、成绩发布前</strong>填报，与其它自主招生志愿同期。登录<strong>上海招考热线 www.shmeea.edu.cn</strong>，市级统一平台网上填报。
+        </div>
+      </div>
+      <div class="feature-box" style="background:#fff;border-color:var(--brand-purple-border)">
+        <div class="feature-title" style="color:var(--brand-purple)">志愿结构</div>
+        <div class="feature-desc">
+          中本贯通 <strong>2 个平行志愿</strong>；五年一贯制 + 中高职贯通合计 5 个；中职校提前招生 3 个。<strong>三个类别可兼报。</strong>
+        </div>
+      </div>
+      <div class="feature-box" style="background:#fff;border-color:var(--accent-red-border)">
+        <div class="feature-title" style="color:var(--accent-red)">确认即锁死</div>
+        <div class="feature-desc">
+          须学生本人 + 家长（监护人）<strong>书面签字确认</strong>才生效。确认后<strong>不可更改任何志愿信息</strong>，市、区招考机构不受理更改、顺延、放弃、补填等任何申请。
+        </div>
+      </div>
+      <div class="feature-box" style="background:#fff;border-color:var(--accent-gold-border)">
+        <div class="feature-title" style="color:var(--accent-gold)">招生代码是唯一依据</div>
+        <div class="feature-desc">
+          6 位招生代码是投档录取的<strong>唯一依据</strong>。同校同名专业的志愿名称不同，代码不同，填错就投错。
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>有面试或专业测试要求的专业：</strong>须先报名参加并通过招生学校组织的面试/测试，进入「中职校自主招生资格库」，才能填报该志愿。<strong>中职校自主招生的面试或专业测试不得收费。</strong>若有身体条件或其他特殊要求、因不符合而被退档，则<strong>无法再被其他学校录取</strong>——填报前务必逐字读招生章程。
+    </div>
+
+    <h3 class="sub-h">3.3 录取规则</h3>
+    <ul class="bullets">
+      <li><strong>投档方式：</strong>市教育考试院按中考总成绩（含政策性照顾加分）+ 志愿，以「<strong>分数优先、遵循志愿、一轮投档</strong>」的平行志愿方式，从高分到低分，按招生计划 <strong>1:1</strong> 比例投档（末位同分时同分同投）。</li>
+      <li><strong>批次内顺序：</strong>① 中本贯通 → ② 五年一贯制 / 中高职贯通 → ③ 中职校提前招生。</li>
+      <li><strong>成绩门槛：</strong>中本贯通录取者的中考总成绩<strong>须达到当年上海市普通高中最低投档控制分数线</strong>（2026 年为 501 分）。</li>
+      <li><strong>中招总顺序：</strong>自主招生 → 名额分配综合评价 → 统一招生。中职校自主招生属第一批次中的最后一类。</li>
+      <li><strong>关键规则：</strong>一旦被中职校自主招生志愿录取，其填报的<strong>名额分配综合评价志愿与统一招生志愿自动失效</strong>；未被录取则自动进入后续其他批次——所以中本贯通是「提前批中的提前批」，<strong>录了就走，不留后路</strong>。</li>
+    </ul>
+  </section>
+
+  <!-- ============ 四、时间线 ============ -->
+  <section class="card" id="timeline">
+    <div class="card-header">
+      <div class="card-icon">🗓️</div>
+      <div>
+        <h2 class="card-h2">四、2026 年录取流程时间线</h2>
+        <div class="card-sub">以 2026 年上海中招实际节点为准，各校具体安排以章程公布为准</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2025 年 11 月</div>
+        <div class="tl-text">市教委发布：2026 年上海中考增设 <strong>16 个中本贯通专业点</strong>（另增设 40 个中高职贯通、6 个五年一贯制专业点）。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026 年 3 月中旬</div>
+        <div class="tl-text">各招生学校完成自主招生章程与录取方案，经上级主管部门（贯通类专业同时经贯通高校）同意后报市教育考试院备案。3 月 17 日市教委印发《关于做好 2026 年上海市中等职业学校自主招生工作的通知》（沪教委职〔2026〕10 号）。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026 年 4 月底前</div>
+        <div class="tl-text">市教育考试院及招生学校<strong>公布自主招生章程与录取方案</strong>——这是家长第一份要精读的材料，含专业、计划数、身体条件要求、是否需面试/测试。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026 年 5 月上旬</div>
+        <div class="tl-text">需面试或专业测试的专业组织面测（例：上海体育大学附属竞技体育学校 5 月 6 日预报名、5 月 9 日面试、5 月 10 日专项测试）。合格名单上报「中职校自主招生资格库」。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026 年 5 月 16–17 日</div>
+        <div class="tl-text">中考<strong>外语听说测试</strong>与<strong>物理、化学实验操作</strong>考试。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026 年 6 月 20–21 日</div>
+        <div class="tl-text">中考笔试（语文 / 综合测试 / 历史，外语 / 数学 / 道德与法治）。总分 <strong>750 分</strong>。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026 年 6 月底（考试后、成绩发布前）</div>
+        <div class="tl-text"><strong>网上填报志愿 + 书面签字确认</strong>。这是最关键的窗口期——成绩还没出来，但志愿必须定下来。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2026 年 7 月 19 日</div>
+        <div class="tl-text">市教育考试院<strong>公布中本贯通各专业最低录取分数线</strong>（与五年一贯制、中高职贯通同日公布）。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">录取后</div>
+        <div class="tl-text">被录取学生与当年通过秋季高考录取的学生<strong>一起报到入学</strong>，学校按有关规定进行新生入学资格复查。</div>
+      </div>
+    </div>
+
+    <div class="note red">
+      <strong>最容易踩的坑：</strong>志愿填报在<strong>成绩公布之前</strong>。也就是说，你必须凭估分和往年分数线做决策，不能等出分再填。这也是为什么本页把 86 个专业点的完整分数线和涨幅都摊开——它们就是估分后唯一的参照系。
+    </div>
+  </section>
+
+  <!-- ============ 五、分数线怎么读 ============ -->
+  <section class="card" id="lines">
+    <div class="card-header">
+      <div class="card-icon">📐</div>
+      <div>
+        <h2 class="card-h2">五、分数线怎么读：三个数字别搞混</h2>
+        <div class="card-sub">家长最容易误读的就是「控分线」与「录取线」</div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="feature-box" style="background:#fff;border-color:var(--accent-red-border)">
+        <div class="feature-title" style="color:var(--accent-red)">① 最低投档控制线（资格线）</div>
+        <div class="feature-desc">
+          全市统一划定，<strong>2026 年为 501 分</strong>（与普通高中最低投档控制分数线持平，比 2025 年的 513 分<strong>下降 12 分</strong>）。<br>
+          含义：达线<strong>只是有资格被投档</strong>，绝不是录取线。
+        </div>
+      </div>
+      <div class="feature-box" style="background:#fff;border-color:var(--brand-purple-border)">
+        <div class="feature-title" style="color:var(--brand-purple)">② 投档分数线（出档线）</div>
+        <div class="feature-desc">
+          按「分数优先、遵循志愿、一轮投档」，投到该专业<strong>最后一名考生的中考成绩</strong>（750 分制）。<br>
+          含义：这才是该专业当年的<strong>真实门槛</strong>，2026 年从 529 分一路铺到 691.5 分。
+        </div>
+      </div>
+      <div class="feature-box" style="background:#fff;border-color:#BFDBFE">
+        <div class="feature-title" style="color:var(--brand-blue-light)">③ 实际录取分数线（最低录取分）</div>
+        <div class="feature-desc">
+          资格审核与体检合格后，<strong>最终被录取的最后一名考生的成绩</strong>。<br>
+          含义：中本贯通按 1:1 投档且<strong>出档即录取、无退档环节</strong>，所以 ② 与 ③ 在数值上<strong>重合</strong>——公告上那一个数字，就是两者共同的值。
+        </div>
+      </div>
+    </div>
+
+    <div class="note green">
+      <strong>实操结论：</strong>你只需要看<strong>一个数字</strong>——公告里该专业的「最低录取分数线」。控分线 501 分只决定「能不能填」，填完之后能不能进，全看这个专业当年的末位分数。本页第六节的 86 行表格用的就是这个口径。
+    </div>
+  </section>
+
+  <!-- ============ 六、86 专业点全表 ============ -->
+  <section class="card" id="table">
+    <div class="card-header">
+      <div class="card-icon">📊</div>
+      <div>
+        <h2 class="card-h2">六、2026 年 86 个专业点完整分数线</h2>
+        <div class="card-sub">上海市教育考试院 2026 年 7 月 19 日公布 · 38 所中职校 × 对口本科院校 · 按中职校代码排序</div>
+      </div>
+    </div>
+
+    <div class="table-tools">
+      <input type="text" id="search" class="search-input" placeholder="搜索中职学校 / 专业 / 本科院校...">
+      <div class="chips" id="chips">
+        <button class="chip-btn active" data-cat="全部">全部 86</button>
+        <button class="chip-btn" data-cat="理工制造">理工制造</button>
+        <button class="chip-btn" data-cat="信息技术">信息技术</button>
+        <button class="chip-btn" data-cat="医药农林">医药农林</button>
+        <button class="chip-btn" data-cat="财经管理">财经管理</button>
+        <button class="chip-btn" data-cat="艺术设计">艺术设计</button>
+        <button class="chip-btn" data-cat="外语">外语</button>
+        <button class="chip-btn" data-cat="其他">其他</button>
+        <label class="fit-toggle"><input type="checkbox" id="fitOnly"> 仅看理科友好（47）</label>
+      </div>
+    </div>
+    <div class="result-line">当前显示 <b id="count">86</b> / 86 个专业点 · 分数越高＝竞争越激烈</div>
+
+    <div class="table-container">
+      <table class="data-table" id="tbl">
+        <thead>
+          <tr>
+            <th>中职学校（代码）</th>
+            <th>招生专业（志愿名称 / 代码）</th>
+            <th>对口本科院校</th>
+            <th style="text-align:right">2026 最低录取分</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 1 上海商业会计学校 201 -->
+          <tr data-cat="财经管理" data-fit="0" data-score="665.5"><td class="sch">上海商业会计学校<small>201</small></td><td class="maj"><strong>会计学</strong><small>商会会计 / 201401</small></td><td class="uni">上海商学院</td><td class="num">665.5</td></tr>
+          <tr data-cat="财经管理" data-fit="0" data-score="643.5"><td class="sch">上海商业会计学校<small>201</small></td><td class="maj"><strong>财务管理</strong><small>商会财管 / 201402</small></td><td class="uni">上海师范大学天华学院</td><td class="num">643.5</td></tr>
+          <tr data-cat="财经管理" data-fit="0" data-score="635"><td class="sch">上海商业会计学校<small>201</small></td><td class="maj"><strong>市场营销（新零售）</strong><small>商会新营 / 201403</small></td><td class="uni">上海杉达学院</td><td class="num">635</td></tr>
+          <tr data-cat="信息技术" data-fit="1" data-score="691.5"><td class="sch">上海商业会计学校<small>201</small></td><td class="maj"><strong>信息安全</strong><small>商会信安 / 201404</small></td><td class="uni">上海电力大学</td><td class="num">691.5</td></tr>
+          <tr data-cat="信息技术" data-fit="1" data-score="621.5"><td class="sch">上海商业会计学校<small>201</small></td><td class="maj"><strong>数字媒体技术</strong><small>商会数媒 / 201405</small></td><td class="uni">上海中侨职业技术大学</td><td class="num">621.5</td></tr>
+          <!-- 2 上海市商贸旅游学校 202 -->
+          <tr data-cat="信息技术" data-fit="1" data-score="631.5"><td class="sch">上海市商贸旅游学校<small>202</small></td><td class="maj"><strong>数据科学与大数据技术</strong><small>商旅数据 / 202401</small></td><td class="uni">上海杉达学院</td><td class="num">631.5</td></tr>
+          <tr data-cat="财经管理" data-fit="0" data-score="622.5"><td class="sch">上海市商贸旅游学校<small>202</small></td><td class="maj"><strong>酒店管理</strong><small>商旅酒店 / 202402</small></td><td class="uni">上海杉达学院</td><td class="num">622.5</td></tr>
+          <tr data-cat="财经管理" data-fit="0" data-score="629.5"><td class="sch">上海市商贸旅游学校<small>202</small></td><td class="maj"><strong>旅游管理</strong><small>商旅旅管 / 202403</small></td><td class="uni">上海师范大学天华学院</td><td class="num">629.5</td></tr>
+          <!-- 3 上海市工商外国语学校 209 -->
+          <tr data-cat="财经管理" data-fit="0" data-score="663"><td class="sch">上海市工商外国语学校<small>209</small></td><td class="maj"><strong>国际经济与贸易</strong><small>商外国贸 / 209401</small></td><td class="uni">上海商学院</td><td class="num">663</td></tr>
+          <tr data-cat="外语" data-fit="0" data-score="619"><td class="sch">上海市工商外国语学校<small>209</small></td><td class="maj"><strong>德语（商务）</strong><small>商外德语 / 209402</small></td><td class="uni">上海外国语大学贤达经济人文学院</td><td class="num">619</td></tr>
+          <tr data-cat="外语" data-fit="0" data-score="620"><td class="sch">上海市工商外国语学校<small>209</small></td><td class="maj"><strong>朝鲜语</strong><small>商外韩语 / 209403</small></td><td class="uni">上海外国语大学贤达经济人文学院</td><td class="num">620</td></tr>
+          <tr data-cat="外语" data-fit="0" data-score="638.5"><td class="sch">上海市工商外国语学校<small>209</small></td><td class="maj"><strong>西班牙语（商务）</strong><small>商外西语 / 209404</small></td><td class="uni">上海杉达学院</td><td class="num">638.5</td></tr>
+          <tr data-cat="信息技术" data-fit="1" data-score="628"><td class="sch">上海市工商外国语学校<small>209</small></td><td class="maj"><strong>计算机科学与技术</strong><small>商外计科 / 209405</small></td><td class="uni">上海师范大学天华学院</td><td class="num">628</td></tr>
+          <!-- 4 上海市工业技术学校 212 -->
+          <tr data-cat="理工制造" data-fit="1" data-score="664"><td class="sch">上海市工业技术学校<small>212</small></td><td class="maj"><strong>智能制造工程技术</strong><small>工业智能 / 212401</small></td><td class="uni">上海第二工业大学</td><td class="num">664</td></tr>
+          <tr data-cat="理工制造" data-fit="1" data-score="651"><td class="sch">上海市工业技术学校<small>212</small></td><td class="maj"><strong>材料成型及控制工程</strong><small>工业材控 / 212402</small></td><td class="uni">上海第二工业大学</td><td class="num">651</td></tr>
+          <tr data-cat="理工制造" data-fit="1" data-score="630"><td class="sch">上海市工业技术学校<small>212</small></td><td class="maj"><strong>机器人技术</strong><small>工业机器人 / 212403</small></td><td class="uni">上海中侨职业技术大学</td><td class="num">630</td></tr>
+          <!-- 5 上海市材料工程学校 213 -->
+          <tr data-cat="理工制造" data-fit="1" data-score="655"><td class="sch">上海市材料工程学校<small>213</small></td><td class="maj"><strong>材料科学与工程（建筑节能材料）</strong><small>材料科学 / 213401</small></td><td class="uni">上海应用技术大学</td><td class="num">655</td></tr>
+          <tr data-cat="艺术设计" data-fit="0" data-score="665"><td class="sch">上海市材料工程学校<small>213</small></td><td class="maj"><strong>产品设计</strong><small>材料产设 / 213402</small></td><td class="uni">上海应用技术大学</td><td class="num">665</td></tr>
+          <tr data-cat="艺术设计" data-fit="0" data-score="620.5"><td class="sch">上海市材料工程学校<small>213</small></td><td class="maj"><strong>环境设计</strong><small>材料环设 / 213403</small></td><td class="uni">上海建桥学院</td><td class="num">620.5</td></tr>
+          <tr data-cat="艺术设计" data-fit="0" data-score="608"><td class="sch">上海市材料工程学校<small>213</small></td><td class="maj"><strong>视觉传达设计</strong><small>材料视觉 / 213404</small></td><td class="uni">上海立达学院</td><td class="num">608</td></tr>
+          <!-- 6 上海市信息管理学校 215 -->
+          <tr data-cat="艺术设计" data-fit="0" data-score="654.5"><td class="sch">上海市信息管理学校<small>215</small></td><td class="maj"><strong>文物保护与修复</strong><small>信管文修 / 215401</small></td><td class="uni">上海视觉艺术学院 / 上海应用技术大学</td><td class="num">654.5</td></tr>
+          <tr data-cat="艺术设计" data-fit="0" data-score="626.5"><td class="sch">上海市信息管理学校<small>215</small></td><td class="maj"><strong>数字媒体艺术</strong><small>信管数艺 / 215402</small></td><td class="uni">上海外国语大学贤达经济人文学院</td><td class="num">626.5</td></tr>
+          <tr data-cat="信息技术" data-fit="1" data-score="613"><td class="sch">上海市信息管理学校<small>215</small></td><td class="maj"><strong>数据科学与大数据技术</strong><small>信管数据 / 215403</small></td><td class="uni">上海立达学院</td><td class="num">613</td></tr>
+          <tr data-cat="财经管理" data-fit="0" data-score="646"><td class="sch">上海市信息管理学校<small>215</small></td><td class="maj"><strong>酒店管理</strong><small>信管酒店 / 215404</small></td><td class="uni">上海商学院</td><td class="num">646</td></tr>
+          <tr data-cat="理工制造" data-fit="1" data-score="617.5"><td class="sch">上海市信息管理学校<small>215</small></td><td class="maj"><strong>机器人技术</strong><small>信管机器人 / 215405</small></td><td class="uni">上海中侨职业技术大学</td><td class="num">617.5</td></tr>
+          <!-- 7 上海信息技术学校 222 -->
+          <tr data-cat="理工制造" data-fit="1" data-score="658"><td class="sch">上海信息技术学校<small>222</small></td><td class="maj"><strong>化学工程与工艺</strong><small>信息化学 / 222401</small></td><td class="uni">上海应用技术大学</td><td class="num">658</td></tr>
+          <tr data-cat="信息技术" data-fit="1" data-score="622.5"><td class="sch">上海信息技术学校<small>222</small></td><td class="maj"><strong>人工智能</strong><small>信息人工 / 222402</small></td><td class="uni">上海立达学院</td><td class="num">622.5</td></tr>
+          <tr data-cat="信息技术" data-fit="1" data-score="632.5"><td class="sch">上海信息技术学校<small>222</small></td><td class="maj"><strong>物联网工程</strong><small>信息物联 / 222403</small></td><td class="uni">上海建桥学院</td><td class="num">632.5</td></tr>
+          <tr data-cat="信息技术" data-fit="1" data-score="638"><td class="sch">上海信息技术学校<small>222</small></td><td class="maj"><strong>数字媒体技术</strong><small>信息数媒 / 222404</small></td><td class="uni">上海建桥学院</td><td class="num">638</td></tr>
+          <!-- 8 上海市经济管理学校 225 -->
+          <tr data-cat="财经管理" data-fit="0" data-score="639.5"><td class="sch">上海市经济管理学校<small>225</small></td><td class="maj"><strong>金融学（财富管理）</strong><small>经管金融 / 225401</small></td><td class="uni">上海杉达学院</td><td class="num">639.5</td></tr>
+          <tr data-cat="艺术设计" data-fit="0" data-score="642.5"><td class="sch">上海市经济管理学校<small>225</small></td><td class="maj"><strong>动画（数字互动娱乐）</strong><small>经管动画 / 225402</small></td><td class="uni">上海视觉艺术学院</td><td class="num">642.5</td></tr>
+          <tr data-cat="信息技术" data-fit="1" data-score="626"><td class="sch">上海市经济管理学校<small>225</small></td><td class="maj"><strong>数字媒体技术</strong><small>经管数媒 / 225403</small></td><td class="uni">上海中侨职业技术大学</td><td class="num">626</td></tr>
+          <tr data-cat="信息技术" data-fit="1" data-score="660"><td class="sch">上海市经济管理学校<small>225</small></td><td class="maj"><strong>网络工程</strong><small>经管网工 / 225404</small></td><td class="uni">上海第二工业大学</td><td class="num">660</td></tr>
+          <!-- 9 上海市商业学校 227 -->
+          <tr data-cat="财经管理" data-fit="0" data-score="653.5"><td class="sch">上海市商业学校<small>227</small></td><td class="maj"><strong>会计学</strong><small>商校会计 / 227401</small></td><td class="uni">上海商学院</td><td class="num">653.5</td></tr>
+          <tr data-cat="艺术设计" data-fit="0" data-score="636.5"><td class="sch">上海市商业学校<small>227</small></td><td class="maj"><strong>数字媒体艺术</strong><small>商校数媒 / 227402</small></td><td class="uni">上海师范大学天华学院</td><td class="num">636.5</td></tr>
+          <!-- 10 上海市贸易学校 229 -->
+          <tr data-cat="信息技术" data-fit="1" data-score="651"><td class="sch">上海市贸易学校<small>229</small></td><td class="maj"><strong>物联网工程</strong><small>贸易物联 / 229401</small></td><td class="uni">上海商学院</td><td class="num">651</td></tr>
+          <tr data-cat="财经管理" data-fit="0" data-score="638"><td class="sch">上海市贸易学校<small>229</small></td><td class="maj"><strong>国际经济与贸易（食品进出口）</strong><small>贸易国贸 / 229402</small></td><td class="uni">上海杉达学院</td><td class="num">638</td></tr>
+          <tr data-cat="财经管理" data-fit="0" data-score="653.5"><td class="sch">上海市贸易学校<small>229</small></td><td class="maj"><strong>酒店管理</strong><small>贸易酒管 / 229403</small></td><td class="uni">上海商学院</td><td class="num">653.5</td></tr>
+          <tr data-cat="医药农林" data-fit="1" data-score="632"><td class="sch">上海市贸易学校<small>229</small></td><td class="maj"><strong>食品营养与健康</strong><small>贸易营养 / 229404</small></td><td class="uni">上海中侨职业技术大学</td><td class="num">632</td></tr>
+          <!-- 11 上海健康医学院附属卫生学校 233 -->
+          <tr data-cat="医药农林" data-fit="1" data-score="672"><td class="sch">上海健康医学院附属卫生学校<small>233</small></td><td class="maj"><strong>护理学</strong><small>健康护理 / 233401</small></td><td class="uni">上海健康医学院</td><td class="num">672</td></tr>
+          <!-- 12 上海科技管理学校 236 -->
+          <tr data-cat="信息技术" data-fit="1" data-score="613.5"><td class="sch">上海科技管理学校<small>236</small></td><td class="maj"><strong>网络工程</strong><small>科技网络 / 236401</small></td><td class="uni">上海建桥学院</td><td class="num">613.5</td></tr>
+          <!-- 13 上海体育大学附属竞技体育学校 237 -->
+          <tr data-cat="其他" data-fit="0" data-score="529"><td class="sch">上海体育大学附属竞技体育学校<small>237</small></td><td class="maj"><strong>足球运动</strong><small>竞技足球 / 237401</small></td><td class="uni">上海体育大学</td><td class="num">529</td></tr>
+          <!-- 14 上海市西南工程学校 242 -->
+          <tr data-cat="理工制造" data-fit="1" data-score="651.5"><td class="sch">上海市西南工程学校<small>242</small></td><td class="maj"><strong>自动化（楼宇智能化）</strong><small>西南自动 / 242401</small></td><td class="uni">上海电机学院</td><td class="num">651.5</td></tr>
+          <tr data-cat="理工制造" data-fit="1" data-score="603"><td class="sch">上海市西南工程学校<small>242</small></td><td class="maj"><strong>工程造价</strong><small>西南造价 / 242402</small></td><td class="uni">上海中侨职业技术大学</td><td class="num">603</td></tr>
+          <!-- 15 上海市大众工业学校 253 -->
+          <tr data-cat="理工制造" data-fit="1" data-score="664"><td class="sch">上海市大众工业学校<small>253</small></td><td class="maj"><strong>电气工程及自动化</strong><small>大众自动化 / 253401</small></td><td class="uni">上海电机学院</td><td class="num">664</td></tr>
+          <!-- 16 上海市行政管理学校 254 -->
+          <tr data-cat="财经管理" data-fit="0" data-score="635"><td class="sch">上海市行政管理学校<small>254</small></td><td class="maj"><strong>会计学</strong><small>行政财务 / 254401</small></td><td class="uni">上海外国语大学贤达经济人文学院</td><td class="num">635</td></tr>
+          <!-- 17 上海港湾学校 257 -->
+          <tr data-cat="理工制造" data-fit="1" data-score="691"><td class="sch">上海港湾学校<small>257</small></td><td class="maj"><strong>机械设计制造及其自动化</strong><small>港湾机械 / 257401</small></td><td class="uni">上海海事大学</td><td class="num">691</td></tr>
+          <tr data-cat="理工制造" data-fit="1" data-score="690"><td class="sch">上海港湾学校<small>257</small></td><td class="maj"><strong>物流工程</strong><small>港湾物工 / 257402</small></td><td class="uni">上海海事大学</td><td class="num">690</td></tr>
+          <!-- 18 上海市第二轻工业学校 259 -->
+          <tr data-cat="财经管理" data-fit="0" data-score="655.5"><td class="sch">上海市第二轻工业学校<small>259</small></td><td class="maj"><strong>物流管理</strong><small>二轻物管 / 259401</small></td><td class="uni">上海第二工业大学</td><td class="num">655.5</td></tr>
+          <tr data-cat="信息技术" data-fit="1" data-score="616"><td class="sch">上海市第二轻工业学校<small>259</small></td><td class="maj"><strong>数据科学与大数据技术</strong><small>二轻大数据 / 259402</small></td><td class="uni">上海立达学院</td><td class="num">616</td></tr>
+          <tr data-cat="信息技术" data-fit="1" data-score="656.5"><td class="sch">上海市第二轻工业学校<small>259</small></td><td class="maj"><strong>网络工程</strong><small>二轻网工 / 259403</small></td><td class="uni">上海第二工业大学</td><td class="num">656.5</td></tr>
+          <!-- 19 上海市医药学校 260 -->
+          <tr data-cat="医药农林" data-fit="1" data-score="675"><td class="sch">上海市医药学校<small>260</small></td><td class="maj"><strong>制药工程</strong><small>医药制药 / 260401</small></td><td class="uni">上海应用技术大学</td><td class="num">675</td></tr>
+          <!-- 20 上海市环境学校 261 -->
+          <tr data-cat="理工制造" data-fit="1" data-score="639.5"><td class="sch">上海市环境学校<small>261</small></td><td class="maj"><strong>机械设计制造及其自动化</strong><small>环境机械 / 261401</small></td><td class="uni">上海建桥学院</td><td class="num">639.5</td></tr>
+          <!-- 21 上海市航空服务学校 262 -->
+          <tr data-cat="艺术设计" data-fit="0" data-score="653"><td class="sch">上海市航空服务学校<small>262</small></td><td class="maj"><strong>航空服务艺术与管理</strong><small>航空乘管 / 262401</small></td><td class="uni">上海工程技术大学</td><td class="num">653</td></tr>
+          <!-- 22 上海食品科技学校 265 -->
+          <tr data-cat="医药农林" data-fit="1" data-score="668"><td class="sch">上海食品科技学校<small>265</small></td><td class="maj"><strong>食品科学与工程</strong><small>食品科学 / 265401</small></td><td class="uni">上海应用技术大学</td><td class="num">668</td></tr>
+          <tr data-cat="医药农林" data-fit="1" data-score="632.5"><td class="sch">上海食品科技学校<small>265</small></td><td class="maj"><strong>食品质量与安全</strong><small>食品质量 / 265402</small></td><td class="uni">上海中侨职业技术大学</td><td class="num">632.5</td></tr>
+          <tr data-cat="财经管理" data-fit="0" data-score="620.5"><td class="sch">上海食品科技学校<small>265</small></td><td class="maj"><strong>烹饪与餐饮管理</strong><small>食品烹饪 / 265403</small></td><td class="uni">上海中侨职业技术大学</td><td class="num">620.5</td></tr>
+          <!-- 23 上海市城市科技学校 267 -->
+          <tr data-cat="理工制造" data-fit="1" data-score="653"><td class="sch">上海市城市科技学校<small>267</small></td><td class="maj"><strong>机械设计制造及自动化</strong><small>城科机械 / 267401</small></td><td class="uni">上海工程技术大学</td><td class="num">653</td></tr>
+          <!-- 24 上海工商信息学校 269 -->
+          <tr data-cat="理工制造" data-fit="1" data-score="670"><td class="sch">上海工商信息学校<small>269</small></td><td class="maj"><strong>机械工程</strong><small>商信工程 / 269401</small></td><td class="uni">上海工程技术大学</td><td class="num">670</td></tr>
+          <tr data-cat="信息技术" data-fit="1" data-score="629.5"><td class="sch">上海工商信息学校<small>269</small></td><td class="maj"><strong>人工智能工程技术</strong><small>商信智能 / 269402</small></td><td class="uni">上海中侨职业技术大学</td><td class="num">629.5</td></tr>
+          <tr data-cat="理工制造" data-fit="1" data-score="628"><td class="sch">上海工商信息学校<small>269</small></td><td class="maj"><strong>智能制造工程</strong><small>商信智造 / 269403</small></td><td class="uni">上海建桥学院</td><td class="num">628</td></tr>
+          <!-- 25 上海电机学院附属科技学校 271 -->
+          <tr data-cat="理工制造" data-fit="1" data-score="673"><td class="sch">上海电机学院附属科技学校<small>271</small></td><td class="maj"><strong>电气工程及自动化</strong><small>临港电气 / 271401</small></td><td class="uni">上海电机学院</td><td class="num">673</td></tr>
+          <tr data-cat="财经管理" data-fit="0" data-score="649.5"><td class="sch">上海电机学院附属科技学校<small>271</small></td><td class="maj"><strong>财务管理</strong><small>临港财务 / 271402</small></td><td class="uni">上海电机学院</td><td class="num">649.5</td></tr>
+          <!-- 26 上海市奉贤中等专业学校 273 -->
+          <tr data-cat="信息技术" data-fit="1" data-score="610"><td class="sch">上海市奉贤中等专业学校<small>273</small></td><td class="maj"><strong>人工智能</strong><small>奉贤智能 / 273401</small></td><td class="uni">上海立达学院</td><td class="num">610</td></tr>
+          <!-- 27 上海市高级技工学校 317 -->
+          <tr data-cat="理工制造" data-fit="1" data-score="648.5"><td class="sch">上海市高级技工学校<small>317</small></td><td class="maj"><strong>材料成型及控制工程（现代模具成形技术）</strong><small>高技材料 / 317401</small></td><td class="uni">上海工程技术大学</td><td class="num">648.5</td></tr>
+          <tr data-cat="理工制造" data-fit="1" data-score="663.5"><td class="sch">上海市高级技工学校<small>317</small></td><td class="maj"><strong>车辆工程（城市轨道交通车辆）</strong><small>高技车辆 / 317402</small></td><td class="uni">上海工程技术大学</td><td class="num">663.5</td></tr>
+          <tr data-cat="理工制造" data-fit="1" data-score="658"><td class="sch">上海市高级技工学校<small>317</small></td><td class="maj"><strong>智能控制技术</strong><small>高技智控 / 317403</small></td><td class="uni">上海工程技术大学</td><td class="num">658</td></tr>
+          <tr data-cat="理工制造" data-fit="1" data-score="651.5"><td class="sch">上海市高级技工学校<small>317</small></td><td class="maj"><strong>机械设计制造及自动化</strong><small>高技机械 / 317404</small></td><td class="uni">上海工程技术大学</td><td class="num">651.5</td></tr>
+          <!-- 28 上海新闻出版职业技术学校 326 -->
+          <tr data-cat="信息技术" data-fit="1" data-score="625"><td class="sch">上海新闻出版职业技术学校<small>326</small></td><td class="maj"><strong>计算机科学与技术</strong><small>新闻计科 / 326401</small></td><td class="uni">上海立达学院</td><td class="num">625</td></tr>
+          <!-- 29 中华职业学校 408 -->
+          <tr data-cat="艺术设计" data-fit="0" data-score="621"><td class="sch">中华职业学校<small>408</small></td><td class="maj"><strong>视觉传达设计</strong><small>中华视觉 / 408401</small></td><td class="uni">上海建桥学院</td><td class="num">621</td></tr>
+          <tr data-cat="信息技术" data-fit="1" data-score="602"><td class="sch">中华职业学校<small>408</small></td><td class="maj"><strong>大数据工程技术</strong><small>中华数据 / 408402</small></td><td class="uni">上海中侨职业技术大学</td><td class="num">602</td></tr>
+          <!-- 30 上海市现代职业技术学校 413 -->
+          <tr data-cat="理工制造" data-fit="1" data-score="621"><td class="sch">上海市现代职业技术学校<small>413</small></td><td class="maj"><strong>汽车服务工程</strong><small>现代汽服 / 413401</small></td><td class="uni">上海师范大学天华学院</td><td class="num">621</td></tr>
+          <!-- 31 上海市逸夫职业技术学校 416 -->
+          <tr data-cat="艺术设计" data-fit="0" data-score="621.5"><td class="sch">上海市逸夫职业技术学校<small>416</small></td><td class="maj"><strong>环境设计（室内设计）</strong><small>逸夫环境 / 416401</small></td><td class="uni">上海视觉艺术学院</td><td class="num">621.5</td></tr>
+          <tr data-cat="艺术设计" data-fit="0" data-score="625.5"><td class="sch">上海市逸夫职业技术学校<small>416</small></td><td class="maj"><strong>产品设计（首饰设计）</strong><small>逸夫产品 / 416402</small></td><td class="uni">上海建桥学院</td><td class="num">625.5</td></tr>
+          <!-- 32 上海市曹杨职业技术学校 418 -->
+          <tr data-cat="理工制造" data-fit="1" data-score="613.5"><td class="sch">上海市曹杨职业技术学校<small>418</small></td><td class="maj"><strong>汽车服务工程技术</strong><small>曹职汽车 / 418401</small></td><td class="uni">上海中侨职业技术大学</td><td class="num">613.5</td></tr>
+          <!-- 33 上海师范大学附属杨浦现代职业学校 427 -->
+          <tr data-cat="理工制造" data-fit="1" data-score="653"><td class="sch">上师大附属杨浦现代职业学校<small>427</small></td><td class="maj"><strong>智能控制技术</strong><small>上师附智能控制 / 427401</small></td><td class="uni">上海工程技术大学</td><td class="num">653</td></tr>
+          <tr data-cat="艺术设计" data-fit="0" data-score="662"><td class="sch">上师大附属杨浦现代职业学校<small>427</small></td><td class="maj"><strong>录音艺术</strong><small>上师附录音艺术 / 427402</small></td><td class="uni">上海师范大学</td><td class="num">662</td></tr>
+          <tr data-cat="其他" data-fit="0" data-score="667"><td class="sch">上师大附属杨浦现代职业学校<small>427</small></td><td class="maj"><strong>学前教育</strong><small>上师附学前教育 / 427403</small></td><td class="uni">上海师范大学</td><td class="num">667</td></tr>
+          <!-- 34 上海市浦东外事服务学校 440 -->
+          <tr data-cat="财经管理" data-fit="0" data-score="660.5"><td class="sch">上海市浦东外事服务学校<small>440</small></td><td class="maj"><strong>市场营销（金融营销）</strong><small>外事金融 / 440401</small></td><td class="uni">上海立信会计金融学院</td><td class="num">660.5</td></tr>
+          <tr data-cat="财经管理" data-fit="0" data-score="615"><td class="sch">上海市浦东外事服务学校<small>440</small></td><td class="maj"><strong>旅游管理（旅游电子商务）</strong><small>外事旅游 / 440402</small></td><td class="uni">上海师范大学天华学院</td><td class="num">615</td></tr>
+          <tr data-cat="艺术设计" data-fit="0" data-score="616.5"><td class="sch">上海市浦东外事服务学校<small>440</small></td><td class="maj"><strong>表演</strong><small>外事表演 / 440403</small></td><td class="uni">上海工程技术大学</td><td class="num">616.5</td></tr>
+          <!-- 35 上海第二工业大学附属浦东振华外经职业技术学校 441 -->
+          <tr data-cat="财经管理" data-fit="0" data-score="658.5"><td class="sch">二工大附属振华外经职校<small>441</small></td><td class="maj"><strong>税收学</strong><small>振华税收 / 441401</small></td><td class="uni">上海第二工业大学</td><td class="num">658.5</td></tr>
+          <tr data-cat="财经管理" data-fit="0" data-score="628"><td class="sch">二工大附属振华外经职校<small>441</small></td><td class="maj"><strong>电子商务</strong><small>振华电商 / 441402</small></td><td class="uni">上海杉达学院</td><td class="num">628</td></tr>
+          <!-- 36 上海市群星职业技术学校 442 -->
+          <tr data-cat="艺术设计" data-fit="0" data-score="630.5"><td class="sch">上海市群星职业技术学校<small>442</small></td><td class="maj"><strong>数字媒体艺术</strong><small>群星数媒 / 442401</small></td><td class="uni">上海师范大学天华学院</td><td class="num">630.5</td></tr>
+          <!-- 37 上海海事大学附属职业技术学校 445 -->
+          <tr data-cat="财经管理" data-fit="0" data-score="660"><td class="sch">上海海事大学附属职业技术学校<small>445</small></td><td class="maj"><strong>物流管理（自贸区物流）</strong><small>海大物流 / 445401</small></td><td class="uni">上海电机学院</td><td class="num">660</td></tr>
+          <!-- 38 上海市工程技术管理学校 463 -->
+          <tr data-cat="医药农林" data-fit="1" data-score="674"><td class="sch">上海市工程技术管理学校<small>463</small></td><td class="maj"><strong>园艺</strong><small>工程园艺 / 463401</small></td><td class="uni">上海师范大学</td><td class="num">674</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <strong>读表提示：</strong>分数色阶——<span class="score s-top">670+</span> 极热 · <span class="score s-high">650–669</span> 热门 · <span class="score s-mid">620–649</span> 中位 · <span class="score s-norm">620 以下</span> 相对好进。<strong>2026 年涨幅最大</strong>的是上海新闻出版职业技术学校 → 上海立达学院的计算机科学与技术：从 2025 年的 585 分涨到 625 分（<strong>+40 分</strong>）。分数线以官方公布为准，逐年变动。
+    </div>
+  </section>
+
+  <!-- ============ 七、理科择校推荐 ============ -->
+  <section class="card" id="pick">
+    <div class="card-header">
+      <div class="card-icon">🎯</div>
+      <div>
+        <h2 class="card-h2">七、理科强 · 文科弱，怎么挑中本贯通专业</h2>
+        <div class="card-sub">86 个专业点里，理科友好型 47 个（理工制造 23 + 信息技术 18 + 医药农林 6）</div>
+      </div>
+    </div>
+
+    <div class="note blue">
+      <strong>先说前提：</strong>中本贯通<strong>七年锁定专业、不能转专业</strong>，所以对理科好、文科弱的孩子来说，「选对专业」比「选好学校」重要得多。选之前请确认：孩子是真的对某个工科方向有兴趣，而不是「因为分数合适」。
+    </div>
+
+    <h3 class="sub-h">7.1 三条判断逻辑</h3>
+    <div class="grid-3">
+      <div class="feature-box" style="background:#fff;border-color:var(--brand-purple-border)">
+        <div class="feature-title" style="color:var(--brand-purple)">① 看课程结构</div>
+        <div class="feature-desc">以<strong>数理 + 工程</strong>为主的专业，文科弱的孩子天然占优；以语言、设计、服务业为主的专业，等于把短板摆在主课位置上。</div>
+      </div>
+      <div class="feature-box" style="background:#fff;border-color:var(--brand-purple-border)">
+        <div class="feature-title" style="color:var(--brand-purple)">② 看转段方式</div>
+        <div class="feature-desc">转段文化课只考<strong>语数外</strong>、达标线 <strong>180 / 300</strong>，是「达标性」而非「选拔性」考试。数学强是加分项，英语弱仍要补，但风险可控。</div>
+      </div>
+      <div class="feature-box" style="background:#fff;border-color:var(--brand-purple-border)">
+        <div class="feature-title" style="color:var(--brand-purple)">③ 看出口产业</div>
+        <div class="feature-desc">优先对接上海「十五五」重点产业的：<strong>智能制造、集成电路与网络安全、生物医药、港航物流、城市轨道交通</strong>。</div>
+      </div>
+    </div>
+
+    <h3 class="sub-h">7.2 第一档 · 硬核工科（分数最高，就业最稳）</h3>
+    <div class="pick-tier tier-a">
+      <div class="pick-tier-head">A 档 · 值得用高分去换的专业</div>
+      <div class="table-container">
+        <table class="data-table" style="min-width:860px">
+          <thead><tr><th>专业</th><th>中职学校 → 对口本科</th><th style="text-align:right">2026 分</th><th>为什么适合理科强</th></tr></thead>
+          <tbody>
+            <tr><td class="maj"><strong>信息安全</strong></td><td>上海商业会计学校 → <strong>上海电力大学</strong></td><td class="num"><span class="score s-top">691.5</span></td><td>连续多年全市第一的「天花板专业」；网络安全是上海紧缺岗，纯技术路线，语文权重最低。</td></tr>
+            <tr><td class="maj"><strong>机械设计制造及其自动化</strong></td><td>上海港湾学校 → <strong>上海海事大学</strong></td><td class="num"><span class="score s-top">691</span></td><td>2026 年新设即爆；对口上港集团、振华重工、中船 708 所；本科就业率 95%+。</td></tr>
+            <tr><td class="maj"><strong>制药工程</strong></td><td>上海市医药学校 → <strong>上海应用技术大学</strong></td><td class="num"><span class="score s-top">675</span></td><td>以化学、生物为主；该专业毕业生 100% 拿到化工总控工高级证书，78% 进重点产业。</td></tr>
+            <tr><td class="maj"><strong>电气工程及自动化</strong></td><td>临港科技学校 → <strong>上海电机学院</strong></td><td class="num"><span class="score s-top">673</span></td><td>电机学院中本贯通专业就业率长期约 97%、专业匹配度 93%，是「就业确定性」最好的样本之一。</td></tr>
+            <tr><td class="maj"><strong>护理学</strong></td><td>上海健康医学院附属卫校 → <strong>上海健康医学院</strong></td><td class="num"><span class="score s-top">672</span></td><td>生物、化学、解剖为主；就业面向医院，稳定性强。注意：护理偏「记忆型」学科，需要孩子不排斥背诵。</td></tr>
+            <tr><td class="maj"><strong>机械工程</strong></td><td>上海工商信息学校 → <strong>上海工程技术大学</strong></td><td class="num"><span class="score s-top">670</span></td><td>上工技是沪上公办本科中中本贯通专业最多的（9 个）；该校中本贯通学生近三年拿国家级奖项 40 项。</td></tr>
+            <tr><td class="maj"><strong>食品科学与工程</strong></td><td>上海食品科技学校 → <strong>上海应用技术大学</strong></td><td class="num"><span class="score s-top">668</span></td><td>化学、微生物、工程为主；对应上海食品与生命健康产业，属技术型而非服务型专业。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 class="sub-h">7.3 第二档 · 信息技术与新工科（分数适中，产业仍热）</h3>
+    <div class="pick-tier tier-b">
+      <div class="pick-tier-head">B 档 · 性价比区间</div>
+      <div class="table-container">
+        <table class="data-table" style="min-width:860px">
+          <thead><tr><th>专业</th><th>中职学校 → 对口本科</th><th style="text-align:right">2026 分</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td class="maj"><strong>智能制造工程技术</strong></td><td>上海市工业技术学校 → 上海第二工业大学</td><td class="num"><span class="score s-high">664</span></td><td>对接公办职业本科方向，智能制造核心岗。</td></tr>
+            <tr><td class="maj"><strong>车辆工程（城市轨道交通车辆）</strong></td><td>上海市高级技工学校 → 上海工程技术大学</td><td class="num"><span class="score s-high">663.5</span></td><td>对接上海地铁与轨交装备产业链，岗位稳定。</td></tr>
+            <tr><td class="maj"><strong>网络工程</strong></td><td>上海市经济管理学校 → 上海第二工业大学</td><td class="num"><span class="score s-high">660</span></td><td>计算机大类里最「正统」的工科方向之一。</td></tr>
+            <tr><td class="maj"><strong>化学工程与工艺</strong> / <strong>智能控制技术</strong></td><td>上海信息技术学校 → 上海应用技术大学 / 高级技工学校 → 上海工程技术大学</td><td class="num"><span class="score s-high">658</span></td><td>两个同分专业，前者偏化工、后者偏自动化，按孩子偏好二选一。</td></tr>
+            <tr><td class="maj"><strong>网络工程</strong></td><td>上海市第二轻工业学校 → 上海第二工业大学</td><td class="num"><span class="score s-high">656.5</span></td><td>同校路径的另一入口，比经管口略低 3.5 分。</td></tr>
+            <tr><td class="maj"><strong>材料科学与工程</strong> / <strong>智能制造工程</strong></td><td>上海市材料工程学校 → 上海应用技术大学 / 上海工商信息学校 → 上海建桥学院</td><td class="num"><span class="score s-high">655 / 628</span></td><td>材料类是上海的支柱产业方向，注意本科院校层次差异。</td></tr>
+            <tr><td class="maj"><strong>物联网工程</strong></td><td>上海市贸易学校 → 上海商学院</td><td class="num"><span class="score s-high">651</span></td><td>计算机与硬件结合，实操占比高。</td></tr>
+            <tr><td class="maj"><strong>计算机科学与技术</strong></td><td>上海新闻出版职业技术学校 → 上海立达学院</td><td class="num"><span class="score s-mid">625</span></td><td><strong>2026 年涨幅最大的专业</strong>：585 → 625（+40 分），热度上升最快，要留足分数余量。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 class="sub-h">7.4 第三档 · 分数友好型（理工底色，做保底）</h3>
+    <div class="pick-tier tier-c">
+      <div class="pick-tier-head">C 档 · 601–625 分区间</div>
+      <div class="table-container">
+        <table class="data-table" style="min-width:860px">
+          <thead><tr><th>专业</th><th>中职学校 → 对口本科</th><th style="text-align:right">2026 分</th></tr></thead>
+          <tbody>
+            <tr><td class="maj"><strong>机器人技术</strong></td><td>上海市信息管理学校 → 上海中侨职业技术大学</td><td class="num"><span class="score s-mid">617.5</span></td></tr>
+            <tr><td class="maj"><strong>数据科学与大数据技术</strong></td><td>上海市第二轻工业学校 → 上海立达学院</td><td class="num"><span class="score s-mid">616</span></td></tr>
+            <tr><td class="maj"><strong>汽车服务工程技术</strong></td><td>上海市曹杨职业技术学校 → 上海中侨职业技术大学</td><td class="num"><span class="score s-mid">613.5</span></td></tr>
+            <tr><td class="maj"><strong>人工智能</strong></td><td>上海市奉贤中等专业学校 → 上海立达学院</td><td class="num"><span class="score s-mid">610</span></td></tr>
+            <tr><td class="maj"><strong>工程造价</strong></td><td>上海市西南工程学校 → 上海中侨职业技术大学</td><td class="num"><span class="score s-mid">603</span></td></tr>
+            <tr><td class="maj"><strong>大数据工程技术</strong></td><td>中华职业学校 → 上海中侨职业技术大学</td><td class="num"><span class="score s-mid">602</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note green">
+      <strong>注意：</strong>C 档里 <strong>上海中侨职业技术大学</strong>是<strong>职业本科</strong>院校，机器人技术、大数据工程技术、工程造价三个专业都对接它。职业本科与贯通培养目标更连贯、岗位适配度更高，是「专业优先」思路下的好选择——但要接受它不是传统意义上的「公办一本」。
+    </div>
+
+    <h3 class="sub-h">7.5 对「文科弱」要谨慎的专业</h3>
+    <div class="pick-tier tier-x">
+      <div class="pick-tier-head">这些方向，文科弱的孩子读起来会更吃力</div>
+      <div class="table-container">
+        <table class="data-table" style="min-width:860px">
+          <thead><tr><th>方向</th><th>代表专业（2026 分）</th><th>不建议的理由</th></tr></thead>
+          <tbody>
+            <tr><td><span class="pill pill-dont">外语类</span></td><td>德语（商务）619 · 朝鲜语 620 · 西班牙语（商务）638.5</td><td>把语言当主修，等于把短板变成主业，七年会非常难受。</td></tr>
+            <tr><td><span class="pill pill-dont">艺术设计类</span></td><td>产品设计 665 · 环境设计 620.5 · 视觉传达设计 608/621 · 动画 642.5 · 录音艺术 662 · 表演 616.5</td><td>需长期美术或表演功底，部分专业还需通过专业测试才能填报。</td></tr>
+            <tr><td><span class="pill pill-dont">学前教育</span></td><td>学前教育 667（上海师范大学）</td><td><strong>最需警惕：</strong>受出生人口下降冲击，2026 年上海中本贯通学前教育毕业生（同届 100 余人）<strong>多数未找到对口工作</strong>，且无法报考市区幼儿园带编岗位。七年锁定 + 行业收缩 = 双重风险。还需面试。</td></tr>
+            <tr><td><span class="pill pill-dont">服务与商科</span></td><td>酒店管理 622.5/646/653.5 · 旅游管理 629.5/615 · 市场营销 635/660.5 · 电子商务 628 · 烹饪与餐饮管理 620.5</td><td>服务与商科属性强，语文表达与英语权重高，理科优势用不上。</td></tr>
+            <tr><td><span class="pill pill-do">可接受但偏文</span></td><td>会计学 665.5/653.5/635 · 财务管理 643.5/649.5 · 金融学 639.5 · 税收学 658.5</td><td>就业稳定、不算差，但需要大量背诵与文书工作，且要考资格证，理科好帮不上太多。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3 class="sub-h">7.6 三条硬提醒</h3>
+    <ul class="bullets">
+      <li><strong>七年不可转专业。</strong>入学即锁定，从 16 岁定到 23 岁。填志愿前，让孩子真的去了解这个专业学什么、毕业后做什么，别只看专业名字。</li>
+      <li><strong>英语是短板，必须从中职第一年就补。</strong>转段文化课考语数外三科、满分 300 分、须达 180 分（60%）。理科好只能保证数学这一门，英语要单独规划。</li>
+      <li><strong>优先选对接职业本科的专业。</strong>上海中侨职业技术大学（职业本科）的专业，以及与公办院校职业本科贯通的专业（如二工大、上工技、电机学院新设的职业本科方向），培养目标与产业岗位衔接最紧。</li>
+    </ul>
+  </section>
+
+  <!-- ============ 八、各科分数规划 ============ -->
+  <section class="card" id="plan">
+    <div class="card-header">
+      <div class="card-icon">🧮</div>
+      <div>
+        <h2 class="card-h2">八、要考进中本贯通，各科成绩怎么规划</h2>
+        <div class="card-sub">先定目标档位，再倒推每一科要考多少分——而不是「总分够就行」</div>
+      </div>
+    </div>
+
+    <h3 class="sub-h">8.1 先看清分数盘子：750 分是怎么构成的</h3>
+    <div class="table-container">
+      <table class="plain" style="min-width:820px">
+        <thead><tr><th>科目</th><th>满分</th><th>分值构成</th><th>考试时间（2026）</th></tr></thead>
+        <tbody>
+          <tr><td>语文</td><td>150</td><td>闭卷笔试（100 分钟）</td><td>6 月 20 日</td></tr>
+          <tr><td>数学</td><td>150</td><td>闭卷笔试（100 分钟）</td><td>6 月 21 日</td></tr>
+          <tr><td>外语</td><td>150</td><td>笔试 140（含听力 25）+ <strong>听说测试 10</strong>（人机对话）</td><td>听说 5/16–17；笔试 6 月 21 日</td></tr>
+          <tr><td>综合测试</td><td>150</td><td>物理 70 + 化学 50 + 跨学科案例分析 15（闭卷 120 分钟）；<strong>物理实验操作 10 + 化学实验操作 5</strong>（可考 2 次取较高成绩）</td><td>实验 5/16–17；笔试 6 月 20 日</td></tr>
+          <tr><td>道德与法治</td><td>60</td><td>统一<strong>开卷</strong>笔试 30 + 日常考核 30</td><td>6 月 21 日</td></tr>
+          <tr><td>历史</td><td>60</td><td>统一<strong>开卷</strong>笔试 30 + 日常考核 30</td><td>6 月 20 日（八年级下）</td></tr>
+          <tr><td>体育与健身</td><td>30</td><td>日常考核 15 + 统一测试 15</td><td>4–5 月统一测试</td></tr>
+          <tr><td><strong>合计</strong></td><td><strong>750</strong></td><td colspan="2">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note blue">
+      <strong>两个容易被忽略的点：</strong>① <strong>历史 60 分在八年级（初二）下学期就考完了</strong>，不是初三的事；② <strong>日常考核合计 75 分</strong>（道法 30 + 历史 30 + 体育 15）基本由学校评定，属于「不该丢的分」，加上听说测试 10 分、实验操作 15 分，共有 <strong>约 100 分</strong>属于「只要认真对待就几乎不丢分」的部分。
+    </div>
+
+    <h3 class="sub-h">8.2 目标档位与各科配比（规划参考，非官方线）</h3>
+    <p class="body-p">
+      中本贯通录取只看<strong>中考总分</strong>，所以先按 2026 年实际分数线定档，再倒推每一科。<strong>注意：分数线年年上涨，规划目标要比往年线留出 10–15 分余量。</strong>
+    </p>
+    <div class="table-container">
+      <table class="plain center-cols" style="min-width:760px">
+        <thead>
+          <tr>
+            <th>科目</th><th>满分</th>
+            <th>冲 A 档<br><span style="font-weight:400;font-size:.78rem;color:#64748B">规划 700（对 690+ 头部专业）</span></th>
+            <th>稳 B 档<br><span style="font-weight:400;font-size:.78rem;color:#64748B">规划 675（对 650–675 热门）</span></th>
+            <th>保 C 档<br><span style="font-weight:400;font-size:.78rem;color:#64748B">规划 645（对 600–635）</span></th>
+            <th>底线<br><span style="font-weight:400;font-size:.78rem;color:#64748B">501（普高线）</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>语文</td><td>150</td><td>130</td><td>126</td><td>120</td><td>90</td></tr>
+          <tr><td>数学</td><td>150</td><td><strong>146</strong></td><td><strong>140</strong></td><td><strong>132</strong></td><td>100</td></tr>
+          <tr><td>外语</td><td>150</td><td><strong>142</strong></td><td><strong>136</strong></td><td><strong>128</strong></td><td>95</td></tr>
+          <tr><td>综合测试</td><td>150</td><td><strong>140</strong></td><td><strong>134</strong></td><td><strong>128</strong></td><td>92</td></tr>
+          <tr><td>道德与法治</td><td>60</td><td>57</td><td>55</td><td>54</td><td>50</td></tr>
+          <tr><td>历史</td><td>60</td><td>56</td><td>54</td><td>53</td><td>48</td></tr>
+          <tr><td>体育与健身</td><td>30</td><td>30</td><td>30</td><td>30</td><td>26</td></tr>
+          <tr><td><strong>合计</strong></td><td><strong>750</strong></td><td><strong>701</strong></td><td><strong>675</strong></td><td><strong>645</strong></td><td><strong>501</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <strong>档位怎么用：</strong>先看第七节的推荐清单锁定 2 个志愿（1 个冲、1 个稳），把它们的往年分数线<strong>各加 10–15 分</strong>作为规划目标，然后照这张表分工。若估分距目标档差 10 分以上，就该往下一档重选专业，而不是硬冲。
+    </div>
+
+    <h3 class="sub-h">8.3 理科强、文科弱：六个科目的加权策略</h3>
+    <ul class="bullets">
+      <li><strong>数学（150 分）——最大杠杆。</strong>上海中考数学区分度最高，理科好的孩子在这里能拉开 <strong>15–25 分</strong>，是唯一能把文科短板补回来的科目。冲 A 档目标 145+，稳 B 档 138–140。</li>
+      <li><strong>综合测试（150 分）——第二杠杆。</strong>物理 70 + 化学 50 本身就是理科强项；<strong>实验操作 15 分（物理 10 + 化学 5）可考 2 次取较好成绩</strong>，几乎等于送分，绝不能丢。</li>
+      <li><strong>外语（150 分）——最需要提前动手的短板。</strong>拆成两块看：<strong>听说测试 10 分</strong>是人机对话、门槛低，必须拿满；<strong>笔试 140 分（含听力 25）</strong>靠长期积累。理科好的孩子常在背单词、语法细节上偷懒，靠「每日听力 + 阅读输入」从初一就补，而不是初三突击。</li>
+      <li><strong>语文（150 分）——稳定器，不是拉分项。</strong>中位考生集中在 110–125 分，区分度最低。目标是<strong>作文（60 分）稳在 48 分以上、阅读少丢冤枉分，守住 120 线</strong>即可，不必追求 135+，把时间让给数学和英语。</li>
+      <li><strong>道德与法治 + 历史（各 60，共 120 分）——文科弱孩子最该抢的 16%。</strong>两科都是「统一开卷笔试 30 + 日常考核 30」。<strong>日常考核那 60 分基本由学校评定，务必拿满</strong>；开卷笔试的失分往往不是「不会知识」，而是「不会翻书、答题不规范」——这是能靠专项训练快速提分的部分。<strong>历史在初二就考完，一定要在初二就把这 60 分拿下。</strong></li>
+      <li><strong>体育与健身（30 分）——最不该丢的分。</strong>日常考核 15 + 统一测试 15（4–5 月）。纯靠提前练，丢分没有任何借口。</li>
+    </ul>
+
+    <h3 class="sub-h">8.4 时间轴：什么时候该做什么</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">初二（八年级）</div>
+        <div class="tl-text"><strong>历史 60 分在这一年考完</strong>（八年级下 6 月统一开卷），目标 52+，不能拖。同年把数学与英语的基础打牢——这两科是初三来不及补的。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">初三上（9 月–次年 1 月）</div>
+        <div class="tl-text">新课推进 + <strong>一模考试</strong>（多数区在 12 月–次年 1 月）。<strong>一模的区排名位次，是志愿定位的第一依据。</strong></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">初三下（3 月–5 月）</div>
+        <div class="tl-text">4–5 月<strong>体育统一测试</strong>；<strong>5 月 16–17 日外语听说测试 + 理化实验操作</strong>（实验可考 2 次取高分）；同期<strong>二模考试</strong>，用于校准预估位次。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">6 月 20–21 日</div>
+        <div class="tl-text">中考笔试（语文 / 综合测试 / 历史，外语 / 数学 / 道德与法治）。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">6 月底（成绩公布前）</div>
+        <div class="tl-text"><strong>填报志愿。</strong>只能靠一模 / 二模位次 + 往年分数线定位。</div>
+      </div>
+    </div>
+
+    <div class="note red">
+      <strong>最关键的一条：志愿填报在出分之前。</strong>你不能等实考分数出来再决定。可用的定位工具只有两个：① 一模 / 二模的<strong>区排名位次</strong>（看位次而非分数，因为每年难度不同）；② 本页<strong>第六节 2026 年 86 个专业点的实际分数线</strong>。把一模位次换算成往年对应分数，再对照专业分数线，才能判断「冲哪个、稳哪个、保哪个」。
+    </div>
+
+    <h3 class="sub-h">8.5 一句话策略</h3>
+    <div class="note green">
+      理科强、文科弱 → 把提分重心压在<strong>数学 + 综合测试</strong>这 300 分上；文科里<strong>优先补外语</strong>（150 分、且是长期科目，最不能拖）；语文守 120 线即可；<strong>道法 + 历史共 120 分靠日常考核与答题规范拿稳</strong>，把这部分当成必须收回的补偿分。
+    </div>
+  </section>
+
+  <!-- ============ 九、转段机制 ============ -->
+  <section class="card" id="transfer">
+    <div class="card-header">
+      <div class="card-icon">🔁</div>
+      <div>
+        <h2 class="card-h2">九、转段机制：3 年之后怎么进本科</h2>
+        <div class="card-sub">转段不是「选拔」而是「达标」，但历届仍有少数未通过</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="feature-box" style="background:#fff;border-color:var(--brand-purple-border)">
+        <div class="feature-title" style="color:var(--brand-purple)">时间（以 2026 年为例）</div>
+        <div class="feature-desc">
+          中职第 3 年下学期：<strong>5 月 9–10 日</strong>全市统一文化课考试（三校生统一文化考试）；<strong>5 月 16 日</strong>前后由各本科院校组织<strong>技能水平测试</strong>（具体日期见各校转段办法）。
+        </div>
+      </div>
+      <div class="feature-box" style="background:#fff;border-color:var(--brand-purple-border)">
+        <div class="feature-title" style="color:var(--brand-purple)">成绩构成</div>
+        <div class="feature-desc">
+          转段考试成绩 = <strong>文化课（满分 300）+ 技能水平测试（满分 300）</strong>，合计 <strong>600 分</strong>。文化课为语、数、外三科，每门 100 分。
+        </div>
+      </div>
+    </div>
+
+    <h4 class="mini-h">转段的三个硬门槛</h4>
+    <div class="table-container">
+      <table class="plain" style="min-width:700px">
+        <thead><tr><th>门槛</th><th>要求</th><th>依据 / 示例</th></tr></thead>
+        <tbody>
+          <tr><td>中职学业</td><td>须完成中职阶段学业、成绩合格</td><td>各校学籍管理规定</td></tr>
+          <tr><td>文化课</td><td>须达三校生统一文化考试满分 300 分的 <strong>60%，即 180 分</strong></td><td>沪教委职〔2020〕4 号</td></tr>
+          <tr><td>技能测试</td><td>须达本科院校划定的合格线与单科线</td><td>上海第二工业大学：技能总分不低于测试平均分的 <strong>70%</strong>，且任一单科不低于该科平均分的 <strong>60%</strong>；上海电机学院：转段总分与技能成绩均不低于该专业测试考生总平均分的 <strong>70%</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note red">
+      <strong>没通过会怎样：</strong>完成中职课程、达到中职毕业条件的，<strong>颁发中职毕业证书</strong>（不再进入本科阶段）。也就是说，七年计划有可能在第 3 年就终止在本科学历之外——虽然通过率高，但不是零风险。<strong>转段是达标性考试，不是选拔性考试</strong>，学校的目标是让学生通过；但确有少数学生因文化课或技能未达标而未能转入本科。
+    </div>
+
+    <div class="note blue">
+      <strong>中职阶段的现实：</strong>多数学校对中本贯通班<strong>单独编班、单独管理</strong>，有的把教室设在图书馆、由骨干教师授课，部分学校实行军事化管理。本科院校也会派教师下沉到中职上数学、物理、英语等课，并联合开发专用教材。但整体环境仍是中职校，家长要有预期管理。
+    </div>
+  </section>
+
+  <!-- ============ 十、费用与资助 ============ -->
+  <section class="card" id="cost">
+    <div class="card-header">
+      <div class="card-icon">💰</div>
+      <div>
+        <h2 class="card-h2">十、费用与资助：七年总花销到底多少</h2>
+        <div class="card-sub">这是中本贯通相对国际路线/民办本科最硬的成本优势</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="feature-box" style="background:#fff;border-color:var(--accent-green-border)">
+        <div class="feature-title" style="color:var(--accent-green)">中职阶段（前 3 年）</div>
+        <div class="feature-desc">
+          上海对中职阶段本市户籍学生实行<strong>免费教育（免学费、免书簿费）</strong>；符合条件的另有<strong>国家助学金</strong>（标准按当年政策执行，近年为 2300 元/学年档）。<br>
+          个别特殊类别学校另有标准（如上海体育大学附属竞技体育学校中职学费 2600 元/学年、住宿费 720 元/学年）。
+        </div>
+      </div>
+      <div class="feature-box" style="background:#fff;border-color:#BFDBFE">
+        <div class="feature-title" style="color:var(--brand-blue-light)">本科阶段（后 4 年）</div>
+        <div class="feature-desc">
+          按公办本科标准执行：<strong>理工类专业 ≤ 7000 元/学年</strong>（沪发改价调〔2023〕21 号）；<strong>文科类专业 ≤ 6500 元/学年</strong>；住宿费 ≤ 1200 元/学年。<br>
+          可申请国家奖学金、国家励志奖学金、上海市奖学金、国家助学金、国家助学贷款、勤工助学、学费减免等。
+        </div>
+      </div>
+    </div>
+
+    <div class="note green">
+      <strong>横向对比：</strong>民办双语 / 国际高中主流 12–23 万/年；民办本科 3–5 万/年。中本贯通<strong>七年总学费大致在 3 万元上下</strong>（本科 4 年学费为主），中职 3 年基本免费。这是它「确定性」之外的第二大吸引力。
+    </div>
+  </section>
+
+  <!-- ============ 十一、七年之后 ============ -->
+  <section class="card" id="outcome">
+    <div class="card-header">
+      <div class="card-icon">📈</div>
+      <div>
+        <h2 class="card-h2">十一、七年之后：产出账与真实风险</h2>
+        <div class="card-sub">优势是真的，代价也要提前知道</div>
+      </div>
+    </div>
+
+    <h3 class="sub-h">10.1 优势（数据支撑）</h3>
+    <ul class="bullets">
+      <li><strong>学历不打折：</strong>本科毕业证书与学士学位证书，与通过高考进入同一高校同一专业的学生<strong>同证同卷</strong>。多数企业招聘并不要求提供高中阶段学习经历。</li>
+      <li><strong>就业率高、匹配度高：</strong>上海电机学院整体就业率长期稳定在 <strong>97%</strong> 左右，中本贯通专业在各专业中排名靠前，<strong>就业岗位与专业匹配度达 93%</strong>；上海海事大学机械类本科就业率 <strong>95%+</strong>；上海应用技术大学中本贯通化工专业 <strong>94% 直接就业</strong>、<strong>78% 进入化工重点产业领域</strong>。</li>
+      <li><strong>实操能力突出：</strong>企业招聘时，对操作要求高的岗位更倾向于中本贯通学生，上手更快、适配度更高。</li>
+      <li><strong>竞赛与创新创业表现更好：</strong>中本贯通学生学科竞赛、大创项目参与与获奖比例高于统招班——上海第二工业大学高约 6%、上海工程技术大学高约 10%（上工技近三年获国家级奖项 40 项、省部级 88 项）。</li>
+    </ul>
+
+    <h3 class="sub-h">10.2 风险（必须知道）</h3>
+    <div class="table-container">
+      <table class="plain" style="min-width:760px">
+        <thead><tr><th>风险</th><th>具体表现</th><th>应对</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>理论功底偏弱</td>
+            <td>平均绩点比统招班<strong>低约 8%–10%</strong>；数学、工程力学等理论计算类课程通过率较低；部分学生到毕业设计阶段短板更明显。</td>
+            <td>中职阶段就要盯紧数学、物理、英语；选上海这样已建立「贯通培养共同体」、加设基础课与联合教研的城市。</td>
+          </tr>
+          <tr>
+            <td><strong>不能转专业</strong></td>
+            <td>高考统招生可在低年级转专业，中本贯通学生<strong>不能</strong>——涉及培养方案衔接、课程互认、学分转换等制度限制，多地均如此。</td>
+            <td>选专业时就把「七年不换」当默认条件，而不是寄希望于以后调整。</td>
+          </tr>
+          <tr>
+            <td>产业周期风险</td>
+            <td>培养周期（7 年）长于产业变化周期。反面教材：<strong>学前教育</strong>——2026 届上海中本贯通学前教育毕业生多数未找到对口工作；上海工程技术大学<strong>汽车服务工程</strong>中本贯通专业 2026 年已停止招生，调整为智能车辆工程。</td>
+            <td>优先选技术迭代连续、市场需求稳定的工科；避开受人口结构、政策调整影响大的专业。</td>
+          </tr>
+          <tr>
+            <td>课程「物理叠加」</td>
+            <td>部分项目存在中职与本科两套课程简单拼接、增删顺序调整的问题（业内称「物理叠加多、化学反应少」）。</td>
+            <td>上海近年在推联合教研、基础课统一考试、本科教师下沉中职等措施改善；选校时可关注该校是否有「贯通培养共同体」机制。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <strong>一句话总结产出账：</strong>中本贯通换来的是<strong>下限的确定性</strong>（本科 + 稳定就业 + 极低学费），付出去的是<strong>上限的弹性</strong>（不能冲名校、不能换专业、理论功底相对薄弱）。给理科扎实、不愿把三年赌在一次高考上的孩子，这是一笔划算的买卖；如果孩子有冲 985/211 的潜力，那它就不是最优解。
+    </div>
+  </section>
+
+  <!-- ============ 十二、FAQ ============ -->
+  <section class="card" id="faq">
+    <div class="card-header">
+      <div class="card-icon">❓</div>
+      <div>
+        <h2 class="card-h2">十二、家长最常问的 9 个问题</h2>
+        <div class="card-sub">都是填报前真正会卡住人的问题</div>
+      </div>
+    </div>
+
+    <details class="faq" open>
+      <summary>中本贯通毕业算不算「本科」？第一学历是「中职」吗？</summary>
+      <p>算本科：完成七年学业且成绩合格，颁发<strong>全日制本科毕业证书</strong>，符合条件授予学士学位，与高考统招生同证同卷。但学习经历中前 3 年确实在中职校，<strong>第一学历通常被表述为中职</strong>；多数企业招聘不要求提供高中阶段学习经历，实际影响有限，但有少数岗位（部分国企、选调生等）会关注。</p>
+    </details>
+
+    <details class="faq">
+      <summary>读了中本贯通，还能参加普通高考吗？</summary>
+      <p>不能走普通高考。中本贯通走的是<strong>转段</strong>通道（三校生统一文化考试 + 技能测试），且转段<strong>只对接口的贯通专业</strong>，不能改报其他高校或其他专业。这是「七年锁一条路」的核心含义。</p>
+    </details>
+
+    <details class="faq">
+      <summary>被中本贯通录取了，还能反悔去普高吗？</summary>
+      <p>不能。中职校自主招生录取后，其填报的<strong>名额分配综合评价志愿与统一招生志愿自动失效</strong>。所以中本贯通相当于「提前批中的提前批」：录了就走，不留后路。反过来，<strong>没被录取会自动进入后续批次</strong>，不影响普高录取。</p>
+    </details>
+
+    <details class="faq">
+      <summary>随迁子女能报中本贯通吗？</summary>
+      <p>不能。中本贯通<strong>只招收符合上海市中招报名条件的上海市户籍学生</strong>（独立设置的艺体类中职校试点专业除外）。随迁子女可报的是<strong>五年一贯制和中高职贯通</strong>，这两类不限户籍，其中用于随迁子女的计划约占总量的 <strong>25%</strong>。</p>
+    </details>
+
+    <details class="faq">
+      <summary>志愿什么时间填？为什么说这是最大的坑？</summary>
+      <p>志愿填报统一在<strong>学业考试后、成绩发布前</strong>进行（2026 年为 6 月底），登录上海招考热线（www.shmeea.edu.cn）。<strong>也就是说必须在出分之前做决策</strong>，只能凭估分 + 往年分数线。而且须学生本人与家长书面签字确认后才生效，<strong>确认后不可更改</strong>——所以估分和往年数据（本页第六节）必须提前吃透。</p>
+    </details>
+
+    <details class="faq">
+      <summary>中本贯通有面试或专业测试吗？</summary>
+      <p>由招生学校<strong>根据专业特点自主确定</strong>。需要面试或专业测试的专业，学生必须先报名参加并通过，进入「中职校自主招生资格库」，才能填报该志愿。这类测试<strong>不得收费</strong>。特别提醒：若因不符合招生要求（如身体条件）被退档，<strong>无法再被其他学校录取</strong>。</p>
+    </details>
+
+    <details class="faq">
+      <summary>分数线还会继续涨吗？</summary>
+      <p>2026 年扩招 411 人，但<strong>超八成专业分数线上涨</strong>、超半数涨幅 20–30 分，热度仍在上升期。但也有专业因就业市场变化而调整（如汽车服务工程停招、学前教育遇冷）。判断方法：看该专业 <strong>2025 → 2026 的变化方向</strong>，而不是单看一个年份的绝对值。</p>
+    </details>
+
+    <details class="faq">
+      <summary>中职阶段的校风学风怎么样？会不会「被带坏」？</summary>
+      <p>中本贯通班通常<strong>单独编班、单独管理</strong>，不少学校把教室设在图书馆、由骨干教师授课，部分学校实行军事化管理；本科院校还会派教师下沉授课。但整体环境仍是中职校，同龄人结构与普高不同，家长要有预期管理——这也是很多家庭的真实顾虑。</p>
+    </details>
+
+    <details class="faq">
+      <summary>中职阶段还要学语文、英语吗？理科好是不是就够用了？</summary>
+      <p>要学。中职阶段仍有文化课与学业水平考试要求；转段文化课还要考<strong>语数外三科</strong>，满分 300 分、须达 <strong>180 分</strong>。所以「理科好」只能保证数学这一门占优，<strong>英语必须单独补</strong>——这是理科强、文科弱的孩子最需要提前规划的一块。</p>
+    </details>
+  </section>
+
+  <!-- ============ 决策建议 ============ -->
+  <section class="card" style="background: linear-gradient(135deg, #F3E8FF 0%, #FFFFFF 100%); border-color: #D8B4FE;">
+    <h2 style="font-size:1.2rem; color:#5B21B6; margin-bottom:.85rem;">💡 决策建议：什么情况适合报中本贯通</h2>
+    <div class="grid-2">
+      <div class="feature-box" style="background:#fff;border-color:var(--accent-green-border)">
+        <div class="feature-title" style="color:var(--accent-green)">✔ 适合</div>
+        <div class="feature-desc">
+          ① 中考预估在 <strong>600–690 分</strong>，上顶尖市重点吃力、读普高又冲不进好本科；<br>
+          ② <strong>理科好、动手能力强</strong>，对机械 / 电气 / 计算机 / 医药等应用技术方向有明确偏好；<br>
+          ③ 希望<strong>提前三年锁定公办本科</strong>，不愿把三年赌在一次高考上；<br>
+          ④ 看重<strong>低学费 + 高就业率 + 岗位匹配度</strong>，家庭更在意投入产出比。
+        </div>
+      </div>
+      <div class="feature-box" style="background:#fff;border-color:var(--accent-red-border)">
+        <div class="feature-title" style="color:var(--accent-red)">✘ 不适合</div>
+        <div class="feature-desc">
+          ① 孩子有冲 <strong>985 / 211 / 双一流</strong>的潜力——七年锁定会封住上限；<br>
+          ② 专业方向<strong>还没想清楚</strong>，指望「进去再换」——不能转专业；<br>
+          ③ 目标是<strong>文科、法律、医学临床、艺术</strong>等中本贯通覆盖不到的领域；<br>
+          ④ 明确想走<strong>国际升学</strong>或需要国内学籍参加高考——中本贯通不参加普通高考。
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>© 2026 上海中本贯通（3+4）完整指南 V6 · 86 个专业点全量分数线 · 报考规则 · 转段机制 · 各科分数规划</p>
+  <p style="margin-top:.4rem">
+    <a href="../index.html">← 返回初中全学科与升学规划中心</a> ·
+    <a href="zhongben-guide-V5.html">查看旧版 V5（三线并列版）</a>
+  </p>
+  <p style="margin-top:.6rem;font-size:.76rem">
+    数据来源：上海市教育委员会、上海市教育考试院、各贯通院校公开的转段办法及 2026 年 7 月 19 日公布的最低录取分数线。
+    分数线、招生计划、专业点逐年变动，<strong>填报请以学校及教育主管部门当年官方公布为准</strong>。
+  </p>
+</footer>
+
+<script>
+(function () {
+  var tbody = document.querySelector('#tbl tbody');
+  var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+  var searchEl = document.getElementById('search');
+  var chipsEl = document.getElementById('chips');
+  var fitEl = document.getElementById('fitOnly');
+  var countEl = document.getElementById('count');
+  var activeCat = '全部';
+
+  // 分数色阶
+  rows.forEach(function (tr) {
+    var s = parseFloat(tr.getAttribute('data-score'));
+    var cell = tr.querySelector('td.num');
+    if (!cell || isNaN(s)) return;
+    var cls = s >= 670 ? 's-top' : (s >= 650 ? 's-high' : (s >= 620 ? 's-mid' : 's-norm'));
+    cell.innerHTML = '<span class="score ' + cls + '">' + cell.textContent.trim() + '</span>';
+  });
+
+  function apply() {
+    var q = (searchEl.value || '').trim().toUpperCase();
+    var fitOnly = fitEl.checked;
+    var shown = 0;
+    rows.forEach(function (tr) {
+      var cat = tr.getAttribute('data-cat') || '';
+      var fit = tr.getAttribute('data-fit') === '1';
+      var text = (tr.textContent || '').toUpperCase();
+      var okQ = !q || text.indexOf(q) > -1;
+      var okC = activeCat === '全部' || cat === activeCat;
+      var okF = !fitOnly || fit;
+      var show = okQ && okC && okF;
+      tr.style.display = show ? '' : 'none';
+      if (show) shown++;
+    });
+    countEl.textContent = shown;
+  }
+
+  chipsEl.addEventListener('click', function (e) {
+    var btn = e.target.closest('.chip-btn');
+    if (!btn) return;
+    Array.prototype.forEach.call(chipsEl.querySelectorAll('.chip-btn'), function (b) {
+      b.classList.remove('active');
+    });
+    btn.classList.add('active');
+    activeCat = btn.getAttribute('data-cat');
+    apply();
+  });
+
+  searchEl.addEventListener('input', apply);
+  fitEl.addEventListener('change', apply);
+
+  apply();
+})();
+</script>
+</body>
+</html>
