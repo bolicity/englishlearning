@@ -1,0 +1,367 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""生成《8个月语文补习计划》页chinese/chinese-repair-plan-V1.html
+口径: 每天 60 分钟 / 起点为基础薄弱 / 27届上海中考语文三大板块
+"""
+import io, os
+
+BASE = '/Users/emily/Developer/Projects/owenlearining/chinese'
+OUT = f'{BASE}/chinese-repair-plan-V1.html'
+
+HTML = r'''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>初三语文 8 个月补习计划 | 上海中考27届 · 每天60分钟</title>
+<style>
+:root{
+  --bg:#F8FAFC; --card:#FFFFFF; --subtle:#F1F5F9; --border:#E2E8F0;
+  --tx:#0F172A; --tx2:#475569; --mut:#64748B;
+  --red:#DC2626; --red-l:#EF4444; --red-bg:#FEF2F2;
+  --green:#059669; --green-bg:#ECFDF5; --amber:#D97706; --amber-bg:#FFFBEB;
+  --blue:#1D4ED8; --blue-bg:#EFF6FF; --violet:#7C3AED; --violet-bg:#F5F3FF;
+  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Segoe UI",sans-serif;background:var(--bg);color:var(--tx);line-height:1.68}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.4rem 5rem}
+
+header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:40}
+.hrow{max-width:1080px;margin:0 auto;padding:.85rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.brand{font-weight:800;color:var(--red);font-size:1.02rem}
+.brand span{display:block;font-size:.7rem;color:var(--mut);font-weight:500}
+nav{display:flex;gap:.35rem;flex-wrap:wrap}
+nav a{font-size:.76rem;font-weight:600;color:var(--tx2);text-decoration:none;padding:.36rem .68rem;border-radius:8px;background:var(--subtle)}
+nav a:hover{background:var(--red-bg);color:var(--red)}
+
+.hero{padding:2.2rem 0 1.6rem}
+.hero h1{font-size:2rem;font-weight:800;letter-spacing:-.02em;line-height:1.25}
+.hero .sub{color:var(--mut);margin-top:.55rem;font-size:.94rem}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(146px,1fr));gap:.7rem;margin-top:1.4rem}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:.9rem 1rem}
+.kpi b{display:block;font-size:1.65rem;font-weight:800;color:var(--red);line-height:1.15;font-variant-numeric:tabular-nums}
+.kpi span{font-size:.72rem;color:var(--mut)}
+.kpi.g b{color:var(--green)} .kpi.b b{color:var(--blue)} .kpi.a b{color:var(--amber)} .kpi.v b{color:var(--violet)}
+
+section{margin-top:2.4rem}
+h2{font-size:1.28rem;font-weight:800;letter-spacing:-.01em;display:flex;align-items:baseline;gap:.55rem;margin-bottom:.3rem}
+h2::before{content:"";width:4px;height:1.05em;background:var(--red);border-radius:2px;display:inline-block}
+h2 .n{font-size:.76rem;color:var(--mut);font-weight:600;font-variant-numeric:tabular-nums}
+.lede{color:var(--tx2);font-size:.9rem;margin-bottom:1rem;max-width:76ch}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.15rem 1.3rem;margin-bottom:1rem}
+.alert{background:var(--red-bg);border:1px solid #FECACA;border-radius:14px;padding:1.1rem 1.3rem;margin-bottom:1rem}
+.alert h3{color:#991B1B;font-size:.95rem;font-weight:800;margin-bottom:.5rem}
+.alert p{font-size:.87rem;color:#7F1D1D;margin-bottom:.5rem}
+.alert p:last-child{margin-bottom:0}
+.alert b{font-weight:800}
+.box{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:13px;padding:1rem 1.25rem;margin-bottom:1rem;font-size:.88rem;color:#1E40AF}
+.box b{font-weight:800}
+.box.warn{background:var(--amber-bg);border-color:#FDE68A;color:#92400E}
+
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th,td{padding:.52rem .6rem;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+th{background:var(--subtle);font-weight:700;font-size:.78rem;color:var(--tx2);white-space:nowrap}
+td.c,th.c{text-align:center;font-variant-numeric:tabular-nums}
+.tblwrap{overflow-x:auto}
+.bar{height:8px;background:var(--subtle);border-radius:4px;overflow:hidden;min-width:70px}
+.bar>div{height:100%;background:linear-gradient(90deg,var(--red),var(--red-l))}
+.bar.b>div{background:linear-gradient(90deg,var(--blue),#3B82F6)}
+.bar.g>div{background:linear-gradient(90deg,var(--green),#10B981)}
+.bar.v>div{background:linear-gradient(90deg,var(--violet),#8B5CF6)}
+
+.phase{background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:1.1rem;overflow:hidden}
+.ph-head{padding:1rem 1.3rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
+.ph-badge{font-size:.7rem;font-weight:800;padding:.22rem .6rem;border-radius:20px;background:var(--red);color:#fff;flex:none}
+.ph-badge.g{background:var(--green)} .ph-badge.b{background:var(--blue)} .ph-badge.v{background:var(--violet)} .ph-badge.a{background:var(--amber)}
+.ph-t{flex:1;min-width:180px}
+.ph-t b{font-size:1.02rem;font-weight:800;display:block}
+.ph-t span{font-size:.76rem;color:var(--mut)}
+.ph-goal{font-size:.78rem;color:var(--tx2);background:var(--subtle);padding:.4rem .7rem;border-radius:9px;white-space:nowrap}
+.ph-body{padding:1rem 1.3rem 1.15rem}
+.ph-body h4{font-size:.82rem;font-weight:800;color:var(--red);margin:.9rem 0 .45rem}
+.ph-body h4:first-child{margin-top:0}
+ul.tk{list-style:none}
+ul.tk li{padding:.42rem 0 .42rem 1.4rem;position:relative;font-size:.88rem;border-bottom:1px dashed var(--border)}
+ul.tk li:last-child{border-bottom:none}
+ul.tk li::before{content:"□";position:absolute;left:0;top:.38rem;color:var(--mut);font-size:.95rem}
+ul.tk li b{font-weight:700}
+ul.tk li .tag{display:inline-block;font-size:.68rem;font-weight:700;padding:.06rem .4rem;border-radius:5px;margin-right:.35rem;vertical-align:.08em}
+.tag.t1{background:var(--red-bg);color:var(--red)}
+.tag.t2{background:var(--blue-bg);color:var(--blue)}
+.tag.t3{background:var(--green-bg);color:var(--green)}
+.tag.t4{background:var(--amber-bg);color:var(--amber)}
+
+.daily{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.15rem 1.3rem;margin-bottom:1rem}
+.daily h4{font-size:.95rem;font-weight:800;margin-bottom:.2rem}
+.daily .tot{font-size:.78rem;color:var(--mut);margin-bottom:.9rem}
+.slot{display:flex;gap:.9rem;padding:.72rem 0;border-bottom:1px dashed var(--border)}
+.slot:last-child{border-bottom:none}
+.slot .tm{flex:none;width:74px;font-size:.78rem;font-weight:800;color:var(--red);font-variant-numeric:tabular-numeric}
+.slot .mn{flex:1;font-size:.87rem}
+.slot .mn b{font-weight:700}
+.slot .du{flex:none;font-size:.78rem;color:var(--mut);font-weight:700;font-variant-numeric:tabular-nums}
+.daygrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem;margin-top:.8rem}
+.dcell{background:var(--subtle);border-radius:10px;padding:.65rem .75rem}
+.dcell b{display:block;font-size:.78rem;font-weight:800;color:var(--tx2);margin-bottom:.2rem}
+.dcell span{font-size:.72rem;color:var(--mut);display:block;line-height:1.5}
+
+.risk{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.8rem}
+.rk{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:11px;padding:.9rem 1.05rem}
+.rk.g{border-left-color:var(--green)} .rk.b{border-left-color:var(--blue)} .rk.a{border-left-color:var(--amber)}
+.rk b{font-size:.85rem;font-weight:800;display:block;margin-bottom:.28rem}
+.rk p{font-size:.82rem;color:var(--tx2)}
+.src{font-size:.76rem;color:var(--mut);margin-top:.4rem}
+.src a{color:var(--blue)}
+
+footer{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--mut)}
+@media(max-width:640px){.wrap{padding:0 .95rem 3rem}header .hrow{padding:.7rem .95rem}.hero h1{font-size:1.55rem}.slot{flex-wrap:wrap}.slot .du{margin-left:74px}}
+@media print{header{position:static}nav{display:none}.phase{break-inside:avoid}.card,.phase{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<header><div class="hrow">
+  <div class="brand">初三语文补习计划 · 8 个月<span>上海中考 27 届 · 每天 60 分钟 · 起点：基础薄弱</span></div>
+  <nav>
+    <a href="#why">为什么这样排</a>
+    <a href="#daily">每日60分钟</a>
+    <a href="#phase">四阶段</a>
+    <a href="#check">验收标准</a>
+    <a href="#risk">风险与对策</a>
+    <a href="recitation-drill-V1.html">默写自测 →</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+
+<div class="hero">
+  <h1>8 个月，把语文从"不稳"拉到能拿分</h1>
+  <p class="sub">2026 年 10 月中旬 — 2027 年 6 月中旬 · 按每天 60 分钟排的最小可行方案。不求刷题量，只求每一分钟都落在能得分的地方。</p>
+  <div class="kpis">
+    <div class="kpi"><b>60</b><span>分钟／天（周末 90）</span></div>
+    <div class="kpi g"><b>8</b><span>个月 / 34 周</span></div>
+    <div class="kpi b"><b>86</b><span>篇默写全覆盖</span></div>
+    <div class="kpi a"><b>478</b><span>个易错字</span></div>
+    <div class="kpi v"><b>70</b><span>阅读分（主战场）</span></div>
+  </div>
+</div>
+
+<section id="why">
+  <h2>为什么这样排<span class="n">01</span></h2>
+  <p class="lede">小红书那两份资料的方法论（先基础、再阅读模板、最后作文）方向没错，但里面的分值口径是<b>旧卷</b>的。27 届上海中考语文已经改结构，照抄会浪费大量时间去抢只有 6 分的默写。</p>
+
+  <div class="alert">
+    <h3>⚠ 关键前提：27 届卷子变了，两份资料的提分模型已经过期</h3>
+    <p><b>旧卷（26 届及以前，四大板块）：</b>古诗文约 36 分（默写 12 分）+ 现代文 34 分 + 综合运用 20 分 + 作文 60 分，题量 23–26 题。</p>
+    <p><b>27 届新卷（三大板块，2026 年 9 月中考语文评价会后落地，普陀区月考卷已按新结构命题）：</b></p>
+    <table style="margin:.6rem 0"><thead><tr><th style="width:130px">板块</th><th style="width:74px" class="c">分值</th><th>构成与变化</th></tr></thead><tbody>
+      <tr><td><b>积累与运用</b></td><td class="c"><b>约20</b></td><td>默写<b>仅 6 分</b>（旧卷 12 分，只剩 2 道）；名著选择 3 分 + 名著简答 5 分；<b>新增修改病句 6 分</b>。原「综合运用」大题取消，知识融合进各板块。</td></tr>
+      <tr><td><b>阅读</b></td><td class="c"><b>70</b></td><td>课内文言 16 分+ 课外文言 13 分 + 现代文 20 分 + 现代文 21 分。以<b>情境组题 / 多语篇</b>为主（3–6 个题组），不再是"一篇文配一道题"。</td></tr>
+      <tr><td><b>写作</b></td><td class="c"><b>60</b></td><td>分值不变，题量 1–3 题，倾向<b>材料自命题</b>，防套作。阅卷看整体，不再分项打分。</td></tr>
+    </tbody></table>
+    <p>题量从 23–26 题压到 <b>16–19 题</b>，单题分值和书写量都变大。命题依据换成<b>《义务教育语文课程标准（2022 年版）》+ 新教材</b>。<b>机械刷题、背答题模板会越来越吃亏。</b></p>
+  </div>
+
+  <div class="box warn"><b>对本计划的直接影响：</b>
+    ① 默写只值 6 分——仍然要练到零错（错一字该空不得分，性价比最高的 6 分），但<b>不能像小红书说的那样"1 个月专门磕基础题稳拿 20–30 分"</b>，那个前提在 27 届不成立；<br>
+    ② <b>病句修改 6 分是全新考点</b>，两份小红书资料完全没提，必须单独加进每日固定时段；<br>
+    ③ 阅读 70 分比作文还高 10 分，是真正的拉分区；<br>
+    ④ 新卷要"多文本比较 + 情境化设问"，只背单篇答题模板不够，得练<b>信息整合和观点论证</b>。</div>
+
+  <div class="card">
+    <div class="tblwrap"><table>
+      <thead><tr><th>板块</th><th style="width:74px" class="c">分值</th><th style="width:96px" class="c">现状判断</th><th>本计划投入占比</th><th style="width:170px">目标</th></tr></thead>
+      <tbody>
+        <tr><td><b>积累与运用</b></td><td class="c">20</td><td class="c"><span style="color:var(--red);font-weight:800">弱</span></td><td class="c"><b>约 30%</b></td><td>16–18 分（默写 6 拿满 + 病句 4+ + 名著 5）</td></tr>
+        <tr><td><b>阅读</b></td><td class="c">70</td><td class="c"><span style="color:var(--red);font-weight:800">弱</span></td><td class="c"><b>约 45%</b></td><td>40–48 分（课内文言稳住，课外+现代文提档）</td></tr>
+        <tr><td><b>写作</b></td><td class="c">60</td><td class="c"><span style="color:var(--amber);font-weight:800">中</span></td><td class="c"><b>约 25%</b></td><td>42–48 分（结构清、审题准、不偏题）</td></tr>
+      </tbody>
+    </table></div>
+    <p class="src">参考：2026 年上海中考语文全市平均分 116.83（前 25% 126 / 前 50% 120 / 前 75% 111）。目标区间按基础薄弱起点设定，先够到中位线，再争前 25%。</p>
+  </div>
+</section>
+
+<section id="daily">
+  <h2>每天 60 分钟怎么切<span class="n">02</span></h2>
+  <p class="lede">按"基础薄弱 + 只能每天 60 分钟"设计。原则：<b>基础每天碰（不断线），阅读和作文隔天轮换（避免双线摊薄）</b>。分成两段而不是连坐 60 分钟——初中生注意力撑不满一整块。</p>
+
+  <div class="daily">
+    <h4>周一 / 周三 / 周五：基础日（60 分钟）</h4>
+    <div class="tot">默写 + 病句 + 基础字词，这三项都是每天要保温的</div>
+    <div class="slot"><span class="tm">早晨 10′</span><span class="mn"><b>默写 1 篇新篇目</b>（九年级优先）＋ 复习昨天错的 1 篇。用 <a href="recitation-drill-V1.html">默写自测</a>，填空模式判卷。</span><span class="du">10′</span></div>
+    <div class="slot"><span class="tm">午休 15′</span><span class="mn"><b>病句修改 10 道</b>（新考点，必须专项练）。四种类型轮着来：成分残缺／搭配不当／语序颠倒／句式杂糅。改完写清错在哪类。</span><span class="du">15′</span></div>
+    <div class="slot"><span class="tm">放学后 20′</span><span class="mn"><b>字音字形 20 道 + 名著 1 题</b>。字音重点盯沪教版课本易错对；名著每周换 1 本（《朝花夕拾》《西游记》《骆驼祥子》《水浒传》《海底两万里》）。</span><span class="du">20′</span></div>
+    <div class="slot"><span class="tm">睡前 15′</span><span class="mn"><b>易错字 5 分钟</b>翻小程序本＋<b>错题重做 10 分钟</b>（本周错题挑 2 道重做一遍，抄原句+改正）。</span><span class="du">15′</span></div>
+  </div>
+
+  <div class="daily">
+    <h4>周二 / 周四：阅读日（60 分钟）</h4>
+    <div class="tot">重点练课内文言与现代文的"定位原文 + 说理"能力</div>
+    <div class="slot"><span class="tm">早晨 10′</span><span class="mn"><b>默写抽检 3 篇</b>（随机抽已过关篇目，错 1 字就重背该篇）。</span><span class="du">10′</span></div>
+    <div class="slot"><span class="tm">午休 15′</span><span class="mn"><b>文言实词虚词 10个</b>：18 个高频实词（之其以为因愿意谒须遂咸毕间）+ 6 个虚词（而则乃且于者），每个配 1 句课内例句。</span><span class="du">15′</span></div>
+    <div class="slot"><span class="tm">放学后 25′</span><span class="mn"><b>阅读 1 篇（限时 25 分钟）</b>：课内文言和现代文交替。做完逐题对照参考答案，把漏掉的得分点用红笔补到原文旁边，并写一句"错因"。</span><span class="du">25′</span></div>
+    <div class="slot"><span class="tm">睡前 10′</span><span class="mn"><b>错题旁批重读</b>（5 分钟）+ <b>明日任务确认</b>（5 分钟，写在便签上）。</span><span class="du">10′</span></div>
+  </div>
+
+  <div class="daily">
+    <h4>周六：整块 90 分钟（作文 + 复盘）</h4>
+    <div class="tot">一周唯一的长时段，用在需要连续思考的事上</div>
+    <div class="slot"><span class="tm">上午 45′</span><span class="mn"><b>作文 1 篇</b>（材料自命题训练）。周六写完，周日只改不改写。结构：五段式（场景引题→ 三个分论点 → 回扣升华）。</span><span class="du">45′</span></div>
+    <div class="slot"><span class="tm">上午 20′</span><span class="mn"><b>本周错题全部重做一遍</b>（基础 + 阅读），错 2 遍以上的用荧光笔标红。</span><span class="du">20′</span></div>
+    <div class="slot"><span class="tm">下午 25′</span><span class="mn"><b>名著 1 本精读</b>：按"3 人物 + 2 关键情节 + 1 主题"整理，同时练简答表述（5 分主观题要写完整句）。</span><span class="du">25′</span></div>
+  </div>
+
+  <div class="daily">
+    <h4>周日：休整 + 体检（30 分钟）</h4>
+    <div class="tot">不排新内容，只做三件事</div>
+    <div class="daygrid">
+      <div class="dcell"><b>默写抽检</b><span>随机 3 篇，限时 10 分钟，错 1 字重背该篇</span></div>
+      <div class="dcell"><b>本周复盘</b><span>写 3 行：做对的 /反复错的 /下周要改的</span></div>
+      <div class="dcell"><b>下周排课</b><span>把下周要默的篇目先排进左栏（每天 1 篇，周末复盘）</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="phase">
+  <h2>四个阶段<span class="n">03</span></h2>
+  <p class="lede">按周排。每阶段有明确的<b>可验收标准</b>——达不到就延长，不要往后赶。基础没过关就去冲阅读，会两边都丢。</p>
+
+  <div class="phase">
+    <div class="ph-head">
+      <span class="ph-badge">第一阶段</span>
+      <div class="ph-t"><b>立地基：默写 + 病句</b><span>第 1–6 周 · 2026年10月中 — 11月底</span></div>
+      <span class="ph-goal">目标：默写 20分率 ≥ 85%，病句正确率 ≥ 70%</span>
+    </div>
+    <div class="ph-body">
+      <h4>做什么</h4>
+      <ul class="tk">
+        <li><span class="tag t1">默写</span>每天 1 篇新篇目，按<b>九年级 → 八年级 → 七年级 → 六年级</b>倒序推进（近的先热）。86 篇约 12 周走完一轮，本阶段走完 24 篇。</li>
+        <li><span class="tag t1">易错字</span>每篇的易错字当场抄进便携本，早晚各翻 3 分钟。478 个易错字按出现频次排序，先攻前 100 个。</li>
+        <li><span class="tag t1">病句</span><b>全新考点，零基础起步。</b>先学 4 种类型定义，每天 10 道，两周后正确率应到 70%。这是 27 届多出来的 6 分，不学等于白丢。</li>
+        <li><span class="tag t2">字音字形</span>每天 20 道，沪教版课本易错对优先（庇护/庇、粗糙/糙这类）。</li>
+        <li><span class="tag t3">名著</span>只做选择题，每周 1 本，5 本核心（《朝花夕拾》《西游记》《骆驼祥子》《水浒传》《海底两万里》）。</li>
+      </ul>
+      <h4>为什么先啃这个</h4>
+      <p style="font-size:.86rem;color:var(--tx2)">基础薄弱的孩子最先该拿回的是"确定能拿的分"。默写 + 病句 + 字音字形 + 名著选择合计 20 分，是全卷最不需要理解能力的一块。这块从"不稳"拉到 16分，后面所有阶段的容错空间都会变大。</p>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="ph-head">
+      <span class="ph-badge b">第二阶段</span>
+      <div class="ph-t"><b>课内文言文攻坚</b><span>第 7–14 周 · 2026年12月 — 2027年1月</span></div>
+      <span class="ph-goal">目标：课内文言 16 分拿到 12–14 分</span>
+    </div>
+    <div class="ph-body">
+      <h4>做什么</h4>
+      <ul class="tk">
+        <li><span class="tag t1">默写</span>继续每日 1 篇，本阶段走完 26 篇，累计 50 篇。</li>
+        <li><span class="tag t2">实词虚词</span>18 实词 + 6 虚词全部过一遍，每个配课内原句。这是文言翻译的地基，背词不背句等于没背。</li>
+        <li><span class="tag t2">翻译</span>每天 1 道，盯<b>字字落实</b>：不丢字（"蒙辞以军中多务"→ 不能漏"用""来"）、补全省略的主语宾语、调整倒装语序。</li>
+        <li><span class="tag t2">课内篇目精读</span>26 篇文言文（数据里已标注）逐篇过，重点篇：《岳阳楼记》《醉翁亭记》《出师表》《曹刿论战》《桃花源记》《小石潭记》《核舟记》。</li>
+        <li><span class="tag t4">作文</span>隔周 1 篇，只练开头和结尾两段（"场景引题"+" 回扣升华"）。不写全文，压力最小。</li>
+      </ul>
+      <h4>关键提醒</h4>
+      <div class="box warn" style="margin:.3rem 0 0"><b>27 届文言文分课内课外两段考：</b>课内 16 分（4 题）+ 课外 13 分（3 题）。课内是"送分"，课外靠课内迁移出来的文言基本功。本阶段把课内吃透，第二阶段的课外就不慌。</div>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="ph-head">
+      <span class="ph-badge v">第三阶段</span>
+      <div class="ph-t"><b>阅读 70 分主战场</b><span>第 15–26 周 · 2027年2月 — 4月</span></div>
+      <span class="ph-goal">目标：现代文两篇合计 41 分拿到 26–30 分</span>
+    </div>
+    <div class="ph-body">
+      <h4>做什么</h4>
+      <ul class="tk">
+        <li><span class="tag t1">默写</span>走完剩余 36 篇，<b>86 篇全覆盖</b>，全部达到"连续 3 次无错"。之后只做每周抽检。</li>
+        <li><span class="tag t2">现代文模板</span>记叙文（记叙／议论／说明）三类各 5 个高频题型框架。重点不是背模板，是理解<b>答案为什么给这几个点</b>——对着参考答案把得分点标回原文，看规律。</li>
+        <li><span class="tag t2">多文本比较</span><b>27 届新增能力。</b>练"两篇文章讲同一件事，找相同点和不同点"，答案必须引原文说话（"甲文第 3 段说……，乙文第 5 段说……"）。</li>
+        <li><span class="tag t2">课外文言</span>每周 2 篇浅易课外文言，用课内方法迁移。翻译先抓主干再补虚词。</li>
+        <li><span class="tag t4">作文</span>回到每周 1 篇整篇。五段式结构练熟，同时开始攒上海本地素材（进博会、外滩、本地非遗）。</li>
+      </ul>
+      <h4>为什么这时才上阅读</h4>
+      <p style="font-size:.86rem;color:var(--tx2)">阅读答题需要"从原文找依据"的习惯，这习惯建立在文言基本功和字词积累上。前两个阶段没做扎实就上阅读，会练成"背模板"——而新卷明确<b>减少模板可吃</b>的场景，情境化设问只背模板会卡在第二档评分。</p>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="ph-head">
+      <span class="ph-badge g">第四阶段</span>
+      <div class="ph-t"><b>整合冲刺：3 次全真模考 + 作文定稿</b><span>第 27–34 周 · 2027年5月 — 6月中</span></div>
+      <span class="ph-goal">目标：模考稳定在 120+（全市前 50%）</span>
+    </div>
+    <div class="ph-body">
+      <h4>做什么</h4>
+      <ul class="tk">
+        <li><span class="tag t3">模考 3 次</span>按新卷三大板块找 3 套样卷限时 100 分钟做，<b>一次都不能分段做</b>。练时间把控：默写 8 分钟、文言 20 分钟、现代文 35 分钟、作文 35 分钟。</li>
+        <li><span class="tag t3">错因归类</span>模考后把失分按"没会/ 审题偏 / 没答全 / 字写错"四类归。只有"没会"是真短板，其他三类都是答题习惯问题，最后一个月改这三类回报最大。</li>
+        <li><span class="tag t4">作文定稿</span>准备 3 个素材（成长 / 亲情文化 / 生活体验）+ 五段式结构。27 届是材料自命题，防套作，所以素材要通用、逻辑要能随材料变。</li>
+        <li><span class="tag t1">默写保温</span>86 篇已过关的，每周抽 3 篇，绝不停。考前一星期只做过关篇目，不碰新篇。</li>
+        <li><span class="tag t4">名著简答</span>5 分主观题最后再过一遍 5 本核心的答题表述（人物 + 情节 + 主题三段式）。</li>
+      </ul>
+      <h4>最后三周原则</h4>
+      <div class="box" style="margin:.3rem 0 0"><b>不加新内容。</b>最后三周只做三件事：模考保持手感、作文保持每周一篇、默写保持每周抽 3篇。见过太多孩子最后三周开始"补新知识点"，结果什么都没稳住。</div>
+    </div>
+  </div>
+</section>
+
+<section id="check">
+  <h2>怎么知道有没有进步<span class="n">04</span></h2>
+  <p class="lede">不看感觉，看这三个数字。每 4 周量一次，记在同一张纸上。基础薄弱的孩子进步不是线性的，会平台期，数字能帮你判断是真卡住还是错觉。</p>
+  <div class="card">
+    <div class="tblwrap"><table>
+      <thead><tr><th>指标</th><th style="width:92px" class="c">怎么测</th><th style="width:100px" class="c">起点目标</th><th style="width:100px" class="c">中期目标</th><th style="width:100px" class="c">考前目标</th></tr></thead>
+      <tbody>
+        <tr><td><b>默写正确率</b><br><span style="font-size:.76rem;color:var(--mut)">随机抽 10 篇，逐字判</span></td><td class="c">周日抽检</td><td class="c"><b>60%</b></td><td class="c"><b>85%</b></td><td class="c"><b>95%</b></td></tr>
+        <tr><td><b>病句修改正确率</b><br><span style="font-size:.76rem;color:var(--mut)">每天 10 道</span></td><td class="c">日测</td><td class="c"><b>40%</b></td><td class="c"><b>75%</b></td><td class="c"><b>85%</b></td></tr>
+        <tr><td><b>阅读得分率</b><br><span style="font-size:.76rem;color:var(--mut)">完整篇目，限时</span></td><td class="c">4 周 1 次</td><td class="c"><b>40%</b></td><td class="c"><b>55%</b></td><td class="c"><b>62%</b></td></tr>
+      </tbody>
+    </table></div>
+    <p class="src">阅读得分率目标按新卷 70 分算：62% ≈ 43 分。默写 95% ≈ 5.7 分（满分 6）。病句 85% ≈ 5 分（满分 6）。</p>
+  </div>
+  <div class="box"><b>平台期怎么办：</b>连续 2 周某个指标不动，不要加量，先换方法——把错题按四类归因（没会／审题偏／没答全／字写错）。多数"练了没进步"其实是"审题偏"和"没答全"，不是不会。加量只会让"没会"以外的两类继续隐形。</div>
+</section>
+
+<section id="risk">
+  <h2>这套计划会失败在哪<span class="n">05</span></h2>
+  <p class="lede">提前把坑摊开。四个风险按"发生概率 × 破坏程度"排序，都配了对策。</p>
+  <div class="risk">
+    <div class="rk"><b>① 计划过载，做不到 60 分钟（最可能）</b><p>基础薄弱的孩子最容易在第一周就崩。<b>对策：</b>允许"最低配日"——只做早晨 10 分钟默写 + 睡前 5 分钟易错字，25 分钟。保住不断线比凑满时长重要。周日补一次即可，不追账。</p></div>
+    <div class="rk a"><b>② 只背默写，阅读一分不涨</b><p>默写只有 6 分。即使拿满，总分也就 6。<b>对策：</b>从第二阶段起，阅读日固定在周二/周四，不可挪用。默写顺了也不能跳过阅读。</p></div>
+    <div class="rk b"><b>③ 病句修改不重视，丢 6 分</b><p>这是 27 届全新的 6 分，两份小红书资料都没提，最容易整个漏掉。<b>对策：</b>每天午休 15 分钟雷打不动，先学会 4 种类型的定义再刷题，不用追求速度。</p></div>
+    <div class="rk g"><b>④ 模板化答题，遇到新情境崩盘</b><p>新卷是情境组题、多文本比较，模板用处变小。<b>对策：</b>练答案时强迫自己写"第 X 段 + 原文引用 + 我的概括"三段式。写不出原文引用就是没真读懂。</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>配套工具<span class="n">06</span></h2>
+  <div class="card">
+    <div class="tblwrap"><table>
+      <thead><tr><th style="width:180px">工具</th><th>用途</th><th style="width:130px">配套阶段</th></tr></thead>
+      <tbody>
+        <tr><td><a href="recitation-drill-V1.html"><b>默写自测（86篇）</b></a></td><td>86 篇全册、478 个易错字表。填空默写 / 逐句背诵 / 易错字表 / 进度总览四种模式，连续 3 次无错才算过关，进度存在本地。</td><td>阶段一至三每日</td></tr>
+        <tr><td><a href="classic-reading-V4.html"><b>名著阅读（儒林外史等）</b></a></td><td>已有页。名著是 8 分（选择 3 + 简答 5），简答要练表述。</td><td>全阶段</td></tr>
+        <tr><td><a href="recitation-bank-V1.html"><b>基础题库 1055 题</b></a></td><td>已有页。字音字形、病句这类基础题可在这里刷。</td><td>阶段一</td></tr>
+        <tr><td><a href="doc-viewer-V1.html?file=docs/（上海专用）专项02%20文言文阅读（解析版）2027年中考语文必考点“真题%20模拟”暑假体验练_扫描版.pdf"><b>文言文专项（解析版）</b></a></td><td>已有页。课内课外文言专练，含解析。</td><td>阶段二、三</td></tr>
+        <tr><td><a href="doc-viewer-V1.html?file=docs/（上海专用）专项06%20写作（原卷版）2027年中考语文必考点“真题%20模拟”暑假体验练_扫描版.pdf"><b>写作专项（原卷版）</b></a></td><td>已有页。上海真话题型作文原卷。</td><td>阶段三、四</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<footer>
+  <p><b>数据与口径来源：</b>默写篇目 86 篇 / 易错字 478 个，来自《27届上海中考语文·理解性默写必背篇目大全》（六至九年级全册，8 册）。卷面结构口径：2026 年 9 月上海中考语文评价会披露的 27 届改革方案，多源交叉核验（普陀区 9 月月考卷已按三大板块命题）。方法论部分参考两份小红书资料，但分值假设已按 27 届新卷重排。</p>
+  <p style="margin-top:.5rem">计划口径：每天 60 分钟（周末 90）· 起点为基础薄弱 · 周期 34 周。生成于 2026 年 10 月 12 日。</p>
+</footer>
+
+</div>
+</body>
+</html>
+'''
+
+io.open(OUT, 'w', encoding='utf-8').write(HTML)
+print('written', OUT, os.path.getsize(OUT) // 1024, 'KB')
