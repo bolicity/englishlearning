@@ -257,11 +257,26 @@
       transform: translateX(3px);
       color: var(--primary);
     }
+    .card-multi:hover .card-arrow { color: #DC2626; }
 
     .card-featured {
       background: #FFFFFF;
       border-width: 1.2px;
     }
+
+    /* 语文格：主链接 + 快捷入口（主区仍是 <a>，子入口用 <button> 由 JS 跳转，避免嵌套 <a>） */
+    .card-multi { flex-direction: column; align-items: stretch; gap: 6px; padding: 8px 10px; }
+    .card-multi .card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .card-multi a.card-main { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 9px; min-width: 0; flex: 1; }
+    .card-quick { display: flex; gap: 5px; flex-wrap: wrap; }
+    .card-quick a {
+      font-size: 0.66rem; font-weight: 700; text-decoration: none;
+      padding: 2.5px 7px; border-radius: 20px; white-space: nowrap;
+      background: #FEF2F2; color: #DC2626; border: 1px solid #FECACA; transition: all 0.15s ease;
+    }
+    .card-quick a:hover { background: #DC2626; color: #fff; border-color: #DC2626; }
+    .card-quick a:nth-child(2) { background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; }
+    .card-quick a:nth-child(2):hover { background: #1D4ED8; color: #fff; border-color: #1D4ED8; }
 
     @media (max-width: 1200px) {
       .grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 6px; }
@@ -306,18 +321,24 @@
 
       <div class="grid">
         <!-- 语文 -->
-        <a href="chinese/chinese.html" class="card" id="subject-chinese">
-          <div class="card-left">
-            <div class="card-icon" style="background: #FEF2F2; color: #DC2626;">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-            </div>
-            <div class="card-text">
-              <span class="card-title">初中语文</span>
-              <span class="card-subtag" style="color: #DC2626;">古诗文背诵 · 儒林外史多分支考点矩阵</span>
-            </div>
+        <div class="card card-multi" id="subject-chinese">
+          <div class="card-top">
+            <a href="chinese/chinese.html" class="card-main">
+              <span class="card-icon" style="background: #FEF2F2; color: #DC2626;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </span>
+              <span class="card-text">
+                <span class="card-title">初中语文</span>
+                <span class="card-subtag" style="color: #DC2626;">27届新卷 · 阅读70分</span>
+              </span>
+            </a>
+            <span class="card-arrow" style="color: #DC2626;">→</span>
           </div>
-          <span class="card-arrow" style="color: #DC2626;">→</span>
-        </a>
+          <div class="card-quick">
+            <a href="chinese/chinese-repair-plan-V1.html">8个月补习计划</a>
+            <a href="chinese/recitation-drill-V1.html">86篇默写自测</a>
+          </div>
+        </div>
 
         <!-- 数学 -->
         <a href="math/math.html" class="card" id="subject-math">
