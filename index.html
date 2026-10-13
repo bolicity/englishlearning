@@ -290,6 +290,22 @@
       .card-title { font-size: 0.85rem; }
       .card-subtag { font-size: 0.65rem; }
     }
+
+    /* 上海中考真题库 · 科目子链接 */
+    .zsl-wrap {
+      grid-column: 1 / -1;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+      padding: 8px 10px;
+      background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 10px;
+    }
+    .zsl-label { font-size: 0.72rem; font-weight: 700; color: #92400E; margin-right: 2px; }
+    .zsl-wrap a {
+      font-size: 0.72rem; font-weight: 600; color: #B45309;
+      background: #fff; border: 1px solid #FDE68A; border-radius: 999px;
+      padding: 3px 9px; text-decoration: none; white-space: nowrap;
+      transition: background 0.15s ease;
+    }
+    .zsl-wrap a:hover { background: #FEF3C7; }
   </style>
 </head>
 <body>
@@ -523,19 +539,35 @@
           <span class="card-arrow" style="color: #B45309;">→</span>
         </a>
 
-        <!-- 上海中考真题资源索引 V1 -->
-        <a href="zhongkao/shanghai-zhongkao-papers-V1.html" class="card card-featured" id="shanghai-zhongkao-papers" style="border-color: #FCD34D;">
+        <!-- 上海中考真题库 V2（本地归档） -->
+        <a href="zhongkao/shanghai-zhongkao-papers-V2.html" class="card card-featured" id="shanghai-zhongkao-papers" style="border-color: #FCD34D;">
           <div class="card-left">
             <div class="card-icon" style="background: #FFFBEB; color: #D97706;">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             </div>
             <div class="card-text">
-              <span class="card-title">上海中考真题索引 V1</span>
-              <span class="card-subtag" style="color: #D97706;">22–26 五年真题 · 夸克/百度网盘实测</span>
+              <span class="card-title">上海中考真题库 V2</span>
+              <span class="card-subtag" style="color: #D97706;">162 份已归档 · 10 科目 · 2008–2026</span>
             </div>
           </div>
           <span class="card-arrow" style="color: #D97706;">→</span>
         </a>
+
+        <!-- 真题库 · 科目子链接 -->
+        <div class="zsl-wrap">
+          <span class="zsl-label">真题直达</span>
+          <a href="zhongkao/shanghai-zhongkao-papers-V2.html#s-语文">语文 70</a>
+          <a href="zhongkao/shanghai-zhongkao-papers-V2.html#s-数学">数学 32</a>
+          <a href="zhongkao/shanghai-zhongkao-papers-V2.html#s-物理">物理 17</a>
+          <a href="zhongkao/shanghai-zhongkao-papers-V2.html#s-英语">英语 13</a>
+          <a href="zhongkao/shanghai-zhongkao-papers-V2.html#s-地理">地理 11</a>
+          <a href="zhongkao/shanghai-zhongkao-papers-V2.html#s-化学">化学 9</a>
+          <a href="zhongkao/shanghai-zhongkao-papers-V2.html#s-历史">历史 4</a>
+          <a href="zhongkao/shanghai-zhongkao-papers-V2.html#s-生物">生物 3</a>
+          <a href="zhongkao/shanghai-zhongkao-papers-V2.html#s-道德与法治">道法 2</a>
+          <a href="zhongkao/shanghai-zhongkao-papers-V2.html#s-综合测试 / 跨学科">综合 1</a>
+          <a href="zhongkao/shanghai-zhongkao-papers-V1.html">渠道索引 V1</a>
+        </div>
 
         <!-- A-Level 教程 V2 -->
         <a href="alevel/alevel-guide-V2.html" class="card card-featured" id="alevel-guide" style="border-color: #BFDBFE;">
