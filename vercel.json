@@ -1,10 +1,6 @@
 {
   "rewrites": [
     {
-      "source": "/",
-      "destination": "/word-planet.html"
-    },
-    {
       "source": "/:path*背诵版.html",
       "destination": "/chinese/recitation-bank-V1.html"
     },
