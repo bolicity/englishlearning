@@ -2,16 +2,22 @@
 # -*- coding: utf-8 -*-
 """生成 86 篇理解性默写自测工具页 chinese/recitation-drill-V1.html
 数据源: chinese/recitation-data-V1.json（86 篇 / 8 册 / 568 易错字条目）
+       chinese/recitation-notes-V1.json（91 个空位的答案解析）
 风格: 与 chinese/recitation-bank-V1.html 一致（左侧可折叠栏 + 学习模式）
 """
 import json, re, io, os
 
-BASE = '/Users/emily/Developer/Projects/owenlearining/chinese'
+BASE = os.path.dirname(os.path.abspath(__file__))
 data = json.load(open(f'{BASE}/recitation-data-V1.json', encoding='utf-8'))
+_notes = json.load(open(f'{BASE}/recitation-notes-V1.json', encoding='utf-8'))
+NOTES = _notes['notes']
+DATASET_TIP = _notes.get('_datasetTip', '')
 
 # 把数据内联进页面，避免 file:// 下 fetch 被 CORS 拦
 payload = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
 payload = payload.replace('</', '<\\/')
+notes_payload = json.dumps(NOTES, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+tip_payload = json.dumps(DATASET_TIP, ensure_ascii=False).replace('</', '<\\/')
 
 HTML = r'''<!DOCTYPE html>
 <html lang="zh-CN">
@@ -117,6 +123,16 @@ header{background:var(--card);border-bottom:1px solid var(--border);padding:.9re
 .hz b{font-family:var(--serif);font-weight:700}
 .hz span{font-size:.7rem;color:var(--mut);font-variant-numeric:tabular-nums}
 
+/* 答案解析 */
+.qblock{margin-bottom:.55rem}
+.qblock .passage-p{margin-bottom:.4rem}
+.ana{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:10px;padding:.7rem .85rem;margin:.35rem 0 .1rem}
+.ana-in .ar{display:flex;gap:.5rem;font-size:.79rem;line-height:1.65;margin-bottom:.3rem}
+.ana-in .ar:last-child{margin-bottom:0}
+.ana-in .ar b{flex:none;width:5.4rem;color:var(--blue);font-weight:700}
+.ana-in .ar span{color:#1E3A8A;flex:1;min-width:0}
+.ana-t{font-size:.72rem;font-weight:700;color:var(--blue);margin-bottom:.4rem;letter-spacing:.02em}
+
 .judge{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;padding-top:.9rem;border-top:1px dashed var(--border)}
 .res{font-size:.86rem;font-weight:700}
 .res.ok{color:var(--green)} .res.no{color:var(--red)}
@@ -190,6 +206,8 @@ td.c{text-align:center;font-variant-numeric:tabular-nums}
 
 <script>
 const DATA = __PAYLOAD__;
+const NOTES = __NOTES__;
+const DATASET_TIP = __TIP__;
 const KEY = 'yw-moshou-drill-v1';
 let MODE = 'hide';
 let CUR = {v:0,ii:0};
@@ -242,9 +260,43 @@ function updFoot(){
 }
 
 /* ---------------- 填空默写（逐句给提示挖句） ---------------- */
-function pickCue(it, para){
+/* 断句：句末标点连同收尾的右引号／书名号一起切走。
+   旧实现只按 [。！？] 切，于是「……此之谓大丈夫。」」这类句子的右引号被切成独立片段，
+   挖出来的「答案」只剩一个右引号；末尾的出处括注（如 （《子张》））也会单独成句。此处一并修掉。 */
+function splitSent(para){
+  if(para.indexOf('【')===0) return [];   // 非诗文段落（数据附注）不挖空
+  const parts=[]; let last=0, m;
+  const TERM=/[。！？][”’"）)】]*/g;
+  while((m=TERM.exec(para))){ parts.push(para.slice(last, m.index+m[0].length)); last=m.index+m[0].length; }
+  if(last<para.length) parts.push(para.slice(last));
+  const tailQ=/^[”’"'）)】]+$/;
+  const annTail=/^[（(《【][^。！？]{0,14}[)）】》]$/;
+  const annLead=/^[（(《【][^。！？]{0,14}[)）】》]/;
+  while(parts.length>1 && tailQ.test(parts[parts.length-1].trim())) parts[parts.length-2]+=parts.pop();
+  while(parts.length>1 && annTail.test(parts[parts.length-1].trim())) parts[parts.length-2]+=parts.pop();
+  for(let i=1;i<parts.length;i++){
+    const s=parts[i].match(annLead);
+    if(s){ parts[i-1]+=s[0]; parts[i]=parts[i].slice(s[0].length).trim(); }
+  }
+  return parts;
+}
+/* 该段被挖走的那一句（＝答案），背诵模式的解析里要标出来 */
+function targetOf(para){
+  const parts = splitSent(para);
+  return parts.length<2 ? '' : parts[parts.length-1];
+}
+/* 一道题的答案解析 */
+function noteHTML(nk){
+  const n = NOTES[nk];
+  if(!n) return '';
+  const row=(lab,txt)=>txt?`<div class="ar"><b>${lab}</b><span>${txt}</span></div>`:'';
+  return `<div class="ana-t">答案解析</div><div class="ana-in">`
+    + row('为什么是这句', n.why) + row('句意', n.mean) + row('易错字', n.hard) + row('考点', n.point)
+    + `</div>`;
+}
+function pickCue(it, para, pi){
   // 真实理解性默写是「给一句语境，写一句」，所以只挖该段最后一句，前文作提示
-  const parts = para.split(/(?<=[。！？])/).filter(Boolean);
+  const parts = splitSent(para);
   if(parts.length<2) return null;
   const cueAll = parts.slice(0,-1).join('');
   const target = parts[parts.length-1];
@@ -252,20 +304,20 @@ function pickCue(it, para){
   // 长段（文言文常一整段）只保留末尾语境，前面省略，避免整屏高亮
   const cueLen = cueAll.replace(/[，。！？；：、""''《》（）·…—\s]/g,'').length;
   const cue = cueLen>40 ? '<span class="ell">……</span>'+parts.slice(-3,-1).join('') : cueAll;
-  return '<span class="cue">'+cue+'</span><span class="blank" data-ans="'+target+'">'+
+  return '<span class="cue">'+cue+'</span><span class="blank" data-ans="'+target+'" data-note="'+it.title+'::'+pi+'">'+
          '＿'.repeat(Math.min(14, Math.max(4, n)))+'</span>';
 }
 function countCues(it){
-  return it.paras.reduce((s,p)=>s+(pickCue(it,p)?1:0),0);
+  return it.paras.reduce((s,p,pi)=>s+(pickCue(it,p,pi)?1:0),0);
 }
 function renderHide(){
   const {v,ii} = CUR, vol=DATA[v], it=vol.items[ii];
-  const cues = it.paras.map(p=>pickCue(it,p)).filter(Boolean);
+  const cues = it.paras.map((p,pi)=>({html:pickCue(it,p,pi), pi})).filter(c=>c.html);
   const nCue = cues.length;
   const hz = it.hardList.length ? `<div class="hardbox"><h4>本篇易错字（先看这行再默写）</h4>${
     it.hardList.map(h=>`<span class="hz"><b>${h.zi}</b><span>${h.py}</span></span>`).join('')}</div>` : '';
   document.getElementById('view').innerHTML = `
-    <div class="note"><b>怎么用：</b>读橙色提示句，在横线上默写缺失的一句——点横线即可输入，按<b>回车</b>下一空。判卷按字比对，<b>错一字该空不得分</b>。同一句连续 3 次写对才算过关，左栏出现 ✓。</div>
+    <div class="note"><b>怎么用：</b>读橙色提示句，在横线上默写缺失的一句——点横线即可输入，按<b>回车</b>下一空。判卷按字比对，<b>错一字该空不得分</b>，判错的空会<b>自动展开答案解析</b>（为什么填这句 / 句意 / 易错字 / 考点）。同一句连续 3 次写对才算过关，左栏出现 ✓。</div>
     <div class="card">
       <div class="title-row">
         <span class="t-no">${vol.volume} · 第${it.no}篇</span>
@@ -279,10 +331,12 @@ function renderHide(){
         ${streak(v,ii)>0?`<span class="chip">连续 ${streak(v,ii)} 次</span>`:''}
       </div>
       ${hz}
-      <div class="passage">${cues.map(c=>`<p>${c}</p>`).join('')}</div>
+      <div class="passage">${cues.map(c=>`<div class="qblock"><p>${c.html}</p>
+        <div class="ana" hidden>${noteHTML(it.title+'::'+c.pi)}</div></div>`).join('')}</div>
       <div class="judge">
         <button class="btn g" id="check">判卷</button>
         <button class="btn" id="resetWrong" hidden>清空重做</button>
+        <button class="btn b" id="toggleAna">显示解析</button>
         <button class="btn" id="pass">全对（跳过填写）</button>
         <button class="btn" id="fail">有错</button>
         <button class="btn" id="showAll">显示全文对照</button>
@@ -291,8 +345,9 @@ function renderHide(){
       </div>
     </div>
     <div class="card" id="ansCard" style="display:none">
-      <div class="title-row"><span class="t-name" style="font-size:1.05rem">全文对照</span></div>
-      <div class="passage">${it.paras.map(p=>`<p>${p}</p>`).join('')}</div>
+      <div class="title-row"><span class="t-name" style="font-size:1.05rem">全文对照 · 逐句解析</span></div>
+      <div class="passage">${it.paras.map((p,pi)=>`<p>${p}</p>`
+        + (NOTES[it.title+'::'+pi]?`<div class="ana">${noteHTML(it.title+'::'+pi)}</div>`:'')).join('')}</div>
     </div>
     <div class="hbtns">
       <button class="btn" id="prev">← 上一篇</button>
@@ -305,10 +360,24 @@ function renderHide(){
 
   // 点击横线 → 变成输入框；回车提交并跳下一空
   const blanks=[...document.querySelectorAll('.blank')];
+  function anaOf(el){
+    const b=el.closest('.qblock');
+    return b ? b.querySelector('.ana') : null;
+  }
+  // 让「显示解析／收起解析」按钮文案始终跟当前展开状态一致（判错会自动展开，按钮要跟着变）
+  // 只作用于当前填空的解析（.qblock .ana）；「全文对照」卡里的解析随卡片本身显示，不参与折叠
+  function syncAnaBtn(){
+    const t=document.getElementById('toggleAna');
+    if(!t) return;
+    const shown=[...document.querySelectorAll('.qblock .ana')].some(a=>!a.hidden);
+    t.textContent = shown ? '收起解析' : '显示解析';
+    t.classList.toggle('on', shown);
+  }
   function resetBlank(el){
     el.textContent = el.dataset.orig;
     el.classList.remove('filled','right','wrong');
     el.title = '';
+    const a=anaOf(el); if(a) a.hidden = true;
     bindBlank(el);
   }
   function bindBlank(el){
@@ -330,7 +399,11 @@ function renderHide(){
         const ok = norm(val)===norm(ans);
         el.classList.remove('filled'); el.classList.add(ok?'right':'wrong');
         el.title = ok ? '✓ 正确' : '✗ 应为：'+ans;
-        if(!ok) resetWrongBtn.hidden = false;
+        if(!ok){                                  // 写错就把这句的解析摊开
+          resetWrongBtn.hidden = false;
+          const a=anaOf(el); if(a) a.hidden = false;
+          syncAnaBtn();
+        }
       };
       inp.onblur = submit;
       inp.onkeydown = e=>{
@@ -344,19 +417,31 @@ function renderHide(){
   function norm(s){ return s.replace(/[\s，。！？；：、"''《》（）·…—]/g,''); }
 
   const resetWrongBtn = document.getElementById('resetWrong');
-  if(resetWrongBtn) resetWrongBtn.onclick = ()=>{ blanks.forEach(resetBlank); resetWrongBtn.hidden = true; };
+  if(resetWrongBtn) resetWrongBtn.onclick = ()=>{ blanks.forEach(resetBlank); resetWrongBtn.hidden = true; syncAnaBtn(); };
+  const tgl = document.getElementById('toggleAna');
+  if(tgl) tgl.onclick = ()=>{
+    const boxes=[...document.querySelectorAll('.qblock .ana')];
+    const anyHidden=boxes.some(b=>b.hidden);
+    boxes.forEach(b=>b.hidden=!anyHidden);
+    syncAnaBtn();
+  };
+  syncAnaBtn();
   document.getElementById('showAll').onclick=()=>{
     const c=document.getElementById('ansCard');
     c.style.display='block';
     c.scrollIntoView({behavior:'smooth',block:'start'});
   };
   document.getElementById('check').onclick=()=>{
-    // 没填的空算错
+    // 没填的空算错；判错的空自动展开解析
     let ok=0, total=blanks.length;
     blanks.forEach(el=>{
       if(el.classList.contains('right')) ok++;
-      else if(!el.classList.contains('filled')){ el.classList.add('wrong'); el.title='✗ 未作答'; }
+      else {
+        if(!el.classList.contains('filled')){ el.classList.add('wrong'); el.title='✗ 未作答'; }
+        const a=anaOf(el); if(a) a.hidden=false;
+      }
     });
+    syncAnaBtn();
     judge(ok===total, ok===total?'':`${total-ok} / ${total} 空有错`);
   };
   document.getElementById('pass').onclick=()=>judge(true);
@@ -395,9 +480,16 @@ function renderRecite(){
       ${hz}
       <div class="recite" id="reciteBox">${body}</div>
     </div>
+    <div class="card" id="reciteAna" style="display:none">
+      <div class="title-row"><span class="t-name" style="font-size:1.05rem">逐句解析 · 为什么是这一句</span></div>
+      ${it.paras.map((p,pi)=> NOTES[it.title+'::'+pi]
+        ? `<div class="qblock"><p style="font-family:var(--serif);font-size:1rem;font-weight:700;margin-bottom:.3rem">${targetOf(p)}</p><div class="ana">${noteHTML(it.title+'::'+pi)}</div></div>`
+        : '').join('')}
+    </div>
     <div class="hbtns">
       <button class="btn" id="revealAll">全部显示</button>
       <button class="btn" id="hideAll">全部遮住</button>
+      <button class="btn b" id="showReciteAna">本篇逐句解析</button>
       <button class="btn" id="prev">← 上一篇</button>
       <button class="btn" id="next">下一篇 →</button>
     </div>`;
@@ -407,6 +499,12 @@ function renderRecite(){
   });
   document.getElementById('revealAll').onclick=()=>document.querySelectorAll('.rline').forEach(e=>e.classList.remove('hidden'));
   document.getElementById('hideAll').onclick=()=>document.querySelectorAll('.rline').forEach(e=>e.classList.add('hidden'));
+  const sra=document.getElementById('showReciteAna');
+  if(sra) sra.onclick=()=>{
+    const c=document.getElementById('reciteAna');
+    c.style.display = c.style.display==='none' ? 'block' : 'none';
+    if(c.style.display==='block') c.scrollIntoView({behavior:'smooth',block:'start'});
+  };
   document.getElementById('prev').onclick=()=>move(-1);
   document.getElementById('next').onclick=()=>move(1);
 }
@@ -421,6 +519,7 @@ function renderReview(){
   const rows=[...map.entries()].sort((a,b)=>b[1].titles.length-a[1].titles.length);
   document.getElementById('view').innerHTML=`
     <div class="note"><b>共 ${map.size} 个易错字</b>，来自 86 篇默写。排在前面的字跨篇重复出现，默写命中率最高，优先背。左栏点任一篇可回该篇练习。</div>
+    <div class="warn"><b>2026 秋新版统编教材已改字：</b>《岳阳楼记》「淫雨霏霏」→「<b>霪</b>雨霏霏」、「日星隐曜」→「日星隐<b>耀</b>」（据中华书局《范仲淹全集》）。27 届用新教材，默写按改后用字写，本页易错字表已同步。</div>
     <div class="card"><div class="tblwrap"><table>
       <thead><tr><th style="width:64px">字</th><th style="width:96px">读音</th><th style="width:56px" class="c">出现篇数</th><th>涉及篇目</th></tr></thead>
       <tbody>${rows.map(([z,info])=>`<tr>
@@ -465,6 +564,10 @@ function renderStat(){
         <tr><td><b>归零</b></td><td>错 1 字即连续次数归 0（理解性默写按字给分，错一字该空不得分）。</td></tr>
         <tr><td><b>周抽检</b></td><td>每周日随机抽 3 篇已过关的默写，错了重新背该篇。</td></tr>
       </tbody></table>
+    </div>
+    <div class="card">
+      <div class="title-row"><span class="t-name" style="font-size:1.05rem">命题说明</span></div>
+      <div style="font-size:.8rem;color:var(--tx2)">${DATASET_TIP||''}</div>
     </div>`;
 }
 
@@ -501,7 +604,9 @@ buildSide(); openVol(CUR.v); render();
 </html>
 '''
 
-HTML = HTML.replace('__PAYLOAD__', payload)
+for _name, _val in (('__PAYLOAD__', payload), ('__NOTES__', notes_payload), ('__TIP__', tip_payload)):
+    assert '$' not in _val, f'{_name} 含 $，str.replace 会把它当转义符'
+    HTML = HTML.replace(_name, _val)
 out = f'{BASE}/recitation-drill-V1.html'
 io.open(out, 'w', encoding='utf-8').write(HTML)
 print('written', out, os.path.getsize(out)//1024, 'KB')

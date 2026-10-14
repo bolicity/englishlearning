@@ -5,7 +5,7 @@
 """
 import io, os
 
-BASE = '/Users/emily/Developer/Projects/owenlearining/chinese'
+BASE = os.path.dirname(os.path.abspath(__file__))
 OUT = f'{BASE}/chinese-repair-plan-V1.html'
 
 HTML = r'''<!DOCTYPE html>
@@ -143,7 +143,7 @@ footer{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--border);fon
     <div class="kpi"><b>60</b><span>分钟／天（周末 90）</span></div>
     <div class="kpi g"><b>8</b><span>个月 / 34 周</span></div>
     <div class="kpi b"><b>86</b><span>篇默写全覆盖</span></div>
-    <div class="kpi a"><b>478</b><span>个易错字</span></div>
+    <div class="kpi a"><b>479</b><span>个易错字</span></div>
     <div class="kpi v"><b>70</b><span>阅读分（主战场）</span></div>
   </div>
 </div>
@@ -238,7 +238,7 @@ footer{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--border);fon
       <h4>做什么</h4>
       <ul class="tk">
         <li><span class="tag t1">默写</span>每天 1 篇新篇目，按<b>九年级 → 八年级 → 七年级 → 六年级</b>倒序推进（近的先热）。86 篇约 12 周走完一轮，本阶段走完 24 篇。</li>
-        <li><span class="tag t1">易错字</span>每篇的易错字当场抄进便携本，早晚各翻 3 分钟。478 个易错字按出现频次排序，先攻前 100 个。</li>
+        <li><span class="tag t1">易错字</span>每篇的易错字当场抄进便携本，早晚各翻 3 分钟。479 个易错字按出现频次排序，先攻前 100 个。</li>
         <li><span class="tag t1">病句</span><b>全新考点，零基础起步。</b>先学 4 种类型定义，每天 10 道，两周后正确率应到 70%。这是 27 届多出来的 6 分，不学等于白丢。</li>
         <li><span class="tag t2">字音字形</span>每天 20 道，沪教版课本易错对优先（庇护/庇、粗糙/糙这类）。</li>
         <li><span class="tag t3">名著</span>只做选择题，每周 1 本，5 本核心（《朝花夕拾》《西游记》《骆驼祥子》《水浒传》《海底两万里》）。</li>
@@ -343,7 +343,7 @@ footer{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--border);fon
     <div class="tblwrap"><table>
       <thead><tr><th style="width:180px">工具</th><th>用途</th><th style="width:130px">配套阶段</th></tr></thead>
       <tbody>
-        <tr><td><a href="recitation-drill-V1.html"><b>默写自测（86篇）</b></a></td><td>86 篇全册、478 个易错字表。填空默写 / 逐句背诵 / 易错字表 / 进度总览四种模式，连续 3 次无错才算过关，进度存在本地。</td><td>阶段一至三每日</td></tr>
+        <tr><td><a href="recitation-drill-V1.html"><b>默写自测（86篇）</b></a></td><td>86 篇全册、479 个易错字表。填空默写 / 逐句背诵 / 易错字表 / 进度总览四种模式，连续 3 次无错才算过关，进度存在本地。</td><td>阶段一至三每日</td></tr>
         <tr><td><a href="classic-reading-V4.html"><b>名著阅读（儒林外史等）</b></a></td><td>已有页。名著是 8 分（选择 3 + 简答 5），简答要练表述。</td><td>全阶段</td></tr>
         <tr><td><a href="recitation-bank-V1.html"><b>基础题库 1055 题</b></a></td><td>已有页。字音字形、病句这类基础题可在这里刷。</td><td>阶段一</td></tr>
         <tr><td><a href="doc-viewer-V1.html?file=docs/（上海专用）专项02%20文言文阅读（解析版）2027年中考语文必考点“真题%20模拟”暑假体验练_扫描版.pdf"><b>文言文专项（解析版）</b></a></td><td>已有页。课内课外文言专练，含解析。</td><td>阶段二、三</td></tr>
@@ -354,7 +354,7 @@ footer{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--border);fon
 </section>
 
 <footer>
-  <p><b>数据与口径来源：</b>默写篇目 86 篇 / 易错字 478 个，来自《27届上海中考语文·理解性默写必背篇目大全》（六至九年级全册，8 册）。卷面结构口径：2026 年 9 月上海中考语文评价会披露的 27 届改革方案，多源交叉核验（普陀区 9 月月考卷已按三大板块命题）。方法论部分参考两份小红书资料，但分值假设已按 27 届新卷重排。</p>
+  <p><b>数据与口径来源：</b>默写篇目 86 篇 / 易错字 479 个，来自《27届上海中考语文·理解性默写必背篇目大全》（六至九年级全册，8 册）。卷面结构口径：2026 年 9 月上海中考语文评价会披露的 27 届改革方案，多源交叉核验（普陀区 9 月月考卷已按三大板块命题）。方法论部分参考两份小红书资料，但分值假设已按 27 届新卷重排。</p>
   <p style="margin-top:.5rem">计划口径：每天 60 分钟（周末 90）· 起点为基础薄弱 · 周期 34 周。生成于 2026 年 10 月 12 日。</p>
 </footer>
 

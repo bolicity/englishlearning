@@ -1,10 +1,13 @@
 // 端到端验证：语文中心导航挂载 + 默写工具真实点击路径 + 计划页
 const { chromium } = require('playwright');
 const path = require('path');
-const DIR = '/Users/emily/Developer/Projects/owenlearining/chinese';
+// 用脚本自身位置定位，别再写死绝对路径（换机器/改目录就不会失效）
+const DIR = path.join(__dirname, '..', 'chinese');
 
 (async () => {
-  const b = await chromium.launch();
+  // 本机未装 playwright 自带内核（ms-playwright 缓存为空），沿用仓库既有做法：走系统 Chrome
+  const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+  const b = await chromium.launch(require('fs').existsSync(CHROME) ? { executablePath: CHROME } : {});
   const pg = await b.newPage({ viewport: { width: 1440, height: 1000 } });
   const errs = [];
   pg.on('pageerror', e => errs.push('PAGEERROR ' + e.message));
@@ -67,7 +70,8 @@ const DIR = '/Users/emily/Developer/Projects/owenlearining/chinese';
   await pg.click('#mRecite'); await pg.waitForTimeout(250);
   console.log('背诵模式句块:', await pg.locator('.rline').count());
   await pg.click('#mReview'); await pg.waitForTimeout(300);
-  console.log('易错字表行:', await pg.locator('tbody tr').count(), '(期望478)');
+  // 479 = 原 478 个 + 岳阳楼记新增的「霪」（2026 新版统编教材改字：淫→霪、曜→耀）
+  console.log('易错字表行:', await pg.locator('tbody tr').count(), '(期望479)');
   await pg.click('#mStat'); await pg.waitForTimeout(300);
   console.log('总览:', (await pg.locator('.ov').first().textContent()).replace(/\s+/g, ''));
 
