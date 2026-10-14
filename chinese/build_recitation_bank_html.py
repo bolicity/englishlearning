@@ -102,7 +102,13 @@ with open(HTML_PATH, "r", encoding="utf-8") as f:
     html_lines = f.readlines()
 
 print(f"Original HTML has {len(html_lines)} lines.")
-html_lines[155] = "const DATA = " + payload_json_str + ";\n"
+data_found = False
+for i, line in enumerate(html_lines):
+    if line.startswith("const DATA = "):
+        html_lines[i] = "const DATA = " + payload_json_str + ";\n"
+        data_found = True
+        break
+assert data_found, "Could not locate const DATA line in HTML!"
 
 html_content = "".join(html_lines)
 html_content = html_content.replace(
