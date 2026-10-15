@@ -88,7 +88,7 @@
   .counter{font-size:.75rem;color:var(--tm);font-variant-numeric:tabular-nums}
 
   /* ---------- panels ---------- */
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin-top:1.1rem}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:1rem}
   .pn{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-m);
       overflow:hidden;display:flex;flex-direction:column;transition:.2s;cursor:zoom-in;position:relative}
   .pn:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);border-color:#FECDD3}
@@ -100,9 +100,9 @@
       box-shadow:0 1px 4px rgba(0,0,0,.08)}
   .pn-txt{padding:.75rem .85rem .85rem;display:flex;flex-direction:column;gap:.4rem;
       border-top:1px solid var(--border);background:#FFFDFB}
-  .verse{font-family:'Noto Serif SC',serif;font-size:1.02rem;font-weight:700;color:var(--red);
+  .verse{font-family:'Noto Serif SC',serif;font-size:.95rem;font-weight:700;color:var(--red);
       line-height:1.55;letter-spacing:.01em}
-  .scene{font-size:.76rem;color:var(--tm);line-height:1.6}
+  .scene{font-size:.72rem;color:var(--tm);line-height:1.6}
   .pn.hide-verse .verse{filter:blur(6px);opacity:.55;user-select:none;transition:.25s}
   .pn.hide-verse .scene{opacity:.45}
   .pn.hide-verse .pn-img img{filter:brightness(.97)}
@@ -143,8 +143,14 @@
     .mask{position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:90;display:none}
     .mask.show{display:block}
   }
+  @media(max-width:1080px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+  }
   @media(max-width:760px){
-    .grid{grid-template-columns:1fr;gap:.75rem}
+    .grid{grid-template-columns:repeat(2,1fr);gap:.6rem}
+    .verse{font-size:.82rem}
+    .scene{font-size:.66rem}
+    .pn-txt{padding:.5rem .6rem .6rem}
     .poem-title{font-size:1.35rem}
     .panel-card{padding:1.05rem}
     .brand-sub{display:none}
