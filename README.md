@@ -39,21 +39,24 @@ python3 -m http.server 8899 --bind 127.0.0.1
 | 初中体育 V2 | `pe/pe-guide-V2.html` |
 | 初中生物 | `biology/biology.html` |
 | 初中历史 | `history/history.html` |
-| 跨学科研究 V2 | `interdisciplinary/interdisciplinary-V2.html` |
+| 跨学科案例分析 V3 | `interdisciplinary/interdisciplinary-V3.html` |
 
-语文卡片另有快捷入口：`chinese/chinese-repair-plan-V1.html`（8 个月补习计划）、
-`chinese/recitation-drill-V1.html`（86 篇默写自测）。
+语文卡片另有快捷入口：`chinese/chinese-repair-plan-V1.html`（8 个月补习计划）、`chinese/recitation-drill-V1.html`（86 篇默写自测）。
+跨学科卡片另有快捷入口：`#sec-formula`（因果链公式）、`#sec-read-charts`（读图三步法）、`#sec-cases`（10篇真题拆解）。
 
-### 二、升学规划与专项拓展（6）
+### 二、升学规划与专项拓展（7）
 
 | 卡片 | 入口 |
 |---|---|
+| 九上第一次月考分析 V1 | `zhongkao/monthly-exam-1-analysis-V1.html` |
 | 中本贯通 (3+4) V6 | `zhongben/zhongben-guide-V6.html` |
 | 全轨升学指南 V14 | `zhongkao/zhongkao-guide-V14.html` |
 | 上海国际高中全景 V1 | `guoji/shanghai-international-highschools-V1.html` |
 | 上海中考真题库 V2 | `zhongkao/shanghai-zhongkao-papers-V2.html` |
 | A-Level 教程教辅 V2 | `alevel/alevel-guide-V2.html` |
 | 留学生避坑全景库 V3 | `red-study/red-study-abroad-V3.html` |
+
+九上第一次月考分析卡片另有快捷入口：`#scores`（成绩单）、`#diagnosis`（逐科失分点）、`#prediction`（中考三轨预测）、`#action-plan`（8个月逆袭路线）。
 
 本板块下方有一组「真题直达」胶囊入口（`.zsl-wrap`），指向真题库页内的科目锚点 `#s-<科目>`。
 

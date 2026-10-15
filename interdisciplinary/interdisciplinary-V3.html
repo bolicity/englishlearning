@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>上海中考跨学科案例分析 10 篇真题专项拆解与答卷套路工作台 V3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --purple-main: #7C3AED;
+      --purple-light: #9333EA;
+      --purple-bg: #FAF5FF;
+      --purple-border: #E9D5FF;
+      
+      --blue-main: #2563EB;
+      --blue-bg: #EFF6FF;
+      --blue-border: #BFDBFE;
+      
+      --green-main: #059669;
+      --green-bg: #ECFDF5;
+      
+      --amber-main: #D97706;
+      --amber-bg: #FFFBEB;
+      
+      --red-main: #DC2626;
+      --red-bg: #FEF2F2;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header Sticky */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.85rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .brand-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--purple-main);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .header-title-box h1 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      line-height: 1.25;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .v-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+      background: var(--purple-bg);
+      color: var(--purple-main);
+      border: 1px solid var(--purple-border);
+    }
+    .header-title-box span {
+      font-size: 0.73rem;
+      color: var(--text-muted);
+    }
+    .header-nav {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .header-nav a {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.36rem 0.68rem;
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      transition: all 0.15s ease;
+    }
+    .header-nav a:hover {
+      background: var(--purple-bg);
+      color: var(--purple-main);
+    }
+    .back-dash-btn {
+      background: var(--purple-main) !important;
+      color: #fff !important;
+      font-weight: 700 !important;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.8rem 1.4rem 5rem;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #2E1065 0%, #0F172A 100%);
+      color: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .hero-tag {
+      background: rgba(168, 85, 247, 0.25);
+      border: 1px solid rgba(192, 132, 252, 0.4);
+      color: #E9D5FF;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.22rem 0.65rem;
+      border-radius: 20px;
+    }
+    .hero h2 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      line-height: 1.25;
+    }
+    .hero p {
+      color: #CBD5E1;
+      font-size: 0.94rem;
+      max-width: 820px;
+      line-height: 1.6;
+    }
+
+    /* Formula Cards Grid */
+    .formula-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1.6rem;
+    }
+    .formula-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.25rem;
+      backdrop-filter: blur(8px);
+    }
+    .formula-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #D8B4FE;
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .formula-body {
+      font-size: 0.85rem;
+      color: #F1F5F9;
+      line-height: 1.55;
+    }
+    .formula-body b {
+      color: #FDE047;
+    }
+
+    /* Section Styles */
+    section {
+      margin-top: 3rem;
+    }
+    .section-header {
+      margin-bottom: 1.3rem;
+    }
+    .section-title {
+      font-size: 1.38rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-title::before {
+      content: "";
+      width: 4px;
+      height: 1.15em;
+      background: var(--purple-main);
+      border-radius: 2px;
+      display: inline-block;
+    }
+    .section-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    /* Card Box */
+    .card-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.6rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.3rem;
+    }
+
+    /* Methodology 3 Steps */
+    .step-box-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.15rem;
+      margin-top: 1rem;
+    }
+    .step-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-top: 3.5px solid var(--purple-main);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.3rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .step-num {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--purple-main);
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+    .step-item h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    .step-item p {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.4rem 0.85rem;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--purple-main);
+      color: #fff;
+      border-color: var(--purple-main);
+    }
+
+    /* Case Study Card */
+    .case-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.8rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+    .case-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: #CBD5E1;
+    }
+    .case-card-header {
+      padding: 1.25rem 1.6rem;
+      background: linear-gradient(90deg, #FAF5FF 0%, #FFFFFF 100%);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .case-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+    .case-index {
+      font-size: 0.76rem;
+      font-weight: 800;
+      background: var(--purple-main);
+      color: #fff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    .case-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+    .case-badges {
+      display: flex;
+      gap: 0.4rem;
+    }
+    .c-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 20px;
+    }
+    .c-badge-geo { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+    .c-badge-bio { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+    .c-badge-phy { background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A; }
+
+    .case-body {
+      padding: 1.4rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* 4-Box Split in Case */
+    .case-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.15rem;
+    }
+    .info-pane {
+      background: var(--bg-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.25rem;
+      border: 1px solid var(--border-color);
+    }
+    .info-pane-title {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .info-pane-content {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .info-pane-content b {
+      color: var(--text-primary);
+    }
+
+    /* Chart Simulation Card */
+    .chart-box {
+      background: #FFFFFF;
+      border: 1px dashed #CBD5E1;
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      margin-top: 0.5rem;
+      font-size: 0.82rem;
+    }
+    .chart-header-line {
+      font-weight: 700;
+      color: var(--purple-main);
+      margin-bottom: 0.35rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Cause Chain Box */
+    .cause-chain-wrap {
+      background: #FAF5FF;
+      border: 1.5px solid #E9D5FF;
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.35rem;
+    }
+    .cause-chain-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #6D28D9;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .chain-nodes {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.65rem;
+    }
+    .node-box {
+      background: #FFFFFF;
+      border: 1px solid #D8B4FE;
+      padding: 0.45rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #4C1D95;
+      box-shadow: 0 1px 2px rgba(124, 58, 237, 0.05);
+    }
+    .arrow-sign {
+      color: #A855F7;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+    .standard-answer-text {
+      background: #FFFFFF;
+      border-left: 3.5px solid var(--purple-main);
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      font-size: 0.84rem;
+      color: var(--text-primary);
+      line-height: 1.6;
+      margin-top: 0.65rem;
+    }
+
+    /* Trap warning */
+    .trap-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      font-size: 0.82rem;
+      color: #991B1B;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.55;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 1.2rem 1rem 4rem; }
+      .hero { padding: 1.6rem 1.25rem; }
+      .hero h2 { font-size: 1.45rem; }
+      .chain-nodes { flex-direction: column; align-items: stretch; }
+      .arrow-sign { text-align: center; transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="brand-badge">跨</div>
+      <div class="header-title-box">
+        <h1>跨学科案例分析专项拆解工作台 <span class="v-tag">V3 真题全收录</span></h1>
+        <span>上海中考 15 分必考 · 近 3 年 10 篇真题/一模 · 读图读数与因果链闭环</span>
+      </div>
+    </div>
+    <div class="header-nav">
+      <a href="#sec-formula">📐 核心解题套路</a>
+      <a href="#sec-read-charts">📊 读图三步法</a>
+      <a href="#sec-cases">📚 10篇真题拆解</a>
+      <a href="interdisciplinary-V2.html">历史 V2</a>
+      <a href="../index.html" class="back-dash-btn">← 返回全景看板</a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="hero-meta">
+      <span class="hero-tag">上海中考 27 届跨学科冲满分专刊</span>
+      <span style="font-size: 0.82rem; color: #D8B4FE;">满分 15 分 · 综合卷 25~30 题 · 丢分重灾区速效抢分</span>
+    </div>
+    <h2>从柱状图/折线图读结论 + 因果链推理</h2>
+    <p>
+      在初三九上第一次月考中，跨学科只得了 <b>4 分（丢了 11 分）</b>，根本原因是对“图表读数”和“跨学科因果链主观题”套路陌生，甚至大题直接留白。
+      跨学科的本质是<b>用地理非生物环境因素（气候、地形、水文、土壤）去解释生命科学现象（植物器官适应性、动物行为、生态平衡）</b>。
+      掌握这套“双图读数法”与“因果链闭环答题公式”，15 分完全可以稳拿 <b>12~15 分</b>！
+    </p>
+
+    <div class="formula-grid">
+      <div class="formula-card">
+        <div class="formula-title">
+          <span>📊 读图读数原则</span>
+        </div>
+        <div class="formula-body">
+          看轴找变量、看峰找极值、看折找拐点。<b>绝不能只抄数字</b>，必须用“随着……增加，呈现……趋势”的规范语表述趋势！
+        </div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-title">
+          <span>🔗 因果链推理公式</span>
+        </div>
+        <div class="formula-body">
+          <b>【环境条件】</b>（非生物因素）+ <b>【生理适应】</b>（器官结构/生理机能）-> <b>【因果关联词】</b> -> <b>【生产/生态结论】</b>。
+        </div>
+      </div>
+      <div class="formula-card">
+        <div class="formula-title">
+          <span>🚫 绝不丢空白分</span>
+        </div>
+        <div class="formula-body">
+          遇到最后 3~4 分开放大题，即使不确定，也把<b>材料中对应的地理环境词和生物词抄进三段论句式</b>，保底抓 2~3 分！
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1: Methodology Formula -->
+  <section id="sec-formula">
+    <div class="section-header">
+      <h3 class="section-title">跨学科核心解题公式：三层因果链答题模型</h3>
+      <p class="section-desc">阅卷老师评分标准的底层逻辑：必须同时出现“地理环境”、“生命特征”与“逻辑连接词”</p>
+    </div>
+
+    <div class="card-box">
+      <div style="background: linear-gradient(90deg, #F5F3FF 0%, #FFFFFF 100%); padding: 1.2rem 1.4rem; border-radius: var(--radius-md); border: 1.5px solid var(--purple-border);">
+        <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--purple-main); margin-bottom: 0.6rem;">
+          【官方采分万能模板】因果链闭环句式
+        </h4>
+        <div style="font-size: 0.92rem; line-height: 1.7; color: var(--text-primary);">
+          “因为该地区<b>【地理环境特征：如半干旱气候/昼夜温差大/沙壤土通气/地下水位高】</b>，
+          这促使该生物<b>【生物形态或生理适应：如根系深扎/光合产物消耗少/防止有氧呼吸受阻】</b>，
+          因此有利于<b>【生态/生长结果：如吸收深层水/糖分积累/防止烂根】</b>，
+          从而实现了<b>【生产生活/可持续发展价值】</b>。”
+        </div>
+      </div>
+
+      <div class="step-box-grid">
+        <div class="step-item">
+          <div class="step-num">Step 1：锁住地理源头</div>
+          <h4>提取非生物环境要素</h4>
+          <p>
+            • <b>气候</b>：气温年较差/日较差、年降水量、降水集中月份、伏旱、光照时数；<br>
+            • <b>地形与地质</b>：冲积平原、山谷盆地、喀斯特溶洞、坡度坡向；<br>
+            • <b>水文与土壤</b>：地下水位高低、沙壤土/黏土、盐分、透水透气性。
+          </p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">Step 2：对应生物生理</div>
+          <h4>调动生命科学核心机理</h4>
+          <p>
+            • <b>植物</b>：根系（主根深扎/侧根浅展）、叶片（退化成刺/蜡质层蒸腾弱）、气孔开闭；<br>
+            • <b>代谢</b>：光合作用（制造淀粉/糖类）、呼吸作用（温度低消耗少）、细胞缺氧烂根；<br>
+            • <b>动物</b>：逆流游动、肌纤维致密、变温/恒温调节。
+          </p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">Step 3：打通因果连环</div>
+          <h4>使用严密逻辑副词与动词</h4>
+          <p>
+            • 拒绝“因为……所以它很好”等大白话；<br>
+            • 必须使用专业连接词：<b>“促使……”、“阻碍了……”、“从而有利于……”、“诱发了……酶活性”、“抑制了……消耗”</b>。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Chart Reading 3 Steps -->
+  <section id="sec-read-charts">
+    <div class="section-header">
+      <h3 class="section-title">突破图表题：柱状图与折线图读数三步法</h3>
+      <p class="section-desc">中考跨学科 26、27 题必考图表题，不丢分的核心是掌握“变量-趋势-极值”标准答法</p>
+    </div>
+
+    <div class="case-grid-2">
+      <!-- 柱状图技巧 -->
+      <div class="card-box" style="margin-bottom: 0;">
+        <h4 style="font-size: 1rem; font-weight: 800; color: var(--blue-main); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.4rem;">
+          📊 柱状图（比较型与离散数据）读法
+        </h4>
+        <ul style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.7; padding-left: 1.2rem;">
+          <li><b>读柱顶数值与极值对比</b>：直接找出最大柱与最小柱（如 7-8 月降水量最高，1-2 月降水量最低）。</li>
+          <li><b>读组间差异（对照组 vs 实验组）</b>：看不同处理下柱子高低差异（如起垄组比平畦组根系腐烂率低 40%）。</li>
+          <li><b>答题标准句式</b>：<br>
+            <code style="background: #F1F5F9; padding: 2px 6px; border-radius: 4px; color: #1E293B;">
+              “在【条件A】下，【指标】最高达到【数值+单位】，显著高于【条件B】，说明【条件A】更有利于……”
+            </code>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 折线图技巧 -->
+      <div class="card-box" style="margin-bottom: 0;">
+        <h4 style="font-size: 1rem; font-weight: 800; color: var(--purple-main); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.4rem;">
+          📈 折线图（动态变化与趋势型）读法
+        </h4>
+        <ul style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.7; padding-left: 1.2rem;">
+          <li><b>抓拐点与转折区间</b>：折线是“单调上升”、“单调下降”还是“先升后降”？拐点在自变量哪个具体数值？</li>
+          <li><b>抓两条折线的交叉点</b>：交点代表两者在特定数值时达到平衡或优劣逆转。</li>
+          <li><b>答题标准句式</b>：<br>
+            <code style="background: #F1F5F9; padding: 2px 6px; border-radius: 4px; color: #1E293B;">
+              “随着【自变量X】增加，【因变量Y】呈现先快速上升后趋于平缓的趋势，在 X=【具体拐点】时达到峰值……”
+            </code>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: 10 Real Exam Cases Disassembly -->
+  <section id="sec-cases">
+    <div class="section-header">
+      <h3 class="section-title">近 3 年上海真题与各区一模 10 篇案例专项拆解库</h3>
+      <p class="section-desc">包含 2022-2024 中考真题与徐汇、静安、浦东、黄浦、闵行等区一模高分示范</p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCases('all', this)">全部 10 篇案例</button>
+      <button class="filter-btn" onclick="filterCases('zhongkao', this)">⭐ 中考真题 (3篇)</button>
+      <button class="filter-btn" onclick="filterCases('plant', this)">🌾 农林特色植物类 (4篇)</button>
+      <button class="filter-btn" onclick="filterCases('ecology', this)">🌱 生态修复与水土治理 (3篇)</button>
+    </div>
+
+    <!-- Case 1: 2022 中考 黄芪 -->
+    <div class="case-card" data-cat="zhongkao plant">
+      <div class="case-card-header">
+        <div class="case-title-row">
+          <span class="case-index">01 中考真题</span>
+          <span class="case-title">【2022 上海中考】甘肃陇西 · 黄芪的生态种植与地下深根系适应</span>
+        </div>
+        <div class="case-badges">
+          <span class="c-badge c-badge-geo">半干旱气候/黄土高原</span>
+          <span class="c-badge c-badge-bio">深根系耐旱怕涝</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-grid-2">
+          <div class="info-pane">
+            <div class="info-pane-title">📌 案例背景与图表数据呈现</div>
+            <div class="info-pane-content">
+              • <b>地理要素</b>：甘肃陇西地处黄土高原丘陵沟壑区，年降水量约 400mm 且集中在 7-8 月，土层深厚疏松。<br>
+              • <b>图表数据</b>：陇西降水柱状图显示全年干旱期长达 8 个月；黄芪根系深度剖面图显示主根向下垂直生长达 1.5~2 米。<br>
+              • <b>核心设问</b>：结合陇西气候与土层特征，分析黄芪形态如何适应当地环境，起垄深耕种植的科学理由。
+            </div>
+          </div>
+          <div class="info-pane">
+            <div class="info-pane-title">📊 读图读数要点点拨</div>
+            <div class="info-pane-content">
+              1. 读出<b>7、8月降水集中（单月超 80mm）</b>，其余各月均低于 30mm，属于半干旱区降水季节不均；<br>
+              2. 读出土层 0~40cm 土壤含水量低，深层 100~200cm 土壤含水量稳定在 15%~18%；<br>
+              3. <b>读数结论</b>：地表水分匮乏，促使黄芪主根垂直深向下扎。
+            </div>
+          </div>
+        </div>
+
+        <div class="cause-chain-wrap">
+          <div class="cause-chain-title">🔗 官方满分因果逻辑链推演</div>
+          <div class="chain-nodes">
+            <div class="node-box">半干旱气候地表干燥 + 黄土深厚疏松</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">主根垂直深向下扎 1.5~2 米</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">吸收深层稳定地下水分与矿物质</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">起垄深耕利于直根伸长且防汛期烂根</div>
+          </div>
+          <div class="standard-answer-text">
+            <b>满分采分范本</b>：陇西降水较少且集中，表层土壤干燥但黄土土层深厚疏松（环境点1），促使黄芪主根垂直深扎以吸收深层地下水分，表现出对干旱环境的形态适应（生理点2）。起垄种植既为直根向下伸长提供疏松空间，又便于 7-8 月强降水快速排出，避免根系因缺氧窒息而发生根腐病（生产对策点3）。
+          </div>
+        </div>
+
+        <div class="trap-box">
+          ⚠️ <b>易错失分雷区</b>：很多考生只写“黄芪根很长所以能吸收水”，漏掉了“黄土高原土层深厚疏松”这一地理非生物前提，直接扣掉 1~2 分。
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 2: 2023 中考 茉莉花 -->
+    <div class="case-card" data-cat="zhongkao plant">
+      <div class="case-card-header">
+        <div class="case-title-row">
+          <span class="case-index">02 中考真题</span>
+          <span class="case-title">【2023 上海中考】福建福州 · 茉莉花种植与三伏窨制气象链</span>
+        </div>
+        <div class="case-badges">
+          <span class="c-badge c-badge-geo">亚热带季风/冲积盆地</span>
+          <span class="c-badge c-badge-bio">高温伏花芳香油积累</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-grid-2">
+          <div class="info-pane">
+            <div class="info-pane-title">📌 案例背景与图表数据呈现</div>
+            <div class="info-pane-content">
+              • <b>地理要素</b>：福州盆地位于闽江下游冲积平原，沙壤土肥沃疏松；盛夏 7-8 月受副高控制高温干热。<br>
+              • <b>图表数据</b>：气温与日照折线图对比茉莉花精油含量曲线，显示日温 32~37℃ 且强光照时香气峰值最高。<br>
+              • <b>核心设问</b>：为什么“三伏天采摘的茉莉花”制成的花茶品质最佳？
+            </div>
+          </div>
+          <div class="info-pane">
+            <div class="info-pane-title">📊 读图读数要点点拨</div>
+            <div class="info-pane-content">
+              1. 读出<b>7-8月三伏天气温持续在 30℃ 以上</b>，月日照时数达到全年最高（超 240 小时）；<br>
+              2. 读出精油成分在夜间 21-23 时开花吐香时达到最高峰（香气释放折线出现极值）；<br>
+              3. <b>读数结论</b>：强光照与高温刺激了芳香物质的合成积累。
+            </div>
+          </div>
+        </div>
+
+        <div class="cause-chain-wrap">
+          <div class="cause-chain-title">🔗 官方满分因果逻辑链推演</div>
+          <div class="chain-nodes">
+            <div class="node-box">7-8月盛夏三伏强光照与高温（32℃+）</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">诱发茉莉花体内芳香油合成酶活性</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">“伏花”含苞期精油浓度达到生理峰值</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">夜间吐香时茶坯迅速吸附香气制成极品</div>
+          </div>
+          <div class="standard-answer-text">
+            <b>满分采分范本</b>：福州 7-8 月三伏天受副热带高压控制，光照充足且日照时数长，气温持续在 32~37℃（环境点1）；强光和高温有利于茉莉花光合作用并激活芳香油合成酶，使得伏花积累的挥发性精油含量远超春秋季节（生理机理点2）；在夜间花蕾微张吐香时与干燥茶坯混拌窨制，茶坯微孔高效吸收芳香分子，香气最浓郁持久（工艺结合点3）。
+          </div>
+        </div>
+
+        <div class="trap-box">
+          ⚠️ <b>易错失分雷区</b>：只答“三伏天天热，花长得好”，未点明“酶活性提高、芳香油浓度高”等生命科学机理，失分严重。
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 3: 2024 中考 大黄鱼 -->
+    <div class="case-card" data-cat="zhongkao ecology">
+      <div class="case-card-header">
+        <div class="case-title-row">
+          <span class="case-index">03 中考真题</span>
+          <span class="case-title">【2024 上海中考】浙江舟山 · 大黄鱼深海野化放流与水流耐力</span>
+        </div>
+        <div class="case-badges">
+          <span class="c-badge c-badge-geo">东海大陆架/强潮流</span>
+          <span class="c-badge c-badge-bio">逆流游泳肌肉紧实度</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-grid-2">
+          <div class="info-pane">
+            <div class="info-pane-title">📌 案例背景与图表数据呈现</div>
+            <div class="info-pane-content">
+              • <b>地理要素</b>：舟山群岛潮流湍急（流速 0.8~1.2m/s），潮差大，水质清新含氧量高。<br>
+              • <b>图表数据</b>：水流流速与大黄鱼肌肉脂肪比柱状图，深海网箱与普通内湾池塘体型指标对比。<br>
+              • <b>核心设问</b>：分析深远海抗风浪网箱如何改善大黄鱼肉质，使之接近野生大黄鱼。
+            </div>
+          </div>
+          <div class="info-pane">
+            <div class="info-pane-title">📊 读图读数要点点拨</div>
+            <div class="info-pane-content">
+              1. 读出流速由 0.2m/s 提升到 1.0m/s 时，<b>鱼肉脂肪含量由 18% 下降到 8%</b>，肌肉纤维致密度提高 35%；<br>
+              2. <b>读数结论</b>：流水速度与肌肉锻炼强度正相关，脂肪消耗率高。
+            </div>
+          </div>
+        </div>
+
+        <div class="cause-chain-wrap">
+          <div class="cause-chain-title">🔗 官方满分因果逻辑链推演</div>
+          <div class="chain-nodes">
+            <div class="node-box">舟山深水开阔海域潮流水流湍急</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">迫使大黄鱼持续逆流游动克服阻力</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">消耗体内过剩脂肪，肌纤维致密修长</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">体型金黄修长，肉质紧实鲜美达野化标准</div>
+          </div>
+          <div class="standard-answer-text">
+            <b>满分采分范本</b>：舟山外海潮流流速大且水温、盐度适宜（水文环境1）；强海流刺激大黄鱼保持逆流游泳习性，高强度的运动负荷促使体内脂肪快速氧化供能，肌纤维变粗变紧致（生理机制2）；从而克服了内湾养殖大黄鱼肥胖松软的缺陷，体色金黄、体型修长，口感达到近似野生大黄鱼的高品质（结论3）。
+          </div>
+        </div>
+
+        <div class="trap-box">
+          ⚠️ <b>易错失分雷区</b>：容易遗漏“逆流游动”这一生物行为学机制，只简单归结为“水质干净”。
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 4: 2024 徐汇一模 塔拉滩光伏羊 -->
+    <div class="case-card" data-cat="ecology">
+      <div class="case-card-header">
+        <div class="case-title-row">
+          <span class="case-index">04 徐汇一模</span>
+          <span class="case-title">【2024 徐汇一模】青海共和塔拉滩 · 光伏板遮阴与“光伏羊”生态闭环</span>
+        </div>
+        <div class="case-badges">
+          <span class="c-badge c-badge-geo">青藏高原/干旱荒漠</span>
+          <span class="c-badge c-badge-bio">植被恢复与生态食物链</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-grid-2">
+          <div class="info-pane">
+            <div class="info-pane-title">📌 案例背景与图表数据呈现</div>
+            <div class="info-pane-content">
+              • <b>地理要素</b>：青海塔拉滩海拔 3000m，太阳辐射极强，年蒸发量高达 1700mm，荒漠化严重。<br>
+              • <b>图表数据</b>：光伏板下与裸地土壤水分折线图，显示板下土壤含水量高出裸地 30% 以上，杂草生物量增加 4 倍。<br>
+              • <b>核心设问</b>：阐明“光伏电站-植被生长-绵羊养殖”之间的跨学科因果生态链。
+            </div>
+          </div>
+          <div class="info-pane">
+            <div class="info-pane-title">📊 读图读数要点点拨</div>
+            <div class="info-pane-content">
+              1. 读出<b>光伏板下地表蒸发量降低 30%~40%</b>，清洗组件的水入渗增加土壤有效水；<br>
+              2. 读出草高超过 40cm 后开始遮挡电池板发电效率；<br>
+              3. <b>读数结论</b>：板下微生境改变改善了草类萌发生长，但草高需控制。
+            </div>
+          </div>
+        </div>
+
+        <div class="cause-chain-wrap">
+          <div class="cause-chain-title">🔗 官方满分因果逻辑链推演</div>
+          <div class="chain-nodes">
+            <div class="node-box">光伏板遮挡强辐射 + 减少地表蒸发</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">板下土壤水分保持，草本植被恢复繁茂</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">引进绵羊吃草防止遮挡电板和火灾</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">羊粪还田肥土，实现治沙+绿电+增收双赢</div>
+          </div>
+          <div class="standard-answer-text">
+            <b>满分采分范本</b>：光伏阵列阻挡了高原强紫外线和直射阳光，降低地表温度和风速，极大减少了土壤水分蒸发（物理环境改善1）；良好的土壤水热条件促进荒漠草类快速萌发并固沙，但草过高会遮挡光伏板影响发电并有火灾隐患（生态问题2）；引入“光伏羊”啃食杂草既消除了遮挡隐患，羊粪又肥沃土壤，构成了“板上清洁发电、板下生态修复、园内牧业增收”的可持续循环系统（闭环价值3）。
+          </div>
+        </div>
+
+        <div class="trap-box">
+          ⚠️ <b>易错失分雷区</b>：很多同学漏写“清洗光伏板的水补给土壤”或“绵羊吃草防止遮挡发电与火灾”的逆向因果链。
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 5: 2024 静安一模 阿克苏苹果 -->
+    <div class="case-card" data-cat="plant">
+      <div class="case-card-header">
+        <div class="case-title-row">
+          <span class="case-index">05 静安一模</span>
+          <span class="case-title">【2024 静安一模】新疆阿克苏 · 极端温差气候与“冰糖心”苹果积累</span>
+        </div>
+        <div class="case-badges">
+          <span class="c-badge c-badge-geo">温带大陆性气候/天山融水</span>
+          <span class="c-badge c-badge-bio">光合呼吸比与糖分结晶</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-grid-2">
+          <div class="info-pane">
+            <div class="info-pane-title">📌 案例背景与图表数据呈现</div>
+            <div class="info-pane-content">
+              • <b>地理要素</b>：新疆阿克苏干燥少雨，日照时数超 2800 小时，秋季昼夜温差常超 15℃，霜期在 10 月下旬。<br>
+              • <b>图表数据</b>：采收时间（9月 vs 11月）与果核周围果糖过饱和透明区面积折线图。<br>
+              • <b>核心设问</b>：运用光合作用与呼吸作用原理解释“冰糖心”的形成机理。
+            </div>
+          </div>
+          <div class="info-pane">
+            <div class="info-pane-title">📊 读图读数要点点拨</div>
+            <div class="info-pane-content">
+              1. 读出 10 月 25 日霜降后，果核周围可溶性糖（果糖）浓度直线上升至 18% 以上；<br>
+              2. <b>读数结论</b>：低温与迟采是诱发糖分凝聚于维管束间隙的关键转折点。
+            </div>
+          </div>
+        </div>
+
+        <div class="cause-chain-wrap">
+          <div class="cause-chain-title">🔗 官方满分因果逻辑链推演</div>
+          <div class="chain-nodes">
+            <div class="node-box">白天光照充足 + 强烈光合作用制造糖类</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">夜间气温骤降 + 呼吸作用极弱减少消耗</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">秋季延迟采收遭遇轻微霜冻刺激</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">过饱和果糖汇聚果核形成半透明“冰糖心”</div>
+          </div>
+          <div class="standard-answer-text">
+            <b>满分采分范本</b>：阿克苏秋季晴天多光照强，叶片白天进行高效光合作用合成大量葡萄糖等有机物（机理1）；夜间气温低，果树呼吸作用极其微弱，有机物消耗大幅减少，形成极高的糖分净积累（机理2）；霜降后推迟采收，在低温冷刺激下淀粉迅速水解为果糖，高浓度的过饱和可溶性糖溢出细胞汇聚于果核维管束间隙，形成半透明的冰糖心现象（结论3）。
+          </div>
+        </div>
+
+        <div class="trap-box">
+          ⚠️ <b>易错失分雷区</b>：只答“温差大所以甜”，没有分别写出“白天光合作用产糖多”和“夜间呼吸作用消耗少”这两个必踩得分点！
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 6: 2024 浦东一模 崇明互花米草 -->
+    <div class="case-card" data-cat="ecology">
+      <div class="case-card-header">
+        <div class="case-title-row">
+          <span class="case-index">06 浦东一模</span>
+          <span class="case-title">【2024 浦东一模】上海崇明东滩 · 外来物种互花米草入侵与物理水淹治理</span>
+        </div>
+        <div class="case-badges">
+          <span class="c-badge c-badge-geo">河口滨海湿地/潮间带</span>
+          <span class="c-badge c-badge-bio">耐淹耐盐与生态窒息防除</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-grid-2">
+          <div class="info-pane">
+            <div class="info-pane-title">📌 案例背景与图表数据呈现</div>
+            <div class="info-pane-content">
+              • <b>地理要素</b>：崇明东滩为粉砂淤泥质滩涂，盐度 0.5%~1.2%，受半日潮冲刷浸泡。<br>
+              • <b>图表数据</b>：互花米草盖度与底栖动物生物量反比柱状图；不同水淹深度（0cm, 30cm, 60cm）下根茎死亡率曲线。<br>
+              • <b>核心设问</b>：为什么“刈割 + 围堰深水淹没”能彻底根除互花米草？
+            </div>
+          </div>
+          <div class="info-pane">
+            <div class="info-pane-title">📊 读图读数要点点拨</div>
+            <div class="info-pane-content">
+              1. 读出水淹深度达 50cm 且持续时间超 90 天时，<b>互花米草根茎萌发率降至 0%</b>；<br>
+              2. <b>读数结论</b>：长期深水淹没超越了其耐淹生理极限，使地下根茎彻底窒息死亡。
+            </div>
+          </div>
+        </div>
+
+        <div class="cause-chain-wrap">
+          <div class="cause-chain-title">🔗 官方满分因果逻辑链推演</div>
+          <div class="chain-nodes">
+            <div class="node-box">互花米草根茎致密板结滩涂，排挤本土底栖物种</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">地面机械刈割切断地上光合绿色器官</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">围堰深水淹没 50cm 维持半年以上</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">地下根茎无法有氧呼吸窒息坏死，恢复湿地</div>
+          </div>
+          <div class="standard-answer-text">
+            <b>满分采分范本</b>：互花米草繁殖力强，在潮滩形成致密单优群落导致底栖动物窒息、候鸟栖息地丧失（危害机理1）；治理时先刈割除地上茎叶切断其光合养分来源（措施2）；再利用围堰保持 50cm 以上深度持续水淹，隔绝氧气使地下走茎无法进行有氧呼吸，在持续缺氧无光环境下彻底耗尽储存养分腐烂死亡（生理致死关键点3），为补种本土海三棱藨草创造生境。
+          </div>
+        </div>
+
+        <div class="trap-box">
+          ⚠️ <b>易错失分雷区</b>：容易误以为水淹是“淹死地上叶子”，实际关键在于“破坏地下储能走茎的有氧呼吸”。
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 7: 2023 黄浦一模 哈尼梯田 -->
+    <div class="case-card" data-cat="ecology plant">
+      <div class="case-card-header">
+        <div class="case-title-row">
+          <span class="case-index">07 黄浦一模</span>
+          <span class="case-title">【2023 黄浦一模】云南元阳 · 哈尼梯田“森林-水系-梯田”立体垂直循环</span>
+        </div>
+        <div class="case-badges">
+          <span class="c-badge c-badge-geo">亚热带山地/垂直地域分异</span>
+          <span class="c-badge c-badge-bio">植被水源涵养与水汽蒸腾</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-grid-2">
+          <div class="info-pane">
+            <div class="info-pane-title">📌 案例背景与图表数据呈现</div>
+            <div class="info-pane-content">
+              • <b>地理要素</b>：哀牢山红河峡谷高差 2000 多米，山顶高寒降水多，山谷低热干燥。<br>
+              • <b>图表数据</b>：海拔梯度与森林植被截留雨水率柱状图，梯田四季蓄水剖面图。<br>
+              • <b>核心设问</b>：为什么哈尼梯田虽无大型水库，却能历经千年“常年不旱”？
+            </div>
+          </div>
+          <div class="info-pane">
+            <div class="info-pane-title">📊 读图读数要点点拨</div>
+            <div class="info-pane-content">
+              1. 读出海拔 2000m 以上山顶<b>森林覆盖率超过 85%，年降水量超 1500mm</b>；<br>
+              2. <b>读数结论</b>：山顶森林起到天然绿色海绵库的水量调蓄功能。
+            </div>
+          </div>
+        </div>
+
+        <div class="cause-chain-wrap">
+          <div class="cause-chain-title">🔗 官方满分因果逻辑链推演</div>
+          <div class="chain-nodes">
+            <div class="node-box">红河谷水汽沿坡爬升冷凝为山顶丰富地形雨</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">山顶茂密原始森林截留涵养降水入渗为山泉</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">泉水重力自流灌溉山腰万亩梯田与村寨</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">梯田水蒸发成云再度反哺山顶降雨形成永续</div>
+          </div>
+          <div class="standard-answer-text">
+            <b>满分采分范本</b>：山谷水汽受地形阻挡抬升在山顶冷凝形成充沛降水（水汽来源1）；山顶茂密森林植被与深厚枯枝落叶层发挥强效水源涵养功能，将地表水转化为稳定充沛的地下水和山泉（生态储水点2）；泉水顺重力下流，依次穿过村寨和层层梯田完成灌溉，蒸发上升的水汽再度在高空凝云降雨，形成了无坝自流、生态良性内循环的千年奇迹（闭环3）。
+          </div>
+        </div>
+
+        <div class="trap-box">
+          ⚠️ <b>易错失分雷区</b>：只写了水往下流，漏写了“蒸发成云再度爬升降雨”的完整闭环循环过程。
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 8: 2023 闵行一模 库布齐沙柳 -->
+    <div class="case-card" data-cat="plant ecology">
+      <div class="case-card-header">
+        <div class="case-title-row">
+          <span class="case-index">08 闵行一模</span>
+          <span class="case-title">【2023 闵行一模】内蒙古库布齐 · 沙柳防风固沙与沙埋不定根生理机制</span>
+        </div>
+        <div class="case-badges">
+          <span class="c-badge c-badge-geo">温带荒漠/起沙风力</span>
+          <span class="c-badge c-badge-bio">不定根分化与平茬复壮</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-grid-2">
+          <div class="info-pane">
+            <div class="info-pane-title">📌 案例背景与图表数据呈现</div>
+            <div class="info-pane-content">
+              • <b>地理要素</b>：库布齐沙漠降水 200mm，蒸发量 2500mm，风沙大，流动沙丘快速推移。<br>
+              • <b>图表数据</b>：沙柳林高度与近地表 2m 风速削减折线图；平茬年限与单株生物量对比柱状图。<br>
+              • <b>核心设问</b>：结合沙柳生理特性，说明为什么沙柳“越砍越旺”、“不砍反而枯死”？
+            </div>
+          </div>
+          <div class="info-pane">
+            <div class="info-pane-title">📊 读图读数要点点拨</div>
+            <div class="info-pane-content">
+              1. 读出沙柳平茬后<b>萌发新枝条数量是未平茬的 3 倍</b>，3~5 年平茬株成活率达 95%；<br>
+              2. <b>读数结论</b>：解除顶端优势，刺激休眠芽大爆发。
+            </div>
+          </div>
+        </div>
+
+        <div class="cause-chain-wrap">
+          <div class="cause-chain-title">🔗 官方满分因果逻辑链推演</div>
+          <div class="chain-nodes">
+            <div class="node-box">流沙掩埋刺激沙柳节间分化出大量不定根</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">根系交织牢牢固定地表流沙并阻滞风力</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">3-5年人工平茬砍伐解除顶端优势</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">刺激基部休眠芽丛生萌发，实现平茬复壮</div>
+          </div>
+          <div class="standard-answer-text">
+            <b>满分采分范本</b>：沙柳耐沙埋，风沙掩埋茎干能刺激其节上分化出旺盛不定根，盘根错节牢固抓紧沙土并抬升地面粗糙度以降低风速（防沙机理1）；沙柳灌木具有“平茬复壮”生理特性，定期平茬砍除衰老主枝解除了顶端优势，刺激基部大量休眠潜伏芽爆发萌发出数十根健壮新枝（生命科学机理2）；若多年不砍，老枝老化干枯反而加速全株死亡。平茬枝条加工为生物板材，兼顾固沙与经济（对策3）。
+          </div>
+        </div>
+
+        <div class="trap-box">
+          ⚠️ <b>易错失分雷区</b>：很多考生不知道“顶端优势”和“休眠芽萌发”，只用生活经验猜想“给它换新叶子”，失掉关键学术分。
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 9: 2024 青浦模拟 薰衣草 -->
+    <div class="case-card" data-cat="plant">
+      <div class="case-card-header">
+        <div class="case-title-row">
+          <span class="case-index">09 西延安/青浦模拟</span>
+          <span class="case-title">【2024 青浦模拟】上海青浦寻梦源 · 薰衣草水乡平原起垄排水与防烂根</span>
+        </div>
+        <div class="case-badges">
+          <span class="c-badge c-badge-geo">水乡低平原/梅雨季节</span>
+          <span class="c-badge c-badge-bio">根系有氧呼吸与防烂根</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-grid-2">
+          <div class="info-pane">
+            <div class="info-pane-title">📌 案例背景与图表数据呈现</div>
+            <div class="info-pane-content">
+              • <b>地理要素</b>：青浦太湖流域地势低洼，地下水位不足 1 米，6-7 月梅雨期持续降雨多阴天。<br>
+              • <b>图表数据</b>：土壤含氧量与薰衣草根腐病发病率反向变动折线图（含氧量<10%时烂根率高达 80%）。<br>
+              • <b>核心设问</b>：薰衣草原本生长在地中海，引种至上海必须采取哪些农业工程措施？说明生物学依据。
+            </div>
+          </div>
+          <div class="info-pane">
+            <div class="info-pane-title">📊 读图读数要点点拨</div>
+            <div class="info-pane-content">
+              1. 读出起垄高度 35cm 结合沟渠排水，<b>土壤含水饱和度从 95% 降低至 55%</b>；<br>
+              2. <b>读数结论</b>：消除土壤滞水是维持根系正常有氧呼吸的关键。
+            </div>
+          </div>
+        </div>
+
+        <div class="cause-chain-wrap">
+          <div class="cause-chain-title">🔗 官方满分因果逻辑链推演</div>
+          <div class="chain-nodes">
+            <div class="node-box">青浦平原地表水网密布 + 梅雨连阴雨土壤过湿</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">土壤孔隙被水填满缺氧，迫使根系无氧呼吸产生酒精</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">修筑 30~40cm 深沟高垄 + 掺砂改良透气性</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">抬高根部透气层，确保根系正常有氧呼吸防止烂根</div>
+          </div>
+          <div class="standard-answer-text">
+            <b>满分采分范本</b>：青浦地势低洼且地下水位高，梅雨期降水量大，地表容易渍水（地理问题1）；薰衣草为耐旱怕湿植物，根系若长时间浸泡在水中，土壤缺氧会迫使根细胞转为无氧呼吸产生酒精，毒害细胞导致根腐病死亡（生物生理机理2）；因此必须起高垄整地并开挖深排水沟，掺杂沙石提高土壤透水透气性，抬高根系生长层保证充足氧气供应，维持正常的有氧呼吸和水分吸收（对策与结论3）。
+          </div>
+        </div>
+
+        <div class="trap-box">
+          ⚠️ <b>易错失分雷区</b>：这是 Owen 所在西延安/长宁经常模拟的典型题，月考中很多学生只写“怕水所以排水”，漏写了“无氧呼吸产生酒精毒害烂根”这一初中生物核心考点！
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 10: 2024 杨浦一模 修文猕猴桃 -->
+    <div class="case-card" data-cat="plant">
+      <div class="case-card-header">
+        <div class="case-title-row">
+          <span class="case-index">10 杨浦一模</span>
+          <span class="case-title">【2024 杨浦一模】贵州修文 · 喀斯特地貌地表漏水与猕猴桃富硒生长</span>
+        </div>
+        <div class="case-badges">
+          <span class="c-badge c-badge-geo">喀斯特地貌/水土流失</span>
+          <span class="c-badge c-badge-bio">肉质根需水与微量元素吸收</span>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-grid-2">
+          <div class="info-pane">
+            <div class="info-pane-title">📌 案例背景与图表数据呈现</div>
+            <div class="info-pane-content">
+              • <b>地理要素</b>：贵州修文为典型岩溶喀斯特地貌，地表裂隙溶洞发育，水往地下漏，保水性差；但碳酸盐母岩风化土壤含硒丰富。<br>
+              • <b>图表数据</b>：不同灌溉模式（漫灌 vs 滴灌）水利用率柱状图，土壤有效硒含量与果实维C折线图。<br>
+              • <b>核心设问</b>：针对喀斯特“地表易旱”与“土壤富硒”双重特征，分析当地现代农业措施。
+            </div>
+          </div>
+          <div class="info-pane">
+            <div class="info-pane-title">📊 读图读数要点点拨</div>
+            <div class="info-pane-content">
+              1. 读出喀斯特坡地地表径流渗漏率高达 75%，但深层地下暗河水量充沛；<br>
+              2. <b>读数结论</b>：必须通过蓄水池和节水滴灌，解决工程性缺水难题。
+            </div>
+          </div>
+        </div>
+
+        <div class="cause-chain-wrap">
+          <div class="cause-chain-title">🔗 官方满分因果逻辑链推演</div>
+          <div class="chain-nodes">
+            <div class="node-box">喀斯特岩溶裂隙多，降水迅速下渗地表易旱</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">修建高位水池 + 铺设水肥一体化滴灌管道</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">精准供给肉质根适量水分，避免漫灌漏水水土流失</div>
+            <span class="arrow-sign">➔</span>
+            <div class="node-box">利用岩石风化富硒土，培育高维C高品质修文猕猴桃</div>
+          </div>
+          <div class="standard-answer-text">
+            <b>满分采分范本</b>：喀斯特地貌岩石溶蚀裂隙发育，地表降水迅速渗入地下暗河，形成工程性缺水（地理环境限制1）；猕猴桃为肉质根，耐旱能力弱但又忌积水烂根，当地修建高位蓄水池收集雨水并采用微孔滴灌技术，精准提供湿润水分而不破坏表土（工程措施与生物生理契合2）；同时充分发挥碳酸盐岩风化红黄壤富含活性硒和微量矿物质的优势，促使果实高效吸收合成抗坏血酸，打造国家地理标志富硒农产品（特色增值3）。
+          </div>
+        </div>
+
+        <div class="trap-box">
+          ⚠️ <b>易错失分雷区</b>：容易把喀斯特地貌缺水误答成“降水少”，喀斯特是“降水多但留不住（工程性缺水）”，因果逻辑必须清晰！
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 总结与快速自测联动 -->
+  <section>
+    <div class="card-box" style="background: linear-gradient(135deg, #FAF5FF 0%, #EFF6FF 100%); border-color: #D8B4FE;">
+      <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--purple-main); margin-bottom: 0.5rem;">
+        跨学科 15 分抢分通关打卡秘籍
+      </h4>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+        做题口诀：<b>“读图看两轴，拐点写趋势；解释问因果，环境带生理；大题不空写，三段全踩齐！”</b><br>
+        每次模考前，把这 10 个案例的标准采分逻辑链通读一遍，遇到同类植物/动物/生态环境题，直接套用因果链三段论，15 分满分即可收入囊中。
+      </p>
+      <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+        <a href="../zhongkao/monthly-exam-1-analysis-V1.html" style="font-size: 0.82rem; font-weight: 700; background: var(--purple-main); color: #fff; text-decoration: none; padding: 0.45rem 0.9rem; border-radius: 8px;">
+          ← 返回九上第一次月考复盘
+        </a>
+        <a href="../index.html" style="font-size: 0.82rem; font-weight: 700; background: #2563EB; color: #fff; text-decoration: none; padding: 0.45rem 0.9rem; border-radius: 8px;">
+          返回全科看板首页 →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Owen 中考跨学科案例分析通关系统 · 上海中考 27 届专项教研</p>
+  </footer>
+
+</div>
+
+<script>
+  function filterCases(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    const cards = document.querySelectorAll('.case-card');
+    cards.forEach(card => {
+      if (cat === 'all') {
+        card.style.display = 'block';
+      } else {
+        const itemCat = card.getAttribute('data-cat') || '';
+        if (itemCat.includes(cat)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

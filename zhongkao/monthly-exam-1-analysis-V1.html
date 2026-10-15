@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>九上第一次月考全科分析与中考得分趋势预测 | 27届上海中考复盘 V1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      
+      --brand-red: #DC2626;
+      --brand-red-light: #EF4444;
+      --brand-red-bg: #FEF2F2;
+      
+      --brand-blue: #2563EB;
+      --brand-blue-bg: #EFF6FF;
+      
+      --accent-green: #059669;
+      --accent-green-bg: #ECFDF5;
+      
+      --accent-amber: #D97706;
+      --accent-amber-bg: #FFFBEB;
+
+      --accent-purple: #7C3AED;
+      --accent-purple-bg: #F5F3FF;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Sticky Header */
+    header {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.85rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .back-btn {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      background: var(--bg-subtle);
+      padding: 0.38rem 0.75rem;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .back-btn:hover {
+      background: var(--brand-blue-bg);
+      color: var(--brand-blue);
+    }
+    .header-title-box h1 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.25;
+    }
+    .header-title-box span {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    nav.nav-links {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    nav.nav-links a {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.36rem 0.7rem;
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      transition: all 0.15s ease;
+    }
+    nav.nav-links a:hover {
+      background: var(--brand-red-bg);
+      color: var(--brand-red);
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.8rem 1.4rem 5rem;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+      color: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(220, 38, 38, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .hero-tag {
+      background: rgba(220, 38, 38, 0.25);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #FCA5A5;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+    }
+    .hero-subtag {
+      font-size: 0.82rem;
+      color: #94A3B8;
+    }
+    .hero h2 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .hero p {
+      color: #CBD5E1;
+      font-size: 0.94rem;
+      max-width: 780px;
+      line-height: 1.6;
+    }
+
+    /* KPI Highlights Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1.6rem;
+    }
+    .kpi-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+      backdrop-filter: blur(8px);
+    }
+    .kpi-card .label {
+      font-size: 0.75rem;
+      color: #94A3B8;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .kpi-card .num {
+      font-size: 1.85rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      line-height: 1.1;
+      color: #FFFFFF;
+    }
+    .kpi-card .desc {
+      font-size: 0.73rem;
+      color: #CBD5E1;
+      margin-top: 0.35rem;
+    }
+
+    /* Section Styles */
+    section {
+      margin-top: 2.8rem;
+    }
+    .section-header {
+      margin-bottom: 1.25rem;
+    }
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-title::before {
+      content: "";
+      width: 4px;
+      height: 1.15em;
+      background: var(--brand-red);
+      border-radius: 2px;
+      display: inline-block;
+    }
+    .section-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    /* Card Box */
+    .card-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.6rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.3rem;
+    }
+
+    /* Table Styles */
+    .tbl-responsive {
+      overflow-x: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    th, td {
+      padding: 0.72rem 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+      text-align: left;
+      vertical-align: middle;
+    }
+    th {
+      background: var(--bg-subtle);
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+    tr:last-child td { border-bottom: none; }
+    td.center, th.center { text-align: center; }
+    td.num { font-variant-numeric: tabular-nums; font-weight: 600; }
+    
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .badge-red { background: var(--brand-red-bg); color: var(--brand-red); border: 1px solid #FECACA; }
+    .badge-blue { background: var(--brand-blue-bg); color: var(--brand-blue); border: 1px solid #BFDBFE; }
+    .badge-green { background: var(--accent-green-bg); color: var(--accent-green); border: 1px solid #A7F3D0; }
+    .badge-amber { background: var(--accent-amber-bg); color: var(--accent-amber); border: 1px solid #FDE68A; }
+    .badge-purple { background: var(--accent-purple-bg); color: var(--accent-purple); border: 1px solid #DDD6FE; }
+
+    /* Progress Bar */
+    .prog-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      min-width: 120px;
+    }
+    .prog-bg {
+      flex: 1;
+      height: 7px;
+      background: var(--bg-subtle);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .prog-fill {
+      height: 100%;
+      border-radius: 4px;
+    }
+
+    /* Subject Cards Grid */
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .sub-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.4rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      border-left: 4px solid var(--border-color);
+    }
+    .sub-card.c-red { border-left-color: var(--brand-red); }
+    .sub-card.c-blue { border-left-color: var(--brand-blue); }
+    .sub-card.c-purple { border-left-color: var(--accent-purple); }
+    .sub-card.c-amber { border-left-color: var(--accent-amber); }
+    .sub-card.c-green { border-left-color: var(--accent-green); }
+
+    .sub-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+    .sub-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sub-score-box {
+      text-align: right;
+    }
+    .sub-score-box .score {
+      font-size: 1.35rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      line-height: 1;
+    }
+    .sub-score-box .full {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+    .fault-list {
+      list-style: none;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .fault-list li {
+      position: relative;
+      padding-left: 1.25rem;
+      line-height: 1.5;
+    }
+    .fault-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0.35rem;
+      color: var(--brand-red);
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .sub-verdict {
+      background: var(--bg-subtle);
+      padding: 0.6rem 0.8rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .sub-verdict b { color: var(--text-primary); }
+
+    /* Prediction Trajectories */
+    .traj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .traj-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.5rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .traj-card.featured {
+      border: 2px solid var(--brand-blue);
+      box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.15);
+    }
+    .traj-tag-top {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--brand-blue);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.25rem 0.85rem;
+      border-bottom-left-radius: 10px;
+    }
+    .traj-header {
+      margin-bottom: 1rem;
+    }
+    .traj-name {
+      font-size: 1.12rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+    }
+    .traj-range {
+      font-size: 1.9rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      margin: 0.4rem 0;
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+    }
+    .traj-range span { font-size: 0.88rem; font-weight: 500; color: var(--text-muted); }
+    .traj-desc {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 1rem;
+    }
+    .dest-pill {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.83rem;
+      margin-bottom: 1rem;
+    }
+    .dest-pill b { color: var(--text-primary); }
+    .sub-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      font-size: 0.8rem;
+    }
+    .sub-bar-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-secondary);
+    }
+    .sub-bar-row b { font-variant-numeric: tabular-nums; }
+
+    /* Action Roadmap */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .t-step {
+      display: flex;
+      gap: 1.2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.4rem;
+    }
+    .t-step-time {
+      flex: none;
+      width: 110px;
+    }
+    .t-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.22rem 0.55rem;
+      border-radius: 6px;
+      margin-bottom: 0.3rem;
+    }
+    .t-step-body {
+      flex: 1;
+    }
+    .t-step-body h4 {
+      font-size: 0.98rem;
+      font-weight: 800;
+      margin-bottom: 0.35rem;
+    }
+    .t-step-body p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 1.2rem 1rem 4rem; }
+      .hero { padding: 1.6rem 1.25rem; }
+      .hero h2 { font-size: 1.45rem; }
+      .t-step { flex-direction: column; gap: 0.6rem; }
+      .t-step-time { width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-brand">
+      <a href="../index.html" class="back-btn">← 看板首页</a>
+      <div class="header-title-box">
+        <h1>九上第一次月考全科分析与中考得分预测</h1>
+        <span>上海中考 27 届 · 西延安中学九上阶段练习一实考复盘</span>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="#scores">各科成绩单</a>
+      <a href="#diagnosis">逐科失分诊断</a>
+      <a href="#prediction">中考三轨预测</a>
+      <a href="#action-plan">8个月逆袭路线</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Hero Summary -->
+  <div class="hero">
+    <div class="hero-meta">
+      <span class="hero-tag">实考原卷全量复盘</span>
+      <span class="hero-subtag">考试时间：2026 年 10 月 · 九年级第一学期阶段练习一</span>
+    </div>
+    <h2>初三第一仗：把失分问题点变成中考抢分矿藏</h2>
+    <p>
+      本次考试为初三九上开学第一个月的阶段摸底。全科实考得分 <b>357 分</b>（等第 C+），主要失分并非“完全不会”，而是
+      <b>大题空白率高（白丢超 50 分）、英语语法硬伤密集、化学新概念夹生、文科大题缺少采分术语</b>。
+      只要杜绝弃考空白，夯实基础知识，中考完全有能力实现 <b>150~200 分的跨越式修复</b>！
+    </p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <span class="label">实考全科总分</span>
+        <div class="num" style="color: #F87171;">357</div>
+        <div class="desc">满分635 / 班级等第 C+</div>
+      </div>
+      <div class="kpi-card">
+        <span class="label">语数英三门小计</span>
+        <div class="num" style="color: #60A5FA;">259</div>
+        <div class="desc">语77 + 数93 + 英89</div>
+      </div>
+      <div class="kpi-card">
+        <span class="label">最高得分率科目</span>
+        <div class="num" style="color: #34D399;">71.4%</div>
+        <div class="desc">物理 50/70 (等第 B-)</div>
+      </div>
+      <div class="kpi-card">
+        <span class="label">空白弃考白丢分</span>
+        <div class="num" style="color: #FBBF24;">50+ 分</div>
+        <div class="desc">数/语/英/跨学科留白</div>
+      </div>
+      <div class="kpi-card">
+        <span class="label">中考基线目标</span>
+        <div class="num" style="color: #A78BFA;">560~610</div>
+        <div class="desc">稳上公办普高 / 冲优质中本</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1: Full Scorecard -->
+  <section id="scores">
+    <div class="section-header">
+      <h3 class="section-title">第一次月考全景成绩单与各科诊断</h3>
+      <p class="section-subtitle">基于学校智学网答题卡扫描原卷数据，逐项核实扣分点与得分率</p>
+    </div>
+
+    <div class="tbl-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 50px;" class="center">编号</th>
+            <th style="width: 100px;">学科</th>
+            <th style="width: 80px;" class="center">满分</th>
+            <th style="width: 80px;" class="center">得分</th>
+            <th style="width: 80px;" class="center">失分</th>
+            <th style="width: 140px;">得分率</th>
+            <th style="width: 80px;" class="center">班级等第</th>
+            <th>原卷主要失分特征</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="center">1</td>
+            <td><b>语文</b></td>
+            <td class="center num">150</td>
+            <td class="center num" style="color: var(--brand-red); font-weight: 800;">77</td>
+            <td class="center num">-73</td>
+            <td>
+              <div class="prog-wrap">
+                <div class="prog-bg"><div class="prog-fill" style="width: 51.3%; background: var(--brand-red);"></div></div>
+                <span class="num">51.3%</span>
+              </div>
+            </td>
+            <td class="center"><span class="badge badge-red">C+</span></td>
+            <td>默写空两题(-4)，名著大题(-7)，课外文言文(-10)，作文压线650字(-16)</td>
+          </tr>
+          <tr>
+            <td class="center">2</td>
+            <td><b>数学</b></td>
+            <td class="center num">150</td>
+            <td class="center num" style="color: var(--brand-blue); font-weight: 800;">93</td>
+            <td class="center num">-57</td>
+            <td>
+              <div class="prog-wrap">
+                <div class="prog-bg"><div class="prog-fill" style="width: 62.0%; background: var(--brand-blue);"></div></div>
+                <span class="num">62.0%</span>
+              </div>
+            </td>
+            <td class="center"><span class="badge badge-blue">B-</span></td>
+            <td>23题几何证明满分！但17、18填空与22(2)、24(2)(3)、25(2)(3)<b>大面积空白，白丢26分</b></td>
+          </tr>
+          <tr>
+            <td class="center">3</td>
+            <td><b>英语</b></td>
+            <td class="center num">140(笔)</td>
+            <td class="center num" style="color: var(--brand-red); font-weight: 800;">89</td>
+            <td class="center num">-51</td>
+            <td>
+              <div class="prog-wrap">
+                <div class="prog-bg"><div class="prog-fill" style="width: 63.6%; background: var(--brand-red);"></div></div>
+                <span class="num">63.6%</span>
+              </div>
+            </td>
+            <td class="center"><span class="badge badge-red">C+</span></td>
+            <td>写作重灾区扣20分！大作文双动词、主谓不一致中式英语硬伤密集；篇章问答错4题</td>
+          </tr>
+          <tr>
+            <td class="center">4</td>
+            <td><b>三门总分</b></td>
+            <td class="center num">440</td>
+            <td class="center num" style="font-weight: 800;">259</td>
+            <td class="center num">-181</td>
+            <td>
+              <div class="prog-wrap">
+                <div class="prog-bg"><div class="prog-fill" style="width: 58.9%; background: var(--text-secondary);"></div></div>
+                <span class="num">58.9%</span>
+              </div>
+            </td>
+            <td class="center"><span class="badge badge-red">C+</span></td>
+            <td>主科基本盘未达到中位线，三门必须在期中前修复到 300+ 分保底</td>
+          </tr>
+          <tr>
+            <td class="center">5</td>
+            <td><b>物理</b></td>
+            <td class="center num">70</td>
+            <td class="center num" style="color: var(--accent-green); font-weight: 800;">50</td>
+            <td class="center num">-20</td>
+            <td>
+              <div class="prog-wrap">
+                <div class="prog-bg"><div class="prog-fill" style="width: 71.4%; background: var(--accent-green);"></div></div>
+                <span class="num">71.4%</span>
+              </div>
+            </td>
+            <td class="center"><span class="badge badge-green">B-</span></td>
+            <td>全科亮点！热学与电路基本盘扎实，主要扣在7.2运载火箭计算(-4)与电学实验规范</td>
+          </tr>
+          <tr>
+            <td class="center">6</td>
+            <td><b>化学</b></td>
+            <td class="center num">50</td>
+            <td class="center num" style="color: var(--brand-red); font-weight: 800;">22</td>
+            <td class="center num">-28</td>
+            <td>
+              <div class="prog-wrap">
+                <div class="prog-bg"><div class="prog-fill" style="width: 44.0%; background: var(--brand-red);"></div></div>
+                <span class="num">44.0%</span>
+              </div>
+            </td>
+            <td class="center"><span class="badge badge-red">C+</span></td>
+            <td>新科入门危机！溶液配制(-6)、化学方程式配平与结晶(-7)、溶解度曲线全面崩塌</td>
+          </tr>
+          <tr>
+            <td class="center">7</td>
+            <td><b>跨学科</b></td>
+            <td class="center num">15</td>
+            <td class="center num" style="color: var(--brand-red); font-weight: 800;">4</td>
+            <td class="center num">-11</td>
+            <td>
+              <div class="prog-wrap">
+                <div class="prog-bg"><div class="prog-fill" style="width: 26.7%; background: var(--brand-red);"></div></div>
+                <span class="num">26.7%</span>
+              </div>
+            </td>
+            <td class="center"><span class="badge badge-red">C+</span></td>
+            <td>题型极度陌生！27题画横线，30题大题完全空白留白(-4)，缺少因果逻辑链</td>
+          </tr>
+          <tr>
+            <td class="center">8</td>
+            <td><b>历史</b></td>
+            <td class="center num">30</td>
+            <td class="center num" style="color: #991B1B; font-weight: 800;">11</td>
+            <td class="center num">-19</td>
+            <td>
+              <div class="prog-wrap">
+                <div class="prog-bg"><div class="prog-fill" style="width: 36.7%; background: #991B1B;"></div></div>
+                <span class="num">36.7%</span>
+              </div>
+            </td>
+            <td class="center"><span class="badge" style="background:#FEE2E2;color:#991B1B;">C</span></td>
+            <td><b>全科唯一C档！</b>13题亚历山大东征评价5分直接得0分，全凭口语直觉答题，缺历史术语</td>
+          </tr>
+          <tr>
+            <td class="center">9</td>
+            <td><b>道德与法治</b></td>
+            <td class="center num">30</td>
+            <td class="center num" style="color: var(--brand-red); font-weight: 800;">11</td>
+            <td class="center num">-19</td>
+            <td>
+              <div class="prog-wrap">
+                <div class="prog-bg"><div class="prog-fill" style="width: 36.7%; background: var(--brand-red);"></div></div>
+                <span class="num">36.7%</span>
+              </div>
+            </td>
+            <td class="center"><span class="badge badge-red">C+</span></td>
+            <td>第6题大题直接扣8分！完全脱离“改革开放/以人民为中心/创新是第一动力”等教材金句</td>
+          </tr>
+          <tr style="background: var(--bg-subtle);">
+            <td class="center">10</td>
+            <td><b>全科汇总</b></td>
+            <td class="center num"><b>635</b></td>
+            <td class="center num" style="font-size: 1.05rem; font-weight: 800; color: var(--brand-red);">357</td>
+            <td class="center num">-278</td>
+            <td>
+              <div class="prog-wrap">
+                <div class="prog-bg"><div class="prog-fill" style="width: 56.2%; background: var(--brand-red);"></div></div>
+                <span class="num">56.2%</span>
+              </div>
+            </td>
+            <td class="center"><span class="badge badge-red">C+</span></td>
+            <td>总失分中约 120 分属于“应得而未得的基础与留白分”，修复空间巨大！</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 2: Detailed Subject Diagnosis -->
+  <section id="diagnosis">
+    <div class="section-header">
+      <h3 class="section-title">逐科原卷失分病因深度剖析</h3>
+      <p class="section-subtitle">结合学生原卷答题卡书写实况，精准揪出各学科失分盲区</p>
+    </div>
+
+    <div class="subject-grid">
+      <!-- 语文 -->
+      <div class="sub-card c-red">
+        <div class="sub-card-header">
+          <span class="sub-title" style="color: var(--brand-red);">初中语文</span>
+          <div class="sub-score-box">
+            <span class="score" style="color: var(--brand-red);">77</span>
+            <span class="full">/ 150分 (C+)</span>
+          </div>
+        </div>
+        <ul class="fault-list">
+          <li><b>默写两题空白(-4)</b>：第4、6题直接留空，第1、2、5题错字，基础积累直接被扣掉10分。</li>
+          <li><b>名著《儒林外史》答非所问(-10)</b>：第7题人物出场顺序选错；第8题未写出对封建科举扭曲人性的讽刺主旨。</li>
+          <li><b>课外文言文断层(-10)</b>：13、14题对词义推断和文本深层寓意理解偏差，几乎全扣。</li>
+          <li><b>作文《藏在心里的那句话》(44/60)</b>：刚过600字基准线（约650字），叙事流水账，选材撞车平淡，缺细腻心理与细节描写。</li>
+        </ul>
+        <div class="sub-verdict">
+          <b>药方</b>：立刻启用 <a href="../chinese/chinese-repair-plan-V1.html" style="color:var(--brand-blue);font-weight:700;">8个月语文补习计划</a>，用 <a href="../chinese/recitation-drill-V1.html" style="color:var(--brand-blue);font-weight:700;">86篇默写自测</a> 每天抓10分钟，先保底拿满默写与病句基础分！
+        </div>
+      </div>
+
+      <!-- 数学 -->
+      <div class="sub-card c-blue">
+        <div class="sub-card-header">
+          <span class="sub-title" style="color: var(--brand-blue);">初中数学</span>
+          <div class="sub-score-box">
+            <span class="score" style="color: var(--brand-blue);">93</span>
+            <span class="full">/ 150分 (B-)</span>
+          </div>
+        </div>
+        <ul class="fault-list">
+          <li><b>基础证明能力过硬</b>：第23题几何全等与相似证明<b>拿下满分</b>，证明逻辑思维完全在线！</li>
+          <li><b>时间分配与怯场弃考（失分重灾区）</b>：填空17、18题全空(-8)；解答题22(2)全空(-5)；24(2)(3)全空(-8)；25(2)(3)全空(-9)。</li>
+          <li><b>仅完全留白的题目就丢了 26 分！</b> 加上选择题粗心丢的8分，白白把115+的好局打成了93分。</li>
+        </ul>
+        <div class="sub-verdict">
+          <b>药方</b>：限时模考训练！压轴题坚决杜绝全空，训练“拿下第(1)(2)问基本设元与关系式”的抢步策略，立刻能反弹20分。
+        </div>
+      </div>
+
+      <!-- 英语 -->
+      <div class="sub-card c-red">
+        <div class="sub-card-header">
+          <span class="sub-title" style="color: var(--brand-red);">初中英语</span>
+          <div class="sub-score-box">
+            <span class="score" style="color: var(--brand-red);">89</span>
+            <span class="full">/ 140分 (C+)</span>
+          </div>
+        </div>
+        <ul class="fault-list">
+          <li><b>大作文崩溃大扣14分</b>：写《Growing up with a dream》出现密集语病：“my dream is want to be a teacher”（双动词）、“a good people”（单复数矛盾）、“all homeworks”（不可数名词加s）。</li>
+          <li><b>句型转换与听力填空留白</b>：16题把 lives 拼成 lifes，19题与44题完全空白留空(-4)。</li>
+          <li><b>篇章问答错4题(-7.5)</b>：回答句子残缺，未用完整句式作答，时态与主谓一致频频扣分。</li>
+        </ul>
+        <div class="sub-verdict">
+          <b>药方</b>：每天整理并背诵 1 篇中考高分范文，严防“双谓语、名词不可数、主将从现”三大语法致命雷区。
+        </div>
+      </div>
+
+      <!-- 物理 -->
+      <div class="sub-card c-green">
+        <div class="sub-card-header">
+          <span class="sub-title" style="color: var(--accent-green);">综合 - 物理</span>
+          <div class="sub-score-box">
+            <span class="score" style="color: var(--accent-green);">50</span>
+            <span class="full">/ 70分 (B-)</span>
+          </div>
+        </div>
+        <ul class="fault-list">
+          <li><b>发挥最稳健的学科</b>：选择题与生活物理常识得分率超过 80%，力热电基本框架清晰。</li>
+          <li><b>计算与公式代入粗心</b>：7.2火箭热量计算扣4分，9.1天然气灶计算扣1分。</li>
+          <li><b>实验细节与原理解释不严密</b>：8.2晶体熔化吸热温度不变的微观解释扣3分；10题电学故障排除扣3分。</li>
+        </ul>
+        <div class="sub-verdict">
+          <b>药方</b>：物理是最有希望率先突破 62+ 分（88%以上）的提分尖兵，重点规范计算过程与电路实验书写。
+        </div>
+      </div>
+
+      <!-- 化学 -->
+      <div class="sub-card c-purple">
+        <div class="sub-card-header">
+          <span class="sub-title" style="color: var(--accent-purple);">综合 - 化学</span>
+          <div class="sub-score-box">
+            <span class="score" style="color: var(--accent-purple);">22</span>
+            <span class="full">/ 50分 (C+)</span>
+          </div>
+        </div>
+        <ul class="fault-list">
+          <li><b>得分率仅44%，理科大危机</b>：初三九上新增科目，尚未建立化学符号与实验思维。</li>
+          <li><b>化学方程式与实验方案不过关</b>：食盐开采配平错误(-7)，冰红茶配制实验步骤扣6分。</li>
+          <li><b>溶液与溶解度计算彻底失守</b>：20(4)小题直接扣光6分，第24题溶解度曲线分析大片留白。</li>
+        </ul>
+        <div class="sub-verdict">
+          <b>药方</b>：初三刚学一个月，现在补救完全来得及！立刻背熟前20号元素、化合价口诀与溶液质量分数计算题型。
+        </div>
+      </div>
+
+      <!-- 跨学科与道法历史 -->
+      <div class="sub-card c-amber">
+        <div class="sub-card-header">
+          <span class="sub-title" style="color: var(--accent-amber);">跨学科 / 历史 / 道法</span>
+          <div class="sub-score-box">
+            <span class="score" style="color: var(--accent-amber);">26</span>
+            <span class="full">/ 75分小计</span>
+          </div>
+        </div>
+        <ul class="fault-list">
+          <li><b>跨学科(4/15)</b>：27题画横线放弃，30题大题完全空白(-4)；图表提取与逻辑阐述未入门。</li>
+          <li><b>历史(11/30)</b>：13题亚历山大东征5分题直接扣光，缺乏“侵略灾难+经济文化大交流”辩证论述。</li>
+          <li><b>道法(11/30)</b>：第6题大题直接扣8分；完全凭生活经验作答，未调动“改革开放/创新强国”教材金句。</li>
+        </ul>
+        <div class="sub-verdict">
+          <b>药方</b>：开卷科目重在“资料贴标签与定位目录”，主观题掌握“材料抄一点 + 观点套一句 + 结论跟一句”的三段论。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Zhongkao Score Projections -->
+  <section id="prediction">
+    <div class="section-header">
+      <h3 class="section-title">2027 届上海中考得分趋势三轨预测</h3>
+      <p class="section-subtitle">基于上海中考 750 分计分体制，推演从现在到中考的三种演化路径</p>
+    </div>
+
+    <!-- 计分体制说明 -->
+    <div class="card-box" style="background: #F8FAFC; border-left: 4px solid var(--brand-blue);">
+      <h4 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 0.4rem; color: var(--brand-blue);">
+        上海中考总分 750 分构成标准
+      </h4>
+      <p style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.6;">
+        语文 150分 + 数学 150分 + 英语 150分（笔试140+听说10）+ 综合测试 150分（物理70+化学50+跨学科15+理化实验操作15）
+        + 道德与法治 30分 + 历史 30分 + 体育与健身 30分 = <b>总计 750 分</b>。
+      </p>
+    </div>
+
+    <!-- 目标金字塔 Visual Target Pyramid -->
+    <div class="card-box" style="padding: 1.6rem 1.8rem; background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.6rem;">
+        <div>
+          <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
+            <span>⛰️</span> 上海中考升学目标金字塔（50% 普高分水岭对标）
+          </h4>
+          <span style="font-size: 0.78rem; color: var(--text-muted);">从 C+ 档（后 30%）到稳上公办高中（前 50% 内）的五级攀登阶梯</span>
+        </div>
+        <span style="font-size: 0.72rem; font-weight: 700; background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; padding: 0.25rem 0.65rem; border-radius: 20px;">
+          ★ 核心生死线：前 50%（B档及以上）
+        </span>
+      </div>
+
+      <!-- Pyramid Container -->
+      <div style="display: flex; flex-direction: column; gap: 0.65rem; max-width: 900px; margin: 0 auto;">
+        
+        <!-- Level 5: 塔顶 -->
+        <div style="background: linear-gradient(90deg, #FAF5FF 0%, #F3E8FF 100%); border: 1.5px solid #C084FC; border-radius: 12px; padding: 0.85rem 1.2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; width: 68%; margin: 0 auto; box-shadow: 0 2px 6px rgba(124, 58, 237, 0.08);">
+          <div style="display: flex; align-items: center; gap: 0.7rem;">
+            <span style="background: #7C3AED; color: #fff; font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 6px;">第5层 · 塔顶</span>
+            <div>
+              <div style="font-size: 0.95rem; font-weight: 800; color: #5B21B6;">冲优梦想层 · A/A- 档</div>
+              <div style="font-size: 0.75rem; color: #6D28D9;">长宁区重点（西延安高中、天山高中） / 市重点名额自招</div>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 1.25rem; font-weight: 800; color: #7C3AED; font-family: 'Outfit', sans-serif;">630 ~ 660+ 分</div>
+            <div style="font-size: 0.72rem; color: var(--text-muted);">排位：前 15% ~ 25%</div>
+          </div>
+        </div>
+
+        <!-- Level 4: 进阶优势层 -->
+        <div style="background: linear-gradient(90deg, #EFF6FF 0%, #DBEAFE 100%); border: 1.5px solid #93C5FD; border-radius: 12px; padding: 0.85rem 1.2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; width: 78%; margin: 0 auto;">
+          <div style="display: flex; align-items: center; gap: 0.7rem;">
+            <span style="background: #2563EB; color: #fff; font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 6px;">第4层 · 跃升</span>
+            <div>
+              <div style="font-size: 0.95rem; font-weight: 800; color: #1E40AF;">进阶优势层 · B+ 档</div>
+              <div style="font-size: 0.75rem; color: #1D4ED8;">优质公办特色高中 / 上海头部中本贯通（工程大/应技大热门对口专业）</div>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 1.25rem; font-weight: 800; color: #2563EB; font-family: 'Outfit', sans-serif;">585 ~ 625 分</div>
+            <div style="font-size: 0.72rem; color: var(--text-muted);">排位：前 25% ~ 38%</div>
+          </div>
+        </div>
+
+        <!-- Level 3: 50% 普高安全线 (最关键) -->
+        <div style="background: linear-gradient(90deg, #FFFBEB 0%, #FEF3C7 100%); border: 2px solid #F59E0B; border-radius: 12px; padding: 1rem 1.3rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; width: 88%; margin: 0 auto; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.12); position: relative;">
+          <span style="position: absolute; top: -11px; left: 24px; background: #D97706; color: #fff; font-size: 0.68rem; font-weight: 800; padding: 0.15rem 0.6rem; border-radius: 10px; letter-spacing: 0.02em;">
+            ★ 关键必争地 · 50% 普高录取生死线
+          </span>
+          <div style="display: flex; align-items: center; gap: 0.7rem;">
+            <span style="background: #D97706; color: #fff; font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 6px;">第3层 · 胜券</span>
+            <div>
+              <div style="font-size: 1rem; font-weight: 800; color: #92400E;">普高安全基准层 · B 档</div>
+              <div style="font-size: 0.76rem; color: #B45309;">公办普通高中全稳录 / 优质公办中本贯通任意挑选</div>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 1.35rem; font-weight: 800; color: #D97706; font-family: 'Outfit', sans-serif;">535 ~ 575 分</div>
+            <div style="font-size: 0.72rem; font-weight: 700; color: #B45309;">排位：前 38% ~ 50%（稳过半数）</div>
+          </div>
+        </div>
+
+        <!-- Level 2: 止血防线 -->
+        <div style="background: linear-gradient(90deg, #F8FAFC 0%, #F1F5F9 100%); border: 1.5px solid #CBD5E1; border-radius: 12px; padding: 0.85rem 1.2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; width: 95%; margin: 0 auto;">
+          <div style="display: flex; align-items: center; gap: 0.7rem;">
+            <span style="background: #64748B; color: #fff; font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 6px;">第2层 · 止血</span>
+            <div>
+              <div style="font-size: 0.95rem; font-weight: 800; color: #334155;">第一阶段止血防线 · B- 档</div>
+              <div style="font-size: 0.75rem; color: #475569;">跨过中本贯通最低资格控分线（501分） / 普高公办最低投档线边缘</div>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 1.2rem; font-weight: 800; color: #475569; font-family: 'Outfit', sans-serif;">501 ~ 530 分</div>
+            <div style="font-size: 0.72rem; color: var(--text-muted);">排位：前 50% ~ 65%</div>
+          </div>
+        </div>
+
+        <!-- Level 1: 现状基座 -->
+        <div style="background: linear-gradient(90deg, #FEF2F2 0%, #FEE2E2 100%); border: 2px dashed #F87171; border-radius: 12px; padding: 0.85rem 1.2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; width: 100%;">
+          <div style="display: flex; align-items: center; gap: 0.7rem;">
+            <span style="background: #DC2626; color: #fff; font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.5rem; border-radius: 6px;">第1层 · 现状</span>
+            <div>
+              <div style="font-size: 0.95rem; font-weight: 800; color: #991B1B;">九上月考诊断起点 · C+ 档</div>
+              <div style="font-size: 0.75rem; color: #B91C1C;">实考 357 分 / 卷面留白超 50 分，落后 50% 普高线约 15%~25% 身位</div>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 1.2rem; font-weight: 800; color: #DC2626; font-family: 'Outfit', sans-serif;">折合 460 ~ 485 分</div>
+            <div style="font-size: 0.72rem; color: #991B1B;">排位：后 20% ~ 35%（累积65%~80%）</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top: 1.2rem; padding: 0.75rem 1rem; background: #FFFFFF; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.8rem; color: var(--text-secondary); text-align: center;">
+        💡 <b>攀登诀窍</b>：从第 1 层（C+ 档）跳跃到第 3 层（B 档前 50% 普高线），<b>并不需要攻克超难难题</b>，只需<b>“捡回 26 分大题空白 + 默写病句基础拿满 + 英语写作消灭硬伤”</b>，就能直接一步跨过第 3 层！
+      </div>
+    </div>
+
+    <div class="traj-grid">
+      <!-- 轨迹 1 -->
+      <div class="traj-card">
+        <div class="traj-header">
+          <span class="badge badge-red">风险警戒</span>
+          <div class="traj-name" style="margin-top: 0.5rem; color: #991B1B;">轨迹 ①：现状惯性模型</div>
+          <div class="traj-range" style="color: #991B1B;">480 ~ 515 <span>/ 750分</span></div>
+        </div>
+        <p class="traj-desc">
+          若不改变目前“遇压轴题就放弃、大题留空白、英语语法不纠正、文科大白话作答”的做题习惯，分数将被动锁死在低位。
+        </p>
+        <div class="dest-pill">
+          <b>预测升学去向</b>：普高控分线（约520分）边缘摇摆，较大风险滑入普通中职、民办三类或3+2中高职贯通。
+        </div>
+        <div class="sub-bars">
+          <div class="sub-bar-row"><span>语文 / 数学 / 英语</span> <b>88 / 102 / 100</b></div>
+          <div class="sub-bar-row"><span>综合测试（物+化+跨+实）</span> <b>102 (52+28+8+14)</b></div>
+          <div class="sub-bar-row"><span>历史 / 道法 / 体育</span> <b>20 / 20 / 26</b></div>
+        </div>
+      </div>
+
+      <!-- 轨迹 2 (推荐核心) -->
+      <div class="traj-card featured">
+        <span class="traj-tag-top">推荐主攻目标</span>
+        <div class="traj-header">
+          <span class="badge badge-blue">基线修复 · 稳妥胜券</span>
+          <div class="traj-name" style="margin-top: 0.5rem; color: var(--brand-blue);">轨迹 ②：稳妥进阶修复模型</div>
+          <div class="traj-range" style="color: var(--brand-blue);">560 ~ 610 <span>/ 750分</span></div>
+        </div>
+        <p class="traj-desc">
+          <b>最务实、高确定性的路径！</b> 彻底杜绝压轴空白弃答（抢回25分），落实每天60分钟语文补习计划，英语消灭语法硬伤，化学补齐基础概念。
+        </p>
+        <div class="dest-pill">
+          <b>预测升学去向</b>：<b>稳上公办普通高中！极高概率被优质公办中本贯通（3+4本科，如工程大、二工大热门专业）录取！</b>
+        </div>
+        <div class="sub-bars">
+          <div class="sub-bar-row"><span>语文 / 数学 / 英语</span> <b>108 / 118 / 122</b></div>
+          <div class="sub-bar-row"><span>综合测试（物+化+跨+实）</span> <b>122 (60+38+10+14)</b></div>
+          <div class="sub-bar-row"><span>历史 / 道法 / 体育</span> <b>24 / 24 / 28</b></div>
+        </div>
+      </div>
+
+      <!-- 轨迹 3 -->
+      <div class="traj-card">
+        <div class="traj-header">
+          <span class="badge badge-green">攻坚冲优</span>
+          <div class="traj-name" style="margin-top: 0.5rem; color: var(--accent-green);">轨迹 ③：全面突破跃升模型</div>
+          <div class="traj-range" style="color: var(--accent-green);">630 ~ 660 <span>/ 750分</span></div>
+        </div>
+        <p class="traj-desc">
+          在完全掌握基础盘的前提下，数学压轴题攻克第(2)(3)问，双语写作达到高分档，理化综合突破 135+，体育与实验满分。
+        </p>
+        <div class="dest-pill">
+          <b>预测升学去向</b>：<b>冲击长宁区重点高中（西延安高级中学、天山中学等）及市重点自招/名额分配通道！</b>
+        </div>
+        <div class="sub-bars">
+          <div class="sub-bar-row"><span>语文 / 数学 / 英语</span> <b>118 / 130 / 132</b></div>
+          <div class="sub-bar-row"><span>综合测试（物+化+跨+实）</span> <b>134 (64+43+13+14)</b></div>
+          <div class="sub-bar-row"><span>历史 / 道法 / 体育</span> <b>27 / 27 / 30</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Action Roadmap -->
+  <section id="action-plan">
+    <div class="section-header">
+      <h3 class="section-title">初三 8 个月抢分路线图与四大行动准则</h3>
+      <p class="section-subtitle">把 560~610 分的目标拆解到每个月，稳扎稳打实现分数逆袭</p>
+    </div>
+
+    <div class="timeline">
+      <!-- 阶段 1 -->
+      <div class="t-step">
+        <div class="t-step-time">
+          <span class="t-badge badge-red">阶段 1</span>
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--text-primary);">10月 — 11月</div>
+          <div style="font-size: 0.74rem; color: var(--text-muted);">期中考止血</div>
+        </div>
+        <div class="t-step-body">
+          <h4>【止血阶段】消灭空白弃题，锁定基础盘</h4>
+          <p>
+            1. <b>确立“绝不交白卷”原则</b>：数学压轴题哪怕不会，也必须把设元、求顶点坐标、辅助线写出；跨学科案例题坚决不空大题。<br>
+            2. <b>落实语文每日计划</b>：每天清晨 10 分钟必背古诗文默写，中午 15 分钟改病句，拿下最划算的 20 分基础分。<br>
+            3. <b>期中目标</b>：全科总分从 357 恢复到 420+ 分，止住下滑势头。
+          </p>
+        </div>
+      </div>
+
+      <!-- 阶段 2 -->
+      <div class="t-step">
+        <div class="t-step-time">
+          <span class="t-badge badge-blue">阶段 2</span>
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--text-primary);">12月 — 1月</div>
+          <div style="font-size: 0.74rem; color: var(--text-muted);">期末与一模前夕</div>
+        </div>
+        <div class="t-step-body">
+          <h4>【扫盲阶段】化学全面扫盲，英语语法堵漏</h4>
+          <p>
+            1. <b>化学方程式与溶液专项突破</b>：每天练习 3 个化学方程式配平，死磕溶质质量分数与溶解度曲线，将化学从 22 分拉至 35+ 分。<br>
+            2. <b>英语中考高分句型背诵</b>：建立个人“防错语病本”，消灭双动词和不可数名词错误，掌握大作文 5 段式结构。<br>
+            3. <b>期末目标</b>：语数英三门小计突破 310 分，综合测试突破 110 分。
+          </p>
+        </div>
+      </div>
+
+      <!-- 阶段 3 -->
+      <div class="t-step">
+        <div class="t-step-time">
+          <span class="t-badge badge-purple">阶段 3</span>
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--text-primary);">3月 — 4月</div>
+          <div style="font-size: 0.74rem; color: var(--text-muted);">长宁一模全真定位</div>
+        </div>
+        <div class="t-step-body">
+          <h4>【攻坚阶段】大题拆解与开卷规范采分</h4>
+          <p>
+            1. <b>数学题型拆解</b>：专项训练二次函数动点与几何翻折旋转第(1)(2)问，提升解题速度，留足 35 分钟应对压轴大题。<br>
+            2. <b>历史道法开卷贴标签</b>：整理中考开卷核心考点索引本，主观题熟练运用教材学术术语采分，摆脱口语流水账。<br>
+            3. <b>一模目标</b>：总分稳定在 560+ 分，锁定中本贯通资格线与公办普高线。
+          </p>
+        </div>
+      </div>
+
+      <!-- 阶段 4 -->
+      <div class="t-step">
+        <div class="t-step-time">
+          <span class="t-badge badge-green">阶段 4</span>
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--text-primary);">5月 — 6月</div>
+          <div style="font-size: 0.74rem; color: var(--text-muted);">二模与中考冲刺</div>
+        </div>
+        <div class="t-step-body">
+          <h4>【冲刺阶段】实验+体育锁定 43/45 分，全卷提速</h4>
+          <p>
+            1. <b>抓住理化实验操作考（15分）与体育统考（30分）</b>：确保这两门关键科拿到 42~44 分以上，为中考筑牢底牌。<br>
+            2. <b>全真真题模拟演练</b>：利用项目内 <a href="shanghai-zhongkao-papers-V2.html" style="color:var(--brand-blue);font-weight:700;">上海中考真题库 V2</a> 进行全真 100 分钟限时演练，调整答题心流节奏。<br>
+            3. <b>中考目标</b>：兑现 580~610+ 分，考取理想的高中或头部中本贯通名校！
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 升学通道指引快捷入口 -->
+  <section>
+    <div class="card-box" style="background: linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 100%); border-color: #BFDBFE;">
+      <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--brand-blue); margin-bottom: 0.5rem;">
+        对口升学目标与备考指南联动
+      </h4>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+        本次月考分析已全面联动本站的升学数据库。无论未来选择走“公办普通高中”、“中本贯通 (3+4)”，还是“国际高中 / A-Level”双轨通道，明确目标分数线是抢分的最佳动力。
+      </p>
+      <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+        <a href="../zhongben/zhongben-guide-V6.html" style="font-size: 0.82rem; font-weight: 700; background: #7C3AED; color: #fff; text-decoration: none; padding: 0.45rem 0.9rem; border-radius: 8px;">
+          中本贯通指南 V6 (501控分线与86专业) →
+        </a>
+        <a href="zhongkao-guide-V14.html" style="font-size: 0.82rem; font-weight: 700; background: #2563EB; color: #fff; text-decoration: none; padding: 0.45rem 0.9rem; border-radius: 8px;">
+          全轨升学指南 V14 →
+        </a>
+        <a href="../chinese/chinese-repair-plan-V1.html" style="font-size: 0.82rem; font-weight: 700; background: #DC2626; color: #fff; text-decoration: none; padding: 0.45rem 0.9rem; border-radius: 8px;">
+          8个月语文补习计划 →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Owen 中考学习与升学规划系统 · 九上阶段练习一复盘档案</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
