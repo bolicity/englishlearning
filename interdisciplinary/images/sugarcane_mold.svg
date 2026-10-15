@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="100%" height="100%">
+  <rect width="800" height="360" fill="#f8fafc" rx="10"/>
+  <g transform="translate(20, 20)">
+    <rect width="360" height="320" fill="#ffffff" stroke="#cbd5e1" rx="8"/>
+    <text x="180" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">图1 广西水热特征与甘蔗春季储存环境</text>
+    <table style="font-size:11px;"></table>
+    <rect x="40" y="60" width="280" height="50" fill="#eff6ff" stroke="#3b82f6" rx="4"/>
+    <text x="180" y="82" font-size="12" font-weight="bold" fill="#1e40af" text-anchor="middle">广西甘蔗主产区：亚热带季风气候</text>
+    <text x="180" y="100" font-size="10" fill="#1d4ed8" text-anchor="middle">夏季均温28℃·降水&gt;100mm·水热充沛喜高温</text>
+    <!-- Spring March-April -->
+    <rect x="40" y="130" width="280" height="80" fill="#fff7ed" stroke="#f97316" rx="4"/>
+    <text x="180" y="152" font-size="12" font-weight="bold" fill="#c2410c" text-anchor="middle">清明时节气象特征 (3月下旬-4月)</text>
+    <text x="180" y="175" font-size="11" fill="#ea580c" text-anchor="middle">气温回升至 18~25℃ + 阴雨绵绵高湿</text>
+    <text x="180" y="195" font-size="11" font-weight="bold" fill="#dc2626" text-anchor="middle">恰好落入“节菱孢霉菌”最适繁殖区间</text>
+    <!-- Stored cane cross-section -->
+    <rect x="40" y="230" width="280" height="65" fill="#fef2f2" stroke="#ef4444" rx="4"/>
+    <text x="180" y="252" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">越冬储存甘蔗：茎秆组织老化失水出现微裂口</text>
+    <text x="180" y="275" font-size="10" fill="#b91c1c" text-anchor="middle">霉菌沿髓心侵染 -> 产神经毒素(3-硝基丙酸)</text>
+  </g>
+  <g transform="translate(400, 20)">
+    <rect width="380" height="320" fill="#ffffff" stroke="#cbd5e1" rx="8"/>
+    <text x="190" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">图2 温度对甘蔗节菱孢霉菌菌落直径生长影响</text>
+    <!-- Axes -->
+    <line x1="60" y1="260" x2="350" y2="260" stroke="#475569" stroke-width="1.5"/>
+    <line x1="60" y1="50" x2="60" y2="260" stroke="#475569" stroke-width="1.5"/>
+    <text x="55" y="45" font-size="10" fill="#b91c1c" text-anchor="end">菌落直径(mm)</text>
+    <text x="350" y="280" font-size="10" fill="#475569">温度(℃)</text>
+    <text x="60" y="278" font-size="10" fill="#64748b">4℃(冷藏)</text>
+    <text x="150" y="278" font-size="10" fill="#64748b">15℃</text>
+    <text x="240" y="278" font-size="10" fill="#64748b">25℃(清明)</text>
+    <text x="320" y="278" font-size="10" fill="#64748b">35℃</text>
+    <!-- Growth curve -->
+    <path d="M 60 255 Q 150 240 240 80 Q 280 80 340 210" fill="none" stroke="#dc2626" stroke-width="3"/>
+    <circle cx="240" cy="80" r="5" fill="#dc2626"/>
+    <text x="240" y="65" font-size="11" font-weight="bold" fill="#dc2626" text-anchor="middle">最适生长温区：22~28℃</text>
+    <text x="120" y="215" font-size="10" font-weight="bold" fill="#0284c7">低温冷藏抑制萌发</text>
+    <!-- Protection countermeasures -->
+    <rect x="60" y="120" width="140" height="60" fill="#eff6ff" stroke="#3b82f6" rx="4"/>
+    <text x="130" y="140" font-size="10" font-weight="bold" fill="#1e40af" text-anchor="middle">科学对策：</text>
+    <text x="130" y="155" font-size="9" fill="#1d4ed8" text-anchor="middle">1. 冷链运输与真空包装</text>
+    <text x="130" y="170" font-size="9" fill="#1d4ed8" text-anchor="middle">2. 截断发红髓心严禁食用</text>
+  </g>
+</svg>

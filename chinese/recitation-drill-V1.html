@@ -112,6 +112,13 @@ header{background:var(--card);border-bottom:1px solid var(--border);padding:.9re
 .ana-in .ar span{color:#1E3A8A;flex:1;min-width:0}
 .ana-t{font-size:.72rem;font-weight:700;color:var(--blue);margin-bottom:.4rem;letter-spacing:.02em}
 
+.ans-hero-row{background:#EFF6FF;padding:.45rem .75rem;border-radius:8px;border:1.5px solid #BFDBFE;margin-bottom:.55rem!important;align-items:center}
+.ans-hero-row b{color:#DC2626!important;font-size:.85rem!important;width:auto!important;margin-right:.5rem}
+.ans-hero-text{color:#1E40AF!important;font-size:1.12rem!important;font-weight:800!important;font-family:var(--serif);letter-spacing:.04em}
+.wrong-cross{text-decoration:line-through;color:#DC2626;margin-right:.35rem;font-size:.88rem;opacity:.85}
+.corr-ans{color:#059669;font-weight:700;font-size:.95rem;background:#ECFDF5;padding:.1rem .45rem;border-radius:4px;border:1px solid #A7F3D0;display:inline-block}
+.blank.wrong{color:inherit;background:#FEF2F2;border-color:var(--red)}
+
 .judge{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;padding-top:.9rem;border-top:1px dashed var(--border)}
 .res{font-size:.86rem;font-weight:700}
 .res.ok{color:var(--green)} .res.no{color:var(--red)}
@@ -265,11 +272,13 @@ function targetOf(para){
   return parts.length<2 ? '' : parts[parts.length-1];
 }
 /* 一道题的答案解析 */
-function noteHTML(nk){
+function noteHTML(nk, target){
   const n = NOTES[nk];
-  if(!n) return '';
   const row=(lab,txt)=>txt?`<div class="ar"><b>${lab}</b><span>${txt}</span></div>`:'';
-  return `<div class="ana-t">答案解析</div><div class="ana-in">`
+  const ansRow = target ? `<div class="ar ans-hero-row"><b>【标准答案】</b><span class="ans-hero-text">${target}</span></div>` : '';
+  if(!n) return ansRow ? `<div class="ana-t">答案解析</div><div class="ana-in">${ansRow}</div>` : '';
+  return `<div class="ana-t">答案与解析</div><div class="ana-in">`
+    + ansRow
     + row('为什么是这句', n.why) + row('句意', n.mean) + row('易错字', n.hard) + row('考点', n.point)
     + `</div>`;
 }
@@ -291,7 +300,7 @@ function countCues(it){
 }
 function renderHide(){
   const {v,ii} = CUR, vol=DATA[v], it=vol.items[ii];
-  const cues = it.paras.map((p,pi)=>({html:pickCue(it,p,pi), pi})).filter(c=>c.html);
+  const cues = it.paras.map((p,pi)=>({html:pickCue(it,p,pi), pi, target:targetOf(p)})).filter(c=>c.html);
   const nCue = cues.length;
   const hz = it.hardList.length ? `<div class="hardbox"><h4>本篇易错字（先看这行再默写）</h4>${
     it.hardList.map(h=>`<span class="hz"><b>${h.zi}</b><span>${h.py}</span></span>`).join('')}</div>` : '';
@@ -311,9 +320,10 @@ function renderHide(){
       </div>
       ${hz}
       <div class="passage">${cues.map(c=>`<div class="qblock"><p>${c.html}</p>
-        <div class="ana" hidden>${noteHTML(it.title+'::'+c.pi)}</div></div>`).join('')}</div>
+        <div class="ana" hidden>${noteHTML(it.title+'::'+c.pi, c.target)}</div></div>`).join('')}</div>
       <div class="judge">
         <button class="btn g" id="check">判卷</button>
+        <button class="btn b" id="showAnswersBtn">💡 直接看本篇答案</button>
         <button class="btn" id="resetWrong" hidden>清空重做</button>
         <button class="btn b" id="toggleAna">显示解析</button>
         <button class="btn" id="pass">全对（跳过填写）</button>
@@ -326,7 +336,7 @@ function renderHide(){
     <div class="card" id="ansCard" style="display:none">
       <div class="title-row"><span class="t-name" style="font-size:1.05rem">全文对照 · 逐句解析</span></div>
       <div class="passage">${it.paras.map((p,pi)=>`<p>${p}</p>`
-        + (NOTES[it.title+'::'+pi]?`<div class="ana">${noteHTML(it.title+'::'+pi)}</div>`:'')).join('')}</div>
+        + (NOTES[it.title+'::'+pi]?`<div class="ana">${noteHTML(it.title+'::'+pi, targetOf(p))}</div>`:'')).join('')}</div>
     </div>
     <div class="hbtns">
       <button class="btn" id="prev">← 上一篇</button>
@@ -378,7 +388,10 @@ function renderHide(){
         const ok = norm(val)===norm(ans);
         el.classList.remove('filled'); el.classList.add(ok?'right':'wrong');
         el.title = ok ? '✓ 正确' : '✗ 应为：'+ans;
-        if(!ok){                                  // 写错就把这句的解析摊开
+        if(ok){
+          el.textContent = val;
+        } else {
+          el.innerHTML = '<span class="wrong-cross">✗ ' + val + '</span><span class="corr-ans">➜ ' + ans + '</span>';
           resetWrongBtn.hidden = false;
           const a=anaOf(el); if(a) a.hidden = false;
           syncAnaBtn();
@@ -411,17 +424,40 @@ function renderHide(){
     c.scrollIntoView({behavior:'smooth',block:'start'});
   };
   document.getElementById('check').onclick=()=>{
-    // 没填的空算错；判错的空自动展开解析
+    // 没填的空算错；判错的空直接在横线上显示正确答案，并展开解析
     let ok=0, total=blanks.length;
     blanks.forEach(el=>{
       if(el.classList.contains('right')) ok++;
       else {
-        if(!el.classList.contains('filled')){ el.classList.add('wrong'); el.title='✗ 未作答'; }
+        const ans = el.dataset.ans;
+        const curInp = el.querySelector('input');
+        const userVal = curInp ? curInp.value.trim() : (el.textContent.includes('＿') ? '' : el.textContent.trim());
+        el.classList.remove('filled');
+        el.classList.add('wrong');
+        if(userVal && norm(userVal) !== norm(ans)){
+          el.innerHTML = '<span class="wrong-cross">✗ ' + userVal + '</span><span class="corr-ans">➜ ' + ans + '</span>';
+        } else {
+          el.innerHTML = '<span class="corr-ans">【正确答案：' + ans + '】</span>';
+        }
+        el.title = '✗ 正确答案：' + ans;
         const a=anaOf(el); if(a) a.hidden=false;
       }
     });
+    if(resetWrongBtn) resetWrongBtn.hidden = false;
     syncAnaBtn();
     judge(ok===total, ok===total?'':`${total-ok} / ${total} 空有错`);
+  };
+
+  const saBtn = document.getElementById('showAnswersBtn');
+  if(saBtn) saBtn.onclick=()=>{
+    blanks.forEach(el=>{
+      el.classList.remove('wrong', 'filled');
+      el.classList.add('right');
+      el.innerHTML = '<span class="corr-ans">【' + el.dataset.ans + '】</span>';
+      const a = anaOf(el); if(a) a.hidden = false;
+    });
+    if(resetWrongBtn) resetWrongBtn.hidden = false;
+    syncAnaBtn();
   };
   document.getElementById('pass').onclick=()=>judge(true);
   document.getElementById('fail').onclick=()=>judge(false);

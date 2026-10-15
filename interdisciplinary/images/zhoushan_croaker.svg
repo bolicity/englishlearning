@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="100%" height="100%">
+  <rect width="800" height="360" fill="#f8fafc" rx="10"/>
+  <!-- Left: Ocean Currents & Archipelago -->
+  <g transform="translate(20, 20)">
+    <rect width="360" height="320" fill="#ffffff" stroke="#cbd5e1" rx="8"/>
+    <text x="180" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">图1 舟山群岛东海强流区与深水网箱</text>
+    <!-- Coastline & islands -->
+    <path d="M 40 40 Q 60 180 50 300 L 20 300 L 20 40 Z" fill="#fed7aa" stroke="#ea580c" stroke-width="1.5"/>
+    <text x="35" y="160" font-size="11" fill="#9a3412" transform="rotate(-90, 35, 160)">大陆海岸线</text>
+    <!-- Islands -->
+    <ellipse cx="140" cy="110" rx="25" ry="16" fill="#fed7aa" stroke="#ea580c"/>
+    <ellipse cx="210" cy="170" rx="35" ry="20" fill="#fed7aa" stroke="#ea580c"/>
+    <ellipse cx="180" cy="250" rx="22" ry="14" fill="#fed7aa" stroke="#ea580c"/>
+    <text x="210" y="174" font-size="10" font-weight="bold" fill="#7c2d12" text-anchor="middle">舟山本岛</text>
+    <!-- Tidal Current Arrows -->
+    <path d="M 100 80 C 160 70 230 100 280 80" stroke="#0284c7" stroke-width="4" fill="none" stroke-dasharray="6,3"/>
+    <polygon points="285,80 275,74 275,86" fill="#0284c7"/>
+    <path d="M 110 220 C 170 200 240 230 310 200" stroke="#0284c7" stroke-width="5" fill="none" stroke-dasharray="6,3"/>
+    <polygon points="315,200 305,194 305,206" fill="#0284c7"/>
+    <text x="250" y="235" font-size="11" font-weight="bold" fill="#0369a1">狭管效应·流速达 1.5~2.0m/s</text>
+    <!-- Deep Sea Cage -->
+    <rect x="260" y="120" width="60" height="50" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" rx="4"/>
+    <text x="290" y="145" font-size="10" font-weight="bold" fill="#0369a1" text-anchor="middle">深海抗风浪</text>
+    <text x="290" y="160" font-size="10" font-weight="bold" fill="#0369a1" text-anchor="middle">野化网箱</text>
+  </g>
+  <!-- Right: Flow speed vs Red Muscle Ratio -->
+  <g transform="translate(400, 20)">
+    <rect width="380" height="320" fill="#ffffff" stroke="#cbd5e1" rx="8"/>
+    <text x="190" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">图2 网箱水流速与大黄鱼红肌比例及体型比</text>
+    <!-- Axes -->
+    <line x1="60" y1="260" x2="350" y2="260" stroke="#475569" stroke-width="1.5"/>
+    <line x1="60" y1="60" x2="60" y2="260" stroke="#475569" stroke-width="1.5"/>
+    <line x1="350" y1="60" x2="350" y2="260" stroke="#475569" stroke-width="1.5"/>
+    <text x="55" y="55" font-size="10" fill="#b91c1c" text-anchor="end">红肌比例(%)</text>
+    <text x="355" y="55" font-size="10" fill="#0284c7">体长/体高比</text>
+    <text x="60" y="280" font-size="11" fill="#64748b">0.2(静水养殖)</text>
+    <text x="180" y="280" font-size="11" fill="#64748b">0.8(普通网箱)</text>
+    <text x="300" y="280" font-size="11" fill="#64748b">1.8m/s(深水强流)</text>
+    <!-- Red muscle curve (red) -->
+    <path d="M 60 230 Q 180 160 340 90" fill="none" stroke="#dc2626" stroke-width="3"/>
+    <!-- Shape ratio curve (blue) -->
+    <path d="M 60 210 Q 180 140 340 100" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="5,3"/>
+    <!-- Annotations -->
+    <text x="200" y="110" font-size="11" font-weight="bold" fill="#dc2626">逆流游动消耗多余脂肪</text>
+    <text x="200" y="130" font-size="11" font-weight="bold" fill="#0284c7">体型修长 · 还原野生黄鱼肉质</text>
+    <rect x="80" y="65" width="210" height="35" fill="#f8fafc" rx="4" stroke="#e2e8f0"/>
+    <line x1="90" y1="78" x2="115" y2="78" stroke="#dc2626" stroke-width="2.5"/>
+    <text x="125" y="82" font-size="10" fill="#334155">骨骼肌红肌比例 (耐力↑)</text>
+    <line x1="90" y1="92" x2="115" y2="92" stroke="#0284c7" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="125" y="96" font-size="10" fill="#334155">体型修长指数 (流线型↑)</text>
+  </g>
+</svg>

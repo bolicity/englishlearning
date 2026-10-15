@@ -1,0 +1,3559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>中考道德与法治全周期精要工作台 V7 | 结构化采分·智能挖空自测·238页官方原件逐页对应</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-hover: #CBD5E1;
+
+      --text-main: #0F172A;
+      --text-sub: #334155;
+      --text-muted: #64748B;
+
+      --blue-main: #2563EB;
+      --blue-light: #EFF6FF;
+      --blue-border: #BFDBFE;
+
+      --red-main: #DC2626;
+      --red-light: #FEF2F2;
+      --red-border: #FECDD3;
+
+      --emerald-main: #059669;
+      --emerald-light: #ECFDF5;
+      --emerald-border: #A7F3D0;
+
+      --amber-main: #D97706;
+      --amber-light: #FFFBEB;
+      --amber-border: #FDE68A;
+
+      --purple-main: #7C3AED;
+      --purple-light: #FAF5FF;
+      --purple-border: #DDD6FE;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 10px 20px -3px rgba(15, 23, 42, 0.08);
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 顶部导航 */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky; top: 0; z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      max-width: 1400px; margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 1rem;
+    }
+    .brand-link {
+      display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: inherit;
+    }
+    .brand-icon {
+      width: 40px; height: 40px; border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--red-main), #B91C1C);
+      color: white; font-weight: 800; font-size: 1.25rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 6px rgba(220, 38, 38, 0.25);
+    }
+    .brand-name {
+      font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--text-main);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .version-badge {
+      font-size: 0.72rem; padding: 0.15rem 0.5rem; border-radius: 999px;
+      background: var(--red-light); color: var(--red-main); border: 1px solid var(--red-border);
+      font-weight: 600;
+    }
+
+    /* 顶部核心工具切换条 */
+    .nav-actions {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .mode-switch-btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.5rem 1rem; border-radius: 999px;
+      font-size: 0.85rem; font-weight: 700; cursor: pointer;
+      border: 1.5px solid var(--purple-border);
+      background: var(--purple-light); color: var(--purple-main);
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+    .mode-switch-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+    .mode-switch-btn.active-cloze {
+      background: var(--purple-main); color: white;
+      border-color: var(--purple-main);
+      box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
+    }
+
+    .toggle-all-btn {
+      padding: 0.45rem 0.85rem; border-radius: var(--radius-sm);
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      color: var(--text-sub); font-size: 0.82rem; font-weight: 600; cursor: pointer;
+      transition: all 0.15s;
+    }
+    .toggle-all-btn:hover {
+      background: var(--bg-subtle); border-color: var(--border-hover);
+    }
+
+    .cloze-counter-pill {
+      display: none; align-items: center; gap: 0.35rem;
+      font-size: 0.78rem; font-weight: 700; padding: 0.35rem 0.75rem; border-radius: 999px;
+      background: var(--emerald-light); color: var(--emerald-main); border: 1px solid var(--emerald-border);
+    }
+    body.cloze-mode-active .cloze-counter-pill {
+      display: inline-flex;
+    }
+
+    /* Layout */
+    .main-wrap {
+      max-width: 1400px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem;
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+      border: 1px solid var(--border-color); border-radius: var(--radius-lg);
+      padding: 1.75rem; margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.8rem; font-weight: 700; color: var(--red-main);
+      background: var(--red-light); padding: 0.25rem 0.7rem; border-radius: 999px;
+      border: 1px solid var(--red-border); margin-bottom: 0.75rem;
+    }
+    .hero-title {
+      font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .hero-desc {
+      font-size: 0.92rem; color: var(--text-sub); line-height: 1.65; max-width: 1000px;
+    }
+    .hero-stats-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem; margin-top: 1.25rem;
+    }
+    .stat-card {
+      background: white; border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      padding: 0.85rem 1rem; display: flex; flex-direction: column;
+    }
+    .stat-val {
+      font-size: 1.35rem; font-weight: 800; color: var(--blue-main); font-family: 'Outfit', sans-serif;
+    }
+    .stat-label {
+      font-size: 0.78rem; color: var(--text-muted); font-weight: 500;
+    }
+
+    /* 过滤与搜索交互栏 */
+    .filter-panel {
+      background: white; border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      padding: 1rem; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);
+      display: flex; flex-direction: column; gap: 0.85rem;
+    }
+    .filter-row {
+      display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .filter-label {
+      font-size: 0.82rem; font-weight: 700; color: var(--text-muted); min-width: 65px;
+    }
+    .filter-chip {
+      padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid var(--border-color);
+      background: var(--bg-subtle); color: var(--text-sub); font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; transition: all 0.15s;
+    }
+    .filter-chip:hover {
+      background: white; border-color: var(--border-hover); color: var(--text-main);
+    }
+    .filter-chip.active {
+      background: var(--blue-main); border-color: var(--blue-main); color: white;
+    }
+
+    .search-row {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .search-input-box {
+      position: relative; flex: 1; max-width: 600px;
+    }
+    .search-input-box input {
+      width: 100%; padding: 0.6rem 1rem 0.6rem 2.4rem;
+      border: 1px solid var(--border-color); border-radius: 999px;
+      font-size: 0.88rem; outline: none; transition: border-color 0.15s;
+      background: var(--bg-page);
+    }
+    .search-input-box input:focus {
+      border-color: var(--blue-main); background: white;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    .search-icon-inside {
+      position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%);
+      color: var(--text-muted); font-size: 0.95rem; pointer-events: none;
+    }
+    .search-count {
+      font-size: 0.82rem; color: var(--text-muted); font-weight: 600;
+    }
+
+    /* 模式切换提示横幅 (当处于挖空模式时高亮) */
+    .mode-alert-bar {
+      display: none; padding: 0.75rem 1rem; border-radius: var(--radius-md);
+      background: var(--purple-light); border: 1px solid var(--purple-border);
+      color: var(--purple-main); font-size: 0.86rem; font-weight: 600;
+      align-items: center; justify-content: space-between; margin-bottom: 1.5rem;
+    }
+    body.cloze-mode-active .mode-alert-bar {
+      display: flex;
+    }
+
+    /* Cards Grid */
+    .cards-container {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 1.25rem; margin-bottom: 2.5rem;
+    }
+
+    /* 单张考点卡片 */
+    .daofa-card {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); padding: 1.15rem;
+      box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .daofa-card:hover {
+      transform: translateY(-2px); box-shadow: var(--shadow-md);
+      border-color: var(--border-hover);
+    }
+
+    .card-top-bar {
+      display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
+      margin-bottom: 0.65rem;
+    }
+    .card-tags {
+      display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;
+    }
+    .tag-grade {
+      font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.45rem; border-radius: 4px;
+    }
+    .tag-g9 { background: #FEE2E2; color: #B91C1C; }
+    .tag-g8 { background: #EFF6FF; color: #1D4ED8; }
+    .tag-g7 { background: #ECFDF5; color: #047857; }
+    .tag-g6 { background: #FFFBEB; color: #B45309; }
+
+    .tag-num {
+      font-size: 0.72rem; font-weight: 600; color: var(--text-muted);
+      background: var(--bg-subtle); padding: 0.15rem 0.45rem; border-radius: 4px;
+    }
+    .tag-theme {
+      font-size: 0.72rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 4px;
+      background: var(--bg-subtle); color: var(--text-sub);
+    }
+
+    .btn-pdf-pill {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      padding: 0.2rem 0.55rem; border-radius: 999px;
+      border: 1px solid var(--blue-border); background: var(--blue-light);
+      color: var(--blue-main); font-size: 0.73rem; font-weight: 600;
+      cursor: pointer; transition: all 0.15s; flex-shrink: 0;
+    }
+    .btn-pdf-pill:hover {
+      background: #DBEAFE;
+    }
+
+    .card-title {
+      font-size: 1.05rem; font-weight: 700; color: var(--text-main);
+      margin-bottom: 0.5rem; line-height: 1.4;
+    }
+
+    /* 考点定性 */
+    .card-verdict {
+      background: #F8FAFC; border-left: 3px solid var(--blue-main);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 0.45rem 0.65rem; margin-bottom: 0.75rem;
+      font-size: 0.84rem; color: var(--text-sub); line-height: 1.45;
+      display: flex; gap: 0.4rem;
+    }
+    .verdict-icon { flex-shrink: 0; }
+
+    /* 采分链条区 */
+    .logic-chains-box {
+      background: white; border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+      padding: 0.65rem; margin-bottom: 0.65rem;
+    }
+    .chains-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 0.45rem; padding-bottom: 0.35rem; border-bottom: 1px dashed var(--border-color);
+    }
+    .chains-title {
+      font-size: 0.76rem; font-weight: 700; color: var(--text-muted);
+    }
+    .mode-hint-std {
+      font-size: 0.72rem; color: var(--text-muted); font-weight: 500;
+    }
+    .mode-hint-cloze {
+      font-size: 0.72rem; color: var(--purple-main); font-weight: 700; display: none;
+    }
+    body.cloze-mode-active .mode-hint-std { display: none; }
+    body.cloze-mode-active .mode-hint-cloze { display: inline-block; }
+
+    .chains-grid {
+      display: flex; flex-direction: column; gap: 0.4rem;
+    }
+    .chain-item {
+      display: flex; align-items: baseline; gap: 0.35rem;
+      font-size: 0.83rem; line-height: 1.45;
+    }
+    .chain-left {
+      color: var(--text-sub); font-weight: 600; white-space: nowrap; flex-shrink: 0;
+    }
+    .chain-arrow {
+      color: var(--blue-main); font-weight: bold; font-size: 0.78rem; flex-shrink: 0;
+    }
+    .chain-right {
+      color: var(--text-main); flex: 1;
+    }
+
+    /* 得分词：普通模式 vs 挖空模式 */
+    .score-kw-plain {
+      font-weight: 700; color: #1E40AF; background: #EFF6FF;
+      padding: 0.05rem 0.35rem; border-radius: 4px; border: 1px solid #DBEAFE;
+    }
+    .cloze-trigger {
+      display: none;
+    }
+
+    /* 挖空模式激活时的效果 */
+    body.cloze-mode-active .score-kw-plain {
+      display: none;
+    }
+    body.cloze-mode-active .cloze-trigger {
+      display: inline-block; cursor: pointer;
+    }
+    .cloze-mask {
+      background: #FDF4FF; color: #A21CAF; border: 1.5px dashed #D946EF;
+      padding: 0.05rem 0.45rem; border-radius: 4px; font-weight: 700; font-size: 0.8rem;
+      transition: all 0.15s; user-select: none;
+    }
+    .cloze-mask:hover {
+      background: #FAE8FF; transform: scale(1.02);
+    }
+    .cloze-content {
+      display: none; font-weight: 700; color: #047857; background: #ECFDF5;
+      padding: 0.05rem 0.35rem; border-radius: 4px; border: 1px solid #A7F3D0;
+      animation: flipReveal 0.25s ease;
+    }
+    .cloze-trigger.revealed .cloze-mask {
+      display: none;
+    }
+    .cloze-trigger.revealed .cloze-content {
+      display: inline-block;
+    }
+
+    @keyframes flipReveal {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* 避坑条 */
+    .card-warn {
+      background: #FFFBEB; border: 1px solid #FDE68A; border-radius: var(--radius-sm);
+      padding: 0.4rem 0.6rem; font-size: 0.78rem; color: #92400E;
+      display: flex; gap: 0.4rem; align-items: flex-start; margin-bottom: 0.65rem;
+    }
+    .warn-icon { flex-shrink: 0; }
+    .warn-text { line-height: 1.4; }
+
+    /* 抽屉式展开按钮 */
+    .card-drawer-toggle {
+      margin-top: auto; padding: 0.45rem; border-radius: var(--radius-sm);
+      background: var(--bg-subtle); color: var(--text-sub);
+      font-size: 0.78rem; font-weight: 600; text-align: center;
+      cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 0.35rem;
+      transition: all 0.15s; border: 1px solid transparent;
+    }
+    .card-drawer-toggle:hover {
+      background: white; border-color: var(--border-hover); color: var(--text-main);
+    }
+    .drawer-arrow {
+      font-size: 0.65rem; transition: transform 0.2s;
+    }
+    .card-drawer-toggle.expanded .drawer-arrow {
+      transform: rotate(180deg);
+    }
+
+    .card-drawer-content {
+      display: none; margin-top: 0.65rem; padding-top: 0.65rem;
+      border-top: 1px solid var(--border-color); font-size: 0.83rem;
+      color: var(--text-sub); line-height: 1.6;
+    }
+    .card-drawer-content.show {
+      display: block; animation: slideDown 0.2s ease;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .drawer-footer-btn {
+      margin-top: 0.75rem; text-align: right;
+    }
+    .btn-drawer-pdf {
+      padding: 0.35rem 0.75rem; border-radius: var(--radius-sm);
+      background: var(--blue-light); border: 1px solid var(--blue-border);
+      color: var(--blue-main); font-size: 0.76rem; font-weight: 600;
+      cursor: pointer; transition: all 0.15s;
+    }
+    .btn-drawer-pdf:hover {
+      background: #DBEAFE;
+    }
+
+    /* 答题脚手架区 (泳道式) */
+    .frameworks-wrap {
+      background: white; border: 1px solid var(--border-color); border-radius: var(--radius-lg);
+      padding: 1.75rem; margin-bottom: 2.5rem; box-shadow: var(--shadow-sm);
+    }
+    .section-title-row {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;
+    }
+    .section-h2 {
+      font-size: 1.35rem; font-weight: 800; color: var(--text-main);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .section-subtitle {
+      font-size: 0.88rem; color: var(--text-muted); margin-top: 0.2rem;
+    }
+
+    .fw-grid {
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .fw-card {
+      background: #F8FAFC; border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); padding: 1.25rem;
+    }
+    .fw-top {
+      display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1rem; flex-wrap: wrap;
+    }
+    .fw-num-badge {
+      font-size: 0.75rem; font-weight: 800; background: var(--purple-main); color: white;
+      padding: 0.2rem 0.6rem; border-radius: 999px;
+    }
+    .fw-title {
+      font-size: 1.1rem; font-weight: 800; color: var(--text-main);
+    }
+    .fw-tag-badge {
+      font-size: 0.75rem; font-weight: 700; color: var(--purple-main);
+      background: var(--purple-light); padding: 0.2rem 0.55rem; border-radius: 4px;
+      border: 1px solid var(--purple-border);
+    }
+
+    .fw-steps-flow {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.75rem; margin-bottom: 1rem;
+    }
+    .step-card {
+      background: white; border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+      padding: 0.75rem; display: flex; flex-direction: column; gap: 0.35rem;
+      position: relative;
+    }
+    .step-header {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .step-badge {
+      font-size: 0.72rem; font-weight: 800; color: var(--blue-main); font-family: 'Outfit', sans-serif;
+    }
+    .step-pill {
+      font-size: 0.68rem; font-weight: 600; padding: 0.1rem 0.35rem; border-radius: 4px;
+      background: var(--bg-subtle); color: var(--text-muted);
+    }
+    .step-title {
+      font-size: 0.88rem; font-weight: 700; color: var(--text-main);
+    }
+    .step-desc {
+      font-size: 0.78rem; color: var(--text-sub); line-height: 1.45;
+    }
+
+    .fw-sample-box {
+      background: white; border-left: 3px solid var(--purple-main);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 0.75rem 1rem; font-size: 0.83rem;
+    }
+    .fw-sample-title {
+      font-weight: 700; color: var(--purple-main); margin-bottom: 0.3rem;
+    }
+    .fw-sample-q {
+      color: var(--text-sub); margin-bottom: 0.35rem;
+    }
+    .fw-sample-ans {
+      color: var(--text-main); background: #FAF5FF; padding: 0.45rem 0.65rem;
+      border-radius: 4px; line-height: 1.55;
+    }
+
+    /* 资料库表格 */
+    .library-wrap {
+      background: white; border: 1px solid var(--border-color); border-radius: var(--radius-lg);
+      padding: 1.75rem; margin-bottom: 2.5rem; box-shadow: var(--shadow-sm);
+    }
+    .pdf-table {
+      width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.86rem;
+    }
+    .pdf-table th, .pdf-table td {
+      padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border-color);
+    }
+    .pdf-table th {
+      background: var(--bg-subtle); font-weight: 700; color: var(--text-sub);
+    }
+    .btn-table-read {
+      padding: 0.3rem 0.65rem; border-radius: var(--radius-sm);
+      background: var(--blue-main); color: white; border: none; font-size: 0.78rem;
+      font-weight: 600; cursor: pointer; transition: opacity 0.15s;
+    }
+    .btn-table-read:hover { opacity: 0.9; }
+
+    /* PDF 弹窗 */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.65);
+      z-index: 9999; backdrop-filter: blur(4px); align-items: center; justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: white; border-radius: var(--radius-lg); width: 100%; max-width: 1100px;
+      height: 90vh; display: flex; flex-direction: column; overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    .modal-head {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.75rem 1.25rem; border-bottom: 1px solid var(--border-color);
+      background: #F8FAFC;
+    }
+    .modal-title { font-weight: 700; font-size: 0.95rem; color: var(--text-main); }
+    .modal-close {
+      background: none; border: none; font-size: 1.3rem; cursor: pointer;
+      color: var(--text-muted); width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal-close:hover { background: #E2E8F0; color: var(--text-main); }
+    .modal-iframe { flex: 1; width: 100%; border: none; }
+
+    /* Footer */
+    footer {
+      background: white; border-top: 1px solid var(--border-color);
+      padding: 2rem 1.25rem; text-align: center; color: var(--text-muted); font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .cards-container { grid-template-columns: 1fr; }
+      .fw-steps-flow { grid-template-columns: 1fr; }
+      .nav-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .nav-actions { width: 100%; justify-content: space-between; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航 -->
+  <header>
+    <div class="nav-inner">
+      <a href="../index.html" class="brand-link">
+        <div class="brand-icon">道</div>
+        <div class="brand-name">
+          <span>中考道德与法治工作台</span>
+          <span class="version-badge">V7 全新自测版</span>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <button class="mode-switch-btn" id="modeSwitchBtn" onclick="toggleClozeMode()">
+          <span class="mode-switch-icon">🧠</span>
+          <span class="mode-switch-text">开启背诵挖空自测</span>
+        </button>
+        <div class="cloze-counter-pill" id="clozeCounterPill">
+          <span>🎯 已掌握</span>
+          <span id="revealedCount">0</span>
+          <span>/</span>
+          <span>85</span>
+        </div>
+        <button class="toggle-all-btn" id="toggleAllBtn" onclick="toggleAllDrawers()">全部展开详情</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-wrap">
+
+    <!-- Hero 展板 -->
+    <section class="hero-banner">
+      <div class="hero-badge">⚡ 破解“道法板块文字太多”痛点 · 结构化采分降噪重构</div>
+      <h1 class="hero-title">中考道德与法治全周期精要 (六·七·八·九全学段)</h1>
+      <p class="hero-desc">
+        传统道法复习满屏黑字极易视觉疲劳。V7 版采用<b>“三层渐进呈现”</b>：默认折叠无关修饰词，只呈现<b>中考核心定性 + 采分链条 + 防扣分避坑</b>；支持<b>一键开启智能挖空自测</b>，默背点击翻转核对；大题脚手架全面<b>流程泳道化</b>，考场下笔如有神！
+      </p>
+      <div class="hero-stats-row">
+        <div class="stat-card">
+          <span class="stat-val">238 页</span>
+          <span class="stat-label">官方 7 大 PDF 逐页拆解</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-val">24 大专题</span>
+          <span class="stat-label">高频提炼·结构化采分卡</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-val">85 个</span>
+          <span class="stat-label">中考必背得分关键词点按自测</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-val">4 大泳道</span>
+          <span class="stat-label">题型解题思维脚手架</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 挖空模式温馨提示 -->
+    <div class="mode-alert-bar" id="modeAlertBar">
+      <span>💡 <b>背诵自测模式已启动</b>：所有必背踩分词已自动挖空。请尝试口述或默背，然后<b>轻按紫色方框</b>翻开核对答案！</span>
+      <button onclick="resetAllCloze()" style="padding:0.25rem 0.65rem; border-radius:4px; background:white; border:1px solid var(--purple-border); color:var(--purple-main); font-weight:700; cursor:pointer;">重置自测</button>
+    </div>
+
+    <!-- 过滤与即时检索控制台 -->
+    <section class="filter-panel">
+      <!-- 维度 1：按学段 -->
+      <div class="filter-row">
+        <span class="filter-label">学段分册：</span>
+        <button class="filter-chip active" data-type="grade" data-val="all" onclick="setFilter('grade', 'all', this)">全部学段 (24)</button>
+        <button class="filter-chip" data-type="grade" data-val="g9" onclick="setFilter('grade', 'g9', this)">🔥 九年级中考核心 (7)</button>
+        <button class="filter-chip" data-type="grade" data-val="g8" onclick="setFilter('grade', 'g8', this)">⚖️ 八年级社会宪法 (7)</button>
+        <button class="filter-chip" data-type="grade" data-val="g7" onclick="setFilter('grade', 'g7', this)">🌱 七年级成长刑法 (5)</button>
+        <button class="filter-chip" data-type="grade" data-val="g6" onclick="setFilter('grade', 'g6', this)">🧭 六年级生命起点 (5)</button>
+      </div>
+
+      <!-- 维度 2：按中考核心考向 -->
+      <div class="filter-row">
+        <span class="filter-label">中考专题：</span>
+        <button class="filter-chip active" data-type="theme" data-val="all" onclick="setFilter('theme', 'all', this)">全部专题</button>
+        <button class="filter-chip" data-type="theme" data-val="party" onclick="setFilter('theme', 'party', this)">🏛️ 党的领导与政治</button>
+        <button class="filter-chip" data-type="theme" data-val="econ" onclick="setFilter('theme', 'econ', this)">📈 经济与高质量发展</button>
+        <button class="filter-chip" data-type="theme" data-val="law" onclick="setFilter('theme', 'law', this)">⚖️ 宪法与依法治国</button>
+        <button class="filter-chip" data-type="theme" data-val="society" onclick="setFilter('theme', 'society', this)">👥 民生社会与安全</button>
+        <button class="filter-chip" data-type="theme" data-val="growth" onclick="setFilter('theme', 'growth', this)">🌿 个人品格与生命</button>
+      </div>
+
+      <!-- 实时全局检索 -->
+      <div class="search-row">
+        <div class="search-input-box">
+          <span class="search-icon-inside">🔍</span>
+          <input type="text" id="searchInput" placeholder="搜索关键词，如：民主 / 刑法 / 共同富裕 / 宪法地位 / 友谊原则..." oninput="handleSearch()">
+        </div>
+        <span class="search-count" id="searchCountText">当前展示 24 个考点卡片</span>
+      </div>
+    </section>
+
+    <!-- 24 大结构化考点卡片网格 -->
+    <div class="cards-container" id="cardsGrid">
+      
+        <!-- Card: kp-1 -->
+        <div class="daofa-card" data-grade="g9" data-theme="party" id="kp-1">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g9">九年级</span>
+              <span class="tag-num">九上 1.1 考点</span>
+              <span class="tag-theme tag-theme-party">🏛️ 党的领导</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.9.4道法笔记（1.1+6.1）.pdf', 2)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>9.4笔记 P2-P3</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">中国共产党团结带领全国人民的四个历史时期与意义</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>中华民族伟大复兴进入不可逆转的历史进程，四大时期分别奠定条件、前提、体制与坚实基础。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">A. 新民主主义革命</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【根本社会条件】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【根本社会条件】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">B. 社会主义革命与建设</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【根本政治前提和制度基础】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【根本政治前提和制度基础】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">C. 改革开放与现代化</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【体制保证和物质条件】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【体制保证和物质条件】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">D. 中国特色新时代</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【更为完善的制度保证、更为坚实的物质基础、更为主动的精神力量（三个更为）】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【更为完善的制度保证、更为坚实的物质基础、更为主动的精神力量（三个更为）】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>四个时期的“地位词”严禁混用！新民主主义革命是“条件”，新时代是“三个更为”。</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-1', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-1-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【课本核心原文】</b>：中国共产党一经诞生，就把为中国人民谋幸福、为中华民族谋复兴确立为自己的初心使命。一百年来，中国共产党团结带领中国人民进行的一切奋斗、一切牺牲、一切创造，归结起来就是一个主题：实现中华民族伟大复兴。</p>
+        <p style="margin-top:0.4rem;"><b>【满分答题应用】</b>：凡是题目要求“说明为什么必须坚持中国共产党的领导”或“回顾历史成就”，均可调用此 ABCD 递进逻辑作为理论支撑。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.9.4道法笔记（1.1+6.1）.pdf', 2)">
+                  📄 调阅对应官方 PDF：2026.9.4道法笔记（1.1+6.1）.pdf (第 2 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-2 -->
+        <div class="daofa-card" data-grade="g9" data-theme="party" id="kp-2">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g9">九年级</span>
+              <span class="tag-num">九上 资料5 考点</span>
+              <span class="tag-theme tag-theme-party">🏛️ 党的领导</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 18)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>资料5 P18-P21</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">伟大建党精神内涵与共产党人精神谱系</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>伟大建党精神是中国共产党的精神之源，32字内涵一字不可偏差。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">坚持真理、坚守理想</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【坚定马克思主义科学信仰与共产主义远大理想】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【坚定马克思主义科学信仰与共产主义远大理想】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">践行初心、担当使命</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【为中国人民谋幸福，为中华民族谋复兴】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【为中国人民谋幸福，为中华民族谋复兴】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">不怕牺牲、英勇斗争</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【敢于斗争、敢于胜利，战胜一切艰难险阻】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【敢于斗争、敢于胜利，战胜一切艰难险阻】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">对党忠诚、不负人民</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【中国共产党人的根本政治品格与初心宗旨】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【中国共产党人的根本政治品格与初心宗旨】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>中考填空/材料题务必准确默写 32 字，绝不能写错别字（如把“英勇”写成“勇敢”）。</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-2', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-2-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【中考大题设问示范】</b>：为什么说“伟大建党精神代代相传、历久弥新”？</p>
+        <p style="margin-top:0.3rem;"><b>【踩分要点】</b>：①伟大建党精神是中国共产党的精神之源；②在不同历史时期，党弘扬建党精神，构建起井冈山精神、长征精神、延安精神、两弹一星精神、抗疫精神等<b>中国共产党人的精神谱系</b>；③为实现中华民族伟大复兴提供强大的精神动力。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 18)">
+                  📄 调阅对应官方 PDF：2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf (第 18 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-3 -->
+        <div class="daofa-card" data-grade="g9" data-theme="econ" id="kp-3">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g9">九年级</span>
+              <span class="tag-num">九上 6.1 考点</span>
+              <span class="tag-theme tag-theme-econ">📈 经济创新</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.9.4道法笔记（1.1+6.1）.pdf', 4)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>9.4笔记 P4-P7</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">经济实力大幅跃升、第一要务与三大战略</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>发展是党执政兴国的第一要务，新时代必须把高质量发展作为首要任务。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">第一要务</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【高质量发展是全面建设社会主义现代化国家的首要任务】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【高质量发展是全面建设社会主义现代化国家的首要任务】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">工业与制造业地位</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【制造业增加值连续多年居世界首位，全球最完整工业体系】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【制造业增加值连续多年居世界首位，全球最完整工业体系】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">基本经济制度</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【公有制为主体多种所有制共同发展 + 按劳分配为主体多种分配方式并存 + 社会主义市场经济体制】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【公有制为主体多种所有制共同发展 + 按劳分配为主体多种分配方式并存 + 社会主义市场经济体制】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">三大强国战略</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【深入实施科教兴国战略、人才强国战略、创新驱动发展战略】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【深入实施科教兴国战略、人才强国战略、创新驱动发展战略】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>区分“第一要务”（发展）与“首要任务”（高质量发展），不可混为一谈。</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-3', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-3-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【中考大题高频设问】</b>：结合材料说明我国为什么要大力推进科技自主创新？</p>
+        <p style="margin-top:0.3rem;"><b>【踩分要点】</b>：①创新是引领发展的第一动力；②科技自立自强是国家强盛之基、安全之要；③我国深入实施科教兴国战略、人才强国战略、创新驱动发展战略，加快建设科技强国。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.9.4道法笔记（1.1+6.1）.pdf', 4)">
+                  📄 调阅对应官方 PDF：2026.9.4道法笔记（1.1+6.1）.pdf (第 4 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-4 -->
+        <div class="daofa-card" data-grade="g9" data-theme="law" id="kp-4">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g9">九年级</span>
+              <span class="tag-num">九上 政治建设</span>
+              <span class="tag-theme tag-theme-law">⚖️ 宪法法治</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 28)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>资料6 P28-P30</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">全过程人民民主与全面依法治国十六字方针</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>全过程人民民主是本质属性；依法治国十六字方针是治理体系现代化的必由之路。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">全过程人民民主本质</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【最广泛、最真实、最管用的民主，本质是人民当家作主】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【最广泛、最真实、最管用的民主，本质是人民当家作主】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">科学立法（国家前提）</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【完善法律规范体系，使每一项立法都符合宪法精神、反映人民意志】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【完善法律规范体系，使每一项立法都符合宪法精神、反映人民意志】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">严格执法（政府关键）</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【推进依法行政，严格规范公正文明执法】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【推进依法行政，严格规范公正文明执法】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">公正司法（法院防线）</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【司法是维护社会公平正义的最后一道防线】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【司法是维护社会公平正义的最后一道防线】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">全民守法（公民基础）</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【增强全民法治观念，使尊法学法守法用法成为全社会共同追求】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【增强全民法治观念，使尊法学法守法用法成为全社会共同追求】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>注意十六字方针的主体对应：科学立法（立法机关）、严格执法（行政机关）、公正司法（司法机关）、全民守法（全体公民）。</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-4', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-4-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【典型大题：申遗保护法律举措】</b>：如何运用法治力量保护历史文化遗产？</p>
+        <p style="margin-top:0.3rem;"><b>【规范答题模板】</b>：<br>
+        ①国家层面：坚持<b>科学立法</b>，制定并完善文化遗产保护法律法规，做到有法可依；行政部门坚持<b>严格执法</b>，严厉打击破坏文物的违法行为；<br>
+        ②公民层面：坚持<b>全民守法</b>，增强文物保护意识与法治观念，自觉尊法守法。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 28)">
+                  📄 调阅对应官方 PDF：2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf (第 28 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-5 -->
+        <div class="daofa-card" data-grade="g9" data-theme="society" id="kp-5">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g9">九年级</span>
+              <span class="tag-num">九上 资料6 考点</span>
+              <span class="tag-theme tag-theme-society">👥 民生社会</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 22)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>资料6 P22-P27</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">文化自信日益增强、传统文化“两创”与 AI 赋能</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>推动中华优秀传统文化两创，坚定文化自信，是当代青少年的时代担当。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">“两创”基本方针</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【推动中华优秀传统文化创造性转化、创新性发展】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【推动中华优秀传统文化创造性转化、创新性发展】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">文化自信底气之源</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【中华文化积淀着中华民族最深层的精神追求，是独特的精神标识】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【中华文化积淀着中华民族最深层的精神追求，是独特的精神标识】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">现代科技/AI赋能</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【通过现代科技创新表现形式与传播手段，激活传统文化生命力，增强吸引力与感染力】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【通过现代科技创新表现形式与传播手段，激活传统文化生命力，增强吸引力与感染力】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>不要把“创造性转化、创新性发展”写反或写错漏词。</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-5', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-5-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【上海中考热点题：AI赋能诗词戏曲】</b>：如何看待现代科技/AI对传统文化的创新表达？</p>
+        <p style="margin-top:0.3rem;"><b>【踩分模板】</b>：①现代科技赋予传统文化新的时代内涵与现代表达形式，推动中华优秀传统文化<b>创造性转化、创新性发展</b>；②激发大众对中华文化的兴趣与认同，增强文化吸引力，坚定<b>文化自信</b>；③展现中华文化的博大精深与生生不息。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 22)">
+                  📄 调阅对应官方 PDF：2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf (第 22 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-6 -->
+        <div class="daofa-card" data-grade="g9" data-theme="society" id="kp-6">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g9">九年级</span>
+              <span class="tag-num">九上 资料3 考点</span>
+              <span class="tag-theme tag-theme-society">👥 民生社会</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 7)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>资料3 P7-P17</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">民生福祉持续增进、老百姓过上好日子与三角度归因</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>以人民为中心是根本立场，发展的根本目的就是增进民生福祉。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">根本宗旨与立场</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【坚持以人民为中心的发展思想，人民对美好生活的向往就是党的奋斗目标】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【坚持以人民为中心的发展思想，人民对美好生活的向往就是党的奋斗目标】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">发展的根本目的</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【增进民生福祉，在发展中保障和改善民生】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【增进民生福祉，在发展中保障和改善民生】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">民生改善三维归因</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【①政治：党坚持立党为公、执政为民；②经济：经济持续健康发展提供坚实物质保障；③制度：健全社会保障制度，推进共建共治共享】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【①政治：党坚持立党为公、执政为民；②经济：经济持续健康发展提供坚实物质保障；③制度：健全社会保障制度，推进共建共治共享】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>问“我国为什么高度重视民生”时，必须同时答出“宗旨立场”和“发展的根本目的”。</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-6', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-6-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【民生三大重点考向】</b>：<br>
+        ①<b>教育公平</b>：促进义务教育优质均衡发展，办好人民满意的教育；<br>
+        ②<b>社会保障</b>：健全多层次社会保障体系，兜牢民生底线；<br>
+        ③<b>共同富裕</b>：共同富裕是中国特色社会主义的本质要求，不是同等富裕、不是同步富裕。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 7)">
+                  📄 调阅对应官方 PDF：2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf (第 7 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-7 -->
+        <div class="daofa-card" data-grade="g9" data-theme="society" id="kp-7">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g9">九年级</span>
+              <span class="tag-num">综合卷一 核心</span>
+              <span class="tag-theme tag-theme-society">👥 民生社会</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.9.30道法综合卷一讲评思路.pdf', 1)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>综合卷一 P1-P6</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">图表题解法与“未来巩固拓展脱贫攻坚成果”推测理由</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>中考综合主观题满分推测逻辑：政治保证 + 物质支撑 + 制度优势三层穿透。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">审设问三要素</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【明确任务（推测理由） + 找准主体（国家/党/人民） + 匹配考点（脱贫攻坚/乡村振兴）】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【明确任务（推测理由） + 找准主体（国家/党/人民） + 匹配考点（脱贫攻坚/乡村振兴）】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">踩分点 1【党的领导】</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【中国共产党是坚强领导核心，坚持以人民为中心，为巩固脱贫成果提供坚强政治保证】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【中国共产党是坚强领导核心，坚持以人民为中心，为巩固脱贫成果提供坚强政治保证】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">踩分点 2【经济支撑】</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【我国经济韧性强、综合国力持续提升，为乡村振兴提供坚实物质基础】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【我国经济韧性强、综合国力持续提升，为乡村振兴提供坚实物质基础】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">踩分点 3【制度机制】</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【我国健全长效帮扶机制、深化区域协调发展，推动实现共同富裕】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【我国健全长效帮扶机制、深化区域协调发展，推动实现共同富裕】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>纯写口号不结合图表扣一半分；纯抄图表数据不提炼道法考点扣一半分！</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-7', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-7-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【满分推测作答公式】</b>：<br>
+        “未来我国一定能巩固脱贫攻坚成果并全面推进乡村振兴。理由是：<br>
+        ①<b>政治上</b>：党始终把解决好‘三农’问题作为全党工作重中之重，提供坚强组织与政治引领；<br>
+        ②<b>物质上</b>：结合图表可知我国GDP与财政收入持续向好，提供坚实物力财力支撑；<br>
+        ③<b>机制上</b>：完善产业帮扶、就业帮扶与多层次社保长效机制，防止规模性返贫。”</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.9.30道法综合卷一讲评思路.pdf', 1)">
+                  📄 调阅对应官方 PDF：2026.9.30道法综合卷一讲评思路.pdf (第 1 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-8 -->
+        <div class="daofa-card" data-grade="g8" data-theme="society" id="kp-8">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g8">八年级</span>
+              <span class="tag-num">八上 第一单元</span>
+              <span class="tag-theme tag-theme-society">👥 民生社会</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.7   八上道法知识梳理.pdf', 2)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>八上梳理 P2-P6</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">个人与社会的关系、社会化与亲社会行为</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>个人是社会的有机组成部分；在社会交往中通过社会化成长为合格公民。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">个人与社会关系</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【个人是社会的有机组成部分；人的身份是在社会关系中确定的】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【个人是社会的有机组成部分；人的身份是在社会关系中确定的】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">社会化的意义</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【通过社会化，由生物人逐步成长为一个合格的社会人】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【通过社会化，由生物人逐步成长为一个合格的社会人】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">亲社会行为的价值</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【有利于养成良好行为习惯，塑造健康人格，形成正确价值观，获得接纳与尊重】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【有利于养成良好行为习惯，塑造健康人格，形成正确价值观，获得接纳与尊重】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">服务奉献社会</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【是实现人生价值的重要途径，促进社会文明与进步】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【是实现人生价值的重要途径，促进社会文明与进步】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>“人的身份是在社会关系中确定的”是高频选择题核心判定句。</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-8', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-8-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【如何养成亲社会行为】</b>：<br>
+        ①树立积极的生活态度，关注社会、了解社会、服务社会；<br>
+        ②投身社会实践，热心帮助他人，想他人之所想，急他人之所急；<br>
+        ③遵守社会规则，承担社会责任，在奉献中提升生命价值。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.7   八上道法知识梳理.pdf', 2)">
+                  📄 调阅对应官方 PDF：2026.7   八上道法知识梳理.pdf (第 2 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-9 -->
+        <div class="daofa-card" data-grade="g8" data-theme="society" id="kp-9">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g8">八年级</span>
+              <span class="tag-num">八上 第一单元</span>
+              <span class="tag-theme tag-theme-society">👥 民生社会</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.7   八上道法知识梳理.pdf', 7)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>八上梳理 P7-P11</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">网络生活双刃剑与营造清朗网络空间</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>辩证看待网络：利在便利生活、促进经济与民主；弊在不良信息与沉迷失范。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">网络之利【个人与社会】</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【拓宽交往圈，便捷生活；推动数字经济发展，拓展民主政治表达渠道】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【拓宽交往圈，便捷生活；推动数字经济发展，拓展民主政治表达渠道】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">网络之弊【风险隐患】</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【虚假不良信息泛滥，侵犯个人隐私名誉，沉迷网络荒废学业】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【虚假不良信息泛滥，侵犯个人隐私名誉，沉迷网络荒废学业】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">合理利用网络【青少年】</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【提高媒介素养，恪守道德遵守法律，传播网络正能量，自觉抵制谣言】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【提高媒介素养，恪守道德遵守法律，传播网络正能量，自觉抵制谣言】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">治理网络空间【国家与平台】</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【完善网络法律法规，严格平台内容审核把关，协同营造清朗网络生态】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【完善网络法律法规，严格平台内容审核把关，协同营造清朗网络生态】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>网络不是法外之地！利用网络实施造谣、网暴侵害他人合法权益，需承担法律责任。</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-9', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-9-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【网络题常见失分点】</b>：答“如何对待网络”时，只答个人自律、漏答国家法治与平台责任；或者夸大网络负面影响全盘否定网络发展。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.7   八上道法知识梳理.pdf', 7)">
+                  📄 调阅对应官方 PDF：2026.7   八上道法知识梳理.pdf (第 7 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-10 -->
+        <div class="daofa-card" data-grade="g8" data-theme="law" id="kp-10">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g8">八年级</span>
+              <span class="tag-num">八上 第二单元</span>
+              <span class="tag-theme tag-theme-law">⚖️ 宪法法治</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.7   八上道法知识梳理.pdf', 12)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>八上梳理 P12-P17</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">社会秩序与规则、文明有礼的三重价值</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>社会正常运行需要秩序；社会规则明确秩序内容，保障秩序实现。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">秩序与规则关系</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【社会正常运行需要秩序；社会规则划定自由边界，保障人身自由与财产安全】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【社会正常运行需要秩序；社会规则划定自由边界，保障人身自由与财产安全】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">遵守规则的要求</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【需要他律和自律相结合；发自内心敬畏规则，将规则内化于心、外化于行】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【需要他律和自律相结合；发自内心敬畏规则，将规则内化于心、外化于行】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">文明有礼的三重价值</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【①对个人：展现良好修养与道德品行；②对社会：促进人际和谐与社会稳定；③对国家：展现良好国家形象与文明素养】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【①对个人：展现良好修养与道德品行；②对社会：促进人际和谐与社会稳定；③对国家：展现良好国家形象与文明素养】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>“自由是受规则约束的自由，自由和规则不可分割”——绝对的自由是不存在的！</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-10', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-10-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【维护与改进规则】</b>：规则不是一成不变的，随着社会发展，需要积极参与规则的制定、完善与改进，坚决维护既有合理规则。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.7   八上道法知识梳理.pdf', 12)">
+                  📄 调阅对应官方 PDF：2026.7   八上道法知识梳理.pdf (第 12 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-11 -->
+        <div class="daofa-card" data-grade="g8" data-theme="growth" id="kp-11">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g8">八年级</span>
+              <span class="tag-num">八上 第二单元</span>
+              <span class="tag-theme tag-theme-growth">🌿 品格修养</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.7   八上道法知识梳理.pdf', 18)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>八上梳理 P18-P22</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">诚实守信的价值与践行诚信的要求</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>诚信是中华民族传统美德，也是一项民法原则，是立身之本与社会文明基石。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">诚信的多维价值</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【个人立身之本 + 企业无形资产 + 促进社会文明和谐的基石】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【个人立身之本 + 企业无形资产 + 促进社会文明和谐的基石】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">践行诚信的要求</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【树立诚信意识，真诚待人，信守承诺；珍惜个人诚信记录】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【树立诚信意识，真诚待人，信守承诺；珍惜个人诚信记录】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">运用诚信智慧</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【当尊重他人隐私与对人诚实发生冲突时，遵循伦理原则和法律要求，权衡利弊】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【当尊重他人隐私与对人诚实发生冲突时，遵循伦理原则和法律要求，权衡利弊】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>“诚信原则”不仅是道德规范，还是《民法典》的基本法律原则！</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-11', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-11-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【大题陷阱：讲真话与保护隐私冲突】</b>：情境题常考“医生善意隐瞒病情”或“保护朋友秘密”。作答要点：运用诚信智慧，恪守伦理道德底线，善意谎言不等于违背诚信原则。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.7   八上道法知识梳理.pdf', 18)">
+                  📄 调阅对应官方 PDF：2026.7   八上道法知识梳理.pdf (第 18 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-12 -->
+        <div class="daofa-card" data-grade="g8" data-theme="society" id="kp-12">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g8">八年级</span>
+              <span class="tag-num">八上 第四单元</span>
+              <span class="tag-theme tag-theme-society">👥 民生社会</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.7   八上道法知识梳理.pdf', 65)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>八上梳理 P65-P72</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">树立总体国家安全观：内涵、五大要素与公民责任</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>国家安全是国家生存与发展的重要保障，是人民幸福安康的前提。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">五大要素架构</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【以人民安全为宗旨，以政治安全为根本，以经济安全为基础，以军事科技文化社会安全为保障，以国际安全为依托】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【以人民安全为宗旨，以政治安全为根本，以经济安全为基础，以军事科技文化社会安全为保障，以国际安全为依托】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">国家安全重大意义</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【国家生存发展的立足之本，人民安居乐业的根本基石】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【国家生存发展的立足之本，人民安居乐业的根本基石】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">公民维护国安义务</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【增强国家安全防范意识；严格遵守国家安全法律；积极检举危害国家安全行为】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【增强国家安全防范意识；严格遵守国家安全法律；积极检举危害国家安全行为】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>五大要素中：人民安全是“宗旨”，政治安全是“根本”，绝不能混淆反置！</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-12', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-12-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【新形态国家安全考点】</b>：网络安全、生物安全、粮食安全、生态安全、数据安全均属总体国家安全观范畴。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.7   八上道法知识梳理.pdf', 65)">
+                  📄 调阅对应官方 PDF：2026.7   八上道法知识梳理.pdf (第 65 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-13 -->
+        <div class="daofa-card" data-grade="g8" data-theme="law" id="kp-13">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g8">八年级</span>
+              <span class="tag-num">八下 宪法专题</span>
+              <span class="tag-theme tag-theme-law">⚖️ 宪法法治</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.8道法七年级课本笔记.pdf', 48)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>贯通初中法治</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">宪法的根本法地位与“规范国家权力保障公民权利”</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>宪法是国家的根本法，具有最高的法律地位、法律权威和法律效力。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">根本法地位三依据</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【规定国家最根本的问题 + 具有最高的法律效力 + 制定和修改程序比普通法律更严格】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【规定国家最根本的问题 + 具有最高的法律效力 + 制定和修改程序比普通法律更严格】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">根本活动准则</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【宪法是一切组织和个人的根本活动准则，任何组织或个人都不得凌驾于宪法之上】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【宪法是一切组织和个人的根本活动准则，任何组织或个人都不得凌驾于宪法之上】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">核心价值追求</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【规范国家权力运行以保障公民权利（权由法定、法定职责必须为、法无授权不可为）】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【规范国家权力运行以保障公民权利（权由法定、法定职责必须为、法无授权不可为）】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">宪法宣誓制度</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【彰显宪法权威，强化公职人员宪法意识与依法履职使命感】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【彰显宪法权威，强化公职人员宪法意识与依法履职使命感】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>普通法律是依据宪法制定的，是宪法的具体化；普通法律不得同宪法相抵触，否则无效！</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-13', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-13-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【如何规范国家权力运行】</b>：<br>
+        ①国家权力必须在宪法和法律限定的范围内行使（法无授权不可为）；<br>
+        ②必须依法履行职责，不得懈怠、推诿（法定职责必须为）；<br>
+        ③必须严格按照法定程序行使权力。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.8道法七年级课本笔记.pdf', 48)">
+                  📄 调阅对应官方 PDF：2026.8道法七年级课本笔记.pdf (第 48 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-14 -->
+        <div class="daofa-card" data-grade="g8" data-theme="law" id="kp-14">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g8">八年级</span>
+              <span class="tag-num">八下 国家机构</span>
+              <span class="tag-theme tag-theme-law">⚖️ 宪法法治</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.7   八上道法知识梳理.pdf', 23)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>机构分工</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">国家机构的职权分工与民主集中制原则</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>国家机构贯彻民主集中制原则，各司其职，协调运转，保障人民当家作主。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">权力机关：人民代表大会</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【全国人大是最高国家权力机关，行使立法权、决定权、任免权、监督权】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【全国人大是最高国家权力机关，行使立法权、决定权、任免权、监督权】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">行政机关：人民政府</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【国家权力机关的执行机关，管理经济文化社会等行政工作】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【国家权力机关的执行机关，管理经济文化社会等行政工作】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">监察机关：监察委员会</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【对公职人员行使公权力监察全覆盖，行使监督、调查、处置职责】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【对公职人员行使公权力监察全覆盖，行使监督、调查、处置职责】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">司法机关：法院与检察院</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【人民法院是审判机关，独立行使审判权；人民检察院是法律监督机关，独立行使检察权】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【人民法院是审判机关，独立行使审判权；人民检察院是法律监督机关，独立行使检察权】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>中考严查机构职权匹配错位：比如把“审判权”安在行政机关或公安机关头上是零分！</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-14', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-14-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【民主集中制的三大表现】</b>：<br>
+        ①在国家机构与人民的关系上：国家权力来自人民，由人民选举产生人大代表组成权力机关；<br>
+        ②在同级国家机构中：权力机关居于主导地位，其他国家机关由权力机关产生、对其负责、受其监督；<br>
+        ③在中央与地方国家机构的关系上：中央统揽全局，充分发挥地方的主动性、积极性。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.7   八上道法知识梳理.pdf', 23)">
+                  📄 调阅对应官方 PDF：2026.7   八上道法知识梳理.pdf (第 23 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-15 -->
+        <div class="daofa-card" data-grade="g7" data-theme="growth" id="kp-15">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g7">七年级</span>
+              <span class="tag-num">七年级 P3-P9</span>
+              <span class="tag-theme tag-theme-growth">🌿 品格修养</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.8道法七年级课本笔记.pdf', 3)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>课本笔记 P3-P9</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">青春期生理变化对待与心理矛盾 5 种调节方法</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>正视生理变化，追求内外兼修；掌握心理调控技巧，化解青春期矛盾烦恼。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">正视生理变化</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【欣然接受生理变化，不因生理变化自卑或焦虑，不嘲弄他人，追求内外兼修】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【欣然接受生理变化，不因生理变化自卑或焦虑，不嘲弄他人，追求内外兼修】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">调节心理矛盾 5 招</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【①参加集体活动；②求助他人；③培养兴趣爱好转移注意力；④自我调控（心理暗示、幽默）；⑤寻求专业心理咨询】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【①参加集体活动；②求助他人；③培养兴趣爱好转移注意力；④自我调控（心理暗示、幽默）；⑤寻求专业心理咨询】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>追求美不仅在仪表外表，更在于思想道德、文化修养的内在美。</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-15', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-15-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【独立思考与批判精神】</b>：七年级重点区分——独立思考不等于一味追求独特或标新立异，而是有自己的见解，并能接纳他人合理意见；批判精神要有质疑勇气，表达批评要讲究技巧，就事论事。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.8道法七年级课本笔记.pdf', 3)">
+                  📄 调阅对应官方 PDF：2026.8道法七年级课本笔记.pdf (第 3 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-16 -->
+        <div class="daofa-card" data-grade="g7" data-theme="growth" id="kp-16">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g7">七年级</span>
+              <span class="tag-num">七年级 P10-P15</span>
+              <span class="tag-theme tag-theme-growth">🌿 品格修养</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.8道法七年级课本笔记.pdf', 11)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>课本笔记 P11-P15</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">情绪的影响因素、情感的作用与正能量传递</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>情绪是短暂不稳定的内心体验，情感是稳定深刻的精神需求；以美好情感滋养生命。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">情绪与情感辨析</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【情绪是短暂的、不稳定的（喜怒哀惧）；情感是相对稳定、深刻的内心体验（爱国感、责任感）】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【情绪是短暂的、不稳定的（喜怒哀惧）；情感是相对稳定、深刻的内心体验（爱国感、责任感）】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">调节情绪常见方法</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【改变认知评价、转移注意、合理宣泄、放松训练】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【改变认知评价、转移注意、合理宣泄、放松训练】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">传递美好情感</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【用热情感染周围人；在生活中体验并创造美好情感，传递向上向善的正能量】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【用热情感染周围人；在生活中体验并创造美好情感，传递向上向善的正能量】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>调节情绪的“改变认知评价”是中考高频选择题考查方法。</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-16', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-16-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【负面情感的意义】</b>：适度的负面情感（如挫败感、内疚感）并不是一件坏事，它可以丰富我们的人生阅历，磨砺意志，促使我们反思并成长。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.8道法七年级课本笔记.pdf', 11)">
+                  📄 调阅对应官方 PDF：2026.8道法七年级课本笔记.pdf (第 11 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-17 -->
+        <div class="daofa-card" data-grade="g7" data-theme="growth" id="kp-17">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g7">七年级</span>
+              <span class="tag-num">七年级 P21-P24</span>
+              <span class="tag-theme tag-theme-growth">🌿 品格修养</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.8道法七年级课本笔记.pdf', 21)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>课本笔记 P21-P24</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">自尊自强、行己有耻、止于至善与慎独</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>知廉耻懂荣辱，坚守道德底线；见贤思齐，从点滴小事做起追求至善境界。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">行己有耻（底线思维）</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【知廉耻，懂荣辱，有所为有所不为；真诚面对错误，遵守规则与法律底线】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【知廉耻，懂荣辱，有所为有所不为；真诚面对错误，遵守规则与法律底线】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">止于至善（崇高境界）</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【是一种精神追求，见贤思齐；从点滴小事做起，积少成多，积善成德】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【是一种精神追求，见贤思齐；从点滴小事做起，积少成多，积善成德】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">慎独修养</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【在没有外界监督的情况下，严守道德操守，严于律己，内省自律】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【在没有外界监督的情况下，严守道德操守，严于律己，内省自律】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">自强不息</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【克服弱点、战胜自己，超越自我，靠坚强意志步入成功】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【克服弱点、战胜自己，超越自我，靠坚强意志步入成功】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>“行己有耻”是底线守则，“止于至善”是高尚追求，二者是递进关系。</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-17', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-17-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【名言出处与对应】</b>：<br>
+        “大学之道，在明明德，在亲民，在止于至善”——止于至善；<br>
+        “莫见乎隐，莫显乎微，故君子慎其独也”——慎独；<br>
+        “见贤思齐焉，见不贤而内自省也”——自我反思检视。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.8道法七年级课本笔记.pdf', 21)">
+                  📄 调阅对应官方 PDF：2026.8道法七年级课本笔记.pdf (第 21 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-18 -->
+        <div class="daofa-card" data-grade="g7" data-theme="law" id="kp-18">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g7">七年级</span>
+              <span class="tag-num">七年级 P39-P43</span>
+              <span class="tag-theme tag-theme-law">⚖️ 宪法法治</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.8道法七年级课本笔记.pdf', 39)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>课本笔记 P39-P43</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">民法典的调整范围、人身权与财产权保护</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>民法典是社会生活的百科全书，全面调整平等主体间的人身关系与财产关系。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">民法典法律地位</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【新中国第一部以法典命名的法律，民事权利的全面宣言书】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【新中国第一部以法典命名的法律，民事权利的全面宣言书】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">调整范围</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【调整平等主体的自然人、法人和非法人组织之间的人身关系和财产关系】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【调整平等主体的自然人、法人和非法人组织之间的人身关系和财产关系】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">人身权范畴</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【生命权、身体权、健康权、姓名权、肖像权、名誉权、荣誉权、隐私权】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【生命权、身体权、健康权、姓名权、肖像权、名誉权、荣誉权、隐私权】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">财产权范畴</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【所有权、用益物权、担保物权；公民合法的私有财产受法律保护】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【所有权、用益物权、担保物权；公民合法的私有财产受法律保护】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>民法的主体地位必须是“平等的”，若属于行政管理隶属关系，则不适用民法典！</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-18', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-18-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【生活情境辨析】</b>：网络上盗用他人照片进行丑化并营利，侵犯了肖像权与名誉权；擅自公开他人住址电话，侵犯了隐私权；因侵害人身权造成的损失，侵权人应承担消除影响、赔礼道歉、赔偿损失等民事责任。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.8道法七年级课本笔记.pdf', 39)">
+                  📄 调阅对应官方 PDF：2026.8道法七年级课本笔记.pdf (第 39 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-19 -->
+        <div class="daofa-card" data-grade="g7" data-theme="law" id="kp-19">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g7">七年级</span>
+              <span class="tag-num">七年级 P44-P48</span>
+              <span class="tag-theme tag-theme-law">⚖️ 宪法法治</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.8道法七年级课本笔记.pdf', 44)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>课本笔记 P44-P48</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">违法行为分类与犯罪三大基本特征 (中考必考)</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>犯罪具有三大基本特征，三者互为联系、缺一不可；防微杜渐，预防犯罪。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">违法行为分类</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【行政违法行为（罚款、行政拘留） + 民事违法行为（侵权违约） + 刑事违法行为（犯罪）】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【行政违法行为（罚款、行政拘留） + 民事违法行为（侵权违约） + 刑事违法行为（犯罪）】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">犯罪特征① 最本质特征</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【严重社会危害性（社会危害程度最深）】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【严重社会危害性（社会危害程度最深）】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">犯罪特征② 法律标志</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【刑事违法性（触犯刑法，违反刑法规定）】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【刑事违法性（触犯刑法，违反刑法规定）】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">犯罪特征③ 必然结果</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【应受刑罚处罚性（应当受刑罚处罚）】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【应受刑罚处罚性（应当受刑罚处罚）】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">刑罚体系</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【主刑（管制、拘役、有期徒刑、无期徒刑、死刑） + 附加刑（罚金、剥夺政治权利、没收财产、驱逐出境）】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【主刑（管制、拘役、有期徒刑、无期徒刑、死刑） + 附加刑（罚金、剥夺政治权利、没收财产、驱逐出境）】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>高频扣分陷阱：区分“罚款”（行政处罚）与“罚金”（刑罚附加刑）；“拘留”（行政处罚）与“拘役”（主刑）！</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-19', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-19-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【预防未成年人犯罪】</b>：违法与犯罪没有不可逾越的鸿沟！不良行为可能演化为违法犯罪。青少年要树立法治观念，增强防范意识，杜绝不良行为，远离违法犯罪。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.8道法七年级课本笔记.pdf', 44)">
+                  📄 调阅对应官方 PDF：2026.8道法七年级课本笔记.pdf (第 44 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-20 -->
+        <div class="daofa-card" data-grade="g6" data-theme="growth" id="kp-20">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g6">六年级</span>
+              <span class="tag-num">六年级 第一单元</span>
+              <span class="tag-theme tag-theme-growth">🌿 品格修养</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.7   六年级道法知识梳理.pdf', 2)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>六年级梳理 P2-P5</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">中学时代的意义、少年梦想与努力路径</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>中学时代是生命进阶的重要起点；梦想是奋斗动力，努力是梦想与现实的桥梁。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">中学时代的重大意义</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【见证一个人从少年到青年的生命进阶，为一生奠定坚实基础，提供新机会与新挑战】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【见证一个人从少年到青年的生命进阶，为一生奠定坚实基础，提供新机会与新挑战】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">少年梦想的特质</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【与个人人生目标紧密相连，与时代的脉搏紧密相连，与中国梦紧密相连】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【与个人人生目标紧密相连，与时代的脉搏紧密相连，与中国梦紧密相连】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">努力落实梦想的路径</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【努力需要立志（早立志、立大志）；努力需要坚持，落实在每一天的实际行动中】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【努力需要立志（早立志、立大志）；努力需要坚持，落实在每一天的实际行动中】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>梦想若不付诸行动，终究是空想；不懈的努力才是实现梦想的唯一桥梁。</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-20', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-20-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【六年级核心金句】</b>：少年有梦，不应止于心动，更在于行动。不积跬步，无以至千里。我们要把个人的梦想融入到实现国家富强、民族复兴的伟大奋斗之中。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.7   六年级道法知识梳理.pdf', 2)">
+                  📄 调阅对应官方 PDF：2026.7   六年级道法知识梳理.pdf (第 2 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-21 -->
+        <div class="daofa-card" data-grade="g6" data-theme="growth" id="kp-21">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g6">六年级</span>
+              <span class="tag-num">六年级 第一单元</span>
+              <span class="tag-theme tag-theme-growth">🌿 品格修养</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.7   六年级道法知识梳理.pdf', 6)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>六年级梳理 P6-P9</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">广义学习观（不仅局限课堂）与如何学会学习</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>生活处处皆学习，树立终身学习理念；掌握科学方法，发现学习乐趣。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">广义学习观内涵</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【不仅包括知识获取，还包括能力培养与做人；学习不仅局限于学校课堂，生活所见所闻皆为学习】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【不仅包括知识获取，还包括能力培养与做人；学习不仅局限于学校课堂，生活所见所闻皆为学习】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">终身学习理念</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【学习没有终点，只有不断学习，才能适应不断发展变化的未来社会】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【学习没有终点，只有不断学习，才能适应不断发展变化的未来社会】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">如何学会学习</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【发现并保持对知识的兴趣 + 掌握科学高效的学习方法 + 善于运用自主探究与合作交流】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【发现并保持对知识的兴趣 + 掌握科学高效的学习方法 + 善于运用自主探究与合作交流】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>不要把学习狭隘地理解为“课本做题”，做家务、参加志愿服务、科学探究同样属于广义学习。</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-21', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-21-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【学习的苦与乐】</b>：学习中有辛苦（需要集中精力、克服困难），更有快乐（探索未知、解开难题、收获成长）。在苦乐交织中领悟知识的魅力。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.7   六年级道法知识梳理.pdf', 6)">
+                  📄 调阅对应官方 PDF：2026.7   六年级道法知识梳理.pdf (第 6 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-22 -->
+        <div class="daofa-card" data-grade="g6" data-theme="growth" id="kp-22">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g6">六年级</span>
+              <span class="tag-num">六年级 第一单元</span>
+              <span class="tag-theme tag-theme-growth">🌿 品格修养</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.7   六年级道法知识梳理.pdf', 10)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>六年级梳理 P10-P13</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">接纳与欣赏自己、做更好的自己</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>全面接纳自己的优缺点，欣赏自己的独特；扬长避短，在奉献中做更好的自己。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">如何全面接纳自己</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【接纳自己的全部（包括生理外表、性格特征、优点与不完美）；以平和乐观的心态接纳不完美】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【接纳自己的全部（包括生理外表、性格特征、优点与不完美）；以平和乐观的心态接纳不完美】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">如何欣赏自己</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【欣赏自己的独特，欣赏自己的优点与努力，欣赏为他人的付出】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【欣赏自己的独特，欣赏自己的优点与努力，欣赏为他人的付出】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">如何做更好的自己</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【扬长避短充分激发潜能 + 主动改正缺点在反思中完善 + 在为他人为社会的奉献中实现人生价值】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【扬长避短充分激发潜能 + 主动改正缺点在反思中完善 + 在为他人为社会的奉献中实现人生价值】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>接纳不完美不等于“放任缺点”！需要在接纳的基础上主动改正缺点、自我提升。</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-22', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-22-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【认识自己的途径】</b>：①自我评价（自省、自我观察）；②他人评价（客观冷静分析他人评价，既不盲从也不忽视）。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.7   六年级道法知识梳理.pdf', 10)">
+                  📄 调阅对应官方 PDF：2026.7   六年级道法知识梳理.pdf (第 10 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-23 -->
+        <div class="daofa-card" data-grade="g6" data-theme="growth" id="kp-23">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g6">六年级</span>
+              <span class="tag-num">六年级 第二单元</span>
+              <span class="tag-theme tag-theme-growth">🌿 品格修养</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.7   六年级道法知识梳理.pdf', 17)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>六年级梳理 P17-P25</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">友谊的特质、友谊的澄清与冲突化解</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>友谊是平等的、双向的、心灵的相遇；坚持原则底线，用心关怀化解冲突。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">友谊的三大特质</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【是一种亲密的关系 + 是平等的双向的心灵相遇 + 是一种超越功利的真诚交往】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【是一种亲密的关系 + 是平等的双向的心灵相遇 + 是一种超越功利的真诚交往】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">澄清友谊的三大误区</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【①友谊不是一成不变的，要坦然面对淡化；②竞争并不必然伤害友谊，共同进步；③友谊不能没有原则，不可包庇袒护错误】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【①友谊不是一成不变的，要坦然面对淡化；②竞争并不必然伤害友谊，共同进步；③友谊不能没有原则，不可包庇袒护错误】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">呵护友谊的四大方法</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【用心关怀对方 + 学会换位思考与尊重 + 正确处理分歧冲突 + 正确对待伤害与包容】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【用心关怀对方 + 学会换位思考与尊重 + 正确处理分歧冲突 + 正确对待伤害与包容】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>最常考情境：“朋友考试作弊求帮忙”或“朋友违纪要求隐瞒”——坚持原则才是对友谊最大的负责！</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-23', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-23-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【化解朋友冲突四步法】</b>：保持冷静 ➔ 坦诚沟通 ➔ 换位思考 ➔ 寻求折中或共同方案。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.7   六年级道法知识梳理.pdf', 17)">
+                  📄 调阅对应官方 PDF：2026.7   六年级道法知识梳理.pdf (第 17 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: kp-24 -->
+        <div class="daofa-card" data-grade="g6" data-theme="growth" id="kp-24">
+          <div class="card-top-bar">
+            <div class="card-tags">
+              <span class="tag-grade tag-g6">六年级</span>
+              <span class="tag-num">六年级 第四单元</span>
+              <span class="tag-theme tag-theme-growth">🌿 品格修养</span>
+            </div>
+            <button class="btn-pdf-pill" onclick="openPdfModal('2026.7   六年级道法知识梳理.pdf', 52)" title="直接在弹窗中极速调阅官方 PDF 原件">
+              <span>六年级梳理 P52-P56</span>
+              <span class="pdf-icon">🔍</span>
+            </button>
+          </div>
+
+          <h3 class="card-title">挫折意义、增强生命韧性与平凡创造伟大</h3>
+
+          <div class="card-verdict">
+            <span class="verdict-icon">📌</span>
+            <span class="verdict-text"><b>考点定性：</b>挫折磨砺意志，生命因坚韧而厚重；每个生命都有独特价值，平凡亦能书写伟大。</span>
+          </div>
+
+          <!-- 踩分逻辑链 / 挖空区 -->
+          <div class="logic-chains-box">
+            <div class="chains-header">
+              <span class="chains-title">⚡ 中考核心踩分链条</span>
+              <span class="mode-hint-std">标准得分词</span>
+              <span class="mode-hint-cloze">默背自测（轻按翻开）</span>
+            </div>
+            <div class="chains-grid">
+              
+            <div class="chain-item">
+              <span class="chain-left">挫折的双重影响</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【消极面：产生挫败感阻碍目标；积极面：丰富人生阅历，磨砺坚强意志，增长才干智慧】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【消极面：产生挫败感阻碍目标；积极面：丰富人生阅历，磨砺坚强意志，增长才干智慧】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">发掘生命韧性</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【树立积极生活信念，发掘自身生命力量，学会向同伴、师长寻求帮助】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【树立积极生活信念，发掘自身生命力量，学会向同伴、师长寻求帮助】</span>
+                </span>
+              </span>
+            </div>
+
+            <div class="chain-item">
+              <span class="chain-left">在平凡中创造伟大</span>
+              <span class="chain-arrow">➔</span>
+              <span class="chain-right">
+                <span class="score-kw-plain">【生命虽平凡但价值不平凡；伟大在于创造和贡献；用认真、勤劳、坚守书写不平凡的人生】</span>
+                <span class="cloze-trigger" onclick="revealCloze(this, event)" title="点击揭晓答案">
+                  <span class="cloze-mask">❓ 点击揭开</span>
+                  <span class="cloze-content">【生命虽平凡但价值不平凡；伟大在于创造和贡献；用认真、勤劳、坚守书写不平凡的人生】</span>
+                </span>
+              </span>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="card-warn">
+              <span class="warn-icon">⚠️</span>
+              <span class="warn-text"><b>防错避坑：</b>不要孤立看待挫折，要用辩证思维认识挫折的双重作用与应对智慧。</span>
+            </div>
+
+          <!-- 展开详细内容抽屉 -->
+          <div class="card-drawer-toggle" onclick="toggleDrawer('kp-24', this)">
+            <span class="drawer-btn-text">📖 展开详细复习与大题设问示范</span>
+            <span class="drawer-arrow">▼</span>
+          </div>
+
+          <div class="card-drawer-content" id="kp-24-drawer">
+            <div class="drawer-inner">
+              
+        <p><b>【敬畏生命与守护生命】</b>：生命是脆弱的、不可逆的，我们要敬畏生命，珍爱自己的生命，关怀关爱他人的生命；守护生命既要爱护身体健康，也要养护精神家园。</p>
+        
+              <div class="drawer-footer-btn">
+                <button class="btn-drawer-pdf" onclick="openPdfModal('2026.7   六年级道法知识梳理.pdf', 52)">
+                  📄 调阅对应官方 PDF：2026.7   六年级道法知识梳理.pdf (第 52 页)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- 4 大题型解题泳道思维脚手架 -->
+    <section class="frameworks-wrap" id="sec-frameworks">
+      <div class="section-title-row">
+        <div>
+          <h2 class="section-h2"><span>🎯 初中道法中考 4 大答题思维泳道</span></h2>
+          <p class="section-subtitle">拒绝空话套话，将复杂公式解构成 Step 1 ➔ Step 4 逻辑流，考场按步拿满分</p>
+        </div>
+      </div>
+      <div class="fw-grid">
+        
+        <div class="fw-card" id="fw-1">
+          <div class="fw-top">
+            <div class="fw-num-badge">脚手架 01</div>
+            <h3 class="fw-title">图表数据分析题 · 满分解题法</h3>
+            <span class="fw-tag-badge">结论 + 依据</span>
+          </div>
+          <div class="fw-steps-flow">
+            
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-badge">Step 1</span>
+                <span class="step-pill">定论调</span>
+              </div>
+              <div class="step-title">看表头与趋势</div>
+              <div class="step-desc">明确图表反映的主题，提炼数据变化的核心趋势（如稳步增长、占比提高）。</div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-badge">Step 2</span>
+                <span class="step-pill">写结论</span>
+              </div>
+              <div class="step-title">扣教材定性词</div>
+              <div class="step-desc">把日常口语转换为道法规范结论：如“综合实力大幅跃升”、“创新活力持续增强”。</div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-badge">Step 3</span>
+                <span class="step-pill">抄数据</span>
+              </div>
+              <div class="step-title">列举数据依据</div>
+              <div class="step-desc">规范格式写明依据：“依据是图表中（2022-2024年某指标从X增加到Y）”。</div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-badge">Step 4</span>
+                <span class="step-pill">满分句</span>
+              </div>
+              <div class="step-title">合成满分表述</div>
+              <div class="step-desc">得到的结论是…… + 依据是图表中……（结论2分 + 依据2分，无一遗漏）。</div>
+            </div>
+          </div>
+          <div class="fw-sample-box">
+            <div class="fw-sample-title">🎯 实战真题设问与满分范式</div>
+            <div class="fw-sample-q"><b>设问：</b>依据我国 2022-2024 年 GDP 与研发经费投入图表，能得出什么结论？</div>
+            <div class="fw-sample-ans"><b>满分作答：</b><b>结论是</b>新时代以来我国经济持续健康发展，综合国力大幅跃升，自主创新能力不断增强；<b>依据是</b>图表中 2022-2024 年国内生产总值持续稳定增长，研发投入经费总额与占GDP比重逐年稳步上升。</div>
+          </div>
+        </div>
+
+        <div class="fw-card" id="fw-2">
+          <div class="fw-top">
+            <div class="fw-num-badge">脚手架 02</div>
+            <h3 class="fw-title">推测理由/论证论据题 · 四层穿透法</h3>
+            <span class="fw-tag-badge">党 + 经 + 制 + 民</span>
+          </div>
+          <div class="fw-steps-flow">
+            
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-badge">Step 1</span>
+                <span class="step-pill">政治层</span>
+              </div>
+              <div class="step-title">党的坚强领导</div>
+              <div class="step-desc">中国共产党是坚强领导核心，始终坚持以人民为中心（提供根本政治保证）。</div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-badge">Step 2</span>
+                <span class="step-pill">物质层</span>
+              </div>
+              <div class="step-title">坚实物质基础</div>
+              <div class="step-desc">我国经济持续健康发展，综合国力跃升，工业体系完备（提供坚实物质技术支撑）。</div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-badge">Step 3</span>
+                <span class="step-pill">制度层</span>
+              </div>
+              <div class="step-title">制度政策优势</div>
+              <div class="step-desc">社会主义制度具有集中力量办大事的优越性，健全长效机制与法律政策体系（提供体制制度保障）。</div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-badge">Step 4</span>
+                <span class="step-pill">动力层</span>
+              </div>
+              <div class="step-title">人民群众力量</div>
+              <div class="step-desc">广大人民群众艰苦奋斗、开拓创新，凝聚起磅礴的奋进力量（提供内生动力）。</div>
+            </div>
+          </div>
+          <div class="fw-sample-box">
+            <div class="fw-sample-title">🎯 实战真题设问与满分范式</div>
+            <div class="fw-sample-q"><b>设问：</b>结合材料推测“未来一定能巩固脱贫攻坚成果并全面实现乡村振兴”的理由（6分）。</div>
+            <div class="fw-sample-ans"><b>满分作答：</b>①<b>党：</b>中国共产党是坚强领导核心，始终坚持以人民为中心的发展思想，提供坚强政治保证；<br>②<b>经：</b>我国经济持续稳定增长，综合国力不断增强，为乡村振兴提供坚实物质与财力支撑；<br>③<b>制：</b>我国完善产业扶持与社会保障长效帮扶制度机制，促进区域协调发展与共同富裕。</div>
+          </div>
+        </div>
+
+        <div class="fw-card" id="fw-3">
+          <div class="fw-top">
+            <div class="fw-num-badge">脚手架 03</div>
+            <h3 class="fw-title">举措/建议/启示类题 · 三大主体法</h3>
+            <span class="fw-tag-badge">国家 + 社会 + 公民</span>
+          </div>
+          <div class="fw-steps-flow">
+            
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-badge">Step 1</span>
+                <span class="step-pill">法制引领</span>
+              </div>
+              <div class="step-title">国家政府层面</div>
+              <div class="step-desc">坚持科学立法（健全法律政策），坚持严格执法（加强监管巡查、依法惩处违法）。</div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-badge">Step 2</span>
+                <span class="step-pill">协同治理</span>
+              </div>
+              <div class="step-title">社会各界层面</div>
+              <div class="step-desc">加强宣传教育，普及法律常识，营造全社会良好舆论氛围；行业企业守法诚信经营。</div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-badge">Step 3</span>
+                <span class="step-pill">知行合一</span>
+              </div>
+              <div class="step-title">公民个人层面</div>
+              <div class="step-desc">树立底线意识与法治观念；自觉学法尊法守法；勇于同违法违规行为作斗争；积极建言献策。</div>
+            </div>
+          </div>
+          <div class="fw-sample-box">
+            <div class="fw-sample-title">🎯 实战真题设问与满分范式</div>
+            <div class="fw-sample-q"><b>设问：</b>针对非遗文化遗产保护或网络虚假信息泛滥提出改进建议。</div>
+            <div class="fw-sample-ans"><b>满分作答：</b>①<b>国家：</b>完善相关专门法律法规，严格日常监管执法，加大对破坏文物/造谣行为的惩戒力度；<br>②<b>社会：</b>利用新媒体平台弘扬优秀文化/反谣言科普，开展专题普法，营造清朗健康的社会氛围；<br>③<b>个人：</b>青少年要增强守法意识与文化保护意识，自觉抵制违法违规行为，做到言行合规合德。</div>
+          </div>
+        </div>
+
+        <div class="fw-card" id="fw-4">
+          <div class="fw-top">
+            <div class="fw-num-badge">脚手架 04</div>
+            <h3 class="fw-title">观点辨析评析题 · 四步定案法</h3>
+            <span class="fw-tag-badge">判定 + 释理 + 辩证 + 表态</span>
+          </div>
+          <div class="fw-steps-flow">
+            
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-badge">Step 1</span>
+                <span class="step-pill">定性质</span>
+              </div>
+              <div class="step-title">一亮鲜明观点</div>
+              <div class="step-desc">明确判定观点是正确、错误还是片面的（切忌模棱两可或不置可否）。</div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-badge">Step 2</span>
+                <span class="step-pill">扣考点</span>
+              </div>
+              <div class="step-title">二引教材原理</div>
+              <div class="step-desc">调取对应考点原理，指出该观点中合理成分依据是什么，不合理之处错在哪里。</div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-badge">Step 3</span>
+                <span class="step-pill">析影响</span>
+              </div>
+              <div class="step-title">三谈危害意义</div>
+              <div class="step-desc">辩证分析其危害（若按错误观点行事会导致何种后果）或积极价值（符合何种发展方向）。</div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-badge">Step 4</span>
+                <span class="step-pill">表态度</span>
+              </div>
+              <div class="step-title">四表青年行动</div>
+              <div class="step-desc">落脚到青少年青年的正确做法（树立何种观念、如何规范自身言行）。</div>
+            </div>
+          </div>
+          <div class="fw-sample-box">
+            <div class="fw-sample-title">🎯 实战真题设问与满分范式</div>
+            <div class="fw-sample-q"><b>设问：</b>有人认为：“只要经济发展了，老百姓自然就能过上好日子。”请评析此观点。</div>
+            <div class="fw-sample-ans"><b>满分作答：</b><b>此观点是片面的。</b><br>①<b>合理之处：</b>经济持续健康发展是保障和改善民生的坚实物质基础，发展是党执政兴国的第一要务；<br>②<b>不合理之处：</b>老百姓过上好日子还需要坚持以人民为中心的发展思想，健全社会保障制度，促进教育医疗均等化，缩小收入差距走向共同富裕；还需要加强法治建设与生态文明建设；<br>③<b>总结：</b>必须坚持高质量发展，并在发展中保障和改善民生，才能真正实现人民美好生活向往。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 大官方资料库极速调阅表 -->
+    <section class="library-wrap" id="sec-library">
+      <div class="section-title-row">
+        <div>
+          <h2 class="section-h2"><span>📂 全套 7 大官方资料库精准调阅 (总计 238 页)</span></h2>
+          <p class="section-subtitle">所有卡片考点均可在当前页面 0 秒无缝调阅指定页码原件核对</p>
+        </div>
+      </div>
+      <table class="pdf-table">
+        <thead>
+          <tr>
+            <th>资料名称</th>
+            <th>学段与定位</th>
+            <th>总页数</th>
+            <th>极速查阅</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>2026.9.30 九上新课课后练习讲评汇总</b></td>
+            <td>九年级核心大题、资料1-6、申遗保护、文化AI赋能</td>
+            <td>30 页</td>
+            <td><button class="btn-table-read" onclick="openPdfModal('2026.9.30九上新课课后练习讲评汇总（资料1-6）.pdf', 1)">查阅 P1</button></td>
+          </tr>
+          <tr>
+            <td><b>2026.9.30 道法综合卷一讲评思路</b></td>
+            <td>中考解题方法论、明任务判主体、脱贫理由推测</td>
+            <td>10 页</td>
+            <td><button class="btn-table-read" onclick="openPdfModal('2026.9.30道法综合卷一讲评思路.pdf', 1)">查阅 P1</button></td>
+          </tr>
+          <tr>
+            <td><b>2026.9.4 道法笔记（1.1+6.1）</b></td>
+            <td>四个时期意义ABCD、第一要务、制造业首位</td>
+            <td>7 页</td>
+            <td><button class="btn-table-read" onclick="openPdfModal('2026.9.4道法笔记（1.1+6.1）.pdf', 1)">查阅 P1</button></td>
+          </tr>
+          <tr>
+            <td><b>2026.7 八上道法知识梳理</b></td>
+            <td>社会生活、网络双刃剑、秩序文明、国家安全观</td>
+            <td>72 页</td>
+            <td><button class="btn-table-read" onclick="openPdfModal('2026.7   八上道法知识梳理.pdf', 1)">查阅 P1</button></td>
+          </tr>
+          <tr>
+            <td><b>2026.8 道法七年级课本笔记</b></td>
+            <td>生理心理调节、自强慎独、民法典、犯罪三特征</td>
+            <td>48 页</td>
+            <td><button class="btn-table-read" onclick="openPdfModal('2026.8道法七年级课本笔记.pdf', 1)">查阅 P1</button></td>
+          </tr>
+          <tr>
+            <td><b>2026.7 六年级道法知识梳理</b></td>
+            <td>中学序曲、广义学习观、认识自我、友谊、生命</td>
+            <td>56 页</td>
+            <td><button class="btn-table-read" onclick="openPdfModal('2026.7   六年级道法知识梳理.pdf', 1)">查阅 P1</button></td>
+          </tr>
+          <tr>
+            <td><b>26秋上海九年级道法练习册答案</b></td>
+            <td>练习册选择题排错、主观题标准采分点</td>
+            <td>15 页</td>
+            <td><button class="btn-table-read" onclick="openPdfModal('26秋上海九年级道法练习册答案_扫描版.pdf', 1)">查阅 P1</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </div>
+
+  <!-- PDF 原件弹窗 -->
+  <div class="modal-overlay" id="pdfModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div class="modal-title" id="pdfModalTitle">调阅官方 PDF 原件</div>
+        <button class="modal-close" onclick="closePdfModal()">✕</button>
+      </div>
+      <iframe id="pdfIframe" src="" class="modal-iframe"></iframe>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 中考道德与法治全周期精要工作台 · V7 结构化自测版</p>
+    <p style="font-size: 0.78rem; margin-top: 4px;">覆盖全套 238 页原件 · 拒绝任何无效信息干扰 · 专为上海中考高效提分定制</p>
+  </footer>
+
+  <script>
+    let currentGrade = 'all';
+    let currentTheme = 'all';
+    let isClozeMode = false;
+    let allExpanded = false;
+    let revealedCount = 0;
+    const totalCloze = 85;
+
+    // 模式切换
+    function toggleClozeMode() {
+      isClozeMode = !isClozeMode;
+      const body = document.body;
+      const btn = document.getElementById('modeSwitchBtn');
+      const text = btn.querySelector('.mode-switch-text');
+      const icon = btn.querySelector('.mode-switch-icon');
+
+      if (isClozeMode) {
+        body.classList.add('cloze-mode-active');
+        btn.classList.add('active-cloze');
+        text.textContent = '退出背诵自测模式';
+        icon.textContent = '📖';
+      } else {
+        body.classList.remove('cloze-mode-active');
+        btn.classList.remove('active-cloze');
+        text.textContent = '开启背诵挖空自测';
+        icon.textContent = '🧠';
+      }
+    }
+
+    // 单个挖空翻开
+    function revealCloze(el, e) {
+      e.stopPropagation();
+      if (!el.classList.contains('revealed')) {
+        el.classList.add('revealed');
+        revealedCount++;
+        document.getElementById('revealedCount').textContent = revealedCount;
+      }
+    }
+
+    // 重置所有挖空
+    function resetAllCloze() {
+      const triggers = document.querySelectorAll('.cloze-trigger.revealed');
+      triggers.forEach(t => t.classList.remove('revealed'));
+      revealedCount = 0;
+      document.getElementById('revealedCount').textContent = 0;
+    }
+
+    // 单个卡片抽屉展开/折叠
+    function toggleDrawer(cardId, toggleBtn) {
+      const drawer = document.getElementById(cardId + '-drawer');
+      const btnText = toggleBtn.querySelector('.drawer-btn-text');
+      const isExpanded = drawer.classList.contains('show');
+
+      if (isExpanded) {
+        drawer.classList.remove('show');
+        toggleBtn.classList.remove('expanded');
+        btnText.textContent = '📖 展开详细复习与大题设问示范';
+      } else {
+        drawer.classList.add('show');
+        toggleBtn.classList.add('expanded');
+        btnText.textContent = '👆 收起详情';
+      }
+    }
+
+    // 全部抽屉展开/折叠
+    function toggleAllDrawers() {
+      allExpanded = !allExpanded;
+      const drawers = document.querySelectorAll('.card-drawer-content');
+      const btns = document.querySelectorAll('.card-drawer-toggle');
+      const mainBtn = document.getElementById('toggleAllBtn');
+
+      drawers.forEach(d => {
+        if (allExpanded) d.classList.add('show');
+        else d.classList.remove('show');
+      });
+
+      btns.forEach(b => {
+        const btnText = b.querySelector('.drawer-btn-text');
+        if (allExpanded) {
+          b.classList.add('expanded');
+          btnText.textContent = '👆 收起详情';
+        } else {
+          b.classList.remove('expanded');
+          btnText.textContent = '📖 展开详细复习与大题设问示范';
+        }
+      });
+
+      mainBtn.textContent = allExpanded ? '全部收起详情' : '全部展开详情';
+    }
+
+    // 过滤控制
+    function setFilter(type, val, chipEl) {
+      if (type === 'grade') currentGrade = val;
+      if (type === 'theme') currentTheme = val;
+
+      const siblings = chipEl.parentElement.querySelectorAll('.filter-chip');
+      siblings.forEach(s => s.classList.remove('active'));
+      chipEl.classList.add('active');
+
+      applyFilterAndSearch();
+    }
+
+    // 搜索
+    function handleSearch() {
+      applyFilterAndSearch();
+    }
+
+    function applyFilterAndSearch() {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      const cards = document.querySelectorAll('.daofa-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cardGrade = card.getAttribute('data-grade');
+        const cardTheme = card.getAttribute('data-theme');
+        const cardText = card.textContent.toLowerCase();
+
+        const matchGrade = (currentGrade === 'all') || (cardGrade === currentGrade);
+        const matchTheme = (currentTheme === 'all') || (cardTheme === currentTheme);
+        const matchQuery = !query || cardText.includes(query);
+
+        if (matchGrade && matchTheme && matchQuery) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('searchCountText').textContent = `展示 ${visibleCount} 个考点卡片`;
+    }
+
+    // PDF Modal
+    function openPdfModal(fileName, pageNum) {
+      const modal = document.getElementById('pdfModal');
+      const title = document.getElementById('pdfModalTitle');
+      const iframe = document.getElementById('pdfIframe');
+
+      title.textContent = `调阅官方原件：${fileName} (第 ${pageNum} 页)`;
+      iframe.src = `${fileName}#page=${pageNum}`;
+      modal.classList.add('active');
+    }
+
+    function closePdfModal() {
+      const modal = document.getElementById('pdfModal');
+      const iframe = document.getElementById('pdfIframe');
+      iframe.src = '';
+      modal.classList.remove('active');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closePdfModal();
+    });
+  </script>
+</body>
+</html>

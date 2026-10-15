@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1440px;
+    height: 720px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    padding: 30px 50px;
+  }
+  .title {
+    font-size: 26px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+  }
+  .chart-container {
+    width: 1300px;
+    height: 560px;
+    position: relative;
+    border-left: 2px solid #0f172a;
+    border-bottom: 2px solid #0f172a;
+    display: flex;
+    align-items: flex-end;
+    padding-left: 80px;
+    padding-right: 60px;
+    justify-content: space-around;
+  }
+  /* Grid lines */
+  .grid-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e2e8f0;
+    z-index: 1;
+  }
+  .grid-label {
+    position: absolute;
+    left: -65px;
+    transform: translateY(50%);
+    font-size: 18px;
+    color: #475569;
+    font-family: "Times New Roman", Georgia, serif;
+    text-align: right;
+    width: 50px;
+  }
+  .y-axis-title {
+    position: absolute;
+    left: -90px;
+    top: 45%;
+    transform: rotate(-90deg) translateX(50%);
+    font-size: 20px;
+    color: #1e293b;
+    font-weight: 500;
+  }
+  .bar-group {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px;
+  }
+  .bar {
+    width: 150px;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    transition: all 0.2s;
+  }
+  .bar-val {
+    position: absolute;
+    top: -34px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 21px;
+    font-weight: 600;
+    color: #1e293b;
+    font-family: "Times New Roman", Georgia, serif;
+  }
+  .bar-desc {
+    margin-top: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .method-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #0f172a;
+  }
+  .drop-tag {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    display: inline-block;
+  }
+  .tag-green { background: #dcfce7; color: #15803d; }
+  .tag-blue { background: #e0f2fe; color: #0369a1; }
+  .tag-slate { background: #f1f5f9; color: #475569; }
+  .tag-red { background: #fee2e2; color: #b91c1c; }
+  .unit-cost {
+    font-size: 14px;
+    color: #64748b;
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+
+<div class="title">图2　四种除湿方式的日均成本与降湿幅度对比</div>
+
+<div class="chart-container">
+  <div class="y-axis-title">日均成本（元）</div>
+
+  <!-- Y-ticks: 0, 0.5, 1.0, 1.5, 2.0, 2.5 (height = 420px max) -->
+  <div class="grid-line" style="bottom: 0px;"><span class="grid-label">0.0</span></div>
+  <div class="grid-line" style="bottom: 84px;"><span class="grid-label">0.5</span></div>
+  <div class="grid-line" style="bottom: 168px;"><span class="grid-label">1.0</span></div>
+  <div class="grid-line" style="bottom: 252px;"><span class="grid-label">1.5</span></div>
+  <div class="grid-line" style="bottom: 336px;"><span class="grid-label">2.0</span></div>
+  <div class="grid-line" style="bottom: 420px;"><span class="grid-label">2.5</span></div>
+
+  <!-- Method 1: 自然通风 (0.00元, -2%) -->
+  <div class="bar-group">
+    <div class="bar" style="height: 4px; background: #cbd5e1;">
+      <div class="bar-val">0.00元</div>
+    </div>
+    <div class="bar-desc">
+      <span class="method-name">自然通风</span>
+      <span class="drop-tag tag-red">湿度 ↑ 2点 (负效果)</span>
+      <span class="unit-cost">耗电: 0 度</span>
+    </div>
+  </div>
+
+  <!-- Method 2: 干燥剂2盒 (1.60元, 5%) -->
+  <div class="bar-group">
+    <div class="bar" style="height: 269px; background: #52637a;">
+      <div class="bar-val">1.60元</div>
+    </div>
+    <div class="bar-desc">
+      <span class="method-name">干燥剂 2盒</span>
+      <span class="drop-tag tag-slate">降幅 5点 (全屋微效)</span>
+      <span class="unit-cost">单位成本: 约0.32元/点</span>
+    </div>
+  </div>
+
+  <!-- Method 3: 空调除湿3小时 (2.22元, 16%) -->
+  <div class="bar-group">
+    <div class="bar" style="height: 373px; background: #2563eb;">
+      <div class="bar-val">2.22元</div>
+    </div>
+    <div class="bar-desc">
+      <span class="method-name">空调除湿 3小时</span>
+      <span class="drop-tag tag-blue">降幅 16点 (稳居次席)</span>
+      <span class="unit-cost">耗电 3.6度 · 0.14元/点</span>
+    </div>
+  </div>
+
+  <!-- Method 4: 除湿机4小时 (1.48元, 26%) -->
+  <div class="bar-group">
+    <div class="bar" style="height: 249px; background: #1e3a8a;">
+      <div class="bar-val">1.48元</div>
+    </div>
+    <div class="bar-desc">
+      <span class="method-name">除湿机 4小时</span>
+      <span class="drop-tag tag-green">降幅 26点 (效果最佳)</span>
+      <span class="unit-cost">耗电 2.4度 · 0.06元/点</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

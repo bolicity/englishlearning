@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="100%" height="100%">
+  <rect width="800" height="360" fill="#f8fafc" rx="10"/>
+  <!-- Left: Terrain & Meltwater -->
+  <g transform="translate(20, 20)">
+    <rect width="360" height="320" fill="#ffffff" stroke="#cbd5e1" rx="8"/>
+    <text x="180" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">图1 天山托木尔峰雪山融水与绿洲冲积扇</text>
+    <!-- Snow Mountain -->
+    <polygon points="40,210 120,70 180,210" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+    <polygon points="100,105 120,70 140,105" fill="#ffffff"/>
+    <text x="120" y="60" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">天山托木尔峰(冰川雪水)</text>
+    <!-- Basin & Oasis -->
+    <path d="M 180 210 Q 250 210 340 230 L 340 300 L 40 300 Z" fill="#fef3c7"/>
+    <!-- Meltwater river -->
+    <path d="M 120 180 Q 160 210 240 230 Q 300 240 340 245" stroke="#38bdf8" stroke-width="6" fill="none"/>
+    <text x="260" y="220" font-size="11" font-weight="bold" fill="#0284c7">夏季冰雪融水灌溉</text>
+    <text x="260" y="270" font-size="11" fill="#78350f">沙质土壤 · 疏松透气通水</text>
+  </g>
+  <!-- Right: Day-Night Temp Difference & Sugar Core -->
+  <g transform="translate(400, 20)">
+    <rect width="380" height="320" fill="#ffffff" stroke="#cbd5e1" rx="8"/>
+    <text x="190" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">图2 9-10月阿克苏温差与糖分积累机制</text>
+    <!-- Day vs Night columns -->
+    <rect x="60" y="70" width="110" height="180" fill="#fff7ed" stroke="#ea580c" rx="6"/>
+    <text x="115" y="95" font-size="13" font-weight="bold" fill="#c2410c" text-anchor="middle">白天 (22~28℃)</text>
+    <text x="115" y="125" font-size="11" fill="#ea580c" text-anchor="middle">光照强·光照达14h</text>
+    <text x="115" y="150" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">光合作用极强 ↑↑</text>
+    <text x="115" y="180" font-size="11" fill="#334155" text-anchor="middle">合成大量可溶性糖</text>
+    <rect x="210" y="70" width="110" height="180" fill="#eff6ff" stroke="#2563eb" rx="6"/>
+    <text x="265" y="95" font-size="13" font-weight="bold" fill="#1d4ed8" text-anchor="middle">夜间 (3~8℃)</text>
+    <text x="265" y="125" font-size="11" fill="#2563eb" text-anchor="middle">剧烈降温·近霜冻</text>
+    <text x="265" y="150" font-size="11" font-weight="bold" fill="#b91c1c" text-anchor="middle">呼吸作用极弱 ↓↓</text>
+    <text x="265" y="180" font-size="11" fill="#334155" text-anchor="middle">呼吸消耗降到极低</text>
+    <!-- Bottom summary -->
+    <rect x="50" y="265" width="280" height="35" fill="#fef2f2" stroke="#f87171" rx="4"/>
+    <text x="190" y="287" font-size="11" font-weight="bold" fill="#b91c1c" text-anchor="middle">霜降后细胞液糖分凝结 -> 形成半透明“冰糖心”</text>
+  </g>
+</svg>

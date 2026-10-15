@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="100%" height="100%">
+  <rect width="800" height="360" fill="#f8fafc" rx="10"/>
+  <g transform="translate(20, 20)">
+    <rect width="360" height="320" fill="#ffffff" stroke="#cbd5e1" rx="8"/>
+    <text x="180" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">图1 喀斯特地貌石灰岩裂隙与富硒黄壤分布</text>
+    <!-- Surface with fissure -->
+    <rect x="30" y="60" width="300" height="60" fill="#fed7aa" stroke="#ea580c" rx="4"/>
+    <text x="180" y="95" font-size="12" font-weight="bold" fill="#9a3412" text-anchor="middle">地表黄壤土层薄 · 天然富硒(0.35mg/kg)</text>
+    <!-- Limestone with cracks -->
+    <rect x="30" y="130" width="300" height="120" fill="#e2e8f0" stroke="#64748b" rx="4"/>
+    <path d="M 100 130 L 120 250 M 200 130 L 190 250 M 260 130 L 280 250" stroke="#0284c7" stroke-width="3" stroke-dasharray="4,2"/>
+    <text x="180" y="180" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">石灰岩溶洞与节理裂隙发育</text>
+    <text x="180" y="200" font-size="11" fill="#dc2626" text-anchor="middle">降水虽多但地表极易漏水 -> “喀斯特干旱”</text>
+    <!-- Water pipe irrigation -->
+    <rect x="30" y="260" width="300" height="45" fill="#eff6ff" stroke="#3b82f6" rx="4"/>
+    <text x="180" y="287" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="middle">生态对策：山塘蓄水 + 水肥一体化精准滴灌</text>
+  </g>
+  <g transform="translate(400, 20)">
+    <rect width="380" height="320" fill="#ffffff" stroke="#cbd5e1" rx="8"/>
+    <text x="190" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">图2 猕猴桃肉质肉性肉质肉质根与富硒转化</text>
+    <!-- Root mechanism -->
+    <rect x="40" y="60" width="300" height="90" fill="#ecfdf5" stroke="#10b981" rx="6"/>
+    <text x="190" y="85" font-size="12" font-weight="bold" fill="#065f46" text-anchor="middle">猕猴桃肉质肉根特性</text>
+    <text x="190" y="110" font-size="11" fill="#047857" text-anchor="middle">喜湿润但怕积水(积水易导致无氧窒息腐烂)</text>
+    <text x="190" y="130" font-size="11" fill="#047857" text-anchor="middle">石灰岩山坡排水极佳刚好避免烂根</text>
+    <!-- Selenium Accumulation -->
+    <rect x="40" y="170" width="300" height="120" fill="#faf5ff" stroke="#8b5cf6" rx="6"/>
+    <text x="190" y="195" font-size="12" font-weight="bold" fill="#6d28d9" text-anchor="middle">微量元素吸收与有机硒转化</text>
+    <text x="190" y="225" font-size="11" fill="#5b21b6" text-anchor="middle">根毛吸收土壤中水溶态硒(SeO4²⁻/SeO3²⁻)</text>
+    <text x="190" y="250" font-size="11" fill="#5b21b6" text-anchor="middle">体内转化为具有抗氧化机能的硒代蛋氨酸</text>
+    <text x="190" y="275" font-size="11" font-weight="bold" fill="#7c3aed" text-anchor="middle">果实营养大幅提升 · 地理标志品牌溢价</text>
+  </g>
+</svg>

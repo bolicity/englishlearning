@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上海市初中综合素质评价电子佐证材料 - 梅雨除湿探究</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-light: #2563eb;
+    --accent: #0284c7;
+    --border: #cbd5e1;
+    --bg-card: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #e2e8f0;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: var(--text-main);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Control Panel */
+  .control-panel {
+    width: 2380px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #cbd5e1;
+  }
+  .info-fields {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .info-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .info-field input {
+    padding: 6px 12px;
+    border: 1px solid #94a3b8;
+    border-radius: 6px;
+    font-size: 15px;
+    width: 110px;
+    font-weight: 600;
+    color: #0f172a;
+  }
+  .actions {
+    display: flex;
+    gap: 12px;
+  }
+  .btn {
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-primary {
+    background: #2563eb;
+    color: white;
+  }
+  .btn-primary:hover {
+    background: #1d4ed8;
+  }
+  .btn-outline {
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+  }
+
+  /* 2-Page Horizontal Spread / A3 Presentation Layout */
+  .a3-sheet {
+    width: 2380px;
+    min-height: 1680px;
+    background: #ffffff;
+    padding: 36px 44px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #cbd5e1;
+  }
+
+  /* Header banner */
+  .sheet-header {
+    border-bottom: 3px double #1e3a8a;
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .header-left h1 {
+    font-size: 26px;
+    color: #1e3a8a;
+    font-weight: 800;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-left .sub {
+    font-size: 15px;
+    color: #475569;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+  .meta-tag-grid {
+    display: flex;
+    gap: 20px;
+    font-size: 15px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 8px 18px;
+    border-radius: 6px;
+  }
+  .meta-tag-grid span b {
+    color: #1e3a8a;
+  }
+
+  /* Spread columns */
+  .spread-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    flex: 1;
+  }
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* Sections */
+  .section-box {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    background: #ffffff;
+  }
+  .sec-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e3a8a;
+    border-left: 4px solid #2563eb;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sec-title .badge {
+    font-size: 12px;
+    font-weight: normal;
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+  .p-text {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #334155;
+    text-align: justify;
+    margin-bottom: 8px;
+  }
+  .p-text:last-child { margin-bottom: 0; }
+
+  /* Tables */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin: 10px 0;
+  }
+  .data-table th, .data-table td {
+    border: 1px solid #cbd5e1;
+    padding: 6px 10px;
+    text-align: center;
+  }
+  .data-table th {
+    background: #f1f5f9;
+    color: #1e293b;
+    font-weight: 600;
+  }
+  .data-table tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+
+  /* Images grid */
+  .evidence-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 10px 0;
+  }
+  .evidence-card {
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f8fafc;
+  }
+  .evidence-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+  .evidence-caption {
+    padding: 7px 10px;
+    font-size: 13px;
+    color: #1e293b;
+    font-weight: 600;
+    text-align: center;
+    background: #f1f5f9;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  /* Chart containers */
+  .chart-box {
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 10px 0;
+    background: #fff;
+  }
+  .chart-box img {
+    width: 100%;
+    height: 240px;
+    object-fit: contain;
+    display: block;
+    background: #fff;
+  }
+
+  body.capture-mode {
+    background: #ffffff;
+    padding: 0;
+  }
+  body.capture-mode .control-panel {
+    display: none !important;
+  }
+  body.capture-mode .a3-sheet {
+    box-shadow: none;
+    border: none;
+  }
+
+  /* Sign footer */
+  .sign-footer {
+    border-top: 2px dashed #cbd5e1;
+    padding-top: 14px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #334155;
+  }
+  .sign-block {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .sign-underline {
+    display: inline-block;
+    min-width: 100px;
+    border-bottom: 1px solid #0f172a;
+    text-align: center;
+    font-weight: 700;
+    color: #0f172a;
+    padding: 0 8px;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .control-panel { display: none !important; }
+    .a3-sheet { box-shadow: none; border: none; width: 100%; }
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+
+<div class="control-panel">
+  <div class="info-fields">
+    <div class="info-field">
+      <label>班级：</label>
+      <input type="text" id="inputClass" value="01" placeholder="如01"> 班
+    </div>
+    <div class="info-field">
+      <label>学号：</label>
+      <input type="text" id="inputId" value="01" placeholder="如01"> 号
+    </div>
+    <div class="info-field">
+      <label>学生姓名：</label>
+      <input type="text" id="inputName" value="Owen" style="width: 130px;">
+    </div>
+    <div class="info-field">
+      <label>指导教师：</label>
+      <input type="text" id="inputTeacher" value="物理组老师" style="width: 120px;">
+    </div>
+    <div class="info-field">
+      <label>生成文件名：</label>
+      <span id="previewFilename" style="color: #2563eb; font-weight: 700; font-family: monospace;">0101Owen.jpg</span>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" onclick="exportJpg()">📸 一键导出学校要求JPG大图 (不超过30MB)</button>
+    <button class="btn btn-outline" onclick="window.print()">🖨️ 打印 / 存为PDF</button>
+  </div>
+</div>
+
+<div class="a3-sheet" id="reportSheet">
+  <!-- Top Banner -->
+  <div class="sheet-header">
+    <div class="header-left">
+      <h1>上海市初中学生综合素质评价 · 创新精神与实践能力佐证材料</h1>
+      <div class="sub">课题：梅雨季里的除湿选择——家庭四种除湿方式效果与成本对比探究（物理与科学跨学科实践）</div>
+    </div>
+    <div class="meta-tag-grid">
+      <span>学校：<b id="dispSchool">西延安中学</b></span>
+      <span>年级班级：<b id="dispClass">九年级（1）班</b></span>
+      <span>学号：<b id="dispId">01</b></span>
+      <span>探究学生：<b id="dispName">Owen</b></span>
+      <span>指导教师：<b id="dispTeacher">物理组老师</b></span>
+      <span>完成日期：<b>2026年8月</b></span>
+    </div>
+  </div>
+
+  <div class="spread-content">
+    <!-- Left Column (Page 1 equivalent) -->
+    <div class="col">
+      <!-- 选题背景与意义 -->
+      <div class="section-box">
+        <div class="sec-title">一、选题背景与探究问题 <span class="badge">生活观察与物理实践</span></div>
+        <p class="p-text">
+          <b>选题背景：</b>上海每年6—7月进入梅雨季，平均相对湿度达85%—95%。室内地板返潮、衣柜衣物发霉成为普遍痛点。面对市面上的除湿机、空调除湿、吸湿盒等手段，各方式的实际降湿速度、持续能力与耗电成本差异显著。本课题结合九年级物理“物态变化（蒸发与液化）”及生活用电核算，在真实家庭环境中开展定量对比探究。
+        </p>
+        <p class="p-text">
+          <b>探究核心问题：</b>① 四种常见除湿方式各自的相对湿度降幅与达稳时间？② 每降低1个百分点湿度的经济成本（电费/耗材）是多少？③ 针对不同家居空间（卧室、密闭衣柜、客厅）应如何科学分层配置？
+        </p>
+      </div>
+
+      <!-- 实验设计与过程佐证 -->
+      <div class="section-box">
+        <div class="sec-title">二、实验方案设计与器材实测佐证 <span class="badge">控制变量与同步记录</span></div>
+        <p class="p-text">
+          <b>控制变量法：</b>选取同一套住房中朝向、层高相近的三个房间：主卧（空调除湿）、书房（除湿机）、次卧（干燥剂2盒），另设客厅（自然通风）为对照组。统一采用四只经校准的同型号电子温湿度计及电能计量插座，连续7天（6月28日—7月4日）每天8:00至20:00每两小时同步记录。
+        </p>
+
+        <!-- 实测佐证照片 1 & 2 -->
+        <div class="evidence-row">
+          <div class="evidence-card">
+            <img src="./佐证材料图片/实测佐证1_四房间温湿度计对比与实验器材.jpg" alt="温湿度计校准与实验器材">
+            <div class="evidence-caption">【佐证1】四空间温湿度计校准读数(84%/77%/66%/56%)与电能插座</div>
+          </div>
+          <div class="evidence-card">
+            <img src="./佐证材料图片/实测佐证2_书房除湿机实测运行与记录.jpg" alt="书房除湿机实测">
+            <div class="evidence-caption">【佐证2】书房除湿机运行4小时达稳(56%防霉标准)及学生记录现场</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 实测数据表与图1 -->
+      <div class="section-box">
+        <div class="sec-title">三、实测数据记录与湿度变化趋势 <span class="badge">7月2日基准日典型数据</span></div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>除湿方式／空间</th>
+              <th>8:00初始</th>
+              <th>14:00中期</th>
+              <th>20:00终期</th>
+              <th>全天湿度降幅</th>
+              <th>防霉达标(≤70%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>除湿机</b>（书房，开机4h）</td>
+              <td>82%</td>
+              <td>57%</td>
+              <td><b>56%</b></td>
+              <td><span style="color:#15803d; font-weight:700;">↓ 26 个百分点</span></td>
+              <td>✅ 优良 (2.5h达标)</td>
+            </tr>
+            <tr>
+              <td><b>空调除湿</b>（主卧，开机3h）</td>
+              <td>82%</td>
+              <td>67%</td>
+              <td><b>66%</b></td>
+              <td><span style="color:#0284c7; font-weight:700;">↓ 16 个百分点</span></td>
+              <td>✅ 达标 (3h达标)</td>
+            </tr>
+            <tr>
+              <td><b>盒装干燥剂</b>（次卧，2盒）</td>
+              <td>82%</td>
+              <td>78%</td>
+              <td><b>77%</b></td>
+              <td><span style="color:#64748b; font-weight:700;">↓ 5 个百分点</span></td>
+              <td>❌ 未达标 (全屋微效)</td>
+            </tr>
+            <tr>
+              <td><b>自然通风</b>（客厅，对照组）</td>
+              <td>82%</td>
+              <td>86%</td>
+              <td><b>84%</b></td>
+              <td><span style="color:#b91c1c; font-weight:700;">↑ 2 点 (负效果)</span></td>
+              <td>❌ 潮气内灌反而恶化</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 折线图 -->
+        <div class="chart-box">
+          <img src="./佐证材料图片/图1_四种除湿方式相对湿度实测变化折线图.jpg" alt="湿度变化曲线图">
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column (Page 2 equivalent) -->
+    <div class="col">
+      <!-- 成本与效果对比分析 -->
+      <div class="section-box">
+        <div class="sec-title">四、经济成本核算与能效对比 <span class="badge">按上海阶梯电价第一档0.617元/度</span></div>
+        <p class="p-text">
+          <b>成本效益分析：</b>除湿机4小时实测耗电2.4度，日均成本1.48元，平均<b>降低1%湿度仅需0.057元</b>，性价比最高；空调除湿3小时耗电3.6度（2.22元），单位降湿成本0.139元；干燥剂单价约0.8元/盒，用于大空间性价比低，但适合密闭小空间。
+        </p>
+
+        <!-- 柱状图 -->
+        <div class="chart-box">
+          <img src="./佐证材料图片/图2_四种除湿方式日均成本与降幅对比柱状图.jpg" alt="成本对比柱状图">
+        </div>
+
+        <!-- 局部测试与记录表佐证照片 3 & 4 -->
+        <div class="evidence-row">
+          <div class="evidence-card">
+            <img src="./佐证材料图片/实测佐证3_衣柜密闭空间干燥剂吸湿效果.jpg" alt="衣柜干燥剂实测">
+            <div class="evidence-caption">【佐证3】密闭衣柜内干燥剂吸湿集水实测(局部降至68%)</div>
+          </div>
+          <div class="evidence-card">
+            <img src="./佐证材料图片/实测佐证4_家庭除湿方式对比实验记录表实拍.jpg" alt="纸质实验记录表实拍">
+            <div class="evidence-caption">【佐证4】学生手填《家庭除湿方式对比实验记录表》原始实拍</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 结论与建议 -->
+      <div class="section-box">
+        <div class="sec-title">五、探究结论与分层防潮方案 <span class="badge">科学实用落地指南</span></div>
+        <p class="p-text">
+          <b>结论1（效能排序）：</b>除湿机（降26点/稳至56%）＞ 空调除湿模式（降16点/稳至66%）＞ 盒装干燥剂（降5点）＞ 自然通风（梅雨高湿时开窗为负效果）。<br>
+          <b>结论2（科学湿度目标）：</b>健康舒适适宜湿度为40%—60%，防霉关键在控制在70%以下，无需追求过度干燥。<br>
+          <b>建议方案：</b>① <b>分层治理：</b>衣柜/鞋柜等≤1m³密闭小空间放置氯化钙干燥剂；起居卧室梅雨季定时开启除湿机；② <b>避雷误区：</b>室外相对湿度>80%时坚决关闭门窗，防止高温高湿水汽遭遇室内冷墙面冷凝；③ <b>节能用电：</b>除湿机可配合定时插座在夜间波谷电价时段运行。
+        </p>
+      </div>
+
+      <!-- 反思与签名 -->
+      <div class="section-box">
+        <div class="sec-title">六、反思与承诺签名 <span class="badge">实事求是 独立探究</span></div>
+        <p class="p-text">
+          <b>探究反思：</b>本次探究完整走通了“观察痛点—提出假设—对照实验—数据清洗—得出结论”流程。在数据整理阶段，结合所学编程编写小脚本自动计算降幅与均价，体验了技术赋能生活的乐趣。不足之处在于7天周期未覆盖出梅全期，后续将利用传感器进行全自动化数据记录。
+        </p>
+        
+        <div class="sign-footer">
+          <div class="sign-block">
+            <span>探究学生承诺签名：</span>
+            <span class="sign-underline" id="signStudent">Owen</span>
+          </div>
+          <div class="sign-block">
+            <span>指导教师评语/签名：</span>
+            <span class="sign-underline" id="signTeacher">通过 · 准予上报</span>
+          </div>
+          <div class="sign-block">
+            <span>填报日期：</span>
+            <span class="sign-underline">2026年8月28日</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  if (window.location.search.includes('capture=1')) {
+    document.body.classList.add('capture-mode');
+  }
+
+  function updateDisplay() {
+    const cls = document.getElementById('inputClass').value.padStart(2, '0');
+    const id = document.getElementById('inputId').value.padStart(2, '0');
+    const name = document.getElementById('inputName').value.trim();
+    const teacher = document.getElementById('inputTeacher').value.trim();
+
+    document.getElementById('dispClass').innerText = `九年级（${parseInt(cls) || 1}）班`;
+    document.getElementById('dispId').innerText = id;
+    document.getElementById('dispName').innerText = name;
+    document.getElementById('signStudent').innerText = name;
+    document.getElementById('dispTeacher').innerText = teacher;
+
+    const filename = `${cls}${id}${name}.jpg`;
+    document.getElementById('previewFilename').innerText = filename;
+  }
+
+  document.getElementById('inputClass').addEventListener('input', updateDisplay);
+  document.getElementById('inputId').addEventListener('input', updateDisplay);
+  document.getElementById('inputName').addEventListener('input', updateDisplay);
+  document.getElementById('inputTeacher').addEventListener('input', updateDisplay);
+
+  async function exportJpg() {
+    const sheet = document.getElementById('reportSheet');
+    const filename = document.getElementById('previewFilename').innerText;
+    
+    // Use html2canvas
+    const canvas = await html2canvas(sheet, {
+      scale: 1.5,
+      useCORS: true,
+      logging: false,
+      backgroundColor: '#ffffff'
+    });
+
+    canvas.toBlob(function(blob) {
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = URL.createObjectURL(blob);
+      link.click();
+    }, 'image/jpeg', 0.92);
+  }
+</script>
+
+</body>
+</html>
