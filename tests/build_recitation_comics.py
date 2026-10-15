@@ -28,6 +28,7 @@ CN_NUM = ['①', '②', '③', '④']
 
 
 def build_payload():
+    pym = json.load(open(ROOT / 'chinese' / 'recitation-pinyin-V1.json', encoding='utf-8'))
     vols = []
     idx = 0
     for v in M.DATA:
@@ -48,6 +49,7 @@ def build_payload():
                 'author': it['author'],
                 'type': it['type'],
                 'panels': panels,
+                'py': pym.get(it['slug'], {}),
             })
             idx += 1
         vols.append({
@@ -161,8 +163,16 @@ HTML = r'''<!DOCTYPE html>
   .pn-txt{padding:.75rem .85rem .85rem;display:flex;flex-direction:column;gap:.4rem;
       border-top:1px solid var(--border);background:#FFFDFB}
   .verse{font-family:'Noto Serif SC',serif;font-size:.95rem;font-weight:700;color:var(--red);
-      line-height:1.55;letter-spacing:.01em}
+      line-height:2.05;letter-spacing:.01em}
   .scene{font-size:.72rem;color:var(--tm);line-height:1.6}
+
+  /* ---------- 难字注音 ---------- */
+  ruby{ruby-position:over}
+  rt{font-family:'Inter','PingFang SC',sans-serif;font-size:.5em;font-weight:500;
+     color:var(--tm);letter-spacing:0;line-height:1.1;text-indent:0}
+  .verse ruby,.lb-txt .verse ruby{ruby-align:center}
+  body.no-py rt{display:none}
+  body.no-py .verse{line-height:1.6}
   .pn.hide-verse .verse{filter:blur(6px);opacity:.55;user-select:none;transition:.25s}
   .pn.hide-verse .scene{opacity:.45}
   .pn.hide-verse .pn-img img{filter:brightness(.97)}
@@ -257,6 +267,7 @@ HTML = r'''<!DOCTYPE html>
           <button class="btn" id="btnPrev">← 上一篇</button>
           <button class="btn" id="btnNext">下一篇 →</button>
           <button class="btn" id="btnBlur">👁 看图背诗</button>
+          <button class="btn on" id="btnPy">🔤 拼音</button>
           <button class="btn" id="btnScene">📝 图注</button>
           <span class="counter" id="pCounter"></span>
         </div>
@@ -291,6 +302,35 @@ const TOTAL = flat.length;
 
 const $ = id => document.getElementById(id);
 let cur = 0, curPanel = 0, blurMode = false, showScene = true;
+
+/* ---------- 难字注音 ---------- */
+const PYM = {};
+flat.forEach(p => { PYM[p.id] = p.py || {c:{}, w:{}}; });
+
+function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function annotate(text, m) {
+  if (!m) return esc(text);
+  const marks = new Array(text.length).fill(null);
+  const words = m.w || {}, chars = m.c || {};
+  Object.keys(words).forEach(w => {
+    const syl = String(words[w]).split(' ');
+    let from = 0, i;
+    while ((i = text.indexOf(w, from)) !== -1) {
+      for (let k = 0; k < w.length; k++) marks[i + k] = syl[k] || '';
+      from = i + w.length;
+    }
+  });
+  Object.keys(chars).forEach(zi => {
+    for (let i = 0; i < text.length; i++) if (text[i] === zi && !marks[i]) marks[i] = chars[zi];
+  });
+  let out = '';
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    out += marks[i] ? `<ruby>${esc(ch)}<rt>${esc(marks[i])}</rt></ruby>` : esc(ch);
+  }
+  return out;
+}
 
 /* ---------- sidebar ---------- */
 let html = '';
@@ -338,7 +378,7 @@ function go(i) {
         <span class="reveal-tip">点击看图猜诗句</span>
       </div>
       <div class="pn-txt">
-        <div class="verse">${pn.v}</div>
+        <div class="verse">${annotate(pn.v, PYM[p.id])}</div>
         <div class="scene">${pn.s}</div>
       </div>
     </article>`).join('');
@@ -369,7 +409,7 @@ function openLb(k) {
   curPanel = k;
   const p = flat[cur], pn = p.panels[k];
   $('lbImg').src = pn.img;
-  $('lbVerse').textContent = pn.v;
+  $('lbVerse').innerHTML = annotate(pn.v, PYM[p.id]);
   $('lbScene').textContent = `${p.title} · ${p.author}　|　${pn.s}`;
   $('lb').classList.add('show');
 }
@@ -407,6 +447,11 @@ $('btnBlur').onclick = () => {
     pn.classList.toggle('hide-verse', blurMode);
     pn.classList.remove('revealed');
   });
+};
+$('btnPy').onclick = () => {
+  const off = document.body.classList.toggle('no-py');
+  $('btnPy').classList.toggle('on', !off);
+  $('btnPy').textContent = off ? '🔤 拼音（隐藏）' : '🔤 拼音';
 };
 $('btnScene').onclick = () => {
   showScene = !showScene;
