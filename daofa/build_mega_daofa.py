@@ -482,14 +482,24 @@ def get_html_head():
         </div>
       </a>
       <div class="nav-actions">
-        <a href="daofa-V7.html" class="nav-btn">📖 知识精要工作台</a>
-        <a href="../history/history.html" class="nav-btn">🏛️ 历史真题小论文</a>
-        <a href="../index.html" class="nav-btn nav-btn-primary">🏠 学习中心</a>
+        <a href="daofa.html" class="nav-btn" style="color: #DC2626; background: #FEF2F2; border-color: #FECDD3; font-weight: 700;">⚖️ 道法复习中心</a>
+        <a href="daofa-V7.html" class="nav-btn">🧠 知识精要自测</a>
+        <a href="../history/index.html" class="nav-btn">🏛️ 历史复习中心</a>
+        <a href="../index.html" class="nav-btn nav-btn-primary">🏠 返回主页</a>
       </div>
     </div>
   </header>
 
   <div class="main-wrap">
+
+    <!-- 面包屑导航 -->
+    <div style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: #64748B;">
+      <a href="../index.html" style="color: #2563EB; text-decoration: none; font-weight: 600;">🏠 学习中心首页</a>
+      <span>/</span>
+      <a href="daofa.html" style="color: #059669; text-decoration: none; font-weight: 600;">⚖️ 初中道法中心</a>
+      <span>/</span>
+      <span style="color: #DC2626; font-weight: 700;">🔥 22套一模冲刺专项题库</span>
+    </div>
 
     <!-- 冲刺横幅 -->
     <section class="sprint-hero">
@@ -696,10 +706,27 @@ def get_html_tail():
     </div>
   </div>
 
+  <!-- 悬浮快捷返回主页与道法中心按钮 -->
+  <div style="position: fixed; bottom: 24px; left: 24px; z-index: 45; display: flex; gap: 8px;">
+    <a href="../index.html" title="返回中心主页" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.55rem 0.95rem; border-radius: 999px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); border: 1.5px solid var(--border-color); color: var(--text-main); font-size: 0.85rem; font-weight: 700; text-decoration: none; box-shadow: var(--shadow-md); transition: all 0.2s;">
+      <span>🏠</span>
+      <span>返回主页</span>
+    </a>
+    <a href="daofa.html" title="返回道法中心" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.55rem 0.95rem; border-radius: 999px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); border: 1.5px solid #FECDD3; color: #DC2626; font-size: 0.85rem; font-weight: 700; text-decoration: none; box-shadow: var(--shadow-md); transition: all 0.2s;">
+      <span>⚖️</span>
+      <span>道法中心</span>
+    </a>
+  </div>
+
   <!-- 提示弹窗 -->
   <div class="toast" id="toast-msg">✅ 答题模板已成功复制到剪贴板！可以直接粘贴复习！</div>
 
   <footer>
+    <div style="margin-bottom: 0.85rem; display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+      <a href="../index.html" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.9rem; border-radius: 999px; background: white; border: 1px solid #CBD5E1; color: #1E293B; font-size: 0.82rem; font-weight: 700; text-decoration: none;">🏠 返回学习中心主页</a>
+      <a href="daofa.html" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.9rem; border-radius: 999px; background: #FEF2F2; border: 1px solid #FECDD3; color: #DC2626; font-size: 0.82rem; font-weight: 700; text-decoration: none;">⚖️ 返回道法复习中心</a>
+      <a href="../history/index.html" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.9rem; border-radius: 999px; background: #FFFBEB; border: 1px solid #FDE68A; color: #B45309; font-size: 0.82rem; font-weight: 700; text-decoration: none;">🏛️ 历史复习中心</a>
+    </div>
     <p>© 2026 Owen Learning Center · 上海初中道法教学研发中心</p>
     <p style="margin-top: 0.4rem; font-size: 0.8rem;">严格对标上海新课改中考与区一模/二模真题 · 结构化采分点 · 拒绝死记硬背</p>
   </footer>
@@ -1591,25 +1618,13 @@ def build_mega_daofa():
 
     daofa_dir = "/Users/emily/Documents/Projects/owenlearining/daofa"
     
-    # 1. daofa-special-bank.html
+    # 1. daofa-special-bank.html (Question Bank Only)
     f_bank = os.path.join(daofa_dir, "daofa-special-bank.html")
     with open(f_bank, "w", encoding="utf-8") as f:
         f.write(full_html)
     print(f"Written: {f_bank} ({len(full_html)} bytes)")
 
-    # 2. daofa.html
-    f_daofa = os.path.join(daofa_dir, "daofa.html")
-    with open(f_daofa, "w", encoding="utf-8") as f:
-        f.write(full_html)
-    print(f"Written: {f_daofa} ({len(full_html)} bytes)")
-
-    # 3. index.html in daofa/
-    f_idx = os.path.join(daofa_dir, "index.html")
-    with open(f_idx, "w", encoding="utf-8") as f:
-        f.write(full_html)
-    print(f"Written: {f_idx} ({len(full_html)} bytes)")
-
-    print(f"Successfully generated all 3 files with {len(questions)} authentic exam questions!")
+    print(f"Successfully generated question bank with {len(questions)} authentic exam questions!")
 
 if __name__ == "__main__":
     build_mega_daofa()

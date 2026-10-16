@@ -1,0 +1,683 @@
+# -*- coding: utf-8 -*-
+"""
+Generate unified Hub pages for Daofa (Politics) and History,
+matching the clarity and layout of chinese/chinese.html.
+"""
+
+import os
+
+DAOFA_HUB_HTML = """<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>初中道德与法治复习中心 V2 | 统一学科门户</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+
+      --brand-red: #DC2626;
+      --brand-red-light: #EF4444;
+      --brand-red-bg: #FEF2F2;
+      --brand-red-border: #FECDD3;
+
+      --brand-blue: #2563EB;
+      --brand-emerald: #059669;
+      --brand-amber: #D97706;
+      --brand-purple: #7C3AED;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+      background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6;
+    }
+
+    /* 顶部导航 */
+    header {
+      background: var(--bg-card); border-bottom: 1px solid var(--border-color);
+      position: sticky; top: 0; z-index: 50; box-shadow: var(--shadow-sm);
+    }
+    .nav-container {
+      max-width: 1240px; margin: 0 auto; padding: 0.85rem 1.25rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); }
+    .brand-logo {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--brand-red), var(--brand-red-light));
+      color: white; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.15rem;
+      box-shadow: 0 2px 6px rgba(220, 38, 38, 0.25);
+    }
+    .brand-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--brand-red); }
+    .brand-subtitle { font-size: 0.78rem; color: var(--text-muted); }
+
+    .nav-btns {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.55rem 1rem; min-height: 40px;
+      background-color: var(--bg-subtle); color: var(--text-secondary);
+      border-radius: var(--radius-sm); border: 1px solid var(--border-color);
+      text-decoration: none; font-weight: 700; font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover { background-color: var(--brand-red-bg); color: var(--brand-red); border-color: var(--brand-red-border); }
+
+    /* 主容器 */
+    .container {
+      max-width: 1240px; margin: 0 auto;
+      padding: 2rem 1.25rem 4rem 1.25rem;
+      display: flex; flex-direction: column; gap: 2rem;
+    }
+
+    /* 顶部 Hero 展板 */
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFF1F2 100%);
+      border: 1px solid var(--brand-red-border); border-radius: var(--radius-lg);
+      padding: 2.2rem; box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+    }
+    .hero-card::after {
+      content: "上海新中考冲刺";
+      position: absolute; right: -30px; top: 22px;
+      background: linear-gradient(90deg, #DC2626, #EF4444);
+      color: white; font-size: 0.72rem; font-weight: 800;
+      padding: 4px 38px; transform: rotate(45deg);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.25rem 0.65rem; border-radius: 999px;
+      background: white; border: 1px solid var(--brand-red-border);
+      color: var(--brand-red); font-size: 0.78rem; font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .hero-title { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; color: #1E293B; margin-bottom: 0.5rem; }
+    .hero-title span { color: var(--brand-red); }
+    .hero-desc { font-size: 0.95rem; color: var(--text-secondary); max-width: 900px; line-height: 1.6; }
+
+    /* 板块卡片矩阵 (Tile Grid) */
+    .tile-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem;
+    }
+    .tile {
+      background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      padding: 1.25rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.5rem;
+      transition: all 0.2s ease; box-shadow: var(--shadow-sm); position: relative;
+    }
+    .tile:hover {
+      box-shadow: var(--shadow-md); transform: translateY(-3px);
+      border-color: #CBD5E1;
+    }
+    .tile-header {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .tile-icon { font-size: 1.6rem; line-height: 1; }
+    .tile-badge {
+      font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 999px;
+    }
+    .tile-title { font-size: 1.05rem; font-weight: 800; color: var(--text-primary); line-height: 1.35; margin-top: 0.25rem; }
+    .tile-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; flex: 1; }
+    .tile-bar { height: 4px; border-radius: 2px; margin-top: 0.75rem; }
+
+    /* 资料区 */
+    .materials-box {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 1.5rem 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .mat-head {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .mat-title { font-size: 1.2rem; font-weight: 800; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem; }
+    .mat-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;
+    }
+    .mat-card {
+      background: var(--bg-main); border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm); padding: 1rem;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 0.75rem;
+    }
+    .mat-name { font-size: 0.88rem; font-weight: 700; color: var(--text-primary); line-height: 1.4; }
+    .mat-meta { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); }
+    .mat-btn {
+      display: inline-flex; justify-content: center; align-items: center; gap: 0.35rem;
+      background: var(--brand-blue); color: white; border-radius: 6px; padding: 0.45rem 0.8rem;
+      font-size: 0.8rem; font-weight: 700; text-decoration: none;
+    }
+    .mat-btn:hover { background: #1D4ED8; }
+
+    footer {
+      background-color: var(--bg-card); border-top: 1px solid var(--border-color);
+      padding: 2rem 1.25rem; text-align: center; color: var(--text-muted); font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航 -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <div class="brand-logo">道</div>
+        <div>
+          <div class="brand-title">初中道德与法治复习中心</div>
+          <div class="brand-subtitle">同步上海新课标 · 考点精要 · 22套冲刺真题全覆盖</div>
+        </div>
+      </a>
+      <div class="nav-btns">
+        <a href="../history/index.html" class="back-btn" style="color: #D97706; background: #FFFBEB; border-color: #FDE68A;">
+          🏛️ 切换至历史中心
+        </a>
+        <a href="../index.html" class="back-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          返回学习中心
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- 顶部 Hero 展板 -->
+    <section class="hero-card">
+      <div class="hero-tag">🎯 体系化分流 · 解决“入口混乱与文字繁多”痛点</div>
+      <h1 class="hero-title">初中道德与法治 <span>两大核心学习通道</span></h1>
+      <p class="hero-desc">
+        将传统杂乱的复习资料梳理为<b>两大专精场景</b>：日常复习请进<b>【知识精要与挖空自测工作台】</b>，巩固全册要点与PDF原件；考前攻坚请进<b>【一模冲刺22套全真题库】</b>，精研辨析、材料、探究三大题型万能模板与真实采分点。
+      </p>
+    </section>
+
+    <!-- 核心板块磁贴矩阵 -->
+    <section class="tile-grid">
+
+      <!-- 板块 1: 一模冲刺专项题库 -->
+      <a class="tile" href="daofa-special-bank.html" style="border-color: #FECDD3;">
+        <div class="tile-header">
+          <span class="tile-icon">🔥</span>
+          <span class="tile-badge" style="background: #FEF2F2; color: #DC2626; border: 1px solid #FECDD3;">重点推荐</span>
+        </div>
+        <div class="tile-title">一模冲刺 22 套全真题库</div>
+        <div class="tile-desc">
+          涵盖官方综合卷一、课后讲评资料1-6、上海中考与各区一模真题。配官方标准思维链（材 ➔ 知）、在线草稿做题区与详尽采分扣分警示。
+        </div>
+        <div class="tile-bar" style="background: var(--brand-red);"></div>
+      </a>
+
+      <!-- 板块 2: 全周期考点精要 V7 -->
+      <a class="tile" href="daofa-V7.html" style="border-color: #A7F3D0;">
+        <div class="tile-header">
+          <span class="tile-icon">🧠</span>
+          <span class="tile-badge" style="background: #ECFDF5; color: #059669; border: 1px solid #A7F3D0;">自测必备</span>
+        </div>
+        <div class="tile-title">全周期知识精要与挖空自测 (V7)</div>
+        <div class="tile-desc">
+          六至九年级全学段知识点精要重构。三层渐进降噪呈现，85处核心考点一键开启挖空自测默背，支持在卡片中直接调阅238页官方原件。
+        </div>
+        <div class="tile-bar" style="background: var(--brand-emerald);"></div>
+      </a>
+
+      <!-- 板块 3: 三大题型答题模板 -->
+      <a class="tile" href="daofa-special-bank.html#tmpl-bianxi" style="border-color: #BFDBFE;">
+        <div class="tile-header">
+          <span class="tile-icon">📐</span>
+          <span class="tile-badge" style="background: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE;">满分模板</span>
+        </div>
+        <div class="tile-title">三大题型万能答题公式</div>
+        <div class="tile-desc">
+          专治大题无从下笔：辨析评析题“四步定乾坤”、材料分析题“四角对应法”、实践探究开放题“主体多元表与三阶方案”，考场直接套用。
+        </div>
+        <div class="tile-bar" style="background: var(--brand-blue);"></div>
+      </a>
+
+      <!-- 板块 4: 冲刺大纲全景知识树 -->
+      <a class="tile" href="daofa-special-bank.html#syllabus-body" style="border-color: #FDE68A;">
+        <div class="tile-header">
+          <span class="tile-icon">📋</span>
+          <span class="tile-badge" style="background: #FFFBEB; color: #D97706; border: 1px solid #FDE68A;">大纲全景</span>
+        </div>
+        <div class="tile-title">海报 10 次课冲刺大纲全景</div>
+        <div class="tile-desc">
+          完整复刻海报教学主线：从六七年级成长的节拍，到八上规则利益、八下宪法法治，再到九上党的领导与中国式现代化，脉络一清二楚。
+        </div>
+        <div class="tile-bar" style="background: var(--brand-amber);"></div>
+      </a>
+
+      <!-- 板块 5: 历史真题小论文联动 -->
+      <a class="tile" href="../history/index.html" style="border-color: #DDD6FE;">
+        <div class="tile-header">
+          <span class="tile-icon">🏛️</span>
+          <span class="tile-badge" style="background: #FAF5FF; color: #7C3AED; border: 1px solid #DDD6FE;">学科联动</span>
+        </div>
+        <div class="tile-title">初中历史 24 套真题小论文</div>
+        <div class="tile-desc">
+          跨学科协同提分通道：历史小论文在线写作演练舱、时空坐标史料分析、特征探究与上海史专项，同样配备字数统计与范文对照。
+        </div>
+        <div class="tile-bar" style="background: var(--brand-purple);"></div>
+      </a>
+
+      <!-- 板块 6: 官方教材与教研原件调阅 -->
+      <a class="tile" href="daofa-V7.html#pdf-section" style="border-color: #CBD5E1;">
+        <div class="tile-header">
+          <span class="tile-icon">📚</span>
+          <span class="tile-badge" style="background: #F1F5F9; color: #475569; border: 1px solid #CBD5E1;">官方原版</span>
+        </div>
+        <div class="tile-title">官方 7 大 PDF 原件资料库</div>
+        <div class="tile-desc">
+          包含综合卷一讲评思路PPT/PDF、九上课后练习讲评1-6、八上与六年级知识梳理、秋季练习册标准答案等全部 238 页高清教研资料。
+        </div>
+        <div class="tile-bar" style="background: #475569;"></div>
+      </a>
+
+    </section>
+
+    <!-- 官方教辅/课件在线调阅矩阵 -->
+    <section class="materials-box">
+      <div class="mat-head">
+        <div>
+          <h2 class="mat-title">📚 道法学科配套官方教研课件与试卷资料库</h2>
+          <p style="font-size: 13px; color: #64748B; margin-top: 4px;">收录官方讲评课件、知识梳理手册与练习册答案，支持在线快速调阅</p>
+        </div>
+        <a href="daofa-V7.html" class="mat-btn" style="background: #DC2626;">
+          🔍 打开道法全屏自测精要 (V7)
+        </a>
+      </div>
+
+      <div class="mat-grid">
+        <div class="mat-card">
+          <div class="mat-name">2026.9.30 道法综合卷一讲评思路 (核心母题)</div>
+          <div class="mat-meta"><span>教材讲评</span><span>10 页</span></div>
+          <a href="daofa-special-bank.html" class="mat-btn">🔥 专项练习母题 Q1-Q3</a>
+        </div>
+        <div class="mat-card">
+          <div class="mat-name">2026.9.30 九上新课课后练习讲评汇总（资料1-6）</div>
+          <div class="mat-meta"><span>教研资料</span><span>30 页</span></div>
+          <a href="daofa-special-bank.html" class="mat-btn">🔥 专项练习母题 Q4-Q6</a>
+        </div>
+        <div class="mat-card">
+          <div class="mat-name">2026.7 八上道法知识梳理手册</div>
+          <div class="mat-meta"><span>八上知识点</span><span>52 页</span></div>
+          <a href="daofa-V7.html" class="mat-btn" style="background: #059669;">📖 在 V7 工作台中背诵</a>
+        </div>
+        <div class="mat-card">
+          <div class="mat-name">2026.7 六年级道法核心知识梳理手册</div>
+          <div class="mat-meta"><span>六年级基础</span><span>56 页</span></div>
+          <a href="daofa-V7.html" class="mat-btn" style="background: #059669;">📖 在 V7 工作台中背诵</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2026 初中道德与法治复习中心 · 保持全站统一架构风格</p>
+    <p style="margin-top: 0.4rem; font-size: 0.8rem;">对标上海中考最新命题导向 · 双通道清晰导航 · 拒绝信息迷航</p>
+  </footer>
+
+</body>
+</html>
+"""
+
+HISTORY_HUB_HTML = """<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>初中历史复习中心 V2 | 统一学科门户</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+
+      --brand-amber: #D97706;
+      --brand-amber-light: #F59E0B;
+      --brand-amber-bg: #FFFBEB;
+      --brand-amber-border: #FDE68A;
+
+      --brand-red: #DC2626;
+      --brand-blue: #2563EB;
+      --brand-emerald: #059669;
+      --brand-purple: #7C3AED;
+
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+      background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6;
+    }
+
+    header {
+      background: var(--bg-card); border-bottom: 1px solid var(--border-color);
+      position: sticky; top: 0; z-index: 50; box-shadow: var(--shadow-sm);
+    }
+    .nav-container {
+      max-width: 1240px; margin: 0 auto; padding: 0.85rem 1.25rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); }
+    .brand-logo {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--brand-amber), var(--brand-amber-light));
+      color: white; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1.15rem;
+      box-shadow: 0 2px 6px rgba(217, 119, 6, 0.25);
+    }
+    .brand-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.2rem; color: #B45309; }
+    .brand-subtitle { font-size: 0.78rem; color: var(--text-muted); }
+
+    .nav-btns {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.55rem 1rem; min-height: 40px;
+      background-color: var(--bg-subtle); color: var(--text-secondary);
+      border-radius: var(--radius-sm); border: 1px solid var(--border-color);
+      text-decoration: none; font-weight: 700; font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover { background-color: var(--brand-amber-bg); color: var(--brand-amber); border-color: var(--brand-amber-border); }
+
+    .container {
+      max-width: 1240px; margin: 0 auto;
+      padding: 2rem 1.25rem 4rem 1.25rem;
+      display: flex; flex-direction: column; gap: 2rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFFBEB 100%);
+      border: 1px solid var(--brand-amber-border); border-radius: var(--radius-lg);
+      padding: 2.2rem; box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+    }
+    .hero-card::after {
+      content: "上海新中考冲刺";
+      position: absolute; right: -30px; top: 22px;
+      background: linear-gradient(90deg, #D97706, #F59E0B);
+      color: white; font-size: 0.72rem; font-weight: 800;
+      padding: 4px 38px; transform: rotate(45deg);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.25rem 0.65rem; border-radius: 999px;
+      background: white; border: 1px solid var(--brand-amber-border);
+      color: #B45309; font-size: 0.78rem; font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .hero-title { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; color: #1E293B; margin-bottom: 0.5rem; }
+    .hero-title span { color: #B45309; }
+    .hero-desc { font-size: 0.95rem; color: var(--text-secondary); max-width: 900px; line-height: 1.6; }
+
+    .tile-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem;
+    }
+    .tile {
+      background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      padding: 1.25rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.5rem;
+      transition: all 0.2s ease; box-shadow: var(--shadow-sm); position: relative;
+    }
+    .tile:hover {
+      box-shadow: var(--shadow-md); transform: translateY(-3px);
+      border-color: #CBD5E1;
+    }
+    .tile-header {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .tile-icon { font-size: 1.6rem; line-height: 1; }
+    .tile-badge {
+      font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 999px;
+    }
+    .tile-title { font-size: 1.05rem; font-weight: 800; color: var(--text-primary); line-height: 1.35; margin-top: 0.25rem; }
+    .tile-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; flex: 1; }
+    .tile-bar { height: 4px; border-radius: 2px; margin-top: 0.75rem; }
+
+    .materials-box {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 1.5rem 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .mat-head {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .mat-title { font-size: 1.2rem; font-weight: 800; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem; }
+    .mat-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;
+    }
+    .mat-card {
+      background: var(--bg-main); border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm); padding: 1rem;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 0.75rem;
+    }
+    .mat-name { font-size: 0.88rem; font-weight: 700; color: var(--text-primary); line-height: 1.4; }
+    .mat-meta { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); }
+    .mat-btn {
+      display: inline-flex; justify-content: center; align-items: center; gap: 0.35rem;
+      background: #B45309; color: white; border-radius: 6px; padding: 0.45rem 0.8rem;
+      font-size: 0.8rem; font-weight: 700; text-decoration: none;
+    }
+    .mat-btn:hover { background: #92400E; }
+
+    footer {
+      background-color: var(--bg-card); border-top: 1px solid var(--border-color);
+      padding: 2rem 1.25rem; text-align: center; color: var(--text-muted); font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航 -->
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <div class="brand-logo">史</div>
+        <div>
+          <div class="brand-title">初中历史复习中心</div>
+          <div class="brand-subtitle">同步上海新课标 · 时空史料实证 · 24套真题小论文写作舱</div>
+        </div>
+      </a>
+      <div class="nav-btns">
+        <a href="../daofa/index.html" class="back-btn" style="color: #DC2626; background: #FEF2F2; border-color: #FECDD3;">
+          ⚖️ 切换至道法中心
+        </a>
+        <a href="../index.html" class="back-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          返回学习中心
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- 顶部 Hero 展板 -->
+    <section class="hero-card">
+      <div class="hero-tag">🏛️ 上海历史新中考冲刺 · 小论文攻坚与专项突破</div>
+      <h1 class="hero-title">初中历史 <span>核心学习与答题工作台</span></h1>
+      <p class="hero-desc">
+        打破传统死记硬背历史年表，全面聚焦上海新中考压轴<b>【12分历史小论文】</b>与<b>【时空史料实证】</b>。精选24套浦东、徐汇、黄浦、闵行等区一模真题，配套独立草稿写作舱、观点-史实-结论公式与官方满分范文。
+      </p>
+    </section>
+
+    <!-- 核心板块磁贴矩阵 -->
+    <section class="tile-grid">
+
+      <!-- 板块 1: 24套全真试题库 -->
+      <a class="tile" href="history.html" style="border-color: #FDE68A;">
+        <div class="tile-header">
+          <span class="tile-icon">🏛️</span>
+          <span class="tile-badge" style="background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A;">核心必刷</span>
+        </div>
+        <div class="tile-title">一模冲刺 24 套全真试题库</div>
+        <div class="tile-desc">
+          汇编上海各区一二模真题，涵盖8大论述小论文题、6套时空史料题、6套特征探究题及4套上海地方史，题量充实，配标准破题链。
+        </div>
+        <div class="tile-bar" style="background: var(--brand-amber);"></div>
+      </a>
+
+      <!-- 板块 2: 小论文在线写作演练舱 -->
+      <a class="tile" href="history.html#cabin-1" style="border-color: #FECDD3;">
+        <div class="tile-header">
+          <span class="tile-icon">🖋️</span>
+          <span class="tile-badge" style="background: #FEF2F2; color: #DC2626; border: 1px solid #FECDD3;">在线演练</span>
+        </div>
+        <div class="tile-title">小论文在线写作舱 (8大主题)</div>
+        <div class="tile-desc">
+          提供沉浸式答题纸输入框与实时字数计数器，支持一键注入官方参考范文核对，逐条比对采分点（明确观点2分+史论充分6分+结论升华2分+逻辑规范2分）。
+        </div>
+        <div class="tile-bar" style="background: var(--brand-red);"></div>
+      </a>
+
+      <!-- 板块 3: 观点-史实-结论万能公式 -->
+      <a class="tile" href="history.html#method-card" style="border-color: #BFDBFE;">
+        <div class="tile-header">
+          <span class="tile-icon">📐</span>
+          <span class="tile-badge" style="background: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE;">满分模板</span>
+        </div>
+        <div class="tile-title">小论文“观点-史实-结论”公式</div>
+        <div class="tile-desc">
+          解决考场下笔无思路痛点：标题亮观点 ➔ 第一轮史实阐释 ➔ 第二轮反思提炼 ➔ 结尾总结升华四步结构，附防扣分警示指南。
+        </div>
+        <div class="tile-bar" style="background: var(--brand-blue);"></div>
+      </a>
+
+      <!-- 板块 4: 九年级新课练习册原件 -->
+      <a class="tile" href="doc-viewer-V1.html" style="border-color: #A7F3D0;">
+        <div class="tile-header">
+          <span class="tile-icon">📚</span>
+          <span class="tile-badge" style="background: #ECFDF5; color: #059669; border: 1px solid #A7F3D0;">原件查阅</span>
+        </div>
+        <div class="tile-title">九年级历史练习册原件中心</div>
+        <div class="tile-desc">
+          收录上海九年级历史上册新教材配套练习册高清扫描原件，提供清晰便捷的逐页导航与全屏在线查阅功能。
+        </div>
+        <div class="tile-bar" style="background: var(--brand-emerald);"></div>
+      </a>
+
+      <!-- 板块 5: 道法冲刺题库联动通道 -->
+      <a class="tile" href="../daofa/index.html" style="border-color: #DDD6FE;">
+        <div class="tile-header">
+          <span class="tile-icon">⚖️</span>
+          <span class="tile-badge" style="background: #FAF5FF; color: #7C3AED; border: 1px solid #DDD6FE;">学科联动</span>
+        </div>
+        <div class="tile-title">初中道法 22 套全真题库</div>
+        <div class="tile-desc">
+          文科双科协同攻坚通道：初中道德与法治一模冲刺22套全真题库、辨析四步法与材料四角公式，同步高效提分。
+        </div>
+        <div class="tile-bar" style="background: var(--brand-purple);"></div>
+      </a>
+
+      <!-- 板块 6: 10次课冲刺大纲知识树 -->
+      <a class="tile" href="history.html#syllabus-body" style="border-color: #CBD5E1;">
+        <div class="tile-header">
+          <span class="tile-icon">📋</span>
+          <span class="tile-badge" style="background: #F1F5F9; color: #475569; border: 1px solid #CBD5E1;">大纲全景</span>
+        </div>
+        <div class="tile-title">海报 10 次课冲刺大纲全景</div>
+        <div class="tile-desc">
+          中国古代与近现代史主线 ➔ 世界古代与近代资本主义兴起 ➔ 两次世界大战与战后秩序 ➔ 小论文进阶与专题综合模拟。
+        </div>
+        <div class="tile-bar" style="background: #475569;"></div>
+      </a>
+
+    </section>
+
+    <!-- 资料区 -->
+    <section class="materials-box">
+      <div class="mat-head">
+        <div>
+          <h2 class="mat-title">📚 历史学科配套官方教辅与试卷资料库</h2>
+          <p style="font-size: 13px; color: #64748B; margin-top: 4px;">收录官方练习册原件与重点专题教辅资料，支持在线高清查阅</p>
+        </div>
+        <a href="doc-viewer-V1.html" class="mat-btn">
+          🔍 打开历史全屏预览中心
+        </a>
+      </div>
+
+      <div class="mat-grid">
+        <div class="mat-card">
+          <div class="mat-name">26秋上海九年级历史练习册（新课改版）</div>
+          <div class="mat-meta"><span>高清原版</span><span>在线查阅</span></div>
+          <a href="doc-viewer-V1.html" class="mat-btn">👁️ 在线查阅练习册</a>
+        </div>
+        <div class="mat-card">
+          <div class="mat-name">上海新中考 8 大小论文专题与标准范文集</div>
+          <div class="mat-meta"><span>小论文专题</span><span>满分范文</span></div>
+          <a href="history.html" class="mat-btn" style="background: #DC2626;">🔥 进入小论文题库</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2026 初中历史复习中心 · 保持全站统一架构风格</p>
+    <p style="margin-top: 0.4rem; font-size: 0.8rem;">对标上海历史新中考评价标准 · 史料实证 · 小论文论证规范</p>
+  </footer>
+
+</body>
+</html>
+"""
+
+def main():
+    # 1. Write daofa-hub.html, daofa.html, and daofa/index.html
+    daofa_dir = "/Users/emily/Documents/Projects/owenlearining/daofa"
+    f1 = os.path.join(daofa_dir, "daofa-hub.html")
+    f2 = os.path.join(daofa_dir, "daofa.html")
+    f3 = os.path.join(daofa_dir, "index.html")
+
+    with open(f1, "w", encoding="utf-8") as f:
+        f.write(DAOFA_HUB_HTML)
+    with open(f2, "w", encoding="utf-8") as f:
+        f.write(DAOFA_HUB_HTML)
+    with open(f3, "w", encoding="utf-8") as f:
+        f.write(DAOFA_HUB_HTML)
+    print(f"Generated Daofa Hubs: {f1}, {f2}, {f3}")
+
+    # 2. Write history-hub.html, history/index.html
+    history_dir = "/Users/emily/Documents/Projects/owenlearining/history"
+    h1 = os.path.join(history_dir, "history-hub.html")
+    h2 = os.path.join(history_dir, "index.html")
+
+    with open(h1, "w", encoding="utf-8") as f:
+        f.write(HISTORY_HUB_HTML)
+    with open(h2, "w", encoding="utf-8") as f:
+        f.write(HISTORY_HUB_HTML)
+    print(f"Generated History Hubs: {h1}, {h2}")
+
+if __name__ == "__main__":
+    main()

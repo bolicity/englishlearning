@@ -587,12 +587,21 @@
         </div>
       </a>
       <div class="nav-actions">
-        <a href="daofa-special-bank.html" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.85rem; border-radius: 999px; background: #FEF2F2; color: #DC2626; border: 1.5px solid #FECDD3; font-size: 0.82rem; font-weight: 700; text-decoration: none;">
-          🔥 一模冲刺专项题库
+        <a href="../index.html" class="nav-home-btn" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.85rem; border-radius: 999px; background: #F8FAFC; color: #1E293B; border: 1.5px solid #CBD5E1; font-size: 0.82rem; font-weight: 700; text-decoration: none; transition: all 0.2s;">
+          🏠 返回主页
+        </a>
+        <a href="daofa.html" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.85rem; border-radius: 999px; background: #FEF2F2; color: #DC2626; border: 1.5px solid #FECDD3; font-size: 0.82rem; font-weight: 700; text-decoration: none;">
+          ⚖️ 道法复习中心
+        </a>
+        <a href="daofa-special-bank.html" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.85rem; border-radius: 999px; background: #FFF1F2; color: #B91C1C; border: 1.5px solid #FECDD3; font-size: 0.82rem; font-weight: 700; text-decoration: none;">
+          🔥 22套冲刺题库
+        </a>
+        <a href="../history/index.html" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.85rem; border-radius: 999px; background: #FFFBEB; color: #B45309; border: 1.5px solid #FDE68A; font-size: 0.82rem; font-weight: 700; text-decoration: none;">
+          🏛️ 历史中心
         </a>
         <button class="mode-switch-btn" id="modeSwitchBtn" onclick="toggleClozeMode()">
           <span class="mode-switch-icon">🧠</span>
-          <span class="mode-switch-text">开启背诵挖空自测</span>
+          <span class="mode-switch-text">开启背诵自测</span>
         </button>
         <div class="cloze-counter-pill" id="clozeCounterPill">
           <span>🎯 已掌握</span>
@@ -606,6 +615,17 @@
   </header>
 
   <div class="main-wrap">
+
+    <!-- 面包屑导航 -->
+    <div style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: #64748B;">
+      <a href="../index.html" style="color: #2563EB; text-decoration: none; font-weight: 600;">🏠 学习中心首页</a>
+      <span>/</span>
+      <a href="daofa.html" style="color: #059669; text-decoration: none; font-weight: 600;">⚖️ 初中道法中心</a>
+      <span>/</span>
+      <span style="color: #1E293B; font-weight: 600;">全周期知识精要与自测 (V7)</span>
+      <span>/</span>
+      <a href="daofa-special-bank.html" style="color: #DC2626; text-decoration: none; font-weight: 600;">🔥 22套一模冲刺真题库</a>
+    </div>
 
     <!-- 一模冲刺10次课快速通道横幅 -->
     <div style="background: linear-gradient(135deg, #FFF1F2 0%, #FFFFFF 100%); border: 1.5px solid #FECDD3; border-radius: var(--radius-md); padding: 1rem 1.25rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; box-shadow: var(--shadow-sm);">
@@ -3413,7 +3433,25 @@
     </div>
   </div>
 
+  <!-- 悬浮快捷返回主页与道法中心按钮 -->
+  <div style="position: fixed; bottom: 24px; left: 24px; z-index: 45; display: flex; gap: 8px;">
+    <a href="../index.html" title="返回中心主页" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.55rem 0.95rem; border-radius: 999px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); border: 1.5px solid var(--border-color); color: var(--text-main); font-size: 0.85rem; font-weight: 700; text-decoration: none; box-shadow: var(--shadow-md); transition: all 0.2s;">
+      <span>🏠</span>
+      <span>返回主页</span>
+    </a>
+    <a href="daofa.html" title="返回道法中心" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.55rem 0.95rem; border-radius: 999px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); border: 1.5px solid #FECDD3; color: #DC2626; font-size: 0.85rem; font-weight: 700; text-decoration: none; box-shadow: var(--shadow-md); transition: all 0.2s;">
+      <span>⚖️</span>
+      <span>道法中心</span>
+    </a>
+  </div>
+
   <footer>
+    <div style="margin-bottom: 0.85rem; display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+      <a href="../index.html" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.9rem; border-radius: 999px; background: white; border: 1px solid #CBD5E1; color: #1E293B; font-size: 0.82rem; font-weight: 700; text-decoration: none;">🏠 返回学习中心主页</a>
+      <a href="daofa.html" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.9rem; border-radius: 999px; background: #FEF2F2; border: 1px solid #FECDD3; color: #DC2626; font-size: 0.82rem; font-weight: 700; text-decoration: none;">⚖️ 返回道法复习中心</a>
+      <a href="daofa-special-bank.html" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.9rem; border-radius: 999px; background: #FFF1F2; border: 1px solid #FECDD3; color: #B91C1C; font-size: 0.82rem; font-weight: 700; text-decoration: none;">🔥 22套冲刺全真题库</a>
+      <a href="../history/index.html" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.9rem; border-radius: 999px; background: #FFFBEB; border: 1px solid #FDE68A; color: #B45309; font-size: 0.82rem; font-weight: 700; text-decoration: none;">🏛️ 历史复习中心</a>
+    </div>
     <p>© 2026 中考道德与法治全周期精要工作台 · V7 结构化自测版</p>
     <p style="font-size: 0.78rem; margin-top: 4px;">覆盖全套 238 页原件 · 拒绝任何无效信息干扰 · 专为上海中考高效提分定制</p>
   </footer>
