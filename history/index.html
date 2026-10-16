@@ -2,158 +2,1025 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>初中历史学习中心 | 时空线索与核心考点大纲</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>初中历史学习中心 | 一模冲刺10次课小论文与全真题库工作台</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-main: #F8FAFC;
+      --bg-page: #FDFBF7;
       --bg-card: #FFFFFF;
-      --bg-subtle: #F1F5F9;
-      --border-color: #E2E8F0;
-      
-      --text-primary: #0F172A;
-      --text-secondary: #475569;
-      --text-muted: #64748B;
-      
-      --brand-amber: #D97706;
-      --brand-amber-light: #F59E0B;
-      --brand-amber-bg: #FEF3C7;
+      --bg-subtle: #F8F5EE;
+      --border-color: #E7DFCE;
+      --border-hover: #D5C6A9;
 
-      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
-      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
-      
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
+      --text-main: #1F2937;
+      --text-sub: #4B5563;
+      --text-muted: #6B7280;
+
+      --amber-main: #B45309;
+      --amber-dark: #78350F;
+      --amber-light: #FEF3C7;
+      --amber-border: #FDE68A;
+
+      --gold-accent: #D97706;
+
+      --blue-main: #1E40AF;
+      --blue-light: #EFF6FF;
+      --blue-border: #BFDBFE;
+
+      --red-main: #B91C1C;
+      --red-light: #FEF2F2;
+      --red-border: #FECDD3;
+
+      --emerald-main: #047857;
+      --emerald-light: #ECFDF5;
+      --emerald-border: #A7F3D0;
+
+      --shadow-sm: 0 1px 3px rgba(31, 41, 55, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(31, 41, 55, 0.08);
+      --shadow-lg: 0 10px 20px -3px rgba(31, 41, 55, 0.1);
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: var(--bg-main); color: var(--text-primary); line-height: 1.6;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", Roboto, serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
+    /* 顶部导航 */
     header {
-      background: var(--bg-card); border-bottom: 1px solid var(--border-color);
-      position: sticky; top: 0; z-index: 50; box-shadow: var(--shadow-sm);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky; top: 0; z-index: 50;
+      box-shadow: var(--shadow-sm);
     }
-
-    .nav-container {
-      max-width: 1240px; margin: 0 auto; padding: 0.85rem 1.25rem;
+    .nav-inner {
+      max-width: 1400px; margin: 0 auto;
+      padding: 0.75rem 1.25rem;
       display: flex; justify-content: space-between; align-items: center;
+      gap: 1rem;
     }
-
-    .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--text-primary); }
-
-    .brand-logo {
-      width: 40px; height: 40px;
-      background: linear-gradient(135deg, var(--brand-amber), var(--brand-amber-light));
-      color: white; border-radius: var(--radius-sm);
+    .brand-link {
+      display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: inherit;
+    }
+    .brand-icon {
+      width: 40px; height: 40px; border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--amber-main), #92400E);
+      color: white; font-weight: 800; font-size: 1.15rem;
       display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 1rem; flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(180, 83, 9, 0.25);
     }
-
-    .brand-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--brand-amber); }
-    .brand-subtitle { font-size: 0.78rem; color: var(--text-muted); }
-
-    .back-btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.6rem 1rem; min-height: 44px;
-      background-color: var(--bg-subtle); color: var(--text-secondary);
-      border-radius: var(--radius-sm); text-decoration: none;
-      font-weight: 600; font-size: 0.88rem; transition: all 0.2s ease;
+    .brand-name {
+      font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--text-main);
+      display: flex; align-items: center; gap: 0.5rem;
     }
-
-    .back-btn:hover { background-color: var(--brand-amber-bg); color: var(--brand-amber); }
-
-    .container { max-width: 1240px; margin: 0 auto; padding: 2rem 1.25rem 4rem 1.25rem; display: flex; flex-direction: column; gap: 2rem; }
-
-    .hero-card {
-      background: linear-gradient(135deg, #FFFFFF 0%, #FFFBEB 100%);
-      border: 1px solid #FDE68A; border-radius: var(--radius-lg);
-      padding: 2.2rem; box-shadow: var(--shadow-sm);
+    .version-badge {
+      font-size: 0.72rem; padding: 0.15rem 0.5rem; border-radius: 999px;
+      background: var(--amber-light); color: var(--amber-main); border: 1px solid var(--amber-border);
+      font-weight: 600;
     }
-
-    .hero-title { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; color: var(--brand-amber); margin-bottom: 0.5rem; }
-
-    .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-
-    .module-card {
+    .nav-actions {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .nav-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.45rem 0.85rem; border-radius: var(--radius-sm);
       background: var(--bg-card); border: 1px solid var(--border-color);
-      border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);
-      display: flex; flex-direction: column; justify-content: space-between; gap: 1rem;
+      color: var(--text-sub); font-size: 0.85rem; font-weight: 600; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover {
+      background: var(--bg-subtle); border-color: var(--border-hover); color: var(--text-main);
+    }
+    .nav-btn-primary {
+      background: var(--amber-main); color: white; border-color: var(--amber-main);
+    }
+    .nav-btn-primary:hover {
+      background: var(--amber-dark); color: white;
     }
 
-    .module-title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); }
-    .module-desc { font-size: 0.88rem; color: var(--text-secondary); }
-
-    .badge {
-      display: inline-block; padding: 2px 8px; border-radius: 4px;
-      font-size: 0.75rem; font-weight: 700; background: var(--brand-amber-bg); color: var(--brand-amber);
+    /* 主布局 */
+    .main-wrap {
+      max-width: 1400px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem;
     }
 
-    footer { background: var(--bg-card); border-top: 1px solid var(--border-color); padding: 2rem 1.25rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+    /* 海报冲刺横幅 */
+    .sprint-hero {
+      background: linear-gradient(135deg, #FFFBEB 0%, #FFFFFF 50%, #F5F3FF 100%);
+      border: 1px solid #FDE68A; border-radius: var(--radius-lg);
+      padding: 2.2rem 2.2rem 1.85rem; margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+    }
+    .sprint-hero::before {
+      content: "上海初三一模冲刺";
+      position: absolute; right: -25px; top: 18px;
+      background: linear-gradient(90deg, #D97706, #B45309);
+      color: white; font-size: 0.75rem; font-weight: 800;
+      padding: 4px 35px; transform: rotate(45deg);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+    .hero-top-tag {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: #FFFFFF; border: 1px solid var(--amber-border);
+      color: var(--amber-main); font-size: 0.8rem; font-weight: 700;
+      padding: 0.25rem 0.65rem; border-radius: 999px; margin-bottom: 0.75rem;
+    }
+    .hero-title {
+      font-size: 2rem; font-weight: 800; color: #1F2937; line-height: 1.3; margin-bottom: 0.6rem;
+    }
+    .hero-title span {
+      background: linear-gradient(120deg, var(--amber-main), #D97706);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      color: var(--text-sub); font-size: 0.98rem; line-height: 1.65; max-width: 980px; margin-bottom: 1.25rem;
+    }
+
+    /* 三大特色卡片 */
+    .pillars-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 1.25rem;
+    }
+    .pillar-card {
+      background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(6px);
+      border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      padding: 1.1rem 1.25rem; display: flex; align-items: flex-start; gap: 0.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .pillar-icon {
+      width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+    .pillar-title { font-weight: 700; font-size: 0.98rem; color: var(--text-main); margin-bottom: 0.25rem; }
+    .pillar-detail { font-size: 0.84rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* 10次课冲刺大纲进度条 */
+    .syllabus-box {
+      background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);
+    }
+    .syllabus-header {
+      display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none;
+    }
+    .syllabus-title-wrap {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .syllabus-title-wrap h3 {
+      font-size: 1.15rem; font-weight: 800; color: var(--text-main);
+    }
+    .syllabus-timeline {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.85rem; margin-top: 1.25rem;
+    }
+    .timeline-item {
+      background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      padding: 0.85rem 1rem; position: relative; transition: all 0.2s;
+    }
+    .timeline-item:hover {
+      border-color: var(--amber-border); background: var(--amber-light);
+    }
+    .timeline-item.active-special {
+      background: #FEF3C7; border-color: #F59E0B;
+    }
+    .timeline-num {
+      display: inline-block; width: 22px; height: 22px; line-height: 22px; text-align: center;
+      background: var(--amber-main); color: white; border-radius: 50%; font-size: 0.75rem; font-weight: 800; margin-right: 0.4rem;
+    }
+    .timeline-name {
+      font-size: 0.85rem; font-weight: 700; color: var(--text-main); display: inline;
+    }
+    .timeline-tag {
+      display: block; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;
+    }
+
+    /* 三大知识主线卡片 */
+    .modules-section {
+      margin-bottom: 2rem;
+    }
+    .section-heading {
+      font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .modules-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;
+    }
+    .module-card {
+      background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      padding: 1.35rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; gap: 0.75rem;
+    }
+    .mod-badge {
+      display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;
+      background: var(--amber-light); color: var(--amber-main);
+    }
+    .mod-title { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin: 0.35rem 0 0.2rem; }
+    .mod-desc { font-size: 0.85rem; color: var(--text-sub); line-height: 1.55; }
+    .mod-kps { font-size: 0.78rem; color: var(--text-muted); background: var(--bg-subtle); padding: 0.5rem 0.75rem; border-radius: 6px; }
+
+    /* 小论文专项满分方法卡 */
+    .essay-method-card {
+      background: #FFFFFF; border: 1.5px solid var(--amber-border); border-radius: var(--radius-lg);
+      padding: 1.6rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);
+    }
+    .essay-method-title {
+      font-size: 1.25rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.15rem; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .triad-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.25rem;
+    }
+    @media (max-width: 768px) {
+      .triad-grid { grid-template-columns: 1fr; }
+    }
+    .triad-box {
+      background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      padding: 1.15rem; position: relative;
+    }
+    .triad-tag {
+      font-size: 0.75rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;
+      display: inline-block; margin-bottom: 0.4rem;
+    }
+    .triad-box:nth-child(1) .triad-tag { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+    .triad-box:nth-child(2) .triad-tag { background: #EFF6FF; color: #1E40AF; border: 1px solid #BFDBFE; }
+    .triad-box:nth-child(3) .triad-tag { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+    .triad-title { font-weight: 700; font-size: 1rem; color: var(--text-main); margin-bottom: 0.35rem; }
+    .triad-body { font-size: 0.85rem; color: var(--text-sub); line-height: 1.55; }
+
+    /* 上海中考分层赋分对照表 */
+    .rubric-table {
+      width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.85rem;
+    }
+    .rubric-table th, .rubric-table td {
+      border: 1px solid var(--border-color); padding: 0.65rem 0.85rem; text-align: left;
+    }
+    .rubric-table th { background: var(--bg-subtle); font-weight: 700; color: var(--text-main); }
+    .rubric-tier-1 { background: #F0FDF4; font-weight: 700; color: #166534; }
+    .rubric-tier-2 { background: #FEFCE8; color: #854D0E; }
+    .rubric-tier-3 { background: #FEF2F2; color: #991B1B; }
+
+    /* 选项卡与过滤器 */
+    .tabs-nav {
+      display: flex; gap: 0.5rem; border-bottom: 2px solid var(--border-color); margin-bottom: 1.5rem;
+      overflow-x: auto; padding-bottom: 2px;
+    }
+    .tab-btn {
+      padding: 0.75rem 1.25rem; font-size: 0.92rem; font-weight: 700; border: none; background: none;
+      cursor: pointer; color: var(--text-muted); position: relative; border-radius: 8px 8px 0 0;
+      white-space: nowrap; transition: all 0.2s;
+    }
+    .tab-btn:hover { color: var(--text-main); background: var(--bg-subtle); }
+    .tab-btn.active {
+      color: var(--amber-main); background: #FFFFFF; border: 1px solid var(--border-color); border-bottom: 2px solid #FFFFFF;
+      margin-bottom: -2px; box-shadow: 0 -2px 6px rgba(0,0,0,0.03);
+    }
+    .tab-badge {
+      font-size: 0.7rem; padding: 0.1rem 0.45rem; border-radius: 999px; margin-left: 0.35rem;
+      background: var(--amber-light); color: var(--amber-main); font-weight: 700;
+    }
+
+    .filter-bar {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;
+      flex-wrap: wrap; gap: 0.75rem; background: var(--bg-card); padding: 0.85rem 1.25rem;
+      border: 1px solid var(--border-color); border-radius: var(--radius-md);
+    }
+    .search-input {
+      padding: 0.45rem 0.85rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+      font-size: 0.85rem; outline: none; width: 260px;
+    }
+    .filter-pills { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .filter-pill {
+      padding: 0.35rem 0.75rem; font-size: 0.8rem; font-weight: 600; border-radius: 999px;
+      border: 1px solid var(--border-color); background: var(--bg-card); cursor: pointer; color: var(--text-sub);
+    }
+    .filter-pill.active {
+      background: var(--amber-main); color: white; border-color: var(--amber-main);
+    }
+
+    /* 试题与小论文卡片 */
+    .question-card {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: var(--radius-lg);
+      padding: 1.6rem; margin-bottom: 1.75rem; box-shadow: var(--shadow-sm); transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .question-card:hover {
+      border-color: var(--border-hover); box-shadow: var(--shadow-md);
+    }
+    .q-meta {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .q-tags { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+    .q-tag {
+      font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+    }
+    .tag-amber { background: var(--amber-light); color: var(--amber-main); border: 1px solid var(--amber-border); }
+    .tag-blue { background: var(--blue-light); color: var(--blue-main); border: 1px solid var(--blue-border); }
+    .tag-emerald { background: var(--emerald-light); color: var(--emerald-main); border: 1px solid var(--emerald-border); }
+    .tag-red { background: var(--red-light); color: var(--red-main); border: 1px solid var(--red-border); }
+    .q-score { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
+
+    .q-source-badge {
+      display: inline-flex; align-items: center; gap: 0.3rem; background: #FEF2F2; color: #DC2626;
+      border: 1px solid #FECDD3; border-radius: 4px; padding: 2px 8px; font-size: 0.75rem; font-weight: 700;
+    }
+
+    .q-material {
+      background: #FDFBF7; border-left: 4px solid var(--amber-main);
+      padding: 1rem 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.93rem; color: var(--text-sub); line-height: 1.65; margin-bottom: 1rem;
+    }
+    .q-stem {
+      font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 1rem; line-height: 1.55;
+    }
+
+    /* 破题思路支架 */
+    .q-chain-box {
+      background: #FFFBEB; border: 1px solid #FDE68A; border-radius: var(--radius-md);
+      padding: 0.85rem 1rem; margin-bottom: 1rem; font-size: 0.85rem;
+    }
+    .chain-title { font-weight: 700; color: #B45309; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.35rem; }
+    .chain-flow { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; font-size: 0.83rem; color: #78350F; }
+    .chain-step {
+      background: #FFFFFF; border: 1px solid #FDE68A; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 600;
+    }
+    .chain-arrow { color: #B45309; font-weight: 800; }
+
+    /* 小论文在线写作舱 */
+    .essay-workspace {
+      background: #F8FAFC; border: 1.5px solid var(--blue-border); border-radius: var(--radius-md);
+      padding: 1rem; margin-bottom: 1rem;
+    }
+    .workspace-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; font-size: 0.85rem; font-weight: 700; color: var(--blue-main);
+    }
+    .essay-textarea {
+      width: 100%; min-height: 110px; padding: 0.75rem; border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm); font-size: 0.9rem; outline: none; font-family: inherit; line-height: 1.6;
+      resize: vertical; background: #FFFFFF; color: var(--text-main);
+    }
+    .essay-textarea:focus { border-color: var(--blue-main); }
+    .essay-footer {
+      display: flex; justify-content: space-between; align-items: center; margin-top: 0.4rem; font-size: 0.8rem; color: var(--text-muted);
+    }
+    .word-stat-badge {
+      font-weight: 700; padding: 2px 8px; border-radius: 4px;
+    }
+    .stat-good { background: #DCFCE7; color: #15803D; }
+    .stat-warn { background: #FEF3C7; color: #B45309; }
+
+    /* 答案展开折叠 */
+    .ans-toggle-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.55rem 1.15rem; border-radius: var(--radius-sm);
+      background: #EFF6FF; border: 1px solid #BFDBFE;
+      color: #1E40AF; font-size: 0.88rem; font-weight: 700; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .ans-toggle-btn:hover { background: #DBEAFE; }
+    .ans-panel {
+      display: none; margin-top: 1rem; padding: 1.25rem;
+      background: #FFFFFF; border: 1px solid var(--amber-border); border-radius: var(--radius-md);
+      box-shadow: 0 2px 8px rgba(180, 83, 9, 0.06);
+    }
+    .ans-panel.open { display: block; animation: fadeIn 0.25s ease-in-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .grading-points {
+      background: var(--amber-light); border-left: 3px solid var(--amber-main);
+      padding: 0.75rem 1rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.86rem; color: #78350F; margin-bottom: 0.85rem; line-height: 1.6;
+    }
+    .full-answer-text {
+      font-size: 0.93rem; color: var(--text-main); line-height: 1.7;
+    }
+    .full-answer-text p { margin-bottom: 0.5rem; }
+    .trap-warning {
+      background: #FEF2F2; border: 1px solid #FECDD3; border-radius: var(--radius-sm);
+      padding: 0.6rem 0.85rem; margin-top: 0.85rem; font-size: 0.82rem; color: #991B1B;
+    }
+
+    /* 资料库区块 */
+    .materials-section {
+      background: #FFFFFF; border: 1px solid var(--border-color); border-radius: var(--radius-lg);
+      padding: 1.5rem; margin-top: 2rem; box-shadow: var(--shadow-sm);
+    }
+
+    .toast {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 100;
+      background: #1F2937; color: white; padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-md); font-size: 0.88rem; font-weight: 600;
+      box-shadow: var(--shadow-lg); display: none; align-items: center; gap: 0.5rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-color); padding: 2.5rem 1.25rem;
+      text-align: center; color: var(--text-muted); font-size: 0.85rem; background: #FFFFFF;
+    }
   </style>
 </head>
 <body>
+
+  <!-- 顶部导航栏 -->
   <header>
-    <div class="nav-container">
-      <a href="../index.html" class="brand">
-        <div class="brand-logo">HIS</div>
+    <div class="nav-inner">
+      <a href="../index.html" class="brand-link">
+        <div class="brand-icon">史</div>
         <div>
-          <div class="brand-title">初中历史学习中心</div>
-          <div class="brand-subtitle">中国古代史 · 中国近现代史 · 世界历史时间轴</div>
+          <div class="brand-name">
+            初中历史学习中心
+            <span class="version-badge">上海一模冲刺版</span>
+          </div>
         </div>
       </a>
-      <a href="../index.html" class="back-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        返回学习中心
-      </a>
+      <div class="nav-actions">
+        <a href="#section-modules" class="nav-btn">📚 三大学习模块</a>
+        <a href="#method-card" class="nav-btn">🖋️ 小论文三段论</a>
+        <a href="../daofa/daofa-special-bank.html" class="nav-btn">⚖️ 道法冲刺专项</a>
+        <a href="../index.html" class="nav-btn nav-btn-primary">🏠 学习中心</a>
+      </div>
     </div>
   </header>
 
-  <div class="container">
-    <section class="hero-card">
-      <span class="badge">🏛️ 历史复习 · 时空线索与考点</span>
-      <h1 class="hero-title">初中历史知识梳理与核心考点大纲</h1>
-      <p style="color: var(--text-secondary);">涵盖中国古代中央集权演变、近现代救亡图存与工业革命及两次世界大战时空线索。</p>
+  <div class="main-wrap">
+
+    <!-- 冲刺横幅 (对应海报理念) -->
+    <section class="sprint-hero">
+      <div class="hero-top-tag">📜 世界史第一册趁热复习 × 中国史系统串联 × 一模题型高分方法</div>
+      <h1 class="hero-title">初三历史 <span>一模冲刺10次课</span> 题型专项与全真题库工作台</h1>
+      <p class="hero-desc">
+        紧扣上海新中考历史命题导向与一模复习节奏，深度整合世界古代与近代主线、中国古代与近现代史时空坐标。
+        攻克全卷最拉分的<b>“历史小论文（观点-史实-结论 10-12分）”</b>，
+        系统实战<b>“时空观念与一手/二手史料实证”、“特点归纳与开放启示”、“上海本土红色与现代化情境”</b>。
+      </p>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon" style="background:#FEF3C7; color:#B45309;">🌍</div>
+          <div>
+            <div class="pillar-title">世界史一册为主·趁热复习</div>
+            <div class="pillar-detail">古代亚非欧文明、文艺复兴、新航路开辟、英法美早期资产阶级革命、两次工业革命与世界市场形成。</div>
+          </div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon" style="background:#EFF6FF; color:#1E40AF;">🇨🇳</div>
+          <div>
+            <div class="pillar-title">中国史纵横串联</div>
+            <div class="pillar-detail">古代中央集权制度演变、近代反侵略救亡图存、现代新中国成立与改革开放伟大成就。</div>
+          </div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon" style="background:#ECFDF5; color:#047857;">✍️</div>
+          <div>
+            <div class="pillar-title">题型突破·真题实战</div>
+            <div class="pillar-detail">攻克小论文观点提炼、史实互证与结论升华；掌握时空史料、特点归纳、上海本地化压轴真题。</div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <div class="content-grid">
-      <div class="module-card">
-        <div>
-          <span class="badge">模块 1</span>
-          <h2 class="module-title" style="margin-top: 0.5rem;">中国古代史 (夏商周 ~ 明清)</h2>
-          <p class="module-desc">商鞅变法、秦汉大一统、唐宋经济文化繁荣、明清专制集权强化。</p>
+    <!-- 10次课冲刺大纲全景图 -->
+    <section class="syllabus-box">
+      <div class="syllabus-header" onclick="toggleSyllabus()">
+        <div class="syllabus-title-wrap">
+          <span style="font-size: 1.3rem;">📅</span>
+          <h3>10次课·冲刺大纲导航（点击展开/收起进度表）</h3>
         </div>
-        <div style="font-weight: 700; color: var(--brand-amber); font-size: 0.85rem;">知识要点已整理 ➔</div>
+        <span id="syllabus-arrow" style="font-weight: 700; color: var(--amber-main); font-size: 0.9rem;">收起 ▲</span>
+      </div>
+      <div class="syllabus-timeline" id="syllabus-body">
+        <div class="timeline-item">
+          <div><span class="timeline-num">1</span><span class="timeline-name">世界史综合复习：第一册主线</span></div>
+          <span class="timeline-tag">资本主义萌芽·文艺复兴·早期资产阶级革命·工场到机器</span>
+        </div>
+        <div class="timeline-item">
+          <div><span class="timeline-num">2</span><span class="timeline-name">中国古代史：制度与朝代线索</span></div>
+          <span class="timeline-tag">商鞅变法·秦汉大一统·三国两晋南北朝·隋唐宋元明清</span>
+        </div>
+        <div class="timeline-item">
+          <div><span class="timeline-num">3</span><span class="timeline-name">中国近代史：侵略反抗与探索</span></div>
+          <span class="timeline-tag">鸦片战争·洋务运动·戊戌变法·辛亥革命·新民主主义革命</span>
+        </div>
+        <div class="timeline-item">
+          <div><span class="timeline-num">4</span><span class="timeline-name">中国现代史：新中国与改革开放</span></div>
+          <span class="timeline-tag">开国大典·三大改造·十一届三中全会·中国特色社会主义</span>
+        </div>
+        <div class="timeline-item">
+          <div><span class="timeline-num">5</span><span class="timeline-name">中国史 + 世界史综合训练</span></div>
+          <span class="timeline-tag">中外横向对比·全球文明交流·现代化进程大单元整合</span>
+        </div>
+        <div class="timeline-item active-special">
+          <div><span class="timeline-num">6</span><span class="timeline-name">小论文专项：观点-史实-结论</span></div>
+          <span class="timeline-tag">🌟 上海中考压轴高分三段论·史论结合成文规范</span>
+        </div>
+        <div class="timeline-item active-special">
+          <div><span class="timeline-num">7</span><span class="timeline-name">时空 + 史料专项</span></div>
+          <span class="timeline-tag">🌟 一手/二手史料辨析·二重证据法·历史地图定位</span>
+        </div>
+        <div class="timeline-item active-special">
+          <div><span class="timeline-num">8</span><span class="timeline-name">特点 + 开放专项</span></div>
+          <span class="timeline-tag">🌟 多维特点概括公式·历史认识与当代启示</span>
+        </div>
+        <div class="timeline-item active-special">
+          <div><span class="timeline-num">9</span><span class="timeline-name">上海本地化 + 时政联系</span></div>
+          <span class="timeline-tag">🌟 近代开埠洋务·中共初心始发地·浦东开发开放</span>
+        </div>
+        <div class="timeline-item">
+          <div><span class="timeline-num">10</span><span class="timeline-name">全真模拟 + 查漏补缺</span></div>
+          <span class="timeline-tag">上海一模全真套卷限时演练·错题诊断与得分策略复盘</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 三大知识主线模块概览 -->
+    <section class="modules-section" id="section-modules">
+      <div class="section-heading">
+        <span>🏛️</span>
+        <h2>核心知识体系主线梳理</h2>
+      </div>
+      <div class="modules-grid">
+        <div class="module-card">
+          <div>
+            <span class="mod-badge">模块 1 · 制度与线索</span>
+            <h3 class="mod-title">中国古代史 (夏商周 ~ 明清)</h3>
+            <p class="mod-desc">分封制到郡县制、商鞅变法、秦汉中央集权、科举制创立与完善、宋代重文轻武与经济重心南移、明清专制皇权强化。</p>
+          </div>
+          <div class="mod-kps">📌 考点穿线：中央集权演变 · 统一多民族国家形成 · 中华优秀传统文化</div>
+        </div>
+
+        <div class="module-card">
+          <div>
+            <span class="mod-badge">模块 2 · 屈辱与探索</span>
+            <h3 class="mod-title">中国近现代史 (鸦片战争 ~ 新时代)</h3>
+            <p class="mod-desc">列强侵略与民族危机、洋务运动（技术）、戊戌变法与辛亥革命（制度）、五四运动与新民主主义革命、抗日战争、新中国成立与改革开放。</p>
+          </div>
+          <div class="mod-kps">📌 考点穿线：救亡图存四步走 · 伟大抗战精神 · 中国特色社会主义道路</div>
+        </div>
+
+        <div class="module-card">
+          <div>
+            <span class="mod-badge">模块 3 · 走向整体的世界</span>
+            <h3 class="mod-title">世界历史 (古代文明 ~ 两次工革)</h3>
+            <p class="mod-desc">古代亚非欧文明、文艺复兴（人文主义）、新航路开辟与殖民扩张、英美法早期资产阶级革命与法律文献、两次工业革命与世界市场确立。</p>
+          </div>
+          <div class="mod-kps">📌 考点穿线：思想解放先导 · 制度创新 · 资本主义世界体系与科技驱动</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 专项一方法论：历史小论文“观点-史实-结论”三段式 -->
+    <div class="essay-method-card" id="method-card">
+      <div class="essay-method-title">
+        <span>🖋️ 题型专项①：上海中考历史小论文 “观点-史实-结论” 黄金三段论</span>
+        <button class="nav-btn" onclick="copyEssayFormula()">📋 复制小论文框架</button>
       </div>
 
-      <div class="module-card">
-        <div>
-          <span class="badge">模块 2</span>
-          <h2 class="module-title" style="margin-top: 0.5rem;">中国近现代史 (鸦片战争 ~ 新时代)</h2>
-          <p class="module-desc">洋务运动、辛亥革命、五四运动、抗日战争与新中国成立、改革开放。</p>
+      <div class="triad-grid">
+        <div class="triad-box">
+          <span class="triad-tag">段落 1：立论</span>
+          <div class="triad-title">观点明确（论点）</div>
+          <div class="triad-body">
+            <b>【要求】</b>：开门见山亮明核心主张，绝非客观事实罗列，而是体现唯物史观的历史解释。<br>
+            <b>【高频论题库】</b>：<br>
+            - “科学技术是推动人类社会发展的重要动力”<br>
+            - “制度创新是维系国家统一与发展的基石”<br>
+            - “顺应时代潮流的改革是国家富强的重要源泉”<br>
+            - “对外开放与交流互鉴促进人类文明繁荣”
+          </div>
         </div>
-        <div style="font-weight: 700; color: var(--brand-amber); font-size: 0.85rem;">知识要点已整理 ➔</div>
+
+        <div class="triad-box">
+          <span class="triad-tag">段落 2：论证</span>
+          <div class="triad-title">史论结合（2~3个史实）</div>
+          <div class="triad-body">
+            <b>【要求】</b>：严禁只摆史实不分析，必须遵循<b>“史实 + 说明影响”</b>结构。兼顾古今或中外史实支撑。<br>
+            <b>【结构公式】</b>：<br>
+            “……（史实A），推动了……；同时，……（史实B），促进了……；两相印证，表明了……”
+          </div>
+        </div>
+
+        <div class="triad-box">
+          <span class="triad-tag">段落 3：升华</span>
+          <div class="triad-title">结论升华（回扣与启示）</div>
+          <div class="triad-body">
+            <b>【要求】</b>：呼应开头论点，从历史规律与现代启示高度进行理性升华，不可突兀中止。<br>
+            <b>【黄金结尾句】</b>：<br>
+            “综上所述，……历史启示我们，在推进现代化建设中，必须坚持……，走符合自身国情的发展道路。”
+          </div>
+        </div>
       </div>
 
-      <div class="module-card">
-        <div>
-          <span class="badge">模块 3</span>
-          <h2 class="module-title" style="margin-top: 0.5rem;">世界历史 (古代文明 ~ 现代格局)</h2>
-          <p class="module-desc">文艺复兴、新航路开辟、两次工业革命、一战二战与冷战格局。</p>
-        </div>
-        <div style="font-weight: 700; color: var(--brand-amber); font-size: 0.85rem;">知识要点已整理 ➔</div>
+      <!-- 上海中考阅卷评分细则 -->
+      <table class="rubric-table">
+        <thead>
+          <tr>
+            <th style="width: 15%;">等级</th>
+            <th style="width: 15%;">分值段</th>
+            <th>上海中考阅卷采分评分标准特征</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="rubric-tier-1">
+            <td>一等（优秀）</td>
+            <td>高分段 (4-5分)</td>
+            <td>① 观点明确，符合唯物史观；② 能够调用2个或以上典型史实；③ 史论紧密结合，逻辑严密；④ 结论自然升华，文字成篇（150-200字）。</td>
+          </tr>
+          <tr class="rubric-tier-2">
+            <td>二等（良好）</td>
+            <td>中分段 (2-3分)</td>
+            <td>① 观点较明确；② 仅有1个史实或史实不够典型；③ 史实与观点之间缺乏深入阐述分析；④ 有小结但流于表面。</td>
+          </tr>
+          <tr class="rubric-tier-3">
+            <td>三等（较差）</td>
+            <td>低分段 (0-1分)</td>
+            <td>① 观点缺失或完全偏题；② 史实错误；③ 写成问答题序号（如①②③），未成文；④ 抄袭试卷材料原文。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 选项卡与过滤器 -->
+    <div class="tabs-nav">
+      <button class="tab-btn active" onclick="switchHistoryTab('tab-all', this)">全部精选题库 <span class="tab-badge">全真试题</span></button>
+      <button class="tab-btn" onclick="switchHistoryTab('tab-essay', this)">专项①·小论文专项 <span class="tab-badge">4篇</span></button>
+      <button class="tab-btn" onclick="switchHistoryTab('tab-shiliao', this)">专项②·时空+史料专项 <span class="tab-badge">2题</span></button>
+      <button class="tab-btn" onclick="switchHistoryTab('tab-tedian', this)">专项③·特点+开放专项 <span class="tab-badge">2题</span></button>
+      <button class="tab-btn" onclick="switchHistoryTab('tab-shanghai', this)">专项④·上海本地化+时政 <span class="tab-badge">2题</span></button>
+    </div>
+
+    <div class="filter-bar">
+      <div class="filter-pills">
+        <button class="filter-pill active" onclick="filterHistory('all', this)">全部题目</button>
+        <button class="filter-pill" onclick="filterHistory('essay', this)">🖋️ 小论文</button>
+        <button class="filter-pill" onclick="filterHistory('shiliao', this)">🗺️ 时空与史料</button>
+        <button class="filter-pill" onclick="filterHistory('tedian', this)">📑 特点与开放</button>
+        <button class="filter-pill" onclick="filterHistory('shanghai', this)">🏙️ 上海本地史</button>
+      </div>
+      <div>
+        <input type="text" id="hist-search" class="search-input" placeholder="🔍 搜索历史真题、史实关键词..." oninput="searchHistory()">
       </div>
     </div>
+
+    <!-- 试题卡片容器 -->
+    <div id="hist-questions-wrap">
+
+      <!-- H1: 2024上海中考/一模真题 · 小论文 · 科技革命与世界格局 -->
+      <div class="question-card" data-cat="essay">
+        <div class="q-meta">
+          <div class="q-tags">
+            <span class="q-source-badge">🔥 2024上海中考/一模真题同类</span>
+            <span class="q-tag tag-amber">专项① 小论文专项</span>
+            <span class="q-tag tag-blue">世界近代史 两次工业革命</span>
+          </div>
+          <div class="q-score">满分：5分 | 建议字数：150-200字</div>
+        </div>
+        <div class="q-material">
+          <b>【全真史料与情境】</b><br>
+          材料一：18世纪中期，英国瓦特改良蒸汽机投入广泛使用，机器大工业逐步取代工场手工业，英国成为“世界工厂”，蒸汽机车与汽船彻底改变了人类交通与运输格局。<br>
+          材料二：19世纪下半叶，电力成为新的能源，内燃机驱动汽车、飞机问世，远距离通讯的电报电话广泛应用，世界各地区之间的物资流动与信息网络空前密集，世界市场最终确立。
+        </div>
+        <div class="q-stem">
+          【任务要求】：阅读上述材料，自拟一个关于“科技革命与人类社会发展”的观点，结合材料及所学中外史实加以论述。（要求：观点明确，史论结合，条理清晰，150-200字成文）
+        </div>
+
+        <div class="q-chain-box">
+          <div class="chain-title"><span>💡</span> 审题与思维破题链：</div>
+          <div class="chain-flow">
+            <div class="chain-step">明确观点：科学技术是推动人类社会发展的重要动力</div>
+            <span class="chain-arrow">➔</span>
+            <div class="chain-step">史实1：第一次工业革命瓦特蒸汽机 ➔ 蒸汽时代+近代工厂制度</div>
+            <span class="chain-arrow">➔</span>
+            <div class="chain-step">史实2：第二次工业革命电力与内燃机 ➔ 电气时代+世界市场最终形成</div>
+            <span class="chain-arrow">➔</span>
+            <div class="chain-step">结论升华：科技改变生产生活，启示我们坚持科技强国与创新驱动</div>
+          </div>
+        </div>
+
+        <!-- 小论文在线写作演练舱 -->
+        <div class="essay-workspace">
+          <div class="workspace-header">
+            <span>✍️ 小论文实战写作舱（点击直接输入练习）</span>
+            <span class="word-stat-badge stat-warn" id="stat-h1">当前：0 字（建议 150-200 字）</span>
+          </div>
+          <textarea class="essay-textarea" id="txt-h1" placeholder="请在此按照【观点】+【史论阐述（2个史实及影响）】+【结论升华】格式书写整篇小论文..." oninput="checkEssayLength('txt-h1', 'stat-h1')"></textarea>
+          <div class="essay-footer">
+            <span>三要素自检：① 是否有鲜明论点？ ② 是否有2个史实及影响？ ③ 结尾是否成篇升华？</span>
+            <button class="nav-btn" onclick="fillDemoEssay('txt-h1', 'stat-h1', 1)">✨ 填入示范范文</button>
+          </div>
+        </div>
+
+        <button class="ans-toggle-btn" onclick="toggleHistoryAns('h-ans-1', this)">👁️ 查看本题官方评分细则与满分范文</button>
+        <div class="ans-panel" id="h-ans-1">
+          <div class="grading-points">
+            <b>【采分要点与赋分标准】</b>：<br>
+            - <b>观点明确（1分）</b>：如“科学技术的进步是推动人类文明发展的重要动力”或“科技创新深刻重塑了世界格局”。<br>
+            - <b>史实充分与史论结合（3分）</b>：列举第一次工业革命瓦特改良蒸汽机推动人类进入“蒸汽时代”并催生近代工厂制度（1.5分）；列举第二次工业革命电力的广泛应用使人类迈入“电气时代”，内燃机与通讯工具拉近全球距离促进世界市场最终确立（1.5分）。<br>
+            - <b>结论升华（1分）</b>：能呼应观点并联系现实启示，语言流畅成文。
+          </div>
+          <div class="full-answer-text">
+            <p><b>【满分范文（186字）】</b>：</p>
+            <p><b>观点：科学技术是推动人类社会发展的重要动力。</b></p>
+            <p>论述：18世纪中期，瓦特改良蒸汽机的广泛应用，使人类进入“蒸汽时代”，大机器生产取代了工场手工业，极大解放了社会生产力，确立了近代资本主义工厂制度。19世纪下半叶，以电力和内燃机为核心的第二次工业革命，使人类迈入“电气时代”，汽车、电报等新发明加速了全球物资与信息流动，推动资本主义世界市场最终确立。</p>
+            <p>结论：综上所述，两次工业革命的跨越式发展证明，科技是推动历史前进的有力杠杆，新时代我们必须坚定不移实施科技强国战略。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- H2: 2024浦东初三一模真题 · 小论文 · 制度创新与国家强盛 -->
+      <div class="question-card" data-cat="essay">
+        <div class="q-meta">
+          <div class="q-tags">
+            <span class="q-source-badge">🔥 2024浦东一模真题</span>
+            <span class="q-tag tag-amber">专项① 小论文专项</span>
+            <span class="q-tag tag-red">中国古代与现代史串联</span>
+          </div>
+          <div class="q-score">满分：5分 | 建议字数：150-200字</div>
+        </div>
+        <div class="q-material">
+          <b>【全真史料与情境】</b><br>
+          材料一：战国时期，秦孝公任用商鞅推行变法，“废井田、开阡陌，确立县制，奖励耕织与军功”，秦国一跃成为战国后期最富强的诸侯国，为统一全国奠定坚实基础。<br>
+          材料二：1978年，中共十一届三中全会果断开启改革开放历史伟业。在农村实行家庭联产承包责任制，在城市推进经济体制改革并设立深圳等经济特区，极大解放了社会生产力，实现了中国从站起来到富起来的伟大飞跃。
+        </div>
+        <div class="q-stem">
+          【任务要求】：综合上述两则史料，自拟论点，运用所学中外史实写一篇150-200字的历史小论文。
+        </div>
+
+        <div class="essay-workspace">
+          <div class="workspace-header">
+            <span>✍️ 小论文实战写作舱</span>
+            <span class="word-stat-badge stat-warn" id="stat-h2">当前：0 字（建议 150-200 字）</span>
+          </div>
+          <textarea class="essay-textarea" id="txt-h2" placeholder="输入论点、史实阐述与结论..." oninput="checkEssayLength('txt-h2', 'stat-h2')"></textarea>
+          <div class="essay-footer">
+            <span>关键史实：商鞅变法（制度革新与国家强盛） + 改革开放（体制创新与富民强国）</span>
+            <button class="nav-btn" onclick="fillDemoEssay('txt-h2', 'stat-h2', 2)">✨ 填入示范范文</button>
+          </div>
+        </div>
+
+        <button class="ans-toggle-btn" onclick="toggleHistoryAns('h-ans-2', this)">👁️ 查看本题官方评分细则与满分范文</button>
+        <div class="ans-panel" id="h-ans-2">
+          <div class="full-answer-text">
+            <p><b>【满分范文（182字）】</b>：</p>
+            <p><b>观点：顺应时代潮流的改革创新是国家富强的重要源泉。</b></p>
+            <p>论述：战国时期，面对诸侯争霸的剧变，秦国推行商鞅变法，通过废井田、奖励军功、推行县制等制度革新，废除了贵族特权，极大激发了社会生产与战斗力，使秦国富国强兵，为最终实现国家大一统奠定基石。近代以来，1978年中共十一届三中全会果断开启改革开放，推行家庭联产承包责任制与对外开放，打破体制束缚，解放了亿万人民的积极性，开辟了中国特色社会主义道路。</p>
+            <p>结论：综上所述，因时制宜的改革与体制创新是打破发展瓶颈的根本举措，改革永无止境。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- H3: 2024徐汇初三一模真题 · 时空 + 史料专项 · 睡虎地秦简与史记互证 -->
+      <div class="question-card" data-cat="shiliao">
+        <div class="q-meta">
+          <div class="q-tags">
+            <span class="q-source-badge">🔥 2024徐汇一模真题</span>
+            <span class="q-tag tag-blue">专项② 时空与史料</span>
+            <span class="q-tag tag-emerald">史料实证 · 二重证据法</span>
+          </div>
+          <div class="q-score">满分：6分 | 难度：★★★☆☆</div>
+        </div>
+        <div class="q-material">
+          <b>【真实史料分类情境】</b><br>
+          初三历史兴趣小组在探究“商鞅变法与秦朝法治制度”时，搜集到以下三组史料：<br>
+          材料 A：1975年湖北云梦睡虎地11号秦墓出土的1155枚竹简（包含《秦律十八种》、《效律》等法律条文及行政文书，为秦代官吏喜生前摘抄的工作笔记）。<br>
+          材料 B：西汉史学家司马迁撰写的史学名著《史记·商君列传》中关于商鞅“造连坐之法、明尊卑爵秩等级”的记载。<br>
+          材料 C：当代历史电视剧《大秦赋》中商鞅“舌战群臣”与“徙木立信”的影视剧情节。
+        </div>
+        <div class="q-stem">
+          【设问一】：上述三则材料中，属于“一手史料（第一手史料）”的是哪一个？请简要说明理由。（2分）<br>
+          【设问二】：如果要考证商鞅变法中关于秦国户籍管理与连坐制度的真实情况，学者应如何综合利用材料 A 与材料 B 进行历史实证？（4分）
+        </div>
+
+        <button class="ans-toggle-btn" onclick="toggleHistoryAns('h-ans-3', this)">👁️ 查看官方采分要点与标准解析</button>
+        <div class="ans-panel" id="h-ans-3">
+          <div class="grading-points">
+            <b>【采分要点】</b>：<br>
+            ① <b>设问一（2分）</b>：材料 A（睡虎地秦简）是一手史料（1分）。理由：它是秦代当时留下来的出土原始法律文物实物，未经后人修改加工，具有最高的真实史料价值（1分）。（材料B是西汉后人记载的二手文献史料，材料C属于艺术加工文艺作品不可作为确证依据）。<br>
+            ② <b>设问二（4分）</b>：应坚持“二重证据法”（考古出土文物与文献记载相互印证，2分）。将西汉《史记》的记载与睡虎地秦简中的律令条文相对照，以实物史料印证文献记录的可靠性，纠正后人流传记载中的偏差；同时坚持孤证不立的原则，形成完整的证据链（2分）。
+          </div>
+        </div>
+      </div>
+
+      <!-- H4: 2024黄浦初三一模真题 · 特点与开放专项 · 新航路开辟与全球物种大交换 -->
+      <div class="question-card" data-cat="tedian">
+        <div class="q-meta">
+          <div class="q-tags">
+            <span class="q-source-badge">🔥 2024黄浦一模真题</span>
+            <span class="q-tag tag-emerald">专项③ 特点归纳与开放</span>
+            <span class="q-tag tag-blue">世界古代到近代格局变迁</span>
+          </div>
+          <div class="q-score">满分：6分 | 难度：★★★☆☆</div>
+        </div>
+        <div class="q-material">
+          <b>【真实材料选段】</b><br>
+          15-16世纪，哥伦布、达·伽马、麦哲伦等航海家在西班牙、葡萄牙王室支持下，开辟了通往美洲、印度和环球航行的新航线。这一时期的地理大发现将分散隔绝的世界各地区联结为一个整体；美洲的玉米、马铃薯等高产作物传入欧亚，欧洲的牛、马等家畜带到美洲；但与此同时，欧洲殖民者在美洲实行种族灭绝，并开启了罪恶的“三角贸易”，造成非洲上亿精壮劳动力的丧失。
+        </div>
+        <div class="q-stem">
+          【设问一】：依据材料，概括新航路开辟后“全球交流”的主要特点。（3分）<br>
+          【设问二】：从人类文明发展的角度，谈谈新航路开辟给我们带来的历史启示。（3分）
+        </div>
+
+        <button class="ans-toggle-btn" onclick="toggleHistoryAns('h-ans-4', this)">👁️ 查看官方采分要点与标准解析</button>
+        <div class="ans-panel" id="h-ans-4">
+          <div class="grading-points">
+            <b>【采分要点】</b>：<br>
+            ① <b>设问一 特点概括（3分）</b>：范围广泛（涉及欧亚美非四大洲，世界开始联结为整体）；内容多样（包含物种、人口、文化与贸易双向交换）；伴随残酷性与掠夺性（伴随殖民扩张、屠杀印第安人与奴隶贸易）。<br>
+            ② <b>设问二 历史启示（3分）</b>：开放带来进步，文明因交流互鉴而丰富多彩；必须坚持相互尊重、平等合作、互利共赢的全球交往原则；坚决反对殖民霸权与强权掠夺，推动构建人类命运共同体。
+          </div>
+        </div>
+      </div>
+
+      <!-- H5: 2024上海中考跨学科/闵行一模真题 · 上海本地化 + 时政联系专项 -->
+      <div class="question-card" data-cat="shanghai">
+        <div class="q-meta">
+          <div class="q-tags">
+            <span class="q-source-badge">🔥 2024闵行一模/中考本土特色</span>
+            <span class="q-tag tag-red">专项④ 上海本地化专题</span>
+            <span class="q-tag tag-amber">近代开埠 · 红色起点 · 浦东开放</span>
+          </div>
+          <div class="q-score">满分：8分 | 难度：★★★★☆</div>
+        </div>
+        <div class="q-material">
+          <b>【上海城市空间与历史节点】</b><br>
+          节点一（1865年）：李鸿章在上海创办江南制造总局，开创中国近代官办军事工业先河，上海逐步成为近代中国工商业与工人阶级最集中的城市。<br>
+          节点二（1921年）：兴业路76号石库门建筑内，中国共产党第一次全国代表大会胜利召开，庄严宣告中国共产党诞生，上海成为中国革命的初心始发地。<br>
+          节点三（1990年至今）：党中央宣布开发开放浦东，“开发浦东、振兴上海、服务全国、面向世界”，浦东从一片农田飞跃成为国际金融与科创中心，成为中国改革开放的象征。
+        </div>
+        <div class="q-stem">
+          【设问】：结合上述三个历史节点，以“近代以来的上海与中国现代化”为主题，阐述上海在近代中国救亡图存、新民主主义革命以及当代改革开放进程中所扮演的关键角色。（8分）
+        </div>
+
+        <button class="ans-toggle-btn" onclick="toggleHistoryAns('h-ans-5', this)">👁️ 查看官方采分要点与标准解析</button>
+        <div class="ans-panel" id="h-ans-5">
+          <div class="grading-points">
+            <b>【采分要点】</b>（满分8分）：<br>
+            ① <b>近代工业与工人阶级摇篮（2分）</b>：创办江南制造总局等洋务企业，使上海成为近代民族工商业的发祥地，培育了中国最早、最强大的产业工人队伍，为无产阶级登上历史舞台和新民主主义革命准备了阶级基础。<br>
+            ② <b>中国革命的摇篮与初心始发地（3分）</b>：中共一大在上海召开，诞生了中国共产党，这是开天辟地的大事变，中国革命面貌从此焕然一新；上海形成了以伟大建党精神为核心的红色血脉。<br>
+            ③ <b>改革开放排头兵与创新发展先行者（3分）</b>：浦东开发开放谱写了中国式现代化的生动实践，上海勇当全国改革开放排头兵，成为连接中国与世界经济的关键枢纽，彰显了中国特色社会主义制度的强大优越性。
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 📚 2026-2027 学科配套教辅与试卷资料在线预览库 -->
+    <section class="materials-section">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <h2 style="font-size: 20px; font-weight: 700; color: #0F172A; display: flex; align-items: center; gap: 8px;">
+            📚 历史学科配套教辅/练习册/试卷资料库
+          </h2>
+          <p style="font-size: 13px; color: #64748B; margin-top: 4px;">收录官方练习册答案、中考真题体验练、考点背诵任务单，支持高清在线预览与直接下载</p>
+        </div>
+        <a href="doc-viewer-V1.html" style="display: inline-flex; align-items: center; gap: 6px; background: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 8px; text-decoration: none;">
+          🔍 打开历史全屏预览中心 (1 份)
+        </a>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="background: #DBEAFE; color: #1E40AF; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px;">练习册答案</span>
+              <span style="font-size: 11px; color: #64748B;">💾 6.26 MB</span>
+            </div>
+            <div style="font-size: 14px; font-weight: 600; color: #0F172A; line-height: 1.4; word-break: break-all;">26秋上海九年级历史练习册答案_扫描版.pdf</div>
+          </div>
+          <div style="display: flex; gap: 8px; margin-top: 4px;">
+            <a href="doc-viewer-V1.html?file=docs/26秋上海九年级历史练习册答案_扫描版.pdf" style="flex: 1; text-align: center; background: #2563EB; color: #FFFFFF; font-size: 12px; font-weight: 600; padding: 8px 12px; border-radius: 6px; text-decoration: none;">👁️ 在线预览</a>
+            <a href="docs/26秋上海九年级历史练习册答案_扫描版.pdf" download style="background: #FFFFFF; color: #475569; border: 1px solid #CBD5E1; font-size: 12px; font-weight: 600; padding: 8px 12px; border-radius: 6px; text-decoration: none;">⬇️ 下载</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
 
+  <div class="toast" id="hist-toast">✅ 小论文框架已成功复制！可以直接粘贴使用！</div>
+
   <footer>
-    <p>© 2026 Owen Learning Center · 初中历史学习中心</p>
+    <p>© 2026 Owen Learning Center · 上海初中历史教学研发中心</p>
+    <p style="margin-top: 0.4rem; font-size: 0.8rem;">聚焦上海历史新中考 · 观点-史实-结论标准赋分 · 强化时空史料实证</p>
   </footer>
+
+  <script>
+    // 切换大纲展开折叠
+    function toggleSyllabus() {
+      const body = document.getElementById('syllabus-body');
+      const arrow = document.getElementById('syllabus-arrow');
+      if (body.style.display === 'none') {
+        body.style.display = 'grid';
+        arrow.textContent = '收起 ▲';
+      } else {
+        body.style.display = 'none';
+        arrow.textContent = '展开大纲 ▼';
+      }
+    }
+
+    // 展开折叠答案
+    function toggleHistoryAns(ansId, btn) {
+      const panel = document.getElementById(ansId);
+      if (panel.classList.contains('open')) {
+        panel.classList.remove('open');
+        btn.textContent = '👁️ 查看本题官方评分细则与解析';
+      } else {
+        panel.classList.add('open');
+        btn.textContent = '🙈 收起本题评分细则与解析';
+      }
+    }
+
+    // 小论文实时字数检查
+    function checkEssayLength(textareaId, statId) {
+      const text = document.getElementById(textareaId).value.trim();
+      const len = text.length;
+      const statBadge = document.getElementById(statId);
+      if (len >= 150 && len <= 220) {
+        statBadge.className = 'word-stat-badge stat-good';
+        statBadge.textContent = '当前：' + len + ' 字（字数适中，极佳）';
+      } else if (len > 220) {
+        statBadge.className = 'word-stat-badge stat-warn';
+        statBadge.textContent = '当前：' + len + ' 字（偏长，建议精简至200字内）';
+      } else {
+        statBadge.className = 'word-stat-badge stat-warn';
+        statBadge.textContent = '当前：' + len + ' 字（建议写满150-200字）';
+      }
+    }
+
+    // 填入示范范文
+    function fillDemoEssay(textareaId, statId, demoType) {
+      let sample = "";
+      if (demoType === 1) {
+        sample = "观点：科学技术是推动人类社会发展的重要动力。\n论述：18世纪中期，瓦特改良蒸汽机广泛应用，人类步入“蒸汽时代”，大机器生产确立了近代资本主义工厂制度。19世纪下半叶，以电力和内燃机为核心的第二次工业革命，推动人类迈入“电气时代”，汽车、电报等新发明加速了全球物资流动，推动资本主义世界市场最终确立。\n结论：综上所述，科技是推动历史前进的有力杠杆，必须坚持创新驱动战略。";
+      } else if (demoType === 2) {
+        sample = "观点：顺应时代潮流的改革创新是国家富强的重要源泉。\n论述：战国时期商鞅在秦国推行变法，废井田、奖军功、立县制，废除贵族特权，极大激发了生产与战斗力，使秦国富国强兵并完成大一统。1978年十一届三中全会开启改革开放，推行家庭联产承包责任制与特区建设，解放了生产力，开辟了中国特色社会主义道路。\n结论：综上所述，因时制宜的体制改革是国家繁荣长青的根本动力。";
+      }
+      document.getElementById(textareaId).value = sample;
+      checkEssayLength(textareaId, statId);
+    }
+
+    // 复制小论文框架
+    function copyEssayFormula() {
+      const text = "【上海中考历史小论文 观点-史实-结论满分框架】\n1. 观点明确（第一段）：一句话亮明观点（如：科学技术是推动人类文明进步的重要动力 / 改革是推动社会进步的重要源泉）。\n2. 史论结合（第二段）：列举2-3个典型史实（史实A+其影响；史实B+其影响）。\n3. 结论升华（第三段）：综上所述，……历史启示我们必须……（呼应观点，理性升华）。\n总字数控制在150-200字，成篇流畅，严禁使用①②③标号。";
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('hist-toast');
+        toast.style.display = 'flex';
+        setTimeout(() => { toast.style.display = 'none'; }, 2500);
+      });
+    }
+
+    // 过滤与标签切换
+    function filterHistory(cat, btn) {
+      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.question-card');
+      cards.forEach(card => {
+        if (cat === 'all') {
+          card.style.display = 'block';
+        } else {
+          const cardCat = card.getAttribute('data-cat') || '';
+          if (cardCat.includes(cat)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    }
+
+    function switchHistoryTab(tabKey, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (tabKey === 'tab-all') {
+        filterHistory('all', document.querySelectorAll('.filter-pill')[0]);
+      } else if (tabKey === 'tab-essay') {
+        filterHistory('essay', document.querySelectorAll('.filter-pill')[1]);
+      } else if (tabKey === 'tab-shiliao') {
+        filterHistory('shiliao', document.querySelectorAll('.filter-pill')[2]);
+      } else if (tabKey === 'tab-tedian') {
+        filterHistory('tedian', document.querySelectorAll('.filter-pill')[3]);
+      } else if (tabKey === 'tab-shanghai') {
+        filterHistory('shanghai', document.querySelectorAll('.filter-pill')[4]);
+      }
+    }
+
+    function searchHistory() {
+      const query = document.getElementById('hist-search').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.question-card');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (text.includes(query)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
