@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>上海市民办新虹桥中学 · 全景研究 | 长宁区民办普高 V1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-main: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --bg-subtle: #F1F5F9;
+
+    --border: #E2E8F0;
+    --border-strong: #CBD5E1;
+
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+
+    --red: #DC2626;
+    --red-bg: #FEF2F2;
+    --red-border: #FECACA;
+
+    --blue: #2563EB;
+    --blue-bg: #EFF6FF;
+    --blue-border: #BFDBFE;
+
+    --green: #059669;
+    --green-bg: #ECFDF5;
+    --green-border: #A7F3D0;
+
+    --amber: #D97706;
+    --amber-bg: #FFFBEB;
+    --amber-border: #FDE68A;
+
+    --purple: #7C3AED;
+    --purple-bg: #F5F3FF;
+    --purple-border: #DDD6FE;
+
+    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+    --shadow-md: 0 4px 10px -2px rgba(15, 23, 42, 0.08);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner {
+    max-width: 1120px; margin: 0 auto; padding: 0.7rem 1.4rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  }
+  .header-brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: inherit; }
+  .back-btn {
+    font-size: 0.76rem; font-weight: 700; color: var(--text-secondary);
+    background: var(--bg-subtle); padding: 0.38rem 0.72rem; border-radius: var(--radius-sm);
+    text-decoration: none; transition: all 0.15s ease; white-space: nowrap;
+  }
+  .back-btn:hover { background: var(--blue-bg); color: var(--blue); }
+  .header-title-box h1 { font-size: 1rem; font-weight: 800; line-height: 1.2; }
+  .header-title-box span { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
+  nav.nav-links { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+  nav.nav-links a {
+    font-size: 0.72rem; font-weight: 600; color: var(--text-secondary); text-decoration: none;
+    padding: 0.3rem 0.6rem; border-radius: 6px; background: var(--bg-subtle); transition: all 0.15s ease;
+  }
+  nav.nav-links a:hover { background: var(--blue-bg); color: var(--blue); }
+
+  .container { max-width: 1120px; margin: 0 auto; padding: 1.6rem 1.4rem 4.5rem; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    color: #fff; border-radius: var(--radius-lg);
+    padding: 2rem 1.9rem 1.7rem; margin-bottom: 1.6rem;
+    box-shadow: 0 12px 28px -8px rgba(15, 23, 42, 0.35);
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; top: -70px; right: -70px; width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(220, 38, 38, 0.3) 0%, transparent 70%); border-radius: 50%;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.45rem; flex-wrap: wrap;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.02em;
+    color: #CBD5E1; margin-bottom: 0.7rem;
+  }
+  .hero-eyebrow .dot { width: 5px; height: 5px; border-radius: 50%; background: #64748B; }
+  .hero h2 { font-family: 'Outfit', 'Inter', sans-serif; font-size: 1.95rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+  .hero p.lead { font-size: 0.95rem; color: #E2E8F0; max-width: 780px; line-height: 1.6; position: relative; z-index: 1; }
+  .hero p.lead b { color: #FCA5A5; font-weight: 700; }
+
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.6rem; margin-top: 1.4rem; position: relative; z-index: 1;
+  }
+  .stat {
+    background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md); padding: 0.7rem 0.85rem;
+  }
+  .stat .label { font-size: 0.68rem; color: #94A3B8; font-weight: 600; display: block; margin-bottom: 0.1rem; }
+  .stat .num { font-family: 'Outfit', sans-serif; font-size: 1.35rem; font-weight: 800; line-height: 1.1; }
+  .stat .desc { font-size: 0.66rem; color: #94A3B8; margin-top: 0.1rem; }
+  .stat.hot .num { color: #FCA5A5; }
+  .stat.cool .num { color: #93C5FD; }
+
+  /* ---------- Sections ---------- */
+  section { margin-bottom: 2.2rem; }
+  .section-head { display: flex; align-items: baseline; gap: 0.65rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .section-num {
+    width: 26px; height: 26px; border-radius: 7px; background: var(--text-primary); color: #fff;
+    font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 800;
+    display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+    transform: translateY(2px);
+  }
+  .section-head h3 { font-size: 1.22rem; font-weight: 800; letter-spacing: -0.01em; }
+  .section-head .hint { font-size: 0.76rem; color: var(--text-muted); font-weight: 500; }
+
+  .card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 1.15rem 1.25rem; box-shadow: var(--shadow-sm);
+  }
+  .card + .card { margin-top: 0.7rem; }
+
+  /* ---------- Verdict ---------- */
+  .verdict-list { display: flex; flex-direction: column; gap: 0.6rem; }
+  .verdict {
+    display: flex; gap: 0.85rem; background: var(--bg-card); border: 1px solid var(--border);
+    border-left: 4px solid var(--blue); border-radius: var(--radius-sm); padding: 0.85rem 1rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .verdict.warn { border-left-color: var(--red); }
+  .verdict.good { border-left-color: var(--green); }
+  .verdict.amber { border-left-color: var(--amber); }
+  .verdict .vnum {
+    font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text-muted);
+    flex-shrink: 0; width: 1.4rem; line-height: 1.5;
+  }
+  .verdict .vbody strong { font-size: 0.92rem; font-weight: 800; display: block; margin-bottom: 0.15rem; }
+  .verdict .vbody p { font-size: 0.84rem; color: var(--text-secondary); line-height: 1.6; }
+  .verdict .vbody p b { color: var(--text-primary); }
+
+  /* ---------- Tables ---------- */
+  .table-wrap { overflow-x: auto; border-radius: var(--radius-sm); border: 1px solid var(--border); background: #fff; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 520px; }
+  thead th {
+    background: var(--bg-subtle); text-align: left; padding: 0.55rem 0.75rem;
+    font-size: 0.72rem; font-weight: 800; color: var(--text-secondary);
+    letter-spacing: 0.02em; border-bottom: 1px solid var(--border); white-space: nowrap;
+  }
+  tbody td { padding: 0.55rem 0.75rem; border-bottom: 1px solid #F1F5F9; vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #FAFCFF; }
+  td.num, th.num { font-family: 'Outfit', sans-serif; font-variant-numeric: tabular-nums; }
+  .center { text-align: center; }
+  .muted { color: var(--text-muted); }
+  .row-hl { background: var(--red-bg) !important; }
+  .row-hl td { font-weight: 700; }
+
+  .tag {
+    display: inline-block; font-size: 0.64rem; font-weight: 800; padding: 0.1rem 0.4rem;
+    border-radius: 4px; letter-spacing: 0.02em; white-space: nowrap; vertical-align: 1px;
+  }
+  .tag-off { background: #E7F6EE; color: #047857; border: 1px solid #A7F3D0; }
+  .tag-one { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+  .tag-two { background: #FFF7ED; color: #C2410C; border: 1px solid #FED7AA; }
+  .tag-pr  { background: #FEF2F2; color: #B91C1C; border: 1px solid #FECACA; }
+
+  /* ---------- Bars ---------- */
+  .bar-list { display: flex; flex-direction: column; gap: 0.42rem; }
+  .bar-row { display: grid; grid-template-columns: 150px 1fr 62px; align-items: center; gap: 0.6rem; }
+  .bar-name { font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bar-track { height: 18px; background: #F1F5F9; border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #93C5FD, #2563EB); }
+  .bar-row.mine .bar-name { color: var(--red); font-weight: 800; }
+  .bar-row.mine .bar-fill { background: linear-gradient(90deg, #FCA5A5, #DC2626); }
+  .bar-val { font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .bar-row.mine .bar-val { color: var(--red); }
+  .axis-note { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.5rem; }
+
+  /* ---------- Callout ---------- */
+  .callout {
+    border-radius: var(--radius-sm); padding: 0.8rem 1rem; font-size: 0.83rem; line-height: 1.6;
+    border: 1px solid var(--amber-border); background: var(--amber-bg); color: #78350F; margin-top: 0.7rem;
+  }
+  .callout.blue { border-color: var(--blue-border); background: var(--blue-bg); color: #1E3A8A; }
+  .callout.red { border-color: var(--red-border); background: var(--red-bg); color: #7F1D1D; }
+  .callout b { font-weight: 800; }
+
+  /* ---------- Track cards ---------- */
+  .track-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.7rem; }
+  .track {
+    background: #fff; border: 1px solid var(--border); border-top: 4px solid var(--blue);
+    border-radius: var(--radius-md); padding: 1rem 1.05rem; box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .track.t2 { border-top-color: var(--purple); }
+  .track.t3 { border-top-color: var(--amber); }
+  .track.t4 { border-top-color: var(--green); }
+  .track h4 { font-size: 0.95rem; font-weight: 800; display: flex; align-items: center; gap: 0.4rem; }
+  .track .kicker { font-size: 0.68rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.02em; }
+  .track ul { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
+  .track li { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.55; padding-left: 0.85rem; position: relative; }
+  .track li::before { content: ""; position: absolute; left: 0; top: 0.55rem; width: 4px; height: 4px; border-radius: 50%; background: var(--border-strong); }
+  .track li b { color: var(--text-primary); }
+  .track .foot { font-size: 0.72rem; color: var(--text-muted); border-top: 1px dashed var(--border); padding-top: 0.45rem; margin-top: auto; }
+
+  /* ---------- Two column ---------- */
+  .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 0.7rem; }
+  .list-box { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1rem 1.1rem; box-shadow: var(--shadow-sm); }
+  .list-box h4 { font-size: 0.9rem; font-weight: 800; margin-bottom: 0.55rem; display: flex; align-items: center; gap: 0.4rem; }
+  .list-box ul { list-style: none; display: flex; flex-direction: column; gap: 0.42rem; }
+  .list-box li { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.55; padding-left: 1.15rem; position: relative; }
+  .list-box li::before { position: absolute; left: 0; top: 0; font-weight: 800; font-size: 0.8rem; }
+  .list-box.pro li::before { content: "✔"; color: var(--green); }
+  .list-box.con li::before { content: "✕"; color: var(--red); }
+  .list-box li b { color: var(--text-primary); }
+
+  /* ---------- Decision ---------- */
+  .decision {
+    background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 1rem 1.15rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 0.4rem;
+  }
+  .decision .dhead { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; flex-wrap: wrap; }
+  .decision .dtitle { font-size: 0.92rem; font-weight: 800; }
+  .decision .dscore { font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 800; color: var(--blue); }
+  .decision p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; }
+  .decision .role { font-size: 0.72rem; font-weight: 800; padding: 0.16rem 0.5rem; border-radius: 20px; }
+  .role.core { background: var(--green-bg); color: #047857; border: 1px solid var(--green-border); }
+  .role.backup { background: var(--blue-bg); color: #1D4ED8; border: 1px solid var(--blue-border); }
+  .role.opt { background: var(--amber-bg); color: #B45309; border: 1px solid var(--amber-border); }
+
+  /* ---------- Checklist ---------- */
+  ol.checks { list-style: none; counter-reset: ck; display: flex; flex-direction: column; gap: 0.45rem; }
+  ol.checks li {
+    counter-increment: ck; position: relative; padding: 0.55rem 0.8rem 0.55rem 2.5rem;
+    background: #fff; border: 1px solid var(--border); border-radius: var(--radius-sm);
+    font-size: 0.83rem; color: var(--text-secondary); line-height: 1.55;
+  }
+  ol.checks li::before {
+    content: counter(ck, decimal-leading-zero); position: absolute; left: 0.75rem; top: 0.55rem;
+    font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 800; color: var(--blue);
+  }
+  ol.checks li b { color: var(--text-primary); }
+
+  /* ---------- Source ---------- */
+  .legend { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.7rem; }
+  .footer {
+    margin-top: 2.4rem; padding-top: 1rem; border-top: 1px solid var(--border);
+    font-size: 0.74rem; color: var(--text-muted); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  }
+
+  @media (max-width: 760px) {
+    .container { padding: 1rem 0.85rem 3rem; }
+    .hero { padding: 1.5rem 1.15rem 1.3rem; }
+    .hero h2 { font-size: 1.5rem; }
+    .bar-row { grid-template-columns: 100px 1fr 52px; }
+    .bar-name { font-size: 0.72rem; }
+    .section-head h3 { font-size: 1.06rem; }
+    nav.nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="back-btn">← 返回全景看板</a>
+    <div class="header-title-box">
+      <h1>上海市民办新虹桥中学 · 全景研究</h1>
+      <span>长宁区 · 民办一般高中 · 招生代码 054043 · V1</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#s-verdict">结论</a>
+      <a href="#s-profile">档案</a>
+      <a href="#s-score">分数线</a>
+      <a href="#s-district">区梯度</a>
+      <a href="#s-admission">2026招生</a>
+      <a href="#s-track">四出口</a>
+      <a href="#s-outcome">升学核验</a>
+      <a href="#s-intl">国际部</a>
+      <a href="#s-review">红黑榜</a>
+      <a href="#s-decision">决策</a>
+      <a href="#s-check">现场12问</a>
+      <a href="#s-source">来源</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ============ HERO ============ -->
+  <div class="hero">
+    <div class="hero-eyebrow">
+      <span>长宁区</span><span class="dot"></span>
+      <span>民办 · 一般高中</span><span class="dot"></span>
+      <span>2000 年创办</span><span class="dot"></span>
+      <span>新长宁集团 × 东展教育</span>
+    </div>
+    <h2>上海市民办新虹桥中学</h2>
+    <p class="lead">
+      长宁区本区招生的<b>唯一一所民办普高</b>，2026 年统招线 <b>503 分</b>，只比全市普高控分线 501 高 2 分——
+      它是长宁区高中梯度的<b>最后一级台阶</b>。真正的差异化不在高考加工能力，而在三条换赛道出口：
+      <b>美术艺考、日语高考、国际部四条国际课程</b>。
+    </p>
+    <div class="stat-grid">
+      <div class="stat hot"><span class="label">2026 统招线（长宁本区）</span><div class="num">503</div><div class="desc">控分线 501 · 差 +2</div></div>
+      <div class="stat"><span class="label">2026 招生计划</span><div class="num">280</div><div class="desc">较 2025 年 +40</div></div>
+      <div class="stat"><span class="label">区内位次</span><div class="num">第 9 / 9</div><div class="desc">本区高中末位</div></div>
+      <div class="stat cool"><span class="label">学费</span><div class="num">2.3 万</div><div class="desc">元/学期 · 4.6 万/年</div></div>
+      <div class="stat"><span class="label">本科上线率</span><div class="num">89.3%</div><div class="desc">2020 年 · 校方口径</div></div>
+      <div class="stat"><span class="label">住宿</span><div class="num">无</div><div class="desc">走读 · 新华路校区</div></div>
+    </div>
+  </div>
+
+  <!-- ============ 1 结论 ============ -->
+  <section id="s-verdict">
+    <div class="section-head">
+      <span class="section-num">1</span>
+      <h3>结论先行：五句话看完这所学校</h3>
+      <span class="hint">如果只读一段，读这里</span>
+    </div>
+
+    <div class="verdict-list">
+      <div class="verdict">
+        <div class="vnum">01</div>
+        <div class="vbody">
+          <strong>定位很清楚：它是「托底」，不是「目标」</strong>
+          <p>长宁区 2026 年本区招生高中一共 9 所，新虹桥是其中唯一民办、也是录取分最低的一所。与倒数第二名西郊学校（616 分）相差 <b>113 分</b>，与区内头部延安中学（694 分）相差 <b>191 分</b>。区内没有第二所学校与它同档。</p>
+        </div>
+      </div>
+
+      <div class="verdict warn">
+        <div class="vnum">02</div>
+        <div class="vbody">
+          <strong>四年掉了 47.5 分，相对控分线的溢价已经归零</strong>
+          <p>统招线 2023 年 550.5 → 2024 年 518 → 2025 年 514 → 2026 年 503。同期普高控分线 525 / 518 / 513 / 501。2023 年它还比控分线高 <b>25.5 分</b>，2024 年起就是「刚好贴着地板」。<b>2026 年扩招 40 人</b>（240→280）是这一轮下滑的直接原因。</p>
+        </div>
+      </div>
+
+      <div class="verdict good">
+        <div class="vnum">03</div>
+        <div class="vbody">
+          <strong>真正的卖点是三条「换赛道」出口，而不是高考加工</strong>
+          <p>① 美术特色班（校方 2021 招生简章明确写进课程体系，历届有东华、上大、上师大、华理、南师大艺术系去向）；② 日语高考班（第三方渠道口径，对英语薄弱生是换赛道机会，<b>需现场核实是否独立成班</b>）；③ 国际部 OSSD / 美高 AP / HKDSE / 中日 EJU 四条线，校内可转。</p>
+        </div>
+      </div>
+
+      <div class="verdict amber">
+        <div class="vnum">04</div>
+        <div class="vbody">
+          <strong>最大的信息缺口：官方升学数据停在 2020 年</strong>
+          <p>校方最后一次公开量化成绩是 2021 年招生简章里的「2020 年本科上线率 89.3%」。2021 年之后<b>没有任何官方喜报、没有本科率、没有特控线人数</b>。任何「近年本科率 40%+」「90% 进海外名校」的说法都来自机构软文，无法交叉验证。</p>
+        </div>
+      </div>
+
+      <div class="verdict">
+        <div class="vnum">05</div>
+        <div class="vbody">
+          <strong>对 Owen 的意义：它正好落在「普高托底线」上</strong>
+          <p>按九上月考 357/635 折算，Owen 目前落在 <b>460–485 分</b>区间，惯性轨迹 480–515 分。2026 年新虹桥统招线 503、控分线 501——这所学校就是「中考 500 分上下还能不能拿到普高学籍」的那道门。正确用法：<b>放在 1–15 志愿的最后 1–2 位作绝对托底</b>，中段不要填。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2 档案 ============ -->
+  <section id="s-profile">
+    <div class="section-head">
+      <span class="section-num">2</span>
+      <h3>基础档案</h3>
+      <span class="hint">能查实的硬信息，含口径冲突提示</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <tbody>
+          <tr><td style="width:150px; background:#FAFBFC; font-weight:700; font-size:0.78rem; color:#475569;">学校全称</td><td>上海市民办新虹桥中学（Shanghai New Hongqiao High School）</td></tr>
+          <tr><td style="background:#FAFBFC; font-weight:700; font-size:0.78rem; color:#475569;">招生代码</td><td><b>054043</b>（长宁区，2026 年沿用）</td></tr>
+          <tr><td style="background:#FAFBFC; font-weight:700; font-size:0.78rem; color:#475569;">办学性质</td><td>民办 · 完全中学（含国内部高中 + 国际部）· 学校类型「一般高中」</td></tr>
+          <tr><td style="background:#FAFBFC; font-weight:700; font-size:0.78rem; color:#475569;">创办时间</td><td>2000 年 5 月（公办转制完全中学起家）</td></tr>
+          <tr><td style="background:#FAFBFC; font-weight:700; font-size:0.78rem; color:#475569;">举办方</td><td>新长宁集团（长宁区国资背景）× 上海东展教育发展有限公司</td></tr>
+          <tr><td style="background:#FAFBFC; font-weight:700; font-size:0.78rem; color:#475569;">校区地址</td><td><b>新华校区</b>：新华路 329 弄 43 号（2026 年统招公示「就读地址」，高中部）<br><b>中山校区</b>：中山西路 1245 弄 16 号（国际部 / 国际课程，2019 年 8 月由虹桥路 2206 号迁入）</td></tr>
+          <tr><td style="background:#FAFBFC; font-weight:700; font-size:0.78rem; color:#475569;">联系电话</td><td>新华校区 62429429 ｜ 中山校区 62425044、62617288×207 ｜ 校务办 62428012</td></tr>
+          <tr><td style="background:#FAFBFC; font-weight:700; font-size:0.78rem; color:#475569;">官网 / 邮箱</td><td>xhqzx.chneic.sh.cn ｜ xinhqzx@126.com ｜ 国际部 xhq.vpea.ca</td></tr>
+          <tr><td style="background:#FAFBFC; font-weight:700; font-size:0.78rem; color:#475569;">校训 / 理念</td><td>自信、自强 ／「一切为了学生的成功与发展」</td></tr>
+          <tr><td style="background:#FAFBFC; font-weight:700; font-size:0.78rem; color:#475569;">规模</td><td>百度百科：700 余名（含国际部、外籍学生 80 余名）｜学校招聘启事：在校 600 余名、专任教师 62 名</td></tr>
+          <tr><td style="background:#FAFBFC; font-weight:700; font-size:0.78rem; color:#475569;">校园</td><td>占地 30 亩，绿化 5700 ㎡，上海市花园单位；250 米塑胶跑道、综合楼 1 万余㎡</td></tr>
+          <tr><td style="background:#FAFBFC; font-weight:700; font-size:0.78rem; color:#475569;">收费</td><td>高中学费 <b>23000 元/学期</b>（长发改〔2023〕18 号）；外籍生 35000 元/学期</td></tr>
+          <tr><td style="background:#FAFBFC; font-weight:700; font-size:0.78rem; color:#475569;">住宿</td><td><b>无寄宿</b>（2026 年缺额表明确标注）</td></tr>
+          <tr><td style="background:#FAFBFC; font-weight:700; font-size:0.78rem; color:#475569;">资质</td><td>长宁区 4 所具有外籍学生招生资质的高中之一（另三所：市三女中、延安中学、建青实验）</td></tr>
+          <tr><td style="background:#FAFBFC; font-weight:700; font-size:0.78rem; color:#475569;">主要荣誉</td><td>全国优秀民办学校 · 上海市依法治校标准校 · 上海市安全文明校 · 上海市民办中小学特色项目第二/三/四轮 · 市教卫系统文明单位 · 长宁区文明单位 · 上海市花园单位</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout red">
+      <b>⚠ 两个必须现场核实的口径冲突：</b>
+      ① <b>规模对不上</b>——2026 年招生计划 280 人/届，三年应有 840 人，但公开资料称在校仅 600 余人。说明实际报到率偏低，或 280 计划含国际部、或「600 余人」是 2021 年前旧数。直接问：<i>2026 级高一实际报到多少人？</i>
+      ② <b>校长信息可能过期</b>——百科记「现任校长钱建德」，但该词条近年未更新，现场需确认现任校长与办学许可是否变更。
+    </div>
+  </section>
+
+  <!-- ============ 3 分数线 ============ -->
+  <section id="s-score">
+    <div class="section-head">
+      <span class="section-num">3</span>
+      <h3>分数线四年走势：溢价是怎么归零的</h3>
+      <span class="hint">数据源：长宁区招考中心逐年「1 至 15 志愿」录取最低分数线</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>年份</th>
+            <th class="num">新虹桥统招线</th>
+            <th class="num">全市普高控分线</th>
+            <th class="num">相对控分线溢价</th>
+            <th class="num">同比变化</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>2023</b></td>
+            <td class="num">550.5</td>
+            <td class="num">525</td>
+            <td class="num" style="color:#2563EB; font-weight:800;">+25.5</td>
+            <td class="num muted">—</td>
+            <td class="muted">最后一届还有明显溢价的年份</td>
+          </tr>
+          <tr>
+            <td><b>2024</b></td>
+            <td class="num">518</td>
+            <td class="num">518</td>
+            <td class="num" style="color:#64748B; font-weight:800;">0</td>
+            <td class="num" style="color:#059669; font-weight:700;">−32.5</td>
+            <td class="muted">首次贴线录取</td>
+          </tr>
+          <tr>
+            <td><b>2025</b></td>
+            <td class="num">514</td>
+            <td class="num">513</td>
+            <td class="num" style="color:#64748B; font-weight:800;">+1</td>
+            <td class="num" style="color:#059669; font-weight:700;">−4</td>
+            <td class="muted">计划 240 人</td>
+          </tr>
+          <tr class="row-hl">
+            <td>2026</td>
+            <td class="num" style="color:#DC2626;">503</td>
+            <td class="num">501</td>
+            <td class="num" style="color:#64748B;">+2</td>
+            <td class="num" style="color:#059669;">−11</td>
+            <td>计划 280 人（+40）；<b>录取后仍余 2 个计划</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout blue">
+      <b>怎么读这张表：</b>不要只看绝对分。控分线本身四年降了 24 分（525→501），新虹桥降了 47.5 分，<b>降幅是控分线的两倍</b>。这说明下滑不只是「卷子难了」，而是<b>同档位竞争位置上被挤了下去</b>——2026 年扩招 40 人、分数线再降 11 分，是典型的「以量换线」。
+      <br><br>
+      <b>对填报的含义：</b>民办普高在控分线上未完成计划时，经区教育局同意<b>可降分录取并公示</b>。2026 年长宁区公示的缺额控分线就是 501，剩余计划 2 人。这意味着 <b>501 分以下仍存在补录窗口</b>，但只能走 7 月下旬征求志愿，且名额极少（个位数）。
+    </div>
+  </section>
+
+  <!-- ============ 4 区梯度 ============ -->
+  <section id="s-district">
+    <div class="section-head">
+      <span class="section-num">4</span>
+      <h3>放进长宁区看：一道 113 分的断层</h3>
+      <span class="hint">2026 年长宁区「1 至 15 志愿」本区高中录取最低分</span>
+    </div>
+
+    <div class="card">
+      <div class="bar-list">
+        <div class="bar-row"><div class="bar-name">延安中学（市重）</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-val">694</div></div>
+        <div class="bar-row"><div class="bar-name">复旦中学（市重）</div><div class="bar-track"><div class="bar-fill" style="width:98.2%"></div></div><div class="bar-val">690</div></div>
+        <div class="bar-row"><div class="bar-name">市三女中（市重）</div><div class="bar-track"><div class="bar-fill" style="width:97.2%"></div></div><div class="bar-val">685.5</div></div>
+        <div class="bar-row"><div class="bar-name">华师天山（区重）</div><div class="bar-track"><div class="bar-fill" style="width:91.4%"></div></div><div class="bar-val">662.5</div></div>
+        <div class="bar-row"><div class="bar-name">建青实验（区重）</div><div class="bar-track"><div class="bar-fill" style="width:89.3%"></div></div><div class="bar-val">653</div></div>
+        <div class="bar-row"><div class="bar-name">华政附中（特色）</div><div class="bar-track"><div class="bar-fill" style="width:87.6%"></div></div><div class="bar-val">645</div></div>
+        <div class="bar-row"><div class="bar-name">仙霞高级（区重）</div><div class="bar-track"><div class="bar-fill" style="width:85.7%"></div></div><div class="bar-val">635.5</div></div>
+        <div class="bar-row"><div class="bar-name">西郊学校（普高）</div><div class="bar-track"><div class="bar-fill" style="width:81.9%"></div></div><div class="bar-val">616</div></div>
+        <div class="bar-row mine"><div class="bar-name">民办新虹桥（民办）</div><div class="bar-track"><div class="bar-fill" style="width:67.1%"></div></div><div class="bar-val">503</div></div>
+      </div>
+      <div class="axis-note">条形按 750 分满分等比缩放，用于呈现相对位置。西郊 616 → 新虹桥 503，中间空出 <b>113 分</b>，是长宁区最大的一处断层。</div>
+    </div>
+
+    <div class="callout">
+      <b>这个断层意味着什么：</b>在长宁区，公办普高的地板是西郊学校 616 分。考不到 616，区内就<b>只剩新虹桥这一条普高路</b>；再往下就是中本贯通（501 控分线）、中高职贯通、中职。
+      所以新虹桥的真实竞争对手不是别的普高，而是<b>同为 501 控分线的中本贯通</b>——两者在同一个分数带上抢人，这是志愿表上必须二选一的关键抉择。
+    </div>
+  </section>
+
+  <!-- ============ 5 2026 招生 ============ -->
+  <section id="s-admission">
+    <div class="section-head">
+      <span class="section-num">5</span>
+      <h3>2026 年招生与录取规则</h3>
+      <span class="hint">官方公示口径</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>项目</th><th>2026 年数据</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>招生计划</b></td><td class="num">280 人</td><td>2025 年 240 人 → 2026 年 <b>+40 人</b>（长宁区本区计划表）</td></tr>
+          <tr><td><b>录取批次</b></td><td>1–15 平行志愿（统一招生）</td><td>民办一般高中不参与名额分配到校/到区；国际部走自主招生</td></tr>
+          <tr><td><b>录取最低分</b></td><td class="num" style="color:#DC2626; font-weight:800;">503</td><td>长宁区本区线，2026 年录取后<b>未招满</b></td></tr>
+          <tr><td><b>缺额情况</b></td><td class="num">剩 2 人</td><td>2026-07-23 缺额表；控制线 501</td></tr>
+          <tr><td><b>学费</b></td><td class="num">23000 元/学期</td><td>= 4.6 万/年；外籍生 35000 元/学期</td></tr>
+          <tr><td><b>住宿</b></td><td>无寄宿</td><td>走读，住得远需自行解决通勤</td></tr>
+          <tr><td><b>就读地址</b></td><td>新华路 329 弄 43 号</td><td>新华校区（2026 统招公示地址）</td></tr>
+          <tr><td><b>外籍身份</b></td><td>可接收</td><td>长宁区 4 所有资质高中之一；外籍身份不填志愿，由区教育局统一安排</td></tr>
+          <tr><td><b>降分补录</b></td><td>可申请</td><td>控分线上未完成计划，经区教育局同意可降分并公示</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout blue">
+      <b>志愿位次建议（平行志愿逻辑）：</b>1–15 志愿是「分数优先、遵循志愿」，把新虹桥放在<b>最后 1–2 位</b>不会影响前面任何一所学校的录取概率，只在前面全部落空时才接住。放在中段反而会「分数够就被它接走」，白白浪费更高的志愿位。
+    </div>
+  </section>
+
+  <!-- ============ 6 四条出口 ============ -->
+  <section id="s-track">
+    <div class="section-head">
+      <span class="section-num">6</span>
+      <h3>四条出口：这所学校到底给什么</h3>
+      <span class="hint">同一分数段里，特色课程才是它的比较优势</span>
+    </div>
+
+    <div class="track-grid">
+      <div class="track">
+        <span class="kicker">出口 ① ｜ 国内高考</span>
+        <h4>普通高中班</h4>
+        <ul>
+          <li>上海统编高中课程，走秋考 / 春考</li>
+          <li>教学策略公开表述为 <b>「低起点、小台阶、有坡度，周周清、步步高」</b></li>
+          <li>分层指导、因材施教，按入学基础分班</li>
+          <li>历史上曾与延安中学联办「延安实验班」（老校长薛一震为原延安中学副校长），<b>该班型是否延续需核实</b></li>
+        </ul>
+        <div class="foot">适合：分数贴线、想拿普高学籍走国内高考</div>
+      </div>
+
+      <div class="track t3">
+        <span class="kicker">出口 ② ｜ 艺考</span>
+        <h4>美术特色班</h4>
+        <ul>
+          <li>校方 2021 年招生简章明确：「普通高中基础教育 + 美术特色教育」课程体系</li>
+          <li>为美术高考方向学生<b>单独开设美术特色课程</b></li>
+          <li>历届去向（校方口径）：东华大学、上海大学、上海师范大学、华东理工大学、南京师范大学艺术系</li>
+          <li>2026 年是否仍独立成班、联考过线率多少 → <b>现场必问</b></li>
+        </ul>
+        <div class="foot">适合：文化课偏弱但有绘画基础，愿意走美术联考</div>
+      </div>
+
+      <div class="track t2">
+        <span class="kicker">出口 ③ ｜ 换语种</span>
+        <h4>日语高考班</h4>
+        <ul>
+          <li>第三方招生汇总将其列为该校核心特色：<b>「日语高考班，美术艺考成熟」</b></li>
+          <li>逻辑成立：高考外语可选日语，难度与词汇量低于英语，对英语长期低分生是「换赛道」</li>
+          <li>但<b>校方官网/公众号未见独立招生简章</b>，公开信息只在国际部中日班（EJU 方向）可查</li>
+          <li>关键区别：<b>高考日语</b>（国内升学）≠ <b>中日班 EJU</b>（赴日留学），别被招生话术混淆</li>
+        </ul>
+        <div class="foot">可信度：<span class="tag tag-two">二手</span> 必须现场确认是否独立成班</div>
+      </div>
+
+      <div class="track t4">
+        <span class="kicker">出口 ④ ｜ 留学</span>
+        <h4>国际部（四条线）</h4>
+        <ul>
+          <li><b>加拿大 OSSD</b>：注册加拿大威廉学院（安省）学籍，获加方 + 本校双文凭</li>
+          <li><b>美高 AP</b>：注册美国威睿达思学校学籍，双文凭</li>
+          <li><b>香港 HKDSE</b>：经香港考评局体系引入，可申 19 个国家和地区</li>
+          <li><b>中日 EJU</b>：日语零基础可入，目标日本 Top80 本科；含艺术方向</li>
+          <li>班额 20–25 人；入学考：英语 + 数学笔试 + 英文口语面试</li>
+        </ul>
+        <div class="foot">国际部在中山校区，与国内部不同址</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7 升学核验 ============ -->
+  <section id="s-outcome">
+    <div class="section-head">
+      <span class="section-num">7</span>
+      <h3>升学成绩核验：能查到的、查不到的</h3>
+      <span class="hint">这一节比宣传页重要</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>年份</th><th class="num">高考上线率</th><th class="num">本科率 / 本科上线率</th><th>口径与来源</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2007</td><td class="num">83.3%</td><td class="num">25.4%</td><td class="muted">本科率（录取口径）· 百科</td></tr>
+          <tr><td>2008</td><td class="num">83.78%</td><td class="num">24%</td><td class="muted">本科率 · 百科</td></tr>
+          <tr><td>2009</td><td class="num">82.7%</td><td class="num">27.6%</td><td class="muted">本科率 · 百科</td></tr>
+          <tr><td>2010</td><td class="num">98%</td><td class="num">41.05%</td><td class="muted">本科率 · 百科</td></tr>
+          <tr><td>2011</td><td class="num">100%</td><td class="num">43.3%</td><td class="muted">本科率 · 百科</td></tr>
+          <tr><td>2018</td><td class="num muted">—</td><td class="num">79%</td><td class="muted"><b>本科上线率</b>（达线口径）· 校方 2021 简章</td></tr>
+          <tr><td>2019</td><td class="num muted">—</td><td class="num">83.1%</td><td class="muted">本科上线率 · 校方 2021 简章</td></tr>
+          <tr class="row-hl"><td>2020</td><td class="num muted">—</td><td class="num" style="color:#DC2626;">89.3%</td><td>本科上线率 · 校方 2021 简章（<b>最后一次官方数据</b>）</td></tr>
+          <tr><td>2021–2026</td><td class="num muted">—</td><td class="num muted">无公开数据</td><td class="muted">未见任何官方喜报 / 校内公示流出</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout red">
+      <b>三个必须看穿的统计陷阱：</b><br>
+      ① <b>「本科率」和「本科上线率」不是一回事。</b>2011 年 43.3% 是本科录取率，2020 年 89.3% 是本科达线率。直接连成一条上升曲线是误导——口径变了。<br>
+      ② <b>上线 ≠ 录取。</b>达线后仍可能因志愿、专业、体检落榜；89.3% 只是「有资格填本科」的比例。<br>
+      ③ <b>分母是谁？</b>该校中考入口本就是全区最低，89.3% 的「低进高出」在同类民办里不算突出；且上海高考本科整体录取率本就较高，单看校内百分比会高估加工能力。
+    </div>
+
+    <div class="callout">
+      <b>诚实结论：</b>这所学校近五年的高考加工能力<b>无法从公开信息验证</b>。若你把这所学校当作「三年后冲本科」的主力选择，必须去现场要三个数：2026 届本科<b>录取</b>率、特控线（原一本）人数、以及最近三年高考喜报原件。要不到，就按「本科率 40%–60% 区间」保守估算，别按宣传口径做决策。
+    </div>
+  </section>
+
+  <!-- ============ 8 国际部 ============ -->
+  <section id="s-intl">
+    <div class="section-head">
+      <span class="section-num">8</span>
+      <h3>国际部：四条课程线的真实成本</h3>
+      <span class="hint">这条线常被当成「低分留学捷径」，但账要算清</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>课程</th><th>学籍 / 文凭</th><th>升学方向</th><th class="num">学费（第三方口径）</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>加拿大 OSSD</b></td>
+            <td>注册加拿大威廉学院（安省）学籍；加方 + 本校双文凭</td>
+            <td>加拿大前 5、英澳、港澳</td>
+            <td class="num">约 11.8 万/年 <span class="muted">（早期中加口径）</span></td>
+          </tr>
+          <tr>
+            <td><b>美高 AP</b></td>
+            <td>注册美国威睿达思学校学籍；美方 + 本校双文凭</td>
+            <td>美国前 80、英澳加</td>
+            <td class="num">约 15.8 万/年</td>
+          </tr>
+          <tr>
+            <td><b>香港 HKDSE</b></td>
+            <td>本校学籍，经香港考评局课程体系</td>
+            <td>港八大、英澳加、19 个国家和地区</td>
+            <td class="num">需询价</td>
+          </tr>
+          <tr>
+            <td><b>中日 EJU</b></td>
+            <td>本校学籍，参加日本留学生考试</td>
+            <td>日本 Top80 本科、日本艺术院校</td>
+            <td class="num">需询价</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="two-col" style="margin-top:0.7rem;">
+      <div class="list-box pro">
+        <h4>宣传口径里值得肯定的</h4>
+        <ul>
+          <li><b>办学历史长</b>：国际部 2001 年成立，是上海市教委最早批准可直接招收外籍学生的学校之一；2013 年起做 OSSD，2021 年前后开设 DSE / 中日</li>
+          <li><b>通道完整</b>：四条线覆盖加、美、港、日，校内有转轨空间，比「只有一条 A-Level」的学校灵活</li>
+          <li><b>门槛低</b>：入学考为英语 + 数学 + 英文面试，不看中考分，对中考失利但英语尚可的学生友好</li>
+          <li><b>小班</b>：20–25 人/班</li>
+        </ul>
+      </div>
+      <div class="list-box con">
+        <h4>必须打折的部分</h4>
+        <ul>
+          <li><b>「90% 进海外前列」无第三方审计</b>：分母含全部毕业生？是否含语言学校 / 预科？未披露</li>
+          <li><b>学籍是「注册合作校」</b>：威廉学院、威睿达思均为加/美合作方，不等于在本校就读，需确认学分与文凭真实获取路径</li>
+          <li><b>外教流动是高频吐槽</b>：家长评价中「外教流动大、刚适应就换老师」反复出现</li>
+          <li><b>费用远不止学费</b>：学籍注册费、升学服务费、考试费、境外段学费生活费另计（早期中加境外段约 15 万/年，中美约 37 万/年）</li>
+          <li><b>校区不同址</b>：国际部在中山校区，与国内部新华校区分离，管理团队是否共用需确认</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9 红黑榜 ============ -->
+  <section id="s-review">
+    <div class="section-head">
+      <span class="section-num">9</span>
+      <h3>口碑红黑榜</h3>
+      <span class="hint">区分「可验证事实」与「主观感受」</span>
+    </div>
+
+    <div class="two-col">
+      <div class="list-box pro">
+        <h4>红榜 · 站得住的优点</h4>
+        <ul>
+          <li><b>位置极好</b>：新华路校区在长宁核心区，走读通勤成本低；对住在西延安一带的家庭几乎是「家门口的普高」</li>
+          <li><b>学费是同档最低</b>：4.6 万/年，长宁区民办里没有更便宜的；对比外区民办动辄 8–12 万/年</li>
+          <li><b>管理偏严</b>：手机上交、晚自习巡堂（家长评价反复提到），对自律弱的孩子是正向约束</li>
+          <li><b>有特色出口</b>：美术 + 日语 + 国际部，给「文化课拼不动」的孩子留了三条岔路</li>
+          <li><b>办学资质齐全</b>：全国优秀民办学校、依法治校标准校、连续三轮民办特色项目，不是野鸡学校</li>
+          <li><b>集团背景稳</b>：新长宁集团（区国资）+ 东展教育，跑路风险低</li>
+        </ul>
+      </div>
+      <div class="list-box con">
+        <h4>黑榜 · 必须接受的代价</h4>
+        <ul>
+          <li><b>学术天花板低</b>：入口是全区最低分，同侪效应弱，冲特控线（原一本）的同伴压力与师资倾斜都有限</li>
+          <li><b>生源结构持续下沉</b>：四年降 47.5 分、2026 扩招 40 人后仍余缺额，同学的平均起点在往下走</li>
+          <li><b>无寄宿</b>：家住得远就要天天通勤，晚自习后回家安全与时间成本都要算</li>
+          <li><b>官方升学数据断更 5 年</b>：这是最硬的减分项，说明校方自己也不认为近年数据好看</li>
+          <li><b>教师结构老化风险</b>：早期宣传「高级教师占 60%」多为延安/市西退休返聘，近年招聘启事显示研究生仅 29%，新老交替期</li>
+          <li><b>国际部口碑两极</b>：好评集中在课程与外教，差评集中在流动率与费用不透明</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10 适合/不适合 ============ -->
+  <section id="s-fit">
+    <div class="section-head">
+      <span class="section-num">10</span>
+      <h3>谁适合，谁不适合</h3>
+      <span class="hint">用画像判断，比看排名准</span>
+    </div>
+
+    <div class="two-col">
+      <div class="list-box pro">
+        <h4>适合这三类家庭</h4>
+        <ul>
+          <li><b>分数贴线型</b>：中考 500–560，公办普高（西郊 616）够不到，但坚决不想去中职/中本贯通，要一张普高学籍</li>
+          <li><b>换赛道型</b>：英语长期 60–80 分、或从小画画，愿意用日语高考 / 美术联考重开一局</li>
+          <li><b>过渡留学型</b>：中考失利但家庭有留学预算，想先用一年缓冲再转国际课程，或直接走中日/OSSD</li>
+        </ul>
+      </div>
+      <div class="list-box con">
+        <h4>不适合这三类家庭</h4>
+        <ul>
+          <li><b>目标特控线/211</b>：这里给不了学术竞争环境，同样的努力放在区重点产出更高</li>
+          <li><b>需要寄宿</b>：学校无寄宿，家远等于每天两小时通勤，三年下来是硬损耗</li>
+          <li><b>看重「确定性升学数据」</b>：官方数据停在 2020 年，你无法用数据验证这三年值不值</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout blue">
+      <b>一个容易被忽略的对比：</b>同样 501 控分线，中本贯通（3+4）读完是<b>本科文凭 + 技能证书</b>，新虹桥读完是<b>普高学籍 + 一次高考机会</b>。
+      如果孩子文化课确实拼不动、家庭也不想承担 4.6 万/年 × 3 的成本，中本贯通的确定性更高；如果孩子只是「初中没发力、高中可能起来」，普高学籍保留了翻盘可能。<b>这不是学校好坏问题，是风险偏好问题。</b>
+    </div>
+  </section>
+
+  <!-- ============ 11 决策 ============ -->
+  <section id="s-decision">
+    <div class="section-head">
+      <span class="section-num">11</span>
+      <h3>对 Owen 的具体决策建议</h3>
+      <span class="hint">基于九上月考 357/635、折算 460–485 的现状</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:0.7rem;">
+      <div class="decision">
+        <div class="dhead">
+          <span class="dtitle">情形 A · 维持现状（460–515）</span>
+          <span class="role core">核心托底</span>
+        </div>
+        <div class="dscore">503 分线 ≈ 你的天花板</div>
+        <p>这是最需要新虹桥的情形。此时它是<b>唯一能拿到的普高学籍</b>，且大概率要走 7 月下旬征求志愿（因为 503 已贴线，正常志愿容易被挤掉）。<b>动作</b>：1–15 志愿第 14–15 位必填；同时把中本贯通作为并行方案准备好，两条腿走路。</p>
+      </div>
+
+      <div class="decision">
+        <div class="dhead">
+          <span class="dtitle">情形 B · 按计划修复（560–610）</span>
+          <span class="role backup">末位保底</span>
+        </div>
+        <div class="dscore">用不上，但必须填</div>
+        <p>达到这个区间，西郊（616）差一点、仙霞（635.5）有距离，新虹桥已经明显低于你的水平。<b>动作</b>：仍放最后 1 位——平行志愿不吃亏，只在全部落空时接住。不要因为「看不上」而留空，留空等于放弃普高最后一道保险。</p>
+      </div>
+
+      <div class="decision">
+        <div class="dhead">
+          <span class="dtitle">情形 C · 走特色赛道</span>
+          <span class="role opt">需另做评估</span>
+        </div>
+        <div class="dscore">美术 / 日语 / 国际部</div>
+        <p>如果确认英语是硬伤且提分无望，日语高考是真实的换赛道机会；如果有绘画基础，美术班是同分段里少见的资源。<b>但这两条都必须先核实「是否独立成班、师资与往届成绩」</b>，否则只是普通班里多上几节课。</p>
+      </div>
+    </div>
+
+    <div class="callout red">
+      <b>一句提醒：</b>以 Owen 现在 460–485 的折算位次，<b>新虹桥不是「要不要考虑」的问题，而是「够不够得着」的问题</b>。503 分是它 2026 年的录取线，距离当前水平还有 20–40 分。这所学校的正确打开方式，是先把它当成「必须守住的地板」，再把主要精力放在把地板抬到 560 以上——那时候讨论的就不是新虹桥，而是西郊、仙霞。
+    </div>
+  </section>
+
+  <!-- ============ 12 核验 ============ -->
+  <section id="s-check">
+    <div class="section-head">
+      <span class="section-num">12</span>
+      <h3>开放日 / 招生办现场 12 问</h3>
+      <span class="hint">照着问，答案含糊就是答案</span>
+    </div>
+
+    <ol class="checks">
+      <li><b>2026 级高一实际报到多少人？</b>分几个班？每班多少人？（用来验证 280 计划 vs 在校 600 人的矛盾）</li>
+      <li><b>日语班是否独立成班？</b>高几下分班？日语教师是否 N1 / 留日背景？往届日语班高考外语均分多少？</li>
+      <li><b>美术班是否独立成班？</b>2026 届美术联考过线率？近三年美术生本科录取去向名单能否看？</li>
+      <li><b>2026 届高考本科录取率</b>（不是上线率）是多少？特控线（原一本）过线几人？</li>
+      <li><b>2021 年之后为什么没有公开喜报？</b>校内公示栏能否看近三年成绩？</li>
+      <li><b>新高一师资构成</b>：高级教师占比、教龄 5 年内新教师占比、近三年教师流失率？</li>
+      <li><b>分层教学怎么分？</b>按入学分还是每学期流动？流动比例多少？</li>
+      <li><b>晚自习到几点？</b>无寄宿的学生放学后安全怎么管？有没有晚托？</li>
+      <li><b>手机管理的具体规则</b>是什么？违反怎么处理？（家长评价说「上交」，要确认执行细节）</li>
+      <li><b>国际部与国内部是否同一管理团队？</b>国际部学生能否转回国内部参加高考？</li>
+      <li><b>国际部除学费外的全部费用</b>：学籍注册费、升学服务费、考试费、境外段费用，请给书面清单。</li>
+      <li><b>近三年办学许可 / 年检是否有异常？</b>是否有家长投诉或退费纠纷记录？</li>
+    </ol>
+  </section>
+
+  <!-- ============ 13 来源 ============ -->
+  <section id="s-source">
+    <div class="section-head">
+      <span class="section-num">13</span>
+      <h3>数据来源与可信度分级</h3>
+      <span class="hint">截至 2026-10-19</span>
+    </div>
+
+    <div class="legend">
+      <span class="tag tag-off">官方</span>
+      <span class="tag tag-one">一手</span>
+      <span class="tag tag-two">二手</span>
+      <span class="tag tag-pr">机构稿·仅参考</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th style="width:70px;">级别</th><th>来源</th><th>提供了什么</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="tag tag-off">官方</span></td><td>长宁区教育局《2026 年长宁区高中阶段招生考试工作实施意见》</td><td>民办普高降分录取规则、外籍生招生资质 4 校名单</td></tr>
+          <tr><td><span class="tag tag-off">官方</span></td><td>2026 年上海市高中学校「1 至 15 志愿」统一招生录取最低分数线（长宁区）</td><td>2026 统招线 503、未招满；区内 8 所高中梯度</td></tr>
+          <tr><td><span class="tag tag-off">官方</span></td><td>2026 年长宁区中考投档缺额情况表（2026-07-23）</td><td>剩余 2 人、控分线 501、就读地址新华路、无寄宿、学费 2.3 万/学期</td></tr>
+          <tr><td><span class="tag tag-off">官方</span></td><td>长宁区 2025 年民办学校收费公示（长发改〔2023〕18 号）</td><td>学费 23000 元/学期、外籍生 35000 元/学期</td></tr>
+          <tr><td><span class="tag tag-off">官方</span></td><td>上海市民办新虹桥中学 2021 年秋季高中招生简章（长宁区政务公开 PDF）</td><td>美术特色课程体系、2018–2020 本科上线率 79%/83.1%/89.3%、美术去向院校</td></tr>
+          <tr><td><span class="tag tag-one">一手</span></td><td>学校微信公众号招聘启事</td><td>在校 600 余名、专任教师 62 名、研究生 29%、外籍双语 30.6%、两校区地址与电话</td></tr>
+          <tr><td><span class="tag tag-one">一手</span></td><td>学校国际部招生简章页（xhq.vpea.ca）与各年度国际部招生简章</td><td>OSSD/美高/中日课程结构、班额 20–25、入学考科目、早期学费</td></tr>
+          <tr><td><span class="tag tag-two">二手</span></td><td>百度百科 / 搜狗百科 / 360 百科</td><td>创办时间、举办方、校训、2007–2011 高考数据、历史沿革（薛一震、钱建德）</td></tr>
+          <tr><td><span class="tag tag-two">二手</span></td><td>2026 长宁区 1–15 志愿招生计划汇总（公众号整理）</td><td>2026 计划 280 人、2025 年 240 人（+40）</td></tr>
+          <tr><td><span class="tag tag-two">二手</span></td><td>考哪去（kaonaqu.xyz）逐年分数线库</td><td>2023–2026 统招线序列、2026 抽查备注</td></tr>
+          <tr><td><span class="tag tag-pr">机构稿</span></td><td>育路、图强、国际学校网、中国教育在线、华科学校等招生软文</td><td>AP 15.8 万/年、日语高考班说法、「90% 进海外前列」口径 —— 均无第三方佐证，只作线索</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <b>研究边界（诚实声明）：</b>本页所有分数、计划、收费、地址均来自政府公开文件或官方公示，可直接引用；所有「升学率」「特色班师资」「国际部出口」类信息，除 2020 年前的校方简章外，<b>均无独立第三方验证</b>。凡标注「需核实」的条目，请以现场招生办书面答复为准。
+    </div>
+  </section>
+
+  <div class="footer">
+    <span>上海市民办新虹桥中学 · 全景研究 V1 ｜ 数据截至 2026-10-19</span>
+    <span style="display:flex; gap:0.45rem; flex-wrap:wrap; align-items:center;">长宁区 · 招生代码 054043 ｜ <a href="../index.html" style="color:#2563EB; text-decoration:none; font-weight:700;">返回全景看板</a> · <a href="shanghai-international-highschools-V1.html" style="color:#2563EB; text-decoration:none; font-weight:600;">上海国际高中全景</a> · <a href="qibao-dwight-V1.html" style="color:#2563EB; text-decoration:none; font-weight:600;">七宝德怀特</a> · <a href="wenlai-international-V1.html" style="color:#2563EB; text-decoration:none; font-weight:600;">文来国际部</a></span>
+  </div>
+
+</div>
+</body>
+</html>
