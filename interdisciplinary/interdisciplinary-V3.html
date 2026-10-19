@@ -629,6 +629,48 @@
       background: #fff;
     }
 
+    /* PDF Modal */
+    .pdf-modal-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.72);
+      z-index: 9999; backdrop-filter: blur(4px); align-items: center; justify-content: center;
+      padding: 1rem;
+    }
+    .pdf-modal-overlay.active { display: flex; }
+    .pdf-modal-box {
+      background: #FFFFFF; border-radius: var(--radius-lg); width: 100%; max-width: 1100px;
+      height: 90vh; display: flex; flex-direction: column; overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    .pdf-modal-head {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.85rem 1.4rem; border-bottom: 1px solid var(--border-color);
+      background: #F8FAFC;
+    }
+    .pdf-modal-title { font-weight: 700; font-size: 0.95rem; color: var(--text-primary); }
+    .pdf-modal-close {
+      background: none; border: none; font-size: 1.3rem; cursor: pointer;
+      color: var(--text-muted); width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; transition: background 0.15s;
+    }
+    .pdf-modal-close:hover { background: #E2E8F0; }
+
+    /* Official materials grid */
+    .official-mat-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .official-mat-card {
+      background: #FFFFFF; border: 1.5px solid var(--purple-border);
+      border-radius: var(--radius-md); padding: 1.25rem;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 1rem;
+      box-shadow: var(--shadow-sm); transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .official-mat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--purple-main);
+    }
+
     footer {
       margin-top: 4rem;
       padding-top: 1.8rem;
@@ -660,6 +702,7 @@
       </div>
     </div>
     <div class="header-nav">
+      <a href="#sec-official-docs" style="color: #7C3AED; background: #FAF5FF; border: 1px solid #E9D5FF;">📑 实考/校本教研原件</a>
       <a href="#sec-formula">📐 核心解题套路</a>
       <a href="#sec-read-charts">📊 读图三步法</a>
       <a href="#sec-cases">📚 12篇全真题拆解</a>
@@ -710,6 +753,69 @@
       </div>
     </div>
   </div>
+
+  <!-- Section 0: 西延安实考与校本练习官方教研资料库 -->
+  <section id="sec-official-docs" style="margin-bottom: 2.5rem;">
+    <div class="section-header" style="border-left-color: #7C3AED;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+        <div>
+          <h3 class="section-title">西延安初三实考与校本精选官方讲评资料库</h3>
+          <p class="section-desc">直击初三第一次月考失分核心！收录 10 月最新实考月考卷讲评与西延安校本重点题解原件</p>
+        </div>
+        <span style="background: #FAF5FF; color: #7C3AED; border: 1px solid #E9D5FF; font-size: 0.78rem; font-weight: 700; padding: 4px 10px; border-radius: 20px;">2 份高清官方原件</span>
+      </div>
+    </div>
+
+    <div class="official-mat-grid">
+      <!-- Card 1: 10月考讲评（东桑西移） -->
+      <div class="official-mat-card" style="border-color: #FECDD3; background: #FFFBFB;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+            <span style="background: #FEF2F2; color: #DC2626; border: 1px solid #FECDD3; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">🔥 2026.10 最新月考实考讲评</span>
+            <span style="font-size: 0.75rem; color: #64748B;">📄 22 页 · 2.58 MB</span>
+          </div>
+          <h4 style="font-size: 1.05rem; font-weight: 800; color: #0F172A; line-height: 1.4; margin-bottom: 0.4rem;">
+            2026.10 跨学科案例分析阶段练习一讲评（东桑西移）
+          </h4>
+          <p style="font-size: 0.82rem; color: #475569; line-height: 1.5;">
+            <b>【初三第一次月考真题复盘】</b>针对本次月考失分核心（原卷仅得4分）进行全盘深度讲评！涵盖浙江蚕桑向广西转移的自然水热优势、桑树光合与有机物积累生理机理、以及“非生物环境 ➔ 生理机能 ➔ 产业转移”的标准三层因果链答题规范。
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.6rem; margin-top: 0.5rem;">
+          <button onclick="openPdfModal('2026.10跨学科案例分析阶段练习一讲评（东桑西移）.pdf', '2026.10 跨学科阶段练习一月考讲评（东桑西移）')" style="flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; background: #DC2626; color: white; border: none; border-radius: var(--radius-sm); padding: 0.55rem 0.85rem; font-size: 0.84rem; font-weight: 700; cursor: pointer; transition: opacity 0.15s;">
+            👁️ 全屏查阅 (22页)
+          </button>
+          <a href="2026.10跨学科案例分析阶段练习一讲评（东桑西移）.pdf" download style="display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; background: white; color: #475569; border: 1.5px solid #CBD5E1; border-radius: var(--radius-sm); padding: 0.55rem 0.85rem; font-size: 0.84rem; font-weight: 700; text-decoration: none;">
+            ⬇️ 下载
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: 校本练习16—德宏州茭白 -->
+      <div class="official-mat-card" style="border-color: #E9D5FF; background: #FAF5FF;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+            <span style="background: #F3E8FF; color: #7C3AED; border: 1px solid #E9D5FF; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 4px;">📑 西延安校本练习精讲</span>
+            <span style="font-size: 0.75rem; color: #64748B;">📄 14 页 · 1.57 MB</span>
+          </div>
+          <h4 style="font-size: 1.05rem; font-weight: 800; color: #0F172A; line-height: 1.4; margin-bottom: 0.4rem;">
+            校本练习 16 —— 云南德宏州双季茭白全套题解
+          </h4>
+          <p style="font-size: 0.82rem; color: #475569; line-height: 1.5;">
+            <b>【重点农业生态案例】</b>西延安初三上学期校本强化原题！剖析云南德宏州“低纬高原冬季温和湿润”的水热特征、茭白与黑粉菌共生刺激肉质茎膨大的生理特性、反季节上市优势及因果链闭环踩分点。
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.6rem; margin-top: 0.5rem;">
+          <button onclick="openPdfModal('校本练习16—德宏州茭白.pdf', '校本练习16 —— 云南德宏州茭白全套题解')" style="flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; background: #7C3AED; color: white; border: none; border-radius: var(--radius-sm); padding: 0.55rem 0.85rem; font-size: 0.84rem; font-weight: 700; cursor: pointer; transition: opacity 0.15s;">
+            👁️ 全屏查阅 (14页)
+          </button>
+          <a href="校本练习16—德宏州茭白.pdf" download style="display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; background: white; color: #475569; border: 1.5px solid #CBD5E1; border-radius: var(--radius-sm); padding: 0.55rem 0.85rem; font-size: 0.84rem; font-weight: 700; text-decoration: none;">
+            ⬇️ 下载
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Section 1: Methodology Formula -->
   <section id="sec-formula">
@@ -2366,7 +2472,38 @@
     const modal = document.getElementById('imgLightbox');
     modal.classList.remove('active');
   }
+
+  // PDF Viewer Modal
+  function openPdfModal(url, title) {
+    const modal = document.getElementById('pdfModal');
+    const frame = document.getElementById('pdfFrame');
+    const titleEl = document.getElementById('pdfModalTitle');
+    if (modal && frame) {
+      frame.src = url;
+      if (titleEl) titleEl.innerText = '📄 ' + title;
+      modal.classList.add('active');
+    }
+  }
+  function closePdfModal() {
+    const modal = document.getElementById('pdfModal');
+    const frame = document.getElementById('pdfFrame');
+    if (modal) modal.classList.remove('active');
+    if (frame) frame.src = '';
+  }
 </script>
+
+<!-- PDF 极速查阅弹窗 -->
+<div class="pdf-modal-overlay" id="pdfModal" onclick="if(event.target===this)closePdfModal()">
+  <div class="pdf-modal-box">
+    <div class="pdf-modal-head">
+      <div class="pdf-modal-title" id="pdfModalTitle">📄 跨学科官方教研 PDF 极速调阅</div>
+      <button class="pdf-modal-close" onclick="closePdfModal()">✕</button>
+    </div>
+    <div style="flex: 1; position: relative;">
+      <iframe id="pdfFrame" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

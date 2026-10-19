@@ -303,6 +303,22 @@ DAOFA_HUB_HTML = """<!DOCTYPE html>
       </div>
 
       <div class="mat-grid">
+        <div class="mat-card" style="border-color: #FECDD3; background: #FFF5F5;">
+          <div class="mat-name">2026.10.16 道法笔记（生态目录+新课）</div>
+          <div class="mat-meta"><span style="color: #DC2626; font-weight: 700;">九上新课/生态体系</span><span>7 页 · 1.08 MB</span></div>
+          <div style="display: flex; gap: 8px;">
+            <a href="daofa-V7.html" class="mat-btn" style="flex: 1; background: #DC2626;">📖 V7 全屏自测</a>
+            <a href="2026.10.16道法笔记（生态目录+新课）.pdf" download class="mat-btn" style="background: #FFFFFF; color: #475569; border: 1px solid #CBD5E1;">⬇️ 下载</a>
+          </div>
+        </div>
+        <div class="mat-card" style="border-color: #FECDD3; background: #FFF5F5;">
+          <div class="mat-name">2026.10.16 六-九年级目录顺口溜</div>
+          <div class="mat-meta"><span style="color: #DC2626; font-weight: 700;">全六册脉络速记</span><span>1 页 · 120 KB</span></div>
+          <div style="display: flex; gap: 8px;">
+            <a href="daofa-V7.html" class="mat-btn" style="flex: 1; background: #DC2626;">📖 V7 顺口溜速记</a>
+            <a href="2026.10.16六-九年级目录顺口溜.pdf" download class="mat-btn" style="background: #FFFFFF; color: #475569; border: 1px solid #CBD5E1;">⬇️ 下载</a>
+          </div>
+        </div>
         <div class="mat-card">
           <div class="mat-name">2026.9.30 道法综合卷一讲评思路 (核心母题)</div>
           <div class="mat-meta"><span>教材讲评</span><span>10 页</span></div>
