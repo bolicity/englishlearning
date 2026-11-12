@@ -13,6 +13,8 @@ Thumbs.db
 *.log
 .vercel
 .workbuddy/
+__pycache__/
+*.pyc
 
 # 资料索引：仅跟踪 导出 与 public 静态资源
 /资料索引/8shang_yuwen_jichu/*

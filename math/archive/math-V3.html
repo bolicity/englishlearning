@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>初中数学复习中心 V3 | 上海中考数学时间规划与题型配速</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-focus: #93C5FD;
+      --text-primary: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      --brand-blue: #2563EB;
+      --brand-blue-hover: #1D4ED8;
+      --brand-blue-light: #3B82F6;
+      --brand-blue-bg: #EFF6FF;
+      --accent-purple: #7C3AED;
+      --accent-purple-bg: #F5F3FF;
+      --accent-emerald: #059669;
+      --accent-emerald-bg: #ECFDF5;
+      --accent-amber: #D97706;
+      --accent-amber-bg: #FFFBEB;
+      --accent-rose: #E11D48;
+      --accent-rose-bg: #FFF1F2;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-light));
+      color: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.15rem;
+      box-shadow: 0 2px 4px rgba(37, 99, 235, 0.25);
+    }
+    .brand-title-wrap { display: flex; flex-direction: column; }
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--brand-blue);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .version-tag {
+      font-size: 11px;
+      background: #DBEAFE;
+      color: #1E40AF;
+      padding: 1px 7px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .brand-subtitle { font-size: 0.78rem; color: var(--text-muted); }
+
+    .nav-links { display: flex; gap: 10px; align-items: center; }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      min-height: 40px;
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover {
+      background-color: var(--brand-blue-bg);
+      color: var(--brand-blue);
+      border-color: var(--border-focus);
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F0F7FF 100%);
+      border: 1px solid #BFDBFE;
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .hero-content { max-width: 760px; }
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1E3A8A;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; }
+    
+    .hero-stat-box {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      background: #FFFFFF;
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid #DBEAFE;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--brand-blue);
+      line-height: 1.1;
+    }
+    .stat-label { font-size: 12px; color: var(--text-muted); font-weight: 600; margin-top: 4px; }
+
+    /* Timeline visualization bar */
+    .timeline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-badge {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: var(--brand-blue-bg);
+      color: var(--brand-blue);
+    }
+
+    .time-bar-track {
+      height: 38px;
+      background: #F1F5F9;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      border: 1px solid #CBD5E1;
+      margin-bottom: 12px;
+    }
+    .time-bar-segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 700;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      position: relative;
+    }
+    .time-bar-segment:hover {
+      filter: brightness(1.08);
+      z-index: 2;
+    }
+
+    .timeline-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      margin-top: 14px;
+      font-size: 13px;
+    }
+    .legend-item { display: flex; align-items: center; gap: 6px; color: var(--text-secondary); }
+    .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+    /* Timing Table */
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      margin-top: 1rem;
+    }
+    table.timing-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14px;
+    }
+    table.timing-table th {
+      background: #F8FAFC;
+      color: #334155;
+      font-weight: 700;
+      padding: 14px 16px;
+      border-bottom: 2px solid var(--border-color);
+      white-space: nowrap;
+    }
+    table.timing-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-color);
+      color: #1E293B;
+    }
+    table.timing-table tr:hover { background-color: #F8FAFC; }
+    .td-block-name { font-weight: 700; color: #0F172A; display: flex; align-items: center; gap: 8px; }
+    .td-time-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    /* Strategy Cards */
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 20px;
+    }
+    .strategy-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .strategy-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: #BFDBFE;
+    }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .card-title { font-size: 16px; font-weight: 700; color: #0F172A; }
+    .card-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .card-body { font-size: 13.5px; color: #475569; line-height: 1.65; }
+    .card-footer {
+      background: #F8FAFC;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 12.5px;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Calculator & Interactive Stopwatch */
+    .tool-box {
+      background: #FFFFFF;
+      border: 1px solid #DBEAFE;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .pace-slider-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .pace-slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <div class="brand-logo">数</div>
+        <div class="brand-title-wrap">
+          <div class="brand-title">
+            初中数学复习中心 <span class="version-tag">V3 考试时间规划版</span>
+          </div>
+          <div class="brand-subtitle">上海中考数学各大题型分值·黄金时间分配·解题配速策略</div>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="doc-viewer-V1.html?file=docs/26秋九上数学练习册答案（新）_扫描版.pdf" class="back-btn" style="background: #EFF6FF; color: #2563EB; border-color: #BFDBFE;">
+          📖 数学练习册答案
+        </a>
+        <a href="../index.html" class="back-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          返回学习中心
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Hero Banner -->
+    <section class="hero-card">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span>⏱️ 上海中考数学 100 分钟黄金时间分配</span>
+        </h1>
+        <p class="hero-desc">
+          中考数学总分 <strong>150 分</strong>，考试时间 <strong>100 分钟</strong>。科学的做题配速是稳定取得 140+ 的核心护城河：全卷规划 <strong>95 分钟</strong> 完成作答，预留 <strong>5 分钟</strong> 检查填涂答题卡与纠错！
+        </p>
+      </div>
+      <div class="hero-stat-box">
+        <div class="stat-item">
+          <div class="stat-num">100<span style="font-size: 14px; font-weight: 600;">分</span></div>
+          <div class="stat-label">考试总时长</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">150<span style="font-size: 14px; font-weight: 600;">分</span></div>
+          <div class="stat-label">试卷总分值</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">95+5<span style="font-size: 14px; font-weight: 600;">分</span></div>
+          <div class="stat-label">做题+复查</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Gantt Time Bar -->
+    <section class="timeline-card">
+      <div class="section-header">
+        <div class="section-title">
+          <span>📊 100分钟作答甘特时间分配轴</span>
+        </div>
+        <span class="section-badge">准确定位 · 拒不卡壳</span>
+      </div>
+
+      <div class="time-bar-track">
+        <div class="time-bar-segment" style="width: 12%; background: #3B82F6;" title="选择题(1-6): 12分钟">选择 12'</div>
+        <div class="time-bar-segment" style="width: 16%; background: #10B981;" title="填空基础(7-16): 16分钟">填空基 16'</div>
+        <div class="time-bar-segment" style="width: 5%; background: #F59E0B;" title="填空压轴(17): 5分钟">17题 5'</div>
+        <div class="time-bar-segment" style="width: 18%; background: #6366F1;" title="解答题(18-20): 18分钟">解答18-20 18'</div>
+        <div class="time-bar-segment" style="width: 16%; background: #06B6D4;" title="解答题(21-22): 16分钟">解答21-22 16'</div>
+        <div class="time-bar-segment" style="width: 13%; background: #EC4899;" title="压轴(23): 13分钟">压轴23 13'</div>
+        <div class="time-bar-segment" style="width: 15%; background: #8B5CF6;" title="压轴(24): 15分钟">压轴24 15'</div>
+        <div class="time-bar-segment" style="width: 5%; background: #64748B;" title="复查填涂: 5分钟">复查 5'</div>
+      </div>
+
+      <div class="timeline-legend">
+        <div class="legend-item"><span class="legend-dot" style="background: #3B82F6;"></span> 选择题 (1–6题 · 12分)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #10B981;"></span> 填空基础 (7–16题 · 16分)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #F59E0B;"></span> 填空压轴 (17题 · 5分)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #6366F1;"></span> 基础解答 (18–20题 · 18分)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #06B6D4;"></span> 综合解答 (21–22题 · 16分)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #EC4899;"></span> 几何压轴 (23题 · 13分)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #8B5CF6;"></span> 函数压轴 (24题 · 15分)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #64748B;"></span> 全卷复查填涂 (5分)</div>
+      </div>
+
+      <!-- Time Allocation Table -->
+      <div class="table-container">
+        <table class="timing-table">
+          <thead>
+            <tr>
+              <th>板块</th>
+              <th>题号</th>
+              <th>分值</th>
+              <th>建议用时</th>
+              <th>平均单题节奏</th>
+              <th>核心破题策略与避坑指南</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-block-name">
+                <span style="color: #3B82F6;">●</span> 选择题
+              </td>
+              <td><strong>1–6</strong></td>
+              <td><span style="color: #2563EB; font-weight: 700;">24 分</span></td>
+              <td><span class="td-time-tag" style="background: #EFF6FF; color: #1D4ED8;">12 分钟</span></td>
+              <td>约 2 分钟 / 题</td>
+              <td>快速稳拿，多用排除法、特殊值代入法与数形结合，绝不在前6题死抠小计算。</td>
+            </tr>
+            <tr>
+              <td class="td-block-name">
+                <span style="color: #10B981;">●</span> 填空基础
+              </td>
+              <td><strong>7–16</strong></td>
+              <td><span style="color: #059669; font-weight: 700;">40 分</span></td>
+              <td><span class="td-time-tag" style="background: #ECFDF5; color: #047857;">16 分钟</span></td>
+              <td>约 1.6 分钟 / 题</td>
+              <td>全卷基石！注意审清定义域、符号与单位，第15/16题稍微留心图象与线段关系。</td>
+            </tr>
+            <tr>
+              <td class="td-block-name">
+                <span style="color: #F59E0B;">●</span> 填空压轴
+              </td>
+              <td><strong>17</strong></td>
+              <td><span style="color: #D97706; font-weight: 700;">4 分</span></td>
+              <td><span class="td-time-tag" style="background: #FFFBEB; color: #B45309;">5 分钟</span></td>
+              <td>单题限时 5 分钟</td>
+              <td>常考几何折叠/动点最值/分类讨论。超过 5 分钟若无思路，果断做标记先跳过，最后再补！</td>
+            </tr>
+            <tr>
+              <td class="td-block-name">
+                <span style="color: #6366F1;">●</span> 解答 18–20
+              </td>
+              <td><strong>18、19、20</strong></td>
+              <td><span style="color: #4338CA; font-weight: 700;">30 分</span></td>
+              <td><span class="td-time-tag" style="background: #EEF2FF; color: #4338CA;">18 分钟</span></td>
+              <td>约 6 分钟 / 题</td>
+              <td>代数式化简、解方程/不等式组、解直角三角形。规范书写步骤，防止跳步失分。</td>
+            </tr>
+            <tr>
+              <td class="td-block-name">
+                <span style="color: #06B6D4;">●</span> 解答 21–22
+              </td>
+              <td><strong>21、22</strong></td>
+              <td><span style="color: #0891B2; font-weight: 700;">24 分</span></td>
+              <td><span class="td-time-tag" style="background: #ECFEFF; color: #0E7490;">16 分钟</span></td>
+              <td>约 8 分钟 / 题</td>
+              <td>统计概率 + 一次函数/反比例函数与几何应用。图表信息提取准确，结论作答完整。</td>
+            </tr>
+            <tr>
+              <td class="td-block-name">
+                <span style="color: #EC4899;">●</span> 压轴 23
+              </td>
+              <td><strong>23</strong></td>
+              <td><span style="color: #DB2777; font-weight: 700;">13 分</span></td>
+              <td><span class="td-time-tag" style="background: #FDF2F8; color: #BE185D;">13 分钟</span></td>
+              <td>问(1) 3' · 问(2) 10'</td>
+              <td>圆与相似、四边形几何证明。第(1)问必拿满分；第(2)问找准基本几何模型与辅助线转换。</td>
+            </tr>
+            <tr>
+              <td class="td-block-name">
+                <span style="color: #8B5CF6;">●</span> 压轴 24
+              </td>
+              <td><strong>24</strong></td>
+              <td><span style="color: #7C3AED; font-weight: 700;">15 分</span></td>
+              <td><span class="td-time-tag" style="background: #F5F3FF; color: #6D28D9;">15 分钟</span></td>
+              <td>问(1) 3' · 问(2) 5' · 问(3) 7'</td>
+              <td>二次函数综合与动点几何。第(1)问待定系数法必拿；第(2)问求解析式/特殊点；第(3)问分类讨论。</td>
+            </tr>
+            <tr style="background: #F8FAFC; font-weight: 700;">
+              <td colspan="2" style="text-align: center; color: #0F172A;">全卷用时汇总</td>
+              <td>150 分</td>
+              <td colspan="3" style="color: #2563EB;">95 分钟有效答题 + 5 分钟机动复查 ＝ 100 分钟</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Strategy Deep Dive -->
+    <div class="strategy-grid">
+      <div class="strategy-card">
+        <div class="card-top">
+          <div class="card-title">🚀 前 20 题“稳准狠”保分法则（前 94 分）</div>
+          <span class="card-badge" style="background: #ECFDF5; color: #047857;">46 分钟内搞定</span>
+        </div>
+        <div class="card-body">
+          1–6 选择题与 7–16 填空题是全卷拿高分的最重要底盘，占 64 分；加上 18–20 题基础解答 30 分，累计整整 <strong>94 分</strong>。
+          <br>• <strong>避免粗心：</strong>必须在草稿纸上分区域工整书写，不要心算连跳两步！
+          <br>• <strong>复查策略：</strong>做完一题顺手用反向代入法复验，不要寄希望于最后再全卷重算。
+        </div>
+        <div class="card-footer">
+          💡 <strong>铁律：</strong>基础题 1 分不丢，中考就已经踏进重点高中大门！
+        </div>
+      </div>
+
+      <div class="strategy-card">
+        <div class="card-top">
+          <div class="card-title">⚠️ 第 17 题填空压轴的“5分钟截断法”</div>
+          <span class="card-badge" style="background: #FFFBEB; color: #B45309;">限时 5 分钟</span>
+        </div>
+        <div class="card-body">
+          17 题分值仅为 4 分，但由于往往涉及多解（漏解扣 2-4 分）或极复杂几何变换，极易让考生陷入“沉没成本陷阱”。
+          <br>• <strong>5分钟截断：</strong>如果读题、画图、尝试建系/辅助线超过 5 分钟仍无清晰路径，立即选一个最直观的特例答案写上，或者先留空跳过！
+          <br>• 把宝贵时间留给后方分值更大的第 21、22、23、24 题！
+        </div>
+        <div class="card-footer">
+          🎯 <strong>铁律：</strong>绝不为了 4 分耽误后面 52 分大题的充裕书写！
+        </div>
+      </div>
+
+      <div class="strategy-card">
+        <div class="card-top">
+          <div class="card-title">🏆 23、24 两大压轴题的“分段得分策略”</div>
+          <span class="card-badge" style="background: #F5F3FF; color: #6D28D9;">合计 28 分</span>
+        </div>
+        <div class="card-body">
+          中考压轴题不是“全对”或“全错”的二极管，而是阶梯式给分：
+          <br>• <strong>第(1)问必吃：</strong>23(1)与24(1)通常只有 3~4 分难度，等于送分题，必须快速满分拿下。
+          <br>• <strong>第(2)问尽力拿：</strong>代入方程、相似三角形比例、特殊位置计算，争取拿到 80% 分数。
+          <br>• <strong>第(3)问拿过程分：</strong>哪怕算不出终值，写出分类讨论的前提条件、列出勾股定理/相似比等式，依然能稳稳斩获 2–3 分！
+        </div>
+        <div class="card-footer">
+          ⭐ <strong>铁律：</strong>先易后难，层次分明，字迹工整，步步拿分！
+        </div>
+      </div>
+    </div>
+
+    <!-- Supplementary Materials Section -->
+    <section class="materials-section" style="margin-top: 10px;">
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="font-size: 19px; font-weight: 700; color: #0F172A; display: flex; align-items: center; gap: 8px;">
+              📚 数学学科配套教辅/练习册/试卷资料库
+            </h2>
+            <p style="font-size: 13px; color: #64748B; margin-top: 4px;">收录官方练习册答案、中考真题体验练、考点背诵任务单，支持高清在线预览与直接下载</p>
+          </div>
+          <a href="doc-viewer-V1.html" style="display: inline-flex; align-items: center; gap: 6px; background: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 8px; text-decoration: none;">
+            🔍 打开数学全屏预览中心
+          </a>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px;">
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="background: #DBEAFE; color: #1E40AF; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px;">官方练习册答案</span>
+                <span style="font-size: 11px; color: #64748B;">💾 102.24 MB</span>
+              </div>
+              <div style="font-size: 14px; font-weight: 600; color: #0F172A; line-height: 1.4;">26秋九上数学练习册答案（新）_扫描版.pdf</div>
+            </div>
+            <div style="display: flex; gap: 8px; margin-top: 4px;">
+              <a href="doc-viewer-V1.html?file=docs/26秋九上数学练习册答案（新）_扫描版.pdf" style="flex: 1; text-align: center; background: #2563EB; color: #FFFFFF; font-size: 12px; font-weight: 600; padding: 8px 12px; border-radius: 6px; text-decoration: none;">👁️ 在线高清预览</a>
+              <a href="docs/26秋九上数学练习册答案（新）_扫描版.pdf" download style="background: #FFFFFF; color: #475569; border: 1px solid #CBD5E1; font-size: 12px; font-weight: 600; padding: 8px 12px; border-radius: 6px; text-decoration: none;">⬇️ 下载原件</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 初中数学复习中心 V3 · 保持浅色商务系纯净风格与版本控制</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,2258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>九上古诗文虚拟记忆宫殿背诵卡 V15.0（含出师表）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-card-subtle: #F1F5F9;
+      --text-main: #0F172A;
+      --text-muted: #334155;
+      --text-light: #64748B;
+      --primary: #2563EB;
+      --primary-soft: #EFF6FF;
+      --primary-border: #BFDBFE;
+      --accent: #7C3AED;
+      --accent-soft: #F5F3FF;
+      --success: #059669;
+      --success-soft: #ECFDF5;
+      --warning: #D97706;
+      --warning-soft: #FFFBEB;
+      --border-color: #E2E8F0;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    .chinese-text {
+      font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+    }
+
+    header {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-area h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-badge {
+      background: #DCFCE7;
+      color: #15803D;
+      border: 1px solid #86EFAC;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    .header-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .app-layout {
+      max-width: 1280px;
+      margin: 24px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 24px;
+    }
+
+    .sidebar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      height: fit-content;
+      position: sticky;
+      top: 90px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-light);
+      margin-bottom: 12px;
+      padding-left: 8px;
+    }
+
+    .nav-group { margin-bottom: 20px; }
+
+    .nav-group-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 8px;
+      padding-left: 8px;
+    }
+
+    .article-list { list-style: none; }
+
+    .article-item {
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+
+    .article-item:hover {
+      background: var(--bg-card-subtle);
+      color: var(--text-main);
+    }
+
+    .article-item.active {
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-weight: 600;
+      border-left: 3px solid var(--primary);
+    }
+
+    .article-tag {
+      font-size: 11px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: #F1F5F9;
+      color: #64748B;
+    }
+
+    .content-area {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .mode-bar {
+      position: sticky;
+      top: 16px;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+      flex-wrap: wrap;
+      gap: 12px;
+      transition: box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    .mode-tabs {
+      display: flex;
+      gap: 8px;
+      background: var(--bg-card-subtle);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+    }
+
+    .mode-tab {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .mode-tab.active {
+      background: #FFFFFF;
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tool-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: #FFFFFF;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .article-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .article-header {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+
+    .article-title {
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .article-author {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    /* Side-by-Side Storyboard Card Design (图文同框边靠边) */
+    .storyboard-section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .storyboard-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .side-by-side-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 0;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .side-by-side-card:hover {
+      border-color: var(--primary-border);
+      box-shadow: var(--shadow-md);
+    }
+
+    .storyboard-img-side {
+      background: #F1F5F9;
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .storyboard-img-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .storyboard-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      backdrop-filter: blur(4px);
+    }
+
+    .storyboard-text-side {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #FFFFFF;
+    }
+
+    .storyboard-title-line {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .storyboard-passage-box {
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--text-main);
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 10px;
+    }
+
+    .storyboard-clue-line {
+      font-size: 13px;
+      color: var(--text-muted);
+      background: var(--accent-soft);
+      border-left: 3px solid var(--accent);
+      padding: 6px 12px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .text-display-area {
+      font-size: 18px;
+      line-height: 2.2;
+      color: var(--text-main);
+      margin-top: 16px;
+    }
+
+    .sentence-block {
+      margin-bottom: 16px;
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      background: #FAFAFA;
+      border: 1px solid #F1F5F9;
+    }
+
+    .first-char-highlight {
+      display: inline-block;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 0 6px;
+      border-radius: 4px;
+      margin-right: 2px;
+      border: 1px dashed var(--primary-border);
+    }
+
+    .cloze-input {
+      border: 1px solid var(--border-color);
+      border-bottom: 2px solid var(--primary);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 16px;
+      width: 80px;
+      text-align: center;
+      outline: none;
+    }
+
+    .cloze-input.correct {
+      border-color: var(--success);
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .cloze-input.wrong {
+      border-color: #EF4444;
+      background: #FEF2F2;
+      color: #DC2626;
+    }
+
+    .practice-bar {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      .side-by-side-card {
+        grid-template-columns: 1fr;
+      }
+      .storyboard-img-side {
+        height: 200px;
+      }
+    }
+
+    /* Lightbox Modal (点击查看大图) */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-out;
+      animation: fadeIn 0.2s ease;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-img-content {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: var(--radius-md);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      object-fit: contain;
+      cursor: default;
+    }
+    .modal-caption {
+      position: absolute;
+      bottom: 24px;
+      color: #FFFFFF;
+      font-size: 15px;
+      font-weight: 600;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 8px 16px;
+      border-radius: 20px;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      color: #FFFFFF;
+      font-size: 32px;
+      font-weight: 300;
+      cursor: pointer;
+      line-height: 1;
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .clickable-img {
+      cursor: zoom-in;
+      transition: transform 0.2s ease;
+    }
+    .clickable-img:hover {
+      transform: scale(1.02);
+    }
+  
+    /* 镜头视觉差异化艺术滤镜与取景 */
+    .clickable-img.scene-filter-1 {
+      object-position: center top;
+      filter: contrast(105%) brightness(100%);
+    }
+    .clickable-img.scene-filter-2 {
+      object-position: center center;
+      filter: contrast(112%) saturate(115%) sepia(10%);
+    }
+    .clickable-img.scene-filter-3 {
+      object-position: center bottom;
+      filter: contrast(118%) brightness(95%) sepia(25%);
+    }
+    .clickable-img.scene-filter-4 {
+      object-position: left center;
+      filter: saturate(125%) brightness(105%);
+    }
+    .clickable-img.scene-filter-5 {
+      object-position: right center;
+      filter: contrast(110%) sepia(35%) hue-rotate(-10deg);
+    }
+
+
+    /* 虚拟记忆宫殿 V7.0 专属样式 */
+    .palace-route-map {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+      padding: 10px 4px;
+    }
+    .palace-spot-chip {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .palace-spot-chip.active {
+      background: var(--primary-soft);
+      border-color: var(--primary);
+      color: var(--primary);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    }
+    .palace-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 20px;
+      animation: fadeIn 0.25s ease;
+    }
+    .palace-card-spot-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .palace-card-peg {
+      font-size: 14px;
+      font-weight: 600;
+      color: #D97706;
+      background: #FEF3C7;
+      padding: 6px 12px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .palace-card-story {
+      font-size: 15px;
+      color: #334155;
+      line-height: 1.7;
+      background: #F8FAFC;
+      border-left: 4px solid #F59E0B;
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+    .palace-card-text {
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 1.8;
+      color: var(--text-main);
+      background: var(--bg-card-subtle);
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--primary);
+    }
+
+
+    
+    /* ==================== 智能手风琴与极致交互 UX V9.2 ==================== */
+    .sidebar-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding-bottom: 10px !important;
+      margin-bottom: 12px !important;
+      border-bottom: 1px dashed var(--border-color) !important;
+    }
+
+    .nav-group-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      color: #1e293b !important;
+      margin-bottom: 8px !important;
+      padding: 9px 12px !important;
+      background: #f1f5f9 !important;
+      border: 1px solid #e2e8f0 !important;
+      border-radius: 8px !important;
+      cursor: pointer !important;
+      user-select: none !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .nav-group-header:hover {
+      background: #e2e8f0 !important;
+      color: var(--primary) !important;
+      border-color: #cbd5e1 !important;
+    }
+
+    .nav-group-arrow {
+      font-size: 11px !important;
+      color: #64748b !important;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      display: inline-block !important;
+    }
+
+    .nav-group.collapsed .nav-group-arrow {
+      transform: rotate(-90deg) !important;
+    }
+
+    .nav-group .article-list {
+      max-height: 800px;
+      opacity: 1;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin 0.25s ease !important;
+    }
+
+    .nav-group.collapsed .article-list {
+      max-height: 0 !important;
+      opacity: 0 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      pointer-events: none !important;
+    }
+
+    .article-item {
+      padding: 10px 12px !important;
+      border-radius: 8px !important;
+      margin-bottom: 4px !important;
+      cursor: pointer !important;
+      transition: all 0.15s ease !important;
+    }
+    
+    .article-item.active {
+      background: var(--bg-hover) !important;
+      color: var(--primary) !important;
+      font-weight: 700 !important;
+      border-left: 3px solid var(--primary) !important;
+    }
+
+
+    /* iOS & All Device Compatibility Layer V9.3 */
+    button.nav-group-header {
+      width: 100% !important;
+      text-align: left !important;
+      border: 1px solid #cbd5e1 !important;
+      background: #f1f5f9 !important;
+      color: #0f172a !important;
+      font-family: inherit !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      padding: 10px 12px !important;
+      margin-bottom: 8px !important;
+      border-radius: 8px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      cursor: pointer !important;
+      -webkit-tap-highlight-color: rgba(37, 99, 235, 0.15) !important;
+      outline: none !important;
+    }
+    
+    button.nav-group-header:active {
+      background: #cbd5e1 !important;
+      transform: scale(0.99) !important;
+    }
+
+
+    /* 彻底硬核隐藏侧边栏 V9.5 */
+    .app-layout.sidebar-collapsed {
+      grid-template-columns: 1fr !important;
+      gap: 0 !important;
+    }
+
+    .app-layout.sidebar-collapsed .sidebar {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+    }
+
+
+    /* ==================== V10.0 精致紧凑型商务设计系统 ==================== */
+    .app-layout {
+      max-width: 1380px !important;
+      margin: 16px auto !important;
+      padding: 0 16px !important;
+      display: grid !important;
+      grid-template-columns: 200px 1fr !important;
+      gap: 16px !important;
+    }
+
+    .app-layout.sidebar-collapsed {
+      grid-template-columns: 1fr !important;
+      gap: 0 !important;
+    }
+
+    .app-layout.sidebar-collapsed .sidebar {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+    }
+
+    .sidebar {
+      padding: 10px !important;
+      border-radius: 8px !important;
+    }
+
+    .sidebar-title {
+      font-size: 12px !important;
+    }
+
+    button.nav-group-header {
+      padding: 7px 9px !important;
+      font-size: 12px !important;
+      margin-bottom: 6px !important;
+    }
+
+    .article-item {
+      padding: 7px 10px !important;
+      font-size: 13px !important;
+      margin-bottom: 3px !important;
+    }
+
+    .article-tag {
+      font-size: 10px !important;
+      padding: 1px 5px !important;
+    }
+
+    /* 顶部导航与主区域紧凑化 */
+    .mode-bar {
+      padding: 8px 12px !important;
+      margin-bottom: 14px !important;
+      border-radius: 8px !important;
+    }
+
+    .mode-tab {
+      padding: 6px 12px !important;
+      font-size: 13px !important;
+    }
+
+    .article-card {
+      padding: 18px !important;
+      border-radius: 10px !important;
+    }
+
+    .article-title {
+      font-size: 22px !important;
+      margin-bottom: 4px !important;
+    }
+
+    .article-author {
+      font-size: 13px !important;
+      margin-bottom: 16px !important;
+    }
+
+    /* 分镜头卡片比例精简（左图250px，右文） */
+    .scene-card {
+      grid-template-columns: 250px 1fr !important;
+      gap: 16px !important;
+      padding: 14px !important;
+      margin-bottom: 16px !important;
+      border-radius: 10px !important;
+    }
+
+    .scene-img-wrapper {
+      border-radius: 6px !important;
+    }
+
+    .scene-title {
+      font-size: 15px !important;
+      margin-bottom: 8px !important;
+    }
+
+    .passage-box {
+      font-size: 14px !important;
+      line-height: 1.6 !important;
+      padding: 10px 12px !important;
+    }
+
+    .translation-box {
+      font-size: 13px !important;
+      line-height: 1.55 !important;
+      padding: 8px 12px !important;
+      margin-top: 8px !important;
+    }
+
+    .cue-box {
+      font-size: 12px !important;
+      padding: 5px 8px !important;
+      margin-top: 8px !important;
+    }
+
+    /* 记忆宫殿与默写测试 */
+    .palace-card {
+      padding: 16px !important;
+    }
+
+    .palace-spot-chip {
+      padding: 6px 12px !important;
+      font-size: 12px !important;
+    }
+
+
+    /* Ruby 拼音排版高档样式 */
+    ruby {
+      ruby-position: over;
+      display: inline-ruby;
+      margin: 0 1.5px;
+      vertical-align: bottom;
+    }
+    rt {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 0.56em;
+      font-weight: 600;
+      color: #2563EB; /* 高清晰优雅蓝色注音 */
+      user-select: none;
+      line-height: 1.1;
+      text-align: center;
+    }
+    /* 隐藏拼音模式 */
+    body.hide-pinyin rt {
+      display: none !important;
+    }
+    body.hide-pinyin ruby {
+      margin: 0;
+    }
+    .pinyin-toggle-btn.active {
+      background: #EFF6FF !important;
+      color: #2563EB !important;
+      border-color: #BFDBFE !important;
+    }
+    .storyboard-passage-box {
+      font-size: 17px !important;
+      line-height: 2.3 !important;
+    }
+
+</style>
+</head>
+<body ontouchstart="">
+
+  <header>
+    <div class="header-container">
+      <div class="logo-area">
+        <h1>九上古诗文虚拟记忆宫殿背诵卡 <span class="logo-badge" style="background: linear-gradient(135deg, #2563EB, #7C3AED); color: #fff;">V15.0 经典扩充·新增《出师表》</span></h1>
+        <div class="header-desc">空间场所锚点 + 具象联想卡 + 宫殿路径寻宝；专为青少年高效记忆打造的具象宫殿背诵系统</div>
+      </div>
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <a href="chinese.html" style="text-decoration: none;">
+          <button class="tool-btn" style="background: var(--bg-card-subtle); color: var(--text-main); font-weight: 600;">
+            ← 返回语文中心
+          </button>
+        </a>
+        <button class="tool-btn" onclick="window.print()">🖨️ 打印分镜卡片</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">背诵篇目 (13篇)</div>
+        <button class="sidebar-toggle-btn" onclick="toggleSidebar()" title="隐藏侧边栏">
+          <span>◀ 折叠</span>
+        </button>
+      </div>
+      
+      <div class="nav-group">
+        <button type="button" class="nav-group-header" onclick="toggleNavGroup(event, this)">
+          <span>📜 文言文名篇</span>
+          <span class="nav-group-arrow">▼</span>
+        </button>
+        <ul class="article-list">
+          <li class="article-item active" onclick="loadArticle(0)">
+            <span>岳阳楼记</span>
+            <span class="article-tag">⚡ 图文同框</span>
+          </li>
+          <li class="article-item" onclick="loadArticle(1)">
+            <span>醉翁亭记</span>
+            <span class="article-tag">⚡ 图文同框</span>
+          </li>
+          <li class="article-item" onclick="loadArticle(2)">
+            <span>湖心亭看雪</span>
+            <span class="article-tag">⚡ 图文同框</span>
+          </li>
+          <li class="article-item" onclick="loadArticle(3)">
+            <span>沁园春·雪</span>
+            <span class="article-tag">⚡ 图文同框</span>
+          </li>
+          <li class="article-item" onclick="loadArticle(4)">
+            <span>出师表</span>
+            <span class="article-tag" style="background: #EFF6FF; color: #2563EB; font-weight: 700;">⭐ 新增必背</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-group collapsed">
+        <button type="button" class="nav-group-header" onclick="toggleNavGroup(event, this)">
+          <span>承 古诗词名篇</span>
+          <span class="nav-group-arrow">▼</span>
+        </button>
+        <ul class="article-list">
+          <li class="article-item" onclick="loadArticle(5)"><span>行路难（其一）</span><span class="article-tag">李白</span></li>
+          <li class="article-item" onclick="loadArticle(6)"><span>酬乐天扬州初逢席上见赠</span><span class="article-tag">刘禹锡</span></li>
+          <li class="article-item" onclick="loadArticle(7)"><span>水调歌头</span><span class="article-tag">苏轼</span></li>
+          <li class="article-item" onclick="loadArticle(8)"><span>十五从军征</span><span class="article-tag">汉乐府</span></li>
+          <li class="article-item" onclick="loadArticle(9)"><span>白雪歌送武判官归京</span><span class="article-tag">岑参</span></li>
+          <li class="article-item" onclick="loadArticle(10)"><span>南乡子·登京口北固亭</span><span class="article-tag">辛弃疾</span></li>
+          <li class="article-item" onclick="loadArticle(11)"><span>过零丁洋</span><span class="article-tag">文天祥</span></li>
+          <li class="article-item" onclick="loadArticle(12)"><span>山坡羊·潼关怀古</span><span class="article-tag">张养浩</span></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+
+      <div class="mode-bar">
+        <button class="topbar-sidebar-toggle" id="topbarSidebarToggle" onclick="toggleSidebar()">
+          📁 隐藏目录
+        </button>
+        <div class="mode-tabs">
+          <button class="mode-tab active" onclick="switchMode('visual')">🎬 1. 图文同框分镜</button>
+          <button class="mode-tab" onclick="switchMode('palace')">🏰 2. 虚拟记忆宫殿</button>
+          <button class="mode-tab" onclick="switchMode('firstchar')">🔤 3. 首字线索提示</button>
+          <button class="mode-tab" onclick="switchMode('cloze')">🙈 4. 默写填空测试</button>
+          <button class="mode-tab" onclick="switchMode('full')">📖 5. 完整对照</button>
+        </div>
+        <button class="tool-btn pinyin-toggle-btn active" id="pinyinToggleBtn" onclick="togglePinyin()">🔤 拼音: 显示</button>
+        <button class="tool-btn" onclick="toggleAllRevealed()">👁️ 显/隐答案</button>
+      </div>
+
+      <article class="article-card">
+        <div class="article-header">
+          <div class="article-title-row">
+            <h2 class="article-title" id="art-title">岳阳楼记</h2>
+            <span class="article-author" id="art-author">〔宋〕范仲淹</span>
+          </div>
+        </div>
+
+        <!-- Storyboard Side-by-Side Area -->
+        
+        <!-- Memory Palace Area -->
+        <div id="palace-area" style="display: none; margin-top: 10px;">
+          <div class="storyboard-section-title" style="display: flex; justify-content: space-between; align-items: center;">
+            <span>🏰 虚拟记忆宫殿路线（点击空间锚点，在脑海中建立具象图像联想）</span>
+            <span style="font-size: 13px; color: var(--primary); font-weight: normal;">🧠 图像联想记忆法</span>
+          </div>
+          <div id="palace-route-map" class="palace-route-map"></div>
+          <div id="palace-cards-container" class="palace-cards-container"></div>
+        </div>
+
+        <div id="storyboard-area">
+          <div class="storyboard-section-title">🎬 图文并茂分镜卡（左图右文·一一对应）</div>
+          <div class="storyboard-grid" id="storyboard-grid"></div>
+        </div>
+
+        <!-- Full Text Display Area -->
+        <div class="text-display-area chinese-text" id="text-display-area"></div>
+
+        <div class="practice-bar">
+          <span style="font-size: 13px; color: var(--text-light);" id="mode-tip">💡 提示：左侧展示高清插图，右侧直接对应课文原句段落与记忆线索！</span>
+          <button class="btn-primary" onclick="checkAnswers()">提交填空验收</button>
+        </div>
+      </article>
+
+    </main>
+  </div>
+
+  <script>
+    function makeSvgScene(title, subtitle, bgGradStart, bgGradEnd, accentColor) {
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320" viewBox="0 0 480 320">
+        <defs>
+          <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="${bgGradStart}"/>
+            <stop offset="100%" stop-color="${bgGradEnd}"/>
+          </linearGradient>
+        </defs>
+        <rect width="480" height="320" fill="url(#g)"/>
+        <circle cx="400" cy="70" r="45" fill="${accentColor}" opacity="0.15"/>
+        <path d="M0,220 Q150,170 300,230 T480,200 L480,320 L0,320 Z" fill="${accentColor}" opacity="0.2"/>
+        <text x="240" y="145" font-family="'Noto Serif SC', serif" font-size="20" font-weight="bold" fill="${accentColor}" text-anchor="middle">🎬 ${title}</text>
+        <text x="240" y="180" font-family="sans-serif" font-size="13" fill="%23475569" text-anchor="middle">${subtitle}</text>
+      </svg>`;
+      return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+    }
+
+    const articles = [
+  {
+    "id": 0,
+    "translations": [
+      "庆历四年的春天，滕子京被贬官到巴陵郡（岳州）做知州。到了第二年，政事顺利，百姓和乐，各种荒废的事业都兴办起来。于是重新修建岳阳楼，扩大它原有的规模，把唐代名家和今人的诗赋刻在上面，嘱托我写一篇文章来记述这件事。",
+      "我看那巴陵郡的美好景色，全在洞庭一湖。它连接着远方的山脉，吞吐着长江的水流，水势浩大，宽阔无边；早晚阴晴明暗多变，景色和事物多种多样，蔚为壮观，这是岳阳楼的壮丽景象，前人的记述很详尽了。既然这样，那么（这里）北面通向巫峡，南面直到潇水、湘水，被贬谪到外地的官员和文人，常常会聚在这里，看了自然景物而触发的情感，恐怕会有所不同吧？",
+      "（有时）阴雨连绵不断，接连几个月不放晴，阴冷的风怒吼，浑浊的浪冲向天空，太阳和星星隐藏起光辉，山岳隐没了形体；商人旅客不能前行，桅杆倒下，船桨折断；傍晚天色昏暗，虎在咆啸，猿在悲啼。（这时）登上这座楼，就会产生离开国都，怀念家乡，担心、害怕遭人诋毁非议的心情，满眼尽是萧条景象，感慨至极而十分悲伤。",
+      "到了春风和煦、日光明媚的时候，湖面平静，没有风浪，天色湖光相接，一片青绿，广阔无际；沙洲上的鸥鸟时而飞翔，时而停歇，美丽的鱼（在水中）畅游；岸上与小洲上的花草，香气郁郁，青葱繁茂。有时大片烟雾完全消散，皎洁的月光映照千里，（水面上）浮动的（月）光像跳动的金子，静静的月影像沉入水中的玉璧，渔夫的歌声在你唱我和，这样的乐趣哪有尽头！（这时）登上这座楼，就会感到胸怀开阔，精神爽快，荣耀和屈辱一并忘掉，端着酒，迎着风，那是喜洋洋的欢乐。",
+      "唉！我曾经探求古代品德高尚的人的心思，或许不同于以上这两种表现，为什么呢？（是由于他们）不因外界事物或自己处境的变化而喜乐悲哀。处在高高的朝堂上（在朝廷做官），则为平民百姓忧虑；处在僻远的江湖间（被贬谪到边远地区做地方官），则替君主担忧。这样（他们）进朝为官也忧虑，退居江湖也忧虑。既然如此，那么什么时候才快乐呢？想必会说“在天下人忧之前先忧，在天下人乐之后才乐”吧！唉！如果没有这种人，我同谁一道呢？写于庆历六年九月十五日。"
+    ],
+    "title": "岳阳楼记",
+    "author": "〔宋〕范仲淹",
+    "storyboard": [
+      {
+        "badge": "分镜 1 / 5",
+        "title": "镜头1：背景缘由",
+        "img": "images/yueyang_1.webp",
+        "passage": "庆历四年春，滕子京谪守巴陵郡。越明年，政通人和，百废具兴，乃重修岳阳楼，增其旧制，刻唐贤今人诗赋于其上，属予作文以记之。",
+        "clue": "🔑 线索：谪守巴陵 ➔ 政通人和 ➔ 重修岳阳楼 ➔ 刻诗赋 ➔ 属予作文",
+        "translation": "庆历四年的春天，滕子京被贬官到巴陵郡（岳州）做知州。到了第二年，政事顺利，百姓和乐，各种荒废的事业都兴办起来。于是重新修建岳阳楼，扩大它原有的规模，把唐代名家和今人的诗赋刻在上面，嘱托我写一篇文章来记述这件事。"
+      },
+      {
+        "badge": "分镜 2 / 5",
+        "title": "镜头2：洞庭大观胜状",
+        "img": "images/yueyang_2.webp",
+        "passage": "予观夫巴陵胜状，在洞庭一湖。衔远山，吞长江，浩浩汤汤，横无际涯，朝晖夕阴，气象万千，此则岳阳楼之大观也，前人之述备矣。然则北通巫峡，南极潇湘，迁客骚人，多会于此，览物之情，得无异乎？",
+        "clue": "🔑 线索：衔远山，吞长江 ➔ 浩浩汤汤 ➔ 朝晖夕阴 ➔ 大观也 ➔ 北通巫峡，南极潇湘",
+        "translation": "我看那巴陵郡的美好景色，全在洞庭一湖。它连接着远方的山脉，吞吐着长江的水流，水势浩大，宽阔无边；早晚阴晴明暗多变，景色和事物多种多样，蔚为壮观，这是岳阳楼的壮丽景象，前人的记述很详尽了。既然这样，那么（这里）北面通向巫峡，南面直到潇水、湘水，被贬谪到外地的官员和文人，常常会聚在这里，看了自然景物而触发的情感，恐怕会有所不同吧？"
+      },
+      {
+        "badge": "分镜 3 / 5",
+        "title": "镜头3：阴雨悲景·去国怀乡",
+        "img": "images/yueyang_3.webp",
+        "passage": "若夫淫雨霏霏，连月不开，阴风怒号，浊浪排空，日星隐曜，山岳潜形，商旅不行，樯倾楫摧，薄暮冥冥，虎啸猿啼。登斯楼也，则有去国怀乡，忧谗畏讥，满目萧然，感极而悲者矣。",
+        "clue": "🔑 线索：淫雨霏霏 ➔ 浊浪排空 ➔ 日星隐曜 ➔ 去国怀乡 ➔ 感极而悲",
+        "translation": "（有时）阴雨连绵不断，接连几个月不放晴，阴冷的风怒吼，浑浊的浪冲向天空，太阳和星星隐藏起光辉，山岳隐没了形体；商人旅客不能前行，桅杆倒下，船桨折断；傍晚天色昏暗，虎在咆啸，猿在悲啼。（这时）登上这座楼，就会产生离开国都，怀念家乡，担心、害怕遭人诋毁非议的心情，满眼尽是萧条景象，感慨至极而十分悲伤。"
+      },
+      {
+        "badge": "分镜 4 / 5",
+        "title": "镜头4：春晴喜景·心旷神怡",
+        "img": "images/yueyang_4.webp",
+        "passage": "至若春和景明，波澜不惊，上下天光，一碧万顷，沙鸥翔集，锦鳞游泳，岸芷汀兰，郁郁青青。而或长烟一空，皓月千里，浮光跃金，静影沉璧，渔歌互答，此乐何极！登斯楼也，则有心旷神怡，宠辱偕忘，把酒临风，其喜洋洋者矣。",
+        "clue": "🔑 线索：春和景明 ➔ 沙鸥翔集/锦鳞游泳 ➔ 皓月千里（浮光跃金，静影沉璧） ➔ 其喜洋洋",
+        "translation": "到了春风和煦、日光明媚的时候，湖面平静，没有风浪，天色湖光相接，一片青绿，广阔无际；沙洲上的鸥鸟时而飞翔，时而停歇，美丽的鱼（在水中）畅游；岸上与小洲上的花草，香气郁郁，青葱繁茂。有时大片烟雾完全消散，皎洁的月光映照千里，（水面上）浮动的（月）光像跳动的金子，静静的月影像沉入水中的玉璧，渔夫的歌声在你唱我和，这样的乐趣哪有尽头！（这时）登上这座楼，就会感到胸怀开阔，精神爽快，荣耀和屈辱一并忘掉，端着酒，迎着风，那是喜洋洋的欢乐。"
+      },
+      {
+        "badge": "分镜 5 / 5",
+        "title": "镜头5：升华哲理·先忧后乐",
+        "img": "images/yueyang_5.webp",
+        "passage": "嗟夫！尝求古仁人之心，或异二者之为，何哉？不以物喜，不以己悲，居庙堂之高则忧其民，处江湖之远则忧其君。是进亦忧，退亦忧。然则何时而乐耶？其必曰“先天下之忧而忧，后天下之乐而乐”乎！噫！微斯人，吾谁与归？",
+        "clue": "🔑 线索：不以物喜，不以己悲 ➔ 居庙堂忧民/处江湖忧君 ➔ 先天下之忧而忧，后天下之乐而乐 ➔ 噫！微斯人，吾谁与归？",
+        "translation": "唉！我曾经探求古代品德高尚的人的心思，或许不同于以上这两种表现，为什么呢？（是由于他们）不因外界事物或自己处境的变化而喜乐悲哀。处在高高的朝堂上（在朝廷做官），则为平民百姓忧虑；处在僻远的江湖间（被贬谪到边远地区做地方官），则替君主担忧。这样（他们）进朝为官也忧虑，退居江湖也忧虑。既然如此，那么什么时候才快乐呢？想必会说“在天下人忧之前先忧，在天下人乐之后才乐”吧！唉！如果没有这种人，我同谁一道呢？写于庆历六年九月十五日。"
+      }
+    ],
+    "paragraphs": [
+      "庆历四年春，滕子京谪守巴陵郡。越明年，政通人和，百废具兴，乃重修岳阳楼，增其旧制，刻唐贤今人诗赋于其上，属予作文以记之。",
+      "予观夫巴陵胜状，在洞庭一湖。衔远山，吞长江，浩浩汤汤，横无际涯，朝晖夕阴，气象万千，此则岳阳楼之大观也，前人之述备矣。然则北通巫峡，南极潇湘，迁客骚人，多会于此，览物之情，得无异乎？",
+      "若夫淫雨霏霏，连月不开，阴风怒号，浊浪排空，日星隐曜，山岳潜形，商旅不行，樯倾楫摧，薄暮冥冥，虎啸猿啼。登斯楼也，则有去国怀乡，忧谗畏讥，满目萧然，感极而悲者矣。",
+      "至若春和景明，波澜不惊，上下天光，一碧万顷，沙鸥翔集，锦鳞游泳，岸芷汀兰，郁郁青青。而或长烟一空，皓月千里，浮光跃金，静影沉璧，渔歌互答，此乐何极！登斯楼也，则有心旷神怡，宠辱偕忘，把酒临风，其喜洋洋者矣。",
+      "嗟夫！尝求古仁人之心，或异二者之为，何哉？不以物喜，不以己悲，居庙堂之高则忧其民，处江湖之远则忧其君。是进亦忧，退亦忧。然则何时而乐耶？其必曰“先天下之忧而忧，后天下之乐而乐”乎！噫！微斯人，吾谁与归？"
+    ],
+    "clozeKeyWords": [
+      "谪守",
+      "具兴",
+      "属予作文",
+      "胜状",
+      "衔远山",
+      "吞长江",
+      "浩浩汤汤",
+      "横无际涯",
+      "朝晖夕阴",
+      "淫雨霏霏",
+      "阴风怒号",
+      "浊浪排空",
+      "日星隐曜",
+      "山岳潜形",
+      "樯倾楫摧",
+      "忧谗畏讥",
+      "春和景明",
+      "沙鸥翔集",
+      "锦鳞游泳",
+      "岸芷汀兰",
+      "皓月千里",
+      "浮光跃金",
+      "静影沉璧",
+      "心旷神怡",
+      "宠辱偕忘",
+      "不以物喜",
+      "不以己悲",
+      "先天下之忧而忧",
+      "后天下之乐而乐",
+      "微斯人"
+    ]
+  },
+  {
+    "id": 1,
+    "translations": [
+      "环绕着滁州的都是山。它西南方向的各座山峰，树林和山谷尤其美丽，远望那树木茂密、幽深秀丽的，是琅琊山。沿着山路走六七里，渐渐听到潺潺的水声，从两座山峰之间飞泻出来的，是酿泉。山势回环，路也跟着转弯，有一座亭子四角翘起像鸟儿张开翅膀一样高踞在泉水之上的，是醉翁亭。建亭子的人是谁？是山里的僧人智仙。给它起名的人是谁？是太守用自己的别号来命名的。太守和客人来这里饮酒，喝一点就醉了，而年纪又最大，故给自己起了个别号叫醉翁。醉翁的情趣不在于喝酒，而在于山水之间啊。山水游玩的乐趣，领会在心里，寄托在酒上。",
+      "像那太阳升起而树林里的雾气散开，云雾聚拢而山谷岩穴昏暗，明暗交替变化，这就是山间早晚的景象。野花开放，散发着幽微的香气，美好的树木枝叶茂盛，形成浓密的绿荫，风高霜洁，水位下降、石头显露，这就是山间的四季风光。早晨前往，傍晚返回，四季的风景各不相同，而乐趣也是无穷无尽的。",
+      "至于背负着东西的人在路上唱歌，走路的人在树下休息，前面的人呼唤，后面的人应答，老人弯着腰、小孩被领着，来来往往络绎不绝的，是滁州人在游玩。到溪边钓鱼，溪水深，鱼儿肥；用酿泉的水造酒，泉水香，酒水清澈；山中的野味野菜，错杂地摆在面前的，是太守举办的宴席。宴饮游乐的乐趣，不在于弹琴吹箫，射箭的中了，下棋的赢了，酒杯和筹码错杂相交，起立坐下喧哗热闹的，是众位宾客在欢聚。容颜苍老、头发花白，醉倒在众人中间的，是太守喝醉了。",
+      "不久夕阳落山，人影散乱，太守返回而宾客跟随。树林树荫浓密，鸣叫声起伏不绝，游人离开而鸟儿快乐。然而鸟儿只知道山林的乐趣，却不知道人的乐趣；人只知道跟随太守游玩的乐趣，却不知道太守以他们的快乐为快乐啊。醉了能同大家一起快乐，醒了能用文章记述这件事的人，是太守。太守是谁？就是庐陵人欧阳修啊。"
+    ],
+    "title": "醉翁亭记",
+    "author": "〔宋〕欧阳修",
+    "storyboard": [
+      {
+        "badge": "分镜 1 / 4",
+        "title": "镜头1：寻亭与醉翁之意",
+        "img": "images/zuiweng_1.webp",
+        "passage": "环滁皆山也。其西南诸峰，林壑尤美，望之蔚然而深秀者，琅琊也。山行六七里，渐闻水声潺潺而泻出于两峰之间者，酿泉也。峰回路转，有亭翼然临于泉上者，醉翁亭也。作亭者谁？山之僧智仙也。名之者谁？太守自谓也。太守与客来饮于此，饮少辄醉，而年又最高，故自号曰醉翁也。醉翁之意不在酒，在乎山水之间也。山水之乐，得之心而寓之酒也。",
+        "clue": "🔑 线索：环滁皆山 ➔ 琅琊山 ➔ 酿泉 ➔ 醉翁亭翼然临于泉上 ➔ 作亭者谁 ➔ 醉翁之意不在酒，在乎山水之间",
+        "translation": "环绕着滁州的都是山。其西南方向的各座山峰，树林和山谷尤其美丽，远望那树木茂密、幽深秀丽的，是琅琊山。沿着山路走六七里，渐渐听到潺潺的水声，从两座山峰之间飞泻出来的，是酿泉。山势回环，路也跟着转弯，有一座亭子四角翘起像鸟儿张开翅膀一样高踞在泉水之上的，是醉翁亭。建亭子的人是谁？是山里的僧人智仙。给它起名的人是谁？是太守用自己的别号来命名的。太守和客人来这里饮酒，喝一点就醉了，而年纪又最大，故给自己起了个别号叫醉翁。醉翁的情趣不在于喝酒，而在于山水之间啊。山水游玩的乐趣，领会在心里，寄托在酒上。"
+      },
+      {
+        "badge": "分镜 2 / 4",
+        "title": "镜头2：山间朝暮与四时之景",
+        "img": "images/zuiweng_2.webp",
+        "passage": "若夫日出而林霏开，云归而岩穴暝，晦明变化者，山间之朝暮也。野芳发而幽香，佳木秀而繁阴，风霜高洁，水落石出者，山间之四时也。朝而往，暮而归，四时之景不同，而乐亦无穷也。",
+        "clue": "🔑 线索：林霏开/岩穴暝（朝暮） ➔ 野芳发/佳木秀/风霜高/水落石出（四时） ➔ 乐亦无穷也",
+        "translation": "像那太阳升起而树林里的雾气散开，云雾聚拢而山谷岩穴昏暗，明暗交替变化，这就是山间早晚的景象。野花开放，散发着幽微的香气，美好的树木枝叶茂盛，形成浓密的绿荫，风高霜洁，水位下降、石头显露，这就是山间的四季风光。早晨前往，傍晚返回，四季的风景各不相同，而乐趣也是无穷无尽的。"
+      },
+      {
+        "badge": "分镜 3 / 4",
+        "title": "镜头3：滁人游与太守醉",
+        "img": "images/zuiweng_3.webp",
+        "passage": "至于负者歌于途，行者休于树，前者呼，后者应，伛偻提携，往来而不绝者，滁人游也。临溪而渔，溪深而鱼肥，酿泉为酒，泉香而酒洌，山肴野蔌，杂然而前陈者，太守宴也。宴酣之乐，非丝非竹，射者中，弈者胜，觥筹交错，起坐而喧哗者，众宾欢也。苍颜白发，颓然乎其间者，太守醉也。",
+        "clue": "🔑 线索：滁人游 ➔ 太守宴（临溪渔、泉香酒洌） ➔ 众宾欢（觥筹交错） ➔ 太守醉（苍颜白发颓然）",
+        "translation": "至于背负着东西的人在路上唱歌，走路的人在树下休息，前面的人呼唤，后面的人应答，老人弯着腰、小孩被领着，来来往往络绎不绝的，是滁州人在游玩。到溪边钓鱼，溪水深，鱼儿肥；用酿泉的水造酒，泉水香，酒水清澈；山中的野味野菜，错杂地摆在面前的，是太守举办的宴席。宴饮游乐的乐趣，不在于弹琴吹箫，射箭的中了，下棋的赢了，酒杯和筹码错杂相交，起立坐下喧哗热闹的，是众位宾客在欢聚。容颜苍老、头发花白，醉倒在众人中间的，是太守喝醉了。"
+      },
+      {
+        "badge": "分镜 4 / 4",
+        "title": "镜头4：太守归与乐其乐",
+        "img": "images/zuiweng_4.webp",
+        "passage": "已而夕阳在山，人影散乱，太守归而宾客从也。树林阴翳，鸣声上下，游人去而禽鸟乐也。然而禽鸟知山林之乐，而不知人之乐；人知从太守游而乐，而不知太守之乐其乐也。醉能同其乐，醒能述以文者，太守也。太守谓谁？庐陵欧阳修也。",
+        "clue": "🔑 线索：夕阳在山 ➔ 禽鸟乐 ➔ 人乐 ➔ 太守乐其乐（醉能同其乐） ➔ 庐陵欧阳修也",
+        "translation": "不久夕阳落山，人影散乱，太守返回而宾客跟随。树林树荫浓密，鸣叫声起伏不绝，游人离开而鸟儿快乐。然而鸟儿只知道山林的乐趣，却不知道人的乐趣；人只知道跟随太守游玩的乐趣，却不知道太守以他们的快乐为快乐啊。醉了能同大家一起快乐，醒了能用文章记述这件事的人，是太守。太守是谁？就是庐陵人欧阳修啊。"
+      }
+    ],
+    "paragraphs": [
+      "环滁皆山也。其西南诸峰，林壑尤美，望之蔚然而深秀者，琅琊也。山行六七里，渐闻水声潺潺而泻出于两峰之间者，酿泉也。峰回路转，有亭翼然临于泉上者，醉翁亭也。作亭者谁？山之僧智仙也。名之者谁？太守自谓也。太守与客来饮于此，饮少辄醉，而年又最高，故自号曰醉翁也。醉翁之意不在酒，在乎山水之间也。山水之乐，得之心而寓之酒也。",
+      "若夫日出而林霏开，云归而岩穴暝，晦明变化者，山间之朝暮也。野芳发而幽香，佳木秀而繁阴，风霜高洁，水落石出者，山间之四时也。朝而往，暮而归，四时之景不同，而乐亦无穷也。",
+      "至于负者歌于途，行者休于树，前者呼，后者应，伛偻提携，往来而不绝者，滁人游也。临溪而渔，溪深而鱼肥，酿泉为酒，泉香而酒洌，山肴野蔌，杂然而前陈者，太守宴也。宴酣之乐，非丝非竹，射者中，弈者胜，觥筹交错，起坐而喧哗者，众宾欢也。苍颜白发，颓然乎其间者，太守醉也。",
+      "已而夕阳在山，人影散乱，太守归而宾客从也。树林阴翳，鸣声上下，游人去而禽鸟乐也。然而禽鸟知山林之乐，而不知人之乐；人知从太守游而乐，而不知太守之乐其乐也。醉能同其乐，醒能述以文者，太守也。太守谓谁？庐陵欧阳修也。"
+    ],
+    "clozeKeyWords": [
+      "琅琊",
+      "酿泉",
+      "峰回路转",
+      "翼然",
+      "寓之酒",
+      "林霏开",
+      "岩穴暝",
+      "野芳发",
+      "佳木秀",
+      "风霜高洁",
+      "水落石出",
+      "伛偻提携",
+      "酒洌",
+      "山肴野茌",
+      "觥筹交错",
+      "苍颜白发",
+      "颓然",
+      "树林阴翳",
+      "乐其乐"
+    ]
+  },
+  {
+    "id": 2,
+    "translations": [
+      "崇祯五年十二月，我住在西湖。接连下了三天大雪，湖中人和鸟的声音都消失了。这一天初更以后，我撑着一只小船，穿着毛皮衣、带着火炉，独自前往湖心亭看雪。雾气浓重，天与云与山与水，上下一片白茫茫。湖上的影子，只有长堤的一痕、湖心亭的一点、我和小船的一芥、船上人两三粒罢了。",
+      "到了湖心亭上，看见有两个人铺着毡子面对面坐着，一个童子正在烧酒，炉水正沸腾。他们看见我大为惊喜，说：“湖中哪能还能碰上您这样的人！”拉着我一同饮酒。我尽情喝了三大杯然后道别。问他们的姓氏，得知是金陵人，在此地客居。等下了船，船夫嘟囔着说：“不要说相公您痴迷，更有比相公您还要痴迷的人呢！”"
+    ],
+    "title": "湖心亭看雪",
+    "author": "〔明〕张岱",
+    "storyboard": [
+      {
+        "badge": "分镜 1 / 3",
+        "title": "镜头1：独往湖心亭看雪",
+        "img": "images/huxinting_1.webp",
+        "passage": "崇祯五年十二月，余住西湖。大雪三日，湖中人鸟声俱绝。是日更定矣，余挐一小舟，拥毳衣炉火，独往湖心亭看雪。",
+        "clue": "🔑 线索：大雪三日 ➔ 人鸟声俱绝 ➔ 挐一小舟 ➔ 独往看雪",
+        "translation": "崇祯五年十二月，我住在西湖。接连下了三天大雪，湖中人和鸟的声音都消失了。这一天初更以后，我撑着一只小船，穿着毛皮衣、带着火炉，独自前往湖心亭看雪。"
+      },
+      {
+        "badge": "分镜 2 / 3",
+        "title": "镜头2：天与云与山与水·上下一白",
+        "img": "images/huxinting_2.webp",
+        "passage": "雾凇沆砀，天与云与山与水，上下一白。湖上影子，惟长堤一痕、湖心亭一点、与余舟一芥、舟中人两三粒而已。",
+        "clue": "🔑 线索：雾凇沆砀，上下一白 ➔ 长堤一痕、湖心亭一点、余舟一芥、舟中人两三粒",
+        "translation": "雾气浓重，天与云与山与水，上下一片白茫茫。湖上的影子，只有长堤的一痕、湖心亭的一点、我和小船的一芥、船上人两三粒罢了。"
+      },
+      {
+        "badge": "分镜 3 / 3",
+        "title": "镜头3：亭上拉饮与舟子喃喃",
+        "img": "images/huxinting_3.webp",
+        "passage": "到亭上，有两人铺毡对坐，一童子烧酒，炉正沸。见余大惊喜，曰：“湖中焉得更有此人！”拉余同饮。余强饮三大白而别。问其姓氏，是金陵人，客此。及下船，舟子喃喃曰：“莫说相公痴，更有痴似相公者！”",
+        "clue": "🔑 线索：铺毡对坐 ➔ 强饮三大白 ➔ 问其姓氏 ➔ 莫说相公痴，更有痴似相公者！",
+        "translation": "到了湖心亭上，看见有两个人铺着毡子面对面坐着，一个童子正在烧酒，炉水正沸腾。他们看见我大为惊喜，说：“湖中哪能还能碰上您这样的人！”拉着我一同饮酒。我尽情喝了三大杯然后道别。问他们的姓氏，得知是金陵人，在此地客居。等下了船，船夫嘟囔着说：“不要说相公您痴迷，更有比相公您还要痴迷的人呢！”"
+      }
+    ],
+    "paragraphs": [
+      "崇祯五年十二月，余住西湖。大雪三日，湖中人鸟声俱绝。是日更定矣，余挐一小舟，拥毳衣炉火，独往湖心亭看雪。雾凇沆砀，天与云与山与水，上下一白。湖上影子，惟长堤一痕、湖心亭一点、与余舟一芥、舟中人两三粒而已。",
+      "到亭上，有两人铺毡对坐，一童子烧酒，炉正沸。见余大惊喜，曰：“湖中焉得更有此人！”拉余同饮。余强饮三大白而别。问其姓氏，是金陵人，客此。及下船，舟子喃喃曰：“莫说相公痴，更有痴似相公者！”"
+    ],
+    "clozeKeyWords": [
+      "人鸟声俱绝",
+      "更定",
+      "挐一小舟",
+      "拥毳衣",
+      "雾凇沆砀",
+      "上下一白",
+      "长堤一痕",
+      "湖心亭一点",
+      "余舟一芥",
+      "两三粒",
+      "铺毡对坐",
+      "强饮三大白",
+      "客此",
+      "痴似相公者"
+    ]
+  },
+  {
+    "id": 3,
+    "translations": [
+      "北方的风光，千万里冰封，千万里雪飘。望长城内外，只剩下无边无际的白茫茫；黄河上下，顿时失去了滔滔水势。群山如银蛇奔舞，高原如白象驰骋，想要与老天爷比试高低。等到晴天，看红日洒在白雪上，红素交映，分外妖娆。",
+      "祖国的山河如此壮丽多娇，吸引了无数英雄豪杰争相为之倾倒。可惜秦皇汉武，略微欠缺文治功劳；唐宗宋祖，稍微逊色文学风骚。一代天骄成吉思汗，只知道弯弓搭箭去射大雕。这些都已经过去了，要数真正的风流人物，还要看今天！"
+    ],
+    "title": "沁园春·雪",
+    "author": "毛泽东",
+    "storyboard": [
+      {
+        "badge": "分镜 1 / 3",
+        "title": "镜头1：北国冰雪壮景",
+        "img": "images/qinyuanchun_1.webp",
+        "passage": "北国风光，千里冰封，万里雪飘。望长城内外，惟余莽莽；大河上下，顿失滔滔。山舞银蛇，原驰蜡象，欲与天公试比高。须晴日，看红装素裹，分外妖娆。",
+        "clue": "🔑 线索：冰封/雪飘 ➔ 惟余莽莽/顿失滔滔 ➔ 山舞银蛇，原驰蜡象 ➔ 红装素裹",
+        "translation": "北方的风光，千万里冰封，千万里雪飘。望长城内外，只剩下无边无际的白茫茫；黄河上下，顿时失去了滔滔水势。群山如银蛇奔舞，高原如白象驰骋，想要与老天爷比试高低。等到晴天，看红日洒在白雪上，红素交映，分外妖娆。"
+      },
+      {
+        "badge": "分镜 2 / 3",
+        "title": "镜头2：江山多娇·英雄折腰",
+        "img": "images/qinyuanchun_2.webp",
+        "passage": "江山如此多娇，引无数英雄竞折腰。惜秦皇汉武，略输文采；唐宗宋祖，稍逊风骚。一代天骄，成吉思汗，只识弯弓射大雕。",
+        "clue": "🔑 线索：英雄折腰 ➔ 秦皇汉武（略输文采） ➔ 唐宗宋祖（稍逊风骚） ➔ 成吉思汗",
+        "translation": "祖国的山河如此壮丽多娇，吸引了无数英雄豪杰争相为之倾倒。可惜秦皇汉武，略微欠缺文治功劳；唐宗宋祖，稍微逊色文学风骚。一代天骄成吉思汗，只知道弯弓搭箭去射大雕。"
+      },
+      {
+        "badge": "分镜 3 / 3",
+        "title": "镜头3：数风流人物还看今朝",
+        "img": "images/qinyuanchun_3.webp",
+        "passage": "俱往矣，数风流人物，还看今朝。",
+        "clue": "🔑 线索：俱往矣 ➔ 数风流人物，还看今朝",
+        "translation": "这些都已经过去了，要数真正的风流人物，还要看今天！"
+      }
+    ],
+    "paragraphs": [
+      "北国风光，千里冰封，万里雪飘。望长城内外，惟余莽莽；大河上下，顿失滔滔。山舞银蛇，原驰蜡象，欲与天公试比高。须晴日，看红装素裹，分外妖娆。",
+      "江山如此多娇，引无数英雄竞折腰。惜秦皇汉武，略输文采；唐宗宋祖，稍逊风骚。一代天骄，成吉思汗，只识弯弓射大雕。俱往矣，数风流人物，还看今朝。"
+    ],
+    "clozeKeyWords": [
+      "冰封",
+      "雪飘",
+      "惟余莽莽",
+      "顿失滔滔",
+      "山舞银蛇",
+      "原驰蜡象",
+      "红装素裹",
+      "分外妖娆",
+      "折腰",
+      "略输文采",
+      "稍逊风骚",
+      "弯弓射大雕",
+      "俱往矣",
+      "还看今朝"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "出师表",
+    "author": "〔三国·蜀汉〕诸葛亮",
+    "translations": [
+      "先帝开创大业未完成一半就中途去世了。现在天下分裂为三国，益州人力疲敝、国力困乏，这实在是危急存亡的关键时刻啊。然而在朝中侍奉护卫的官员毫不懈怠，在战场上忠勇报国的将士舍身忘死，大概是追念先帝对他们的特殊恩遇，想要报答在陛下您的身上吧。陛下实在应该广泛听取臣民意见，来发扬光大先帝遗留的美德，振奋激发志士们的豪气；不应该盲目轻视自己，说话不合道理，从而堵塞忠诚进谏的言路。皇宫中和丞相府中的官员都是一个整体，提拔、惩罚、赞扬、批评，不应该有所不同。如果有做坏事触犯法律以及尽忠做好事的人，应该交给主管官员裁定他们应受的刑罚或赏赐，来显示陛下公正严明的治理，不应该偏袒徇私，使宫内宫外有不同的法制。",
+      "侍中郭攸之、费祎，侍郎董允等人，这都是善良诚实、志向忠诚纯正的人，因此先帝选拔出来留给陛下。我认为宫廷中的事情，无论大小，都拿来向他们询问，然后再去执行，必定能够补救疏漏欠缺，收获很大益处。向宠将军，性格品行端庄公正，通晓军事，往日试用时，先帝称赞他有才能，因此大家商议推举他担任中部督。我认为军营中的事情，都拿来向他询问，必定能使军队团结和睦，品行优劣的人各有合适的安排。亲近贤臣，疏远小人，这是西汉兴盛的原因；亲近小人，疏远贤臣，这是东汉衰败的原因。先帝在世时，每次跟我谈论起这些事，没有一次不对桓帝、灵帝的乱政发出叹息和痛心遗憾的。侍中、尚书、长史、参军，这都是坚贞忠良、愿为节义献身的臣子，希望陛下亲近他们、信任他们，那么汉室的复兴，就可以指日以待了。",
+      "我本来是平民百姓，在南阳亲自耕种，只想在乱世中苟且保全性命，不求在诸侯中扬名显达。先帝不介意我身份卑微鄙陋，委屈自己降低身份，三次到草庐之中探望我，拿当时的天下大事来向我询问，我因此感动奋发，于是答应为先帝奔走效劳。后来遇到兵败危局，在兵败溃退的时候接受任命，在危急患难的关头奉承使命，从那时以来已有二十一年了。",
+      "先帝深知我处事谨慎，所以临终时把国家大事托付给我。自从接受托付以来，我早起晚睡忧愁叹息，唯恐托付的事情没有成效，从而损伤了先帝知人之明，所以五月份渡过泸水，深入荒无人烟的地带。现在南方叛乱已经平定，武器装备已经充足，应当激励率领全军将士，向北平定中原，希望能竭尽平庸的才能，铲除奸邪凶顽，复兴汉室江山，重回旧都洛阳。这是我用来报答先帝并尽忠于陛下的职责本分啊。至于权衡利弊得失，毫无保留地进献忠直言策，那就是郭攸之、费祎、董允他们的职责了。希望陛下把讨伐奸贼、复兴汉室的重任交给我，如果见不到成效，就惩处我的罪过，来告慰先帝的在天之灵。如果没有发扬圣德的言论，就责罚郭攸之、费祎、董允等人的懈怠，来公布他们的过失；陛下自己也应该深思谋划，询问治国良策，审查采纳正确合理的言论，深切追念先帝的临终遗诏。我承受陛下的深恩，心中感激不尽。今天我就要远离陛下了，面对奏表禁不住泪流满面，真不知道自己说了些什么。"
+    ],
+    "storyboard": [
+      {
+        "badge": "分镜 1 / 4",
+        "title": "镜头1：危急形势·广开言路与严明法度",
+        "img": "images/recitation-comics/chushibiao-c1.webp",
+        "passage": "先帝创业未半而中道崩殂，今天下三分，益州疲弊，此诚危急存亡之秋也。然侍卫之臣不懈于内，忠志之士忘身于外者，盖追先帝之殊遇，欲报之于陛下也。诚宜开张圣听，以光先帝遗德，恢弘志士之气，不宜妄自菲薄，引喻失义，以塞忠谏之路也。宫中府中，俱为一体，陟罚臧否，不宜异同。若有作奸犯科及为忠善者，宜付有司论其刑赏，以昭陛下平明之理，不宜偏私，使内外异法也。",
+        "clue": "🔑 线索：创业未半 ➔ 天下三分/益州疲弊 ➔ 危急存亡之秋 ➔ 侍卫不懈/忠志忘身 ➔ 开张圣听 ➔ 陟罚臧否不宜异同 ➔ 平明之理",
+        "translation": "先帝开创大业未半就中途离世，如今天下三分、益州民力困乏，这实在是危急存亡的关键时刻。然而侍卫之臣不懈于内，忠志之士忘身于外，欲报之于陛下。诚宜开张圣听，恢弘志士之气；宫中府中俱为一体，陟罚臧否不宜异同，以昭陛下平明之理。"
+      },
+      {
+        "badge": "分镜 2 / 4",
+        "title": "镜头2：荐拔文武·亲贤远佞两汉兴衰",
+        "img": "images/recitation-comics/chushibiao-c2.webp",
+        "passage": "侍中、侍郎郭攸之、费祎、董允等，此皆良实，志虑忠纯，是以先帝简拔以遗陛下。愚以为宫中之事，事无大小，悉以咨之，然后施行，必能裨补阙漏，有所广益。将军向宠，性行淑均，晓畅军事，试用于昔日，先帝称之曰能，是以众议举宠为督。愚以为营中之事，悉以咨之，必能使行阵和睦，优劣得所。亲贤臣，远小人，此先汉所以兴隆也；亲小人，远贤臣，此后汉所以倾颓也。先帝在时，每与臣论此事，未尝不叹息痛恨于桓、灵也。侍中、尚书、长史、参军，此悉贞良死节之臣，愿陛下亲之信之，则汉室之隆，可计日而待也。",
+        "clue": "🔑 线索：郭攸之/费祎/董允（裨补阙漏） ➔ 向宠（行阵和睦） ➔ 亲贤臣远小人（先汉兴隆） ➔ 亲小人远贤臣（后汉倾颓） ➔ 叹息痛恨于桓灵 ➔ 计日而待",
+        "translation": "诸葛亮在表中恳切荐拔文臣郭攸之、费祎、董允，武将向宠；并总结千古治乱格言：亲贤臣，远小人，此先汉所以兴隆也；亲小人，远贤臣，此后汉所以倾颓也。愿陛下亲之信之，汉室之隆可计日而待。"
+      },
+      {
+        "badge": "分镜 3 / 4",
+        "title": "镜头3：布衣躬耕·三顾草庐临危受命",
+        "img": "images/recitation-comics/chushibiao-c3.webp",
+        "passage": "臣本布衣，躬耕于南阳，苟全性命于乱世，不求闻达于诸侯。先帝不以臣卑鄙，猥自枉屈，三顾臣于草庐之中，咨臣以当世之事，由是感激，遂许先帝以驱驰。后值倾覆，受任于败军之际，奉命于危难之间，尔来二十有一年矣。",
+        "clue": "🔑 线索：臣本布衣 ➔ 躬耕南阳 ➔ 苟全性命/不求闻达 ➔ 先帝不以臣卑鄙 ➔ 三顾臣于草庐之中 ➔ 许先帝以驱驰 ➔ 受任于败军之际/奉命于危难之间 ➔ 二十有一年",
+        "translation": "臣本平民百姓，躬耕南阳苟全性命。先帝不因我身份卑微自降身份，三次探访草庐垂询大事，我由是感激答应驱驰效力。后临倾覆，受任于败军之际，奉命于危难之间，转眼已有二十一年。"
+      },
+      {
+        "badge": "分镜 4 / 4",
+        "title": "镜头4：北伐誓师·严明职分临表涕零",
+        "img": "images/recitation-comics/chushibiao-c4.webp",
+        "passage": "先帝知臣谨慎，故临崩寄臣以大事也。受命以来，夙夜忧叹，恐托付不效，以伤先帝之明，故五月渡泸，深入不毛。今南方已定，兵甲已足，当奖率三军，北定中原，庶竭驽钝，攘除奸凶，兴复汉室，还于旧都。此臣所以报先帝而忠陛下之职分也。至于斟酌损益，进尽忠言，则攸之、祎、允之任也。愿陛下托臣以讨贼兴复之效，不效，则治臣之罪，以告先帝之灵。若无兴德之言，则责攸之、祎、允等之慢，以彰其咎；陛下亦宜自谋，以咨诹善道，察纳雅言，深追先帝遗诏，臣不胜受恩感激。今当远离，临表涕零，不知所言。",
+        "clue": "🔑 线索：临崩寄大事 ➔ 夙夜忧叹 ➔ 深入不毛 ➔ 兵甲已足 ➔ 奖率三军/北定中原 ➔ 庶竭驽钝/兴复汉室 ➔ 托臣以讨贼兴复之效 ➔ 咨诹善道/察纳雅言 ➔ 临表涕零不知所言",
+        "translation": "受命以来日夜忧叹，五月渡泸深入不毛。如今南方已定兵甲已足，当奖率三军北定中原，竭尽平庸才能攘除奸凶、兴复汉室、还于旧都！陛下亦宜自谋，咨诹善道，察纳雅言。今当远离，临表涕零，不知所言。"
+      }
+    ],
+    "paragraphs": [
+      "先帝创业未半而中道崩殂，今天下三分，益州疲弊，此诚危急存亡之秋也。然侍卫之臣不懈于内，忠志之士忘身于外者，盖追先帝之殊遇，欲报之于陛下也。诚宜开张圣听，以光先帝遗德，恢弘志士之气，不宜妄自菲薄，引喻失义，以塞忠谏之路也。宫中府中，俱为一体，陟罚臧否，不宜异同。若有作奸犯科及为忠善者，宜付有司论其刑赏，以昭陛下平明之理，不宜偏私，使内外异法也。",
+      "侍中、侍郎郭攸之、费祎、董允等，此皆良实，志虑忠纯，是以先帝简拔以遗陛下。愚以为宫中之事，事无大小，悉以咨之，然后施行，必能裨补阙漏，有所广益。将军向宠，性行淑均，晓畅军事，试用于昔日，先帝称之曰能，是以众议举宠为督。愚以为营中之事，悉以咨之，必能使行阵和睦，优劣得所。亲贤臣，远小人，此先汉所以兴隆也；亲小人，远贤臣，此后汉所以倾颓也。先帝在时，每与臣论此事，未尝不叹息痛恨于桓、灵也。侍中、尚书、长史、参军，此悉贞良死节之臣，愿陛下亲之信之，则汉室之隆，可计日而待也。",
+      "臣本布衣，躬耕于南阳，苟全性命于乱世，不求闻达于诸侯。先帝不以臣卑鄙，猥自枉屈，三顾臣于草庐之中，咨臣以当世之事，由是感激，遂许先帝以驱驰。后值倾覆，受任于败军之际，奉命于危难之间，尔来二十有一年矣。",
+      "先帝知臣谨慎，故临崩寄臣以大事也。受命以来，夙夜忧叹，恐托付不效，以伤先帝之明，故五月渡泸，深入不毛。今南方已定，兵甲已足，当奖率三军，北定中原，庶竭驽钝，攘除奸凶，兴复汉室，还于旧都。此臣所以报先帝而忠陛下之职分也。至于斟酌损益，进尽忠言，则攸之、祎、允之任也。愿陛下托臣以讨贼兴复之效，不效，则治臣之罪，以告先帝之灵。若无兴德之言，则责攸之、祎、允等之慢，以彰其咎；陛下亦宜自谋，以咨诹善道，察纳雅言，深追先帝遗诏，臣不胜受恩感激。今当远离，临表涕零，不知所言。"
+    ],
+    "clozeKeyWords": [
+      "崩殂",
+      "益州疲弊",
+      "危急存亡之秋",
+      "殊遇",
+      "开张圣听",
+      "恢弘志士之气",
+      "妄自菲薄",
+      "引喻失义",
+      "塞忠谏之路",
+      "俱为一体",
+      "陟罚臧否",
+      "作奸犯科",
+      "平明之理",
+      "内外异法",
+      "郭攸之",
+      "费祎",
+      "董允",
+      "简拔",
+      "裨补阙漏",
+      "有所广益",
+      "向宠",
+      "性行淑均",
+      "晓畅军事",
+      "行阵和睦",
+      "优劣得所",
+      "亲贤臣",
+      "远小人",
+      "叹息痛恨",
+      "桓、灵",
+      "计日而待",
+      "臣本布衣",
+      "躬耕于南阳",
+      "苟全性命",
+      "不求闻达",
+      "卑鄙",
+      "猥自枉屈",
+      "三顾臣于草庐之中",
+      "驱驰",
+      "受任于败军之际",
+      "奉命于危难之间",
+      "二十有一年",
+      "夙夜忧叹",
+      "深入不毛",
+      "兵甲已足",
+      "奖率三军",
+      "北定中原",
+      "庶竭驽钝",
+      "攘除奸凶",
+      "兴复汉室",
+      "还于旧都",
+      "斟酌损益",
+      "以彰其咎",
+      "咨诹善道",
+      "察纳雅言",
+      "深追先帝遗诏",
+      "临表涕零",
+      "不知所言"
+    ]
+  },
+  {
+    "id": 5,
+    "translations": [
+      "金杯里盛着昂贵的清酒，玉盘里端着价值万钱的佳肴。但我端起酒杯放下筷子吃不下，拔出宝剑环顾四周心里一片茫然。想渡过黄河冰雪阻塞了河道，想登上太行山大雪封满了山峰。闲来在碧绿的溪水边垂钓，忽又乘着小船梦见飞到了太阳旁边。行路难啊行路难，岔路这么多，如今我究竟在哪里？坚信乘风破浪的时机定会到来，到那时定要高挂云帆，在沧海中勇往直前！"
+    ],
+    "title": "行路难（其一）",
+    "author": "李白",
+    "storyboard": [
+      {
+        "badge": "分镜 1 / 3",
+        "title": "镜头1：停杯投箸与心茫然",
+        "img": "images/xinglunan_1.webp",
+        "passage": "金樽清酒斗十千，玉盘珍羞直万钱。停杯投箸不能食，拔剑四顾心茫然。",
+        "clue": "🔑 线索：金樽/玉盘 ➔ 停杯投箸不能食，拔剑四顾心茫然",
+        "translation": "金杯里盛着昂贵的清酒，玉盘里端着价值万钱的佳肴。但我端起酒杯放下筷子吃不下，拔出宝剑环顾四周心里一片茫然。"
+      },
+      {
+        "badge": "分镜 2 / 3",
+        "title": "镜头2：冰塞黄河与雪满太行",
+        "img": "images/xinglunan_2.webp",
+        "passage": "欲渡黄河冰塞川，将登太行雪满山。闲来垂钓碧溪上，忽复乘舟梦日边。",
+        "clue": "🔑 线索：黄河冰塞川，太行雪满山 ➔ 垂钓碧溪/乘舟梦日",
+        "translation": "想渡过黄河冰雪阻塞了河道，想登上太行山大雪封满了山峰。闲来在碧绿的溪水边垂钓，忽又乘着小船梦见飞到了太阳旁边。"
+      },
+      {
+        "badge": "分镜 3 / 3",
+        "title": "镜头3：直挂云帆济沧海",
+        "img": "images/xinglunan_3.webp",
+        "passage": "行路难，行路难，多歧路，今安在？长风破浪会有时，直挂云帆济沧海。",
+        "clue": "🔑 线索：多歧路，今安在？ ➔ 长风破浪会有时，直挂云帆济沧海！",
+        "translation": "行路难啊行路难，岔路这么多，如今我究竟在哪里？坚信乘风破浪的时机定会到来，到那时定要高挂云帆，在沧海中勇往直前！"
+      }
+    ],
+    "paragraphs": [
+      "金樽清酒斗十千，玉盘珍羞直万钱。",
+      "停杯投箸不能食，拔剑四顾心茫然。",
+      "欲渡黄河冰塞川，将登太行雪满山。",
+      "闲来垂钓碧溪上，忽复乘舟梦日边。",
+      "行路难，行路难，多歧路，今安在？",
+      "长风破浪会有时，直挂云帆济沧海。"
+    ],
+    "clozeKeyWords": [
+      "金樽",
+      "玉盘珍羞",
+      "停杯投箸",
+      "拔剑四顾",
+      "冰塞川",
+      "雪满山",
+      "垂钓碧溪",
+      "乘舟梦日",
+      "多歧路",
+      "长风破浪",
+      "直挂云帆"
+    ]
+  },
+  {
+    "id": 6,
+    "translations": [
+      "被贬谪在巴山楚水这些凄凉的地方，二十三年漫长岁月白白弃置了身躯。怀念故友只能徒然吟诵《闻笛赋》，回到家乡自己反而像砍柴砍得斧柄烂掉的仙人一样陌生。沉舟侧旁有千百艘帆船驶过，病树前头有万棵绿树迎来春天。今天听了您为我唱的这一曲，暂且借这杯美酒振奋起精神！"
+    ],
+    "title": "酬乐天扬州初逢席上见赠",
+    "author": "刘禹锡",
+    "storyboard": [
+      {
+        "badge": "分镜 1 / 2",
+        "title": "镜头1：身世凄凉与怀旧吟赋",
+        "img": "images/chouletian_1.webp",
+        "passage": "巴山楚水凄凉地，二十三年弃置身。怀旧空吟闻笛赋，到乡翻似烂柯人。",
+        "clue": "🔑 线索：巴山楚水凄凉地，二十三年弃置身 ➔ 闻笛赋/烂柯人",
+        "translation": "被贬谪在巴山楚水这些凄凉的地方，二十三年漫长岁月白白弃置了身躯。怀念故友只能徒然吟诵《闻笛赋》，回到家乡自己反而像砍柴砍得斧柄烂掉的仙人一样陌生。"
+      },
+      {
+        "badge": "分镜 2 / 2",
+        "title": "镜头2：沉舟侧畔与万木逢春",
+        "img": "images/chouletian_2.webp",
+        "passage": "沉舟侧畔千帆过，病树前头万木春。今日听君歌一曲，暂凭杯酒长精神。",
+        "clue": "🔑 线索：沉舟侧畔千帆过，病树前头万木春 ➔ 暂凭杯酒长精神",
+        "translation": "沉舟侧旁有千百艘帆船驶过，病树前头有万棵绿树迎来春天。今天听了您为我唱的这一曲，暂且借这杯美酒振奋起精神！"
+      }
+    ],
+    "paragraphs": [
+      "巴山楚水凄凉地，二十三年弃置身。",
+      "怀旧空吟闻笛赋，到乡翻似烂柯人。",
+      "沉舟侧畔千帆过，病树前头万木春。",
+      "今日听君歌一曲，暂凭杯酒长精神。"
+    ],
+    "clozeKeyWords": [
+      "凄凉地",
+      "弃置身",
+      "闻笛赋",
+      "烂柯人",
+      "沉舟侧畔",
+      "病树前头",
+      "长精神"
+    ]
+  },
+  {
+    "id": 7,
+    "translations": [
+      "丙辰年中秋节，高兴地喝酒直到天亮，喝得大醉，写下这首词，同时也思念弟弟苏辙。明月什么时候才有的？端起酒杯询问青天。不知道天上的宫殿，今晚是哪一年。我想要乘着清风飞回天上，又恐那玉石砌成的楼阁太高，忍受不住高处的寒冷。翩翩起舞玩赏着清澈的影子，哪里比得上在人间呢！",
+      "转过朱红色的楼阁，低低地挂着雕花窗户，照着失眠的人。明月不该对人有什么怨恨，为什么偏偏在人们离别时这样圆呢？人有悲欢离合，月有阴晴圆缺，这种事自古以来就难以周全。但愿心中思念的人平安长久，即使相隔千里也能共享这美好的月光。"
+    ],
+    "title": "水调歌头",
+    "author": "苏轼",
+    "storyboard": [
+      {
+        "badge": "分镜 1 / 3",
+        "title": "镜头1：把酒问青天与中秋月夜",
+        "img": "images/shuidiaogetou_1.webp",
+        "passage": "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。",
+        "clue": "🔑 线索：把酒问青天 ➔ 琼楼玉宇，高处不胜寒 ➔ 起舞弄清影",
+        "translation": "丙辰年中秋节，高兴地喝酒直到天亮，喝得大醉，写下这首词，同时也思念弟弟苏辙。明月什么时候才有的？端起酒杯询问青天。不知道天上的宫殿，今晚是哪一年。我想要乘着清风飞回天上，又恐那玉石砌成的楼阁太高，忍受不住高处的寒冷。翩翩起舞玩赏着清澈的影子，哪里比得上在人间呢！"
+      },
+      {
+        "badge": "分镜 2 / 3",
+        "title": "镜头2：照无眠与月圆月缺",
+        "img": "images/shuidiaogetou_2.webp",
+        "passage": "转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。",
+        "clue": "🔑 线索：照无眠 ➔ 人有悲欢离合，月有阴晴圆缺",
+        "translation": "转过朱红色的楼阁，低低地挂着雕花窗户，照着失眠的人。明月不该对人有什么怨恨，为什么偏偏在人们离别时这样圆呢？人有悲欢离合，月有阴晴圆缺，这种事自古以来就难以周全。"
+      },
+      {
+        "badge": "分镜 3 / 3",
+        "title": "镜头3：千里共婵娟",
+        "img": "images/shuidiaogetou_3.webp",
+        "passage": "但愿人长久，千里共婵娟。",
+        "clue": "🔑 线索：但愿人长久，千里共婵娟",
+        "translation": "但愿心中思念的人平安长久，即使相隔千里也能共享这美好的月光。"
+      }
+    ],
+    "paragraphs": [
+      "丙辰中秋，欢饮达旦，大醉，作此篇，兼怀子由。",
+      "明月几时有？把酒问青天。不知天上宫阙，今夕是何年。我欲乘风归去，又恐琼楼玉宇，高处不胜寒。起舞弄清影，何似在人间。",
+      "转朱阁，低绮户，照无眠。不应有恨，何事长向别时圆？人有悲欢离合，月有阴晴圆缺，此事古难全。但愿人长久，千里共婵娟。"
+    ],
+    "clozeKeyWords": [
+      "把酒问青天",
+      "天上宫阙",
+      "琼楼玉宇",
+      "高处不胜寒",
+      "起舞弄清影",
+      "转朱阁",
+      "低绮户",
+      "照无眠",
+      "悲欢离合",
+      "阴晴圆缺",
+      "千里共婵娟"
+    ]
+  },
+  {
+    "id": 8,
+    "translations": [
+      "十五岁就参军去出征，八十岁才得以回到家乡。路上遇到同乡的人，询问：“我家里还有什么人呢？”遥遥看见那是你的家，如今只有松树柏树下累累的坟墓。野兔从狗洞里钻进钻出，野鸡在屋梁上飞来飞去。庭院里长着野生的谷子，井台上长着野生的葵菜。舂下野谷拿来做饭，采下野葵拿来做汤。羹饭一时做好了，却不知道该给谁吃！走出家门向东张望，眼泪落下来沾湿了衣服。"
+    ],
+    "title": "十五从军征",
+    "author": "汉乐府",
+    "storyboard": [
+      {
+        "badge": "分镜 1 / 2",
+        "title": "镜头1：老兵归家问路",
+        "img": "images/shiwu_1.webp",
+        "passage": "十五从军征，八十始得归。道逢乡里人：“家中有阿谁？”遥看是君家，松柏冢累累。",
+        "clue": "🔑 线索：15岁出征80岁归 ➔ 问乡人 ➔ 遥看是君家，松柏冢累累",
+        "translation": "十五岁就参军去出征，八十岁才得以回到家乡。路上遇到同乡的人，询问：“我家里还有什么人呢？”遥遥看见那是你的家，如今只有松树柏树下累累的坟墓。"
+      },
+      {
+        "badge": "分镜 2 / 2",
+        "title": "镜头2：入门破败与不知贻阿谁",
+        "img": "images/shiwu_2.webp",
+        "passage": "兔从狗窦入，雉从梁上飞。中庭生旅谷，井上生旅葵。舂谷持作饭，采葵持作羹。羹饭一时熟，不知贻阿谁！出门东向看，泪落沾我衣。",
+        "clue": "🔑 线索：兔入狗窦，雉飞梁上 ➔ 羹饭熟：不知贻阿谁！ ➔ 泪落沾我衣",
+        "translation": "野兔从狗洞里钻进钻出，野鸡在屋梁上飞来飞去。庭院里长着野生的谷子，井台上长着野生的葵菜。舂下野谷拿来做饭，采下野葵拿来做羹。羹饭一时做好了，却不知道该给谁吃！走出家门向东张望，眼泪落下来沾湿了衣服。"
+      }
+    ],
+    "paragraphs": [
+      "十五从军征，八十始得归。道逢乡里人：“家中有阿谁？”",
+      "遥看是君家，松柏冢累累。兔从狗窦入，雉从梁上飞。",
+      "中庭生旅谷，井上生旅葵。舂谷持作饭，采葵持作羹。",
+      "羹饭一时熟，不知贻阿谁！出门东向看，泪落沾我衣。"
+    ],
+    "clozeKeyWords": [
+      "始得归",
+      "阿谁",
+      "松柏冢累累",
+      "狗窦",
+      "雉从梁上飞",
+      "旅谷",
+      "旅葵",
+      "舂谷",
+      "不知贻阿谁",
+      "泪落沾我衣"
+    ]
+  },
+  {
+    "id": 9,
+    "translations": [
+      "北风席卷大地吹折了白草，胡地八月里就飞起了大雪。忽然间就像一夜春风吹来，千树万树仿佛开满了洁白的梨花。雪花散入珠帘湿透了罗幕，狐皮大衣不保暖锦被也显得单薄。将军的角弓硬得冻结无法张开，都护的铁甲冷得难以穿上。沙漠辽阔结下了百丈坚冰，愁云惨淡万里长空凝结不散。在主帅的大帐里摆酒为归京的客人送行，弹奏起胡琴琵琶与羌笛。纷纷暮雪在辕门外降下，风吹红旗被冻结得不再翻卷。在轮台东门送别您远去，去的时候雪花铺满了天山大路。山路迂回曲折看不见您的身影，雪地上只留下了马蹄踩出的印痕。"
+    ],
+    "title": "白雪歌送武判官归京",
+    "author": "岑参",
+    "storyboard": [
+      {
+        "badge": "分镜 1 / 3",
+        "title": "镜头1：八月雪山别与千树梨花开",
+        "img": "images/baixuege_1.webp",
+        "passage": "北风卷地白草折，胡天八月即飞雪。忽如一夜春风来，千树万树梨花开。散入珠帘湿罗幕，狐裘不暖锦衾薄。",
+        "clue": "🔑 线索：胡天八月飞雪 ➔ 忽如一夜春风来，千树万树梨花开 ➔ 狐裘不暖",
+        "translation": "北风席卷大地吹折了白草，胡地八月里就飞起了大雪。忽然间就像一夜春风吹来，千树万树仿佛开满了洁白的梨花。雪花散入珠帘湿透了罗幕，狐皮大衣不保暖锦被也显得单薄。"
+      },
+      {
+        "badge": "分镜 2 / 3",
+        "title": "镜头2：军帐奇寒与瀚海冰凝",
+        "img": "images/baixuege_2.webp",
+        "passage": "将军角弓不得控，都护铁衣冷难着。瀚海阑干百丈冰，愁云惨淡万里凝。中军置酒饮归客，胡琴琵琶与羌笛。",
+        "clue": "🔑 线索：角弓不得控/铁衣冷难着 ➔ 瀚海阑干百丈冰 ➔ 中军置酒饮归客",
+        "translation": "将军的角弓硬得冻结无法张开，都护的铁甲冷得难以穿上。沙漠辽阔结下了百丈坚冰，愁云惨淡万里长空凝结不散。在主帅的大帐里摆酒为归京的客人送行，弹奏起胡琴琵琶与羌笛。"
+      },
+      {
+        "badge": "分镜 3 / 3",
+        "title": "镜头3：雪上空留马行处",
+        "img": "images/baixuege_3.webp",
+        "passage": "纷纷暮雪下辕门，风掣红旗冻不翻。轮台东门送君去，去时雪满天山路。山回路转不见君，雪上空留马行处。",
+        "clue": "🔑 线索：风掣红旗冻不翻 ➔ 天山路 ➔ 山回路转不见君，雪上空留马行处",
+        "translation": "纷纷暮雪在辕门外降下，风吹红旗被冻结得不再翻卷。在轮台东门送别您远去，去的时候雪花铺满了天山大路。山路迂回曲折看不见您的身影，雪地上只留下了马蹄踩出的印痕。"
+      }
+    ],
+    "paragraphs": [
+      "北风卷地白草折，胡天八月即飞雪。",
+      "忽如一夜春风来，千树万树梨花开。",
+      "散入珠帘湿罗幕，狐裘不暖锦衾薄。",
+      "将军角弓不得控，都护铁衣冷难着。",
+      "瀚海阑干百丈冰，愁云惨淡万里凝。",
+      "中军置酒饮归客，胡琴琵琶与羌笛。",
+      "纷纷暮雪下辕门，风掣红旗冻不翻。",
+      "轮台东门送君去，去时雪满天山路。",
+      "山回路转不见君，雪上空留马行处。"
+    ],
+    "clozeKeyWords": [
+      "白草折",
+      "梨花开",
+      "湿罗幕",
+      "锦衾薄",
+      "角弓不得控",
+      "铁衣冷难着",
+      "瀚海阑干",
+      "愁云惨淡",
+      "风掣红旗",
+      "雪满天山路",
+      "山回路转",
+      "马行处"
+    ]
+  },
+  {
+    "id": 10,
+    "translations": [
+      "从哪里可以张望中原大地？满眼唯有北固楼上的无边风光。千古以来国家兴亡有多少大事？悠悠岁月中，唯有长江水滚滚不息奔流而去。年少时就统领万千精兵，坐断东南半壁江山战斗不停。天下英雄谁是对手？只有曹操和刘备。生儿子就应当像孙权那样！"
+    ],
+    "title": "南乡子·登京口北固亭",
+    "author": "辛弃疾",
+    "storyboard": [
+      {
+        "badge": "分镜 1 / 2",
+        "title": "镜头1：凭高远眺长江",
+        "img": "images/nanxiangzi_1.webp",
+        "passage": "何处望神州？满眼风光北固楼。千古兴亡多少事？悠悠。不尽长江滚滚流。",
+        "clue": "🔑 线索：何处望神州？北固楼 ➔ 千古兴亡多少事 ➔ 不尽长江滚滚流",
+        "translation": "从哪里可以张望中原大地？满眼唯有北固楼上的无边风光。千古以来国家兴亡有多少大事？悠悠岁月中，唯有长江水滚滚不息奔流而去。"
+      },
+      {
+        "badge": "分镜 2 / 2",
+        "title": "镜头2：生子当如孙仲谋",
+        "img": "images/nanxiangzi_2.webp",
+        "passage": "年少万兜鍪，坐断东南战未休。天下英雄谁敌手？曹刘。生子当如孙仲谋。",
+        "clue": "🔑 线索：年少万兜鍪 ➔ 天下英雄谁敌手？曹刘 ➔ 生子当如孙仲谋",
+        "translation": "年少时就统领万千精兵，坐断东南半壁江山战斗不停。天下英雄谁是对手？只有曹操和刘备。生儿子就应当像孙权那样！"
+      }
+    ],
+    "paragraphs": [
+      "何处望神州？满眼风光北固楼。千古兴亡多少事？悠悠。不尽长江滚滚流。",
+      "年少万兜鍪，坐断东南战未休。天下英雄谁敌手？曹刘。生子当如孙仲谋。"
+    ],
+    "clozeKeyWords": [
+      "望神州",
+      "北固楼",
+      "千古兴亡",
+      "不尽长江",
+      "万兜鍪",
+      "坐断东南",
+      "曹刘",
+      "孙仲谋"
+    ]
+  },
+  {
+    "id": 11,
+    "translations": [
+      "回想我一生的遭遇，从苦读经书入仕，到兵荒马乱中抗元已历经四年。祖国山河破碎像被风吹散的柳絮，自己一生的身世坎坷飘摇像雨中浮萍。在惶恐滩头曾经诉说心中的惶恐，在零丁洋里叹息自己的孤苦零丁。自古以来谁能免于一死？只要留下这颗赤诚的忠心光照史册！"
+    ],
+    "title": "过零丁洋",
+    "author": "文天祥",
+    "storyboard": [
+      {
+        "badge": "分镜 1 / 2",
+        "title": "镜头1：风飘絮与雨打萍",
+        "img": "images/guolingdingyang_1.webp",
+        "passage": "辛苦遭逢起一经，干戈寥落四周星。山河破碎风飘絮，身世浮沉雨打萍。惶恐滩头说惶恐，零丁洋里叹零丁。",
+        "clue": "🔑 线索：山河破碎风飘絮，身世浮沉雨打萍 ➔ 惶恐滩头 / 零丁洋",
+        "translation": "回想我一生的遭遇，从苦读经书入仕，到兵荒马乱中抗元已历经四年。祖国山河破碎像被风吹散的柳絮，自己一生的身世坎坷飘摇像雨中浮萍。在惶恐滩头曾经诉说心中的惶恐，在零丁洋里叹息自己的孤苦零丁。"
+      },
+      {
+        "badge": "分镜 2 / 2",
+        "title": "镜头2：留取丹心照汗青",
+        "img": "images/guolingdingyang_2.webp",
+        "passage": "人生自古谁无死？留取丹心照汗青。",
+        "clue": "🔑 线索：人生自古谁无死？留取丹心照汗青！",
+        "translation": "自古以来谁能免于一死？只要留下这颗赤诚的忠心光照史册！"
+      }
+    ],
+    "paragraphs": [
+      "辛苦遭逢起一经，干戈寥落四周星。",
+      "山河破碎风飘絮，身世浮沉雨打萍。",
+      "惶恐滩头说惶恐，零丁洋里叹零丁。",
+      "人生自古谁无死？留取丹心照汗青。"
+    ],
+    "clozeKeyWords": [
+      "起一经",
+      "干戈寥落",
+      "风飘絮",
+      "雨打萍",
+      "惶恐滩头",
+      "零丁洋",
+      "谁无死",
+      "丹心照汗青"
+    ]
+  },
+  {
+    "id": 12,
+    "translations": [
+      "峰峦如云聚，波涛如怒吼，山河天险环绕着潼关古道。望向西都长安，心中感慨万千。令人伤心的是秦汉两朝经过的地方，万间豪华宫殿如今都化作了尘土。封建王朝兴盛，百姓受苦；封建王朝灭亡，百姓依然受苦！"
+    ],
+    "title": "山坡羊·潼关怀古",
+    "author": "张养浩",
+    "storyboard": [
+      {
+        "badge": "分镜 1 / 2",
+        "title": "镜头1：潼关古道与宫阙做了土",
+        "img": "images/shanboyang_1.webp",
+        "passage": "峰峦如聚，波涛如怒，山河表里潼关路。望西都，意踌躇。伤心秦汉经行处，宫阙万间都做了土。",
+        "clue": "🔑 线索：峰峦如聚，波涛如怒 ➔ 山河表里潼关路 ➔ 宫阙万间都做了土",
+        "translation": "峰峦如云聚，波涛如怒吼，山河天险环绕着潼关古道。望向西都长安，心中感慨万千。令人伤心的是秦汉两朝经过的地方，万间豪华宫殿如今都化作了尘土。"
+      },
+      {
+        "badge": "分镜 2 / 2",
+        "title": "镜头2：兴亡百姓苦",
+        "img": "images/shanboyang_2.webp",
+        "passage": "兴，百姓苦；亡，百姓苦。",
+        "clue": "🔑 线索：兴，百姓苦；亡，百姓苦。",
+        "translation": "封建王朝兴盛，百姓受苦；封建王朝灭亡，百姓依然受苦！"
+      }
+    ],
+    "paragraphs": [
+      "峰峦如聚，波涛如怒，山河表里潼关路。望西都，意踌躇。伤心秦汉经行处，宫阙万间都做了土。兴，百姓苦；亡，百姓苦。"
+    ],
+    "clozeKeyWords": [
+      "峰峦如聚",
+      "波涛如怒",
+      "山河表里",
+      "意踌躇",
+      "宫阙万间",
+      "都做了土",
+      "百姓苦"
+    ]
+  }
+];
+
+    const PINYIN_PHRASES = {"谪守":["zhé","shǒu"],"百废具兴":["bǎi","fèi","jù","xīng"],"属予":["zhǔ","yú"],"浩浩汤汤":["hào","hào","shāng","shāng"],"朝晖夕阴":["zhāo","huī","xī","yīn"],"日星隐曜":["rì","xīng","yǐn","yào"],"樯倾楫摧":["qiáng","qīng","jí","cuī"],"薄暮冥冥":["bó","mù","míng","míng"],"忧谗畏讥":["yōu","chán","wèi","jī"],"岸芷汀兰":["àn","zhǐ","tīng","lán"],"皓月千里":["hào","yuè","qiān","lǐ"],"静影沉璧":["jìng","yǐng","chén","bì"],"微斯人":["wēi","sī","rén"],"吾谁与归":["wú","shuí","yǔ","guī"],"琅琊":["láng","yá"],"酿泉":["niàng","quán"],"翼然":["yì","rán"],"林霏开":["lín","fēi","kāi"],"岩穴暝":["yán","xué","míng"],"野芳发":["yě","fāng","fā"],"佳木秀":["jiā","mù","xiù"],"伛偻":["yǔ","lǚ"],"山肴野蔌":["shān","yáo","yě","sù"],"觥筹交错":["gōng","chóu","jiāo","cuò"],"颓然":["tuí","rán"],"阴翳":["yīn","yì"],"乐其乐":["lè","qí","lè"],"挐一小舟":["ná","yī","xiǎo","zhōu"],"拥毳衣":["yōng","cuì","yī"],"雾凇沆砀":["wù","sōng","hàng","dàng"],"余舟一芥":["yú","zhōu","yī","jiè"],"强饮":["qiǎng","yǐn"],"三大白":["sān","dà","bái"],"痴似":["chī","sì"],"数风流":["shǔ","fēng","liú"],"还看今朝":["hái","kàn","jīn","zhāo"],"分外":["fèn","wài"],"只识":["zhǐ","shí"],"金樽":["jīn","zūn"],"珍羞":["zhēn","xiū"],"直万钱":["zhí","wàn","qián"],"停杯投箸":["tíng","bēi","tóu","zhù"],"冰塞川":["bīng","sè","chuān"],"济沧海":["jì","cāng","hǎi"],"闻笛赋":["wén","dí","fù"],"烂柯人":["làn","kē","rén"],"长精神":["zhǎng","jīng","shén"],"琼楼玉宇":["qióng","lóu","yù","yǔ"],"高处不胜寒":["gāo","chù","bù","shèng","hán"],"低绮户":["dī","qǐ","hù"],"共婵娟":["gòng","chán","juān"],"阿谁":["ā","shuí"],"松柏冢":["sōng","bǎi","zhǒng"],"狗窦":["gǒu","dòu"],"旅葵":["lǚ","kuí"],"贻阿谁":["yí","ā","shuí"],"狐裘":["hú","qiú"],"锦衾":["jǐn","qīn"],"冷难着":["lěng","nán","zhuó"],"风掣":["fēng","chè"],"孙仲谋":["sūn","zhòng","móu"],"干戈":["gān","gē"],"寥落":["liáo","luò"],"惶恐滩":["huáng","kǒng","tān"],"汗青":["hàn","qīng"],"意踌蹰":["yì","chóu","chú"],"都做了土":["dōu","zuò","le","tǔ"],"出师表":["chū","shī","biǎo"],"崩殂":["bēng","cú"],"益州疲弊":["yì","zhōu","pí","bì"],"疲弊":["pí","bì"],"殊遇":["shū","yù"],"恢弘":["huī","hóng"],"妄自菲薄":["wàng","zì","fěi","bó"],"菲薄":["fěi","bó"],"引喻失义":["yǐn","yù","shī","yì"],"忠谏":["zhōng","jiàn"],"陟罚臧否":["zhì","fá","zāng","pǐ"],"臧否":["zāng","pǐ"],"作奸犯科":["zuò","jiān","fàn","kē"],"平明之理":["píng","míng","zhī","lǐ"],"郭攸之":["guō","yōu","zhī"],"费祎":["fèi","yī"],"董允":["dǒng","yǔn"],"志虑忠纯":["zhì","lǜ","zhōng","chún"],"以遗陛下":["yǐ","wèi","bì","xià"],"裨补阙漏":["bì","bǔ","quē","lòu"],"有所广益":["yǒu","suǒ","guǎng","yì"],"向宠":["xiàng","chǒng"],"性行淑均":["xìng","xíng","shū","jūn"],"晓畅军事":["xiǎo","chàng","jūn","shì"],"晓畅":["xiǎo","chàng"],"行阵和睦":["háng","zhèn","hé","mù"],"行阵":["háng","zhèn"],"优劣得所":["yōu","liè","dé","suǒ"],"亲贤臣":["qīn","xián","chén"],"远小人":["yuǎn","xiǎo","rén"],"倾颓":["qīng","tuí"],"叹息痛恨":["tàn","xī","tòng","hèn"],"桓、灵":["huán","líng"],"死节之臣":["sǐ","jié","zhī","chén"],"计日而待":["jì","rì","ér","dài"],"臣本布衣":["chén","běn","bù","yī"],"躬耕于南阳":["gōng","gēng","yú","nán","yáng"],"躬耕":["gōng","gēng"],"苟全性命":["gǒu","quán","xìng","mìng"],"不求闻达":["bù","qiú","wén","dá"],"猥自枉屈":["wěi","zì","wǎng","qū"],"三顾臣":["sān","gù","chén"],"草庐":["cǎo","lú"],"驱驰":["qū","chí"],"受任于败军之际":["shòu","rèn","yú","bài","jūn","zhī","jì"],"奉命于危难之间":["fèng","mìng","yú","wēi","nàn","zhī","jiān"],"二十有一年":["èr","shí","yǒu","yī","nián"],"夙夜忧叹":["sù","yè","yōu","tàn"],"五月渡泸":["wǔ","yuè","dù","lú"],"深入不毛":["shēn","rù","bù","máo"],"奖率三军":["jiǎng","shuài","sān","jūn"],"北定中原":["běi","dìng","zhōng","yuán"],"庶竭驽钝":["shù","jié","nú","dùn"],"驽钝":["nú","dùn"],"攘除奸凶":["rǎng","chú","jiān","xiōng"],"兴复汉室":["xīng","fù","hàn","shì"],"还于旧都":["huán","yú","jiù","dū"],"斟酌损益":["zhēn","zhuó","sǔn","yì"],"以彰其咎":["yǐ","zhāng","qí","jiù"],"咨诹善道":["zī","zōu","shàn","dào"],"咨诹":["zī","zōu"],"察纳雅言":["chá","nà","yǎ","yán"],"深追先帝遗诏":["shēn","zhuī","xiān","dì","yí","zhào"],"不胜受恩感激":["bù","shèng","shòu","ēn","gǎn","jī"],"临表涕零":["lín","biǎo","tì","líng"],"不知所言":["bù","zhī","suǒ","yán"]};
+    const PINYIN_CHARS = {"九":"jiǔ","上":"shàng","古":"gǔ","诗":"shī","文":"wén","图":"tú","并":"bìng","茂":"mào","分":"fēn","镜":"jìng","背":"bèi","诵":"sòng","卡":"kǎ","秒":"miǎo","开":"kāi","版":"bǎn","同":"tóng","框":"kuāng","边":"biān","靠":"kào","点":"diǎn","击":"jī","查":"chá","看":"kàn","大":"dà","头":"tóu","视":"shì","觉":"jué","差":"chà","异":"yì","化":"huà","艺":"yì","术":"shù","滤":"lǜ","与":"yǔ","取":"qǔ","景":"jǐng","虚":"xū","拟":"nǐ","记":"jì","忆":"yì","宫":"gōng","殿":"diàn","专":"zhuān","属":"shǔ","样":"yàng","式":"shì","智":"zhì","能":"néng","手":"shǒu","风":"fēng","琴":"qín","极":"jí","致":"zhì","交":"jiāo","互":"hù","彻":"chè","底":"dǐ","硬":"yìng","核":"hé","隐":"yǐn","藏":"cáng","侧":"cè","栏":"lán","精":"jīng","紧":"jǐn","凑":"còu","型":"xíng","商":"shāng","务":"wù","设":"shè","计":"jì","系":"xì","统":"tǒng","顶":"dǐng","部":"bù","导":"dǎo","航":"háng","主":"zhǔ","区":"qū","域":"yù","片":"piàn","比":"bǐ","例":"lì","简":"jiǎn","左":"zuǒ","右":"yòu","默":"mò","写":"xiě","测":"cè","试":"shì","高":"gāo","野":"yě","空":"kōng","间":"jiān","场":"chǎng","所":"suǒ","锚":"máo","具":"jù","象":"xiàng","联":"lián","想":"xiǎng","路":"lù","径":"jìng","寻":"xún","宝":"bǎo","为":"wèi","青":"qīng","少":"shǎo","年":"nián","效":"xiào","打":"dǎ","造":"zào","的":"de","返":"fǎn","回":"huí","语":"yǔ","中":"zhōng","心":"xīn","印":"yìn","篇":"piān","目":"mù","折":"zhé","叠":"dié","言":"yán","名":"míng","岳":"yuè","阳":"yáng","楼":"lóu","醉":"zuì","翁":"wēng","亭":"tíng","湖":"hú","雪":"xuě","沁":"qìn","园":"yuán","春":"chūn","承":"chéng","词":"cí","行":"xíng","难":"nán","其":"qí","一":"yī","李":"lǐ","白":"bái","酬":"chóu","乐":"lè","天":"tiān","扬":"yáng","州":"zhōu","初":"chū","逢":"féng","席":"xí","见":"jiàn","赠":"zèng","刘":"liú","禹":"yǔ","锡":"xī","水":"shuǐ","调":"diào","歌":"gē","苏":"sū","轼":"shì","十":"shí","五":"wǔ","从":"cóng","军":"jūn","征":"zhēng","汉":"hàn","府":"fǔ","送":"sòng","武":"wǔ","判":"pàn","官":"guān","归":"guī","京":"jīng","岑":"cén","参":"cān","南":"nán","乡":"xiāng","子":"zi","登":"dēng","口":"kǒu","北":"běi","固":"gù","辛":"xīn","弃":"qì","疾":"jí","过":"guò","零":"líng","丁":"dīng","洋":"yáng","祥":"xiáng","山":"shān","坡":"pō","羊":"yáng","潼":"tóng","关":"guān","怀":"huái","张":"zhāng","养":"yǎng","浩":"hào","录":"lù","首":"shǒu","字":"zì","线":"xiàn","索":"suǒ","提":"tí","示":"shì","填":"tián","完":"wán","整":"zhěng","对":"duì","照":"zhào","显":"xiǎn","答":"dá","案":"àn","宋":"sòng","范":"fàn","仲":"zhòng","淹":"yān","在":"zài","脑":"nǎo","海":"hǎi","建":"jiàn","立":"lì","像":"xiàng","法":"fǎ","应":"yīng","展":"zhǎn","清":"qīng","插":"chā","直":"zhí","接":"jiē","课":"kè","原":"yuán","句":"jù","段":"duàn","落":"luò","验":"yàn","收":"shōu","庆":"qìng","历":"lì","四":"sì","滕":"téng","被":"bèi","贬":"biǎn","到":"dào","巴":"bā","陵":"líng","郡":"jùn","做":"zuò","知":"zhī","了":"le","第":"dì","二":"èr","政":"zhèng","事":"shì","顺":"shùn","利":"lì","百":"bǎi","姓":"xìng","和":"hé","各":"gè","种":"zhǒng","荒":"huāng","废":"fèi","业":"yè","都":"dōu","兴":"xīng","办":"bàn","起":"qǐ","来":"lái","于":"yú","是":"shì","重":"zhòng","新":"xīn","修":"xiū","扩":"kuò","它":"tā","有":"yǒu","规":"guī","模":"mó","把":"bǎ","唐":"táng","代":"dài","家":"jiā","今":"jīn","人":"rén","赋":"fù","刻":"kè","面":"miàn","嘱":"zhǔ","托":"tuō","我":"wǒ","章":"zhāng","述":"shù","这":"zhè","件":"jiàn","那":"nà","美":"měi","好":"hǎo","色":"sè","全":"quán","洞":"dòng","庭":"tíng","连":"lián","着":"zhe","远":"yuǎn","方":"fāng","脉":"mài","吞":"tūn","吐":"tǔ","长":"zhǎng","江":"jiāng","流":"liú","势":"shì","宽":"kuān","阔":"kuò","无":"wú","早":"zǎo","晚":"wǎn","阴":"yīn","晴":"qíng","明":"míng","暗":"àn","多":"duō","变":"biàn","物":"wù","蔚":"wèi","壮":"zhuàng","观":"guān","丽":"lì","前":"qián","很":"hěn","详":"xiáng","尽":"jǐn","既":"jì","然":"rán","么":"me","里":"lǐ","通":"tōng","向":"xiàng","巫":"wū","峡":"xiá","潇":"xiāo","湘":"xiāng","谪":"zhé","外":"wài","地":"dì","员":"yuán","常":"cháng","会":"huì","聚":"jù","自":"zì","而":"ér","触":"chù","发":"fā","情":"qíng","感":"gǎn","恐":"kǒng","怕":"pà","不":"bù","吧":"ba","时":"shí","雨":"yǔ","绵":"mián","断":"duàn","几":"jǐ","个":"gè","月":"yuè","放":"fàng","冷":"lěng","怒":"nù","吼":"hǒu","浑":"hún","浊":"zhuó","浪":"làng","冲":"chōng","太":"tài","星":"xīng","光":"guāng","辉":"huī","没":"méi","形":"xíng","体":"tǐ","旅":"lǚ","客":"kè","桅":"wéi","杆":"gān","倒":"dào","下":"xià","船":"chuán","桨":"jiǎng","傍":"bàng","昏":"hūn","虎":"hǔ","咆":"páo","啸":"xiào","猿":"yuán","悲":"bēi","啼":"tí","座":"zuò","就":"jiù","产":"chǎn","生":"shēng","离":"lí","国":"guó","念":"niàn","担":"dān","害":"hài","遭":"zāo","诋":"dǐ","毁":"huǐ","非":"fēi","议":"yì","满":"mǎn","眼":"yǎn","萧":"xiāo","条":"tiáo","慨":"kǎi","至":"zhì","伤":"shāng","煦":"xù","日":"rì","媚":"mèi","候":"hòu","平":"píng","静":"jìng","相":"xiāng","绿":"lǜ","广":"guǎng","际":"jì","沙":"shā","洲":"zhōu","鸥":"ōu","鸟":"niǎo","飞":"fēi","翔":"xiáng","停":"tíng","歇":"xiē","鱼":"yú","畅":"chàng","游":"yóu","岸":"àn","小":"xiǎo","花":"huā","草":"cǎo","香":"xiāng","气":"qì","郁":"yù","葱":"cōng","繁":"fán","烟":"yān","雾":"wù","消":"xiāo","散":"sàn","皎":"jiǎo","洁":"jié","映":"yìng","千":"qiān","浮":"fú","动":"dòng","跳":"tiào","金":"jīn","影":"yǐng","沉":"chén","入":"rù","玉":"yù","璧":"bì","渔":"yú","夫":"fū","声":"shēng","你":"nǐ","唱":"chàng","趣":"qù","哪":"nǎ","胸":"xiōng","神":"shén","爽":"shuǎng","快":"kuài","荣":"róng","耀":"yào","屈":"qū","辱":"rǔ","忘":"wàng","掉":"diào","端":"duān","酒":"jiǔ","迎":"yíng","喜":"xǐ","欢":"huān","唉":"āi","曾":"céng","经":"jīng","探":"tàn","求":"qiú","品":"pǐn","德":"dé","尚":"shàng","思":"sī","或":"huò","许":"xǔ","以":"yǐ","两":"liǎng","表":"biǎo","现":"xiàn","什":"shén","呢":"ne","由":"yóu","他":"tā","们":"men","因":"yīn","界":"jiè","己":"jǐ","处":"chù","境":"jìng","哀":"āi","朝":"cháo","堂":"táng","廷":"tíng","则":"zé","民":"mín","忧":"yōu","虑":"lǜ","僻":"pì","替":"tì","君":"jūn","进":"jìn","也":"yě","退":"tuì","居":"jū","如":"rú","此":"cǐ","才":"cái","必":"bì","说":"shuō","之":"zhī","先":"xiān","后":"hòu","果":"guǒ","谁":"shuí","道":"dào","六":"liù","缘":"yuán","守":"shǒu","越":"yuè","乃":"nǎi","增":"zēng","旧":"jiù","制":"zhì","贤":"xián","予":"yǔ","作":"zuò","胜":"shèng","状":"zhuàng","衔":"xián","汤":"tāng","横":"héng","涯":"yá","晖":"huī","夕":"xī","万":"wàn","备":"bèi","矣":"yǐ","迁":"qiān","骚":"sāo","览":"lǎn","得":"dé","乎":"hū","去":"qù","若":"ruò","淫":"yín","霏":"fēi","号":"hào","排":"pái","曜":"yào","潜":"qián","樯":"qiáng","倾":"qīng","楫":"jí","摧":"cuī","薄":"báo","暮":"mù","冥":"míng","斯":"sī","谗":"chán","畏":"wèi","讥":"jī","者":"zhě","旷":"kuàng","怡":"yí","波":"bō","澜":"lán","惊":"jīng","碧":"bì","顷":"qǐng","集":"jí","锦":"jǐn","鳞":"lín","泳":"yǒng","芷":"zhǐ","汀":"tīng","兰":"lán","皓":"hào","跃":"yuè","何":"hé","宠":"chǒng","偕":"xié","临":"lín","升":"shēng","华":"huá","哲":"zhé","理":"lǐ","嗟":"jiē","尝":"cháng","仁":"rén","哉":"zāi","庙":"miào","亦":"yì","耶":"yé","曰":"yuē","噫":"yī","微":"wēi","吾":"wú","环":"huán","绕":"rào","滁":"chú","西":"xī","峰":"fēng","树":"shù","林":"lín","谷":"gǔ","尤":"yóu","望":"wàng","木":"mù","密":"mì","幽":"yōu","深":"shēn","秀":"xiù","琅":"láng","琊":"yá","沿":"yán","走":"zǒu","七":"qī","渐":"jiàn","听":"tīng","潺":"chán","泻":"xiè","出":"chū","酿":"niàng","泉":"quán","跟":"gēn","转":"zhuǎn","弯":"wān","角":"jiǎo","翘":"qiào","儿":"ér","翅":"chì","膀":"bǎng","踞":"jù","僧":"sēng","仙":"xiān","给":"gěi","用":"yòng","别":"bié","命":"mìng","饮":"yǐn","喝":"hē","纪":"jì","又":"yòu","最":"zuì","故":"gù","叫":"jiào","啊":"a","玩":"wán","领":"lǐng","寄":"jì","云":"yún","拢":"lǒng","岩":"yán","穴":"xué","枝":"zhī","叶":"yè","盛":"shèng","成":"chéng","浓":"nóng","荫":"yīn","霜":"shuāng","位":"wèi","降":"jiàng","石":"shí","露":"lù","季":"jì","晨":"chén","往":"wǎng","穷":"qióng","负":"fù","东":"dōng","休":"xiū","息":"xī","呼":"hū","唤":"huàn","老":"lǎo","腰":"yāo","孩":"hái","络":"luò","绎":"yì","绝":"jué","溪":"xī","钓":"diào","肥":"féi","澈":"chè","味":"wèi","菜":"cài","错":"cuò","杂":"zá","摆":"bǎi","举":"jǔ","宴":"yàn","弹":"dàn","吹":"chuī","箫":"xiāo","射":"shè","箭":"jiàn","棋":"qí","赢":"yíng","杯":"bēi","筹":"chóu","码":"mǎ","坐":"zuò","喧":"xuān","哗":"huā","热":"rè","闹":"nào","众":"zhòng","宾":"bīn","容":"róng","颜":"yán","苍":"cāng","久":"jiǔ","乱":"luàn","随":"suí","鸣":"míng","伏":"fú","只":"zhǐ","却":"què","醒":"xǐng","庐":"lú","欧":"ōu","意":"yì","皆":"jiē","诸":"zhū","壑":"hè","闻":"wén","翼":"yì","谓":"wèi","辄":"zhé","寓":"yù","暝":"míng","晦":"huì","芳":"fāng","佳":"jiā","途":"tú","伛":"yǔ","偻":"lóu","携":"xié","洌":"liè","肴":"yáo","蔌":"sù","陈":"chén","酣":"hān","丝":"sī","竹":"zhú","弈":"yì","觥":"gōng","颓":"tuí","已":"yǐ","翳":"yì","禽":"qín","茌":"chí","崇":"chóng","祯":"zhēn","住":"zhù","三":"sān","音":"yīn","失":"shī","更":"gèng","撑":"chēng","穿":"chuān","毛":"máo","皮":"pí","衣":"yī","带":"dài","火":"huǒ","炉":"lú","独":"dú","茫":"máng","堤":"dī","痕":"hén","芥":"jiè","粒":"lì","罢":"bà","铺":"pù","毡":"zhān","童":"tóng","正":"zhèng","烧":"shāo","沸":"fèi","腾":"téng","还":"hái","碰":"pèng","您":"nín","拉":"lā","问":"wèn","氏":"shì","等":"děng","嘟":"dū","囔":"nāng","要":"yào","公":"gōng","痴":"chī","迷":"mí","岱":"dài","余":"yú","俱":"jù","定":"dìng","挐":"ná","舟":"zhōu","拥":"yōng","毳":"cuì","凇":"sōng","沆":"hàng","砀":"dàng","惟":"wéi","喃":"nán","焉":"yān","强":"qiáng","及":"jí","莫":"mò","似":"shì","冰":"bīng","封":"fēng","飘":"piāo","城":"chéng","内":"nèi","剩":"shèng","黄":"huáng","河":"hé","顿":"dùn","滔":"tāo","群":"qún","银":"yín","蛇":"shé","奔":"bēn","舞":"wǔ","驰":"chí","骋":"chěng","爷":"yé","低":"dī","红":"hóng","洒":"sǎ","素":"sù","妖":"yāo","娆":"ráo","祖":"zǔ","娇":"jiāo","吸":"xī","引":"yǐn","数":"shù","英":"yīng","雄":"xióng","豪":"háo","杰":"jié","争":"zhēng","可":"kě","惜":"xī","秦":"qín","皇":"huáng","略":"lüè","欠":"qiàn","缺":"quē","治":"zhì","功":"gōng","劳":"láo","宗":"zōng","稍":"shāo","逊":"xùn","学":"xué","骄":"jiāo","吉":"jí","汗":"hàn","弓":"gōng","搭":"dā","雕":"diāo","些":"xiē","真":"zhēn","泽":"zé","莽":"mǎng","蜡":"là","欲":"yù","须":"xū","装":"zhuāng","裹":"guǒ","竞":"jìng","输":"shū","采":"cǎi","识":"shí","昂":"áng","贵":"guì","盘":"pán","价":"jià","值":"zhí","钱":"qián","但":"dàn","筷":"kuài","吃":"chī","拔":"bá","剑":"jiàn","顾":"gù","周":"zhōu","渡":"dù","阻":"zǔ","塞":"sāi","闲":"xián","垂":"chuí","忽":"hū","乘":"chéng","梦":"mèng","旁":"páng","岔":"chà","究":"jiū","竟":"jìng","坚":"jiān","信":"xìn","破":"pò","机":"jī","挂":"guà","帆":"fān","沧":"cāng","勇":"yǒng","投":"tóu","箸":"zhù","樽":"zūn","斗":"dòu","珍":"zhēn","羞":"xiū","食":"shí","川":"chuān","将":"jiāng","复":"fù","济":"jì","歧":"qí","安":"ān","楚":"chǔ","凄":"qī","凉":"liáng","漫":"màn","岁":"suì","置":"zhì","身":"shēn","躯":"qū","友":"yǒu","徒":"tú","吟":"yín","笛":"dí","反":"fǎn","砍":"kǎn","柴":"chái","斧":"fǔ","柄":"bǐng","烂":"làn","陌":"mò","艘":"sōu","驶":"shǐ","病":"bìng","棵":"kē","曲":"qū","暂":"zàn","且":"qiě","借":"jiè","振":"zhèn","奋":"fèn","世":"shì","翻":"fān","柯":"kē","畔":"pàn","凭":"píng","丙":"bǐng","辰":"chén","秋":"qiū","节":"jié","亮":"liàng","弟":"dì","辙":"zhé","询":"xún","砌":"qì","阁":"gé","忍":"rěn","受":"shòu","寒":"hán","翩":"piān","赏":"shǎng","朱":"zhū","窗":"chuāng","户":"hù","眠":"mián","该":"gāi","怨":"yuàn","恨":"hèn","偏":"piān","圆":"yuán","合":"hé","愿":"yuàn","即":"jí","使":"shǐ","隔":"gé","共":"gòng","享":"xiǎng","夜":"yè","阙":"quē","琼":"qióng","宇":"yǔ","弄":"nòng","绮":"qǐ","婵":"chán","娟":"juān","达":"dá","旦":"dàn","兼":"jiān","八":"bā","遇":"yù","遥":"yáo","松":"sōng","柏":"bǎi","累":"lèi","坟":"fén","墓":"mù","兔":"tù","狗":"gǒu","钻":"zuān","鸡":"jī","屋":"wū","梁":"liáng","院":"yuàn","井":"jǐng","台":"tái","葵":"kuí","舂":"chōng","拿":"ná","饭":"fàn","羹":"gēng","门":"mén","泪":"lèi","沾":"zhān","湿":"shī","服":"fú","兵":"bīng","始":"shǐ","阿":"ā","冢":"zhǒng","败":"bài","贻":"yí","窦":"dòu","雉":"zhì","持":"chí","熟":"shú","卷":"juǎn","胡":"hú","仿":"fǎng","佛":"fú","梨":"lí","珠":"zhū","帘":"lián","透":"tòu","罗":"luó","幕":"mù","狐":"hú","保":"bǎo","暖":"nuǎn","单":"dān","冻":"dòng","结":"jié","护":"hù","铁":"tiě","甲":"jiǎ","漠":"mò","辽":"liáo","丈":"zhàng","愁":"chóu","惨":"cǎn","淡":"dàn","凝":"níng","帅":"shuài","帐":"zhàng","奏":"zòu","琵":"pí","琶":"pá","羌":"qiāng","纷":"fēn","辕":"yuán","旗":"qí","再":"zài","轮":"lún","迂":"yū","留":"liú","马":"mǎ","蹄":"tí","踩":"cǎi","裘":"qiú","衾":"qīn","奇":"qí","瀚":"hàn","控":"kòng","阑":"lán","干":"gàn","掣":"chè","唯":"wéi","亡":"wáng","悠":"yōu","滚":"gǔn","半":"bàn","壁":"bì","战":"zhàn","曹":"cáo","操":"cāo","当":"dāng","孙":"sūn","权":"quán","眺":"tiào","谋":"móu","兜":"dōu","鍪":"móu","未":"wèi","敌":"dí","苦":"kǔ","读":"dú","书":"shū","仕":"shì","抗":"kàng","元":"yuán","碎":"suì","柳":"liǔ","絮":"xù","坎":"kǎn","坷":"kě","摇":"yáo","萍":"píng","惶":"huáng","滩":"tān","诉":"sù","叹":"tàn","孤":"gū","免":"miǎn","死":"sǐ","颗":"kē","赤":"chì","诚":"chéng","忠":"zhōng","史":"shǐ","册":"cè","戈":"gē","寥":"liáo","丹":"dān","峦":"luán","涛":"tāo","险":"xiǎn","令":"lìng","尘":"chén","土":"tǔ","王":"wáng","灭":"miè","依":"yī","踌":"chóu","躇":"chú","激":"jī","活":"huó","组":"zǔ","译":"yì","画":"huà","每":"měi","遮":"zhē","挡":"dǎng","请":"qǐng","切":"qiè","换":"huàn","终":"zhōng","移":"yí","页":"yè","加":"jiā","载":"zài","恢":"huī","态":"tài","认":"rèn","占":"zhàn","屏":"píng","按":"àn","预":"yù","告":"gào","牌":"pái","贴":"tiē","烫":"tàng","挥":"huī","毫":"háo","层":"céng","廊":"láng","墙":"qiáng","巨":"jù","墨":"mò","幅":"fú","嘴":"zuǐ","肚":"dù","塌":"tā","狂":"kuáng","黑":"hēi","突":"tū","暴":"bào","拍":"pāi","猴":"hóu","漆":"qī","温":"wēn","室":"shì","池":"chí","塘":"táng","闪":"shǎn","臣":"chén","厅":"tīng","央":"yāng","枚":"méi","庄":"zhuāng","坊":"fāng","站":"zhàn","扇":"shàn","夏":"xià","冬":"dōng","桌":"zhuō","篓":"lǒu","桥":"qiáo","稿":"gǎo","泊":"pō","寂":"jì","划":"huà","纯":"chún","笑":"xiào","士":"shì","咕":"gū","噜":"lū","烽":"fēng","跑":"pǎo","塑":"sù","帝":"dì","芒":"máng","抱":"bào","轴":"zhóu","徐":"xú","匾":"biǎn","龙":"lóng","凤":"fèng","除":"chú","扰":"rǎo","钮":"niǔ","创":"chuàng","崩":"bēng","殂":"cú","益":"yì","疲":"pí","弊":"bì","危":"wēi","急":"jí","存":"cún","侍":"shì","卫":"wèi","懈":"xiè","志":"zhì","盖":"gài","追":"zhuī","殊":"shū","报":"bào","陛":"bì","宜":"yí","圣":"shèng","遗":"yí","弘":"hóng","妄":"wàng","菲":"fēi","喻":"yù","义":"yì","谏":"jiàn","陟":"zhì","罚":"fá","臧":"zāng","否":"fǒu","奸":"jiān","犯":"fàn","科":"kē","善":"shàn","付":"fù","司":"sī","论":"lùn","刑":"xíng","昭":"zhāo","私":"sī","郎":"láng","郭":"guō","攸":"yōu","费":"fèi","祎":"yī","董":"dǒng","允":"yǔn","良":"liáng","实":"shí","愚":"yú","悉":"xī","咨":"zī","施":"shī","裨":"bì","补":"bǔ","漏":"lòu","性":"xìng","淑":"shū","均":"jūn","晓":"xiǎo","昔":"xī","称":"chēng","督":"dū","营":"yíng","阵":"zhèn","睦":"mù","优":"yōu","劣":"liè","亲":"qīn","隆":"lóng","痛":"tòng","桓":"huán","灵":"líng","贞":"zhēn","待":"dài","本":"běn","布":"bù","躬":"gōng","耕":"gēng","苟":"gǒu","侯":"hóu","卑":"bēi","鄙":"bǐ","猥":"wěi","枉":"wǎng","遂":"suì","驱":"qū","覆":"fù","任":"rèn","奉":"fèng","尔":"ěr","谨":"jǐn","慎":"shèn","夙":"sù","泸":"lú","足":"zú","奖":"jiǎng","率":"lǜ","庶":"shù","竭":"jié","驽":"nú","钝":"dùn","攘":"rǎng","凶":"xiōng","职":"zhí","斟":"zhēn","酌":"zhuó","损":"sǔn","讨":"tǎo","贼":"zéi","罪":"zuì","责":"zé","慢":"màn","彰":"zhāng","咎":"jiù","诹":"zōu","察":"chá","纳":"nà","雅":"yǎ","诏":"zhào","恩":"ēn","涕":"tì"};
+
+    let isPinyinVisible = true;
+    function togglePinyin() {
+      isPinyinVisible = !isPinyinVisible;
+      const btn = document.getElementById('pinyinToggleBtn');
+      if (isPinyinVisible) {
+        document.body.classList.remove('hide-pinyin');
+        if (btn) {
+          btn.innerText = '🔤 拼音: 显示';
+          btn.classList.add('active');
+        }
+      } else {
+        document.body.classList.add('hide-pinyin');
+        if (btn) {
+          btn.innerText = '🔤 拼音: 隐藏';
+          btn.classList.remove('active');
+        }
+      }
+    }
+
+    function renderPinyinHtml(text) {
+      if (!text) return '';
+      let res = [];
+      let i = 0;
+      let n = text.length;
+      while (i < n) {
+        let matched = false;
+        for (let word in PINYIN_PHRASES) {
+          let wlen = word.length;
+          if (text.substr(i, wlen) === word) {
+            let pyArr = PINYIN_PHRASES[word];
+            for (let k = 0; k < wlen; k++) {
+              let ch = word[k];
+              let py = pyArr[k];
+              res.push('<ruby>' + ch + '<rt>' + py + '</rt></ruby>');
+            }
+            i += wlen;
+            matched = true;
+            break;
+          }
+        }
+        if (!matched) {
+          let ch = text[i];
+          if (PINYIN_CHARS[ch]) {
+            let py = PINYIN_CHARS[ch];
+            res.push('<ruby>' + ch + '<rt>' + py + '</rt></ruby>');
+          } else {
+            res.push(ch);
+          }
+          i++;
+        }
+      }
+      return res.join('');
+    }
+
+    let currentArticleIndex = 0;
+    let currentMode = 'visual';
+
+    const artTitle = document.getElementById('art-title');
+    const artAuthor = document.getElementById('art-author');
+    const storyboardArea = document.getElementById('storyboard-area');
+    const storyboardGrid = document.getElementById('storyboard-grid');
+    const textDisplayArea = document.getElementById('text-display-area');
+
+    function loadArticle(index) {
+      currentArticleIndex = index;
+
+      // 自动展开激活文章所在的分组，收起其他分组（手风琴效果）
+      const allItems = document.querySelectorAll('.article-item');
+      if (allItems[index]) {
+        const parentGroup = allItems[index].closest('.nav-group');
+        if (parentGroup && parentGroup.classList.contains('collapsed')) {
+          parentGroup.classList.remove('collapsed');
+        }
+      }
+      
+      const items = document.querySelectorAll('.article-item');
+      items.forEach((item, idx) => {
+        if (idx === index) item.classList.add('active');
+        else item.classList.remove('active');
+      });
+
+      const art = articles[index];
+      artTitle.innerText = art.title;
+      artAuthor.innerText = art.author;
+
+      // Render Side-by-Side Storyboard Cards (Left image, Right text)
+      storyboardGrid.innerHTML = art.storyboard.map((s, sIdx) => {
+        const stepName = s.title || s.step || '';
+        const imgSrc = s.img || '';
+        const passageText = renderPinyinHtml(s.passage || '');
+        const clueText = s.clue || '';
+        const displayTitle = art.title + ' - ' + stepName;
+        
+        return `
+        <div class="side-by-side-card">
+          <div class="storyboard-img-side">
+            <span class="storyboard-badge">${s.badge || ''}</span>
+            <img src="${imgSrc}" alt="${stepName}" data-title="${displayTitle}" class="clickable-img scene-filter-${(sIdx % 5) + 1}" onclick="openImageModalFromEl(this)" loading="lazy" decoding="async" title="点击查看高清大图"/>
+          </div>
+          <div class="storyboard-text-side">
+            <div class="storyboard-title-line">${stepName}</div>
+            <div class="storyboard-passage-box chinese-text">${passageText}</div>
+            ${s.translation ? `<div class="storyboard-trans-box" style="margin-top: 8px; padding: 8px 12px; background: #F0F9FF; border-left: 3px solid #2563EB; border-radius: 6px; font-size: 13px; color: #334155; line-height: 1.6;"><span style="font-weight: 700; color: #2563EB; margin-right: 4px;">【译文】</span>${s.translation}</div>` : ''}
+            <div class="storyboard-clue-line">${clueText}</div>
+          </div>
+        </div>`;
+      }).join('');
+
+      currentPalaceSpotIndex = 0;
+      if (currentMode === "palace") renderPalaceMode(); else renderTextContent();
+    }
+
+    function switchMode(mode) {
+      currentMode = mode;
+      const tabs = document.querySelectorAll('.mode-tab');
+      tabs.forEach(tab => {
+        if (tab.getAttribute('onclick').includes(mode)) tab.classList.add('active');
+        else tab.classList.remove('active');
+      });
+
+      const modeTip = document.getElementById('mode-tip');
+      const palaceArea = document.getElementById('palace-area');
+      if (mode === 'visual') {
+        storyboardArea.style.display = 'block';
+        palaceArea.style.display = 'none';
+        textDisplayArea.style.display = 'none';
+        modeTip.innerText = '💡 提示：左侧为场景画卷，右侧紧靠对应课文原句，结合记忆！';
+      } else if (mode === 'palace') {
+        storyboardArea.style.display = 'none';
+        palaceArea.style.display = 'block';
+        textDisplayArea.style.display = 'none';
+        modeTip.innerText = '💡 提示：沿着宫殿空间路线，在脑海中建立具象图像联想记忆！';
+        currentPalaceSpotIndex = 0;
+        renderPalaceMode();
+      } else if (mode === 'firstchar') {
+        storyboardArea.style.display = 'none';
+        palaceArea.style.display = 'none';
+        textDisplayArea.style.display = 'block';
+        storyboardArea.style.display = 'none';
+        textDisplayArea.style.display = 'block';
+        modeTip.innerText = '💡 提示：高亮每一句的首字/首词。';
+      } else if (mode === 'cloze') {
+        storyboardArea.style.display = 'none';
+        textDisplayArea.style.display = 'block';
+        modeTip.innerText = '💡 提示：核心词被遮挡，可在线填空。';
+      } else {
+        storyboardArea.style.display = 'none';
+        textDisplayArea.style.display = 'block';
+        modeTip.innerText = '💡 提示：全文对照模式。';
+      }
+
+      currentPalaceSpotIndex = 0;
+      if (currentMode === "palace") renderPalaceMode(); else renderTextContent();
+    }
+
+    function renderTextContent() {
+      const art = articles[currentArticleIndex];
+      let html = '';
+
+      art.paragraphs.forEach((pText, idx) => {
+        if (currentMode === 'full') {
+          const transText = (art.translations && art.translations[idx]) ? art.translations[idx] : '';
+          const transHtml = transText ? `<div class="translation-box" style="margin-top: 12px; padding: 12px 16px; background: #F0F9FF; border-left: 4px solid #2563EB; border-radius: 6px; color: #334155; font-size: 15px; line-height: 1.7;"><span style="font-weight: 700; color: #2563EB; margin-right: 6px;">【译文】</span>${transText}</div>` : '';
+          html += `<div class="sentence-block" style="margin-bottom: 24px; background: #FFFFFF; border: 1px solid #E2E8F0; padding: 18px 20px; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+                     <div class="passage-text-line" style="font-size: 17px; font-weight: 500; line-height: 1.8; color: #0F172A;">${pText}</div>
+                     ${transHtml}
+                   </div>`;
+        } else if (currentMode === 'firstchar') {
+          const sentences = pText.split(/(?<=[。！？；])/);
+          let pFormatted = sentences.map(s => {
+            if (!s.trim()) return '';
+            const match = s.match(/^([\u4e00-\u9fa5A-Za-z0-9]{1,2})(.*)/);
+            if (match) {
+              return `<span class="first-char-highlight">${match[1]}</span>${match[2]}`;
+            }
+            return s;
+          }).join('');
+          html += `<div class="sentence-block">${pFormatted}</div>`;
+        } else if (currentMode === 'cloze') {
+          let pCloze = pText;
+          art.clozeKeyWords.forEach(kw => {
+            if (pCloze.includes(kw)) {
+              const placeholder = `<input class="cloze-input" data-ans="${kw}" placeholder="${kw.length}字" onblur="validateInput(this)"/>`;
+              pCloze = pCloze.replaceAll(kw, placeholder);
+            }
+          });
+          html += `<div class="sentence-block">${pCloze}</div>`;
+        }
+      });
+
+      textDisplayArea.innerHTML = html;
+    }
+
+    function toggleAllRevealed() {
+      if (currentMode === 'cloze') {
+        const inputs = document.querySelectorAll('.cloze-input');
+        inputs.forEach(input => {
+          input.value = input.getAttribute('data-ans');
+          input.classList.add('correct');
+        });
+      }
+    }
+
+    function validateInput(input) {
+      const ans = input.getAttribute('data-ans');
+      const val = input.value.trim();
+      if (val === ans) {
+        input.classList.remove('wrong');
+        input.classList.add('correct');
+      } else if (val !== '') {
+        input.classList.remove('correct');
+        input.classList.add('wrong');
+      } else {
+        input.classList.remove('correct', 'wrong');
+      }
+    }
+
+    function checkAnswers() {
+      if (currentMode !== 'cloze') {
+        alert('请切换到“3. 默写填空测试”模式！');
+        return;
+      }
+      const inputs = document.querySelectorAll('.cloze-input');
+      let total = inputs.length;
+      let correct = 0;
+      inputs.forEach(input => {
+        const ans = input.getAttribute('data-ans');
+        if (input.value.trim() === ans) {
+          correct++;
+          input.classList.add('correct');
+        } else {
+          input.classList.add('wrong');
+        }
+      });
+      alert(`测试完成！得分：${correct}/${total} (${Math.round((correct/total)*100)}%)`);
+    }
+  
+    
+    
+    // 兼容所有终端与移动端的手风琴折叠
+    function toggleNavGroup(evt, btnEl) {
+      if (evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+      }
+      const group = btnEl.closest('.nav-group');
+      if (group) {
+        const isCollapsed = group.classList.toggle('collapsed');
+        const arrow = btnEl.querySelector('.nav-group-arrow');
+        if (arrow) {
+          arrow.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
+        }
+      }
+    }
+
+    function toggleSidebar() {
+      const layout = document.querySelector('.app-layout');
+      if (!layout) return;
+      const isCollapsed = layout.classList.toggle('sidebar-collapsed');
+      document.body.classList.toggle('sidebar-is-collapsed', isCollapsed);
+      
+      const toggleBtn = document.querySelector('.sidebar-toggle-btn');
+      if (toggleBtn) {
+        toggleBtn.innerHTML = isCollapsed ? '▶ 展开' : '◀ 折叠';
+      }
+      
+      const topbarToggle = document.getElementById('topbarSidebarToggle');
+      if (topbarToggle) {
+        topbarToggle.innerHTML = isCollapsed ? '📖 展开目录' : '📁 隐藏目录';
+      }
+      
+      localStorage.setItem('sidebar_collapsed', isCollapsed ? 'true' : 'false');
+    }
+
+    // 页面加载恢复侧边栏状态（手机端默认收起，PC端恢复偏好）
+    document.addEventListener('DOMContentLoaded', () => {
+      const isMobile = window.innerWidth <= 768;
+      const savedState = localStorage.getItem('sidebar_collapsed');
+      
+      // 手机端如果未手动设定，默认不占满屏幕；或者按 savedState
+      if (savedState === 'true' || (savedState === null && isMobile)) {
+        const layout = document.querySelector('.app-layout');
+        if (layout) {
+          layout.classList.add('sidebar-collapsed');
+          document.body.classList.add('sidebar-is-collapsed');
+          const toggleBtn = document.querySelector('.sidebar-toggle-btn');
+          if (toggleBtn) toggleBtn.innerHTML = '▶ 展开';
+          const topbarToggle = document.getElementById('topbarSidebarToggle');
+          if (topbarToggle) topbarToggle.innerHTML = '📖 展开目录';
+        }
+      }
+    });
+
+  </script>
+
+  <!-- Image Lightbox Modal -->
+  <div id="image-modal" class="modal-overlay" onclick="closeImageModal(event)">
+    <span class="modal-close-btn" onclick="closeImageModal()">&times;</span>
+    <img id="modal-img" class="modal-img-content" src="" alt="大图预览"/>
+    <div id="modal-caption" class="modal-caption"></div>
+  </div>
+
+  <script>
+    function openImageModalFromEl(el) {
+      const src = el.src;
+      const title = el.getAttribute('data-title') || '';
+      openImageModal(src, title);
+    }
+
+    function openImageModal(src, title) {
+      const modal = document.getElementById('image-modal');
+      const modalImg = document.getElementById('modal-img');
+      const modalCaption = document.getElementById('modal-caption');
+      modalImg.src = src;
+      modalCaption.innerText = title;
+      modal.classList.add('active');
+    }
+
+    function closeImageModal(e) {
+      if (!e || e.target.id === 'image-modal' || e.target.classList.contains('modal-close-btn')) {
+        const modal = document.getElementById('image-modal');
+        modal.classList.remove('active');
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeImageModal();
+      }
+    });
+
+    
+    const palaceData = {"0":[{"spot":"📍 宫殿位置 1：大门告示牌","peg":"🗝️ 空间锚点：门前贴着的“庆历四年”官府重修告示","story":"🧠 图像联想：想象你走到岳阳楼古殿大门前，看到贴着一张烫金告示写着“庆历四年”，滕子京官员正在挥毫开重修大会。","text":"庆历四年春，滕子京谪守巴陵郡。越明年，政通人和，百废具兴，乃重修岳阳楼，增其旧制，刻唐贤今人诗赋于其上，属予作文以记之。"},{"spot":"📍 宫殿位置 2：二层观景画廊","peg":"🗝️ 空间锚点：墙上巨大的《巴陵巨浪吐长江》水墨长卷","story":"🧠 图像联想：登上二楼画廊，正前方是一幅巨画，湖浪浩浩汤汤，像张开大嘴把远山和长江吞进肚子！","text":"予观夫巴陵胜状，在洞庭一湖。衔远山，吞长江，浩浩汤汤，横无际涯，朝晖夕阴，气象万千，此则岳阳楼之大观也，前人之述备矣。然则北通巫峡，南极潇湘，迁客骚人，多会于此，览物之情，得无异乎？"},{"spot":"📍 宫殿位置 3：西侧风雨露台","peg":"🗝️ 空间锚点：露台角落倒塌的断桨与狂风黑云","story":"🧠 图像联想：走到风雨露台，突然狂风暴雨，浊浪拍天，商船的桅杆倒塌，听见远处老虎和野猴子在漆黑的傍晚惨叫！","text":"若夫淫雨霏霏，连月不开，阴风怒号，浊浪排空，日星隐曜，山岳潜形，商旅不行，樯倾楫摧，薄暮冥冥，虎啸猿啼。登斯楼也，则有去国怀乡，忧谗畏讥，满目萧然，感极而悲者矣。"},{"spot":"📍 宫殿位置 4：东侧阳光温室庭院","peg":"🗝️ 空间锚点：庭院里的金鱼池、郁郁香草与夜空明月","story":"🧠 图像联想：转入阳光庭院，雨过天晴，沙鸥在花草上飞翔，池塘里金色大鱼欢快游动，夜空中有一轮闪耀的明月！","text":"至若春和景明，波澜不惊，上下天光，一碧万顷，沙鸥翔集，锦鳞游泳，岸芷汀兰，郁郁青青。而或长烟一空，皓月千里，浮光跃金，静影沉璧，渔歌互答，此乐何极！登斯楼也，则有心旷神怡，宠辱偕忘，把酒临风，其喜洋洋者矣。"},{"spot":"📍 宫殿位置 5：顶层名臣宝座厅","peg":"🗝️ 空间锚点：大厅中央范仲淹的宝座与《先忧后乐》金印","story":"🧠 图像联想：登上顶层宝座大厅，中央安放着名臣宝座，上面有一枚闪闪发光的印章，刻着“先天下之忧而忧，后天下之乐而乐”！","text":"嗟夫！尝求古仁人之心，或异二者之为，何哉？不以物喜，不以己悲，居庙堂之高则忧其民，处江湖之远则忧其君。是进亦忧，退亦忧。然则何时而乐耶？其必曰“先天下之忧而忧，后天下之乐而乐”乎！噫！微斯人，吾谁与归？"}],"1":[{"spot":"📍 宫殿位置 1：山庄石牌坊","peg":"🗝️ 空间锚点：牌坊前飞泻的清澈酿泉与翼然醉翁亭","story":"🧠 图像联想：站在山庄石牌坊前，听到潺潺水声，看到酿泉上方有一座像大鸟展翅一样的醉翁亭，老太守正在喝美酒。","text":"环滁皆山也。其西南诸峰，林壑尤美，望之蔚然而深秀者，琅琊也。山行六七里，渐闻水声潺潺而泻出于两峰之间者，酿泉也。峰回路转，有亭翼然临于泉上者，醉翁亭也。作亭者谁？山之僧智仙也。名之者谁？太守自谓也。太守与客来饮于此，饮少辄醉，而年又最高，故自号曰醉翁也。醉翁之意不在酒，在乎山水之间也。山水之乐，得之心而寓之酒也。"},{"spot":"📍 宫殿位置 2：四季四季风光长廊","peg":"🗝️ 空间锚点：长廊四扇窗户（春花/夏树/秋霜/冬石）","story":"🧠 图像联想：走过四季长廊，四扇窗展示春天的野花、夏天的绿树、秋天的风霜和冬天的溪石。","text":"若夫日出而林霏开，云归而岩穴暝，晦明变化者，山间之朝暮也。野芳发而幽香，佳木秀而繁阴，风霜高洁，水落石出者，山间之四时也。朝而往，暮而归，四时之景不同，而乐亦无穷也。"},{"spot":"📍 宫殿位置 3：山林大宴会厅","peg":"🗝️ 空间锚点：摆满野味美酒的大酒桌与欢聚人群","story":"🧠 图像联想：走进宴会厅，大家背着竹篓唱歌，桌上摆着肥鱼与美酒，老太守白发苍苍醉倒在人群中。","text":"至于负者歌于途，行者休于树，前者呼，后者应，伛偻提携，往来而不绝者，滁人游也。临溪而渔，溪深而鱼肥，酿泉为酒，泉香而酒洌，山肴野蔌，杂然而前陈者，太守宴也。宴酣之乐，非丝非竹，射者中，弈者胜，觥筹交错，起坐而喧哗者，众宾欢也。苍颜白发，颓然乎其间者，太守醉也。"},{"spot":"📍 宫殿位置 4：夕阳归途小桥","peg":"🗝️ 空间锚点：夕阳落山下的鸣叫飞鸟与太守手稿","story":"🧠 图像联想：走出山庄走过小桥，夕阳西下，树林里的鸟儿欢快唱歌，欧阳修太守挥毫写下《醉翁亭记》。","text":"已而夕阳在山，人影散乱，太守归而宾客从也。树林阴翳，鸣声上下，游人去而禽鸟乐也。然而禽鸟知山林之乐，而不知人之乐；人知从太守游而乐，而不知太守之乐其乐也。醉能同其乐，醒能述以文者，太守也。太守谓谁？庐陵欧阳修也。"}],"2":[{"spot":"📍 宫殿位置 1：西湖冰雪码头","peg":"🗝️ 空间锚点：停泊的孤单小船与裘皮大衣火炉","story":"🧠 图像联想：站在冰雪码头上，天地寂静无声，你穿着温暖毛皮大衣，划着小舟向湖心亭驶去。","text":"崇祯五年十二月，余住西湖。大雪三日，湖中人鸟声俱绝。是日更定矣，余挐一小舟，拥毳衣炉火，独往湖心亭看雪。"},{"spot":"📍 宫殿位置 2：水墨留白观景台","peg":"🗝️ 空间锚点：白色留白画框中的长堤一痕与两三粒小人","story":"🧠 图像联想：站在观景台往外看，天地间一片纯白，远处的长堤像一条墨线，湖心亭像一个小点。","text":"雾凇沆砀，天与云与山与水，上下一白。湖上影子，惟长堤一痕、湖心亭一点、与余舟一芥、舟中人两三粒而已。"},{"spot":"📍 宫殿位置 3：湖心亭温酒暖阁","peg":"🗝️ 空间锚点：沸腾的酒炉与两位相视大笑的高士","story":"🧠 图像联想：走进暖阁，酒炉咕噜噜开着，两位客居在此的名士大喜过望，拉你连喝三杯美酒！","text":"到亭上，有两人铺毡对坐，一童子烧酒，炉正沸。见余大惊喜，曰：“湖中焉得更有此人！”拉余同饮。余强饮三大白而别。问其姓氏，是金陵人，客此。及下船，舟子喃喃曰：“莫说相公痴，更有痴似相公者！”"}],"3":[{"spot":"📍 宫殿位置 1：长城雪山烽火台","peg":"🗝️ 空间锚点：烽火台上的红装素裹山河大图","story":"🧠 图像联想：立于长城最高烽火台，眼前万里雪飘，群山像银蛇奔跑，太阳照耀下红白交映极其妖娆。","text":"北国风光，千里冰封，万里雪飘。望长城内外，惟余莽莽；大河上下，顿失滔滔。山舞银蛇，原驰蜡象，欲与天公试比高。须晴日，看红装素裹，分外妖娆。"},{"spot":"📍 宫殿位置 2：英雄雕塑长廊","peg":"🗝️ 空间锚点：秦皇汉武与成吉思汗弯弓射雕像","story":"🧠 图像联想：走过雕塑长廊，看到秦始皇、汉武帝、唐太宗和弯弓拉箭的成吉思汗石雕。","text":"江山如此多娇，引无数英雄竞折腰。惜秦皇汉武，略输文采；唐宗宋祖，稍逊风骚。一代天骄，成吉思汗，只识弯弓射大雕。"},{"spot":"📍 宫殿位置 3：朝阳升起观测台","peg":"🗝️ 空间锚点：金色阳光下的今朝风流人物巨雕","story":"🧠 图像联想：登上顶峰观测台，红日东升，万丈光芒照亮当代真正有抱负的风流人物！","text":"俱往矣，数风流人物，还看今朝。"}],"4":[{"spot":"📍 宫殿位置 1：蜀汉前殿丹墀大门","peg":"🗝️ 空间锚点：门前悬挂的三国鼎立图与先帝创业金钟","story":"🧠 图像联想：踏入蜀汉宫殿前门，看到门侧悬挂着三国鼎立舆图，益州疲弊的暗淡光芒让人警醒，诸葛丞相指着舆图向少主切谏‘开张圣听’，侍卫与忠臣整肃侍立。","text":"先帝创业未半而中道崩殂，今天下三分，益州疲弊，此诚危急存亡之秋也。然侍卫之臣不懈于内，忠志之士忘身于外者，盖追先帝之殊遇，欲报之于陛下也。诚宜开张圣听，以光先帝遗德，恢弘志士之气，不宜妄自菲薄，引喻失义，以塞忠谏之路也。"},{"spot":"📍 宫殿位置 2：尚书政务大殿正堂","peg":"🗝️ 空间锚点：堂前摆放的‘公正刑赏’青铜天平与律法竹简","story":"🧠 图像联想：来到政务大厅中央，正中放着一尊巨大青铜天平，两端分别刻着‘宫中’与‘府中’，严明法度、不偏不私，天平两端稳如泰山！","text":"宫中府中，俱为一体，陟罚臧否，不宜异同。若有作奸犯科及为忠善者，宜付有司论其刑赏，以昭陛下平明之理，不宜偏私，使内外异法也。"},{"spot":"📍 宫殿位置 3：内廷贤良殿书斋","peg":"🗝️ 空间锚点：郭攸之/费祎/向宠的功臣图谱与‘亲贤远佞’紫檀屏风","story":"🧠 图像联想：走进书斋，四壁绘着忠贞文武的画像，紫檀屏风上赫然写着两汉兴衰训诫，先帝抚胸叹息痛恨桓灵的背影历历在目。","text":"侍中、侍郎郭攸之、费祎、董允等，此皆良实，志虑忠纯，是以先帝简拔以遗陛下。愚以为宫中之事，事无大小，悉以咨之，然后施行，必能裨补阙漏，有所广益。将军向宠，性行淑均，晓畅军事，试用于昔日，先帝称之曰能，是以众议举宠为督。愚以为营中之事，悉以咨之，必能使行阵和睦，优劣得所。亲贤臣，远小人，此先汉所以兴隆也；亲小人，远贤臣，此后汉所以倾颓也。先帝在时，每与臣论此事，未尝不叹息痛恨于桓、灵也。侍中、尚书、长史、参军，此悉贞良死节之臣，愿陛下亲之信之，则汉室之隆，可计日而待也。"},{"spot":"📍 宫殿位置 4：西侧南阳草庐怀旧阁","peg":"🗝️ 空间锚点：草庐模型、诸葛羽扇与当年的草鞋农具","story":"🧠 图像联想：阁内摆设如当年南阳草庐，刘备风雪三顾茅庐的画面重现，羽扇旁放着长坂坡突围的残破战旗，诉说着‘受任于败军之际’的峥嵘岁月。","text":"臣本布衣，躬耕于南阳，苟全性命于乱世，不求闻达于诸侯。先帝不以臣卑鄙，猥自枉屈，三顾臣于草庐之中，咨臣以当世之事，由是感激，遂许先帝以驱驰。后值倾覆，受任于败军之际，奉命于危难之间，尔来二十有一年矣。"},{"spot":"📍 宫殿位置 5：誓师点将校场与作战沙盘","peg":"🗝️ 空间锚点：泸水战甲、北定中原大旗与三军点将台","story":"🧠 图像联想：校场旌旗蔽日，沙盘上插着北伐中原的汉军战旗，案上放着沾满泸水泥泞的战甲，诸葛亮拔剑誓师，矢志兴复汉室、还于旧都！","text":"先帝知臣谨慎，故临崩寄臣以大事也。受命以来，夙夜忧叹，恐托付不效，以伤先帝之明，故五月渡泸，深入不毛。今南方已定，兵甲已足，当奖率三军，北定中原，庶竭驽钝，攘除奸凶，兴复汉室，还于旧都。此臣所以报先帝而忠陛下之职分也。至于斟酌损益，进尽忠言，则攸之、祎、允之任也。"},{"spot":"📍 宫殿位置 6：出师御道与白玉祭台","peg":"🗝️ 空间锚点：墨迹未干的《出师表》奏章与沾着泪痕的佩剑","story":"🧠 图像联想：登上出师御道，阶前白玉台上展开墨迹未干的《出师表》，老丞相躬身拜别，眼含热泪化作千古忠贞，全军向北浩荡启程！","text":"愿陛下托臣以讨贼兴复之效，不效，则治臣之罪，以告先帝之灵。若无兴德之言，则责攸之、祎、允等之慢，以彰其咎；陛下亦宜自谋，以咨诹善道，察纳雅言，深追先帝遗诏，臣不胜受恩感激。今当远离，临表涕零，不知所言。"}],"5":[{"spot":"📍 宫殿位置 1：诗词开篇门廊","peg":"🗝️ 空间锚点：卷轴前展示的首段具象意象","story":"🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。","text":"..."},{"spot":"📍 宫殿位置 2：意境升华主殿","peg":"🗝️ 空间锚点：主殿中央名句书法金匾","story":"🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。","text":"..."}],"6":[{"spot":"📍 宫殿位置 1：诗词开篇门廊","peg":"🗝️ 空间锚点：卷轴前展示的首段具象意象","story":"🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。","text":"..."},{"spot":"📍 宫殿位置 2：意境升华主殿","peg":"🗝️ 空间锚点：主殿中央名句书法金匾","story":"🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。","text":"..."}],"7":[{"spot":"📍 宫殿位置 1：诗词开篇门廊","peg":"🗝️ 空间锚点：卷轴前展示的首段具象意象","story":"🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。","text":"..."},{"spot":"📍 宫殿位置 2：意境升华主殿","peg":"🗝️ 空间锚点：主殿中央名句书法金匾","story":"🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。","text":"..."}],"8":[{"spot":"📍 宫殿位置 1：诗词开篇门廊","peg":"🗝️ 空间锚点：卷轴前展示的首段具象意象","story":"🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。","text":"..."},{"spot":"📍 宫殿位置 2：意境升华主殿","peg":"🗝️ 空间锚点：主殿中央名句书法金匾","story":"🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。","text":"..."}],"9":[{"spot":"📍 宫殿位置 1：诗词开篇门廊","peg":"🗝️ 空间锚点：卷轴前展示的首段具象意象","story":"🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。","text":"..."},{"spot":"📍 宫殿位置 2：意境升华主殿","peg":"🗝️ 空间锚点：主殿中央名句书法金匾","story":"🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。","text":"..."}],"10":[{"spot":"📍 宫殿位置 1：诗词开篇门廊","peg":"🗝️ 空间锚点：卷轴前展示的首段具象意象","story":"🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。","text":"..."},{"spot":"📍 宫殿位置 2：意境升华主殿","peg":"🗝️ 空间锚点：主殿中央名句书法金匾","story":"🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。","text":"..."}],"11":[{"spot":"📍 宫殿位置 1：诗词开篇门廊","peg":"🗝️ 空间锚点：卷轴前展示的首段具象意象","story":"🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。","text":"..."},{"spot":"📍 宫殿位置 2：意境升华主殿","peg":"🗝️ 空间锚点：主殿中央名句书法金匾","story":"🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。","text":"..."}],"12":[{"spot":"📍 宫殿位置 1：诗词开篇门廊","peg":"🗝️ 空间锚点：卷轴前展示的首段具象意象","story":"🧠 图像联想：走进古风门廊，眼前徐徐展开诗词首段的生动场景。","text":"..."},{"spot":"📍 宫殿位置 2：意境升华主殿","peg":"🗝️ 空间锚点：主殿中央名句书法金匾","story":"🧠 图像联想：进入主殿，看到金匾上龙飞凤舞地书写着千古名句。","text":"..."}]};
+    let currentPalaceSpotIndex = 0;
+
+    function renderPalaceMode() {
+      const art = articles[currentArticleIndex];
+      const spots = palaceData[currentArticleIndex] || [];
+      const routeMapEl = document.getElementById('palace-route-map');
+      const cardsEl = document.getElementById('palace-cards-container');
+
+      if (!spots.length) {
+        routeMapEl.innerHTML = '';
+        cardsEl.innerHTML = '<div class="palace-card">宫殿锚点建设中...</div>';
+        return;
+      }
+
+      routeMapEl.innerHTML = spots.map((spot, sIdx) => `
+        <div class="palace-spot-chip ${sIdx === currentPalaceSpotIndex ? 'active' : ''}" onclick="selectPalaceSpot(${sIdx})">
+          <span>${spot.spot}</span>
+        </div>
+      `).join('');
+
+      const curSpot = spots[currentPalaceSpotIndex] || spots[0];
+      const passageText = (art.storyboard && art.storyboard[currentPalaceSpotIndex]) ? art.storyboard[currentPalaceSpotIndex].passage : curSpot.text;
+
+      cardsEl.innerHTML = `
+        <div class="palace-card">
+          <div class="palace-card-spot-title">${curSpot.spot}</div>
+          <div class="palace-card-peg">${curSpot.peg}</div>
+          <div class="palace-card-story">${curSpot.story}</div>
+          <div style="font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px;">📜 对应背诵原文段落：</div>
+          <div class="palace-card-text chinese-text">${passageText}</div>
+        </div>
+      `;
+    }
+
+    function selectPalaceSpot(sIdx) {
+      currentPalaceSpotIndex = sIdx;
+      renderPalaceMode();
+    }
+
+    /* ==================== 侧边栏与手风琴极简控制核心 ==================== */
+    function toggleNavGroup(evt, btnEl) {
+      if (evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+      }
+      const group = btnEl.closest('.nav-group');
+      if (group) {
+        const isCollapsed = group.classList.toggle('collapsed');
+        const arrow = btnEl.querySelector('.nav-group-arrow');
+        if (arrow) {
+          arrow.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
+        }
+      }
+    }
+
+    function toggleSidebar() {
+      const layout = document.querySelector('.app-layout');
+      if (!layout) return;
+      
+      const isCollapsed = layout.classList.toggle('sidebar-collapsed');
+      document.body.classList.toggle('sidebar-is-collapsed', isCollapsed);
+      
+      const toggleBtn = document.querySelector('.sidebar-toggle-btn');
+      if (toggleBtn) {
+        toggleBtn.innerHTML = isCollapsed ? '▶ 展开' : '◀ 折叠';
+      }
+      
+      const topbarToggle = document.getElementById('topbarSidebarToggle');
+      if (topbarToggle) {
+        topbarToggle.innerHTML = isCollapsed ? '📖 展开目录' : '📁 隐藏目录';
+      }
+    }
+
+    // 页面加载彻底清除旧的 localStorage 干扰
+    document.addEventListener('DOMContentLoaded', () => {
+      localStorage.removeItem('sidebar_collapsed');
+      localStorage.removeItem('sidebar_collapsed_pref');
+    });
+
+    loadArticle(0);
+  </script>
+
+  <!-- Image Lightbox Modal -->
+  <div id="image-modal" class="modal-overlay" onclick="closeImageModal(event)">
+    <span class="modal-close-btn" onclick="closeImageModal()">&times;</span>
+    <img id="modal-img" class="modal-img-content" src="" alt="大图预览"/>
+    <div id="modal-caption" class="modal-caption"></div>
+  </div>
+
+  <script>
+    function openImageModalFromEl(el) {
+      const src = el.src;
+      const title = el.getAttribute('data-title') || '';
+      openImageModal(src, title);
+    }
+
+    function openImageModal(src, title) {
+      const modal = document.getElementById('image-modal');
+      const modalImg = document.getElementById('modal-img');
+      const modalCaption = document.getElementById('modal-caption');
+      modalImg.src = src;
+      modalCaption.innerText = title;
+      modal.classList.add('active');
+    }
+
+    function closeImageModal(e) {
+      if (!e || e.target.id === 'image-modal' || e.target.classList.contains('modal-close-btn')) {
+        const modal = document.getElementById('image-modal');
+        modal.classList.remove('active');
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeImageModal();
+      }
+    });
+  </script>
+
+  <!-- 浮动展开目录按钮（当侧边栏隐藏时显示） -->
+  <button class="show-sidebar-fab" id="showSidebarFab" onclick="toggleSidebar()">
+    <span>📖 展开篇目目录</span>
+  </button>
+
+</body>
+</html>

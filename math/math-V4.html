@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>初中数学复习中心 V4 | 上海中考数学 1–24 题逐题合理时间分配与题型配速</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-focus: #93C5FD;
+      --text-primary: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      --brand-blue: #2563EB;
+      --brand-blue-hover: #1D4ED8;
+      --brand-blue-light: #3B82F6;
+      --brand-blue-bg: #EFF6FF;
+      --accent-purple: #7C3AED;
+      --accent-purple-bg: #F5F3FF;
+      --accent-emerald: #059669;
+      --accent-emerald-bg: #ECFDF5;
+      --accent-amber: #D97706;
+      --accent-amber-bg: #FFFBEB;
+      --accent-rose: #E11D48;
+      --accent-rose-bg: #FFF1F2;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-light));
+      color: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.15rem;
+      box-shadow: 0 2px 4px rgba(37, 99, 235, 0.25);
+    }
+    .brand-title-wrap { display: flex; flex-direction: column; }
+    .brand-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--brand-blue);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .version-tag {
+      font-size: 11px;
+      background: #DBEAFE;
+      color: #1E40AF;
+      padding: 1px 7px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .brand-subtitle { font-size: 0.78rem; color: var(--text-muted); }
+
+    .nav-links { display: flex; gap: 10px; align-items: center; }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      min-height: 40px;
+      background-color: var(--bg-subtle);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover {
+      background-color: var(--brand-blue-bg);
+      color: var(--brand-blue);
+      border-color: var(--border-focus);
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F0F7FF 100%);
+      border: 1px solid #BFDBFE;
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .hero-content { max-width: 760px; }
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1E3A8A;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; }
+    
+    .hero-stat-box {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      background: #FFFFFF;
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid #DBEAFE;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--brand-blue);
+      line-height: 1.1;
+    }
+    .stat-label { font-size: 12px; color: var(--text-muted); font-weight: 600; margin-top: 4px; }
+
+    /* Timeline visualization bar */
+    .timeline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-badge {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: var(--brand-blue-bg);
+      color: var(--brand-blue);
+    }
+
+    .time-bar-track {
+      height: 38px;
+      background: #F1F5F9;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      border: 1px solid #CBD5E1;
+      margin-bottom: 12px;
+    }
+    .time-bar-segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 700;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      position: relative;
+    }
+    .time-bar-segment:hover {
+      filter: brightness(1.08);
+      z-index: 2;
+    }
+
+    .timeline-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      margin-top: 14px;
+      font-size: 13px;
+    }
+    .legend-item { display: flex; align-items: center; gap: 6px; color: var(--text-secondary); }
+    .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+    /* Tab Switcher for Views */
+    .view-tabs {
+      display: flex;
+      gap: 8px;
+      margin-top: 1.5rem;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 2px;
+    }
+    .view-tab-btn {
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      margin-bottom: -4px;
+      transition: all 0.2s ease;
+    }
+    .view-tab-btn.active {
+      color: var(--brand-blue);
+      border-bottom-color: var(--brand-blue);
+      font-weight: 700;
+    }
+
+    /* Timing Tables */
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      margin-top: 1rem;
+    }
+    table.timing-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14px;
+    }
+    table.timing-table th {
+      background: #F8FAFC;
+      color: #334155;
+      font-weight: 700;
+      padding: 14px 16px;
+      border-bottom: 2px solid var(--border-color);
+      white-space: nowrap;
+    }
+    table.timing-table td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--border-color);
+      color: #1E293B;
+    }
+    table.timing-table tr:hover { background-color: #F8FAFC; }
+    .td-block-name { font-weight: 700; color: #0F172A; display: flex; align-items: center; gap: 8px; }
+    .td-time-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+    .td-qnum {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 14px;
+      color: #1E293B;
+    }
+    .warn-pill {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #FEF2F2;
+      color: #DC2626;
+      border: 1px solid #FECDD3;
+    }
+
+    /* Interactive Countdown Stopwatch */
+    .stopwatch-card {
+      background: linear-gradient(135deg, #FFFFFF, #F8FAFC);
+      border: 1px solid #BFDBFE;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .sw-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .sw-title { font-size: 1.15rem; font-weight: 700; color: #1E3A8A; display: flex; align-items: center; gap: 8px; }
+    .sw-display-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-md);
+      padding: 18px 24px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .sw-select-wrap { display: flex; align-items: center; gap: 10px; }
+    .sw-select {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid #CBD5E1;
+      font-size: 14px;
+      font-weight: 600;
+      background: #FFFFFF;
+      color: #0F172A;
+      outline: none;
+    }
+    .sw-timer-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #2563EB;
+      letter-spacing: -0.05em;
+    }
+    .sw-btns { display: flex; gap: 10px; }
+    .sw-btn {
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s ease;
+    }
+    .sw-btn-primary { background: #2563EB; color: #FFFFFF; }
+    .sw-btn-primary:hover { background: #1D4ED8; }
+    .sw-btn-subtle { background: #E2E8F0; color: #334155; }
+    .sw-btn-subtle:hover { background: #CBD5E1; }
+
+    /* Strategy Cards */
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 20px;
+    }
+    .strategy-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .strategy-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: #BFDBFE;
+    }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .card-title { font-size: 16px; font-weight: 700; color: #0F172A; }
+    .card-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .card-body { font-size: 13.5px; color: #475569; line-height: 1.65; }
+    .card-footer {
+      background: #F8FAFC;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 12.5px;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    footer {
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <div class="brand-logo">数</div>
+        <div class="brand-title-wrap">
+          <div class="brand-title">
+            初中数学复习中心 <span class="version-tag">V4 逐题配速明细版</span>
+          </div>
+          <div class="brand-subtitle">上海中考数学各大题型分值 · 1–24题逐题合理用时 · 考场配速策略</div>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="doc-viewer-V1.html?file=docs/26秋九上数学练习册答案（新）_扫描版.pdf" class="back-btn" style="background: #EFF6FF; color: #2563EB; border-color: #BFDBFE;">
+          📖 数学练习册答案
+        </a>
+        <a href="../index.html" class="back-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          返回学习中心
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Hero Banner -->
+    <section class="hero-card">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span>⏱️ 上海中考数学 100 分钟黄金时间分配</span>
+        </h1>
+        <p class="hero-desc">
+          中考数学总分 <strong>150 分</strong>，考试时间 <strong>100 分钟</strong>。全卷共 24 道题，科学的做题配速是稳定取得 140+ 的核心护城河：规划 <strong>95 分钟</strong> 完成 1–24 题逐题作答，预留 <strong>5 分钟</strong> 检查填涂答题卡与运算纠错！
+        </p>
+      </div>
+      <div class="hero-stat-box">
+        <div class="stat-item">
+          <div class="stat-num">100<span style="font-size: 14px; font-weight: 600;">分</span></div>
+          <div class="stat-label">考试总时长</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">150<span style="font-size: 14px; font-weight: 600;">分</span></div>
+          <div class="stat-label">全卷 24 题</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">95+5<span style="font-size: 14px; font-weight: 600;">分</span></div>
+          <div class="stat-label">作答+复查</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Gantt Time Bar -->
+    <section class="timeline-card">
+      <div class="section-header">
+        <div class="section-title">
+          <span>📊 100 分钟作答甘特时间分配轴</span>
+        </div>
+        <span class="section-badge">题号精准对应 · 超时果断截断</span>
+      </div>
+
+      <div class="time-bar-track">
+        <div class="time-bar-segment" style="width: 12%; background: #3B82F6;" title="选择题(1-6): 12分钟">选择 12'</div>
+        <div class="time-bar-segment" style="width: 16%; background: #10B981;" title="填空基础(7-16): 16分钟">填空基 16'</div>
+        <div class="time-bar-segment" style="width: 5%; background: #F59E0B;" title="填空压轴(17): 5分钟">17题 5'</div>
+        <div class="time-bar-segment" style="width: 18%; background: #6366F1;" title="解答题(18-20): 18分钟">解答18-20 18'</div>
+        <div class="time-bar-segment" style="width: 16%; background: #06B6D4;" title="解答题(21-22): 16分钟">解答21-22 16'</div>
+        <div class="time-bar-segment" style="width: 13%; background: #EC4899;" title="压轴(23): 13分钟">压轴23 13'</div>
+        <div class="time-bar-segment" style="width: 15%; background: #8B5CF6;" title="压轴(24): 15分钟">压轴24 15'</div>
+        <div class="time-bar-segment" style="width: 5%; background: #64748B;" title="复查填涂: 5分钟">复查 5'</div>
+      </div>
+
+      <div class="timeline-legend">
+        <div class="legend-item"><span class="legend-dot" style="background: #3B82F6;"></span> 选择题 (1–6题 · 12分钟 · 24分)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #10B981;"></span> 填空基础 (7–16题 · 16分钟 · 40分)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #F59E0B;"></span> 填空压轴 (17题 · 5分钟 · 4分)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #6366F1;"></span> 基础解答 (18–20题 · 18分钟 · 30分)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #06B6D4;"></span> 综合解答 (21–22题 · 16分钟 · 24分)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #EC4899;"></span> 几何压轴 (23题 · 13分钟 · 13分)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #8B5CF6;"></span> 函数压轴 (24题 · 15分钟 · 15分)</div>
+        <div class="legend-item"><span class="legend-dot" style="background: #64748B;"></span> 全卷复查填涂 (5分钟)</div>
+      </div>
+
+      <!-- View Switcher -->
+      <div class="view-tabs">
+        <button class="view-tab-btn active" id="tabBtnPerQuestion" onclick="switchView('perQuestion')">
+          🎯 1–24 题逐题合理时间明细表 (按题目)
+        </button>
+        <button class="view-tab-btn" id="tabBtnSummary" onclick="switchView('summary')">
+          📋 7 大板块汇总表 (官方考纲核定)
+        </button>
+      </div>
+
+      <!-- VIEW 1: Per Question Detail Table (1–24题) -->
+      <div id="viewPerQuestion" class="table-container">
+        <table class="timing-table">
+          <thead>
+            <tr>
+              <th>题号</th>
+              <th>所属板块</th>
+              <th>分值</th>
+              <th>建议合理用时</th>
+              <th>高频考点与题型定位</th>
+              <th>单题配速策略与超时截断</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 选择题 1-6 -->
+            <tr style="background: #F8FAFC;">
+              <td colspan="6" style="font-weight: 700; color: #1E40AF; padding: 10px 16px; border-left: 4px solid #3B82F6;">
+                一、选择题板块（共 6 题 · 总分 24 分 · 建议总用时 12 分钟）
+              </td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 1 题</span></td>
+              <td>选择题</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #EFF6FF; color: #1D4ED8;">1.5 分钟</span></td>
+              <td>实数概念、相反数/绝对值、倒数、科学记数法</td>
+              <td>直接法，审清概念，严防正负号看错。用时勿超 2 分钟。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 2 题</span></td>
+              <td>选择题</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #EFF6FF; color: #1D4ED8;">1.5 分钟</span></td>
+              <td>整式运算、同底数幂乘除、完全平方式、因式分解</td>
+              <td>运算法则核对，草稿纸验算幂指数与符号。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 3 题</span></td>
+              <td>选择题</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #EFF6FF; color: #1D4ED8;">2.0 分钟</span></td>
+              <td>一次函数 / 反比例函数图象增减性、k与b的符号</td>
+              <td>数形结合法，画草图或特殊点代入迅速排除错误选项。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 4 题</span></td>
+              <td>选择题</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #EFF6FF; color: #1D4ED8;">2.0 分钟</span></td>
+              <td>统计与概率（平均数、中位数、众数、方差、频数分布）</td>
+              <td>数据按大小排序，注意偶数个数据中位数取均值。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 5 题</span></td>
+              <td>选择题</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #EFF6FF; color: #1D4ED8;">2.5 分钟</span></td>
+              <td>几何基本图形（平行线性质、轴对称/中心对称、圆切线、三角形中位线）</td>
+              <td>特例反驳法或标准作图观察，排除 3 个错误选项。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 6 题</span></td>
+              <td>选择题压轴</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #EFF6FF; color: #1D4ED8;">2.5 分钟</span></td>
+              <td>几何或代数小综合（动点函数图象、翻折面积、最值判断）</td>
+              <td>极限位置法、特殊角/特殊值代入。<span class="warn-pill">超3分钟标记跳过</span></td>
+            </tr>
+
+            <!-- 填空基础 7-16 -->
+            <tr style="background: #F8FAFC;">
+              <td colspan="6" style="font-weight: 700; color: #065F46; padding: 10px 16px; border-left: 4px solid #10B981;">
+                二、填空基础题板块（共 10 题 · 总分 40 分 · 建议总用时 16 分钟）
+              </td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 7 题</span></td>
+              <td>填空基础</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #ECFDF5; color: #047857;">1.0 分钟</span></td>
+              <td>因式分解（提公因式 + 公式法彻底分解）</td>
+              <td>一步到位，检查是否分解彻底（括号内不可再分解）。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 8 题</span></td>
+              <td>填空基础</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #ECFDF5; color: #047857;">1.0 分钟</span></td>
+              <td>方程与不等式（分式方程化简、不等式组解集表示）</td>
+              <td>分式方程务必验根防增根；不等式不等号方向注意负号。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 9 题</span></td>
+              <td>填空基础</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #ECFDF5; color: #047857;">1.0 分钟</span></td>
+              <td>函数自变量取值范围（分母不为0、二次根式被开方数≥0）</td>
+              <td>复合条件取交集，区间符号准确书写。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 10 题</span></td>
+              <td>填空基础</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #ECFDF5; color: #047857;">1.5 分钟</span></td>
+              <td>正反比例函数解析式求法 / 坐标代入计算</td>
+              <td>待定系数法求解析式，看清经过哪个象限。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 11 题</span></td>
+              <td>填空基础</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #ECFDF5; color: #047857;">1.5 分钟</span></td>
+              <td>一元二次方程根的判别式 / 根与系数的关系（韦达定理）</td>
+              <td>注意二次项系数 a ≠ 0 的隐形条件！</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 12 题</span></td>
+              <td>填空基础</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #ECFDF5; color: #047857;">1.5 分钟</span></td>
+              <td>古典概型计算（摸球、掷骰子、两步试验树状图）</td>
+              <td>画出简易表格或列举法，看清是“放回”还是“不放回”。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 13 题</span></td>
+              <td>填空基础</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #ECFDF5; color: #047857;">1.5 分钟</span></td>
+              <td>三角形性质（角平分线、垂直平分线、等腰三角形三线合一）</td>
+              <td>利用图形定理快速推理，严防多解情况遗漏。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 14 题</span></td>
+              <td>填空基础</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #ECFDF5; color: #047857;">2.0 分钟</span></td>
+              <td>特殊四边形（平行四边形、矩形、菱形、正方形判定与性质）</td>
+              <td>对角线互相垂直/平分/相等性质灵活代换。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 15 题</span></td>
+              <td>填空基础</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #ECFDF5; color: #047857;">2.5 分钟</span></td>
+              <td>相似三角形基本模型（A字型、8字型、射影定理、母子相似）</td>
+              <td>找准对应顶点比例式，代入已知线段列方程。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 16 题</span></td>
+              <td>填空基础</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #ECFDF5; color: #047857;">2.5 分钟</span></td>
+              <td>圆的性质（垂径定理、圆周角定理、弦心距与切线长）</td>
+              <td>构造直角三角形利用勾股定理求半径或弦长。</td>
+            </tr>
+
+            <!-- 填空压轴 17 -->
+            <tr style="background: #F8FAFC;">
+              <td colspan="6" style="font-weight: 700; color: #92400E; padding: 10px 16px; border-left: 4px solid #F59E0B;">
+                三、填空压轴题板块（共 1 题 · 总分 4 分 · 建议总用时 5 分钟）
+              </td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum" style="color: #D97706;">第 17 题</span></td>
+              <td>填空压轴</td>
+              <td><strong>4 分</strong></td>
+              <td><span class="td-time-tag" style="background: #FFFBEB; color: #B45309;">5.0 分钟</span></td>
+              <td>几何翻折变换、动点轨迹、隐藏圆、分类讨论与最值</td>
+              <td><strong>5分钟截断法则：</strong>若 5 分钟无思路或涉及繁复分类，填上最有把握特例值，先跳做第18题，最后复查再回溯！</td>
+            </tr>
+
+            <!-- 基础解答 18-20 -->
+            <tr style="background: #F8FAFC;">
+              <td colspan="6" style="font-weight: 700; color: #3730A3; padding: 10px 16px; border-left: 4px solid #6366F1;">
+                四、基础解答题板块（共 3 题 · 总分 30 分 · 建议总用时 18 分钟）
+              </td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 18 题</span></td>
+              <td>解答计算</td>
+              <td><strong>10 分</strong></td>
+              <td><span class="td-time-tag" style="background: #EEF2FF; color: #4338CA;">5.0 分钟</span></td>
+              <td>实数混合运算（零次幂、负整数指数幂、二次根式、特殊角三角比）</td>
+              <td>步骤工整每行算一项，严防符号与根号化简失误，满分必拿。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 19 题</span></td>
+              <td>解方程/不等式</td>
+              <td><strong>10 分</strong></td>
+              <td><span class="td-time-tag" style="background: #EEF2FF; color: #4338CA;">6.0 分钟</span></td>
+              <td>分式方程去分母化简求解 / 二元二次方程组代入消元</td>
+              <td>分式方程必须写“检验：当 x = ... 时，最简公分母 ≠ 0，故原方程根为...”。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 20 题</span></td>
+              <td>几何应用题</td>
+              <td><strong>10 分</strong></td>
+              <td><span class="td-time-tag" style="background: #EEF2FF; color: #4338CA;">7.0 分钟</span></td>
+              <td>解直角三角形实际应用（仰角/俯角、坡度/坡角、双直角三角形公共边）</td>
+              <td>画出平面示意图，标清公共高线与三角比，精确度严格按题干要求保留（如精确到0.1）。</td>
+            </tr>
+
+            <!-- 综合解答 21-22 -->
+            <tr style="background: #F8FAFC;">
+              <td colspan="6" style="font-weight: 700; color: #155E75; padding: 10px 16px; border-left: 4px solid #06B6D4;">
+                五、综合解答题板块（共 2 题 · 总分 24 分 · 建议总用时 16 分钟）
+              </td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 21 题</span></td>
+              <td>函数几何综合</td>
+              <td><strong>12 分</strong></td>
+              <td><span class="td-time-tag" style="background: #ECFEFF; color: #0E7490;">8.0 分钟</span></td>
+              <td>一次函数与反比例函数交点、面积求法、平行四边形判定</td>
+              <td>联立方程求交点坐标，割补法求不规则三角形面积，分步书写完整。</td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum">第 22 题</span></td>
+              <td>统计概率大题</td>
+              <td><strong>12 分</strong></td>
+              <td><span class="td-time-tag" style="background: #ECFEFF; color: #0E7490;">8.0 分钟</span></td>
+              <td>条形/扇形统计图补全、样本估计总体、树状图/列表法求概率</td>
+              <td>看清样本容量与百分比换算，树状图清晰列出所有等可能结果。</td>
+            </tr>
+
+            <!-- 压轴 23 -->
+            <tr style="background: #F8FAFC;">
+              <td colspan="6" style="font-weight: 700; color: #9D174D; padding: 10px 16px; border-left: 4px solid #EC4899;">
+                六、几何证明压轴题（共 1 题 · 总分 13 分 · 建议总用时 13 分钟）
+              </td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum" style="color: #DB2777;">第 23 题</span></td>
+              <td>几何压轴</td>
+              <td><strong>13 分</strong></td>
+              <td><span class="td-time-tag" style="background: #FDF2F8; color: #BE185D;">13.0 分钟</span></td>
+              <td>圆与四边形综合证明、相似三角形基本模型、辅助线构造</td>
+              <td>
+                • <strong>第(1)问(3分钟·4分)：</strong>基础全等/相似/切线判定，稳拿满分。<br>
+                • <strong>第(2)问(10分钟·9分)：</strong>旋转/倍长中线/辅助圆，找准比例线段方程。
+              </td>
+            </tr>
+
+            <!-- 压轴 24 -->
+            <tr style="background: #F8FAFC;">
+              <td colspan="6" style="font-weight: 700; color: #5B21B6; padding: 10px 16px; border-left: 4px solid #8B5CF6;">
+                七、二次函数代几综合压轴题（共 1 题 · 总分 15 分 · 建议总用时 15 分钟）
+              </td>
+            </tr>
+            <tr>
+              <td><span class="td-qnum" style="color: #7C3AED;">第 24 题</span></td>
+              <td>二次函数压轴</td>
+              <td><strong>15 分</strong></td>
+              <td><span class="td-time-tag" style="background: #F5F3FF; color: #6D28D9;">15.0 分钟</span></td>
+              <td>二次函数解析式、动点几何图形存在性（等腰直角/平行四边形/相切）、分类讨论</td>
+              <td>
+                • <strong>第(1)问(3分钟·4分)：</strong>待定系数法求解析式与顶点，必拿满分。<br>
+                • <strong>第(2)问(5分钟·5分)：</strong>设定动点坐标表示线段长，根据特殊图形列等式。<br>
+                • <strong>第(3)问(7分钟·6分)：</strong>画出草图清晰分类，写全分类讨论前提，步步吃分。
+              </td>
+            </tr>
+
+            <!-- 复查 -->
+            <tr style="background: #F1F5F9; font-weight: 700;">
+              <td><span class="td-qnum" style="color: #475569;">全卷终盘</span></td>
+              <td>机动复查</td>
+              <td><strong>全卷审核</strong></td>
+              <td><span class="td-time-tag" style="background: #E2E8F0; color: #334155;">5.0 分钟</span></td>
+              <td>答题卡填涂核对、单位/定义域/根号正负号运算漏查</td>
+              <td>确认选择填空涂卡无误，重点复核 17、23(1)、24(1) 计算结果。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- VIEW 2: Summary Table (7大板块) -->
+      <div id="viewSummary" class="table-container" style="display: none;">
+        <table class="timing-table">
+          <thead>
+            <tr>
+              <th>板块</th>
+              <th>题号</th>
+              <th>分值</th>
+              <th>建议用时</th>
+              <th>平均单题节奏</th>
+              <th>核心破题策略与避坑指南</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-block-name"><span style="color: #3B82F6;">●</span> 选择题</td>
+              <td><strong>1–6</strong></td>
+              <td><span style="color: #2563EB; font-weight: 700;">24 分</span></td>
+              <td><span class="td-time-tag" style="background: #EFF6FF; color: #1D4ED8;">12 分钟</span></td>
+              <td>约 2 分钟 / 题</td>
+              <td>快速稳拿，多用排除法、特殊值代入法与数形结合，绝不在前6题死抠小计算。</td>
+            </tr>
+            <tr>
+              <td class="td-block-name"><span style="color: #10B981;">●</span> 填空基础</td>
+              <td><strong>7–16</strong></td>
+              <td><span style="color: #059669; font-weight: 700;">40 分</span></td>
+              <td><span class="td-time-tag" style="background: #ECFDF5; color: #047857;">16 分钟</span></td>
+              <td>约 1.6 分钟 / 题</td>
+              <td>全卷基石！注意审清定义域、符号与单位，第15/16题稍微留心图象与线段关系。</td>
+            </tr>
+            <tr>
+              <td class="td-block-name"><span style="color: #F59E0B;">●</span> 填空压轴</td>
+              <td><strong>17</strong></td>
+              <td><span style="color: #D97706; font-weight: 700;">4 分</span></td>
+              <td><span class="td-time-tag" style="background: #FFFBEB; color: #B45309;">5 分钟</span></td>
+              <td>单题限时 5 分钟</td>
+              <td>常考几何折叠/动点最值/分类讨论。超过 5 分钟若无思路，果断做标记先跳过，最后再补！</td>
+            </tr>
+            <tr>
+              <td class="td-block-name"><span style="color: #6366F1;">●</span> 解答 18–20</td>
+              <td><strong>18、19、20</strong></td>
+              <td><span style="color: #4338CA; font-weight: 700;">30 分</span></td>
+              <td><span class="td-time-tag" style="background: #EEF2FF; color: #4338CA;">18 分钟</span></td>
+              <td>约 6 分钟 / 题</td>
+              <td>代数式化简、解方程/不等式组、解直角三角形。规范书写步骤，防止跳步失分。</td>
+            </tr>
+            <tr>
+              <td class="td-block-name"><span style="color: #06B6D4;">●</span> 解答 21–22</td>
+              <td><strong>21、22</strong></td>
+              <td><span style="color: #0891B2; font-weight: 700;">24 分</span></td>
+              <td><span class="td-time-tag" style="background: #ECFEFF; color: #0E7490;">16 分钟</span></td>
+              <td>约 8 分钟 / 题</td>
+              <td>统计概率 + 一次函数/反比例函数与几何应用。图表信息提取准确，结论作答完整。</td>
+            </tr>
+            <tr>
+              <td class="td-block-name"><span style="color: #EC4899;">●</span> 压轴 23</td>
+              <td><strong>23</strong></td>
+              <td><span style="color: #DB2777; font-weight: 700;">13 分</span></td>
+              <td><span class="td-time-tag" style="background: #FDF2F8; color: #BE185D;">13 分钟</span></td>
+              <td>问(1) 3' · 问(2) 10'</td>
+              <td>圆与相似、四边形几何证明。第(1)问必拿满分；第(2)问找准基本几何模型与辅助线转换。</td>
+            </tr>
+            <tr>
+              <td class="td-block-name"><span style="color: #8B5CF6;">●</span> 压轴 24</td>
+              <td><strong>24</strong></td>
+              <td><span style="color: #7C3AED; font-weight: 700;">15 分</span></td>
+              <td><span class="td-time-tag" style="background: #F5F3FF; color: #6D28D9;">15 分钟</span></td>
+              <td>问(1) 3' · 问(2) 5' · 问(3) 7'</td>
+              <td>二次函数综合与动点几何。第(1)问待定系数法必拿；第(2)问求解析式/特殊点；第(3)问分类讨论。</td>
+            </tr>
+            <tr style="background: #F8FAFC; font-weight: 700;">
+              <td colspan="2" style="text-align: center; color: #0F172A;">全卷用时汇总</td>
+              <td>150 分</td>
+              <td colspan="3" style="color: #2563EB;">95 分钟有效答题 + 5 分钟机动复查 ＝ 100 分钟</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Interactive Stopwatch Simulator -->
+    <section class="stopwatch-card">
+      <div class="sw-header">
+        <div class="sw-title">
+          <span>⏱️ 单题考场配速模拟器</span>
+        </div>
+        <span style="font-size: 13px; color: #64748B;">选择模拟题号，实时检验做题速度是否处于合理区间</span>
+      </div>
+      <div class="sw-display-box">
+        <div class="sw-select-wrap">
+          <label style="font-weight: 700; color: #0F172A;">选择题号：</label>
+          <select id="swQuestionSelect" class="sw-select" onchange="updateSelectedQuestion()">
+            <optgroup label="一、选择题 (1-6)">
+              <option value="q1" data-time="90">第 1 题（实数概念 · 1.5分钟）</option>
+              <option value="q2" data-time="90">第 2 题（整式运算 · 1.5分钟）</option>
+              <option value="q3" data-time="120">第 3 题（函数增减 · 2.0分钟）</option>
+              <option value="q4" data-time="120">第 4 题（统计中位数 · 2.0分钟）</option>
+              <option value="q5" data-time="150">第 5 题（几何对称圆 · 2.5分钟）</option>
+              <option value="q6" data-time="150">第 6 题（小压轴动点 · 2.5分钟）</option>
+            </optgroup>
+            <optgroup label="二、填空基础 (7-16)">
+              <option value="q7" data-time="60">第 7 题（因式分解 · 1.0分钟）</option>
+              <option value="q8" data-time="60">第 8 题（方程与不等式 · 1.0分钟）</option>
+              <option value="q9" data-time="60">第 9 题（定义域取值 · 1.0分钟）</option>
+              <option value="q10" data-time="90">第 10 题（正反比例 · 1.5分钟）</option>
+              <option value="q11" data-time="90">第 11 题（韦达定理 · 1.5分钟）</option>
+              <option value="q12" data-time="90">第 12 题（概率计算 · 1.5分钟）</option>
+              <option value="q13" data-time="90">第 13 题（三角形性质 · 1.5分钟）</option>
+              <option value="q14" data-time="120">第 14 题（特殊四边形 · 2.0分钟）</option>
+              <option value="q15" data-time="150">第 15 题（相似比模型 · 2.5分钟）</option>
+              <option value="q16" data-time="150">第 16 题（圆与翻折 · 2.5分钟）</option>
+            </optgroup>
+            <optgroup label="三、填空压轴 (17)">
+              <option value="q17" data-time="300" selected>第 17 题（几何折叠/动点最值 · 限时5.0分钟）</option>
+            </optgroup>
+            <optgroup label="四、基础解答 (18-20)">
+              <option value="q18" data-time="300">第 18 题（实数混合运算 · 5.0分钟）</option>
+              <option value="q19" data-time="360">第 19 题（解方程方程组 · 6.0分钟）</option>
+              <option value="q20" data-time="420">第 20 题（解直角三角形 · 7.0分钟）</option>
+            </optgroup>
+            <optgroup label="五、综合解答 (21-22)">
+              <option value="q21" data-time="480">第 21 题（函数几何综合 · 8.0分钟）</option>
+              <option value="q22" data-time="480">第 22 题（统计概率大题 · 8.0分钟）</option>
+            </optgroup>
+            <optgroup label="六、压轴大题 (23-24)">
+              <option value="q23_1" data-time="180">第 23 题(1)（全等/相似证明 · 3.0分钟）</option>
+              <option value="q23_2" data-time="600">第 23 题(2)（辅助线与线段比 · 10.0分钟）</option>
+              <option value="q24_1" data-time="180">第 24 题(1)（抛物线解析式 · 3.0分钟）</option>
+              <option value="q24_2" data-time="300">第 24 题(2)（特殊图形存在性 · 5.0分钟）</option>
+              <option value="q24_3" data-time="420">第 24 题(3)（动点面积与分类 · 7.0分钟）</option>
+            </optgroup>
+          </select>
+        </div>
+        <div>
+          <span style="font-size: 13px; color: #64748B; margin-right: 8px;">建议限时倒计时：</span>
+          <span class="sw-timer-text" id="swTimerText">05:00</span>
+        </div>
+        <div class="sw-btns">
+          <button class="sw-btn sw-btn-primary" id="swStartBtn" onclick="toggleStopwatch()">开始限时</button>
+          <button class="sw-btn sw-btn-subtle" onclick="resetStopwatch()">重置</button>
+        </div>
+      </div>
+      <div id="swAlertBox" style="font-size: 13px; color: #475569; background: #EFF6FF; border-left: 3px solid #2563EB; padding: 10px 14px; border-radius: 6px;">
+        💡 <strong>第 17 题提示：</strong>分值 4 分，上限 5 分钟。若超时仍卡壳，请立即填上直觉特例值，先跳做第 18 题！
+      </div>
+    </section>
+
+    <!-- Strategy Deep Dive -->
+    <div class="strategy-grid">
+      <div class="strategy-card">
+        <div class="card-top">
+          <div class="card-title">🚀 前 20 题“稳准狠”保分法则（前 94 分）</div>
+          <span class="card-badge" style="background: #ECFDF5; color: #047857;">46 分钟内搞定</span>
+        </div>
+        <div class="card-body">
+          1–6 选择题与 7–16 填空题是全卷拿高分的最重要底盘，占 64 分；加上 18–20 题基础解答 30 分，累计整整 <strong>94 分</strong>。
+          <br>• <strong>避免粗心：</strong>必须在草稿纸上分区域工整书写，不要心算连跳两步！
+          <br>• <strong>复查策略：</strong>做完一题顺手用反向代入法复验，不要寄希望于最后再全卷重算。
+        </div>
+        <div class="card-footer">
+          💡 <strong>铁律：</strong>基础题 1 分不丢，中考就已经踏进重点高中大门！
+        </div>
+      </div>
+
+      <div class="strategy-card">
+        <div class="card-top">
+          <div class="card-title">⚠️ 第 17 题填空压轴的“5分钟截断法”</div>
+          <span class="card-badge" style="background: #FFFBEB; color: #B45309;">限时 5 分钟</span>
+        </div>
+        <div class="card-body">
+          17 题分值仅为 4 分，但由于往往涉及多解（漏解扣 2-4 分）或极复杂几何变换，极易让考生陷入“沉没成本陷阱”。
+          <br>• <strong>5分钟截断：</strong>如果读题、画图、尝试建系/辅助线超过 5 分钟仍无清晰路径，立即选一个最直观的特例答案写上，或者先留空跳过！
+          <br>• 把宝贵时间留给后方分值更大的第 21、22、23、24 题！
+        </div>
+        <div class="card-footer">
+          🎯 <strong>铁律：</strong>绝不为了 4 分耽误后面 52 分大题的充裕书写！
+        </div>
+      </div>
+
+      <div class="strategy-card">
+        <div class="card-top">
+          <div class="card-title">🏆 23、24 两大压轴题的“分段得分策略”</div>
+          <span class="card-badge" style="background: #F5F3FF; color: #6D28D9;">合计 28 分</span>
+        </div>
+        <div class="card-body">
+          中考压轴题不是“全对”或“全错”的二极管，而是阶梯式给分：
+          <br>• <strong>第(1)问必吃：</strong>23(1)与24(1)通常只有 3~4 分难度，等于送分题，必须快速满分拿下。
+          <br>• <strong>第(2)问尽力拿：</strong>代入方程、相似三角形比例、特殊位置计算，争取拿到 80% 分数。
+          <br>• <strong>第(3)问拿过程分：</strong>哪怕算不出终值，写出分类讨论的前提条件、列出勾股定理/相似比等式，依然能稳稳斩获 2–3 分！
+        </div>
+        <div class="card-footer">
+          ⭐ <strong>铁律：</strong>先易后难，层次分明，字迹工整，步步拿分！
+        </div>
+      </div>
+    </div>
+
+    <!-- Supplementary Materials Section -->
+    <section class="materials-section" style="margin-top: 10px;">
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 style="font-size: 19px; font-weight: 700; color: #0F172A; display: flex; align-items: center; gap: 8px;">
+              📚 数学学科配套教辅/练习册/试卷资料库
+            </h2>
+            <p style="font-size: 13px; color: #64748B; margin-top: 4px;">收录官方练习册答案、中考真题体验练、考点背诵任务单，支持高清在线预览与直接下载</p>
+          </div>
+          <a href="doc-viewer-V1.html" style="display: inline-flex; align-items: center; gap: 6px; background: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE; font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 8px; text-decoration: none;">
+            🔍 打开数学全屏预览中心
+          </a>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px;">
+          <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="background: #DBEAFE; color: #1E40AF; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px;">官方练习册答案</span>
+                <span style="font-size: 11px; color: #64748B;">💾 102.24 MB</span>
+              </div>
+              <div style="font-size: 14px; font-weight: 600; color: #0F172A; line-height: 1.4;">26秋九上数学练习册答案（新）_扫描版.pdf</div>
+            </div>
+            <div style="display: flex; gap: 8px; margin-top: 4px;">
+              <a href="doc-viewer-V1.html?file=docs/26秋九上数学练习册答案（新）_扫描版.pdf" style="flex: 1; text-align: center; background: #2563EB; color: #FFFFFF; font-size: 12px; font-weight: 600; padding: 8px 12px; border-radius: 6px; text-decoration: none;">👁️ 在线高清预览</a>
+              <a href="docs/26秋九上数学练习册答案（新）_扫描版.pdf" download style="background: #FFFFFF; color: #475569; border: 1px solid #CBD5E1; font-size: 12px; font-weight: 600; padding: 8px 12px; border-radius: 6px; text-decoration: none;">⬇️ 下载原件</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2026 初中数学复习中心 V4 · 保持浅色商务系纯净风格与版本控制</p>
+  </footer>
+
+  <script>
+    function switchView(viewName) {
+      const perQ = document.getElementById('viewPerQuestion');
+      const sum = document.getElementById('viewSummary');
+      const btnPerQ = document.getElementById('tabBtnPerQuestion');
+      const btnSum = document.getElementById('tabBtnSummary');
+
+      if (viewName === 'perQuestion') {
+        perQ.style.display = 'block';
+        sum.style.display = 'none';
+        btnPerQ.classList.add('active');
+        btnSum.classList.remove('active');
+      } else {
+        perQ.style.display = 'none';
+        sum.style.display = 'block';
+        btnPerQ.classList.remove('active');
+        btnSum.classList.add('active');
+      }
+    }
+
+    // Stopwatch logic
+    let timerInterval = null;
+    let totalSeconds = 300;
+    let remainingSeconds = 300;
+    let isRunning = false;
+
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60);
+      const s = sec % 60;
+      return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    function updateSelectedQuestion() {
+      const select = document.getElementById('swQuestionSelect');
+      const opt = select.options[select.selectedIndex];
+      totalSeconds = parseInt(opt.getAttribute('data-time'), 10) || 300;
+      resetStopwatch();
+      
+      const alertBox = document.getElementById('swAlertBox');
+      const val = select.value;
+      if (val === 'q17') {
+        alertBox.innerHTML = '⚠️ <strong>第 17 题铁律：</strong>分值 4 分，上限 5 分钟。若超时仍卡壳，请立即填上直觉特例值，先跳做第 18 题！';
+        alertBox.style.background = '#FFFBEB';
+        alertBox.style.borderLeftColor = '#D97706';
+      } else if (val.startsWith('q23')) {
+        alertBox.innerHTML = '🎯 <strong>第 23 题几何压轴：</strong>第(1)问 3 分钟必拿满分；第(2)问找准基本模型与比例线段，限时 10 分钟。';
+        alertBox.style.background = '#FDF2F8';
+        alertBox.style.borderLeftColor = '#DB2777';
+      } else if (val.startsWith('q24')) {
+        alertBox.innerHTML = '🏆 <strong>第 24 题函数压轴：</strong>第(1)问 3 分钟待定系数法求解析式；第(2)问 5 分钟特殊图形；第(3)问 7 分钟分类讨论。';
+        alertBox.style.background = '#F5F3FF';
+        alertBox.style.borderLeftColor = '#7C3AED';
+      } else {
+        alertBox.innerHTML = `💡 <strong>当前题号建议：</strong>合理做题时间为 ${Math.round(totalSeconds/60*10)/10} 分钟，草稿纸分区书写，保持平稳配速！`;
+        alertBox.style.background = '#EFF6FF';
+        alertBox.style.borderLeftColor = '#2563EB';
+      }
+    }
+
+    function toggleStopwatch() {
+      const btn = document.getElementById('swStartBtn');
+      if (isRunning) {
+        clearInterval(timerInterval);
+        isRunning = false;
+        btn.innerText = '继续计时';
+        btn.style.background = '#2563EB';
+      } else {
+        isRunning = true;
+        btn.innerText = '暂停';
+        btn.style.background = '#D97706';
+        timerInterval = setInterval(() => {
+          if (remainingSeconds > 0) {
+            remainingSeconds--;
+            document.getElementById('swTimerText').innerText = formatTime(remainingSeconds);
+            if (remainingSeconds === 0) {
+              clearInterval(timerInterval);
+              isRunning = false;
+              btn.innerText = '时间到！重新开始';
+              btn.style.background = '#DC2626';
+              alert('⏰ 该题建议做题时间已到！请检查是否已完成作答或果断截断进入下一题！');
+            }
+          }
+        }, 1000);
+      }
+    }
+
+    function resetStopwatch() {
+      if (timerInterval) clearInterval(timerInterval);
+      isRunning = false;
+      remainingSeconds = totalSeconds;
+      document.getElementById('swTimerText').innerText = formatTime(remainingSeconds);
+      const btn = document.getElementById('swStartBtn');
+      btn.innerText = '开始限时';
+      btn.style.background = '#2563EB';
+    }
+  </script>
+</body>
+</html>
